@@ -1,13 +1,13 @@
 ---
 enable: true
-topTitle: Hello, I am Natasha
+topTitle: Hello, I am Dickson
 content: >
-  # I am here for your personal business
-
-  Enjoy team diversity and increase their networks among others people
-  in various fields by
+  # Deep Learning Scientist. 
+  
+  I help statups and companies deploy custom deep learning solutions.
+  
 buttonName: Contact me
 buttonURL: contact
-image: images/hero/2960351.jpg
+image: images/hero/self-potrait.jpg
 videoThumb: images/hero/popup-thumb.png
 videoURL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
