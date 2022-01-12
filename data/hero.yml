@@ -4,10 +4,10 @@ topTitle: Hello, I am Dickson
 content: >
   # Deep Learning Scientist. 
   
-  I help statups and companies deploy custom deep learning solutions.
+  I help statups and companies design and deploy custom deep learning solutions.
   
 buttonName: Contact me
 buttonURL: contact
 image: images/hero/self-potrait.jpg
-videoThumb: images/hero/popup-thumb.png
-videoURL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+#videoThumb: images/hero/self-square.jpg
+#videoURL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
