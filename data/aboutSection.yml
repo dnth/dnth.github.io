@@ -3,10 +3,10 @@ enable: true
 topTitle: About
 title: >
   ## About me
-
-  I enjoy building artificial intelligence based solutions to help companies scale up their business.
+  
+  My name is Dickson Neoh from Kuala Lumpur, Malaysia. I enjoy building artificial intelligence based solutions to help companies scale up their business.
 content: >
-  ### I love to design, build and deploy Artificial Intelligence models.
+  ### I love to design, build and deploy Artificial Intelligence models
 
   I am currently an academic and  PhD. candidate in Engineering (graduating in 2022) and specializing in Deep Learning and Li-ion technology at Malaysia National Energy University. I have published scientific articles in a few reputable journals including [Nature](https://www.nature.com/articles/s41598-021-98915-8) and [IEEE Transactions](https://ieeexplore.ieee.org/abstract/document/9276459) during my tenure as an academic. Check out my [Google Scholar](https://scholar.google.com/citations?user=CBGCEskAAAAJ) profile. I have worked extensively on state-of-the-art deep convolutional neural networks for object detection and classification, recurrent neural networks for time series classification, and self-supervised Transformer models for time series forecasting.
   
