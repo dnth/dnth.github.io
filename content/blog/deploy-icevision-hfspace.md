@@ -1,8 +1,8 @@
 ---
 title: "Deploy Icevision Models on HuggingFace Spaces"
 date: 2022-01-13T13:42:56+08:00
-featureImage: images/allpost/allPost-7.jpg
-postImage: images/blog/gradioxhf.png
+featureImage: images/blog/deploy-icevision-hfspace/cog.jpg
+postImage: images/blog/deploy-icevision-hfspace/gradioxhf.png
 ---
 
 
@@ -25,7 +25,7 @@ Assuming you are done with training your object detection model with Icevision i
 Before we can deploy the app on Hugging Face space, we need to specify what packages are required to run the inference. Therefore we need to create a text file `requirements.txt` that specifies a list of packages to be installed.
 Hugging Face Spaces is a place that can host DL models for free. Good for showcasing a model. Many models available. We will use HF Space to host the Gradio app. To deploy the Gradio app we created on Hugging Face Spaces, we need to create a python script app.py. This script will be run when the app loads on Hugging Face Space.
 
-![](/images/blog/screenshot.png )
+![](/images/blog/deploy-icevision-hfspace/screenshot.png)
 
 
 
