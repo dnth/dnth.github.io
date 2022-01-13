@@ -6,21 +6,14 @@ title: >
 
   I enjoy building artificial intelligence based solutions to help companies scale up their business.
 content: >
-  ### I design and build AI models.
+  ### I love to design, build and deploy Artificial Intelligence models.
 
-  I am an academic and currently a PhD. candidate in Engineering (specializing in Deep Learning and Li-ion Technology) at Malaysia National Energy University. I currently hold a Bachelor’s Degree in Electrical and Electronics Engineering, and a Master’s Degree in Electrical Engineering. I have published scientific articles in a few reputable journals including Nature and IEEE Transactions during my tenure as an academic.
+  I am currently an academic and currently a PhD. candidate in Engineering (specializing in Deep Learning and Li-ion Technology) at Malaysia National Energy University. I have published scientific articles in a few reputable journals including [Nature](https://www.nature.com/articles/s41598-021-98915-8) and [IEEE Transactions](https://ieeexplore.ieee.org/abstract/document/9276459) during my tenure as an academic. Check out my [Google Scholar](https://scholar.google.com/citations?user=CBGCEskAAAAJ) profile. I have worked extensively on state-of-the-art deep convolutional neural networks for object detection and classification, recurrent neural networks for time series classification, and Transformer models for time series forecasting.
   
 
 button1Name: Hire me
 button2Name: Download CV
-button3Name: Google Scholar
-button4Name: LinkedIn
-button5Name: ResearchGate
-button6Name: Github
 button1Target: contact
 button2Target: contact
-button3Target: contact
-button4Target: contact
-button5Target: contact
-button6Target: contact
-image: images/about/about-img.jpg
+
+image: images/about/about.jpg
