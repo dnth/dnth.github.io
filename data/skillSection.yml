@@ -9,9 +9,21 @@ content: >
 image: images/skill/skill_image.jpg
 
 skill:
-  - title: HTML
-    percent: 69
-  - title: CSS
-    percent: 60
-  - title: Javascript
+  - title: Tensorflow/Keras
+    percent: 90
+  - title: Pytorch/Fastai
+    percent: 90
+  - title: Arduino/Raspberry Pi/ESP32/PIC Microchip
     percent: 85
+  - title: Nvidia Jetson/Intel Neural Compute/Google Coral
+    percent: 80
+  - title: OpenVINO/TensorRT/Tflite/Onnx
+    percent: 60
+  - title: Flutter/Kivy Mobile Development
+    percent: 70
+  - title: Azure Machine Learning/Google Cloud Platform
+    percent: 55
+  - title: InfluxDB/Hive/Google Firebase/MySQL Database
+    percent: 60
+  - title: Cloudera Data Science Workbench/PySpark
+    percent: 70
