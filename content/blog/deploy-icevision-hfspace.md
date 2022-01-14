@@ -1,8 +1,8 @@
 ---
-title: "Deploy Icevision Models on HuggingFace Spaces"
+title: "Deploy IceVision Models on HuggingFace Spaces"
 date: 2022-01-13T13:42:56+08:00
-featureImage: images/blog/deploy-icevision-hfspace/cog.jpg
-postImage: images/blog/deploy-icevision-hfspace/gradioxhf.png
+featureImage: images/blog/deploy-icevision-hfspace/thumb-train-deploy-share.png
+postImage: images/blog/deploy-icevision-hfspace/train-deploy-share.png
 ---
 
 
