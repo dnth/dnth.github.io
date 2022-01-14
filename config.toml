@@ -40,7 +40,7 @@ weight = 8
 # Sitemap Menu
 [[menu.sitemap]]
 name = "About me"
-url = "about"
+url = "#about"
 weight = 1
 [[menu.sitemap]]
 name = "Frequently Ask Question"
@@ -52,14 +52,14 @@ url = "#"
 weight = 3
 [[menu.sitemap]]
 name = "Latest Article"
-url = "#"
+url = "#skills"
 weight = 4
 
 [params]
 blogPageURL = "blog"
 contactLink = "contact"
 copyright = "All right reserved copyright © Dickson Neoh 2022"
-footerLogo = "images/contact/widget-logo.png"
+footerLogo = "images/site-navigation/logo_dn_resize.png"
 formspreeURL = "https://formspree.io/f/xgedowjr"
 googleAnalytics = "YOUR GOOGLE ANALYTICS CODE"
 logo = "images/site-navigation/logo_dn_resize.png"
