@@ -77,19 +77,24 @@ longitude = "90.3746808"
 pinImage = "images/pin.png"
 
 # Social icons
-[[params.social]]
-icon = "fa-facebook-official"
-url = "https://www.facebook.com/"
-weight = 1
+#[[params.social]]
+#icon = "fa-facebook-official"
+#url = "https://www.facebook.com/"
+#weight = 1
 [[params.social]]
 icon = "fa-linkedin-square"
-url = "https://www.linkedin.com/"
-weight = 2
-[[params.social]]
-icon = "fa-pinterest-square"
-url = "https://www.pinterest.com/"
-weight = 3
+url = "https://www.linkedin.com/in/dickson-neoh-3a6984b8/"
+weight = 1
+#[[params.social]]
+#icon = "fa-pinterest-square"
+#url = "https://www.pinterest.com/"
+#weight = 3
 [[params.social]]
 icon = "fa-twitter-square"
-url = "https://twitter.com/"
-weight = 4
+url = "https://twitter.com/dicksonneoh7"
+weight = 2
+
+[[params.social]]
+icon = "fa-github-square"
+url = "https://github.com/dnth"
+weight = 3
