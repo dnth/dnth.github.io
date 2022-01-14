@@ -4,10 +4,8 @@ topTitle: My Resume
 title: >
   ## My Expertises
 
-  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore  
+  I am currently an academic and  PhD. candidate in Engineering (graduating in 2022) and specializing in Deep Learning and Li-ion technology at Malaysia National Energy University. I have published scientific articles in a few reputable journals including [Nature](https://www.nature.com/articles/s41598-021-98915-8) and [IEEE Transactions](https://ieeexplore.ieee.org/abstract/document/9276459) during my tenure as an academic. Check out my [Google Scholar](https://scholar.google.com/citations?user=CBGCEskAAAAJ) and [Research Gate](https://www.researchgate.net/profile/Dickson-Neoh) profile. 
 
-
-  Magna aliquyam erat, sed diam voluptua. At vero eos accusam justo.
 tab1Name: Education
 tab2Name: Experiences
 tab1Target: education
@@ -15,25 +13,21 @@ tab2Target: experience
 
 education:
   - content: >
-      #### Master in Arts
+      #### PhD. in Engineering
 
       Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
+    time: 2018-current
   - content: >
-      #### Master in Arts
+      #### Master of Electrical Engineering
 
       Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
+    time: 2012-2015
   - content: >
-      #### Master in Arts
+      #### Bachelor of Electrical and Electronics Engineering (Hons.)
 
       Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
-  - content: >
-      #### Master in Arts
+    time: 2007-2012
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
 
 experience:
   - content: >
