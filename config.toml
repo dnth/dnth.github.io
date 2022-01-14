@@ -65,10 +65,10 @@ googleAnalytics = "YOUR GOOGLE ANALYTICS CODE"
 logo = "images/site-navigation/logo_dn_resize.png"
 
 [params.address]
-address = "23 Khan Niketon, Grand Street, NYK."
-email = "hello@example.com"
+address = "Universiti Tenaga Nasional, 43000, Kajang, Malaysia."
+email = "dickson.neoh@gmail.com"
 openingHours = "Open from 10am to 6pm (close at 5pm Sundays)"
-phone = "+(448) 833 5272 332"
+phone = "+(60) 3 8921 2020"
 
 [params.map]
 APIkey = "YOUR GOOGLE MAP API"
