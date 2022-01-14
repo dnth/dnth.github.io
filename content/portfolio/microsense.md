@@ -18,7 +18,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 Ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-{{< figure src="/images/portfolio/microsense/microsense_logo.png" width=750 >}}
+{{< figure src="/images/portfolio/microsense/microsense_logo.png" width=750 link="https://play.google.com/store/apps/details?id=com.micro.sense">}}
 
 {{< figure src="/images/portfolio/microsense/detection.png" width=750 >}}
 
