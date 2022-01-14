@@ -58,7 +58,7 @@ weight = 4
 [params]
 blogPageURL = "blog"
 contactLink = "contact"
-copyright = "All right reserved copyright © Portio 2020"
+copyright = "All right reserved copyright © Dickson Neoh 2022"
 footerLogo = "images/contact/widget-logo.png"
 formspreeURL = "https://formspree.io/f/xgedowjr"
 googleAnalytics = "YOUR GOOGLE ANALYTICS CODE"
