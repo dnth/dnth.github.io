@@ -1,6 +1,6 @@
 ---
 title: "Microsense"
-date: 2022-01-14T15:07:15+08:00
+date: 2021-01-14T15:07:15+08:00
 draft: false
 thumbnail: images/portfolio/microsense/algae.png
 service: Deep learning for microalgae detection
