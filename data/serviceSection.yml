@@ -7,49 +7,43 @@ title: >
   I provide end-to-end machine learning pipeline services.
 service:
   - content: >
-      #### Consultancy
+      #### Ideation
 
-      Problem framing, feasibility analysis, project direction and brainstorming.
+      Consultancy on problem framing, problem definition, feasibility analysis, project direction and brainstorming.
     image: images/service/consultancy.svg
   - content: >
       #### Exploratory Data Analysis
-
-      Exploring insights from existing dataset, discovering dataset issues such as class imbalance and biases.
+      
+      Data collection, exploring insights from existing dataset, discovering dataset issues such as class imbalance and biases.
     image: images/service/ui-ux.svg
   - content: >
       #### Data Labeling and Cleaning
-
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat.
+      
+      Cleaning data, debias, Crafting dataset, feature engineering, data transform
     image: images/service/clean2.svg
   - content: >
       #### Model Development
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat.
+      Model selection, train and evaluate model on dataset. Benchmarking model. Validate model.
     image: images/service/model2.svg
   - content: >
       #### Hyperparameter Optimization
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat.
+      Gain the best performance by tuning.
     image: images/service/tune.svg
   - content: >
       #### Deployment & Model Optimization
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat.
+      Deploy to live environment. OpenVINO, ONNX, Tflite. Refine model by feedback loop.
     image: images/service/deploy.svg
   - content: >
       #### Mobile Development
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat.
+      Front end developement focusing on mobile and web app.
     image: images/service/mobile.svg
   - content: >
       #### Integration
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat.
+      Ingegration into existing ecosystem with Azure, Google Machine Learning.
     image: images/service/branding.svg
 
