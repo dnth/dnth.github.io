@@ -2,44 +2,54 @@
 enable: true
 topTitle: Working Area
 title: >
-  ## Creative Services
+  ## Services
 
-  Enjoy team diversity and increase their networks among others people in
-  various fields by provided.
+  I provide end-to-end machine learning pipeline services.
 service:
   - content: >
-      #### UI/UX Design 
+      #### Consultancy
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat.
+      Problem framing, feasibility analysis, project direction and brainstorming.
+    image: images/service/consultancy.svg
+  - content: >
+      #### Exploratory Data Analysis
+
+      Exploring insights from existing dataset, discovering dataset issues such as class imbalance and biases.
     image: images/service/ui-ux.svg
   - content: >
-      #### Web Development 
+      #### Data Labeling and Cleaning
 
       Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
       tempor invidunt ut labore et dolore magna aliquyam erat.
-    image: images/service/web.svg
+    image: images/service/clean2.svg
   - content: >
-      #### Creative Design 
+      #### Model Development
 
       Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
       tempor invidunt ut labore et dolore magna aliquyam erat.
-    image: images/service/creative.svg
+    image: images/service/model2.svg
   - content: >
-      #### Branding
+      #### Hyperparameter Optimization
+
+      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
+      tempor invidunt ut labore et dolore magna aliquyam erat.
+    image: images/service/tune.svg
+  - content: >
+      #### Deployment & Model Optimization
+
+      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
+      tempor invidunt ut labore et dolore magna aliquyam erat.
+    image: images/service/deploy.svg
+  - content: >
+      #### Mobile Development
+
+      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
+      tempor invidunt ut labore et dolore magna aliquyam erat.
+    image: images/service/mobile.svg
+  - content: >
+      #### Integration
 
       Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
       tempor invidunt ut labore et dolore magna aliquyam erat.
     image: images/service/branding.svg
-  - content: >
-      #### UI/UX Design
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat.
-    image: images/service/ui-ux.svg
-  - content: >
-      #### Web Development
-
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat.
-    image: images/service/web.svg
