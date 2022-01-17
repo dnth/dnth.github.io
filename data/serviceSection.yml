@@ -14,7 +14,7 @@ service:
   - content: >
       #### Exploratory Data Analysis
       
-      Data collection, exploring insights from existing dataset, discovering dataset issues such as class imbalance and biases.
+      Data collection, exploring insights from existing dataset, discovering dataset issues such as class imbalance and biases. Generating statistics on the input data.
     image: images/service/ui-ux.svg
   - content: >
       #### Data Labeling and Cleaning
