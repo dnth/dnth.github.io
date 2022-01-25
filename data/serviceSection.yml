@@ -46,6 +46,6 @@ service:
   - content: >
       #### Integration
 
-      Integration into existing ecosystem with Azure, Google Machine Learning, etc.
+      Integration into existing ecosystem with Microsoft Azure, Amazon AWS, Google Machine Learning, etc.
     image: images/service/branding.svg
 
