@@ -15,7 +15,7 @@ education:
   - content: >
       #### PhD. in Engineering
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+      This study proposes the use of self-supervised time-series Transformer to estimate Li-ion battery state-of-charge.
     time: 2018-current
   - content: >
       #### Master of Electrical Engineering
