@@ -41,22 +41,14 @@ education:
 
 experience:
   - content: >
-      #### Umbrella co. 
-
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+      #### National Energy University, Malaysia.
+      
+      Lecturer. Taught undergraduate and diploma level courses. Primary subjects taught include Microprocessor Systems, Digital Logic Design and Random Process.
     time: 2016-Present
+  
   - content: >
-      #### Aperture Science 
+      #### Center for Advanced Mechatronics and Robotics. 
+      
+      Research Engineer. Responsible to design boiler header inspection robot, algorithms for behavior classification with LSTM on Nao humanoid robot, and develop learning modules for workshops on Arduino microcontroller.
+    time: 2012-2016
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2010-2016
-  - content: >
-      #### ACME Inc. 
-
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2005-2010
-  - content: >
-      #### LexCorp 
-
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2001-2005
