@@ -15,17 +15,27 @@ education:
   - content: >
       #### PhD. in Engineering
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+      This thesis explores the effectiveness of using deep learning algorithms to estimate
+      state-of-charge (SOC) in the batteries of hybrid electric vehicles. The study conducts
+      various in depth comparative analysis of state-of-the-art deep learning algorithms
+      applied to charge estimation. The goal of the study is to develop a novel estimation
+      algorithm capable of learning to estimate the remaining charge from the drivers'
+      driving behaviors. This thesis proposes the use of self-supervised Transformer model
+      to estimate SOC.
     time: 2018-current
   - content: >
       #### Master of Electrical Engineering
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+      This thesis explored the idea of recognizing the behavior of humanoid robots using
+      a Long Short-Term Memory (LSTM), a variation of recurrent neural networks. The
+      LSTM network is shown capable of classifying robotic maneuvers from joint angle
+      data
     time: 2012-2015
   - content: >
       #### Bachelor of Electrical and Electronics Engineering (Hons.)
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+      This thesis explored the idea of building a torque control DC motor driver using
+      PWM techniques in combination with PID control algorithms.
     time: 2007-2012
 
 
