@@ -4,9 +4,10 @@ topTitle: My Resume
 title: >
   ## My Expertises
 
-  I am currently an academic specializing in Deep Learning and Li-ion technology at [Malaysia National Energy University](https://www.uniten.edu.my/). 
+  I'm an academic specializing in Deep Learning and Li-ion technology at [Malaysia National Energy University](https://www.uniten.edu.my/). 
   I have published a dozen scientific articles in a few reputable journals including [Nature](https://www.nature.com/articles/s41598-021-98915-8) and [IEEE Transactions](https://ieeexplore.ieee.org/abstract/document/9276459) during my tenure as an academic. 
   Check out my [Google Scholar](https://scholar.google.com/citations?user=CBGCEskAAAAJ) and [Research Gate](https://www.researchgate.net/profile/Dickson-Neoh) profile. 
+  I am a big fan of open source projects. During my free time I contribute to various projects on Github. Checkout my [GitHub](https://github.com/dnth) profile.
 
 tab1Name: Education
 tab2Name: Experiences
@@ -25,7 +26,7 @@ education:
       driving patterns. This work proposes the use of self-supervised Transformer model
       and yields low error metrics providing a promising alternative to conventional SOC estimation models.
       See our published [paper](https://www.nature.com/articles/s41598-021-98915-8).
-    time: 2018-current
+    time: 2018-Present
   - content: >
       #### Master of Electrical Engineering
 
@@ -38,7 +39,7 @@ education:
       #### Bachelor of Electrical and Electronics Engineering (Hons.)
 
       This work explored the idea of building a torque control DC motor driver using
-      PWM techniques in combination with PID control algorithms. See our published [paper](https://www.sciencedirect.com/science/article/pii/S1877705812027385).
+      pulse width modulation (PWM) techniques in combination with PID control algorithms. See our published [paper](https://www.sciencedirect.com/science/article/pii/S1877705812027385).
     time: 2007-2012
 
 
