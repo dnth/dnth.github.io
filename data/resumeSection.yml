@@ -4,7 +4,9 @@ topTitle: My Resume
 title: >
   ## My Expertises
 
-  I am currently an academic and  PhD. candidate in Engineering (graduating in 2022) and specializing in Deep Learning and Li-ion technology at Malaysia National Energy University. I have published scientific articles in a few reputable journals including [Nature](https://www.nature.com/articles/s41598-021-98915-8) and [IEEE Transactions](https://ieeexplore.ieee.org/abstract/document/9276459) during my tenure as an academic. Check out my [Google Scholar](https://scholar.google.com/citations?user=CBGCEskAAAAJ) and [Research Gate](https://www.researchgate.net/profile/Dickson-Neoh) profile. 
+  I am currently an academic specializing in Deep Learning and Li-ion technology at [Malaysia National Energy University](https://www.uniten.edu.my/). 
+  I have published a dozen scientific articles in a few reputable journals including [Nature](https://www.nature.com/articles/s41598-021-98915-8) and [IEEE Transactions](https://ieeexplore.ieee.org/abstract/document/9276459) during my tenure as an academic. 
+  Check out my [Google Scholar](https://scholar.google.com/citations?user=CBGCEskAAAAJ) and [Research Gate](https://www.researchgate.net/profile/Dickson-Neoh) profile. 
 
 tab1Name: Education
 tab2Name: Experiences
@@ -15,27 +17,28 @@ education:
   - content: >
       #### PhD. in Engineering
 
-      This thesis explores the effectiveness of using deep learning algorithms to estimate
+      My PhD. work explores the effectiveness of using deep learning models to estimate
       state-of-charge (SOC) in the batteries of hybrid electric vehicles. The study conducts
-      various in depth comparative analysis of state-of-the-art deep learning algorithms
-      applied to charge estimation. The goal of the study is to develop a novel estimation
-      algorithm capable of learning to estimate the remaining charge from the drivers'
-      driving behaviors. This thesis proposes the use of self-supervised Transformer model
-      to estimate SOC.
+      various in depth comparative analysis of state-of-the-art deep learning methods
+      applied to SOC estimation. The goal of the study is to develop a novel estimation
+      algorithm that can accurately estimate the remaining charge from the drivers'
+      driving patterns. This work proposes the use of self-supervised Transformer model
+      and yields low error metrics providing a promising alternative to conventional SOC estimation models.
+      See our published [paper](https://www.nature.com/articles/s41598-021-98915-8).
     time: 2018-current
   - content: >
       #### Master of Electrical Engineering
 
-      This thesis explored the idea of recognizing the behavior of humanoid robots using
+      My Masters Degree work explores the idea of recognizing the behavior of humanoid robots using
       a Long Short-Term Memory (LSTM), a variation of recurrent neural networks. The
       LSTM network is shown capable of classifying robotic maneuvers from joint angle
-      data
+      data. See our published [paper](https://doi.org/10.1177%2F1729881416663369) and demo [video](https://www.youtube.com/watch?v=j_JIlfgBD_4&ab_channel=dicksonneoh).
     time: 2012-2015
   - content: >
       #### Bachelor of Electrical and Electronics Engineering (Hons.)
 
-      This thesis explored the idea of building a torque control DC motor driver using
-      PWM techniques in combination with PID control algorithms.
+      This work explored the idea of building a torque control DC motor driver using
+      PWM techniques in combination with PID control algorithms. See our published [paper](https://www.sciencedirect.com/science/article/pii/S1877705812027385).
     time: 2007-2012
 
 
