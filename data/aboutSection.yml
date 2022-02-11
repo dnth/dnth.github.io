@@ -17,6 +17,6 @@ content: >
 button1Name: Hire me
 button2Name: Download CV
 button1Target: contact
-button2Target: https://github.com/dnth/mycv/blob/master/cv_uniten.pdf #https://nbviewer.org/github/dnth/mycv/blob/master/cv_uniten.pdf?flush_cache=false
+button2Target: https://nbviewer.org/github/dnth/mycv/blob/master/cv_uniten.pdf?flush_cache=false #https://github.com/dnth/mycv/blob/master/cv_uniten.pdf
 
 image: images/about/about.jpg
