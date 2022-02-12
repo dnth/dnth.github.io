@@ -50,17 +50,16 @@ experience:
       Lecturer. Taught undergraduate and diploma level courses. 
       Primary subjects taught include [Microprocessor Systems](https://www.youtube.com/playlist?list=PLqGyAx3n9NxoxuqQd7YVtI-O0lY32Hr2d), 
       [Digital Logic Design](https://www.youtube.com/playlist?list=PLqGyAx3n9NxriN8V6ar-x-GFnkAtkTL1n) and Random Process.
-      I was also featured once on Malaysia's [national TV](https://www.youtube.com/watch?v=RRW__wJiDIs&ab_channel=dicksonneoh) show on my efforts on robotics education to the younger generation.
+      I was also featured once on Malaysia's [national TV](https://www.youtube.com/watch?v=RRW__wJiDIs&ab_channel=dicksonneoh) showcasing my efforts on robotics education to the younger generation.
     time: 2016-Present
   
   - content: >
       #### Center for Advanced Mechatronics and Robotics. 
       
-      Research Engineer. Responsible to design boiler header inspection robot, 
-      algorithms for [P3AT line following robot](https://www.youtube.com/watch?v=34bjz2R4icM&ab_channel=dicksonneoh), 
+      Research Engineer. Responsible to design boiler header [inspection robot](https://link.springer.com/chapter/10.1007%2F978-981-4585-42-2_59), 
+      algorithms for [P3AT line following robot](https://youtu.be/6DuJ4Eg6nbI), 
       algorithms for [behavior classification with LSTM](https://www.youtube.com/watch?v=j_JIlfgBD_4&ab_channel=dicksonneoh) on 
       [NAO](https://www.youtube.com/watch?v=5RMP6776SK0&ab_channel=dicksonneoh) humanoid robot, 
-      develop learning modules for workshops on Arduino microcontroller, and
-      develop custom object detection deep learning model with [YOLO](https://www.youtube.com/watch?v=OmICm305YrI&ab_channel=dicksonneoh) to detect healthy and sick chickens.
+      develop learning modules for workshops on Arduino microcontroller.
     time: 2012-2016
 
