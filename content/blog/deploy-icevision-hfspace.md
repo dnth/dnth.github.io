@@ -5,6 +5,7 @@ featureImage: images/blog/deploy-icevision-hfspace/thumb-train-deploy-share.png
 postImage: images/blog/deploy-icevision-hfspace/train-deploy-share.png
 ---
 
+{{< toc >}}
 
 ### Introduction
 So, you’ve trained a deep learning model that can detect objects from images. 
