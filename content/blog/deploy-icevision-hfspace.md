@@ -15,8 +15,8 @@ This blog post is for you. In this post I will walk you through how to deploy yo
 
 ### Icevision
 I will be using the awesome [IceVision](https://github.com/airctic/icevision) object detection package as an example for this post. 
-IceVision is an agnostic computer vision library pluggable to multiple deep learning frameworks such as Fastai and Pytorch Lighting. 
-What makes Icevision awesome is you can train a state-of-the-art object detection model with only few line of codes. 
+IceVision is an agnostic computer vision library pluggable to multiple deep learning frameworks such as Fastai and PyTorch Lighting. 
+What makes IceVision awesome is you can train a state-of-the-art object detection model with only few lines of codes. 
 Check out the getting started tutorial [here](https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb).
 
 Upon completing the training of your model don't forget to save the model into a checkpoint to be used for inferencing later.

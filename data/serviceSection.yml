@@ -19,13 +19,13 @@ service:
   - content: >
       #### Data Labeling and Cleaning
       
-      Cleaning and debiasing data, crafting dataset, feature engineering, data transformation for model ingestion.
+      Cleaning and de-biasing data, crafting dataset, feature engineering, data transformation for model ingestion.
     image: images/service/clean2.svg
   - content: >
       #### Model Development
 
       Run model selection and establish benchmark performance.
-      Iterate on training and evaluating model on dataset.
+      Iterate on training and evaluating model on dataset. Selecting most promising models for further development.
     image: images/service/model2.svg
   - content: >
       #### Hyperparameter Optimization
@@ -35,17 +35,17 @@ service:
   - content: >
       #### Deployment & Model Optimization
 
-      Optimize model for inferencing by conversion into approrite format such as OpenVINO, ONNX, Tflite etc.
-      Deploy to live environment for inferencing. Refine model by feedback loop.
+      Optimize model for inferencing by quantization and conversion into portable form such as OpenVINO, ONNX, Tflite.
+      Deploy to live environment for inferencing and monitoring. Refine model by observing model performance.
     image: images/service/deploy.svg
   - content: >
-      #### Mobile Development
+      #### Front-end \& Back-end Development
 
-      Front end development focusing on mobile and web app using Flutter as a framework of choice.
+      Front-end development focusing on mobile and web app using Flutter as a framework of choice. Back-end and database development with Firebase, MySQL, InfluxDB etc.
     image: images/service/mobile.svg
   - content: >
       #### Integration
 
-      Integration into existing ecosystem with Microsoft Azure, Amazon AWS, Google Machine Learning, etc.
+      Integration with Microsoft Azure, Amazon AWS, Google Machine Learning, etc. Cross-compatibility development with existing company ecosystem. 
     image: images/service/branding.svg
 
