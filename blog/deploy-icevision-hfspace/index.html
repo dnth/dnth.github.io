@@ -4,8 +4,8 @@
 Next, how can you share the awesomeness of your model with the rest of the world? You might be a PhD student trying to get some ideas from your peers or supervisors, or a startup founder who wishes to share a minimum viable product to your clients for feedback.
 But at the same time do not wish to go through the hassle of dealing with MLOps.
 This blog post is for you. In this post I will walk you through how to deploy your model and share them to the world for free!</p><h3 id=icevision>Icevision</h3><p>I will be using the awesome <a href=https://github.com/airctic/icevision>IceVision</a> object detection package as an example for this post.
-IceVision is an agnostic computer vision library pluggable to multiple deep learning frameworks such as Fastai and Pytorch Lighting.
-What makes Icevision awesome is you can train a state-of-the-art object detection model with only few line of codes.
+IceVision is an agnostic computer vision library pluggable to multiple deep learning frameworks such as Fastai and PyTorch Lighting.
+What makes IceVision awesome is you can train a state-of-the-art object detection model with only few lines of codes.
 Check out the getting started tutorial <a href=https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb>here</a>.</p><p>Upon completing the training of your model don&rsquo;t forget to save the model into a checkpoint to be used for inferencing later.
 With IceVision this can be done easily. Add the following snippet to your notebook.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> icevision.models.checkpoint <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
 save_icevision_checkpoint(learn<span style=color:#f92672>.</span>model,
