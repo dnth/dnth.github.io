@@ -45,6 +45,8 @@ What if you would like the link to persist longer? One option is to deploy the G
 Spaces is the new marketplace for all various bleeding edge of machine learning models.
 Models hosted on Spaces are free for access at anytime.
 
+#### Creating a Space
+
 To host a model on Spaces, you must sign-up for an account.
 After that head over to [`https://huggingface.co/spaces`](https://huggingface.co/spaces) and click on **Create New Space** button.
 
@@ -61,7 +63,7 @@ Alternatively, you can also add files into the Space directly using the user int
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/empty_repo.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
-
+#### Adding related files
 In this post, I am going to show you how to do it via the user interface. 
 Click on the Files and versions tab.
 You can now begin adding the files here.
