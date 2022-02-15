@@ -1,7 +1,7 @@
 ---
 title: "Deploy IceVision Models on HuggingFace Spaces"
 date: 2022-01-13T13:42:56+08:00
-featureImage: images/blog/deploy-icevision-hfspace/thumb-train-deploy-share.png
+featureImage: images/blog/deploy-icevision-hfspace/feature_image.gif
 postImage: images/blog/deploy-icevision-hfspace/train-deploy-share.png
 ---
 
