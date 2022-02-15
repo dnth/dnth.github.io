@@ -163,7 +163,7 @@ print("mmcv install complete")
 
 
 Content of `requirements.txt`
-```
+```bash
 mmdet==2.19.0
 gradio==2.4.0
 icevision[all]
