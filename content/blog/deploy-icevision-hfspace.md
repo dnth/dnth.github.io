@@ -104,8 +104,9 @@ gr_interface = gr.Interface(
 )
 gr_interface.launch(inline=False, share=False, debug=True)
 ```
-
-Upon successful running of the Python script the model should be available for inference in the Gradio app at a local URL accessible with a browser, for instance `http://127.0.0.1:7860/`.
+Let's name this Python script `app.py`.
+Run the script by typing `python app.py` in the terminal.
+If there are no errors the model should be available for inference in the Gradio app at a local URL accessible with a browser, for instance `http://127.0.0.1:7860/`.
 
 
 ### HuggingFace Spaces
@@ -133,14 +134,15 @@ Alternatively, you can also add files into the Space directly using the user int
 
 #### Adding related files
 In this post, I am going to show you how to do it via the user interface. 
-Click on the Files and versions tab.
+Click on the **Files and versions** tab. Next, click on **Add file**
 You can now begin adding the files here.
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/files_version_tab.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
 There are a few files required to setup the `Space` namely `app.py`, `requirements.txt`, and `packages.txt`.
 
-`app.py` hosts the logic of your application. This is where the code for the Gradio interface resides.
+`app.py` hosts the logic of your application. 
+This is where the code for the Gradio interface resides. The code is similar to the `app.py` from the previous section.
 This script will be run when the app loads on Hugging Face Space.
 
 `requirements.txt` lists all the `Python` packages that will be `pip`-installed on the `Space`.
