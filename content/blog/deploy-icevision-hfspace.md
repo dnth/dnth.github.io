@@ -110,7 +110,7 @@ If there are no errors the model should be available for inference in the Gradio
 
 
 ### HuggingFace Spaces
-This local URL link from the previous section can only be accessed locally. What if you would like to share the link to someone across the internet?
+The Gradio URL link from the previous section can only be accessed locally. But what if you would like to share the link to someone across the internet?
 In this section, we will discover how to make the Gradio app accessible to anyone by deploying the Gradio app onto a free platform known as HuggingFace [Spaces](https://huggingface.co/spaces).
 Spaces is the new marketplace for all various bleeding edge of machine learning models.
 Models hosted on Spaces are free for access at anytime.
