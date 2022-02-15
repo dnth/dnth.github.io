@@ -176,9 +176,10 @@ python3-opencv
 ```
 
 
+The following is the screenshot on Space.
+You can try out the Space yourself [here](https://huggingface.co/spaces/dnth/webdemo-fridge-detection).
 
-
-{{< figure src="/images/blog/deploy-icevision-hfspace/screenshot_1.png" alt="Screenshot of the Onion homepage" width=750 >}}
+{{< figure src="/images/blog/deploy-icevision-hfspace/screenshot.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
 
 
