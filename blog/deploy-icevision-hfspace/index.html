@@ -69,7 +69,9 @@ gr_interface <span style=color:#f92672>=</span> gr<span style=color:#f92672>.</s
     examples<span style=color:#f92672>=</span>examples,
 )
 gr_interface<span style=color:#f92672>.</span>launch(inline<span style=color:#f92672>=</span>False, share<span style=color:#f92672>=</span>False, debug<span style=color:#f92672>=</span>True)
-</code></pre></div><p>Upon successful running of the Python script the model should be available for inference in the Gradio app at a local URL accessible with a browser, for instance <code>http://127.0.0.1:7860/</code>.</p><h3 id=huggingface-spaces>HuggingFace Spaces</h3><p>This local URL link from the previous section can only be accessed locally. What if you would like to share the link to someone across the internet?
+</code></pre></div><p>Let&rsquo;s name this Python script <code>app.py</code>.
+Run the script by typing <code>python app.py</code> in the terminal.
+If there are no errors the model should be available for inference in the Gradio app at a local URL accessible with a browser, for instance <code>http://127.0.0.1:7860/</code>.</p><h3 id=huggingface-spaces>HuggingFace Spaces</h3><p>This local URL link from the previous section can only be accessed locally. What if you would like to share the link to someone across the internet?
 In this section, we will discover how to make the Gradio app accessible to anyone by deploying the Gradio app onto a free platform known as HuggingFace <a href=https://huggingface.co/spaces>Spaces</a>.
 Spaces is the new marketplace for all various bleeding edge of machine learning models.
 Models hosted on Spaces are free for access at anytime.</p><h4 id=creating-a-space>Creating a Space</h4><p>To host a model on Spaces, you must sign-up for an account.
@@ -77,8 +79,9 @@ After that head over to <a href=https://huggingface.co/spaces><code>https://hugg
 The <code>Space</code> you&rsquo;ve created behaves like a <code>git</code> repository.
 You can perform various <code>git</code> related operations such as <code>git clone</code>, <code>git push</code> and <code>git pull</code> to update the repository.
 Alternatively, you can also add files into the Space directly using the user interface.</p><figure><img src=/images/blog/deploy-icevision-hfspace/empty_repo.png alt="Screenshot of the Onion homepage" width=750></figure><h4 id=adding-related-files>Adding related files</h4><p>In this post, I am going to show you how to do it via the user interface.
-Click on the Files and versions tab.
-You can now begin adding the files here.</p><figure><img src=/images/blog/deploy-icevision-hfspace/files_version_tab.png alt="Screenshot of the Onion homepage" width=750></figure><p>There are a few files required to setup the <code>Space</code> namely <code>app.py</code>, <code>requirements.txt</code>, and <code>packages.txt</code>.</p><p><code>app.py</code> hosts the logic of your application. This is where the code for the Gradio interface resides.
+Click on the <strong>Files and versions</strong> tab. Next, click on <strong>Add file</strong>
+You can now begin adding the files here.</p><figure><img src=/images/blog/deploy-icevision-hfspace/files_version_tab.png alt="Screenshot of the Onion homepage" width=750></figure><p>There are a few files required to setup the <code>Space</code> namely <code>app.py</code>, <code>requirements.txt</code>, and <code>packages.txt</code>.</p><p><code>app.py</code> hosts the logic of your application.
+This is where the code for the Gradio interface resides. The code is similar to the <code>app.py</code> from the previous section.
 This script will be run when the app loads on Hugging Face Space.</p><p><code>requirements.txt</code> lists all the <code>Python</code> packages that will be <code>pip</code>-installed on the <code>Space</code>.</p><p><code>packages.txt</code> is special file created to put the OpenCV package to make it work on Spaces.</p><p>This is the contennt of app.py</p><p>If you used a <code>mmdetection</code> model add the following lines at the beginning of the <code>app.py</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> subprocess
 <span style=color:#f92672>import</span> sys
 <span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#34;Reinstalling mmcv&#34;</span>)
