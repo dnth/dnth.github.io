@@ -51,23 +51,70 @@ save_icevision_checkpoint(learn.model,
 The notebook that I used for this section can be found [here](https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/static/images/blog/deploy-icevision-hfspace/training_retinanet.ipynb).
 
 ### User Interface with Gradio
-At this point, in order to run an inference on the model, one will need to write inference codes as shown [here](https://airctic.com/0.12.0/).
-This is non-trivial especially to an audience who doesn't code.
-Gradio simplifies this by providing an easy user interface so that anyone can run an inference on the model without having to code.
+At this point, in order to run inference on the model, one will need to write inference codes as shown [here](https://airctic.com/0.12.0/).
+This is non-trivial especially to people who don't code.
+Gradio simplifies this by providing a simple user interface so that anyone can run an inference on the model without having to code.
+
+The following figure shows a screenshot of the Gradio user interface that runs in the browser.
+The left pane shows the input image.
+User can select from a list of images and click on *Submit* to run it through the model for inference.
+The result of the inference is shown on the right pane.
+
+{{< figure src="/images/blog/deploy-icevision-hfspace/gradio.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
 
-Next we will load the saved model checkpoint into Gradio that will provide a neat interface to the users who will use the app. 
-IceVision repo provides a handy [notebook](https://github.com/airctic/icevision-gradio/blob/master/IceApp_coco.ipynb) that shows you how to deploy a trained model on Gradio. 
-This should create a local and public link that can be accessed up to 72 hours as long as the notebook is kept open.
-You can then share the link to anyone who would like to try out the app.
+In order to use Gradio, we must first install it with `pip install gradio`.
+Next, the following Python script is used load our model into and load it into the Gradio user interface.
+```python
+from gradio.outputs import Label
+from icevision.all import *
+from icevision.models.checkpoint import *
+import PIL
+import gradio as gr
+import os
+
+# Load model
+checkpoint_path = "models/model_checkpoint.pth"
+checkpoint_and_model = model_from_checkpoint(checkpoint_path)
+model = checkpoint_and_model["model"]
+model_type = checkpoint_and_model["model_type"]
+class_map = checkpoint_and_model["class_map"]
+
+# Transforms
+img_size = checkpoint_and_model["img_size"]
+valid_tfms = tfms.A.Adapter([*tfms.A.resize_and_pad(img_size), tfms.A.Normalize()])
+
+# Populate examples in Gradio interface
+examples = [['sample_images/1.jpg'],['sample_images/2.jpg'],['sample_images/3.jpg']]
+
+def show_preds(input_image):
+    img = PIL.Image.fromarray(input_image, "RGB")
+    pred_dict = model_type.end2end_detect(img, valid_tfms, model, class_map=class_map, detection_threshold=0.5,
+                                           display_label=False, display_bbox=True, return_img=True, 
+                                           font_size=16, label_color="#FF59D6")
+    return pred_dict["img"]
+
+gr_interface = gr.Interface(
+    fn=show_preds,
+    inputs=["image"],
+    outputs=[gr.outputs.Image(type="pil", label="RetinaNet Inference")],
+    title="Fridge Object Detector",
+    description="This RetinaNet model detects common objects found in fridge. Upload an image or click an example image below to use.",
+    examples=examples,
+)
+gr_interface.launch(inline=False, share=False, debug=True)
+```
+
+Upon successful running of the Python script the model should be available for inference in the Gradio app at a local URL accessible with a browser, for instance `http://127.0.0.1:7860/`.
+
 
 ### HuggingFace Spaces
-What if you would like the link to persist longer? One option is to deploy the Gradio app onto a free platform knwon as [HuggingFace Spaces](https://huggingface.co/spaces).
+This local URL link from the previous section can only be accessed locally. What if you would like to share the link to someone across the internet?
+In this section, we will discover how to make the Gradio app accessible to anyone by deploying the Gradio app onto a free platform known as HuggingFace [Spaces](https://huggingface.co/spaces).
 Spaces is the new marketplace for all various bleeding edge of machine learning models.
 Models hosted on Spaces are free for access at anytime.
 
 #### Creating a Space
-
 To host a model on Spaces, you must sign-up for an account.
 After that head over to [`https://huggingface.co/spaces`](https://huggingface.co/spaces) and click on **Create New Space** button.
 
@@ -102,6 +149,8 @@ This script will be run when the app loads on Hugging Face Space.
 
 This is the contennt of app.py
 
+If you used a `mmdetection` model add the following lines at the beginning of the `app.py`.
+
 ```python
 import subprocess
 import sys
@@ -109,99 +158,6 @@ print("Reinstalling mmcv")
 subprocess.check_call([sys.executable, "-m", "pip", "uninstall", "-y", "mmcv-full==1.3.17"])
 subprocess.check_call([sys.executable, "-m", "pip", "install", "mmcv-full==1.3.17", "-f", "https://download.openmmlab.com/mmcv/dist/cpu/torch1.10.0/index.html"])
 print("mmcv install complete") 
-
-## Only works if we reinstall mmcv here.
-
-from gradio.outputs import Label
-from icevision.all import *
-from icevision.models.checkpoint import *
-import PIL
-import gradio as gr
-import os
-
-# Load model
-checkpoint_path = "models/model_checkpoint.pth"
-checkpoint_and_model = model_from_checkpoint(checkpoint_path)
-model = checkpoint_and_model["model"]
-model_type = checkpoint_and_model["model_type"]
-class_map = checkpoint_and_model["class_map"]
-
-# Transforms
-img_size = checkpoint_and_model["img_size"]
-valid_tfms = tfms.A.Adapter([*tfms.A.resize_and_pad(img_size), tfms.A.Normalize()])
-
-for root, dirs, files in os.walk(r"sample_images/"):
-    for filename in files:
-        print("Loading sample image:", filename)
-
-
-# Populate examples in Gradio interface
-example_images = [["sample_images/" + file] for file in files]
-# Columns: Input Image | Label | Box | Detection Threshold
-examples = [
-    [example_images[0], False, True, 0.5],
-    [example_images[1], True, True, 0.5],
-    [example_images[2], False, True, 0.7],
-    [example_images[3], True, True, 0.7],
-    [example_images[4], False, True, 0.5],
-    [example_images[5], False, True, 0.5],
-    [example_images[6], False, True, 0.6],
-    [example_images[7], False, True, 0.6],
-]
-
-
-def show_preds(input_image, display_label, display_bbox, detection_threshold):
-    if detection_threshold == 0:
-        detection_threshold = 0.5
-    img = PIL.Image.fromarray(input_image, "RGB")
-    pred_dict = model_type.end2end_detect(
-        img,
-        valid_tfms,
-        model,
-        class_map=class_map,
-        detection_threshold=detection_threshold,
-        display_label=display_label,
-        display_bbox=display_bbox,
-        return_img=True,
-        font_size=16,
-        label_color="#FF59D6",
-    )
-    return pred_dict["img"], len(pred_dict["detection"]["bboxes"])
-
-
-# display_chkbox = gr.inputs.CheckboxGroup(["Label", "BBox"], label="Display", default=True)
-display_chkbox_label = gr.inputs.Checkbox(label="Label", default=False)
-display_chkbox_box = gr.inputs.Checkbox(label="Box", default=True)
-detection_threshold_slider = gr.inputs.Slider(
-    minimum=0, maximum=1, step=0.1, default=0.5, label="Detection Threshold"
-)
-outputs = [
-    gr.outputs.Image(type="pil", label="RetinaNet Inference"),
-    gr.outputs.Textbox(type="number", label="Microalgae Count"),
-]
-
-article = "<p style='text-align: center'><a href='https://dicksonneoh.com/' target='_blank'>Blog post</a></p>"
-
-# Option 1: Get an image from local drive
-gr_interface = gr.Interface(
-    fn=show_preds,
-    inputs=[
-        "image",
-        display_chkbox_label,
-        display_chkbox_box,
-        detection_threshold_slider,
-    ],
-    outputs=outputs,
-    title="Microalgae Detector with RetinaNet",
-    description="This RetinaNet model counts microalgaes on a given image. Upload an image or click an example image below to use.",
-    article=article,
-    examples=examples,
-)
-# #  Option 2: Grab an image from a webcam
-# gr_interface = gr.Interface(fn=show_preds, inputs=["webcam", display_chkbox_label, display_chkbox_box,  detection_threshold_slider], outputs=outputs, title='IceApp - COCO', live=False)
-# #  Option 3: Continuous image stream from the webcam
-# gr_interface = gr.Interface(fn=show_preds, inputs=["webcam", display_chkbox_label, display_chkbox_box,  detection_threshold_slider], outputs=outputs, title='IceApp - COCO', live=True)
-gr_interface.launch(inline=False, share=False, debug=True)
 ```
 
 
