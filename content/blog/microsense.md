@@ -21,7 +21,10 @@ Figure illustrates the raw detection of cells from microscope image. The model i
 
 ### Hosting
 This section shows how you can host the model on Hugging Face Spaces and use the API for inferencing.
+Checkout the Space [here](https://huggingface.co/spaces/dnth/webdemo-microalgae-counting).
+Checkout the exposed API [here](https://hf.space/gradioiframe/dnth/webdemo-microalgae-counting/api).
 
 ### Deploying on Android
-Figure shows an Android app written using the Flutter framework.
+Figure shows an Android app written using the Flutter framework. The inference is done by calling the API from our Space.
+Checkout the app published on Google Playstore [here](https://play.google.com/store/apps/details?id=com.micro.sense).
 {{< figure src="/images/portfolio/microsense/microsense.gif" height=750 >}}
