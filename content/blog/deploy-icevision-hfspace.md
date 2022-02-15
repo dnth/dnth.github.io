@@ -9,18 +9,34 @@ postImage: images/blog/deploy-icevision-hfspace/train-deploy-share.png
 
 ### Introduction
 So, you’ve trained a deep learning model that can detect objects from images. 
-Next, how can you share the awesomeness of your model with the rest of the world? You might be a PhD student trying to get some ideas from your peers or supervisors, or a startup founder who wishes to share a minimum viable product to your clients for feedback. 
-But at the same time do not wish to go through the hassle of dealing with MLOps. 
+Next, how can you share the awesomeness of your model with the rest of the world? 
+You might be a PhD student trying to get some ideas from your peers or supervisors, or a startup founder who wishes to share a minimum viable product to your clients for feedback. 
+But, at the same time you don't wish to go through the hassle of dealing with MLOps. 
 This blog post is for you. In this post I will walk you through how to deploy your model and share them to the world for free!
 
-### Icevision
-I will be using the awesome [IceVision](https://github.com/airctic/icevision) object detection package as an example for this post. 
-IceVision is an agnostic computer vision library pluggable to multiple deep learning frameworks such as Fastai and PyTorch Lighting. 
-What makes IceVision awesome is you can train a state-of-the-art object detection model with only few lines of codes. 
-Check out the getting started tutorial [here](https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb).
+### Training a Model with IceVision
+We will be using the awesome [IceVision](https://github.com/airctic/icevision) object detection package as an example for this post. 
+IceVision is an agnostic computer vision library pluggable to multiple deep learning frameworks such as [Fastai](https://github.com/fastai/fastai) and [PyTorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning). 
+What makes IceVision awesome is you can train a state-of-the-art object detection models with only few lines of codes.
+It's very easy to get started, check out the tutorial [here](https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb).
 
-Upon completing the training of your model don't forget to save the model into a checkpoint to be used for inferencing later.
-With IceVision this can be done easily. Add the following snippet to your notebook.
+In the getting started notebook, we use a dataset from [Icedata](https://github.com/airctic/icedata) repository known as the *Fridge Objects* dataset.
+This dataset consists 134 images of 4 classes: *can*, *carton*, *milk bottle*, *water bottle*.
+Let's now continue to train our model. Let's train a simple *RetinaNet* model with a *ResNet* backbone from [Torchvision](https://github.com/pytorch/vision).
+In the notebook, you can easily specify this model using two line of codes as follows.
+
+```python
+model_type = models.torchvision.retinanet
+backbone = model_type.backbones.resnet50_fpn
+```
+
+After you're satisfied with the performance of your model, let's save the model into a checkpoint to be used for inferencing later.
+With IceVision this can be done easily. Just add the following snippet to your notebook and run.
+Feel free to modify the `model_name`, `backbone_name` according to the model you used during training.
+The `img_size` argument is image size that the model is trained on.
+The `classes` argument is a list of classes from the dataset.
+The `filename` argument specifies the directory and name of the checkpoint file.
+The `meta` argument stores other metadata that you would like to keep track of for future reference.
 
 ``` python
 from icevision.models.checkpoint import *
@@ -30,11 +46,16 @@ save_icevision_checkpoint(learn.model,
                         img_size=image_size,
                         classes=parser.class_map.get_classes(),
                         filename='./models/model_checkpoint.pth',
-                        meta={'icevision_version': '0.9.1'})
+                        meta={'icevision_version': '0.12.0'})
 ```
+The notebook that I used for this section can be found here.
+
+### User Interface with Gradio
+At this point, in order to run an inference on the model, one will need to write inference codes as shown [here](https://airctic.com/0.12.0/).
+This is non-trivial especially to an audience who doesn't code.
+Gradio simplifies this by providing an easy user interface so that anyone can run an inference on the model without having to code.
 
 
-### Gradio
 Next we will load the saved model checkpoint into Gradio that will provide a neat interface to the users who will use the app. 
 IceVision repo provides a handy [notebook](https://github.com/airctic/icevision-gradio/blob/master/IceApp_coco.ipynb) that shows you how to deploy a trained model on Gradio. 
 This should create a local and public link that can be accessed up to 72 hours as long as the notebook is kept open.
