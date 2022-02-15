@@ -1,25 +1,27 @@
 ---
-title: "Microsense"
-date: 2021-01-14T15:07:15+08:00
-draft: false
-thumbnail: images/portfolio/microsense/algae.png
-service: Deep learning for microalgae detection
-client: Clayton Coco
-shortDescription: Automatic Cell Counting with Deep Learning. Counting cells doesn’t have to be painful. Automate the counting so you can do what really counts in your business.
-challenge: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
-  vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
-solution: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
-  vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
+title: "Counting microalgaes with MicroSense"
+date: 2022-02-14T15:07:15+08:00
+featureImage: images/blog/counting-microalgaes-with-microsensee/feature_image.gif
+postImage: images/blog/counting-microalgaes-with-microsensee/detection.png
 
 ---
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+{{< toc >}} 
 
-Ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+### Introduction
+Microbiologist count cells manually.
+This process can be tedious and prone to mistakes.
+Why not automate the counting using a trained deep learning model?
+This blog post showcases MicroSense, a proof of concept product that can automate the counting of microalgae cells or any cells for that matter using deep learning and computer vision.
 
 {{< figure src="/images/portfolio/microsense/microsense_logo.png" width=750 link="https://play.google.com/store/apps/details?id=com.micro.sense">}}
 
+### Training
+Figure illustrates the raw detection of cells from microscope image. The model is a RetinaNet with a ResNet50 backbone trained using [IceVision](https://github.com/airctic/icevision).
 {{< figure src="/images/portfolio/microsense/detection.png" width=750 >}}
 
+### Hosting
+This section shows how you can host the model on Hugging Face Spaces and use the API for inferencing.
+
+### Deploying on Android
+Figure shows an Android app written using the Flutter framework.
 {{< figure src="/images/portfolio/microsense/microsense.gif" height=750 >}}
