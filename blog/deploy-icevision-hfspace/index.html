@@ -26,30 +26,13 @@ save_icevision_checkpoint(learn<span style=color:#f92672>.</span>model,
                         classes<span style=color:#f92672>=</span>parser<span style=color:#f92672>.</span>class_map<span style=color:#f92672>.</span>get_classes(),
                         filename<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;./models/model_checkpoint.pth&#39;</span>,
                         meta<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;icevision_version&#39;</span>: <span style=color:#e6db74>&#39;0.12.0&#39;</span>})
-</code></pre></div><p>The notebook that I used for this section can be found <a href=https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/static/images/blog/deploy-icevision-hfspace/training_retinanet.ipynb>here</a>.</p><h3 id=user-interface-with-gradio>User Interface with Gradio</h3><p>At this point, in order to run an inference on the model, one will need to write inference codes as shown <a href=https://airctic.com/0.12.0/>here</a>.
-This is non-trivial especially to an audience who doesn&rsquo;t code.
-Gradio simplifies this by providing an easy user interface so that anyone can run an inference on the model without having to code.</p><p>Next we will load the saved model checkpoint into Gradio that will provide a neat interface to the users who will use the app.
-IceVision repo provides a handy <a href=https://github.com/airctic/icevision-gradio/blob/master/IceApp_coco.ipynb>notebook</a> that shows you how to deploy a trained model on Gradio.
-This should create a local and public link that can be accessed up to 72 hours as long as the notebook is kept open.
-You can then share the link to anyone who would like to try out the app.</p><h3 id=huggingface-spaces>HuggingFace Spaces</h3><p>What if you would like the link to persist longer? One option is to deploy the Gradio app onto a free platform knwon as <a href=https://huggingface.co/spaces>HuggingFace Spaces</a>.
-Spaces is the new marketplace for all various bleeding edge of machine learning models.
-Models hosted on Spaces are free for access at anytime.</p><h4 id=creating-a-space>Creating a Space</h4><p>To host a model on Spaces, you must sign-up for an account.
-After that head over to <a href=https://huggingface.co/spaces><code>https://huggingface.co/spaces</code></a> and click on <strong>Create New Space</strong> button.</p><figure><img src=/images/blog/deploy-icevision-hfspace/create_new_space.png alt="Screenshot of the Onion homepage" width=750></figure><p>Next fill in the details of the <code>Space</code>. Make sure to select <code>Gradio</code> as the <code>Space SDK</code> and keep the repository <strong>Public</strong>. Click on Create space button when you&rsquo;re done.</p><figure><img src=/images/blog/deploy-icevision-hfspace/space_details.png alt="Screenshot of the Onion homepage" width=750></figure><p>Once done, your <code>Space</code> is now ready to be used.
-The <code>Space</code> you&rsquo;ve created behaves like a <code>git</code> repository.
-You can perform various <code>git</code> related operations such as <code>git clone</code>, <code>git push</code> and <code>git pull</code> to update the repository.
-Alternatively, you can also add files into the Space directly using the user interface.</p><figure><img src=/images/blog/deploy-icevision-hfspace/empty_repo.png alt="Screenshot of the Onion homepage" width=750></figure><h4 id=adding-related-files>Adding related files</h4><p>In this post, I am going to show you how to do it via the user interface.
-Click on the Files and versions tab.
-You can now begin adding the files here.</p><figure><img src=/images/blog/deploy-icevision-hfspace/files_version_tab.png alt="Screenshot of the Onion homepage" width=750></figure><p>There are a few files required to setup the <code>Space</code> namely <code>app.py</code>, <code>requirements.txt</code>, and <code>packages.txt</code>.</p><p><code>app.py</code> hosts the logic of your application. This is where the code for the Gradio interface resides.
-This script will be run when the app loads on Hugging Face Space.</p><p><code>requirements.txt</code> lists all the <code>Python</code> packages that will be <code>pip</code>-installed on the <code>Space</code>.</p><p><code>packages.txt</code> is special file created to put the OpenCV package to make it work on Spaces.</p><p>This is the contennt of app.py</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> subprocess
-<span style=color:#f92672>import</span> sys
-<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#34;Reinstalling mmcv&#34;</span>)
-subprocess<span style=color:#f92672>.</span>check_call([sys<span style=color:#f92672>.</span>executable, <span style=color:#e6db74>&#34;-m&#34;</span>, <span style=color:#e6db74>&#34;pip&#34;</span>, <span style=color:#e6db74>&#34;uninstall&#34;</span>, <span style=color:#e6db74>&#34;-y&#34;</span>, <span style=color:#e6db74>&#34;mmcv-full==1.3.17&#34;</span>])
-subprocess<span style=color:#f92672>.</span>check_call([sys<span style=color:#f92672>.</span>executable, <span style=color:#e6db74>&#34;-m&#34;</span>, <span style=color:#e6db74>&#34;pip&#34;</span>, <span style=color:#e6db74>&#34;install&#34;</span>, <span style=color:#e6db74>&#34;mmcv-full==1.3.17&#34;</span>, <span style=color:#e6db74>&#34;-f&#34;</span>, <span style=color:#e6db74>&#34;https://download.openmmlab.com/mmcv/dist/cpu/torch1.10.0/index.html&#34;</span>])
-<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#34;mmcv install complete&#34;</span>) 
-
-<span style=color:#75715e>## Only works if we reinstall mmcv here.</span>
-
-<span style=color:#f92672>from</span> gradio.outputs <span style=color:#f92672>import</span> Label
+</code></pre></div><p>The notebook that I used for this section can be found <a href=https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/static/images/blog/deploy-icevision-hfspace/training_retinanet.ipynb>here</a>.</p><h3 id=user-interface-with-gradio>User Interface with Gradio</h3><p>At this point, in order to run inference on the model, one will need to write inference codes as shown <a href=https://airctic.com/0.12.0/>here</a>.
+This is non-trivial especially to people who don&rsquo;t code.
+Gradio simplifies this by providing a simple user interface so that anyone can run an inference on the model without having to code.</p><p>The following figure shows a screenshot of the Gradio user interface that runs in the browser.
+The left pane shows the input image.
+User can select from a list of images and click on <em>Submit</em> to run it through the model for inference.
+The result of the inference is shown on the right pane.</p><figure><img src=/images/blog/deploy-icevision-hfspace/gradio.png alt="Screenshot of the Onion homepage" width=750></figure><p>In order to use Gradio, we must first install it with <code>pip install gradio</code>.
+Next, the following Python script is used load our model into and load it into the Gradio user interface.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> gradio.outputs <span style=color:#f92672>import</span> Label
 <span style=color:#f92672>from</span> icevision.all <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
 <span style=color:#f92672>from</span> icevision.models.checkpoint <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
 <span style=color:#f92672>import</span> PIL
@@ -67,78 +50,41 @@ class_map <span style=color:#f92672>=</span> checkpoint_and_model[<span style=co
 img_size <span style=color:#f92672>=</span> checkpoint_and_model[<span style=color:#e6db74>&#34;img_size&#34;</span>]
 valid_tfms <span style=color:#f92672>=</span> tfms<span style=color:#f92672>.</span>A<span style=color:#f92672>.</span>Adapter([<span style=color:#f92672>*</span>tfms<span style=color:#f92672>.</span>A<span style=color:#f92672>.</span>resize_and_pad(img_size), tfms<span style=color:#f92672>.</span>A<span style=color:#f92672>.</span>Normalize()])
 
-<span style=color:#66d9ef>for</span> root, dirs, files <span style=color:#f92672>in</span> os<span style=color:#f92672>.</span>walk(<span style=color:#e6db74>r</span><span style=color:#e6db74>&#34;sample_images/&#34;</span>):
-    <span style=color:#66d9ef>for</span> filename <span style=color:#f92672>in</span> files:
-        <span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#34;Loading sample image:&#34;</span>, filename)
-
-
 <span style=color:#75715e># Populate examples in Gradio interface</span>
-example_images <span style=color:#f92672>=</span> [[<span style=color:#e6db74>&#34;sample_images/&#34;</span> <span style=color:#f92672>+</span> file] <span style=color:#66d9ef>for</span> file <span style=color:#f92672>in</span> files]
-<span style=color:#75715e># Columns: Input Image | Label | Box | Detection Threshold</span>
-examples <span style=color:#f92672>=</span> [
-    [example_images[<span style=color:#ae81ff>0</span>], False, True, <span style=color:#ae81ff>0.5</span>],
-    [example_images[<span style=color:#ae81ff>1</span>], True, True, <span style=color:#ae81ff>0.5</span>],
-    [example_images[<span style=color:#ae81ff>2</span>], False, True, <span style=color:#ae81ff>0.7</span>],
-    [example_images[<span style=color:#ae81ff>3</span>], True, True, <span style=color:#ae81ff>0.7</span>],
-    [example_images[<span style=color:#ae81ff>4</span>], False, True, <span style=color:#ae81ff>0.5</span>],
-    [example_images[<span style=color:#ae81ff>5</span>], False, True, <span style=color:#ae81ff>0.5</span>],
-    [example_images[<span style=color:#ae81ff>6</span>], False, True, <span style=color:#ae81ff>0.6</span>],
-    [example_images[<span style=color:#ae81ff>7</span>], False, True, <span style=color:#ae81ff>0.6</span>],
-]
+examples <span style=color:#f92672>=</span> [[<span style=color:#e6db74>&#39;sample_images/1.jpg&#39;</span>],[<span style=color:#e6db74>&#39;sample_images/2.jpg&#39;</span>],[<span style=color:#e6db74>&#39;sample_images/3.jpg&#39;</span>]]
 
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>show_preds</span>(input_image, display_label, display_bbox, detection_threshold):
-    <span style=color:#66d9ef>if</span> detection_threshold <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
-        detection_threshold <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.5</span>
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>show_preds</span>(input_image):
     img <span style=color:#f92672>=</span> PIL<span style=color:#f92672>.</span>Image<span style=color:#f92672>.</span>fromarray(input_image, <span style=color:#e6db74>&#34;RGB&#34;</span>)
-    pred_dict <span style=color:#f92672>=</span> model_type<span style=color:#f92672>.</span>end2end_detect(
-        img,
-        valid_tfms,
-        model,
-        class_map<span style=color:#f92672>=</span>class_map,
-        detection_threshold<span style=color:#f92672>=</span>detection_threshold,
-        display_label<span style=color:#f92672>=</span>display_label,
-        display_bbox<span style=color:#f92672>=</span>display_bbox,
-        return_img<span style=color:#f92672>=</span>True,
-        font_size<span style=color:#f92672>=</span><span style=color:#ae81ff>16</span>,
-        label_color<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;#FF59D6&#34;</span>,
-    )
-    <span style=color:#66d9ef>return</span> pred_dict[<span style=color:#e6db74>&#34;img&#34;</span>], len(pred_dict[<span style=color:#e6db74>&#34;detection&#34;</span>][<span style=color:#e6db74>&#34;bboxes&#34;</span>])
+    pred_dict <span style=color:#f92672>=</span> model_type<span style=color:#f92672>.</span>end2end_detect(img, valid_tfms, model, class_map<span style=color:#f92672>=</span>class_map, detection_threshold<span style=color:#f92672>=</span><span style=color:#ae81ff>0.5</span>,
+                                           display_label<span style=color:#f92672>=</span>False, display_bbox<span style=color:#f92672>=</span>True, return_img<span style=color:#f92672>=</span>True, 
+                                           font_size<span style=color:#f92672>=</span><span style=color:#ae81ff>16</span>, label_color<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;#FF59D6&#34;</span>)
+    <span style=color:#66d9ef>return</span> pred_dict[<span style=color:#e6db74>&#34;img&#34;</span>]
 
-
-<span style=color:#75715e># display_chkbox = gr.inputs.CheckboxGroup([&#34;Label&#34;, &#34;BBox&#34;], label=&#34;Display&#34;, default=True)</span>
-display_chkbox_label <span style=color:#f92672>=</span> gr<span style=color:#f92672>.</span>inputs<span style=color:#f92672>.</span>Checkbox(label<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Label&#34;</span>, default<span style=color:#f92672>=</span>False)
-display_chkbox_box <span style=color:#f92672>=</span> gr<span style=color:#f92672>.</span>inputs<span style=color:#f92672>.</span>Checkbox(label<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Box&#34;</span>, default<span style=color:#f92672>=</span>True)
-detection_threshold_slider <span style=color:#f92672>=</span> gr<span style=color:#f92672>.</span>inputs<span style=color:#f92672>.</span>Slider(
-    minimum<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>, maximum<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>, step<span style=color:#f92672>=</span><span style=color:#ae81ff>0.1</span>, default<span style=color:#f92672>=</span><span style=color:#ae81ff>0.5</span>, label<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Detection Threshold&#34;</span>
-)
-outputs <span style=color:#f92672>=</span> [
-    gr<span style=color:#f92672>.</span>outputs<span style=color:#f92672>.</span>Image(type<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;pil&#34;</span>, label<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;RetinaNet Inference&#34;</span>),
-    gr<span style=color:#f92672>.</span>outputs<span style=color:#f92672>.</span>Textbox(type<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;number&#34;</span>, label<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Microalgae Count&#34;</span>),
-]
-
-article <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;p style=&#39;text-align: center&#39;&gt;&lt;a href=&#39;https://dicksonneoh.com/&#39; target=&#39;_blank&#39;&gt;Blog post&lt;/a&gt;&lt;/p&gt;&#34;</span>
-
-<span style=color:#75715e># Option 1: Get an image from local drive</span>
 gr_interface <span style=color:#f92672>=</span> gr<span style=color:#f92672>.</span>Interface(
     fn<span style=color:#f92672>=</span>show_preds,
-    inputs<span style=color:#f92672>=</span>[
-        <span style=color:#e6db74>&#34;image&#34;</span>,
-        display_chkbox_label,
-        display_chkbox_box,
-        detection_threshold_slider,
-    ],
-    outputs<span style=color:#f92672>=</span>outputs,
-    title<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Microalgae Detector with RetinaNet&#34;</span>,
-    description<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;This RetinaNet model counts microalgaes on a given image. Upload an image or click an example image below to use.&#34;</span>,
-    article<span style=color:#f92672>=</span>article,
+    inputs<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;image&#34;</span>],
+    outputs<span style=color:#f92672>=</span>[gr<span style=color:#f92672>.</span>outputs<span style=color:#f92672>.</span>Image(type<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;pil&#34;</span>, label<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;RetinaNet Inference&#34;</span>)],
+    title<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Fridge Object Detector&#34;</span>,
+    description<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;This RetinaNet model detects common objects found in fridge. Upload an image or click an example image below to use.&#34;</span>,
     examples<span style=color:#f92672>=</span>examples,
 )
-<span style=color:#75715e># #  Option 2: Grab an image from a webcam</span>
-<span style=color:#75715e># gr_interface = gr.Interface(fn=show_preds, inputs=[&#34;webcam&#34;, display_chkbox_label, display_chkbox_box,  detection_threshold_slider], outputs=outputs, title=&#39;IceApp - COCO&#39;, live=False)</span>
-<span style=color:#75715e># #  Option 3: Continuous image stream from the webcam</span>
-<span style=color:#75715e># gr_interface = gr.Interface(fn=show_preds, inputs=[&#34;webcam&#34;, display_chkbox_label, display_chkbox_box,  detection_threshold_slider], outputs=outputs, title=&#39;IceApp - COCO&#39;, live=True)</span>
 gr_interface<span style=color:#f92672>.</span>launch(inline<span style=color:#f92672>=</span>False, share<span style=color:#f92672>=</span>False, debug<span style=color:#f92672>=</span>True)
+</code></pre></div><p>Upon successful running of the Python script the model should be available for inference in the Gradio app at a local URL accessible with a browser, for instance <code>http://127.0.0.1:7860/</code>.</p><h3 id=huggingface-spaces>HuggingFace Spaces</h3><p>This local URL link from the previous section can only be accessed locally. What if you would like to share the link to someone across the internet?
+In this section, we will discover how to make the Gradio app accessible to anyone by deploying the Gradio app onto a free platform known as HuggingFace <a href=https://huggingface.co/spaces>Spaces</a>.
+Spaces is the new marketplace for all various bleeding edge of machine learning models.
+Models hosted on Spaces are free for access at anytime.</p><h4 id=creating-a-space>Creating a Space</h4><p>To host a model on Spaces, you must sign-up for an account.
+After that head over to <a href=https://huggingface.co/spaces><code>https://huggingface.co/spaces</code></a> and click on <strong>Create New Space</strong> button.</p><figure><img src=/images/blog/deploy-icevision-hfspace/create_new_space.png alt="Screenshot of the Onion homepage" width=750></figure><p>Next fill in the details of the <code>Space</code>. Make sure to select <code>Gradio</code> as the <code>Space SDK</code> and keep the repository <strong>Public</strong>. Click on Create space button when you&rsquo;re done.</p><figure><img src=/images/blog/deploy-icevision-hfspace/space_details.png alt="Screenshot of the Onion homepage" width=750></figure><p>Once done, your <code>Space</code> is now ready to be used.
+The <code>Space</code> you&rsquo;ve created behaves like a <code>git</code> repository.
+You can perform various <code>git</code> related operations such as <code>git clone</code>, <code>git push</code> and <code>git pull</code> to update the repository.
+Alternatively, you can also add files into the Space directly using the user interface.</p><figure><img src=/images/blog/deploy-icevision-hfspace/empty_repo.png alt="Screenshot of the Onion homepage" width=750></figure><h4 id=adding-related-files>Adding related files</h4><p>In this post, I am going to show you how to do it via the user interface.
+Click on the Files and versions tab.
+You can now begin adding the files here.</p><figure><img src=/images/blog/deploy-icevision-hfspace/files_version_tab.png alt="Screenshot of the Onion homepage" width=750></figure><p>There are a few files required to setup the <code>Space</code> namely <code>app.py</code>, <code>requirements.txt</code>, and <code>packages.txt</code>.</p><p><code>app.py</code> hosts the logic of your application. This is where the code for the Gradio interface resides.
+This script will be run when the app loads on Hugging Face Space.</p><p><code>requirements.txt</code> lists all the <code>Python</code> packages that will be <code>pip</code>-installed on the <code>Space</code>.</p><p><code>packages.txt</code> is special file created to put the OpenCV package to make it work on Spaces.</p><p>This is the contennt of app.py</p><p>If you used a <code>mmdetection</code> model add the following lines at the beginning of the <code>app.py</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> subprocess
+<span style=color:#f92672>import</span> sys
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#34;Reinstalling mmcv&#34;</span>)
+subprocess<span style=color:#f92672>.</span>check_call([sys<span style=color:#f92672>.</span>executable, <span style=color:#e6db74>&#34;-m&#34;</span>, <span style=color:#e6db74>&#34;pip&#34;</span>, <span style=color:#e6db74>&#34;uninstall&#34;</span>, <span style=color:#e6db74>&#34;-y&#34;</span>, <span style=color:#e6db74>&#34;mmcv-full==1.3.17&#34;</span>])
+subprocess<span style=color:#f92672>.</span>check_call([sys<span style=color:#f92672>.</span>executable, <span style=color:#e6db74>&#34;-m&#34;</span>, <span style=color:#e6db74>&#34;pip&#34;</span>, <span style=color:#e6db74>&#34;install&#34;</span>, <span style=color:#e6db74>&#34;mmcv-full==1.3.17&#34;</span>, <span style=color:#e6db74>&#34;-f&#34;</span>, <span style=color:#e6db74>&#34;https://download.openmmlab.com/mmcv/dist/cpu/torch1.10.0/index.html&#34;</span>])
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#34;mmcv install complete&#34;</span>) 
 </code></pre></div><p>Content of <code>requirements.txt</code></p><pre><code>mmdet==2.19.0
 gradio==2.4.0
 icevision[all]
