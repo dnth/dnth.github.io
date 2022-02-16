@@ -56,15 +56,15 @@ This is non-trivial especially to people who don't code.
 Gradio simplifies this by providing a simple user interface so that anyone can run an inference on the model without having to code.
 
 The following figure shows a screenshot of the Gradio user interface that runs in the browser.
-The left pane shows the input image.
-User can select from a list of images and click on *Submit* to run it through the model for inference.
-The result of the inference is shown on the right pane.
+The left pane shows the input image. 
+The right pane shows the inference results.
+User can upload an image or select from a list of example images and click on *Submit* to run it through the model for inference.
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/gradio.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
 
 In order to use Gradio, we must first install it with `pip install gradio`.
-Next, the following Python script is used load our model into and load it into the Gradio user interface.
+Next, create a file with the name `app.py` and paste the following codes into the file.
 ```python
 from gradio.outputs import Label
 from icevision.all import *
@@ -74,7 +74,7 @@ import gradio as gr
 import os
 
 # Load model
-checkpoint_path = "models/model_checkpoint.pth"
+checkpoint_path = "model_checkpoint.pth"
 checkpoint_and_model = model_from_checkpoint(checkpoint_path)
 model = checkpoint_and_model["model"]
 model_type = checkpoint_and_model["model_type"]
@@ -85,13 +85,22 @@ img_size = checkpoint_and_model["img_size"]
 valid_tfms = tfms.A.Adapter([*tfms.A.resize_and_pad(img_size), tfms.A.Normalize()])
 
 # Populate examples in Gradio interface
-examples = [['sample_images/1.jpg'],['sample_images/2.jpg'],['sample_images/3.jpg']]
+examples = [
+    ['sample_images/1.jpg'],
+    ['sample_images/2.jpg'],
+    ['sample_images/3.jpg']
+]
 
 def show_preds(input_image):
     img = PIL.Image.fromarray(input_image, "RGB")
-    pred_dict = model_type.end2end_detect(img, valid_tfms, model, class_map=class_map, detection_threshold=0.5,
-                                           display_label=False, display_bbox=True, return_img=True, 
-                                           font_size=16, label_color="#FF59D6")
+    pred_dict = model_type.end2end_detect(img, valid_tfms, model, 
+                                          class_map=class_map, 
+                                          detection_threshold=0.5,
+                                          display_label=False, 
+                                          display_bbox=True, 
+                                          return_img=True, 
+                                          font_size=16, 
+                                          label_color="#FF59D6")
     return pred_dict["img"]
 
 gr_interface = gr.Interface(
@@ -104,54 +113,55 @@ gr_interface = gr.Interface(
 )
 gr_interface.launch(inline=False, share=False, debug=True)
 ```
-Let's name this Python script `app.py`.
+Running `app.py` loads our model into the Gradio app.
 Run the script by typing `python app.py` in the terminal.
-If there are no errors the model should be available for inference in the Gradio app at a local URL accessible with a browser, for instance `http://127.0.0.1:7860/`.
-
+If there are no errors, the terminal will show local URL to access the Gradio app.
+You can copy the address and open it with a browser.
+The URL address on my machine is `http://127.0.0.1:7860/`.
+The address may vary on your machine.
 
 ### HuggingFace Spaces
-The Gradio URL link from the previous section can only be accessed locally. But what if you would like to share the link to someone across the internet?
-In this section, we will discover how to make the Gradio app accessible to anyone by deploying the Gradio app onto a free platform known as HuggingFace [Spaces](https://huggingface.co/spaces).
-Spaces is the new marketplace for all various bleeding edge of machine learning models.
-Models hosted on Spaces are free for access at anytime.
+The Gradio app URL link from the previous section can only be accessed locally. But what if you would like to share the link to someone across the internet for free?
+In this section, we will discover how to make your Gradio app accessible to anyone by deploying the app on a free platform known as HuggingFace [Spaces](https://huggingface.co/spaces).
+Spaces is the new 'marketplace' for various bleeding edge machine learning models.
+Many researchers have uploaded interesting models on Space to showcase them as a demo.
 
 #### Creating a Space
-To host a model on Spaces, you must sign-up for an account.
-After that head over to [`https://huggingface.co/spaces`](https://huggingface.co/spaces) and click on **Create New Space** button.
+To host a model on Spaces, you must sign up for an account at [`https://huggingface.co/`](https://huggingface.co/).
+After that, head over to [`https://huggingface.co/spaces`](https://huggingface.co/spaces) and click on **Create New Space** button as shown below.
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/create_new_space.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
-Next fill in the details of the `Space`. Make sure to select `Gradio` as the `Space SDK` and keep the repository **Public**. Click on Create space button when you're done.
+Next fill in the Space name and select a License. 
+Make sure to select Gradio as the Space SDK and keep the repository **Public**. Click on **Create space** button when you're done.
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/space_details.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
-Once done, your `Space` is now ready to be used.
-The `Space` you've created behaves like a `git` repository.
+Once done, your Space is now ready.
+The Space you've created behaves like a `git` repository.
 You can perform various `git` related operations such as `git clone`, `git push` and `git pull` to update the repository.
 Alternatively, you can also add files into the Space directly using the user interface.
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/empty_repo.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
 #### Adding related files
-In this post, I am going to show you how to do it via the user interface. 
-Click on the **Files and versions** tab. Next, click on **Add file**
-You can now begin adding the files here.
-
-{{< figure src="/images/blog/deploy-icevision-hfspace/files_version_tab.png" alt="Screenshot of the Onion homepage" width=750 >}}
-
-There are a few files required to setup the `Space` namely `app.py`, `requirements.txt`, and `packages.txt`.
+In this blog post, I am going to show you how add files into your Space using the browser. 
+There are three files required to setup the Space namely `app.py`, `requirements.txt`, and `packages.txt`.
 
 `app.py` hosts the logic of your application. 
 This is where the code for the Gradio interface resides. The code is similar to the `app.py` from the previous section.
 This script will be run when the app loads on Hugging Face Space.
+`requirements.txt` lists all the `Python` packages that will be `pip`-installed on the Space.
+Lastly, `packages.txt` is special file created to put the OpenCV package to make it work on Spaces
+For some reason putting the OpenCV package in the `requirements.txt` file doesn't work on Space.
 
-`requirements.txt` lists all the `Python` packages that will be `pip`-installed on the `Space`.
+Let's begin to add those files.
+Click on the **Files and versions** tab. Next, click on **Add file** and **Create a new file**.
+Name your file as `app.py` and paste the code from the previous section. Click on **Commit new file**.
 
-`packages.txt` is special file created to put the OpenCV package to make it work on Spaces. 
+{{< figure src="/images/blog/deploy-icevision-hfspace/files_version_tab.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
-This is the contennt of app.py
-
-If you used a `mmdetection` model add the following lines at the beginning of the `app.py`.
+If you've used a `mmdetection` model, you need to add the following lines at the beginning of the `app.py` or it will not work.
 
 ```python
 import subprocess
@@ -163,20 +173,26 @@ print("mmcv install complete")
 ```
 
 
-
-Content of `requirements.txt`
+Add `requirements.txt` file using the same method. Below are the contents of the file.
 ```bash
-mmdet==2.19.0
 gradio==2.4.0
 icevision[all]
 mmcv-full==1.3.17 -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.10.0/index.html
+mmdet==2.17.0
 ```
 
-Content of `packages.txt`
-```
+Now, do the same for the last file `packages.txt` which only has the OpenCV package.
+```bash
 python3-opencv
 ```
 
+Finally let's add our checkpoint file `model_checkpoint.pth`.
+
+
+You Space should now contain the three files we've just added and an additional checkpoint file as shown below.
+{{< figure src="/images/blog/deploy-icevision-hfspace/done_adding_files.png" alt="Screenshot of the Onion homepage" width=750 >}}
+
+A **Building** status should appear indicating that it is setting up by installing the packages and running it upon completion.
 
 The following is the screenshot on Space.
 You can try out the Space yourself [here](https://huggingface.co/spaces/dnth/webdemo-fridge-detection).
@@ -184,4 +200,15 @@ You can try out the Space yourself [here](https://huggingface.co/spaces/dnth/web
 {{< figure src="/images/blog/deploy-icevision-hfspace/screenshot.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
 
-
+<!-- <html>
+<head>
+<link rel="stylesheet" href="https://gradio.s3-us-west-2.amazonaws.com/2.6.2/static/bundle.css">
+</head>
+<body>
+<div id="target"></div>
+<script src="https://gradio.s3-us-west-2.amazonaws.com/2.6.2/static/bundle.js"></script>
+<script>
+launchGradioFromSpaces("dnth/webdemo-fridge-detection", "#target")
+</script>
+</body>
+</html> -->

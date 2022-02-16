@@ -3,6 +3,8 @@ languageCode = "en-us"
 paginate = 6
 theme = "portio-hugo"
 title = "Dickson Neoh - Personal Portfolio"
+[markup.goldmark.renderer]
+  unsafe = true # Allow HTML in md files
 
 # Main Menu
 [[menu.main]]
