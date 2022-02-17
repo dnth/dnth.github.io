@@ -5,7 +5,6 @@ featureImage: images/blog/counting-microalgaes-with-microsensee/feature_image.gi
 postImage: images/blog/counting-microalgaes-with-microsensee/detection.png
 
 ---
-{{< toc >}} 
 
 ### Introduction
 Microbiologist count cells manually.

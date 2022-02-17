@@ -5,8 +5,6 @@ featureImage: images/blog/deploy-icevision-hfspace/feature_image.gif
 postImage: images/blog/deploy-icevision-hfspace/train-deploy-share.png
 ---
 
-{{< toc >}} 
-
 ### Introduction
 So, you’ve trained a deep learning model that can detect objects from images. 
 Next, how can you share the awesomeness of your model with the rest of the world? 
