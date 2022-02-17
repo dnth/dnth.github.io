@@ -15,17 +15,17 @@ This blog post is for you. In this post I will walk you through how to deploy yo
 ### Training a Model with IceVision
 We will be using the awesome [IceVision](https://github.com/airctic/icevision) object detection package as an example for this post. 
 IceVision is an agnostic computer vision library pluggable to multiple deep learning frameworks such as [Fastai](https://github.com/fastai/fastai) and [PyTorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning). 
-What makes IceVision awesome is you can train a state-of-the-art object detection models with only few lines of codes.
+What makes IceVision awesome is you can train state-of-the-art object detection models with only few lines of codes.
 It's very easy to get started, check out the tutorial [here](https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb).
 
-In the getting started notebook, we use a dataset from [Icedata](https://github.com/airctic/icedata) repository known as the *Fridge Objects* dataset.
+In the getting started notebook, we used a dataset from [Icedata](https://github.com/airctic/icedata) repository known as the *Fridge Objects* dataset.
 This dataset consists 134 images of 4 classes: *can*, *carton*, *milk bottle*, *water bottle*.
-Let's now continue to train our model. Let's train a simple *RetinaNet* model with a *ResNet* backbone from [Torchvision](https://github.com/pytorch/vision).
-In the notebook, you can easily specify this model using two line of codes as follows.
+Let's now continue to train our model. Let's train a *VFNet* model with a *ResNet* backbone implemented in [mmdet](https://github.com/open-mmlab/mmdetection).
+In the notebook, you can easily specify this model using two lines of codes as follows.
 
 ```python
-model_type = models.torchvision.retinanet
-backbone = model_type.backbones.resnet50_fpn
+model_type = models.mmdet.vfnet
+backbone = model_type.backbones.resnet50_fpn_mstrain_2x
 ```
 
 After you're satisfied with the performance of your model, let's save the model into a checkpoint to be used for inferencing later.
@@ -50,18 +50,16 @@ The notebook that I used for this section can be found [here](https://colab.rese
 
 ### User Interface with Gradio
 At this point, in order to run inference on the model, one will need to write inference codes as shown [here](https://airctic.com/0.12.0/).
-This is non-trivial especially to people who don't code.
-Gradio simplifies this by providing a simple user interface so that anyone can run an inference on the model without having to code.
+This is non-trivial and can be time-consuming especially to those who are not familiar.
+Gradio simplifies this by providing a simple graphical user interface wrapping the inference code so that anyone can run inference on the model without having to code.
 
-The following figure shows a screenshot of the Gradio user interface that runs in the browser.
-The left pane shows the input image. 
-The right pane shows the inference results.
-User can upload an image or select from a list of example images and click on *Submit* to run it through the model for inference.
+The following figure shows a screenshot of the Gradio app that runs in the browser.
+The left pane shows the input image, and the right pane shows the inference results.
+Users can upload an image or select from a list of example images and click on *Submit* to run it through the model for inference.
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/gradio.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
-
-In order to use Gradio, we must first install it with `pip install gradio`.
+So how do we load our model into the Gradio app? First, we must first install the Gradio package by running `pip install gradio`.
 Next, create a file with the name `app.py` and paste the following codes into the file.
 ```python
 from gradio.outputs import Label
@@ -111,18 +109,20 @@ gr_interface = gr.Interface(
 )
 gr_interface.launch(inline=False, share=False, debug=True)
 ```
-Running `app.py` loads our model into the Gradio app.
+
+Make sure that the path to your model checkpoint and example images are correct.
+Running the `app.py` loads our model into the Gradio app.
 Run the script by typing `python app.py` in the terminal.
 If there are no errors, the terminal will show local URL to access the Gradio app.
 You can copy the address and open it with a browser.
-The URL address on my machine is `http://127.0.0.1:7860/`.
-The address may vary on your machine.
+The URL address on my machine is `http://127.0.0.1:7860/`, it may vary on yours.
 
 ### HuggingFace Spaces
 The Gradio app URL link from the previous section can only be accessed locally. But what if you would like to share the link to someone across the internet for free?
 In this section, we will discover how to make your Gradio app accessible to anyone by deploying the app on a free platform known as HuggingFace [Spaces](https://huggingface.co/spaces).
 Spaces is the new 'marketplace' for various bleeding edge machine learning models.
-Many researchers have uploaded interesting models on Space to showcase them as a demo.
+Many researchers have uploaded interesting and state-of-the-art models on Space to showcase them as a demo.
+You can discover and try them out [here](https://huggingface.co/spaces).
 
 #### Creating a Space
 To host a model on Spaces, you must sign up for an account at [`https://huggingface.co/`](https://huggingface.co/).
@@ -138,18 +138,18 @@ Make sure to select Gradio as the Space SDK and keep the repository **Public**. 
 Once done, your Space is now ready.
 The Space you've created behaves like a `git` repository.
 You can perform various `git` related operations such as `git clone`, `git push` and `git pull` to update the repository.
-Alternatively, you can also add files into the Space directly using the user interface.
+Alternatively, you can also add files into the Space directly in the browser.
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/empty_repo.png" alt="Screenshot of the Onion homepage" width=750 >}}
 In this blog post, I am going to show you how add files into your Space using the browser. 
 
 #### Installation files
-Let's start with the installation files. These are the files that specifies the packages that will be installed on your Space to run your app.
-The packages are specified in two files `requirements.txt`, and `packages.txt`.
+Let's start with the installation files. These are the files that determines the packages that will be installed on your Space to run your app.
+The packages are specified in two files ie. `requirements.txt`, and `packages.txt`.
 
-`requirements.txt` lists all the `Python` packages that will be `pip`-installed on the Space.
-`packages.txt` is special file created to put the OpenCV package to make it work on Spaces.
-For some reason putting the OpenCV package in the `requirements.txt` file doesn't work on Space.
+The `requirements.txt` lists all the `Python` packages that will be `pip`-installed on the Space.
+The `packages.txt` is a file created to specify the OpenCV version to be installed on your Space.
+For some reason putting the OpenCV package in the `requirements.txt` file doesn't work.
 
 Let's begin adding these files.
 Click on the **Files and versions** tab. Next, click on **Add file** and **Create a new file**.
@@ -168,14 +168,13 @@ Now, do the same for `packages.txt` which only has the OpenCV package as the fil
 ```bash
 python3-opencv
 ```
-We are done adding all the necessary packages to run our Gradio app on Space.
+We are now done adding all installation files into our Space.
 
 
 #### Gradio app, checkpoint and sample images
 Next let's add the Gradio app, model checkpoint and some sample images.
 Let's add the `app.py` we had from the previous section using the same method we did for the installation files.
-`app.py` hosts the logic of your application. 
-This is where the code for the Gradio interface resides.
+The `app.py` hosts the logic of your application and this is where the code for the Gradio app resides.
 Space will automatically run `app.py` upon startup.
 
 
@@ -189,9 +188,9 @@ You will also see a **Building** status indicating that it is setting up by inst
 Every time there is a change in any of the files, the Space will be rebuilt.
 
 Using the same method let's upload the sample images as well.
-After you're done uploading the repository should look like the following
+At this point the Space repository should look like the following
 {{< figure src="/images/blog/deploy-icevision-hfspace/complete_upload.png" alt="Screenshot of the Onion homepage" width=750 >}}
-Once the build completes status changes to **Running** and the Space should look like the following and is now ready to be used.
+Once the building completes, the status changes to **Running** and the Space should look like the following and is now ready to be used.
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/screenshot_apps.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
