@@ -141,29 +141,21 @@ You can perform various `git` related operations such as `git clone`, `git push`
 Alternatively, you can also add files into the Space directly using the user interface.
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/empty_repo.png" alt="Screenshot of the Onion homepage" width=750 >}}
+In this blog post, I am going to show you how add files into your Space using the browser. 
 
 #### Installation files
-In this blog post, I am going to show you how add files into your Space using the browser. 
-There are three files required to setup the Space namely `app.py`, `requirements.txt`, and `packages.txt`.
+Let's start with the installation files. These are the files that specifies the packages that will be installed on your Space to run your app.
+The packages are specified in two files `requirements.txt`, and `packages.txt`.
 
-`app.py` hosts the logic of your application. 
-This is where the code for the Gradio interface resides. The code is similar to the `app.py` from the previous section.
-This script will be run when the app loads on Hugging Face Space.
 `requirements.txt` lists all the `Python` packages that will be `pip`-installed on the Space.
-Lastly, `packages.txt` is special file created to put the OpenCV package to make it work on Spaces
+`packages.txt` is special file created to put the OpenCV package to make it work on Spaces.
 For some reason putting the OpenCV package in the `requirements.txt` file doesn't work on Space.
 
-Let's begin to add those files.
+Let's begin adding these files.
 Click on the **Files and versions** tab. Next, click on **Add file** and **Create a new file**.
-Name your file as `app.py` and paste the code from the previous section. Click on **Commit new file**.
-
 {{< figure src="/images/blog/deploy-icevision-hfspace/files_version_tab.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
-#### Gradio app, checkpoint and sample images
-
-
-
-Add `requirements.txt` file using the same method. Below are the contents of the file.
+Name your file as `requirements.txt` and paste the following snippets as the content. Click on **Commit new file** button at the bottom of the page.
 ```bash
 --find-links https://download.openmmlab.com/mmcv/dist/cpu/torch1.10.0/index.html
 mmcv-full==1.3.17
@@ -172,31 +164,43 @@ gradio==2.7.5
 icevision[all]==0.12.0
 ```
 
-Now, do the same for the last file `packages.txt` which only has the OpenCV package.
+Now, do the same for `packages.txt` which only has the OpenCV package as the file content.
 ```bash
 python3-opencv
 ```
-
-Finally let's add our checkpoint file `model_checkpoint.pth`.
-
-
-You Space should now contain the three files we've just added and an additional checkpoint file as shown below.
-{{< figure src="/images/blog/deploy-icevision-hfspace/done_adding_files.png" alt="Screenshot of the Onion homepage" width=750 >}}
-
-A **Building** status should appear indicating that it is setting up by installing the packages and running it upon completion.
-
-The following is the screenshot on Space.
-You can try out the Space yourself [here](https://huggingface.co/spaces/dnth/webdemo-fridge-detection).
+We are done adding all the necessary packages to run our Gradio app on Space.
 
 
+#### Gradio app, checkpoint and sample images
+Next let's add the Gradio app, model checkpoint and some sample images.
+Let's add the `app.py` we had from the previous section using the same method we did for the installation files.
+`app.py` hosts the logic of your application. 
+This is where the code for the Gradio interface resides.
+Space will automatically run `app.py` upon startup.
 
-Complete files and Space running.
+
+Next let's add our checkpoint file `model_checkpoint.pth` by clicking on **Upload File**.
+Drag and drop the model checkpoint file and click on **Commit changes**.
+
+<!-- {{< figure src="/images/blog/deploy-icevision-hfspace/upload_file.png" alt="Screenshot of the Onion homepage" width=750 >}} -->
+{{< figure src="/images/blog/deploy-icevision-hfspace/drop_files.png" alt="Screenshot of the Onion homepage" width=750 >}}
+
+You will also see a **Building** status indicating that it is setting up by installing the packages and running it upon completion.
+Every time there is a change in any of the files, the Space will be rebuilt.
+
+Using the same method let's upload the sample images as well.
+After you're done uploading the repository should look like the following
 {{< figure src="/images/blog/deploy-icevision-hfspace/complete_upload.png" alt="Screenshot of the Onion homepage" width=750 >}}
+Once the build completes status changes to **Running** and the Space should look like the following and is now ready to be used.
 
-{{< figure src="/images/blog/deploy-icevision-hfspace/screenshot_app.png" alt="Screenshot of the Onion homepage" width=750 >}}
+{{< figure src="/images/blog/deploy-icevision-hfspace/screenshot_apps.png" alt="Screenshot of the Onion homepage" width=750 >}}
+
+The final app looks like the following
+{{< figure src="/images/blog/deploy-icevision-hfspace/screenshot_final.png" alt="Screenshot of the Onion homepage" width=750 >}}
+You can now share the URL to your Space to anyone across the internet for free.
+[Here](https://huggingface.co/spaces/dnth/icevision_fridge_tutorial) is the link to the Space used in this blog post.
 
 
-{{< figure src="/images/blog/deploy-icevision-hfspace/screenshot.png" alt="Screenshot of the Onion homepage" width=750 >}}
 <!-- <html>
 <head>
 <link rel="stylesheet" href="https://gradio.s3-us-west-2.amazonaws.com/2.6.2/static/bundle.css">
