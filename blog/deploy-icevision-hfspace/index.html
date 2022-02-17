@@ -15,12 +15,7 @@ In the notebook, you can easily specify this model using two lines of codes as f
 </span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>model_type <span style=color:#f92672>=</span> models<span style=color:#f92672>.</span>mmdet<span style=color:#f92672>.</span>vfnet
 backbone <span style=color:#f92672>=</span> model_type<span style=color:#f92672>.</span>backbones<span style=color:#f92672>.</span>resnet50_fpn_mstrain_2x
 </code></pre></td></tr></table></div></div><p>After you&rsquo;re satisfied with the performance of your model, let&rsquo;s save the model into a checkpoint to be used for inferencing later.
-With IceVision this can be done easily. Just add the following snippet to your notebook and run.
-Feel free to modify the <code>model_name</code>, <code>backbone_name</code> according to the model you used during training.
-The <code>img_size</code> argument is image size that the model is trained on.
-The <code>classes</code> argument is a list of classes from the dataset.
-The <code>filename</code> argument specifies the directory and name of the checkpoint file.
-The <code>meta</code> argument stores other metadata that you would like to keep track of for future reference.</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+With IceVision this can be done easily. Just add the following snippet to your notebook and run.</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
@@ -36,7 +31,11 @@ save_icevision_checkpoint(model,
                         classes<span style=color:#f92672>=</span>parser<span style=color:#f92672>.</span>class_map<span style=color:#f92672>.</span>get_classes(),
                         filename<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;./models/model_checkpoint.pth&#39;</span>,
                         meta<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;icevision_version&#39;</span>: <span style=color:#e6db74>&#39;0.12.0&#39;</span>})
-</code></pre></td></tr></table></div></div><p>The notebook that I used for this section can be found <a href=https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/static/images/blog/deploy-icevision-hfspace/training_vfnet.ipynb>here</a>.</p><h3 id=user-interface-with-gradio>User Interface with Gradio</h3><p>At this point, in order to run inference on the model, one will need to write inference codes as shown <a href=https://airctic.com/0.12.0/>here</a>.
+</code></pre></td></tr></table></div></div><p>Feel free to modify the <code>model_name</code>, <code>backbone_name</code> according to the model you used during training.
+The <code>img_size</code> argument is image size that the model is trained on.
+The <code>classes</code> argument is a list of classes from the dataset.
+The <code>filename</code> argument specifies the directory and name of the checkpoint file.
+The <code>meta</code> argument stores other metadata that you would like to keep track of for future reference.</p><p>The notebook that I used for this section can be found <a href=https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/static/images/blog/deploy-icevision-hfspace/training_vfnet.ipynb>here</a>.</p><h3 id=user-interface-with-gradio>User Interface with Gradio</h3><p>At this point, in order to run inference on the model, one will need to write inference codes as shown <a href=https://airctic.com/0.12.0/>here</a>.
 This is non-trivial and can be time-consuming especially to those who are not familiar.
 Gradio simplifies this by providing a simple graphical user interface wrapping the inference code so that anyone can run inference on the model without having to code.</p><p>The following figure shows a screenshot of the Gradio app that runs in the browser.
 The left pane shows the input image, and the right pane shows the inference results.
