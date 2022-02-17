@@ -23,7 +23,7 @@ This dataset consists 134 images of 4 classes: *can*, *carton*, *milk bottle*, *
 Let's now continue to train our model. Let's train a *VFNet* model with a *ResNet* backbone implemented in [mmdet](https://github.com/open-mmlab/mmdetection).
 In the notebook, you can easily specify this model using two lines of codes as follows.
 
-```python
+```python {linenos=table}
 model_type = models.mmdet.vfnet
 backbone = model_type.backbones.resnet50_fpn_mstrain_2x
 ```
@@ -36,7 +36,7 @@ The `classes` argument is a list of classes from the dataset.
 The `filename` argument specifies the directory and name of the checkpoint file.
 The `meta` argument stores other metadata that you would like to keep track of for future reference.
 
-``` python
+``` python {linenos=table}
 from icevision.models.checkpoint import *
 save_icevision_checkpoint(model,
                         model_name='mmdet.vfnet', 
@@ -61,7 +61,7 @@ Users can upload an image or select from a list of example images and click on *
 
 So how do we load our model into the Gradio app? First, we must first install the Gradio package by running `pip install gradio`.
 Next, create a file with the name `app.py` and paste the following codes into the file.
-```python
+```python {linenos=table}
 from gradio.outputs import Label
 from icevision.all import *
 from icevision.models.checkpoint import *
@@ -156,7 +156,7 @@ Click on the **Files and versions** tab. Next, click on **Add file** and **Creat
 {{< figure src="/images/blog/deploy-icevision-hfspace/files_version_tab.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
 Name your file as `requirements.txt` and paste the following snippets as the content. Click on **Commit new file** button at the bottom of the page.
-```bash
+```bash {linenos=table}
 --find-links https://download.openmmlab.com/mmcv/dist/cpu/torch1.10.0/index.html
 mmcv-full==1.3.17
 mmdet==2.17.0
@@ -165,7 +165,7 @@ icevision[all]==0.12.0
 ```
 
 Now, do the same for `packages.txt` which only has the OpenCV package as the file content.
-```bash
+```bash {linenos=table}
 python3-opencv
 ```
 We are now done adding all installation files into our Space.
