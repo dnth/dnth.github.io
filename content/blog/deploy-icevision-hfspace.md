@@ -30,12 +30,6 @@ backbone = model_type.backbones.resnet50_fpn_mstrain_2x
 
 After you're satisfied with the performance of your model, let's save the model into a checkpoint to be used for inferencing later.
 With IceVision this can be done easily. Just add the following snippet to your notebook and run.
-Feel free to modify the `model_name`, `backbone_name` according to the model you used during training.
-The `img_size` argument is image size that the model is trained on.
-The `classes` argument is a list of classes from the dataset.
-The `filename` argument specifies the directory and name of the checkpoint file.
-The `meta` argument stores other metadata that you would like to keep track of for future reference.
-
 ``` python {linenos=table}
 from icevision.models.checkpoint import *
 save_icevision_checkpoint(model,
@@ -46,6 +40,14 @@ save_icevision_checkpoint(model,
                         filename='./models/model_checkpoint.pth',
                         meta={'icevision_version': '0.12.0'})
 ```
+
+Feel free to modify the `model_name`, `backbone_name` according to the model you used during training.
+The `img_size` argument is image size that the model is trained on.
+The `classes` argument is a list of classes from the dataset.
+The `filename` argument specifies the directory and name of the checkpoint file.
+The `meta` argument stores other metadata that you would like to keep track of for future reference.
+
+
 The notebook that I used for this section can be found [here](https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/static/images/blog/deploy-icevision-hfspace/training_vfnet.ipynb).
 
 ### User Interface with Gradio
