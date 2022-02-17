@@ -46,7 +46,7 @@ save_icevision_checkpoint(model,
                         filename='./models/model_checkpoint.pth',
                         meta={'icevision_version': '0.12.0'})
 ```
-The notebook that I used for this section can be found [here](https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/static/images/blog/deploy-icevision-hfspace/training_retinanet.ipynb).
+The notebook that I used for this section can be found [here](https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/static/images/blog/deploy-icevision-hfspace/training_vfnet.ipynb).
 
 ### User Interface with Gradio
 At this point, in order to run inference on the model, one will need to write inference codes as shown [here](https://airctic.com/0.12.0/).
