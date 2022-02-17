@@ -1,6 +1,6 @@
 ---
 title: "Deploy IceVision Models on HuggingFace Spaces"
-date: 2022-01-13T13:42:56+08:00
+date: 2022-02-17T13:42:56+08:00
 featureImage: images/blog/deploy-icevision-hfspace/feature_image.gif
 postImage: images/blog/deploy-icevision-hfspace/train-deploy-share.png
 ---
@@ -38,9 +38,9 @@ The `meta` argument stores other metadata that you would like to keep track of f
 
 ``` python
 from icevision.models.checkpoint import *
-save_icevision_checkpoint(learn.model,
-                        model_name='torchvision.retinanet', 
-                        backbone_name='resnet50_fpn',
+save_icevision_checkpoint(model,
+                        model_name='mmdet.vfnet', 
+                        backbone_name='resnet50_fpn_mstrain_2x',
                         img_size=image_size,
                         classes=parser.class_map.get_classes(),
                         filename='./models/model_checkpoint.pth',
@@ -84,9 +84,9 @@ valid_tfms = tfms.A.Adapter([*tfms.A.resize_and_pad(img_size), tfms.A.Normalize(
 
 # Populate examples in Gradio interface
 examples = [
-    ['sample_images/1.jpg'],
-    ['sample_images/2.jpg'],
-    ['sample_images/3.jpg']
+    ['1.jpg'],
+    ['2.jpg'],
+    ['3.jpg']
 ]
 
 def show_preds(input_image):
@@ -106,7 +106,7 @@ gr_interface = gr.Interface(
     inputs=["image"],
     outputs=[gr.outputs.Image(type="pil", label="RetinaNet Inference")],
     title="Fridge Object Detector",
-    description="This RetinaNet model detects common objects found in fridge. Upload an image or click an example image below to use.",
+    description="A VFNet model that detects common objects found in fridge. Upload an image or click an example image below to use.",
     examples=examples,
 )
 gr_interface.launch(inline=False, share=False, debug=True)
@@ -142,7 +142,7 @@ Alternatively, you can also add files into the Space directly using the user int
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/empty_repo.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
-#### Adding related files
+#### Installation files
 In this blog post, I am going to show you how add files into your Space using the browser. 
 There are three files required to setup the Space namely `app.py`, `requirements.txt`, and `packages.txt`.
 
@@ -159,24 +159,17 @@ Name your file as `app.py` and paste the code from the previous section. Click o
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/files_version_tab.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
-If you've used a `mmdetection` model, you need to add the following lines at the beginning of the `app.py` or it will not work.
+#### Gradio app, checkpoint and sample images
 
-```python
-import subprocess
-import sys
-print("Reinstalling mmcv")
-subprocess.check_call([sys.executable, "-m", "pip", "uninstall", "-y", "mmcv-full==1.3.17"])
-subprocess.check_call([sys.executable, "-m", "pip", "install", "mmcv-full==1.3.17", "-f", "https://download.openmmlab.com/mmcv/dist/cpu/torch1.10.0/index.html"])
-print("mmcv install complete") 
-```
 
 
 Add `requirements.txt` file using the same method. Below are the contents of the file.
 ```bash
-gradio==2.4.0
-icevision[all]
-mmcv-full==1.3.17 -f https://download.openmmlab.com/mmcv/dist/cpu/torch1.10.0/index.html
+--find-links https://download.openmmlab.com/mmcv/dist/cpu/torch1.10.0/index.html
+mmcv-full==1.3.17
 mmdet==2.17.0
+gradio==2.7.5
+icevision[all]==0.12.0
 ```
 
 Now, do the same for the last file `packages.txt` which only has the OpenCV package.
@@ -195,9 +188,15 @@ A **Building** status should appear indicating that it is setting up by installi
 The following is the screenshot on Space.
 You can try out the Space yourself [here](https://huggingface.co/spaces/dnth/webdemo-fridge-detection).
 
+
+
+Complete files and Space running.
+{{< figure src="/images/blog/deploy-icevision-hfspace/complete_upload.png" alt="Screenshot of the Onion homepage" width=750 >}}
+
+{{< figure src="/images/blog/deploy-icevision-hfspace/screenshot_app.png" alt="Screenshot of the Onion homepage" width=750 >}}
+
+
 {{< figure src="/images/blog/deploy-icevision-hfspace/screenshot.png" alt="Screenshot of the Onion homepage" width=750 >}}
-
-
 <!-- <html>
 <head>
 <link rel="stylesheet" href="https://gradio.s3-us-west-2.amazonaws.com/2.6.2/static/bundle.css">
