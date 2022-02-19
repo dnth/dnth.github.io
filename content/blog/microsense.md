@@ -3,7 +3,8 @@ title: "Counting microalgaes with MicroSense"
 date: 2022-02-14T15:07:15+08:00
 featureImage: images/blog/counting-microalgaes-with-microsensee/feature_image.gif
 postImage: images/blog/counting-microalgaes-with-microsensee/detection.png
-
+tags: ["Flutter"]
+categories: ["deep learning"]
 ---
 
 ### Introduction
