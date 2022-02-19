@@ -1,6 +1,5 @@
 {{ define "main" }}
 
-
 <header class="breadCrumb">
   <div class="container">
     <div class="row">
@@ -32,6 +31,12 @@
         <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>;
         {{ end }}
       </div>
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <i class="fa fa-folder-open"></i> &ensp;
+        {{ range (.GetTerms "categories") }}
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>;
+        {{ end }}
+      </div>
     </div>
   </div>
   </div>
@@ -44,7 +49,7 @@
     <img src={{ "images/hero/figure-svg.svg" | absURL }} alt="">
   </div>
   <div class="animate-shape">
-    <!-- <img src="images/skill/skill-background-shape.svg" alt="background-shape"> -->
+    <img src={{ "images/skill/skill-background-shape.svg" | absURL }} alt="">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
       <defs>
         <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
