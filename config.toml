@@ -6,6 +6,10 @@ title = "Dickson Neoh - Personal Portfolio"
 [markup.goldmark.renderer]
   unsafe = true # Allow HTML in md files
 
+[taxonomies]
+   tag = "tags"
+   category = "categories"
+
 # Main Menu
 [[menu.main]]
 name = "Home"
