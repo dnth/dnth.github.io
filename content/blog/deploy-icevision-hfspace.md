@@ -176,13 +176,13 @@ python3-opencv
 We are now done adding all installation files into our Space.
 
 
-#### Gradio app, checkpoint and sample images
+#### Gradio application file
 Next let's add the Gradio app, model checkpoint and some sample images.
 Let's add the `app.py` we had from the previous section using the same method we did for the installation files.
 The `app.py` hosts the logic of your application and this is where the code for the Gradio app resides.
 Space will automatically run `app.py` upon startup.
 
-
+#### Model checkpoint and samples
 Next let's add our checkpoint file `model_checkpoint.pth` by clicking on **Upload File**.
 Drag and drop the model checkpoint file and click on **Commit changes**.
 
@@ -199,10 +199,16 @@ Once the building completes, the status changes to **Running** and the Space sho
 
 {{< figure src="/images/blog/deploy-icevision-hfspace/screenshot_apps.png" alt="Screenshot of the Onion homepage" width=750 >}}
 
-The final app looks like the following
+The completed app looks like the following
 {{< figure src="/images/blog/deploy-icevision-hfspace/screenshot_final.png" alt="Screenshot of the Onion homepage" width=750 >}}
 You can now share the URL to your Space to anyone across the internet for free.
-[Here](https://huggingface.co/spaces/dnth/icevision_fridge_tutorial) is the link to the Space used in this blog post.
+
+
+#### Conclusion
+This blog post outlined a step-by-step guide on how you can deploy IceVision models on HuggingFace Space in just a few steps. Hope this helps you share the awesomeness of your model to anyone across the world.
+The Space used in this blog post can be found [here](https://huggingface.co/spaces/dnth/icevision_fridge_tutorial).
+
+Happy learning.
 
 
 <div id="disqus_thread"></div>
