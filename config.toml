@@ -10,6 +10,12 @@ title = "Dickson Neoh - Personal Portfolio"
    tag = "tags"
    category = "categories"
 
+[markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 2
+
 # Main Menu
 [[menu.main]]
 name = "Home"

@@ -5,6 +5,7 @@ featureImage: images/blog/deploy-icevision-hfspace/feature_image.gif
 postImage: images/blog/deploy-icevision-hfspace/train-deploy-share.png
 tags: ["IceVision", "Spaces"]
 categories: ["deployment", "deep learning"]
+toc: true
 ---
 
 ### Introduction
