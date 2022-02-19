@@ -204,7 +204,7 @@ The completed app looks like the following
 You can now share the URL to your Space to anyone across the internet for free.
 
 
-#### Conclusion
+### Conclusion
 This blog post outlined a step-by-step guide on how you can deploy IceVision models on HuggingFace Space in just a few steps. Hope this helps you share the awesomeness of your model to anyone across the world.
 The Space used in this blog post can be found [here](https://huggingface.co/spaces/dnth/icevision_fridge_tutorial).
 
