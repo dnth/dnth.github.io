@@ -3,6 +3,9 @@ title: "Deploy IceVision Models on HuggingFace Spaces"
 date: 2022-02-17T13:42:56+08:00
 featureImage: images/blog/deploy-icevision-hfspace/feature_image.gif
 postImage: images/blog/deploy-icevision-hfspace/train-deploy-share.png
+tags: "IceVision"
+readTime: "20 mins"
+author: Dickson Neoh
 ---
 
 ### Introduction
