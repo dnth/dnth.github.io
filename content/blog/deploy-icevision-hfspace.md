@@ -203,6 +203,7 @@ examples = [
 ]
 {{< / highlight >}}
 
+
 At this point the Space repository should look like the following
 {{< figure src="/images/blog/deploy-icevision-hfspace/complete_upload.png" alt="Screenshot of the Onion homepage" width=750 >}}
 Once the building completes, the status changes to **Running** and the Space should look like the following and is now ready to be used.
