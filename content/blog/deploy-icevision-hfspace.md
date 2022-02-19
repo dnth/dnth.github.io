@@ -193,6 +193,16 @@ You will also see a **Building** status indicating that it is setting up by inst
 Every time there is a change in any of the files, the Space will be rebuilt.
 
 Using the same method let's upload the sample images as well.
+Make sure the filename of your sample image matches the filename specified in line 20-24 of `app.py`.
+
+{{< highlight python "linenos=inline,hl_lines=8 15-17,linenostart=20" >}}
+examples = [
+    ['1.jpg'],
+    ['2.jpg'],
+    ['3.jpg']
+]
+{{< / highlight >}}
+
 At this point the Space repository should look like the following
 {{< figure src="/images/blog/deploy-icevision-hfspace/complete_upload.png" alt="Screenshot of the Onion homepage" width=750 >}}
 Once the building completes, the status changes to **Running** and the Space should look like the following and is now ready to be used.
