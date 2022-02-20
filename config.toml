@@ -16,12 +16,7 @@ title = "Dickson Neoh - Personal Portfolio"
     ordered = false
     startLevel = 2
 
-[Params.social.share]
-  facebook = true
-  linkedin = true
-  twitter = true
-  whatsapp = true
-  email = true
+
 
 # Main Menu
 [[menu.main]]
@@ -119,3 +114,10 @@ icon = "fa-github-square"
 url = "https://github.com/dnth"
 weight = 3
 
+# Socaial share button
+[params.share]
+  facebook = true
+  linkedin = true
+  twitter = true
+  whatsapp = true
+  email = true
