@@ -5,6 +5,8 @@ featureImage: images/blog/Counting_Microalgaes_with_MicroSense/feature_image.gif
 postImage: images/blog/Counting_Microalgaes_with_MicroSense/post_image.png
 tags: ["Flutter"]
 categories: ["deep learning"]
+toc: true
+socialshare: true
 ---
 
 ### Introduction

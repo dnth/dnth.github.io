@@ -16,6 +16,13 @@ title = "Dickson Neoh - Personal Portfolio"
     ordered = false
     startLevel = 2
 
+[Params.social.share]
+  facebook = true
+  linkedin = true
+  twitter = true
+  whatsapp = true
+  email = true
+
 # Main Menu
 [[menu.main]]
 name = "Home"

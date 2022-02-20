@@ -6,6 +6,8 @@ postImage: images/blog/Deploy_IceVision_Models_on_HuggingFace_Spaces/post_image.
 tags: ["IceVision", "Spaces"]
 categories: ["deployment", "deep learning"]
 toc: true
+socialshare: true
+
 ---
 
 ### Introduction
@@ -221,7 +223,7 @@ The Space used in this blog post can be found [here](https://huggingface.co/spac
 
 Happy learning.
 
-<div id="disqus_thread"></div>
+<!-- <div id="disqus_thread"></div>
 <script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -239,7 +241,7 @@ Happy learning.
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
 
 
 <!-- <html>
