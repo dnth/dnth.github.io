@@ -62,7 +62,7 @@ The following figure shows a screenshot of the Gradio app that runs in the brows
 The left pane shows the input image, and the right pane shows the inference results.
 Users can upload an image or select from a list of example images and click on *Submit* to run it through the model for inference.
 
-{{< figure src="gradio.png" >}}
+{{< figure_resizing src="gradio.png" >}}
 
 So how do we load our model into the Gradio app? First, we must first install the Gradio package by running `pip install gradio`.
 Next, create a file with the name `app.py` and paste the following codes into the file.
@@ -133,19 +133,19 @@ You can discover and try them out [here](https://huggingface.co/spaces).
 To host a model on Spaces, you must sign up for an account at [`https://huggingface.co/`](https://huggingface.co/).
 After that, head over to [`https://huggingface.co/spaces`](https://huggingface.co/spaces) and click on **Create New Space** button as shown below.
 
-{{< figure src="create_new_space.png">}}
+{{< figure_resizing src="create_new_space.png">}}
 
 Next fill in the Space name and select a License. 
 Make sure to select Gradio as the Space SDK and keep the repository **Public**. Click on **Create space** button when you're done.
 
-{{< figure src="space_details.png">}}
+{{< figure_resizing src="space_details.png">}}
 
 Once done, your Space is now ready.
 The Space you've created behaves like a `git` repository.
 You can perform various `git` related operations such as `git clone`, `git push` and `git pull` to update the repository.
 Alternatively, you can also add files into the Space directly in the browser.
 
-{{< figure src="empty_repo.png" >}}
+{{< figure_resizing src="empty_repo.png" >}}
 In this blog post, I am going to show you how add files into your Space using the browser. 
 
 #### Installation files
@@ -158,7 +158,7 @@ For some reason putting the OpenCV package in the `requirements.txt` file doesn'
 
 Let's begin adding these files.
 Click on the **Files and versions** tab. Next, click on **Add file** and **Create a new file**.
-{{< figure src="files_version_tab.png" >}}
+{{< figure_resizing src="files_version_tab.png" >}}
 
 Name your file as `requirements.txt` and paste the following snippets as the content. Click on **Commit new file** button at the bottom of the page.
 ```bash {linenos=table}
@@ -186,8 +186,8 @@ Space will automatically run `app.py` upon startup.
 Next let's add our checkpoint file `model_checkpoint.pth` by clicking on **Upload File**.
 Drag and drop the model checkpoint file and click on **Commit changes**.
 
-<!-- {{< figure src="/images/blog/deploy-icevision-hfspace/upload_file.png" alt="Screenshot of the Onion homepage" width=750 >}} -->
-{{< figure src="drop_files.png" >}}
+<!-- {{< figure_resizing src="/images/blog/deploy-icevision-hfspace/upload_file.png" alt="Screenshot of the Onion homepage" width=750 >}} -->
+{{< figure_resizing src="drop_files.png" >}}
 
 You will also see a **Building** status indicating that it is setting up by installing the packages and running it upon completion.
 Every time there is a change in any of the files, the Space will be rebuilt.
@@ -205,13 +205,13 @@ examples = [
 
 
 At this point the Space repository should look like the following
-{{< figure src="complete_upload.png" >}}
+{{< figure_resizing src="complete_upload.png" >}}
 Once the building completes, the status changes to **Running** and the Space should look like the following and is now ready to be used.
 
-{{< figure src="screenshot_apps.png" >}}
+{{< figure_resizing src="screenshot_apps.png" >}}
 
 The completed app looks like the following
-{{< figure src="screenshot_final.png" >}}
+{{< figure_resizing src="screenshot_final.png" >}}
 You can now share the URL to your Space to anyone across the internet for free.
 
 
@@ -220,7 +220,6 @@ This blog post outlined a step-by-step guide on how you can deploy IceVision mod
 The Space used in this blog post can be found [here](https://huggingface.co/spaces/dnth/icevision_fridge_tutorial).
 
 Happy learning.
-
 
 <div id="disqus_thread"></div>
 <script>
