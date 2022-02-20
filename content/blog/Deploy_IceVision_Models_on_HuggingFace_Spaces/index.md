@@ -1,8 +1,8 @@
 ---
 title: "Deploy IceVision Models on HuggingFace Spaces"
 date: 2022-02-17T13:42:56+08:00
-featureImage: images/blog/deploy-icevision-hfspace/feature_image.gif
-postImage: images/blog/deploy-icevision-hfspace/train-deploy-share.png
+featureImage: images/blog/Deploy_IceVision_Models_on_HuggingFace_Spaces/feature_image.gif
+postImage: images/blog/Deploy_IceVision_Models_on_HuggingFace_Spaces/post_image.png
 tags: ["IceVision", "Spaces"]
 categories: ["deployment", "deep learning"]
 toc: true
