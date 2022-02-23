@@ -4,6 +4,11 @@
 {{ $url := printf "%s" .Permalink }}
 {{ $body := print $title ", by " .Site.Title "\n" .Params.description "\n\n" $url "\n" }}
 
+<!--  -->
+
+
+
+
 <section class="social-share">
 
     <ul class="share-icons">
@@ -12,13 +17,15 @@
         <!-- Twitter -->
         {{ if .Site.Params.share.twitter }}
         <li>
-            <a href="https://twitter.com/intent/tweet?hashtags=codingnconcepts&amp;url={{ .Permalink }}&amp;text={{ .Title }}"
-                target="_blank" rel="noopener" aria-label="Share on Twitter" class="share-btn twitter">
+            <a href="https://twitter.com/intent/tweet?&amp;url={{ .Permalink }}&amp;text={{ .Title }}" target="_blank"
+                rel="noopener" aria-label="Share on Twitter" class="share-btn twitter">
                 {{ partial "svg/twitter_white.svg" (dict "class" "widget-social__link-icon") }}
                 <p>Twitter</p>
             </a>
         </li>
         {{ end }} &nbsp;
+
+
 
         <!-- Facebook -->
         {{ if .Site.Params.share.facebook }}
@@ -42,10 +49,22 @@
         </li>
         {{ end }} &nbsp;
 
+        <!-- Telegram -->
+        {{ if .Site.Params.share.twitter }}
+        <li>
+            <a href="https://telegram.me/share/url?text={{ .Title }}&amp;url={{ .Permalink }}" target="_blank"
+                rel="noopener" aria-label="Share on Telegram" class="share-btn telegram">
+                {{ partial "svg/telegram_white.svg" (dict "class" "widget-social__link-icon") }}
+                <p>Twitter</p>
+            </a>
+        </li>
+        {{ end }} &nbsp;
+
         <!-- WhatsApp -->
         {{ if .Site.Params.share.whatsapp }}
         <li>
-            <a href="whatsapp://send?text={{ $body }}" target="_blank" class="share-btn whatsapp">
+            <a href="whatsapp://send?text={{ $body }}" target="_blank" aria-label="Share on WhatsApp"
+                class="share-btn whatsapp">
                 {{ partial "svg/whatsapp_white.svg" (dict "class" "widget-social__link-icon") }}
                 <p>Email</p>
             </a>
@@ -56,7 +75,7 @@
         {{ if .Site.Params.share.email }}
         <li>
             <a href="mailto:?subject={{ .Site.Title }} - {{ $title }}.&amp;body={{ $body }}" target="_blank"
-                class="share-btn email">
+                class="share-btn email" aria-label="Share via Email">
                 {{ partial "svg/email_white.svg" (dict "class" "widget-social__link-icon") }}
                 <p>Email</p>
             </a>
