@@ -74,5 +74,5 @@ Checkout the app published on Google Playstore [here](https://play.google.com/st
 
 #### Remote Inference
 
-#### Conclusion
+### Conclusion
 Github [repo](https://github.com/dnth/webdemo-microalgae-detection)
