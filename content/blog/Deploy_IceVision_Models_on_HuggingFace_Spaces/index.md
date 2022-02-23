@@ -124,7 +124,7 @@ If there are no errors, the terminal will show local URL to access the Gradio ap
 You can copy the address and open it with a browser.
 The URL address on my machine is `http://127.0.0.1:7860/`, it may vary on yours.
 
-### HuggingFace Spaces
+### Hugging Face Spaces
 The Gradio app URL link from the previous section can only be accessed locally. But what if you would like to share the link to someone across the internet for free?
 In this section, we will discover how to make your Gradio app accessible to anyone by deploying the app on a free platform known as HuggingFace [Spaces](https://huggingface.co/spaces).
 Spaces is the new 'marketplace' for various bleeding edge machine learning models.
@@ -156,7 +156,9 @@ The packages are specified in two files ie. `requirements.txt`, and `packages.tx
 
 The `requirements.txt` lists all the `Python` packages that will be `pip`-installed on the Space.
 The `packages.txt` is a file created to specify the OpenCV version to be installed on your Space.
-For some reason putting the OpenCV package in the `requirements.txt` file doesn't work.
+This package will be read and installed with `apt-get install`.
+For some reason putting the `opencv-python` package in the `requirements.txt` file doesn't work.
+
 
 Let's begin adding these files.
 Click on the **Files and versions** tab. Next, click on **Add file** and **Create a new file**.
