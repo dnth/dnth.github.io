@@ -1,6 +1,6 @@
 ---
 title: "MicroSense - A deep learning powered cell counting app with Flutter"
-date: 2022-02-14T15:07:15+08:00
+date: 2022-02-24T15:07:15+08:00
 featureImage: images/blog/Counting_Microalgaes_with_MicroSense/feature_image.gif
 postImage: images/blog/Counting_Microalgaes_with_MicroSense/post_image.png
 tags: ["Flutter", "HuggingFace", "Android"]
@@ -12,23 +12,28 @@ socialshare: true
 ### Motivation
 Numerous biology and medical procedure involve counting cells from images taken with microscope.
 Counting cells reveals the concentration of bacteria and viruses and gives vital information on the progress of a disease.
-Uses hemocytometer or a counting chamber.
-Creates volumetric grid for accurate counting. Done properly can be accurate. Don't require sophisticated instrument can be easily performed.
-Image shows a sample image from a hemocytometer.
+To accomplish the counting, a device known as the hemocytometer or a counting chamber is used.
+The hemocytometer creates volumetric grid to divide each region on the image for accurate counting. 
+The following image shows an image taken from a hemocytometer.
 
 {{< figure_resizing src="hemocytometer.jpg" >}}
 
-Microbiologist often count cells manually this is a method known as direct counting.
+In the image, present in the foreground are the microalgae cells to be counted and the background, volumetric grids. 
+This counting method is also known as direct counting.
+Direct counting is the easiest counting method that can be performed by anyone without the need of sophisticated instruments.
+If done properly and meticulously, this method can be accurate.
 
-This process can be tedious and prone to mistakes.
-Why not automate the counting using a trained deep learning model?
-This blog post showcases MicroSense, a proof-of-concept product that can automate the counting of microalgae cells or any cells for that matter using deep learning and computer vision.
+However, as with many other human-performed tasks, direct counting may be prone to human error due.
+Can we instead offload the tedious and repetitive counting to a machine instead?
+In this blog post, we showcase a proof-of-concept idea on using deep learning to count microalgae cells.
 
-In this blog post I will teach you how to:
-1. Train a deep learning model with IceVision to count microalgae cells.
-2. Deploy the model on a mobile app with Flutter and Hugging Face Spaces.
+In this blog post we will cover the following:
 
-{{< figure_resizing src="microsense_logo.png" link="https://play.google.com/store/apps/details?id=com.micro.sense">}}
++ Train a deep learning model with IceVision.
++ Host the model on Hugging Face.
++ Deploy an app on Android with Flutter.
+
+
 
 ### Model Development with IceVision
 Figure illustrates the raw detection of cells from microscope image. The model is a RetinaNet with a ResNet50 backbone trained using [IceVision](https://github.com/airctic/icevision).
@@ -76,3 +81,6 @@ Checkout the app published on Google Playstore [here](https://play.google.com/st
 
 ### Conclusion
 Github [repo](https://github.com/dnth/webdemo-microalgae-detection)
+
+{{< figure_resizing src="microsense_logo.png" link="https://play.google.com/store/apps/details?id=com.micro.sense">}}
+The app can be found in Google Playstore by the name MicroSense.
