@@ -37,25 +37,46 @@ Did I mention that all the tools used in this project are open-source and free o
 
 
 ### Model Development with IceVision
-In this section we are going to start developing our deep learning model using IceVision with a custom dataset.]
-If you haven't already checkout the extremely helpful getting started notebook
-We will be using Google Colab to develop our model. If you're ready, let's begin!
-The notebook that we will use can be found here.
+In this section we are going to start developing our deep learning model using IceVision with a custom dataset.
+You can either choose to develop the model on your local machine or in the cloud.
+For simplicity, we will be using Google Colab to develop this model.
+[Here](https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/content/blog/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/training_vfnet.ipynb) is an accompanying Colab notebook if you wish to follow along.
 
-#### Installation
-In order to use IceVision, we need to install it by running the following line.
-
-Figure illustrates the raw detection of cells from microscope image. The model is a RetinaNet with a ResNet50 backbone trained using [IceVision](https://github.com/airctic/icevision).
-{{< figure_resizing src="detection.png" >}}
 
 #### Preparing the dataset
-Collected from a local pond in Malaysia.
-
-Augmented using imgaug
-
-Sample training dataset
+Before embarking on any machine learning work, we must ensure that we have a dataset to work on.
+Our task at hand is to construct a model that can count microalgaes. 
+Since there are no public dataset available, we will have to curate our own dataset.
+The image below shows a dozen images take with a hemocytometer from a water sample belonging to a pond in Nilai, Malaysia.
 {{< figure_resizing src="dataset_sample.png" >}}
 
+There is only one issue now, and that is the images are not annotated. We will have to annotate all the images with an open source image labeling tool known as [labelImg](https://github.com/tzutalin/labelImg).
+`labelImg` allows us to annotate any images with class labels and bounding boxes surrounding the object of interest.
+The following figure shows a demo of `labelImg` taken from the GitHub repository.
+{{< figure_resizing src="labelimg_demo.jpg" >}}
+
+The easiest way to install `labelImg` on your local machine is to run `pip3 install labelImg` in the terminal.
+Once done, type `labelImg` in the same terminal and a window should pop open as shown in the image below.
+
+{{< figure_resizing src="labelimg_start.png" >}}
+
+Now, let's load the folder that contains the microalgae images into `labelImg` and annotate them! To do that, click on the **Open Dir** icon and navigate to the folder containing the images. An image should now show up in `labelImg`.
+Next click on the **Create RectBox** icon to start drawing bounding boxes around the microalgaes. Next you will be prompted to enter a label name. 
+Key in microalgae as the label name. Once done, a rectangular bounding box should appear on-screen.
+
+{{< figure_resizing src="labelimg_loaded.png" >}}
+
+Now comes the repetitive part, we will need to draw a bounding box for each microalgae cell for all images in the folder.
+To accelerate the process I highly recommend the use of Hotkeys keys with `labelImg`.
+{{< figure_resizing src="hotkeys.png" width=400 >}}
+
+Once done, remember to save the annotations. The annotations are saved in `XML` file with a filename matching to image as shown below.
+{{< figure_resizing src="xml_files.png" >}}
+
+Once all images are labelled, we will partition the image and annotations into three sets namely train set, validation set and test set.
+These will be used to train and evaluate our model in the next section.
+
+It took a few hours to meticulously label the images. The labeled images can be downloaded here.
 
 #### Training
 IceVision computer vision framework.
@@ -63,6 +84,9 @@ IceVision computer vision framework.
 #### Local Inference
 Inference on a local machine
 {{< figure_resizing src="inference.png" >}}
+
+Figure illustrates the raw detection of cells from microscope image. The model is a RetinaNet with a ResNet50 backbone trained using [IceVision](https://github.com/airctic/icevision).
+{{< figure_resizing src="detection.png" >}}
 
 ### Hosting model on Hugging Face Spaces
 Deploying a large deep learning model on mobile may not be the most effective way.
