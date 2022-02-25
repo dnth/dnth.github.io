@@ -36,12 +36,16 @@ This blog post we will cover the following:
 Did I mention that all the tools used in this project are open-source and free of charge? Yes!! If you're ready let's begin.
 
 
-### Model Development with IceVision
-In this section we are going to start developing our deep learning model using IceVision with a custom dataset.
-You can either choose to develop the model on your local machine or in the cloud.
-For simplicity, we will be using Google Colab to develop this model.
-[Here](https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/content/blog/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/training_vfnet.ipynb) is an accompanying Colab notebook if you wish to follow along.
+### Model Development
+In general, developing a deep learning model requires three basic steps. Firstly, a dataset needs to be in place to perform the task at hand. In this post we will need a dataset with annotated microalgae images.
+Secondly, we need a framework to construct a deep learning model. Some widely used ones include PyTorch and Tensorflow.
+Fastai is a wrapper built on top of PyTorch to make training deep learning models faster and more effective.
+Many Fastai students have won competitions using the techniques introduced in the Fastai [course](https://www.youtube.com/watch?v=_QUEXsHfsA0&list=PLfYUBJiXbdtRL3FMB3GoWHRI8ieU6FhfM&ab_channel=JeremyHoward).
 
+In this post, we will be using a computer vision library known as IceVision.
+IceVision is a computer vision focused library built to work with Fastai training loop.
+There are hundreds of deep learning models available on IceVision for various computer vision tasks such as object detection, instance segmentation and panoptic segmentation.
+It's very easy to get started with IceVision, check out the getting started tutorial notebook [here](https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb).
 
 #### Preparing the dataset
 Before embarking on any machine learning work, we must ensure that we have a dataset to work on.
@@ -78,17 +82,28 @@ These will be used to train and evaluate our model in the next section.
 
 It took a few hours to meticulously label the images. The labeled images can be downloaded here.
 
-#### Training
-IceVision computer vision framework.
+#### Training (WIP)
+In this section we are going to start training our deep learning model using IceVision with the dataset we curated.
+You can either choose to train the model on your local machine or in the cloud.
+For simplicity, we will be using Google Colab to develop this model.
+[Here](https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/content/blog/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/training_vfnet.ipynb) is an accompanying Colab notebook if you wish to follow along.
 
-#### Local Inference
+Load data
+
+Setting hyperparameters 
+
+Load pre-trained model and train
+
+Monitoring with callbacks
+
+#### Evaluating model (WIP)
 Inference on a local machine
 {{< figure_resizing src="inference.png" >}}
 
 Figure illustrates the raw detection of cells from microscope image. The model is a RetinaNet with a ResNet50 backbone trained using [IceVision](https://github.com/airctic/icevision).
 {{< figure_resizing src="detection.png" >}}
 
-### Hosting model on Hugging Face Spaces
+### Hosting model on Hugging Face Spaces (WIP)
 Deploying a large deep learning model on mobile may not be the most effective way.
 App will be big, inference will be slow due to the lightweight mobile processor.
 
@@ -102,17 +117,17 @@ This section shows how you can host the model on Hugging Face Spaces and use the
 Checkout the Space [here](https://huggingface.co/spaces/dnth/webdemo-microalgae-counting).
 Checkout the exposed API [here](https://hf.space/gradioiframe/dnth/webdemo-microalgae-counting/api).
 
-### Deploying on Android
+### Deploying on Android (WIP)
 
 Figure shows an Android app written using the Flutter framework. The inference is done by calling the API from our Space.
 Checkout the app published on Google Playstore [here](https://play.google.com/store/apps/details?id=com.micro.sense).
 {{< figure src="microsense.gif" >}}
 
-#### Setting up Flutter
+#### Setting up Flutter (WIP)
 
-#### Remote Inference
+#### Remote Inference (WIP)
 
-### Conclusion
+### Conclusion (WIP)
 Github [repo](https://github.com/dnth/webdemo-microalgae-detection)
 
 {{< figure_resizing src="microsense_logo.png" link="https://play.google.com/store/apps/details?id=com.micro.sense">}}
