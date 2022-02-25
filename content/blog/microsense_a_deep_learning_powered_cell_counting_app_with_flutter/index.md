@@ -23,20 +23,23 @@ This counting method is also known as direct counting.
 Direct counting is the easiest counting method that can be performed by anyone without the need of sophisticated instruments.
 If done properly and meticulously, this method can be accurate.
 
-However, as with many other human-performed tasks, direct counting may be prone to human error due.
+However, as with many other human-performed tasks, direct counting may be prone to human errors.
 Can we instead offload the tedious and repetitive counting to a machine instead?
-In this blog post, we showcase a proof-of-concept idea on using deep learning to count microalgae cells.
+In this blog post, we showcase a proof-of-concept idea on using deep learning to count microalgae cells and a step-by-step walkthrough on building it.
 
-In this blog post we will cover the following:
+This blog post we will cover the following:
 
-+ Train a deep learning model with IceVision.
-+ Host the model on Hugging Face.
-+ Deploy an app on Android with Flutter.
++ How train a deep learning model with [IceVision](https://github.com/airctic/icevision) package.
++ Hosting the model on [Hugging Face Spaces](https://huggingface.co/spaces) for remote inferencing.
++ Deploy an app on Android with the [Flutter](https://flutter.dev/) framework.
+
+Did I mention that all the tools used in the project are open-source and free of charge? Yes!! If you're ready let's begin.
 
 
 ### Model Development with IceVision
 In this section we are going to start developing our deep learning model using [IceVision](https://github.com/airctic/icevision) - A computer vision framework package in Python.
 We will be using Google Colab to develop our model. If you're ready, let's begin!
+The notebook that we will use can be found here.
 
 #### Installation
 In order to use IceVision, we need to install it by running the following line.
