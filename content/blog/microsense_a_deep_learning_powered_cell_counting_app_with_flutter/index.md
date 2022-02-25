@@ -33,11 +33,12 @@ This blog post we will cover the following:
 + Hosting the model on [Hugging Face Spaces](https://huggingface.co/spaces) for remote inferencing.
 + Deploy an app on Android with the [Flutter](https://flutter.dev/) framework.
 
-Did I mention that all the tools used in the project are open-source and free of charge? Yes!! If you're ready let's begin.
+Did I mention that all the tools used in this project are open-source and free of charge? Yes!! If you're ready let's begin.
 
 
 ### Model Development with IceVision
-In this section we are going to start developing our deep learning model using [IceVision](https://github.com/airctic/icevision) - A computer vision framework package in Python.
+In this section we are going to start developing our deep learning model using IceVision with a custom dataset.]
+If you haven't already checkout the extremely helpful getting started notebook
 We will be using Google Colab to develop our model. If you're ready, let's begin!
 The notebook that we will use can be found here.
 

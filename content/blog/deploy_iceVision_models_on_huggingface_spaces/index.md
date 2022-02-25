@@ -53,7 +53,7 @@ The `filename` argument specifies the directory and name of the checkpoint file.
 The `meta` argument stores other metadata that you would like to keep track of for future reference.
 
 
-The notebook that I used for this section can be found [here](https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/static/images/blog/deploy-icevision-hfspace/training_vfnet.ipynb).
+The notebook that I used for this section can be found [here](https://colab.research.google.com/github/dnth/dnth.github.io/blob/main/content/blog/deploy_iceVision_models_on_huggingface_spaces/training_vfnet.ipynb).
 
 ### User Interface with Gradio
 At this point, in order to run inference on the model, one will need to write inference codes as shown [here](https://airctic.com/0.12.0/).
