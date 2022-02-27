@@ -2,7 +2,7 @@
 title: "Deep Learning on Android with Flutter and Hugging Face"
 date: 2022-02-24T15:07:15+08:00
 featureImage: images/blog/deep_learning_on_android_with_flutter_and_hugging_face/feature_image.gif
-postImage: images/blog/deep_learning_on_android_with_flutter_and_hugging_face/post_image_.png
+postImage: images/blog/deep_learning_on_android_with_flutter_and_hugging_face/post_image.jpg
 tags: ["Flutter", "HuggingFace", "Android"]
 categories: ["deployment", "training"]
 toc: true

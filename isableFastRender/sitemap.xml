@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://localhost:1313/portfolio/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/android/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/blog/deep_learning_on_android_with_flutter_and_hugging_face/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/deployment/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/flutter/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/huggingface/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/portfolio/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/training/</loc>
+    <lastmod>2022-02-24T15:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/blog/deploy_icevision_models_on_huggingface_spaces/</loc>
+    <lastmod>2022-02-17T13:42:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/gradio/</loc>
+    <lastmod>2022-02-17T13:42:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/icevision/</loc>
+    <lastmod>2022-02-17T13:42:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/contact/</loc>
+  </url>
+  
+</urlset>
