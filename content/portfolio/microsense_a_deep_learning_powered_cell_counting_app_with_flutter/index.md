@@ -27,6 +27,10 @@ However, as with many other human-performed tasks, direct counting may be prone 
 Can we instead offload the tedious and repetitive counting to a machine instead?
 In work, we showcase a minimum viable product (MVP) Android app that uses a deep learning object detection model in the background to count the microalgae cells.
 
+### Architecture
+The image below shows the architecture of the entire app.
+
+{{< figure_resizing src="architecture.png" >}}
 
 ### Speed-Accuracy Trade Off
 One of the many concerns in putting a sophisticated deep learning model on an Android app is the portability.
@@ -57,9 +61,7 @@ The drawback in this case is the latency of the model inference now depends on t
 However, with the 1ms latency claim on the paid tier, we wonder if real-time inference is possible. This is something we have not explored in this MVP. But it will be interesting to know.
 
 
-The image below shows the architecture of the entire app.
 
-{{< figure_resizing src="architecture.png" >}}
 
 ### Android App
 The Android app was built using the Google [Flutter](https://flutter.dev/) framework.
