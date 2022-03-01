@@ -56,14 +56,19 @@ This takes a huge burden off the Android app and significantly improves app port
 The drawback in this case is the latency of the model inference now depends on the network connection to the inference server which is not an issue for this app since we do not need a real-time inference.
 However, with the 1ms latency claim on the paid tier, we wonder if real-time inference is possible. This is something we have not explored in this MVP. But it will be interesting to know.
 
+
+The image below shows the architecture of the entire app.
+
+{{< figure_resizing src="architecture.png" >}}
+
 ### Android App
-
-Github [repo](https://github.com/dnth/webdemo-microalgae-detection)
-
-{{< figure_resizing src="microsense_logo.png" link="https://play.google.com/store/apps/details?id=com.micro.sense">}}
-The app can be found in Google Playstore by the name MicroSense.
-
-
-Figure shows an Android app written using the Flutter framework. The inference is done by calling the API from our Space.
-Checkout the app published on Google Playstore [here](https://play.google.com/store/apps/details?id=com.micro.sense).
+The Android app was built using the Google [Flutter](https://flutter.dev/) framework.
+Now, instead of having to embed the model in the app, all we need to do is to send an `HTTP` `POST` request to the Hugging Face server with an image as the input.
+Once the server receives the request, an inference on the model is run and the output is returned to the Android app as a response.
+The screenshot below illustrates the Android app sending a sample image to the inference server and getting a response on the number of detected microalgae cells on the image.
 {{< figure src="microsense.gif" >}}
+
+The app can be found in Google Playstore by the name [MicroSense]((https://play.google.com/store/apps/details?id=com.micro.sense)).
+{{< figure_resizing src="microsense_logo.png" link="https://play.google.com/store/apps/details?id=com.micro.sense">}}
+Try it out and leave us a message if you find it useful or are keen to develop the app further. 
+
