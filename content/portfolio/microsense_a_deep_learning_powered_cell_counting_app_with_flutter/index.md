@@ -28,7 +28,9 @@ Can we instead offload the tedious and repetitive counting to a machine instead?
 In work, we showcase a minimum viable product (MVP) Android app that uses a deep learning object detection model in the background to count the microalgae cells.
 
 ### Architecture
-The image below shows the architecture of the entire app.
+The image below illustrates the architecture of this work.
+In order to keep the Android app lightweight, we kept the model in a cloud inference server where it can serve the prediction to our mobile app via API calls.
+At the same time, we can also monitor and update the model in the inference server by deploying them from our local machine used for training.
 
 {{< figure_resizing src="architecture.png" >}}
 
@@ -73,4 +75,4 @@ The screenshot below illustrates the Android app sending a sample image to the i
 The app can be found in Google Playstore by the name [MicroSense]((https://play.google.com/store/apps/details?id=com.micro.sense)).
 {{< figure_resizing src="microsense_logo.png" link="https://play.google.com/store/apps/details?id=com.micro.sense">}}
 Try it out and leave us a message if you find it useful or are keen to develop the app further. 
-
+If you're interested to find out how I made the app from scratch, I wrote a tutorial blog post about it [here](https://dicksonneoh.com/blog/deep_learning_on_android_with_flutter_and_hugging_face/).
