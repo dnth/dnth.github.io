@@ -1,8 +1,8 @@
 ---
-title: "My journey to becoming IceVision core developer"
+title: "My learnings in contributing to open-source"
 date: 2022-03-29T19:07:15+08:00
 featureImage: images/blog/deep_learning_on_android_with_flutter_and_hugging_face/feature_image.gif
-postImage: images/blog/deep_learning_on_android_with_flutter_and_hugging_face/post_image.jpg
+postImage: images/blog/my_learnings_in_contributing_to_open-source/post_image.jpeg
 tags: ["personal"]
 categories: ["open-source", "learnings"]
 toc: true
