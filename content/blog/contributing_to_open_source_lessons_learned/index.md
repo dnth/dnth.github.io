@@ -36,6 +36,10 @@ First, learning in public is powerful compared to learning in private.
 
 {{< tweet 1504850040963092480>}}
 
+Ranked number 26 on top GitHub [contributors](https://github.com/gayanvoice/top-github-users/blob/main/markdown/public_contributions/malaysia.md) out of 1000+ contributors from Malaysia. 
+The ranking is based on the amount of public contribution on GitHub.
+{{< figure_resizing src="top_cont.png" >}}
+
 #### Free Mentorship
 Learning from other people's questions.
 Received mentorship by maintainers.
