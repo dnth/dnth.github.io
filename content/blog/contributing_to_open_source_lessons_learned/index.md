@@ -1,10 +1,10 @@
 ---
-title: "My learnings in contributing to open-source"
-date: 2022-03-29T19:07:15+08:00
-featureImage: images/blog/my_learnings_in_contributing_to_open-source/feature_image.gif
-postImage: images/blog/my_learnings_in_contributing_to_open-source/post_image.jpeg
-tags: ["personal"]
-categories: ["open-source", "learnings"]
+title: " Contributing to open-source: Lessons learned"
+date: 2022-04-01T19:07:15+08:00
+featureImage: images/blog/contributing_to_open_source_lessons_learned/feature_image.gif
+postImage: images/blog/contributing_to_open_source_lessons_learned/post_image.jpeg
+categories: ["personal"]
+tags: ["open-source", "self-development"]
 toc: true
 socialshare: true
 ---
@@ -15,6 +15,10 @@ I was recently given the recognition by the folks at IceVision to be part of the
 {{< tweet 1504457803552935943>}}
 
 ### Lessons Learned
+Looking back at how far I came, I was astonished.
+It was just 3 months back that I learned how to open a *Pull Request* on GitHub. 
+Despite having coded for over 10 years, I have never bothered to learn about something so commonly used in the software world - Git, a version control system.
+I took the plunge, and the first step was painful. But every subsequent steps got better and better. I never looked back since.
 Here are some of the lessons I learned along the way that changed me in so many ways.
 I have been coding for more than 10 years now. However, this experience have changed me in many ways.
 I wish I had started earlier. If you are new and want to contribute to open source, start now.
