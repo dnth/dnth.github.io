@@ -1,5 +1,5 @@
 ---
-title: " Contributing to open-source: Lessons learned"
+title: "Contributing to open-source: Lessons learned"
 date: 2022-04-01T19:07:15+08:00
 featureImage: images/blog/contributing_to_open_source_lessons_learned/feature_image.gif
 postImage: images/blog/contributing_to_open_source_lessons_learned/post_image.jpeg
