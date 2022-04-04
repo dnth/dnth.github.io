@@ -84,14 +84,17 @@ One day I hope to be a mentor of some sort to others and help inspire them in th
 Encouragement from Farid led me to start blogging.
 In the process, I explored and learned how to use several blogging platform including Wordpress, Ghost, and Hugo.
 I finally settled with Hugo as it gives the best flexibility for my use case.
-In the process, I also learned about self-hosting a webpage on GitHub and Digital Ocean, purchasing a domain, GitHub pages, and workflows.
+In the process, I also learned about self-hosting a webpage on GitHub pages and Digital Ocean, purchasing a domain, and GitHub workflows.
 The learning curve was steep, but it's well worth it.
 
 Additionally, in the process of blogging, I also realized that writing about something really helped me solidify and clarify my understanding of the things I write about.
 More often than not, I find myself in the illusion of understanding something when I really don't.
-This will only be evident when I start writing about it.
+Strangely, this is only evident when I start writing about it.
 
-{{< figure_resizing src="quote.jpeg" >}}
+I guess this is because writing is an act of synthesizing from a knowledge pool which can only be accomplished when one has a good understanding of the concept.
+This is why one of the greatest physicist of all time Richard Feynman once said "If you want to master something, teach it".
+
+{{< figure_resizing src="explain_quote.jpeg" >}}
 
 Learning by writing is also a form of active learning as opposed to passively absorbing content.
 This has significantly improved my understanding of many concepts I thought I already knew.
@@ -101,16 +104,21 @@ Once again the IceVision community is very kind to share my posts and provided m
 
 
 #### 🙌 I learned about the kindness of strangers
-I have learned that there are a lot of kind people out there who are willing to help.
-IceVision community has many.
-Expanding my horizon to knowing people from around the world.
-Build self confidence and self esteem.
-I have known many kind people from the IceVision community who are willing to help.
-I gained a few friends.
-I attended a few interviews.
-I got to expand my social circle.
+Through my experience in contributing to open-source, I learned that there are lots of kind people out there who are more than willing to help.
+You will just have to find them.
+In the IceVision community there are many such people, and I am indebted to them in helping me in becoming a better coder and a better person. 
+I got to know people from around the globe from various backgrounds and culture.
+This also helped be build my self-esteem as I interact and adapt to the differences.
+In a short period of time I made a few friends and expanded my social circle.
+Through them, I also managed to score a few interviews, as I was looking for new employment opportunities.
+I am still looking for an employment opportunity, I would be forever grateful if you can [connect me](https://dicksonneoh.com/contact) to anyone who's hiring computer vision or machine learning positions.
 
-
+{{< figure_resizing src="friend_quote.jpeg" >}}
 
 ### Wrapping up
-Its a wrap! Contributing to open source has changed by perspective quite a bit in a merely short 3 months.
+It's a wrap! 
+Contributing to open-source has undoubtedly changed by perspective quite a bit in a merely short 3 months.
+I have learned valuable lessons in becoming a better coder, a writer and a better person.
+I wish to also thank the folks at IceVision for making such an awesome deep learning computer vision library available.
+If you're interested, do join in the [Discord](https://t.co/CDIWhdVmSe) channel or get in touch with me on [Twitter](https://twitter.com/dicksonneoh7) or [LinkedIn](https://www.linkedin.com/in/dickson-neoh-3a6984b8/).
+
