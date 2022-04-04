@@ -60,28 +60,47 @@ The ranking is based on the amount of public contribution on GitHub.
 All these happened within a short span of 3 months!
 {{< figure_resizing src="top_cont.png" >}}
 
-#### 👨‍🏫 I got free mentorship from experts
-Learning from other people's questions.
-Received mentorship by maintainers.
-Learning by helping others with similar problem.
-Learning by helping people one step behind you.
-I became a help and mentor.
+#### 👨‍🏫 I got mentorship from coding experts
+Getting a mentor is no doubt one of the best investments for rapid progress in any areas of personal growth.
+Ask any successful figures for advice, and getting mentors will surely top the list.
+In my journey of contributing to open-source one of the most rewarding experience is the opportunity to learn from the maintainers of the library as they help and guide me to contribute to the library.
+More often than not, these maintainers (especially for reputable packages) are highly experienced coders.
+
+On one occasion, I got the opportunity to get on a video call with Farid to discuss on how to fix an issue with the newly added features of IceVision.
+Even though our interactions were purely online, I got a glimpse into his thought process he explained how things are done.
+Needless to say, I learned a lot, not only on the technical aspect but also on the elusive non-technical side such as the mindset of a developer.
+Farid was also kind enough to offer me practical advice on how to stand out as a developer and encouraged me to blog about what I learned.
+This blog exists thanks to his advice and encouragement.
+
+As I familiarize myself more with the library, I also have had many opportunities to help others who are struggling with the same problems I had.
+In the process of helping others solve their problems, I often find myself learning new things and exploring areas I never bother to look into.
+As I help others, I gained and learned a lot myself.
+One day I hope to be a mentor of some sort to others and help inspire them in the ways I was inspired too.
+
+{{< figure_resizing src="mentor.png" >}}
 
 
-#### Blogging
-I have started blogging since.
-This blog you're reading now is a result of learning to share my learnings online.
-Learning by writing.
-Established online presence.
-Resume, LinkedIn Github.
+#### 🌎 I started a website from scratch
+Encouragement from Farid led me to start blogging.
+In the process, I explored and learned how to use several blogging platform including Wordpress, Ghost, and Hugo.
+I finally settled with Hugo as it gives the best flexibility for my use case.
+In the process, I also learned about self-hosting a webpage on GitHub and Digital Ocean, purchasing a domain, GitHub pages, and workflows.
+The learning curve was steep, but it's well worth it.
 
-#### Communicating Effectively
-Learned to communicated with other people through written language.
-Expressing intention through text is tricky because of the missing non-verbal cues.
-Language barrier, culture barrier.
-Build self esteem to talk to people outside of my circle of friends.
+Additionally, in the process of blogging, I also realized that writing about something really helped me solidify and clarify my understanding of the things I write about.
+More often than not, I find myself in the illusion of understanding something when I really don't.
+This will only be evident when I start writing about it.
 
-#### Kindness of Strangers
+{{< figure_resizing src="quote.jpeg" >}}
+
+Learning by writing is also a form of active learning as opposed to passively absorbing content.
+This has significantly improved my understanding of many concepts I thought I already knew.
+
+Apart from that, I also shared my blog posts on Twitter and LinkedIn which resulted in online presence and visibility of my blog.
+Once again the IceVision community is very kind to share my posts and provided me some valuable feedbacks.
+
+
+#### 🙌 I learned about the kindness of strangers
 I have learned that there are a lot of kind people out there who are willing to help.
 IceVision community has many.
 Expanding my horizon to knowing people from around the world.
