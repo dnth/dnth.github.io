@@ -49,7 +49,7 @@ For me, the project that got me interested was [IceVision](https://airctic.com/0
 At first all I did was try to use the library for my own side projects.
 Gradually, I realized there are things that I could not do with the library and started asking for help from the community.
 This is how I discovered that there are ways I can contribute to the library by adding the features I needed.
-With IceVision, I have always wanted to use [Transformer](https://github.com/SwinTransformer/Swin-Transformer-Object-Detection) for object detection tasks. However, that was not included in the library at that point.
+With IceVision, I have always wanted to use [Transformer](https://github.com/SwinTransformer/Swin-Transformer-Object-Detection) model for object detection tasks. However, that was not included in the library at that point.
 I then started to research and ask for help on how to include that model into the library.
 That was the beginning of how I started contributing to the library.
 I ended up adding more than 10 models to the library in 14 pull requests. 
@@ -67,7 +67,7 @@ In my journey of contributing to open-source one of the most rewarding experienc
 More often than not, these maintainers (especially for reputable packages) are highly experienced coders.
 
 On one occasion, I got the opportunity to get on a video call with Farid to discuss on how to fix an issue with the newly added features of IceVision.
-Even though our interactions were purely online, I got a glimpse into his thought process he explained how things are done.
+Even though our interactions were purely online, I got a glimpse into his thought process as he explained how things are done in IceVision.
 Needless to say, I learned a lot, not only on the technical aspect but also on the elusive non-technical side such as the mindset of a developer.
 Farid was also kind enough to offer me practical advice on how to stand out as a developer and encouraged me to blog about what I learned.
 This blog exists thanks to his advice and encouragement.
@@ -117,7 +117,7 @@ I am still looking for an employment opportunity, I would be forever grateful if
 
 ### Wrapping up
 It's a wrap! 
-Contributing to open-source has undoubtedly changed by perspective quite a bit in a merely short 3 months.
+Contributing to open-source has undoubtedly changed by perspective quite a bit in merely 3 months.
 I have learned valuable lessons in becoming a better coder, a writer and a better person.
 I wish to also thank the folks at IceVision for making such an awesome deep learning computer vision library available.
 If you're interested, do join in the [Discord](https://t.co/CDIWhdVmSe) channel or get in touch with me on [Twitter](https://twitter.com/dicksonneoh7) or [LinkedIn](https://www.linkedin.com/in/dickson-neoh-3a6984b8/).
