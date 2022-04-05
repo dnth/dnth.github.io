@@ -17,12 +17,13 @@ I was recently given the recognition by the folks at IceVision to be part of the
 ### Lessons learned
 Looking back at how far I came, I was astonished.
 It was just 3 months back that I learned how to open a *Pull Request* on GitHub. 
-Despite having coded for over 10 years, I have never bothered to learn about something so commonly used in the software world - Git, a version control system.
+Despite having coded for over 10 years, I never bothered to learn about something so commonly used in the software world - *Git*, a version control system.
 I took the plunge, and the first step was painful. 
 But every subsequent step got better and better. I never looked back since.
-Here are some of the lessons I learned along the way that changed the way I learn and write code.
-I wish I had started earlier. 
+
+Even though it's not late, but I wish I had started earlier. 
 If you are new and want to contribute to open source, start now.
+Here are some of the lessons I learned along the way that changed the way I learn and code.
 
 {{< figure_resizing src="tree_proverb.jpg" >}}
 
@@ -84,7 +85,9 @@ One day I hope to be a mentor of some sort to others and help inspire them in th
 Encouragement from Farid led me to start blogging.
 In the process, I explored and learned how to use several blogging platform including Wordpress, Ghost, and Hugo.
 I finally settled with Hugo as it gives the best flexibility for my use case.
-In the process, I also learned about self-hosting a webpage on GitHub pages and Digital Ocean, purchasing a domain, and GitHub workflows.
+In the process, I also learned about self-hosting a webpage on GitHub pages and Digital Ocean, purchasing a domain, and GitHub workflows. 
+In building this website, I found myself contributing to the Hugo [theme](https://github.com/StaticMania/portio-hugo) that I used for this site. I learned how Hugo themes work and a little about [Go language](https://go.dev/) used in the theme.
+By this time, I became very comfortable with *Pull Requests* even though it was only weeks after I stumbled upon Hugo.
 The learning curve was steep, but it's well worth it.
 
 Additionally, in the process of blogging, I also realized that writing about something really helped me solidify and clarify my understanding of the things I write about.
@@ -102,6 +105,9 @@ This has significantly improved my understanding of many concepts I thought I al
 Apart from that, I also shared my blog posts on Twitter and LinkedIn which resulted in online presence and visibility of my blog.
 Once again the IceVision community is very kind to share my posts and provided me some valuable feedbacks.
 
+Starting a website and learning its intricacies are something that I would never venture into had I not contributed to open-source.
+I never expected this, and I find this a huge bonus learning just because I started contributing to IceVision.
+
 
 #### 🙌 I learned about the kindness of strangers
 Through my experience in contributing to open-source, I learned that there are lots of kind people out there who are more than willing to help.
@@ -117,8 +123,9 @@ I am still looking for an employment opportunity, I would be forever grateful if
 
 ### Wrapping up
 It's a wrap! 
-Contributing to open-source has undoubtedly changed by perspective quite a bit in merely 3 months.
+Contributing to open-source has undoubtedly changed my perspective quite a bit in merely 3 months.
 I have learned valuable lessons in becoming a better coder, a writer and a better person.
 I wish to also thank the folks at IceVision for making such an awesome deep learning computer vision library available.
+Special shoutout to [Farid](https://www.linkedin.com/in/farid-hassainia-ca/) and [Francesco](https://www.linkedin.com/in/francescopochetti/) for helping me out along the way.
 If you're interested, do join in the [Discord](https://t.co/CDIWhdVmSe) channel or get in touch with me on [Twitter](https://twitter.com/dicksonneoh7) or [LinkedIn](https://www.linkedin.com/in/dickson-neoh-3a6984b8/).
 
