@@ -1,15 +1,12 @@
 ---
-title: "Counting Cells Using Deep Learning Models in 4 Steps"
+title: "Training a Deep Learning Model for Cell Counting In 17 Lines of Code"
 date: 2022-04-07T15:07:15+08:00
-featureImage: images/blog/modeling_a_microalgae_cell_counter_with_deep_learning/thumbnail.gif
-postImage: images/blog/modeling_a_microalgae_cell_counter_with_deep_learning/post_image.jpg
+featureImage: images/blog/counting_cells_using_dl_models_in_4_steps/thumbnail.gif
+postImage: images/blog/counting_cells_using_dl_models_in_4_steps/post_image.jpg
 tags: ["IceVision", "Fast.ai", "counting", "cell"]
 categories: ["modeling", "object-detection", "biology"]
 toc: true
 socialshare: true
-
-description: spf13-vim is a cross platform distribution of vim plugins and resources
-images: ["images/blog/modeling_a_microalgae_cell_counter_with_deep_learning/post_image.jpg"]
 ---
 
 ### 🕶️ Motivation
@@ -246,37 +243,131 @@ There are various ResNet backbones that you can select from such as
 `resnet101_fpn_1x`,
 `resnet101_fpn_mstrain_2x`,
 `resnet101_fpn_mdconv_c3_c5_mstrain_2x`,
-`resnext101_32x4d_fpn_mdconv_c3_c5_mstrain_2x`,
+`resnext101_32x4d_fpn_mdconv_c3_c5_mstrain_2x`, and
 `resnext101_64x4d_fpn_mdconv_c3_c5_mstrain_2x`.
 
 Additionally, IceVsion also recently supports state-of-the-art Swin Transformer backbone for the VFNet model
 `swin_t_p4_w7_fpn_1x_coco`,
-`swin_s_p4_w7_fpn_1x_coco`,
+`swin_s_p4_w7_fpn_1x_coco`, and
 `swin_b_p4_w7_fpn_1x_coco`.
 
+
 Which combination of `model_type` and `backbone` that performs best is something you need to experiment with.
-As you can see it, selecting a model to experiment with using IceVision is as easy as writing 3 lines of code.
+Feel free to experiment and swap out the backbone and note the performance of the model.
 
+#### Metrics and Training
+In order to start the training, the model needs to ingest the images and bounding boxes from the `train_ds` and `valid_ds` we created.
+This is the role that dataloaders play.
 
-Next it is time we load the data into the model by constructing a dataloader
+We will therefore need to construct the dataloaders from the `train_ds` and `valid_ds` respectively
 
 ```python
 train_dl = model_type.train_dl(train_ds, batch_size=2, num_workers=4, shuffle=True)
 valid_dl = model_type.valid_dl(valid_ds, batch_size=2, num_workers=4, shuffle=False)
 ```
 
-The job of a dataloader is to get the items from the dataset we created.
-Here, we can specify the `batch_size` and the number of workers (CPU cores) to use on your machine.
-`batch_size` is a hyperparameter that you can vary to see if performance improves.
+Here, we can specify the `batch_size` which is the number of images and bounding boxes to be passed to the model in a single forward pass.
+The `batch_size` is a hyperparameter that be tuned to improve performance.
+The `num_workers` argument specifies the number of CPU cores to be used - the more cores, the faster.
+
+Next, we need to specify the metric we use for the training. 
+Metric is a measure of how good the model is at the task we are trying to train the model for.
+Some commonly used metrics include accuracy, F1 Score, etc.
+For object detection tasks the `COCOMetric` is commonly used.
+
+One of the most important hyperparameter to get right is the learning rate.
+Since IceVision is built to work with Fastai, we have access to a handy tool known as the learning rate finder first proposed by Leslie Smith and popularized by the Fastai community for its effectiveness.
+This is an incredibly easy to use tool to find a range of optimal learning rate with this dataset.
+
+All we need to do is run
+
+```python
+learn.lr_find()
+```
+
+which outputs
+{{< figure_resizing src="lr_find.png" >}}
+
+The most optimal learning rate value is where the loss descends most rapidly as can be seen in values between `1e-4` to `1e-3`.
+The orange dot on the plot shows the point where the slope is the steepest.
+
+With this learning rate value, we can pass it into the fine_tune function to start training.
+
+```python
+metrics = [COCOMetric(metric_type=COCOMetricType.bbox)]
+learn = model_type.fastai.learner(dls=[train_dl, valid_dl], model=model, metrics=metrics)
+learn.fine_tune(10, 3e-4, freeze_epochs=1)
+```
+
+The first argument to in `fine_tune` is the number of epochs to train for. In this post I will train for 10 epochs for demonstration. 
+Training for longer will likely to improve the model.
+The second argument is the base learning rate value which we found using the `learn.lr_find()`
+
+The above code snippet trains the model for 10 `epochs`.
+The `freeze_epochs` specifies the number of `epochs` to train while the backbone of the model is frozen.
+
+The figure below shows the training output.
+In ➀, only the last layer of the model was trained.
+The remaining parts of the model are frozen.
+In ➁, the entire mode is trained end-to-end.
+
+{{< figure_resizing src="train.png" >}}
+
+During the training, the `train_loss`, `valid_loss` and `COCOMetric`is printed every epoch.
+Ideally the losses should decrease and `COCOMetric` increase the longer we train.
+As shown above, each epoch only took 2 seconds to complete on a GPU - which is incredibly fast.
 
 
 
 
+```python
+model_type.show_results(model, valid_ds, detection_threshold=.5)
+```
 
+{{< figure_resizing src="show_results.png" >}}
 
-Monitoring with callbacks
+For completeness here are all the codes in Step 3 to load the data, instantiate the model, training and showing the results.
+That is only 17 lines of code if you remove the spaces in between!
 
-#### Training, monitoring and exporting model
+```python {linenos=table}
+from icevision.all import *
+
+parser = parsers.VOCBBoxParser(annotations_dir="images/labeled", images_dir="images/labeled")
+train_records, valid_records = parser.parse()
+
+image_size = 640
+train_tfms = tfms.A.Adapter([*tfms.A.aug_tfms(size=image_size, presize=image_size+128), tfms.A.Normalize()])
+valid_tfms = tfms.A.Adapter([*tfms.A.resize_and_pad(image_size), tfms.A.Normalize()])
+
+train_ds = Dataset(train_records, train_tfms)
+valid_ds = Dataset(valid_records, valid_tfms)
+
+model_type = models.mmdet.vfnet
+backbone = model_type.backbones.resnet50_fpn_mstrain_2x
+model = model_type.model(backbone=backbone(pretrained=True), num_classes=len(parser.class_map)) 
+
+train_dl = model_type.train_dl(train_ds, batch_size=2, num_workers=4, shuffle=True)
+valid_dl = model_type.valid_dl(valid_ds, batch_size=2, num_workers=4, shuffle=False)
+
+metrics = [COCOMetric(metric_type=COCOMetricType.bbox)]
+learn = model_type.fastai.learner(dls=[train_dl, valid_dl], model=model, metrics=metrics)
+learn.fine_tune(10, 3e-4, freeze_epochs=1)
+
+model_type.show_results(model, valid_ds, detection_threshold=.5)
+```
+
+#### Exporting model
+
+```python
+from icevision.models.checkpoint import *
+save_icevision_checkpoint(model,
+                        model_name='mmdet.vfnet', 
+                        backbone_name='resnet50_fpn_mstrain_2x',
+                        img_size=image_size,
+                        classes=parser.class_map.get_classes(),
+                        filename='./models/model_checkpoint.pth',
+                        meta={'icevision_version': '0.12.0'})
+```
 
 ### 🧭 Step 4: Inferencing on a new image
 Inference on a local machine
