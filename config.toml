@@ -81,7 +81,7 @@ googleAnalytics = "UA-54500366-2"
 logo = "images/site-navigation/logo_dn_resize.png"
 
 description = "Porfolio, thoughts, and learnings."
-images = ["images/site-navigation/logo_dn_resize.png"]
+images = ["images/hero/self-square.jpg"]
 
 [params.address]
 address = "Universiti Tenaga Nasional, 43000, Kajang, Malaysia."
