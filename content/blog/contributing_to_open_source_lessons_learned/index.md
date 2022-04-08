@@ -37,7 +37,7 @@ Most of the time, when the code works, I leave it as it is, and when it doesn't,
 I can recall on numerous occasions when my codes didn't work out, and I didn't know why. 
 And sometimes the codes worked, and I still have no idea why 🤦‍♂️.
 Because the codes were not publicly shared, there were very limited feedback or insights that anyone can offer to improve them even when I asked for help.
-As a result, bugs in the codes remained bugs, and it never got fixed.
+As a result, bugs in the codes remained as bugs, and it never got fixed.
 This had severely limited what I could have learned and gained had I gotten better feedback by sharing my codes publicly.
 This is the major difference of learning in private and in public.
 
@@ -142,5 +142,5 @@ If you're interested, do join in the [Discord](https://t.co/CDIWhdVmSe) channel 
 {{< figure_resizing src="ice2.png" caption="Photo from our most recent meetup - IceVision core developers from around the globe.">}}
 
 ### Comments & Feedback
-If you have any comments or feedback, I would be grateful if you can leave them as comments the following Twitter post 
+If you have any comments or feedback, I would be grateful if you can leave them as comments on the following Twitter post 
 {{< tweet 1511269785010548739>}}

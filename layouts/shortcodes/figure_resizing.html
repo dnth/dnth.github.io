@@ -11,12 +11,12 @@
     {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
     <figcaption>{{ if isset .Params "title" }}
         <h4>{{ .Get "title" }}</h4>{{ end }}
-        {{ if or (.Get "caption") (.Get "attr")}}<p>
+        {{ if or (.Get "caption") (.Get "attr")}}<p style="text-align: center;"><small>
         {{ .Get "caption" }}
         {{ with .Get "attrlink"}}<a href="{{.}}"> {{ end }}
             {{ .Get "attr" }}
         {{ if .Get "attrlink"}}</a> {{ end }}
-        </p> {{ end }}
+        </small></p> {{ end }}
     </figcaption>
     {{ end }}
 </figure>
