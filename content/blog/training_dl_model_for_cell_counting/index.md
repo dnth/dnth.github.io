@@ -7,6 +7,7 @@ tags: ["IceVision", "Fast.ai", "counting", "cell"]
 categories: ["modeling", "object-detection", "biology"]
 toc: true
 socialshare: true
+images : ["images/site-navigation/logo_dn_resize.png"]
 ---
 
 ### 🕶️ Motivation
