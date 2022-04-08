@@ -80,6 +80,9 @@ formspreeURL = "https://formspree.io/f/xgedowjr"
 googleAnalytics = "UA-54500366-2"
 logo = "images/site-navigation/logo_dn_resize.png"
 
+description = "shelby spees: developer advocate, dog mom, etc."
+images = ["images/site-navigation/logo_dn_resize.png"]
+
 [params.address]
 address = "Universiti Tenaga Nasional, 43000, Kajang, Malaysia."
 email = "dickson.neoh@gmail.com"
