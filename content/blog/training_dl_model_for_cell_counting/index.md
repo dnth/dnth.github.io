@@ -29,7 +29,7 @@ Among the things you will learn:
 * Train a high performance VFNet model with IceVision & Fastai.
 * Use the model for inference on new images.
 
-By the end of the post you will have an object detection model can automatically detect microalgae cells from an image.
+By the end of the post you will have an object detection model that will automatically detect microalgae cells from an image.
 {{< figure_resizing src="inference.png" >}}
 
 Did I mention that all the tools used in this project are completely open-source and free of charge? Yes!
@@ -39,10 +39,10 @@ If you're ready let's begin.
 
 
 ### ⚙️ Installation
-We will use a library known as [IceVision](https://airctic.com/0.12.0/) - a computer vision focused library built to work with [Fastai](https://github.com/fastai/fastai). Let's install them first.
+Throughout this post, we will make use a library known as [IceVision](https://airctic.com/0.12.0/) - a computer vision focused library built to work with [Fastai](https://github.com/fastai/fastai). Let's install them first.
 
 There are many ways accomplish the installation.
-For this blog post, I've prepared an installation script that simplifies the process into just a few lines of codes.
+For your convenience, I've prepared an installation script that simplifies the process into just a few lines of codes.
 
 To get started, let's clone the Git repository by typing the following in your terminal:
 
@@ -73,19 +73,19 @@ bash icevision_install.sh cpu 0.12.0
 ```
 Be warned, training object detection models on a CPU can be many times slower on a CPU compared to a GPU.
 If you do not have an available GPU, use [Google Colab](https://colab.research.google.com/).
-They provide free GPU instances.
 
-The installation may take a couple of minutes depending on the speed of your internet connection.
-Allow the installation to complete before proceeding to the next step.
+The installation may take a few minutes depending on your internet connection speed.
+Let the installation complete before proceeding.
 
 
 ### 🔖 Labeling the data
 All deep learning models require data to work.
 To construct a deep learning model, we must have images of microalgae cells to work with.
-For the purpose of this post, I've acquired some image samples from a lab with a colony of microalgae cells. 
+For the purpose of this post, I've acquired image samples from a lab. 
+
 The following image shows a sample image of the cells as seen through a microscope.
 The microalgae cells are colored green.
-{{< figure_resizing src="hemocytometer.jpg" >}}
+{{< figure_resizing src="hemocytometer.jpg" caption="Can you count how many cells are present in this image?">}}
 
 There are a bunch of other images in the `data/not_labeled/` folder.
 {{< figure_resizing src="dataset_sample.png" >}}
@@ -122,20 +122,18 @@ To accelerate the process I highly recommend the use of hotkeys keys with `label
 The hotkeys are shown below.
 {{< figure_resizing src="hotkeys.png" width=400 >}}
 
-Once done, remember to save the annotations. The annotations are saved in `XML` file with a filename matching to image as shown below.
+Once done, remember to save the annotations. 
+The annotations are saved in an `XML` file with a file name matching to image file name as shown below.
 {{< figure_resizing src="xml_files.png" >}}
 
-Once all images are labelled, we will partition the image and annotations into three sets namely train set, validation set and test set.
-These will be used to train and evaluate our model in the next section.
-
-It took a few hours to meticulously label the images. 
-The labeled images can be found in the `data/labeled/` folder in case you didn't want to label them as I did.
+It took me a few hours to meticulously label the images.
+If you don't feel like spending time labeling all the images (although I recommend doing them at least once), you can find the labeled ones in the `data/labeled/` folder.
 
 ### 🌀 Modeling
 Once the labeling is done, we are now ready to start modeling.
 The modeling will be done in a `jupyter` notebook environment.
 
-To launch jupyter notebook run 
+To launch the `jupyter` notebook run 
 ```bash
 jupyter lab
 ``` 
@@ -146,7 +144,7 @@ On the left pane, double click the `train.ipynb` to open the notebook.
 All the codes in this section are in the `train.ipynb` notebook.
 Here, I will attempt to walk you through just enough details of the code to get you started with modeling on your own data.
 If you require further clarifications, the IceVision [documentation](https://airctic.com/0.12.0/) is a good starting point.
-Alternatively, [drop me a message](https://dicksonneoh.com/contact/).
+Or drop me a [message](https://dicksonneoh.com/contact/).
 
 The first cell in the notebook are the imports.
 With IceVision all the necessary components are imported with one line of code
@@ -157,13 +155,13 @@ from icevision.all import *
 
 
 If something wasn't properly installed, the imports will raise an error message.
-In that event, you must go back to the installation (Step 1) before proceeding further.
+In that event, you must go back to the installation step before proceeding.
 If there are no errors, we are ready to dive in further.
 
 
 #### 🎯 Preparing datasets
-After the imports, we must now read the labeled images and bounding boxes into the `jupyter` notebook.
-This is also known as parsing the data and can be accomplished with the following
+After the imports, we must now load the labeled images and bounding boxes.
+This is also known as parsing the data and is accomplished with the following
 
 ```python
 parser = parsers.VOCBBoxParser(annotations_dir="data/labeled", images_dir="data/labeled")
@@ -172,7 +170,7 @@ parser = parsers.VOCBBoxParser(annotations_dir="data/labeled", images_dir="data/
 The argument `annotations_dir` and `images_dir` are the directory to the images and annotations respectively.
 Since we had both the images and annotations in the same directory, they are the same as specified in the code.
 
-Next we will divide the images and bounding boxes into two groups of data namely `train_records` and `valid_records`.
+Next, we will divide the images and bounding boxes into two groups of data namely `train_records` and `valid_records`.
 By default, the split will be `80:20` to `train:valid` proportion.
 You can change the ratio by altering the value in `RandomSplitter`.
 
@@ -180,7 +178,7 @@ You can change the ratio by altering the value in `RandomSplitter`.
 train_records, valid_records = parser.parse(data_splitter=RandomSplitter([0.8, 0.2])
 ```
 
-If you would like to check what the class names from the parsed data try running
+The following code shows the class names from the parsed data.
 ```python
 parser.class_map
 ```
@@ -190,15 +188,14 @@ It should output
 <ClassMap: {'background': 0, 'Microalgae': 1}>
 ```
 
-
-which shows the `ClassMap` that contains the class name as the key and class number as the value in a Python [dictionary](https://www.w3schools.com/python/python_dictionaries.asp).
+which shows a `ClassMap` that contains the class name as the key and class index as the value in a Python [dictionary](https://www.w3schools.com/python/python_dictionaries.asp).
 The `background` class is automatically added. 
-In Step 2 we do not need to label the background.
+In the data labeling step we do not need to label the background.
 
 Next, we will apply basic data augmentation which is a technique used to diversify the training images by applying random transformation.
 Learn more [here](https://medium.com/analytics-vidhya/image-augmentation-9b7be3972e27).
 
-The following code specifies the kinds of transformation we would like to perform on our images.
+The following code specifies the kinds of transformations we would like to perform on our images.
 Behind the scenes these transformations are performed with the [Albumentations](https://albumentations.ai/) library.
 
 ```python
@@ -216,10 +213,10 @@ But beware using large image size may consume more memory and in some cases halt
 Starting with a small value like `384` is probably a good idea.
 I found that for this blog post `640` works best.
 
-Use `tfms.A.aug_tfms` also performs other transformations to the image such as varying the lighting, rotation, shifting, flipping, blurring, padding, etc.
+Use `tfms.A.aug_tfms` performs transformations to the image such as varying the lighting, rotation, shifting, flipping, blurring, padding, etc.
 The full list of transforms that and the arguments can be found in the `aug_tfms` [documentation](https://airctic.com/0.12.0/albumentations_tfms/).
 
-In this code snippet we created two distinct transforms namely `train_tfms` and `valid_tfms` that will be used during the training and validation steps.
+In this code snippet we created two distinct transforms namely `train_tfms` and `valid_tfms` that will be used during the training and validation steps respectively.
 
 Next, we will apply the `train_tfms` to our `train_records` and `valid_tfms` to `valid_records` with the following snippet.
 
@@ -242,7 +239,7 @@ Note the variations in lighting, translation, and rotation compared to the origi
 {{< figure_resizing src="show_ds.png" >}}
 
 The transformations are applied on-the-fly.
-So each run on the snippet produces different results.
+So each run on, the snippet produces slightly different results.
 
 
 #### 🗝️ Choosing library, model, and backbone
@@ -267,7 +264,7 @@ There are various ResNet backbones that you can select from such as
 `resnext101_32x4d_fpn_mdconv_c3_c5_mstrain_2x`, and
 `resnext101_64x4d_fpn_mdconv_c3_c5_mstrain_2x`.
 
-Additionally, IceVsion also recently supports state-of-the-art Swin Transformer backbone for the VFNet model
+Additionally, IceVision also recently supports state-of-the-art Swin Transformer backbone for the VFNet model
 `swin_t_p4_w7_fpn_1x_coco`,
 `swin_s_p4_w7_fpn_1x_coco`, and
 `swin_b_p4_w7_fpn_1x_coco`.
@@ -275,6 +272,7 @@ Additionally, IceVsion also recently supports state-of-the-art Swin Transformer 
 
 Which combination of `model_type` and `backbone` that performs best is something you need to experiment with.
 Feel free to experiment and swap out the backbone and note the performance of the model.
+There are other model types with its respective backbones which you can find [here](https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb).
 
 #### 🏃 Metrics and Training
 In order to start the training, the model needs to ingest the images and bounding boxes from the `train_ds` and `valid_ds` we created.
@@ -472,7 +470,7 @@ pred_dict["img"].save("inference.png")
 ### 📖 Wrapping Up
 Congratulations on making it through this post! It wasn't that hard right? 
 Hopefully this post has made it clear that object detection is not as hard as it used to be.
-With many high level open source package like IceVision, anyone with a little patience can break into object detection.
+With many high level open-source package like IceVision, anyone with a little patience can break into object detection.
 
 In this post I've shown you how you can construct a model that detects microalgae cells.
 In reality, the same steps can be used to detect any other cells, or any other objects for that matter.
