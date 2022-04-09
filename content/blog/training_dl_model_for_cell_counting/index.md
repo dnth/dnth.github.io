@@ -496,5 +496,7 @@ The world is your oyster. Now go out there and use this newly found superpower t
 {{< figure_resizing src="quote_robert_greene.jpg" >}}
 
 All the codes and data are available on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
+
+### 🙏 Comments & Feedback
 If you find this useful, or if you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet 1511269785010548739>}}
