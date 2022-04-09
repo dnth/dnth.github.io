@@ -1,13 +1,13 @@
 ---
 title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code"
-date: 2022-04-07T15:07:15+08:00
+date: 2022-04-08T15:07:15+08:00
 featureImage: images/blog/training_dl_model_for_cell_counting/thumbnail.gif
 postImage: images/blog/training_dl_model_for_cell_counting/post_image.jpg
 tags: ["IceVision", "Fast.ai", "counting", "cell"]
 categories: ["modeling", "object-detection", "biology"]
 toc: true
 socialshare: true
-description: "Leveraging state-of-the-art models on IceVision and Fastai"
+description: "Get started in minutes by leveraging state-of-the-art object detection models on IceVision with Fastai"
 images : 
 - images/blog/training_dl_model_for_cell_counting/post_image.jpg
 ---
@@ -39,13 +39,14 @@ Did I mention that all the tools used in this project are open-source and free o
 If you're ready let's begin.
 
 
-### ⚙️ Step 1: Installation
-We will be using a computer vision library known as IceVision - a computer vision focused library built to work with Fastai. 
-I highly recommend that you use a virtual environment like Anaconda to install the package. 
+### ⚙️ Installation
+We will use a library known as [IceVision](https://airctic.com/0.12.0/) - a computer vision focused library built to work with [Fastai](https://github.com/fastai/fastai). 
+
+Before we start, I highly recommend that you use a virtual environment system such as Anaconda. 
 [Here](https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda/) is how to set it up.
 
-All the codes you will need to replicate this post is open-sourced on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
-To get started, clone the Git repository:
+All the codes and data you will need to replicate this post is available on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
+To get started, let's clone the Git repository by typing the following in your terminal:
 
 ```bash
 git clone https://github.com/dnth/microalgae-cell-counter-blogpost
@@ -63,37 +64,50 @@ Install IceVision:
 bash icevision_install.sh cuda11 0.12.0
 ```
 
-Depending on your system `CUDA` version, you may want to change `cuda11` to `cuda10` on older systems. 
-The number following the cuda version is the version of IceVision we are installing. 
+Depending on your system `CUDA` version, you may want to change `cuda11` to `cuda10` especially on older systems. 
+The number following the `CUDA` version is the version of IceVision. 
 The version I'm using for this blog post is `0.12.0`.
 You can alternatively specify `master` to install the bleeding edge version of IceVision from the master branch on Github.
+
+If you would like to install the CPU version of the library it can be done with:
+```bash
+bash icevision_install.sh cpu 0.12.0
+```
+Be warned, training object detection models on a CPU can be many times slower on a CPU compared to a GPU.
+If you do not have an available GPU, use [Google Colab](https://colab.research.google.com/).
+They provide free GPU instances.
 
 The installation may take a couple of minutes depending on the speed of your internet connection.
 Allow the installation to complete before proceeding to the next step.
 
 
-### 🔖 Step 2: Labeling the data
-Before embarking on any machine learning work, we must ensure that we have a dataset to work on.
-Our task at hand is to construct a model that can count microalgaes. 
-Since there are no public dataset available, we will have to curate our own dataset.
-
-The figure below shows a dozen of collected microalgae cell images in the `images/not_labeled/` folder.
+### 🔖 Labeling the data
+Deep learning models require data to work.
+In this post, we want to construct a model that can count microalgaes from images. 
+For that, must have images of microalges cells to work with.
+The figure below shows a dozen of collected microalgae cell images in the `data/not_labeled/` folder.
 {{< figure_resizing src="dataset_sample.png" >}}
 
-There is only one issue now, and that is the images are not annotated. 
-We will have to annotate all the images with an open source image labeling tool known as [labelImg](https://github.com/tzutalin/labelImg).
+There is only one issue now, and that is the images are not labeled. 
+Let's label the images with bounding boxes using open-source image labeling tool [labelImg](https://github.com/tzutalin/labelImg).
 
 
-`labelImg` app enables us to annotate any image with class labels and bounding boxes surrounding the object of interest.
-The following figure shows a demo of `labelImg` taken from the GitHub repository.
-{{< figure_resizing src="labelimg_demo.jpg" >}}
 
-Type `labelImg` in your terminal to launch the `labelImg` app.
+The `labelImg` app enables us to label images with class name and bounding boxes surrounding the object of interest.
+The following figure shows a demo of `labelImg` app.
+{{< figure_resizing src="labelimg_demo_annot.jpg" >}}
+
+The `labelImg` is already installed in the installation step.
+Now, you can type 
+```bash
+labelImg
+``` 
+in your terminal to launch the `labelImg` app.
 A window like the following should appear.
 {{< figure_resizing src="labelimg_start.png" >}}
 
 Now, let's load the folder that contains the microalgae images into `labelImg` and annotate them! 
-To do that, click on the **Open Dir** icon and navigate to the folder containing the images at `images/not_labeled/`. 
+To do that, click on the **Open Dir** icon and navigate to the folder containing the images at `data/not_labeled/`. 
 An image should now show up in `labelImg`.
 Next click on the **Create RectBox** icon to start drawing bounding boxes around the microalgaes. Next you will be prompted to enter a label name. 
 Key in microalgae as the label name. Once done, a rectangular bounding box should appear on-screen.
@@ -111,9 +125,9 @@ Once all images are labelled, we will partition the image and annotations into t
 These will be used to train and evaluate our model in the next section.
 
 It took a few hours to meticulously label the images. 
-The labeled images can be found in the `images/labeled/` folder in case you didn't want to label them as I did.
+The labeled images can be found in the `data/labeled/` folder in case you didn't want to label them as I did.
 
-### 🏃 Step 3: Modeling
+### 🌀 Modeling
 Once the labeling is done, we are now ready to start modeling.
 The modeling will be done in a `jupyter` notebook environment.
 
@@ -143,12 +157,12 @@ In that event, you must go back to the installation (Step 1) before proceeding f
 If there are no errors, we are ready to dive in further.
 
 
-#### Preparing datasets
+#### 🎯 Preparing datasets
 After the imports, we must now read the labeled images and bounding boxes into the `jupyter` notebook.
 This is also known as parsing the data and can be accomplished with the following
 
 ```python
-parser = parsers.VOCBBoxParser(annotations_dir="images/labeled", images_dir="images/labeled")
+parser = parsers.VOCBBoxParser(annotations_dir="data/labeled", images_dir="data/labeled")
 ```
 
 The argument `annotations_dir` and `images_dir` are the directory to the images and annotations respectively.
@@ -227,7 +241,7 @@ The transformations are applied on-the-fly.
 So each run on the snippet produces different results.
 
 
-#### Choosing library, model and backbone
+#### 🗝️ Choosing library, model, and backbone
 IceVision supports hundreds of high-quality pre-trained models from [Torchvision](https://github.com/pytorch/vision), Open MMLab's [MMDetection](https://github.com/open-mmlab/mmdetection), Ultralytic's [YOLOv5](https://github.com/ultralytics/yolov5) and Ross Wightman's [EfficientDet](https://github.com/rwightman/efficientdet-pytorch).
 
 Depending on your preference, you may choose the model and backbone from these libraries.
@@ -258,7 +272,7 @@ Additionally, IceVsion also recently supports state-of-the-art Swin Transformer 
 Which combination of `model_type` and `backbone` that performs best is something you need to experiment with.
 Feel free to experiment and swap out the backbone and note the performance of the model.
 
-#### Metrics and Training
+#### 🏃 Metrics and Training
 In order to start the training, the model needs to ingest the images and bounding boxes from the `train_ds` and `valid_ds` we created.
 This is the role that dataloaders play.
 
@@ -335,7 +349,7 @@ That is only 17 lines of code if you remove the spaces in between!
 ```python {linenos=table}
 from icevision.all import *
 
-parser = parsers.VOCBBoxParser(annotations_dir="images/labeled", images_dir="images/labeled")
+parser = parsers.VOCBBoxParser(annotations_dir="data/labeled", images_dir="data/labeled")
 train_records, valid_records = parser.parse()
 
 image_size = 640
@@ -359,22 +373,79 @@ learn.fine_tune(10, 3e-4, freeze_epochs=1)
 model_type.show_results(model, valid_ds, detection_threshold=.5)
 ```
 
-#### Exporting model
+#### 📨 Exporting model
+Once you are satisfied with the performance and quality of the model, you can export the model and save all its configurations into a `checkpoint` with
 
 ```python
 from icevision.models.checkpoint import *
 save_icevision_checkpoint(model,
                         model_name='mmdet.vfnet', 
                         backbone_name='resnet50_fpn_mstrain_2x',
-                        img_size=image_size,
+                        img_size=640,
                         classes=parser.class_map.get_classes(),
                         filename='./models/model_checkpoint.pth',
                         meta={'icevision_version': '0.12.0'})
 ```
+The arguments `model_name`, `backbone_name` and `img_size` has to match what we've used during training.
+`filename` specifies the directory and name of the checkpoint file.
+`meta` is an optional argument you can use to save all other information about the model.
 
-### 🧭 Step 4: Inferencing on a new image
+### 🧭 Inferencing on a new image
+```python
+from icevision.all import *
+from icevision.models.checkpoint import *
+from PIL import Image
+```
+
+
+```python
+checkpoint_path = "./models/model_checkpoint.pth"
+checkpoint_and_model = model_from_checkpoint(checkpoint_path)
+model = checkpoint_and_model["model"]
+model_type = checkpoint_and_model["model_type"]
+class_map = checkpoint_and_model["class_map"]
+```
+
+```python
+img_size = checkpoint_and_model["img_size"]
+valid_tfms = tfms.A.Adapter([*tfms.A.resize_and_pad(img_size), tfms.A.Normalize()])
+```
+
 Inference on a local machine
 {{< figure_resizing src="inference.png" >}}
 
+Codes are in the `inference.ipynb` notebook.
+
+
+
+```python
+img = Image.open('data/not_labeled/IMG_20191203_164256.jpg')
+```
+
+
+```python
+pred_dict = model_type.end2end_detect(img, valid_tfms, model, 
+                                      class_map=class_map, 
+                                      detection_threshold=0.5,
+                                      display_label=True, 
+                                      display_bbox=True, 
+                                      return_img=True, 
+                                      font_size=50, 
+                                      label_color="#FF59D6")
+```
+
+
+```python
+len(pred_dict['detection']['bboxes'])
+```
+
+```python
+pred_dict["img"]
+```
+
+```python
+pred_dict["img"].save("inference.png")
+```
+
 Figure illustrates the raw detection of cells from microscope image. The model is a RetinaNet with a ResNet50 backbone trained using [IceVision](https://github.com/airctic/icevision).
-{{< figure_resizing src="detection.png" >}}
+{{< figure_resizing src="inference.png" >}}
