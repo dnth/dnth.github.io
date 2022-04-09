@@ -7,7 +7,7 @@ tags: ["IceVision", "Fast.ai", "counting", "cell"]
 categories: ["modeling", "object-detection", "biology"]
 toc: true
 socialshare: true
-description: "Get started in minutes by leveraging state-of-the-art object detection models on IceVision with Fastai"
+description: "Leverage hundreds state-of-the-art models on IceVision trained with best practices of Fastai"
 images : 
 - images/blog/training_dl_model_for_cell_counting/post_image.jpg
 ---
@@ -15,35 +15,32 @@ images :
 ### 🕶️ Motivation
 Numerous biology and medical procedure involve counting cells from images taken with microscope.
 Counting cells reveals the concentration of bacteria and viruses and gives vital information on the progress of a disease.
-To accomplish the counting, a device known as the hemocytometer or a counting chamber is used.
-The hemocytometer creates volumetric grid to divide each region on the image for accurate counting.
+To accomplish the counting, researchers painstakingly manual-count the cells with the assistance of a device called [hemocytomer](https://www.youtube.com/watch?v=WWS9sZbGj6A&ab_channel=ThermoFisherScientific).
+This process is slow and is prone to error.
 
+What if we could automate the counting by using an intelligent deep learning model instead?
 
-The following YouTube video illustrates the counting process using a hemocytometer.
-{{< youtube WWS9sZbGj6A >}}
+In this blog post, we will see how easy it gets for anyone to use the IceVision library and train a state-of-the-art deep learning model to count microalgae cells.
 
+In this post, I will walk you through what it takes for anyone to train a deep learning model from data preparation to inferencing.
+In this post you will learn: 
 
-As shown in the video, each cell in the image has to be manually and meticulously counted.
-This process may be slow and is prone to human error.
-What if we could automate the counting by using an intelligent deep learning model?
+* How to install various libraries used for object detection.
+* Prepare and label any dataset for object detection.
+* Train a high performance VFNet model with IceVision & Fastai.
+* Use the model for inference on new images.
 
-In this blog post, we will see how easy it gets for anyone to use the IceVision computer vision library and quickly train a sophisticated deep learning model to count microalgae cells.
-
-For the purpose of this post, I've acquired image samples from a lab with a colony of microalgae cells. 
-The following image shows a sample image of the cells as seen from a microscope.
-The microalgae cells are in green.
-{{< figure_resizing src="hemocytometer.jpg" >}}
-
-By the end of this blog post, you should be able to train your own microalgae cell (or any other objects really) counter with the steps that I will walk you through.
 Did I mention that all the tools used in this project are open-source and free of charge? Yes!! 
 If you're ready let's begin.
+
+{{< figure_resizing src="quote.png" >}}
 
 
 ### ⚙️ Installation
 We will use a library known as [IceVision](https://airctic.com/0.12.0/) - a computer vision focused library built to work with [Fastai](https://github.com/fastai/fastai). 
 
-Before we start, I highly recommend that you use a virtual environment system such as Anaconda. 
-[Here](https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda/) is how to set it up.
+<!-- Before we start, I highly recommend that you use a virtual environment system such as Anaconda. 
+[Here](https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda/) is how to set it up. -->
 
 All the codes and data you will need to replicate this post is available on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
 To get started, let's clone the Git repository by typing the following in your terminal:
@@ -67,7 +64,7 @@ bash icevision_install.sh cuda11 0.12.0
 Depending on your system `CUDA` version, you may want to change `cuda11` to `cuda10` especially on older systems. 
 The number following the `CUDA` version is the version of IceVision. 
 The version I'm using for this blog post is `0.12.0`.
-You can alternatively specify `master` to install the bleeding edge version of IceVision from the master branch on Github.
+You can alternatively replace the version number with `master` to install the bleeding edge version of IceVision from the master branch on Github.
 
 If you would like to install the CPU version of the library it can be done with:
 ```bash
@@ -82,31 +79,34 @@ Allow the installation to complete before proceeding to the next step.
 
 
 ### 🔖 Labeling the data
-Deep learning models require data to work.
-In this post, we want to construct a model that can count microalgaes from images. 
-For that, must have images of microalges cells to work with.
+All deep learning models require data to work.
+To contruct deep learning model, we must have images of microalges cells to work with.
+For the purpose of this post, I've acquired some image samples from a lab with a colony of microalgae cells. 
+The following image shows a sample image of the cells as seen through a microscope.
+The microalgae cells are green in color.
+{{< figure_resizing src="hemocytometer.jpg" >}}
+
 The figure below shows a dozen of collected microalgae cell images in the `data/not_labeled/` folder.
 {{< figure_resizing src="dataset_sample.png" >}}
 
 There is only one issue now, and that is the images are not labeled. 
-Let's label the images with bounding boxes using open-source image labeling tool [labelImg](https://github.com/tzutalin/labelImg).
-
+Let's label the images with bounding boxes using an open-source image labeling tool [labelImg](https://github.com/tzutalin/labelImg).
 
 
 The `labelImg` app enables us to label images with class name and bounding boxes surrounding the object of interest.
-The following figure shows a demo of `labelImg` app.
+The following figure shows a demo of the app.
 {{< figure_resizing src="labelimg_demo_annot.jpg" >}}
 
 The `labelImg` is already installed in the installation step.
-Now, you can type 
+Now, type in your terminal:
 ```bash
 labelImg
 ``` 
-in your terminal to launch the `labelImg` app.
+to launch the `labelImg` app.
 A window like the following should appear.
 {{< figure_resizing src="labelimg_start.png" >}}
 
-Now, let's load the folder that contains the microalgae images into `labelImg` and annotate them! 
+Let's load the folder that contains the microalgae images into `labelImg` and start labeling them! 
 To do that, click on the **Open Dir** icon and navigate to the folder containing the images at `data/not_labeled/`. 
 An image should now show up in `labelImg`.
 Next click on the **Create RectBox** icon to start drawing bounding boxes around the microalgaes. Next you will be prompted to enter a label name. 
@@ -115,7 +115,8 @@ Key in microalgae as the label name. Once done, a rectangular bounding box shoul
 {{< figure_resizing src="labelimg_loaded.png" >}}
 
 Now comes the repetitive part, we will need to draw a bounding box for each microalgae cell for all images in the folder.
-To accelerate the process I highly recommend the use of Hotkeys keys with `labelImg`.
+To accelerate the process I highly recommend the use of hotkeys keys with `labelImg`.
+The hotkeys are shown below.
 {{< figure_resizing src="hotkeys.png" width=400 >}}
 
 Once done, remember to save the annotations. The annotations are saved in `XML` file with a filename matching to image as shown below.
@@ -313,7 +314,7 @@ With this learning rate value, we can pass it into the fine_tune function to sta
 ```python
 metrics = [COCOMetric(metric_type=COCOMetricType.bbox)]
 learn = model_type.fastai.learner(dls=[train_dl, valid_dl], model=model, metrics=metrics)
-learn.fine_tune(10, 3e-4, freeze_epochs=1)
+learn.fine_tune(10, 1e-3, freeze_epochs=1)
 ```
 
 The first argument to in `fine_tune` is the number of epochs to train for. In this post I will train for 10 epochs for demonstration. 
@@ -368,13 +369,15 @@ valid_dl = model_type.valid_dl(valid_ds, batch_size=2, num_workers=4, shuffle=Fa
 
 metrics = [COCOMetric(metric_type=COCOMetricType.bbox)]
 learn = model_type.fastai.learner(dls=[train_dl, valid_dl], model=model, metrics=metrics)
-learn.fine_tune(10, 3e-4, freeze_epochs=1)
+learn.fine_tune(10, 1e-3, freeze_epochs=1)
 
 model_type.show_results(model, valid_ds, detection_threshold=.5)
 ```
 
 #### 📨 Exporting model
-Once you are satisfied with the performance and quality of the model, you can export the model and save all its configurations into a `checkpoint` with
+Once you are satisfied with the performance and quality of the model, we can export the all the model configurations (hyperparameters) and weights (parameters) for future use.
+
+The following code packages the model into a checkpoint and exports it into a local directory.
 
 ```python
 from icevision.models.checkpoint import *
@@ -386,43 +389,49 @@ save_icevision_checkpoint(model,
                         filename='./models/model_checkpoint.pth',
                         meta={'icevision_version': '0.12.0'})
 ```
-The arguments `model_name`, `backbone_name` and `img_size` has to match what we've used during training.
+The arguments `model_name`, `backbone_name` and `img_size` has to match what we used during training.
+
 `filename` specifies the directory and name of the checkpoint file.
+
 `meta` is an optional argument you can use to save all other information about the model.
 
+Once completed the checkpoint should saved in the `models/` folder. We can now use this checkpoint independently outside of the training notebook.
+
+
 ### 🧭 Inferencing on a new image
+To demonstrate that the model checkpoint file can be loaded independently, I created another notebook with the name `inference.ipynb`.
+In this notebook we are going to load the checkpoint and use it for inference on a brand new image.
+
+Let's import all the necessary packages:
 ```python
 from icevision.all import *
 from icevision.models.checkpoint import *
 from PIL import Image
 ```
 
-
+And specify the checkpoint path.
 ```python
 checkpoint_path = "./models/model_checkpoint.pth"
+```
+
+We can load the checkpoint with the function `model_from_checkpoint`.
+From the checkpoint we can retrieve all other configurations such as the model type, class map, image size and the transformations.
+
+```python
 checkpoint_and_model = model_from_checkpoint(checkpoint_path)
 model = checkpoint_and_model["model"]
 model_type = checkpoint_and_model["model_type"]
 class_map = checkpoint_and_model["class_map"]
-```
-
-```python
 img_size = checkpoint_and_model["img_size"]
 valid_tfms = tfms.A.Adapter([*tfms.A.resize_and_pad(img_size), tfms.A.Normalize()])
 ```
-
-Inference on a local machine
-{{< figure_resizing src="inference.png" >}}
-
-Codes are in the `inference.ipynb` notebook.
-
-
-
+The model is now ready for inference.
+Let's try to load an image with:
 ```python
 img = Image.open('data/not_labeled/IMG_20191203_164256.jpg')
 ```
 
-
+We can use pass the image into the `end2end_detect` function to run the inference.
 ```python
 pred_dict = model_type.end2end_detect(img, valid_tfms, model, 
                                       class_map=class_map, 
@@ -434,18 +443,39 @@ pred_dict = model_type.end2end_detect(img, valid_tfms, model,
                                       label_color="#FF59D6")
 ```
 
-
-```python
-len(pred_dict['detection']['bboxes'])
-```
-
+The output `pred_dict` is a Python dictionary.
+To view the inferred image with the bounding boxes, we can run:
 ```python
 pred_dict["img"]
 ```
 
+which outputs
+
+{{< figure_resizing src="inference.png" >}}
+
+
+To count the number of microalgae cells on the image, we can count the number of bounding boxes on the image by with:
+
+```python
+len(pred_dict['detection']['bboxes'])
+```
+which outputs `29` on my computer.
+
+Finally, to save the inferred image, you can run:
 ```python
 pred_dict["img"].save("inference.png")
 ```
 
-Figure illustrates the raw detection of cells from microscope image. The model is a RetinaNet with a ResNet50 backbone trained using [IceVision](https://github.com/airctic/icevision).
-{{< figure_resizing src="inference.png" >}}
+### 📖 Wrapping Up
+Congratulations on making it through this post! It wasn't that hard right? 
+Hopefully this post has made it clear that object detection is not as hard as it used to be.
+With many high level open source package like IceVision, anyone with a little patience can break into object detection.
+
+In this post I've shown you how you can construct a model that detects microalgae cells.
+In reality, the same steps can be used to detect any other cells, or any other objects for that matter.
+
+This is a powerful tool that can come in handy when dealing with computer vision problems.
+The world is your oyster. Now go out there and use this newly found superpower and make a difference.
+
+If you have any comments or feedback, I would be grateful if you can leave them as comments on the following Twitter post
+{{< tweet 1511269785010548739>}}
