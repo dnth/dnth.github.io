@@ -7,6 +7,7 @@ tags: ["IceVision", "Fast.ai", "counting", "cell"]
 categories: ["modeling", "object-detection", "biology"]
 toc: true
 socialshare: true
+description: "Leveraging state-of-the-art models on IceVision and Fastai"
 images : 
 - images/blog/training_dl_model_for_cell_counting/post_image.jpg
 ---
@@ -43,8 +44,8 @@ We will be using a computer vision library known as IceVision - a computer visio
 I highly recommend that you use a virtual environment like Anaconda to install the package. 
 [Here](https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda/) is how to set it up.
 
-Once setup, we are ready to install all the packages for this blog post.
-First clone the Git repository:
+All the codes you will need to replicate this post is open-sourced on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
+To get started, clone the Git repository:
 
 ```bash
 git clone https://github.com/dnth/microalgae-cell-counter-blogpost
