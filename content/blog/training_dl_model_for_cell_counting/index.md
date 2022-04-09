@@ -13,7 +13,7 @@ images :
 ---
 
 ### 🕶️ Motivation
-Numerous biology and medical procedure involve counting cells from images taken with microscope.
+Numerous biology and medical procedures involve counting cells from images taken with microscope.
 Counting cells reveals the concentration of bacteria and viruses and gives vital information on the progress of a disease.
 To accomplish the counting, researchers painstakingly count the cells by hand with the assistance of a device called [hemocytometer](https://www.youtube.com/watch?v=WWS9sZbGj6A&ab_channel=ThermoFisherScientific).
 This process is repetitive, tedious, and prone to errors.
@@ -29,19 +29,21 @@ Among the things you will learn:
 * Train a high performance VFNet model with IceVision & Fastai.
 * Use the model for inference on new images.
 
+By the end of the post you will have an object detection model can automatically detect microalgae cells from an image.
+{{< figure_resizing src="inference.png" >}}
+
 Did I mention that all the tools used in this project are completely open-source and free of charge? Yes!
 If you're ready let's begin.
 
-{{< figure_resizing src="quote.png" >}}
+<!-- {{< figure_resizing src="quote.png" >}} -->
 
 
 ### ⚙️ Installation
-We will use a library known as [IceVision](https://airctic.com/0.12.0/) - a computer vision focused library built to work with [Fastai](https://github.com/fastai/fastai). 
+We will use a library known as [IceVision](https://airctic.com/0.12.0/) - a computer vision focused library built to work with [Fastai](https://github.com/fastai/fastai). Let's install them first.
 
-<!-- Before we start, I highly recommend that you use a virtual environment system such as Anaconda. 
-[Here](https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda/) is how to set it up. -->
+There are many ways accomplish the installation.
+For this blog post, I've prepared an installation script that simplifies the process into just a few lines of codes.
 
-All the codes and data you will need to replicate this post is available on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
 To get started, let's clone the Git repository by typing the following in your terminal:
 
 ```bash
@@ -54,7 +56,7 @@ Next, navigate into the directory:
 cd microalgae-cell-counter-blogpost/
 ```
 
-Install IceVision:
+Install IceVision and all other libraries used for this post:
 
 ```bash
 bash icevision_install.sh cuda11 0.12.0
@@ -79,13 +81,13 @@ Allow the installation to complete before proceeding to the next step.
 
 ### 🔖 Labeling the data
 All deep learning models require data to work.
-To contruct deep learning model, we must have images of microalges cells to work with.
+To construct a deep learning model, we must have images of microalgae cells to work with.
 For the purpose of this post, I've acquired some image samples from a lab with a colony of microalgae cells. 
 The following image shows a sample image of the cells as seen through a microscope.
-The microalgae cells are green in color.
+The microalgae cells are colored green.
 {{< figure_resizing src="hemocytometer.jpg" >}}
 
-The figure below shows a dozen of collected microalgae cell images in the `data/not_labeled/` folder.
+There are a bunch of other images in the `data/not_labeled/` folder.
 {{< figure_resizing src="dataset_sample.png" >}}
 
 There is only one issue now, and that is the images are not labeled. 
@@ -96,20 +98,22 @@ The `labelImg` app enables us to label images with class name and bounding boxes
 The following figure shows a demo of the app.
 {{< figure_resizing src="labelimg_demo_annot.jpg" >}}
 
-The `labelImg` is already installed in the installation step.
-Now, type in your terminal:
+The `labelImg` app is already installed in the installation step.
+To launch the app, type in your terminal:
 ```bash
 labelImg
 ``` 
-to launch the `labelImg` app.
 A window like the following should appear.
 {{< figure_resizing src="labelimg_start.png" >}}
 
-Let's load the folder that contains the microalgae images into `labelImg` and start labeling them! 
-To do that, click on the **Open Dir** icon and navigate to the folder containing the images at `data/not_labeled/`. 
+Let's load the `data/not_labeled/` images folder into `labelImg` and start labeling them! 
+To do that, click on the **Open Dir** icon and navigate to the folder.
+
 An image should now show up in `labelImg`.
-Next click on the **Create RectBox** icon to start drawing bounding boxes around the microalgaes. Next you will be prompted to enter a label name. 
-Key in microalgae as the label name. Once done, a rectangular bounding box should appear on-screen.
+To label, click on the **Create RectBox** icon to start drawing bounding boxes around the microalgae cells. 
+Next you will be prompted to enter a label name. 
+Key in `microalgae` as the label name. 
+Once done, a rectangular bounding box should appear on-screen.
 
 {{< figure_resizing src="labelimg_loaded.png" >}}
 
@@ -478,5 +482,6 @@ The world is your oyster. Now go out there and use this newly found superpower a
 
 {{< figure_resizing src="quote_robert_greene.jpg" >}}
 
+All the codes and data are available on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
 If you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet 1511269785010548739>}}
