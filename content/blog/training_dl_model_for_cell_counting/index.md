@@ -1,6 +1,6 @@
 ---
 title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code"
-date: 2022-04-08T15:07:15+08:00
+date: 2022-04-09T15:07:15+08:00
 featureImage: images/blog/training_dl_model_for_cell_counting/thumbnail.gif
 postImage: images/blog/training_dl_model_for_cell_counting/post_image.jpg
 tags: ["IceVision", "Fast.ai", "counting", "cell"]
@@ -454,18 +454,6 @@ which outputs
 
 {{< figure_resizing src="inference.png" >}}
 
-As you can see, there are some missed detections of the microalgae cells.
-But, considering we only trained for 10 epochs (which took less than 30 seconds to complete), this is an astonishing result!
-Additionally, in this post, I've only used 17 labeled images to train the model.
-
-Contrary to popular belief, we can feasibly train a sophisticated object detection model with only a few images in short amount of time.
-These outstanding results are all thanks to the Fastai library which incorporates all the best practices in training deep learning models.
-
-At this point, we have not even tuned any hyperparameters to improve performance. 
-The hyperparameters are default values in Fastai that worked extremely well especially considering that this is only our first model trained on this dataset.
-
-To improve model performance, you may want to experiment by labeling more data, and adjusting a few other hyperparameters such as learning rate, batch size, different models and backbones.
-
 To count the number of microalgae cells on the image, we can count the number of bounding boxes on the image by with:
 
 ```python
@@ -473,10 +461,24 @@ len(pred_dict['detection']['bboxes'])
 ```
 which outputs `29` on my computer.
 
-Finally, to save the inferred image, you can run:
+To save the image with the bounding boxes, you can run:
 ```python
 pred_dict["img"].save("inference.png")
 ```
+
+As you can see, there are some missed detections of the microalgae cells.
+But, considering we only trained for 10 epochs (which took less than 30 seconds to complete), this is an astonishing result!
+Additionally, in this post, I've only used 17 labeled images to train the model.
+
+Contrary to popular belief, we can feasibly train a sophisticated object detection model with only a few images in short amount of time.
+These outstanding result is possible thanks to the Fastai library that incorporated all the best practices in training deep learning models.
+
+At this point, we have not even tuned any hyperparameters to improve performance. 
+The hyperparameters are default values in Fastai that worked extremely well especially considering that this is only our first model trained on this dataset.
+
+To improve model performance, you may want to experiment by labeling more data, and adjusting a few other hyperparameters such as learning rate, batch size, different models and backbones.
+
+
 
 ### 📖 Wrapping Up
 Congratulations on making it through this post! It wasn't that hard right? 
