@@ -142,5 +142,5 @@ If you're interested, do join in the [Discord](https://t.co/CDIWhdVmSe) channel 
 {{< figure_resizing src="ice2.png" caption="Photo from our most recent meetup - IceVision core developers from around the globe.">}}
 
 ### Comments & Feedback
-If you have any comments or feedback, I would be grateful if you can leave them as comments on the following Twitter post 
+If you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet 1511269785010548739>}}

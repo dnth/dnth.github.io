@@ -15,22 +15,21 @@ images :
 ### 🕶️ Motivation
 Numerous biology and medical procedure involve counting cells from images taken with microscope.
 Counting cells reveals the concentration of bacteria and viruses and gives vital information on the progress of a disease.
-To accomplish the counting, researchers painstakingly manual-count the cells with the assistance of a device called [hemocytomer](https://www.youtube.com/watch?v=WWS9sZbGj6A&ab_channel=ThermoFisherScientific).
-This process is slow and is prone to error.
+To accomplish the counting, researchers painstakingly count the cells by hand with the assistance of a device called [hemocytometer](https://www.youtube.com/watch?v=WWS9sZbGj6A&ab_channel=ThermoFisherScientific).
+This process is repetitive, tedious, and prone to errors.
 
-What if we could automate the counting by using an intelligent deep learning model instead?
+What if we could automate the counting by using an intelligent deep learning algorithm instead?
 
-In this blog post, we will see how easy it gets for anyone to use the IceVision library and train a state-of-the-art deep learning model to count microalgae cells.
+In this blog post, I will walk you through how to use the [IceVision](https://airctic.com/dev/getting_started_object_detection/) library and train a state-of-the-art deep learning model with [Fastai](https://github.com/fastai/fastai) to count microalgae cells.
 
-In this post, I will walk you through what it takes for anyone to train a deep learning model from data preparation to inferencing.
-In this post you will learn: 
+Among the things you will learn: 
 
-* How to install various libraries used for object detection.
+* Installation of the libraries.
 * Prepare and label any dataset for object detection.
 * Train a high performance VFNet model with IceVision & Fastai.
 * Use the model for inference on new images.
 
-Did I mention that all the tools used in this project are open-source and free of charge? Yes!! 
+Did I mention that all the tools used in this project are completely open-source and free of charge? Yes!
 If you're ready let's begin.
 
 {{< figure_resizing src="quote.png" >}}
@@ -477,5 +476,7 @@ In reality, the same steps can be used to detect any other cells, or any other o
 This is a powerful tool that can come in handy when dealing with computer vision problems.
 The world is your oyster. Now go out there and use this newly found superpower and make a difference.
 
-If you have any comments or feedback, I would be grateful if you can leave them as comments on the following Twitter post
+{{< figure_resizing src="quote_robert_greene.jpg" >}}
+
+If you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet 1511269785010548739>}}
