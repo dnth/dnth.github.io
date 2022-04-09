@@ -454,6 +454,17 @@ which outputs
 
 {{< figure_resizing src="inference.png" >}}
 
+As you can see, there are some missed detections of the microalgae cells.
+But, considering we only trained for 10 epochs (which took less than 30 seconds to complete), this is an astonishing result!
+Additionally, in this post, I've only used 17 labeled images to train the model.
+
+Contrary to popular belief, we can feasibly train a sophisticated object detection model with only a few images in short amount of time.
+These outstanding results are all thanks to the Fastai library which incorporates all the best practices in training deep learning models.
+
+At this point, we have not even tuned any hyperparameters to improve performance. 
+The hyperparameters are default values in Fastai that worked extremely well especially considering that this is only our first model trained on this dataset.
+
+To improve model performance, you may want to experiment by labeling more data, and adjusting a few other hyperparameters such as learning rate, batch size, different models and backbones.
 
 To count the number of microalgae cells on the image, we can count the number of bounding boxes on the image by with:
 
@@ -469,17 +480,19 @@ pred_dict["img"].save("inference.png")
 
 ### 📖 Wrapping Up
 Congratulations on making it through this post! It wasn't that hard right? 
-Hopefully this post has made it clear that object detection is not as hard as it used to be.
-With many high level open-source package like IceVision, anyone with a little patience can break into object detection.
+Hopefully this post also boosted your confidence that object detection is not as hard as it used to be.
+With many high level open-source package like IceVision and Fastai, anyone with a computer and a little patience can break into object detection.
 
 In this post I've shown you how you can construct a model that detects microalgae cells.
 In reality, the same steps can be used to detect any other cells, or any other objects for that matter.
+Realizing this is an extremely powerful paradigm shift for me.
+Think about all the problems we can solve by accurately detecting specific objects. Detecting intruders, detecting dangerous object such as a gun, detecting defect on a production line, detecting smoke/fire, detecting skin cancer, detecting plant disease, and so much more.
+Your creativity and imagination is the limit.
+The world is your oyster. Now go out there and use this newly found superpower to make a difference.
 
-This is a powerful tool that can come in handy when dealing with computer vision problems.
-The world is your oyster. Now go out there and use this newly found superpower and make a difference.
 
 {{< figure_resizing src="quote_robert_greene.jpg" >}}
 
 All the codes and data are available on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
-If you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
+If you find this useful, or if you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet 1511269785010548739>}}
