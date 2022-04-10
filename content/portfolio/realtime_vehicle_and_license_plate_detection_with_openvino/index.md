@@ -1,7 +1,7 @@
 ---
 title: "Real-time Vehicle and License Plate Detection with Tensorflow and OpenVINO"
 date: 2022-03-04T15:07:15+08:00
-thumbnail: images/portfolio/realtime_vehicle_and_license_plate_detection_with_openvino/feature_image.gif
+featureImage: images/portfolio/realtime_vehicle_and_license_plate_detection_with_openvino/feature_image.gif
 postImage: images/portfolio/realtime_vehicle_and_license_plate_detection_with_openvino/post_image.jpg
 tags: ["OpenVINO", "NeuralComputeStick2", "realtime", "Tensorflow", "Intel"]
 categories: ["MVP", "portfolio", "Computer Vision", "Object Detection"]

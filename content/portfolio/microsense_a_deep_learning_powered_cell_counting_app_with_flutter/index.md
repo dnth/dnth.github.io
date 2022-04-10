@@ -1,7 +1,7 @@
 ---
 title: "MicroSense - A Deep Learning Android App for Cell Counting"
 date: 2022-02-24T15:07:15+08:00
-thumbnail: images/portfolio/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/feature_image.gif
+featureImage: images/portfolio/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/feature_image.gif
 postImage: images/portfolio/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/post_image.jpg
 tags: ["Flutter", "HuggingFace", "Android"]
 categories: ["MVP", "portfolio"]
