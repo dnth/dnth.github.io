@@ -9,7 +9,7 @@ service:
   - content: >
       #### Ideation
 
-      Consultancy on problem definition and formulation, feasibility analysis, project direction and brainstorming.
+      Consultancy on problem definition and formulation, feasibility analysis, and project scoping.
     image: images/service/consultancy.svg
   - content: >
       #### Exploratory Data Analysis

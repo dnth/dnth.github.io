@@ -3,7 +3,7 @@ title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code"
 date: 2022-04-09T15:07:15+08:00
 featureImage: images/portfolio/training_dl_model_for_cell_counting/thumbnail.gif
 postImage: images/portfolio/training_dl_model_for_cell_counting/post_image.jpg
-tags: ["IceVision", "Fast.ai", "counting", "cell"]
+tags: ["IceVision", "Fast.ai", labelImg,"counting", "cell"]
 categories: ["modeling", "object-detection", "biology"]
 toc: true
 socialshare: true
@@ -80,17 +80,17 @@ Let the installation complete before proceeding.
 
 ### 🔖 Labeling the data
 All deep learning models require data to work.
-To construct a deep learning model, we must have images of microalgae cells to work with.
+To construct this model, we require images of microalgae cells to work with.
 For the purpose of this post, I've acquired image samples from a lab. 
 
-The following image shows a sample image of the cells as seen through a microscope.
+The following shows a sample image of the cells as seen through a microscope.
 The microalgae cells are colored green.
 {{< figure_resizing src="hemocytometer.jpg" caption="Can you count how many cells are present in this image?">}}
 
 There are a bunch of other images in the `data/not_labeled/` folder.
 {{< figure_resizing src="dataset_sample.png" >}}
 
-There is only one issue now, and that is the images are not labeled. 
+There is only one issue now, and that is the images are not labeled.
 Let's label the images with bounding boxes using an open-source image labeling tool [labelImg](https://github.com/tzutalin/labelImg).
 
 
@@ -115,7 +115,9 @@ Next you will be prompted to enter a label name.
 Key in `microalgae` as the label name. 
 Once done, a rectangular bounding box should appear on-screen.
 
-{{< figure_resizing src="labelimg_loaded.png" >}}
+<!-- {{< figure_resizing src="labelimg_loaded.png" >}} -->
+
+{{< figure width=700 src="label.gif" >}}
 
 Now comes the repetitive part, we will need to draw a bounding box for each microalgae cell for all images in the folder.
 To accelerate the process I highly recommend the use of hotkeys keys with `labelImg`.

@@ -4,7 +4,7 @@ date: 2022-03-04T15:07:15+08:00
 featureImage: images/portfolio/realtime_vehicle_and_license_plate_detection_with_openvino/feature_image.gif
 postImage: images/portfolio/realtime_vehicle_and_license_plate_detection_with_openvino/post_image.jpg
 tags: ["OpenVINO", "NeuralComputeStick2", "realtime", "Tensorflow", "Intel"]
-categories: ["MVP", "portfolio", "Computer Vision", "Object Detection"]
+categories: ["proof-of-concept", "computer-vision", "object-detection"]
 toc: true
 socialshare: true
 ---
