@@ -1,7 +1,7 @@
 ---
 title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code"
 date: 2022-04-09T15:07:15+08:00
-featureImage: images/blog/training_dl_model_for_cell_counting/thumbnail.gif
+thumbnail: images/blog/training_dl_model_for_cell_counting/thumbnail.gif
 postImage: images/blog/training_dl_model_for_cell_counting/post_image.jpg
 tags: ["IceVision", "Fast.ai", "counting", "cell"]
 categories: ["modeling", "object-detection", "biology"]
