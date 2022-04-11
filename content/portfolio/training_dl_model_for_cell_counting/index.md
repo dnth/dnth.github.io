@@ -9,7 +9,7 @@ toc: true
 socialshare: true
 description: "Leverage hundreds state-of-the-art models on IceVision trained with best practices of Fastai"
 images : 
-- images/blog/training_dl_model_for_cell_counting/post_image.png
+- images/portfolio/training_dl_model_for_cell_counting/post_image.png
 ---
 
 ### 🕶️ Motivation
