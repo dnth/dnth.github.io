@@ -80,11 +80,11 @@ Let the installation complete before proceeding.
 
 ### 🔖 Labeling the data
 All deep learning models require data to work.
-To construct this model, we require images of microalgae cells to work with.
+To construct a model for microalgae cell counting, we require images of microalgae cells to work with.
 For the purpose of this post, I've acquired image samples from a lab. 
 
-The following shows a sample image of the cells as seen through a microscope.
-The microalgae cells are colored green.
+The following shows a sample image of the microalgae cells as seen through a microscope.
+The cells are colored green.
 {{< figure_resizing src="hemocytometer.jpg" caption="Can you count how many cells are present in this image?">}}
 
 There are a bunch of other images in the `data/not_labeled/` folder.
@@ -132,29 +132,26 @@ It took me a few hours to meticulously label the images.
 If you don't feel like spending time labeling all the images (although I recommend doing them at least once), you can find the labeled ones in the `data/labeled/` folder.
 
 ### 🌀 Modeling
-Once the labeling is done, we are now ready to start modeling.
-The modeling will be done in a `jupyter` notebook environment.
+Once the labeling is done, we are now ready to start modeling in a `jupyter` notebook environment.
 
-To launch the `jupyter` notebook run 
+To launch the `jupyter` notebook run the following in your terminal
 ```bash
 jupyter lab
 ``` 
 
 A browser window should pop up.
 On the left pane, double click the `train.ipynb` to open the notebook.
-
-All the codes in this section are in the `train.ipynb` notebook.
+All the codes in this section are inside notebook.
 Here, I will attempt to walk you through just enough details of the code to get you started with modeling on your own data.
 If you require further clarifications, the IceVision [documentation](https://airctic.com/0.12.0/) is a good starting point.
 Or drop me a [message](https://dicksonneoh.com/contact/).
 
 The first cell in the notebook are the imports.
-With IceVision all the necessary components are imported with one line of code
+With IceVision all the necessary components are imported with one line of code:
 
 ```python
 from icevision.all import *
 ```
-
 
 If something wasn't properly installed, the imports will raise an error message.
 In that event, you must go back to the installation step before proceeding.
@@ -162,7 +159,7 @@ If there are no errors, we are ready to dive in further.
 
 
 #### 🎯 Preparing datasets
-After the imports, we must now load the labeled images and bounding boxes.
+After the imports, we must now load the labeled images and bounding boxes into `jupyter`.
 This is also known as *data parsing* and is accomplished with the following:
 
 ```python
@@ -170,7 +167,7 @@ parser = parsers.VOCBBoxParser(annotations_dir="data/labeled", images_dir="data/
 ```
 
 The argument `annotations_dir` and `images_dir` are the directory to the images and annotations respectively.
-Since we had both the images and annotations in the same directory, they are the same as specified in the code.
+Since both the images and annotations are located in the same directory, they are the same as such in the code.
 
 Next, we will randomly pick and divide the images and bounding boxes into two groups of data namely `train_records` and `valid_records`.
 By default, the split will be `80:20` to `train:valid` proportion.
@@ -229,7 +226,7 @@ valid_ds = Dataset(valid_records, valid_tfms)
 
 This results in the creation of a `Dataset` object which is a collection of transformed images and bounding boxes.
 
-To visualize the `train_ds` we can run
+To visualize the `train_ds` we can run:
 
 ```python
 samples = [train_ds[0] for _ in range(4)]
@@ -241,7 +238,7 @@ Note the variations in lighting, translation, and rotation compared to the origi
 {{< figure_resizing src="show_ds.png" >}}
 
 The transformations are applied on-the-fly.
-So each run on, the snippet produces slightly different results.
+So each run on the snippet produces slightly different results.
 
 
 #### 🗝️ Choosing library, model, and backbone
@@ -280,21 +277,20 @@ There are other model types with its respective backbones which you can find [he
 In order to start the training, the model needs to take in the images and bounding boxes from the `train_ds` and `valid_ds` we created.
 
 For that, we will need to use a dataloader which will help us iterate over the elements in the dataset we created and load them into the model.
-We will construct two separate dataloaders for `train_ds` and `valid_ds` respectively
+We will construct two separate dataloaders for `train_ds` and `valid_ds` respectively.
 
 ```python
 train_dl = model_type.train_dl(train_ds, batch_size=2, num_workers=4, shuffle=True)
 valid_dl = model_type.valid_dl(valid_ds, batch_size=2, num_workers=4, shuffle=False)
 ```
 
-Here, we can specify the `batch_size` which is the number of images and bounding boxes to be passed to the model in a single forward pass.
-The `batch_size` is a hyperparameter that be tuned to improve performance.
+Here, we can specify the `batch_size` which is the number of images and bounding boxes given to the model in a single forward pass.
 The `shuffle` argument specifies if you would like to randomly shuffle the order of the data.
 The `num_workers` argument specifies how many sub-processes to use to load the data.
 Let's keep it at `4` for now.
 
 Next, we need to specify a measure of how well our model performs during training.
-This measure is specified with a metric score.
+This measure is specified using a metric - which involves using specific math equations to output a score that tells us if the model is improving or not during training.
 Some commonly used metrics include accuracy, error rate, F1 Score, etc.
 For object detection tasks the `COCOMetric` is commonly used.
 If you are interested [this blog](https://blog.zenggyu.com/en/post/2018-12-16/an-introduction-to-evaluation-metrics-for-object-detection/) explains the math behind the metrics used for object detection.
@@ -309,7 +305,7 @@ learn = model_type.fastai.learner(dls=[train_dl, valid_dl], model=model, metrics
 With deep learning models, there are many hyperparameters that we can configure before we run the training.
 One of the most important hyperparameter to get right is the learning rate.
 Since IceVision is built to work with Fastai, we have access to a handy tool known as the learning rate finder first proposed by [Leslie Smith](https://arxiv.org/abs/1506.01186) and popularized by the Fastai community for its effectiveness.
-This is an incredibly easy to use tool to find a range of optimal learning rate with this dataset.
+This is an incredibly simple yet powerful tool to find a range of optimal learning rate values that gives us the best training performance.
 
 All we need to do is run:
 
@@ -321,8 +317,8 @@ which outputs:
 {{< figure_resizing src="lr_find.png" >}}
 
 The most optimal learning rate value is lies in the region where the loss descends most rapidly.
-From the figure above, this is somewhere in between `1e-4` to `1e-3`.
-The orange dot on the plot shows the point where the slope is the steepest and is generally a good recommended value to use as the learning rate.
+From the figure above, this is somewhere in between `1e-4` to `1e-2`.
+The orange dot on the plot shows the point where the slope is the steepest and is generally a good value to use as the learning rate.
 
 Now, let's load this learning rate value of 1e-3 into the `fine_tune` function and start training.
 
@@ -350,11 +346,11 @@ The `freeze_epochs` argument specifies the number of `epochs` to train in ➀.
 
 {{< figure_resizing src="train.png" >}}
 
-During the training, the `train_loss`, `valid_loss` and `COCOMetric` is printed every epoch.
-Ideally, the losses should decrease and `COCOMetric` increase the longer we train.
+During the training, the `train_loss`, `valid_loss` and `COCOMetric` are printed at every epoch.
+Ideally, the losses should decrease, and `COCOMetric` increase the longer we train.
 As shown above, each epoch only took 2 seconds to complete on a GPU - which is incredibly fast.
 
-Once the training finishes, we can view the outcome of the training by showing the inference results on `valid_ds`.
+Once the training completes, we can view the performance of the model by showing the inference results on `valid_ds`.
 The following figure shows the output at a detection threshold of `0.5`.
 You can increase the `detection_threshold` value to only show the bounding boxes with higher confidence value. 
 
@@ -364,7 +360,7 @@ model_type.show_results(model, valid_ds, detection_threshold=.5)
 
 {{< figure_resizing src="show_results.png" >}}
 
-For completeness here are all the codes for the Modeling section which includes step to load the data, instantiate the model, training and showing the results.
+For completeness, here are the codes for the *Modeling* section which includes step to load the data, instantiate the model, training and showing the results.
 That's only 17 lines of codes!
 
 ```python {linenos=table}
