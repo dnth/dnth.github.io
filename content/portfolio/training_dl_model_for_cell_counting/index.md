@@ -3,8 +3,8 @@ title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code wit
 date: 2022-04-11T15:07:15+08:00
 featureImage: images/portfolio/training_dl_model_for_cell_counting/thumbnail.gif
 postImage: images/portfolio/training_dl_model_for_cell_counting/post_image.png
-tags: ["IceVision", "Fast.ai", labelImg, "counting", "cell"]
-categories: ["modeling", "object-detection", "microbiology"]
+tags: ["IceVision", "Fast.ai", labelImg, "cell-counting", "microbiology"]
+categories: ["modeling", "object-detection", "tutorial"]
 toc: true
 socialshare: true
 description: "Leverage hundreds state-of-the-art models on IceVision trained with best practices of Fastai"
@@ -511,6 +511,10 @@ The world is your oyster. Now go out there and use this newly found superpower t
 
 All the codes and data are available on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
 
+
 ### 🙏 Comments & Feedback
 If you find this useful, or if you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet 1511269785010548739>}}
+
+
+So what's next? If you are interested to learn how I deploy this model on an Android app checkout this [post](https://dicksonneoh.com/portfolio/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/).
