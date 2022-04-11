@@ -13,7 +13,7 @@ images :
 ---
 
 ### 🕶️ Motivation
-Numerous biology and medical procedures involve counting cells from images taken with microscope.
+Numerous biology and medical procedures involve counting cells from images taken with a microscope.
 Counting cells reveals the concentration of bacteria and viruses and gives vital information on the progress of a disease.
 To accomplish the counting, researchers painstakingly count the cells by hand with the assistance of a device called [hemocytometer](https://www.youtube.com/watch?v=WWS9sZbGj6A&ab_channel=ThermoFisherScientific).
 This process is repetitive, tedious, and prone to errors.
@@ -26,10 +26,10 @@ Among the things you will learn:
 
 * Installation of the libraries.
 * Prepare and label any dataset for object detection.
-* Train a high performance VFNet model with IceVision & Fastai.
+* Train a high-performance VFNet model with IceVision & Fastai.
 * Use the model for inference on new images.
 
-By the end of the post you will have an object detection model that will automatically detect microalgae cells from an image.
+By the end of the post, you will have an object detection model that will automatically detect microalgae cells from an image.
 {{< figure_resizing src="inference.png" >}}
 
 Did I mention that all the tools used in this project are completely open-source and free of charge? Yes!
@@ -39,10 +39,10 @@ If you're ready let's begin.
 
 
 ### ⚙️ Installation
-Throughout this post, we will make use a library known as [IceVision](https://airctic.com/0.12.0/) - a computer vision focused library built to work with [Fastai](https://github.com/fastai/fastai). Let's install them first.
+Throughout this post, we will make use a library known as [IceVision](https://airctic.com/0.12.0/) - a computer vision-focused library built to work with [Fastai](https://github.com/fastai/fastai). Let's install them first.
 
-There are many ways accomplish the installation.
-For your convenience, I've prepared an installation script that simplifies the process into just a few lines of codes.
+There are many ways to accomplish the installation.
+For your convenience, I've prepared an installation script that simplifies the process into just a few lines of code.
 
 To get started, let's clone the Git repository by typing the following in your terminal:
 
@@ -62,7 +62,7 @@ Install IceVision and all other libraries used for this post:
 bash icevision_install.sh cuda11 0.12.0
 ```
 
-Depending on your system `CUDA` version, you may want to change `cuda11` to `cuda10` especially on older systems. 
+Depending on your system `CUDA` version, you may want to change `cuda11` to `cuda10`, especially on older systems. 
 The number following the `CUDA` version is the version of IceVision. 
 The version I'm using for this blog post is `0.12.0`.
 You can alternatively replace the version number with `master` to install the bleeding edge version of IceVision from the master branch on Github.
@@ -94,7 +94,7 @@ There is only one issue now, and that is the images are not labeled.
 Let's label the images with bounding boxes using an open-source image labeling tool [labelImg](https://github.com/tzutalin/labelImg).
 
 
-The `labelImg` app enables us to label images with class name and bounding boxes surrounding the object of interest.
+The `labelImg` app enables us to label images with class names and bounding boxes surrounding the object of interest.
 The following figure shows a demo of the app.
 {{< figure_resizing src="labelimg_demo_annot.jpg" >}}
 
@@ -111,7 +111,7 @@ To do that, click on the **Open Dir** icon and navigate to the folder.
 
 An image should now show up in `labelImg`.
 To label, click on the **Create RectBox** icon to start drawing bounding boxes around the microalgae cells. 
-Next you will be prompted to enter a label name. 
+Next, you will be prompted to enter a label name. 
 Key in `microalgae` as the label name. 
 Once done, a rectangular bounding box should appear on-screen.
 
@@ -125,7 +125,7 @@ The hotkeys are shown below.
 {{< figure_resizing src="hotkeys.png" width=400 >}}
 
 Once done, remember to save the annotations. 
-The annotations are saved in an `XML` file with a file name matching to image file name as shown below.
+The annotations are saved in an `XML` file with a file name matching to the image file name as shown below.
 {{< figure_resizing src="xml_files.png" >}}
 
 It took me a few hours to meticulously label the images.
@@ -141,12 +141,12 @@ jupyter lab
 
 A browser window should pop up.
 On the left pane, double click the `train.ipynb` to open the notebook.
-All the codes in this section are inside notebook.
+All the codes in this section are inside the notebook.
 Here, I will attempt to walk you through just enough details of the code to get you started with modeling on your own data.
 If you require further clarifications, the IceVision [documentation](https://airctic.com/0.12.0/) is a good starting point.
 Or drop me a [message](https://dicksonneoh.com/contact/).
 
-The first cell in the notebook are the imports.
+The first cell in the notebook is the imports.
 With IceVision all the necessary components are imported with one line of code:
 
 ```python
@@ -166,7 +166,7 @@ This is also known as *data parsing* and is accomplished with the following:
 parser = parsers.VOCBBoxParser(annotations_dir="data/labeled", images_dir="data/labeled")
 ```
 
-The argument `annotations_dir` and `images_dir` are the directory to the images and annotations respectively.
+The parameter `annotations_dir` and `images_dir` are the directories to the images and annotations respectively.
 Since both the images and annotations are located in the same directory, they are the same as such in the code.
 
 Next, we will randomly pick and divide the images and bounding boxes into two groups of data namely `train_records` and `valid_records`.
@@ -189,13 +189,13 @@ It should output:
 
 which shows a `ClassMap` that contains the class name as the key and class index as the value in a Python [dictionary](https://www.w3schools.com/python/python_dictionaries.asp).
 The `background` class is automatically added. 
-In the data labeling step we do not need to label the background.
+In the data labeling step, we do not need to label the background.
 
-Next, we will apply basic data augmentation which is a technique used to diversify the training images by applying random transformation.
+Next, we will apply basic data augmentation which is a technique used to diversify the training images by applying the random transformation.
 Learn more [here](https://medium.com/analytics-vidhya/image-augmentation-9b7be3972e27).
 
 The following code specifies the kinds of transformations we would like to perform on our images.
-Behind the scenes these transformations are performed with the [Albumentations](https://albumentations.ai/) library.
+Behind the scenes, these transformations are performed with the [Albumentations](https://albumentations.ai/) library.
 
 ```python
 image_size = 640
@@ -206,16 +206,16 @@ valid_tfms = tfms.A.Adapter([*tfms.A.resize_and_pad(image_size), tfms.A.Normaliz
 We must specify the dimensions of the image in `image_size = 640`. 
 This value will then be used in `tfms.A.aug_tfms` that ensures that all images are resized to a `640x640` resolution and normalized in `tfms.A.Normalize()`.
 
-Some models like `EfficientDet` only works with image size divisible by `128`.
+Some models like `EfficientDet` only work with image size divisible by `128`.
 Other common values you can try are `384`, `512`, `768`, etc. 
-But beware using large image size may consume more memory and in some cases halts training.
+But beware using a large image size may consume more memory and in some cases halts training.
 Starting with a small value like `384` is probably a good idea.
 I found `640` works best for this dataset.
 
 Use `tfms.A.aug_tfms` performs transformations to the image such as varying the lighting, rotation, shifting, flipping, blurring, padding, etc.
-The full list of transforms that and the arguments can be found in the `aug_tfms` [documentation](https://airctic.com/0.12.0/albumentations_tfms/).
+The full list of transforms and the parameters can be found in the `aug_tfms` [documentation](https://airctic.com/0.12.0/albumentations_tfms/).
 
-In this code snippet we created two distinct transforms namely `train_tfms` and `valid_tfms` that will be used during the training and validation steps respectively.
+In this code snippet, we created two distinct transforms namely `train_tfms` and `valid_tfms` that will be used during the training and validation steps respectively.
 
 Next, we will apply the `train_tfms` to our `train_records` and `valid_tfms` to `valid_records` with the following snippet.
 
@@ -237,11 +237,11 @@ This will show us 4 samples from the `train_ds`.
 Note the variations in lighting, translation, and rotation compared to the original images.
 {{< figure_resizing src="show_ds.png" >}}
 
-The transformations are applied on-the-fly.
+The transformations are applied on the fly.
 So each run on the snippet produces slightly different results.
 
 
-#### 🗝️ Choosing library, model, and backbone
+#### 🗝️ Choosing a library, model, and backbone
 IceVision supports hundreds of high-quality pre-trained models from [Torchvision](https://github.com/pytorch/vision), Open MMLab's [MMDetection](https://github.com/open-mmlab/mmdetection), Ultralytic's [YOLOv5](https://github.com/ultralytics/yolov5) and Ross Wightman's [EfficientDet](https://github.com/rwightman/efficientdet-pytorch).
 
 Depending on your preference, you may choose the model and backbone from these libraries.
@@ -271,10 +271,10 @@ Additionally, IceVision also recently supports state-of-the-art Swin Transformer
 
 Which combination of `model_type` and `backbone` that performs best is something you need to experiment with.
 Feel free to experiment and swap out the backbone and note the performance of the model.
-There are other model types with its respective backbones which you can find [here](https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb).
+There are other model types with their respective backbones which you can find [here](https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb).
 
 #### 🏃 Metrics and Training
-In order to start the training, the model needs to take in the images and bounding boxes from the `train_ds` and `valid_ds` we created.
+To start the training, the model needs to take in the images and bounding boxes from the `train_ds` and `valid_ds` we created.
 
 For that, we will need to use a dataloader which will help us iterate over the elements in the dataset we created and load them into the model.
 We will construct two separate dataloaders for `train_ds` and `valid_ds` respectively.
@@ -284,9 +284,9 @@ train_dl = model_type.train_dl(train_ds, batch_size=2, num_workers=4, shuffle=Tr
 valid_dl = model_type.valid_dl(valid_ds, batch_size=2, num_workers=4, shuffle=False)
 ```
 
-Here, we can specify the `batch_size` which is the number of images and bounding boxes given to the model in a single forward pass.
-The `shuffle` argument specifies if you would like to randomly shuffle the order of the data.
-The `num_workers` argument specifies how many sub-processes to use to load the data.
+Here, we can specify the `batch_size` parameter which is the number of images and bounding boxes given to the model in a single forward pass.
+The `shuffle` parameter specifies if you would like to randomly shuffle the order of the data.
+The `num_workers` parameter specifies how many sub-processes to use to load the data.
 Let's keep it at `4` for now.
 
 Next, we need to specify a measure of how well our model performs during training.
@@ -303,7 +303,7 @@ learn = model_type.fastai.learner(dls=[train_dl, valid_dl], model=model, metrics
 ```
 
 With deep learning models, there are many hyperparameters that we can configure before we run the training.
-One of the most important hyperparameter to get right is the learning rate.
+One of the most important hyperparameters to get right is the learning rate.
 Since IceVision is built to work with Fastai, we have access to a handy tool known as the learning rate finder first proposed by [Leslie Smith](https://arxiv.org/abs/1506.01186) and popularized by the Fastai community for its effectiveness.
 This is an incredibly simple yet powerful tool to find a range of optimal learning rate values that gives us the best training performance.
 
@@ -316,7 +316,7 @@ learn.lr_find()
 which outputs:
 {{< figure_resizing src="lr_find.png" >}}
 
-The most optimal learning rate value is lies in the region where the loss descends most rapidly.
+The most optimal learning rate value lies in the region where the loss descends most rapidly.
 From the figure above, this is somewhere in between `1e-4` to `1e-2`.
 The orange dot on the plot shows the point where the slope is the steepest and is generally a good value to use as the learning rate.
 
@@ -326,11 +326,11 @@ Now, let's load this learning rate value of 1e-3 into the `fine_tune` function a
 learn.fine_tune(10, 1e-3, freeze_epochs=1)
 ```
 
-The first argument to in `fine_tune` is the number of epochs to train for.
+The first parameter in `fine_tune` is the number of epochs to train for.
 One epoch is defined as a complete iteration over the entire dataset.
 In this post, I will only train for 10 epochs. 
-Training for longer will likely to improve the model, so I will leave that to you to experiment with.
-The second argument is the learning rate value we wish to use to train the model.
+Training for longer will likely improve the model, so I will leave that to you to experiment with.
+The second parameter is the learning rate value we wish to use to train the model.
 Let's put the value `1e-3` from the learning rate finder.
 
 The above code snippet trains the model for 10 epochs.
@@ -341,18 +341,18 @@ The rest of the model is frozen.
 In the second phase ➁, the entire model is trained end-to-end.
 The figure below shows the training output.
 
-The `freeze_epochs` argument specifies the number of `epochs` to train in ➀.
+The `freeze_epochs` parameter specifies the number of `epochs` to train in ➀.
 
 
 {{< figure_resizing src="train.png" >}}
 
-During the training, the `train_loss`, `valid_loss` and `COCOMetric` are printed at every epoch.
-Ideally, the losses should decrease, and `COCOMetric` increase the longer we train.
+During the training, the `train_loss`, `valid_loss`, and `COCOMetric` are printed at every epoch.
+Ideally, the losses should decrease, and `COCOMetric` should increase the longer we train.
 As shown above, each epoch only took 2 seconds to complete on a GPU - which is incredibly fast.
 
 Once the training completes, we can view the performance of the model by showing the inference results on `valid_ds`.
 The following figure shows the output at a detection threshold of `0.5`.
-You can increase the `detection_threshold` value to only show the bounding boxes with higher confidence value. 
+You can increase the `detection_threshold` value to only show the bounding boxes with a higher confidence value. 
 
 ```python
 model_type.show_results(model, valid_ds, detection_threshold=.5)
@@ -360,8 +360,8 @@ model_type.show_results(model, valid_ds, detection_threshold=.5)
 
 {{< figure_resizing src="show_results.png" >}}
 
-For completeness, here are the codes for the *Modeling* section which includes step to load the data, instantiate the model, training and showing the results.
-That's only 17 lines of codes!
+For completeness, here are the codes for the *Modeling* section which include steps to load the data, instantiate the model, train the model, and show the results.
+That's only 17 lines of code!
 
 ```python {linenos=table}
 from icevision.all import *
@@ -391,7 +391,7 @@ model_type.show_results(model, valid_ds, detection_threshold=.5)
 ```
 
 #### 📨 Exporting model
-Once you are satisfied with the performance and quality of the model, we can export the all the model configurations (hyperparameters) and weights (parameters) for future use.
+Once you are satisfied with the performance and quality of the model, we can export all the model configurations (hyperparameters) and weights (parameters) for future use.
 
 The following code packages the model into a checkpoint and exports it into a local directory.
 
@@ -405,18 +405,18 @@ save_icevision_checkpoint(model,
                         filename='./models/model_checkpoint.pth',
                         meta={'icevision_version': '0.12.0'})
 ```
-The arguments `model_name`, `backbone_name` and `img_size` has to match what we used during training.
+The parameters `model_name`, `backbone_name`, and `img_size` have to match what we used during training.
 
 `filename` specifies the directory and name of the checkpoint file.
 
-`meta` is an optional argument you can use to save all other information about the model.
+`meta` is an optional parameter you can use to save all other information about the model.
 
-Once completed the checkpoint should saved in the `models/` folder. We can now use this checkpoint independently outside of the training notebook.
+Once completed the checkpoint should be saved in the `models/` folder. We can now use this checkpoint independently outside of the training notebook.
 
 
 ### 🧭 Inferencing on a new image
 To demonstrate that the model checkpoint file can be loaded independently, I created another notebook with the name `inference.ipynb`.
-In this notebook we are going to load the checkpoint and use it for inference on a brand new image.
+In this notebook, we are going to load the checkpoint and use it for inference on a brand new image.
 
 Let's import all the necessary packages:
 ```python
@@ -431,7 +431,7 @@ checkpoint_path = "./models/model_checkpoint.pth"
 ```
 
 We can load the checkpoint with the function `model_from_checkpoint`.
-From the checkpoint we can retrieve all other configurations such as the model type, class map, image size and the transforms.
+From the checkpoint, we can retrieve all other configurations such as the model type, class map, image size, and the transforms.
 
 ```python
 checkpoint_and_model = model_from_checkpoint(checkpoint_path)
@@ -447,7 +447,7 @@ Let's try to load an image with:
 img = Image.open('data/not_labeled/IMG_20191203_164256.jpg')
 ```
 
-We can use pass the image into the `end2end_detect` function to run the inference.
+We can pass the image into the `end2end_detect` function to run the inference.
 ```python
 pred_dict = model_type.end2end_detect(img, valid_tfms, model, 
                                       class_map=class_map, 
@@ -483,27 +483,27 @@ pred_dict["img"].save("inference.png")
 
 As you can see, there are some missed detections of the microalgae cells.
 But, considering this is our first try, and we only trained for 10 epochs (which took less than 30 seconds to complete), this is an astonishing feat!
-Additionally, in this post, I've only used 17 labeled images to train the model.
+Additionally, I've only used 17 labeled images to train the model.
 
-In this post I've demonstrated that we can train a sophisticated object detection model with only a few images in a very short time.
-These outstanding feat is possible thanks to the Fastai library that incorporated all the best practices in training deep learning models.
+In this post, I've demonstrated that we can train a sophisticated object detection model with only a few images in a very short time.
+This outstanding feat is possible thanks to the Fastai library which incorporated all the best practices in training deep learning models.
 
 At this point, we have not even tuned any hyperparameters (other than learning rate) to optimize performance. 
 Most hyperparameters are default values in Fastai that worked extremely well out-of-the-box with this dataset and model.
 
-To improve performance, you may want to experiment by labeling more data, and adjusting a few other hyperparameters such as image size, batch size, training epochs, ratio of training/validation split, different model types and backbones.
+To improve performance, you may want to experiment by labeling more data and adjusting a few other hyperparameters such as image size, batch size, training epochs, the ratio of training/validation split, different model types, and backbones.
 
 
 ### 📖 Wrapping Up
 Congratulations on making it through this post! It wasn't that hard right? 
-Hopefully this post also boosted your confidence that object detection is not as hard as it used to be.
-With many high level open-source package like IceVision and Fastai, anyone with a computer and a little patience can break into object detection.
+Hopefully, this post also boosted your confidence that object detection is not as hard as it used to be.
+With many high-level open-source packages like IceVision and Fastai, anyone with a computer and a little patience can break into object detection.
 
-In this post I've shown you how you can construct a model that detects microalgae cells.
-In reality, the same steps can be used to detect any other cells, or any other objects for that matter.
+In this post, I've shown you how you can construct a model that detects microalgae cells.
+In reality, the same steps can be used to detect any other cells or any other objects for that matter.
 Realizing this is an extremely powerful paradigm shift for me.
-Think about all the problems we can solve by accurately detecting specific objects. Detecting intruders, detecting dangerous object such as a gun, detecting defect on a production line, detecting smoke/fire, detecting skin cancer, detecting plant disease, and so much more.
-Your creativity and imagination is the limit.
+Think about all the problems we can solve by accurately detecting specific objects. Detecting intruders, detecting dangerous objects such as a gun, detecting defects on a production line, detecting smoke/fire, detecting skin cancer, detecting plant disease, and so much more.
+Your creativity and imagination are the limits.
 The world is your oyster. Now go out there and use this newly found superpower to make a difference.
 
 
