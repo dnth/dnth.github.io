@@ -1,5 +1,5 @@
 ---
-title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code"
+title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code and 17 Images"
 date: 2022-04-09T15:07:15+08:00
 featureImage: images/portfolio/training_dl_model_for_cell_counting/thumbnail.gif
 postImage: images/portfolio/training_dl_model_for_cell_counting/post_image.jpg
@@ -163,7 +163,7 @@ If there are no errors, we are ready to dive in further.
 
 #### 🎯 Preparing datasets
 After the imports, we must now load the labeled images and bounding boxes.
-This is also known as parsing the data and is accomplished with the following
+This is also known as *data parsing* and is accomplished with the following:
 
 ```python
 parser = parsers.VOCBBoxParser(annotations_dir="data/labeled", images_dir="data/labeled")
@@ -172,20 +172,20 @@ parser = parsers.VOCBBoxParser(annotations_dir="data/labeled", images_dir="data/
 The argument `annotations_dir` and `images_dir` are the directory to the images and annotations respectively.
 Since we had both the images and annotations in the same directory, they are the same as specified in the code.
 
-Next, we will divide the images and bounding boxes into two groups of data namely `train_records` and `valid_records`.
+Next, we will randomly pick and divide the images and bounding boxes into two groups of data namely `train_records` and `valid_records`.
 By default, the split will be `80:20` to `train:valid` proportion.
-You can change the ratio by altering the value in `RandomSplitter`.
+You can change the ratio by altering the values in `RandomSplitter`.
 
 ```python
 train_records, valid_records = parser.parse(data_splitter=RandomSplitter([0.8, 0.2])
 ```
 
-The following code shows the class names from the parsed data.
+The following code shows the class names from the parsed data:
 ```python
 parser.class_map
 ```
 
-It should output 
+It should output:
 ```python
 <ClassMap: {'background': 0, 'Microalgae': 1}>
 ```
@@ -210,10 +210,10 @@ We must specify the dimensions of the image in `image_size = 640`.
 This value will then be used in `tfms.A.aug_tfms` that ensures that all images are resized to a `640x640` resolution and normalized in `tfms.A.Normalize()`.
 
 Some models like `EfficientDet` only works with image size divisible by `128`.
-Other common values you may try are `384`,`512`,`768`, etc. 
+Other common values you can try are `384`, `512`, `768`, etc. 
 But beware using large image size may consume more memory and in some cases halts training.
 Starting with a small value like `384` is probably a good idea.
-I found that for this blog post `640` works best.
+I found `640` works best for this dataset.
 
 Use `tfms.A.aug_tfms` performs transformations to the image such as varying the lighting, rotation, shifting, flipping, blurring, padding, etc.
 The full list of transforms that and the arguments can be found in the `aug_tfms` [documentation](https://airctic.com/0.12.0/albumentations_tfms/).
@@ -248,7 +248,7 @@ So each run on, the snippet produces slightly different results.
 IceVision supports hundreds of high-quality pre-trained models from [Torchvision](https://github.com/pytorch/vision), Open MMLab's [MMDetection](https://github.com/open-mmlab/mmdetection), Ultralytic's [YOLOv5](https://github.com/ultralytics/yolov5) and Ross Wightman's [EfficientDet](https://github.com/rwightman/efficientdet-pytorch).
 
 Depending on your preference, you may choose the model and backbone from these libraries.
-In this post I will choose the [VarifocalNet](https://arxiv.org/abs/2008.13367) (VFNet) model from MMDetection which can be accomplished with
+In this post I will choose the [VarifocalNet](https://arxiv.org/abs/2008.13367) (VFNet) model from MMDetection which can be accomplished with:
 
 ```python
 model_type = models.mmdet.vfnet
@@ -277,10 +277,10 @@ Feel free to experiment and swap out the backbone and note the performance of th
 There are other model types with its respective backbones which you can find [here](https://github.com/airctic/icevision/blob/master/notebooks/getting_started_object_detection.ipynb).
 
 #### 🏃 Metrics and Training
-In order to start the training, the model needs to ingest the images and bounding boxes from the `train_ds` and `valid_ds` we created.
-This is the role that dataloaders play.
+In order to start the training, the model needs to take in the images and bounding boxes from the `train_ds` and `valid_ds` we created.
 
-We will therefore need to construct the dataloaders from the `train_ds` and `valid_ds` respectively
+For that, we will need to use a dataloader which will help us iterate over the elements in the dataset we created and load them into the model.
+We will construct two separate dataloaders for `train_ds` and `valid_ds` respectively
 
 ```python
 train_dl = model_type.train_dl(train_ds, batch_size=2, num_workers=4, shuffle=True)
@@ -289,57 +289,74 @@ valid_dl = model_type.valid_dl(valid_ds, batch_size=2, num_workers=4, shuffle=Fa
 
 Here, we can specify the `batch_size` which is the number of images and bounding boxes to be passed to the model in a single forward pass.
 The `batch_size` is a hyperparameter that be tuned to improve performance.
-The `num_workers` argument specifies the number of CPU cores to be used - the more cores, the faster.
+The `shuffle` argument specifies if you would like to randomly shuffle the order of the data.
+The `num_workers` argument specifies how many sub-processes to use to load the data.
+Let's keep it at `4` for now.
 
-Next, we need to specify the metric we use for the training. 
-Metric is a measure of how good the model is at the task we are trying to train the model for.
-Some commonly used metrics include accuracy, F1 Score, etc.
+Next, we need to specify a measure of how well our model performs during training.
+This measure is specified with a metric score.
+Some commonly used metrics include accuracy, error rate, F1 Score, etc.
 For object detection tasks the `COCOMetric` is commonly used.
+If you are interested [this blog](https://blog.zenggyu.com/en/post/2018-12-16/an-introduction-to-evaluation-metrics-for-object-detection/) explains the math behind the metrics used for object detection.
 
+Once the metric is defined, we can then load all three components - dataloaders, model, and metric into a Fastai `Learner` for training.
+
+```python
+metrics = [COCOMetric(metric_type=COCOMetricType.bbox)]
+learn = model_type.fastai.learner(dls=[train_dl, valid_dl], model=model, metrics=metrics)
+```
+
+With deep learning models, there are many hyperparameters that we can configure before we run the training.
 One of the most important hyperparameter to get right is the learning rate.
-Since IceVision is built to work with Fastai, we have access to a handy tool known as the learning rate finder first proposed by Leslie Smith and popularized by the Fastai community for its effectiveness.
+Since IceVision is built to work with Fastai, we have access to a handy tool known as the learning rate finder first proposed by [Leslie Smith](https://arxiv.org/abs/1506.01186) and popularized by the Fastai community for its effectiveness.
 This is an incredibly easy to use tool to find a range of optimal learning rate with this dataset.
 
-All we need to do is run
+All we need to do is run:
 
 ```python
 learn.lr_find()
 ```
 
-which outputs
+which outputs:
 {{< figure_resizing src="lr_find.png" >}}
 
-The most optimal learning rate value is where the loss descends most rapidly as can be seen in values between `1e-4` to `1e-3`.
-The orange dot on the plot shows the point where the slope is the steepest.
+The most optimal learning rate value is lies in the region where the loss descends most rapidly.
+From the figure above, this is somewhere in between `1e-4` to `1e-3`.
+The orange dot on the plot shows the point where the slope is the steepest and is generally a good recommended value to use as the learning rate.
 
-With this learning rate value, we can pass it into the fine_tune function to start training.
+Now, let's load this learning rate value of 1e-3 into the `fine_tune` function and start training.
 
 ```python
-metrics = [COCOMetric(metric_type=COCOMetricType.bbox)]
-learn = model_type.fastai.learner(dls=[train_dl, valid_dl], model=model, metrics=metrics)
 learn.fine_tune(10, 1e-3, freeze_epochs=1)
 ```
 
-The first argument to in `fine_tune` is the number of epochs to train for. In this post I will train for 10 epochs for demonstration. 
-Training for longer will likely to improve the model.
-The second argument is the base learning rate value which we found using the `learn.lr_find()`
+The first argument to in `fine_tune` is the number of epochs to train for.
+One epoch is defined as a complete iteration over the entire dataset.
+In this post, I will only train for 10 epochs. 
+Training for longer will likely to improve the model, so I will leave that to you to experiment with.
+The second argument is the learning rate value we wish to use to train the model.
+Let's put the value `1e-3` from the learning rate finder.
 
-The above code snippet trains the model for 10 `epochs`.
-The `freeze_epochs` specifies the number of `epochs` to train while the backbone of the model is frozen.
+The above code snippet trains the model for 10 epochs.
+By default, this will start the training in two phases.
 
+In the first phase ➀, only the last layer of the model is trained.
+The rest of the model is frozen.
+In the second phase ➁, the entire model is trained end-to-end.
 The figure below shows the training output.
-In ➀, only the last layer of the model was trained.
-The remaining parts of the model are frozen.
-In ➁, the entire mode is trained end-to-end.
+
+The `freeze_epochs` argument specifies the number of `epochs` to train in ➀.
+
 
 {{< figure_resizing src="train.png" >}}
 
-During the training, the `train_loss`, `valid_loss` and `COCOMetric`is printed every epoch.
-Ideally the losses should decrease and `COCOMetric` increase the longer we train.
+During the training, the `train_loss`, `valid_loss` and `COCOMetric` is printed every epoch.
+Ideally, the losses should decrease and `COCOMetric` increase the longer we train.
 As shown above, each epoch only took 2 seconds to complete on a GPU - which is incredibly fast.
 
-
-
+Once the training finishes, we can view the outcome of the training by showing the inference results on `valid_ds`.
+The following figure shows the output at a detection threshold of `0.5`.
+You can increase the `detection_threshold` value to only show the bounding boxes with higher confidence value. 
 
 ```python
 model_type.show_results(model, valid_ds, detection_threshold=.5)
@@ -347,8 +364,8 @@ model_type.show_results(model, valid_ds, detection_threshold=.5)
 
 {{< figure_resizing src="show_results.png" >}}
 
-For completeness here are all the codes in Step 3 to load the data, instantiate the model, training and showing the results.
-That is only 17 lines of code if you remove the spaces in between!
+For completeness here are all the codes for the Modeling section which includes step to load the data, instantiate the model, training and showing the results.
+That's only 17 lines of codes!
 
 ```python {linenos=table}
 from icevision.all import *
@@ -418,7 +435,7 @@ checkpoint_path = "./models/model_checkpoint.pth"
 ```
 
 We can load the checkpoint with the function `model_from_checkpoint`.
-From the checkpoint we can retrieve all other configurations such as the model type, class map, image size and the transformations.
+From the checkpoint we can retrieve all other configurations such as the model type, class map, image size and the transforms.
 
 ```python
 checkpoint_and_model = model_from_checkpoint(checkpoint_path)
@@ -447,7 +464,7 @@ pred_dict = model_type.end2end_detect(img, valid_tfms, model,
 ```
 
 The output `pred_dict` is a Python dictionary.
-To view the inferred image with the bounding boxes, we can run:
+To view the output image with the bounding boxes:
 ```python
 pred_dict["img"]
 ```
@@ -469,17 +486,16 @@ pred_dict["img"].save("inference.png")
 ```
 
 As you can see, there are some missed detections of the microalgae cells.
-But, considering we only trained for 10 epochs (which took less than 30 seconds to complete), this is an astonishing result!
+But, considering this is our first try, and we only trained for 10 epochs (which took less than 30 seconds to complete), this is an astonishing feat!
 Additionally, in this post, I've only used 17 labeled images to train the model.
 
-Contrary to popular belief, we can feasibly train a sophisticated object detection model with only a few images in short amount of time.
-These outstanding result is possible thanks to the Fastai library that incorporated all the best practices in training deep learning models.
+In this post I've demonstrated that we can train a sophisticated object detection model with only a few images in a very short time.
+These outstanding feat is possible thanks to the Fastai library that incorporated all the best practices in training deep learning models.
 
-At this point, we have not even tuned any hyperparameters to improve performance. 
-The hyperparameters are default values in Fastai that worked extremely well especially considering that this is only our first model trained on this dataset.
+At this point, we have not even tuned any hyperparameters (other than learning rate) to optimize performance. 
+Most hyperparameters are default values in Fastai that worked extremely well out-of-the-box with this dataset and model.
 
-To improve model performance, you may want to experiment by labeling more data, and adjusting a few other hyperparameters such as learning rate, batch size, different models and backbones.
-
+To improve performance, you may want to experiment by labeling more data, and adjusting a few other hyperparameters such as image size, batch size, training epochs, ratio of training/validation split, different model types and backbones.
 
 
 ### 📖 Wrapping Up
