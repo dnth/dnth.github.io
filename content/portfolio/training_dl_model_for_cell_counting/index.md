@@ -1,15 +1,15 @@
 ---
 title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code with 17 Images"
-date: 2022-04-09T15:07:15+08:00
+date: 2022-04-11T15:07:15+08:00
 featureImage: images/portfolio/training_dl_model_for_cell_counting/thumbnail.gif
-postImage: images/portfolio/training_dl_model_for_cell_counting/post_image.jpg
+postImage: images/portfolio/training_dl_model_for_cell_counting/post_image.png
 tags: ["IceVision", "Fast.ai", labelImg, "counting", "cell"]
 categories: ["modeling", "object-detection", "microbiology"]
 toc: true
 socialshare: true
 description: "Leverage hundreds state-of-the-art models on IceVision trained with best practices of Fastai"
 images : 
-- images/blog/training_dl_model_for_cell_counting/post_image.jpg
+- images/blog/training_dl_model_for_cell_counting/post_image.png
 ---
 
 ### 🕶️ Motivation
