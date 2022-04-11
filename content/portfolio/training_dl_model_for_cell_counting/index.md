@@ -1,5 +1,5 @@
 ---
-title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code and 17 Images"
+title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code with 17 Images"
 date: 2022-04-09T15:07:15+08:00
 featureImage: images/portfolio/training_dl_model_for_cell_counting/thumbnail.gif
 postImage: images/portfolio/training_dl_model_for_cell_counting/post_image.jpg
