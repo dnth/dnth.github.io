@@ -514,7 +514,7 @@ All the codes and data are available on this Github [repository](https://github.
 
 ### 🙏 Comments & Feedback
 If you find this useful, or if you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
-{{< tweet 1511269785010548739>}}
+{{< tweet 1513478343726809090>}}
 
 
 So what's next? If you are interested to learn how I deploy this model on an Android app checkout this [post](https://dicksonneoh.com/portfolio/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/).
