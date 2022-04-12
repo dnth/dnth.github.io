@@ -18,8 +18,9 @@ I was recently given the recognition by the folks at [IceVision](https://github.
 {{< tweet 1504457803552935943>}}
 
 ### 🏅 Lessons learned
-Reflecting at how far I've come, I was astonished and humbled.
-It was just 3 months back that I learned how to open a *Pull Request* on GitHub. 
+Reflecting on how far I've come, I am astonished and humbled.
+Just 3 months ago, I learned how to open my first *Pull Request* on GitHub. 
+
 Despite having coded for over 10 years, I never bothered to learn about something so commonly used in the software world - *Git*, a version control system.
 I took the plunge, and the first step was painful. 
 But every subsequent step got better and better. 
