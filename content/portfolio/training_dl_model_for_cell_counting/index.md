@@ -77,6 +77,7 @@ Training an object detection model on a CPU can be many times slower compared to
 If you do not have an available GPU, use [Google Colab](https://colab.research.google.com/).
 {{< /notice >}}
 
+
 The installation may take a few minutes depending on your internet connection speed.
 Let the installation complete before proceeding.
 
@@ -505,14 +506,18 @@ With many high-level open-source packages like IceVision and Fastai, anyone with
 In this post, I've shown you how you can construct a model that detects microalgae cells.
 In reality, the same steps can be used to detect any other cells or any other objects for that matter.
 Realizing this is an extremely powerful paradigm shift for me.
+
 Think about all the problems we can solve by accurately detecting specific objects. Detecting intruders, detecting dangerous objects such as a gun, detecting defects on a production line, detecting smoke/fire, detecting skin cancer, detecting plant disease, and so much more.
+
 Your creativity and imagination are the limits.
 The world is your oyster. Now go out there and use this newly found superpower to make a difference.
 
 
 {{< figure_resizing src="quote_robert_greene.jpg" >}}
 
+{{< notice note >}}
 All the codes and data are available on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).
+{{< /notice >}}
 
 
 ### 🙏 Comments & Feedback
@@ -520,4 +525,4 @@ If you find this useful, or if you have any questions, comments, or feedback, I 
 {{< tweet 1513478343726809090>}}
 
 
-So what's next? If you are interested to learn how I deploy this model on an Android app checkout this [post](https://dicksonneoh.com/portfolio/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/).
+So what's next? If you are interested to learn how I deploy this model on Android checkout this [post](https://dicksonneoh.com/portfolio/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/).

@@ -102,7 +102,7 @@ One day, I hope to be a mentor of some sort to others and help inspire people in
 Encouragement from Farid led me to start blogging.
 In the process, I explored and learned how to use several blogging platforms including Wordpress, Ghost, and Hugo.
 
-I finally settled with Hugo as it gives the best flexibility for my use.
+I finally settled with [Hugo](https://gohugo.io/) as it gives the best flexibility for my use.
 In the process, I also learned about self-hosting a webpage on GitHub pages and Digital Ocean, purchasing a domain, and GitHub workflows. 
 
 In building this website, I found myself contributing to the Hugo [theme](https://github.com/StaticMania/portio-hugo) that I used for this site. I learned how Hugo themes work and a little about [Go language](https://go.dev/) used in the theme.
