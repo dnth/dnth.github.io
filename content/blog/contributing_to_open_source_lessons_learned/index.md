@@ -75,7 +75,7 @@ The rest is history.
 Little that I know, I was ranked #26 on [Top GitHub Users By Country](https://github.com/gayanvoice/top-github-users/blob/main/markdown/public_contributions/malaysia.md) out of 1000+ contributors from Malaysia. 
 The ranking is based on the number of public contributions on GitHub.
 All these happened within a short span of 3 months!
-{{< figure_resizing src="top_cont.png" >}}
+{{< figure_resizing src="top_cont.png" caption="Ranked #26 after contributing to open-source for 3 months.">}}
 
 #### 👨‍🏫 I got mentorship from coding experts
 Getting a mentor is no doubt one of the best investments for rapid progress in any area of personal growth.
@@ -95,7 +95,7 @@ As I help others, I gained and learned a lot myself which allowed me to contribu
 This became an empowering cycle to continue contributing to the library.
 One day, I hope to be a mentor of some sort to others and help inspire people in the ways I was inspired.
 
-{{< figure_resizing src="mentor.png" >}}
+{{< figure_resizing src="mentor.png" caption="“If I have seen further it is by standing on the shoulders of giants.” — Isaac Newton">}}
 
 
 #### 🌎 I started a website from scratch
