@@ -73,7 +73,7 @@ bash icevision_install.sh cpu 0.12.0
 ```
 
 {{< notice info >}}
-Training object detection models on a CPU can be many times slower on a CPU compared to a GPU.
+Training an object detection model on a CPU can be many times slower compared to a GPU.
 If you do not have an available GPU, use [Google Colab](https://colab.research.google.com/).
 {{< /notice >}}
 
