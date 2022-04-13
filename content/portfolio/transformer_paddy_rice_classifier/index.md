@@ -1,15 +1,15 @@
 ---
-title: "Training a Deep Learning Model for Cell Counting in 17 Lines of Code with 17 Images"
-date: 2022-04-11T15:07:15+08:00
-featureImage: images/portfolio/training_dl_model_for_cell_counting/thumbnail.gif
-postImage: images/portfolio/training_dl_model_for_cell_counting/post_image.png
-tags: ["IceVision", "Fast.ai", labelImg, "cell-counting", "microbiology"]
-categories: ["modeling", "object-detection", "tutorial"]
+title: "How to use Transformer to Classify Rice Leaf Diseases with TIMM and Fastai"
+date: 2022-04-13T15:00:15+08:00
+featureImage: images/portfolio/transformer_paddy_rice_classifier/thumbnail.gif
+postImage: images/portfolio/transformer_paddy_rice_classifier/post_image.png
+tags: ["timm", "Fast.ai", "agriculture", "disease", "Transformer"]
+categories: ["modeling", "image-classification", "tutorial"]
 toc: true
 socialshare: true
-description: "Leverage hundreds of state-of-the-art models on IceVision trained with best practices of Fastai"
+description: "Leverage hundreds of state-of-the-art models on TIMM trained with best practices of Fastai"
 images : 
-- images/portfolio/training_dl_model_for_cell_counting/post_image.png
+- images/portfolio/transformer_paddy_rice_classifier/post_image.png
 ---
 
 ### 🕶️ Motivation
@@ -25,9 +25,13 @@ In this blog post, I will walk you through how to use the [IceVision](https://ai
 Among the things you will learn: 
 
 * Installation of the libraries.
-* Prepare and label any dataset for object detection.
-* Train a high-performance VFNet model with IceVision & Fastai.
+* Prepare and label a dataset for object classification.
+* Train state-of-the-art MobileViT Transformer models from Timm with Fastai.
+* Using [Weights and Biases](https://wandb.ai/) to track and monitor experiments
 * Use the model for inference on new images.
+
+
+https://wandb.ai/dnth/leaf-disease-blogpost?workspace=user-dnth
 
 By the end of the post, you will have an object detection model that will automatically detect microalgae cells from an image.
 {{< figure_resizing src="inference.png" >}}
