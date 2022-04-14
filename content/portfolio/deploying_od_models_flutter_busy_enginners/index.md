@@ -7,7 +7,7 @@ tags: ["Flutter", "Hugging-Face", "Android", "Fast.ai", "Gradio", "IceVision"]
 categories: ["deployment", "object-detection"]
 toc: true
 socialshare: true
-description: "Leveraging the use of giant models on the clouds in your palms."
+description: "Leveraging giant models on the clouds in your palms."
 images : 
 - images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
 ---
