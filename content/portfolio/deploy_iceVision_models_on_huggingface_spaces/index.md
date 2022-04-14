@@ -1,13 +1,15 @@
 ---
-title: "Deploy IceVision Models on HuggingFace Spaces"
+title: "Deploying Object Detection Models on Hugging Face Spaces"
 date: 2022-02-17T13:42:56+08:00
 featureImage: images/portfolio/deploy_iceVision_models_on_huggingface_spaces/feature_image_.gif
 postImage: images/portfolio/deploy_iceVision_models_on_huggingface_spaces/post_image.jpg
-tags: ["IceVision", "HuggingFace", "Gradio"]
-categories: ["deployment"]
+tags: ["IceVision", "Hugging-Face", "Gradio", "fridge-objects"]
+categories: ["deployment", "tutorial", "object-detection"]
 toc: true
 socialshare: true
-
+description: "Share your models to anyone across the internet for free in record time."
+images : 
+- images/portfolio/deploy_iceVision_models_on_huggingface_spaces/post_image.jpg
 ---
 
 ### Introduction
@@ -223,7 +225,6 @@ You can now share the URL to your Space to anyone across the internet for free.
 This blog post outlined a step-by-step guide on how you can deploy IceVision models on HuggingFace Space in just a few steps. Hope this helps you share the awesomeness of your model to anyone across the world.
 The Space used in this blog post can be found [here](https://huggingface.co/spaces/dnth/icevision_fridge_tutorial).
 
-Happy learning.
 
 <!-- <div id="disqus_thread"></div>
 <script>
