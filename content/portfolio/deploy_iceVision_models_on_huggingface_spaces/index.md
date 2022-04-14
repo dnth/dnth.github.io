@@ -1,8 +1,8 @@
 ---
 title: "Deploy IceVision Models on HuggingFace Spaces"
 date: 2022-02-17T13:42:56+08:00
-featureImage: images/blog/deploy_iceVision_models_on_huggingface_spaces/feature_image_.gif
-postImage: images/blog/deploy_iceVision_models_on_huggingface_spaces/post_image.jpg
+featureImage: images/portfolio/deploy_iceVision_models_on_huggingface_spaces/feature_image_.gif
+postImage: images/portfolio/deploy_iceVision_models_on_huggingface_spaces/post_image.jpg
 tags: ["IceVision", "HuggingFace", "Gradio"]
 categories: ["deployment"]
 toc: true
