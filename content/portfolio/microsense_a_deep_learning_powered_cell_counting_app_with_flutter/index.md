@@ -1,5 +1,5 @@
 ---
-title: "Deploying Object Detection Models on Mobile Devices with Flutter for Busy Engineers"
+title: "[WIP] Deploying Object Detection Models on Mobile Devices with Flutter for Busy Engineers"
 date: 2022-04-14T15:07:15+08:00
 featureImage: images/portfolio/deploying_od_models_flutter_busy_enginners/thumbnail.gif
 postImage: images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
@@ -9,18 +9,26 @@ toc: true
 socialshare: true
 ---
 
-### Deployment - motivation and challenges
-What is deployment? Making a model available to users or other systems - Luigi.
-https://mlinproduction.com/what-does-it-mean-to-deploy-a-machine-learning-model-deployment-series-01/
+### Deployment - where most models fail
+According to [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence), more than 85% of machine learning models never made it into production.
+This trend is expected to continue further this year in 2022. 
 
-MLOps - messy - hundreds of tools and no accepted standard of practice.
+Despite huge efforts in research, machine learning models often fail in the deployment.
 
-https://twitter.com/mihail_eric/status/1499065027650752513
+What exactly is deployment? 
+In simple terms, deployment means making a model's capability or insight available to users or other systems - [Luigi Patruno](https://mlinproduction.com/what-does-it-mean-to-deploy-a-machine-learning-model-deployment-series-01/).
+Only when a model is deployed can they add value to businesses or organizations 
 
-ML model adds value to a business or organization when it can make its prediction available to users.
-This is where deployment comes in.
-80 percent of models don't make it into prod.
+In this post, I will outline basic steps to deploy models on lightweight mobile devices running on Android operating system.
 
+By the end of this post you will learn about
+
+* What are deployment patterns.
+* How to host a model on Hugging Face.
+* Deploying on with HTTP calls.
+* Displaying the results on a Flutter Android app.
+
+### Deployment architecture
 Deploying deep learning model on the edge is not trivial.
 Models can be huge, complex and requires a lot of resources to run.
 
@@ -52,7 +60,7 @@ Decode prediction.
 The screenshot below illustrates the Android app sending a sample image to the inference server and getting a response on the number of detected microalgae cells on the image.
 {{< figure src="microsense.gif" width=500 >}}
 
-### What's next
+### Up Next
 Hosting on AWS Lambda.
 Using Hugging Face Inference API.
 
