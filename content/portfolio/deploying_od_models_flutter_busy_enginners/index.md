@@ -1,5 +1,5 @@
 ---
-title: "[WIP] Deploying Object Detection Models on Mobile Devices with Flutter for Busy Engineers"
+title: "[WIP] Deploying Any Object Detection Model on Mobile Devices with Flutter for Busy Engineers"
 date: 2022-04-14T15:07:15+08:00
 featureImage: images/portfolio/deploying_od_models_flutter_busy_enginners/thumbnail.gif
 postImage: images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
@@ -7,6 +7,9 @@ tags: ["Flutter", "Hugging-Face", "Android", "Fast.ai", "Gradio", "IceVision"]
 categories: ["deployment", "object-detection"]
 toc: true
 socialshare: true
+description: "Leveraging the use of giant models on the clouds in your palms."
+images : 
+- images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
 ---
 
 ### Deployment - where most models fail
