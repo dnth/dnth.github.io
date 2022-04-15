@@ -16,7 +16,7 @@ images :
 This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
 {{< /notice >}}
 
-### 🔥 Deployment - where most models fail
+### 🚑 Deployment: ML Models Graveyard
 According to [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence), more than **85%** of machine learning (ML) models never made it into production.
 This trend is expected to continue further this year in 2022.
 
@@ -38,33 +38,37 @@ By the end of this post, you will learn about:
 * Displaying the results on a Flutter Android app.
 
 
-### 🪜 Demo - where it all begins
+### 🪜 It starts with a demo
 Many ML researchers take pride in training bleeding edge models with state-of-the-art (SOTA) results on datasets.
-As a research scientist myself, I understand how satisfying it gets when I'm able to have breakthroughs like these.
+As a research scientist myself, I understand how deeply satisfying it gets training them successfully.
 
-However, many of these so called SOTA models just live on papers (publications) and in some obscure repository nobody cares about after the initial hype. 
+However, many of these so called "SOTA models" will end up living on preprints, (or jupyter notebook) or in some obscure repository nobody cares about after the initial hype. 
 
 Eventually, they are forgotten and lost in the ocean of newer SOTA models and publications.
-You can forget about finding these models in any production environment.
+We can forget about finding these models in any production environment.
 
-Additionally, due to the obsession of chasing after SOTA models and results, researcher often lose track of the end goal of building the model itself - to be deployed.
+Additionally, the obsession of chasing after "SOTA models" often cause researchers to lose track of the end goal of building the model itself - deployment.
 
-To help with this, it is often helpful for researchers to build a model with deployment in mind.
-One way to get there is by providing interactive demos to the model.
+
+{{< figure_resizing src="jupyter_meme.png" caption="Source: ClearML on Reddit." link="https://www.reddit.com/r/mlops/comments/o8w2e4/you_know_the_deal_if_you_dont_post_content_ill/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">}}
+
+To help with this, it is often helpful for researchers to build a model with deployment in mind as the end result.
+One way to get there is by putting up interactive demos to the model.
 
 This is the beginning to getting a model into production. 
-With an interactive demo, provides an opportunity to receive valuable feedback that can improve the model.
-But many don't even make it through this phase.
+An interactive demo opens the door to users' feedback from using the model which might be invaluable in product iteration to prepare for further deployment stages.
 
-I don't blame anyone for this, as making an interactive demo often requires skills beyond ML.
-In this post I'm going to show you it is no longer the case.
+Unfortunately, many don't even make it through this phase.
+This is not anyone's fault, as making an interactive demo often requires skills beyond ML.
 
-Anyone with little knowledge about backend and servers can quickly spin up a demo, deploy them on a mobile device and share them to users to gain feedback.
+In this post I'm going to show you that is no longer the case.
+Anyone with little knowledge about backend and servers can quickly spin up an interactive demo, deploy them on a mobile device and share it to users to gain feedback.
 
 The following figure shows the deployment architecture that allows us to accomplish that.
 {{< figure_resizing src="architecture.png" caption="Deployment architecture.">}}
 
-### 🤗 Hosting model on Hugging Face
+### 🤗 Hosting a model on Hugging Face
+
 
 Assume you already have a model ready.
 For this post I will use a trained IceVision model.
