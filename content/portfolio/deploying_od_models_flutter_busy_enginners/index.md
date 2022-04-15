@@ -17,25 +17,28 @@ This blog post is still a work in progress. If you require further clarification
 {{< /notice >}}
 
 ### Deployment - where most models fail
-According to [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence), more than 85% of machine learning models never made it into production.
-This trend is expected to continue further this year in 2022. 
+According to [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence), more than **85%** of machine learning (ML) models never made it into production.
+This trend is expected to continue further this year in 2022.
 
-Despite huge efforts in research, machine learning models often fail in the deployment.
+In other words, despite all the promises and hype around ML, most models fails to deliver in a production environment.
+According to Barr Moses, CEO, Monte Carlo, [deployment](https://towardsdatascience.com/why-production-machine-learning-fails-and-how-to-fix-it-b59616184604) is one of the critical points where many models fail.
+
 
 What exactly is deployment? 
-In simple terms, deployment means making a model's capability or insight available to users or other systems - [Luigi Patruno](https://mlinproduction.com/what-does-it-mean-to-deploy-a-machine-learning-model-deployment-series-01/).
-Only when a model is deployed can they add value to businesses or organizations 
+Simply put, deployment is making a model's capability or insight available to other users or systems - [Luigi Patruno](https://mlinproduction.com/what-does-it-mean-to-deploy-a-machine-learning-model-deployment-series-01/).
 
-In this post, I will outline basic steps to deploy models on lightweight mobile devices running on Android operating system.
+Only when a model is properly deployed can they add value to businesses or organizations.
 
-By the end of this post you will learn about
+In this post, I will outline basic ideas to deploy ML models as a demo on lightweight mobile devices **easily, quickly, for free**.
+By the end of this post, you will learn about:
 
-* What are deployment patterns.
+* Simple deployment architecture for demos.
 * How to host a model on Hugging Face.
 * Deploying on with HTTP calls.
 * Displaying the results on a Flutter Android app.
 
-### Deployment architecture
+
+### Demo - where it all begins
 Deploying deep learning model on the edge is not trivial.
 Models can be huge, complex and requires a lot of resources to run.
 
@@ -55,14 +58,14 @@ Use Gradio to expose the model HTTP endpoint.
 
 https://hf.space/embed/dnth/webdemo-microalgae-counting/+
 
-### Calling HTTP Endpoint in Flutter
+### Calling the HTTP Endpoint
 What if Flutter.
 Using Flutter to call the HTTP endpoint.
 Send images, get predictions.
 
 {{< figure_resizing src="api_endpoint.png" caption="Exposed endpoint.">}}
 
-### Displaying results
+### Displaying results in Flutter
 Decode prediction.
 The screenshot below illustrates the Android app sending a sample image to the inference server and getting a response on the number of detected microalgae cells on the image.
 {{< figure src="microsense.gif" width=500 >}}
@@ -70,6 +73,13 @@ The screenshot below illustrates the Android app sending a sample image to the i
 ### Up Next
 Hosting on AWS Lambda.
 Using Hugging Face Inference API.
+
+
+### 🙏 Comments & Feedback
+If you like this and don't want to miss any of my future posts, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these contents in a bite size post.
+
+If you have any questions, comments, or feedback, please you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
+<!-- {{< tweet 1513478343726809090>}} -->
 
 <!-- ### Motivation
 Deploying 
