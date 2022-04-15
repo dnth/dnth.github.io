@@ -23,13 +23,12 @@ This trend is expected to continue further this year in 2022.
 In other words, despite all the promises and hype around ML, most models fails to deliver in a production environment.
 According to Barr Moses, CEO, Monte Carlo, [deployment](https://towardsdatascience.com/why-production-machine-learning-fails-and-how-to-fix-it-b59616184604) is one of the critical points where many models fail.
 
-
-What exactly is deployment? 
+So what exactly is deployment of ML model? 
 Simply put, deployment is making a model's capability or insight available to other users or systems - [Luigi Patruno](https://mlinproduction.com/what-does-it-mean-to-deploy-a-machine-learning-model-deployment-series-01/).
 
-Only when a model is properly deployed can they add value to businesses or organizations.
+**Only when a model is deployed can they add value to businesses or organizations.**
 
-In this post, I will outline basic ideas to deploy ML models as a demo on lightweight mobile devices **easily, quickly, for free**.
+In this post, I will outline the basic ideas to deploy ML models lightweight mobile devices **easily, quickly, for free**.
 By the end of this post, you will learn about:
 
 * Setting up interactive demo for rapid feedback and iteration.
@@ -44,8 +43,8 @@ As a research scientist myself, I understand how deeply satisfying it gets train
 
 However, many of these so called "SOTA models" will end up living on preprints, (or jupyter notebook) or in some obscure repository nobody cares about after the initial hype. 
 
-Eventually, they are forgotten and lost in the ocean of newer SOTA models.
-Additionally, the obsession of chasing after "SOTA models" often cause researchers to lose track of the end goal of building the model itself - deployment.
+Eventually, they are forgotten and lost in the ocean of newer "SOTA models".
+To make things worse, the obsession of chasing after "SOTA models" often cause researchers to lose track of the end goal of building the model itself - deployment.
 
 We can forget about ever finding these models in production.
 
