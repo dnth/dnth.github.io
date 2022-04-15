@@ -44,25 +44,25 @@ As a research scientist myself, I understand how deeply satisfying it gets train
 
 However, many of these so called "SOTA models" will end up living on preprints, (or jupyter notebook) or in some obscure repository nobody cares about after the initial hype. 
 
-Eventually, they are forgotten and lost in the ocean of newer SOTA models and publications.
-We can forget about finding these models in any production environment.
-
+Eventually, they are forgotten and lost in the ocean of newer SOTA models.
 Additionally, the obsession of chasing after "SOTA models" often cause researchers to lose track of the end goal of building the model itself - deployment.
+
+We can forget about ever finding these models production.
 
 
 {{< figure_resizing src="jupyter_meme.png" caption="Source: ClearML on Reddit." link="https://www.reddit.com/r/mlops/comments/o8w2e4/you_know_the_deal_if_you_dont_post_content_ill/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">}}
 
-To help with this, it is often helpful for researchers to build a model with deployment in mind as the end result.
-One way to get there is by putting up interactive demos to the model.
-
+To mitigate this, it is helpful if researchers build models with deployment in mind, as the end result.
 This is the beginning to getting a model into production. 
-An interactive demo opens the door to users' feedback from using the model which might be invaluable in product iteration to prepare for further deployment stages.
+
+Once the model is built, we can immediately spin up an interactive demo.
+An interactive demo opens the door to users' feedbacks from using the model which are invaluable in product iteration to prepare for further stages.
 
 Unfortunately, many don't even make it through this phase.
 This is not anyone's fault, as making an interactive demo often requires skills beyond ML.
 
 In this post I'm going to show you that is no longer the case.
-Anyone with little knowledge about backend and servers can quickly spin up an interactive demo, deploy them on a mobile device and share it to users to gain feedback.
+Anyone with no knowledge about backend, servers, or Kubernetes can quickly spin up an interactive demo, deploy them on the cloud or on a mobile device and share it to users to gain feedback.
 
 The following figure shows the deployment architecture that allows us to accomplish that.
 {{< figure_resizing src="architecture.png" caption="Deployment architecture.">}}
@@ -76,6 +76,8 @@ For this post I will use a trained IceVision model.
 Assume you already have a trained model.
 Publish model on Hugging Face Space with Gradio.
 Use Gradio to expose the model HTTP endpoint.
+
+{{< figure_resizing src="space_demo.png" caption="Screenshot from Hugging Face Space.">}}
 
 https://hf.space/embed/dnth/webdemo-microalgae-counting/+
 
@@ -92,6 +94,7 @@ The screenshot below illustrates the Android app sending a sample image to the i
 {{< figure src="microsense.gif" width=500 >}}
 
 ### 💡 Up Next
+Scaling up.
 Hosting on AWS Lambda.
 Using Hugging Face Inference API.
 
