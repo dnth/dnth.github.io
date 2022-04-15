@@ -47,12 +47,12 @@ However, many of these so called "SOTA models" will end up living on preprints, 
 Eventually, they are forgotten and lost in the ocean of newer SOTA models.
 Additionally, the obsession of chasing after "SOTA models" often cause researchers to lose track of the end goal of building the model itself - deployment.
 
-We can forget about ever finding these models production.
+We can forget about ever finding these models in production.
 
 
 {{< figure_resizing src="jupyter_meme.png" caption="Source: ClearML on Reddit." link="https://www.reddit.com/r/mlops/comments/o8w2e4/you_know_the_deal_if_you_dont_post_content_ill/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">}}
 
-To mitigate this, it is helpful if researchers build models with deployment in mind, as the end result.
+To mitigate this, it is helpful if we build models with deployment in mind, as the end result.
 This is the beginning to getting a model into production. 
 
 Once the model is built, we can immediately spin up an interactive demo.
@@ -72,6 +72,10 @@ The following figure shows the deployment architecture that allows us to accompl
 
 Assume you already have a model ready.
 For this post I will use a trained IceVision model.
+
+[Here](https://dicksonneoh.com/portfolio/training_dl_model_for_cell_counting/) is how I train the model.
+
+A detailed guide on how I did this is [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/).
 
 Assume you already have a trained model.
 Publish model on Hugging Face Space with Gradio.
