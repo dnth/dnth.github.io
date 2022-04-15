@@ -16,7 +16,7 @@ images :
 This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
 {{< /notice >}}
 
-### Deployment - where most models fail
+### 🔥 Deployment - where most models fail
 According to [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence), more than **85%** of machine learning (ML) models never made it into production.
 This trend is expected to continue further this year in 2022.
 
@@ -32,22 +32,39 @@ Only when a model is properly deployed can they add value to businesses or organ
 In this post, I will outline basic ideas to deploy ML models as a demo on lightweight mobile devices **easily, quickly, for free**.
 By the end of this post, you will learn about:
 
-* Simple deployment architecture for demos.
+* Setting up interactive demo for rapid feedback and iteration.
 * How to host a model on Hugging Face.
-* Deploying on with HTTP calls.
+* Deploying on any edge device with HTTP calls.
 * Displaying the results on a Flutter Android app.
 
 
-### Demo - where it all begins
-Deploying deep learning model on the edge is not trivial.
-Models can be huge, complex and requires a lot of resources to run.
+### 🪜 Demo - where it all begins
+Many ML researchers take pride in training bleeding edge models with state-of-the-art (SOTA) results on datasets.
+As a research scientist myself, I understand how satisfying it gets when I'm able to have breakthroughs like these.
 
-In order to keep the Android app lightweight, we kept the model in a cloud inference server where it can serve the prediction to our mobile app via API calls.
-At the same time, we can also monitor and update the model in the inference server by deploying them from our local machine used for training.
+However, many of these so called SOTA models just live on papers (publications) and in some obscure repository nobody cares about after the initial hype. 
+
+Eventually, they are forgotten and lost in the ocean of newer SOTA models and publications.
+You can forget about finding these models in any production environment.
+
+Additionally, due to the obsession of chasing after SOTA models and results, researcher often lose track of the end goal of building the model itself - to be deployed.
+
+To help with this, it is often helpful for researchers to build a model with deployment in mind.
+One way to get there is by providing interactive demos to the model.
+
+This is the beginning to getting a model into production. 
+With an interactive demo, provides an opportunity to receive valuable feedback that can improve the model.
+But many don't even make it through this phase.
+
+I don't blame anyone for this, as making an interactive demo often requires skills beyond ML.
+In this post I'm going to show you it is no longer the case.
+
+Anyone with little knowledge about backend and servers can quickly spin up a demo, deploy them on a mobile device and share them to users to gain feedback.
+
+The following figure shows the deployment architecture that allows us to accomplish that.
 {{< figure_resizing src="architecture.png" caption="Deployment architecture.">}}
 
-
-### Hosting model on Hugging Face
+### 🤗 Hosting model on Hugging Face
 
 Assume you already have a model ready.
 For this post I will use a trained IceVision model.
@@ -58,19 +75,19 @@ Use Gradio to expose the model HTTP endpoint.
 
 https://hf.space/embed/dnth/webdemo-microalgae-counting/+
 
-### Calling the HTTP Endpoint
+### 🔧 Calling the HTTP Endpoint
 What if Flutter.
 Using Flutter to call the HTTP endpoint.
 Send images, get predictions.
 
 {{< figure_resizing src="api_endpoint.png" caption="Exposed endpoint.">}}
 
-### Displaying results in Flutter
+### 📲 Displaying results in Flutter
 Decode prediction.
 The screenshot below illustrates the Android app sending a sample image to the inference server and getting a response on the number of detected microalgae cells on the image.
 {{< figure src="microsense.gif" width=500 >}}
 
-### Up Next
+### 💡 Up Next
 Hosting on AWS Lambda.
 Using Hugging Face Inference API.
 
