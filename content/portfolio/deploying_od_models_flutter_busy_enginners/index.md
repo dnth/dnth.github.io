@@ -12,6 +12,10 @@ images :
 - images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
 ---
 
+{{< notice info >}}
+This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
+{{< /notice >}}
+
 ### Deployment - where most models fail
 According to [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence), more than 85% of machine learning models never made it into production.
 This trend is expected to continue further this year in 2022. 

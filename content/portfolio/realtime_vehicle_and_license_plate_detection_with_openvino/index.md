@@ -11,6 +11,12 @@ description: "Real-time above 30fps object detection on a CPU."
 images : 
 - images/portfolio/realtime_vehicle_and_license_plate_detection_with_openvino/post_image.jpg
 ---
+
+{{< notice info >}}
+This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
+{{< /notice >}}
+
+
 ### Motivation
 In this work we showcase a real-time vehicle and license plate detection using
 
