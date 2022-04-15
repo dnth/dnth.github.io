@@ -4,14 +4,14 @@ topTitle: About
 title: >
   ## About me
   
-  My name is Dickson Neoh from Kuala Lumpur, Malaysia. I enjoy building artificial intelligence based solutions to help companies scale up their business.
+  My name is Dickson Neoh from Kuala Lumpur, Malaysia. I enjoy building machine learning-based solutions to help companies scale up their business.
   
 content: >
-  ### I love to design, build and deploy Artificial Intelligence models
+  ### I love to design, build and deploy deep learning models.
 
   I have worked extensively on cutting-edge deep convolutional neural networks for object detection and classification, 
   recurrent neural networks for time series classification, and self-supervised Transformer models for time series forecasting.
-  I'm an active contributor to [IceVision](https://github.com/airctic/icevision) - An Object Detection Framework with deep learning, 
+  I'm a core developer of [IceVision](https://github.com/airctic/icevision) - An Object Detection Framework with deep learning, contributor to 
   [TSAI](https://github.com/timeseriesAI/tsai) - State-of-the-art deep learning package for time series and sequences, and [nine other](https://github.com/dnth) open-source projects.
   
 
