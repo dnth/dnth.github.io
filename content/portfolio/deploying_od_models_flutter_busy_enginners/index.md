@@ -17,7 +17,7 @@ images :
 This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
 {{< /notice >}}
 
-### 🚑 Deployment: ML Models Graveyard
+### 🚑 Deployment: Where ML models go to die
 According to [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence), more than **85%** of machine learning (ML) models never made it into production.
 This trend is expected to continue further this year in 2022.
 
@@ -29,11 +29,10 @@ Simply put, deployment is making a model's capability or insight available to ot
 
 **Only when a model is deployed can they add value to businesses or organizations.**
 
-In this post, I will outline the basic ideas to deploy ML models lightweight mobile devices **easily, quickly, for free**.
+In this post, I will outline the basic ideas to deploy ML models onto lightweight mobile devices **easily, quickly, for free**.
 By the end of this post, you will learn about:
 
-* Setting up interactive demo for rapid feedback and iteration.
-* How to host a model on Hugging Face.
+* Leveraging Hugging Face infrastructure to host models.
 * Deploying on any edge device with HTTP calls.
 * Displaying the results on a Flutter Android app.
 
@@ -72,7 +71,7 @@ The following figure shows the deployment architecture that allows us to accompl
 {{< figure_resizing src="architecture.png" caption="Deployment architecture.">}}
 
 ### 🤗 Hosting a model on Hugging Face
-The first part of the puzzle is to host our model on some cloud infrastructure.
+The first piece of the puzzle is to host our model on some cloud infrastructure.
 In this post, let's use a free service known as Hugging Face *Spaces*.
 
 *Spaces* is a platform where anyone can upload their model and share to the world.
