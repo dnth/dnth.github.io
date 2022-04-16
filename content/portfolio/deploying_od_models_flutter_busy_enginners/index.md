@@ -1,5 +1,5 @@
 ---
-title: "[WIP] Deploying Any Object Detection Model on Mobile Devices with Flutter for Busy Engineers"
+title: "[WIP] For busy engineers: How to deploy object detection models on Android with Flutter"
 date: 2022-04-14T15:07:15+08:00
 featureImage: images/portfolio/deploying_od_models_flutter_busy_enginners/thumbnail.gif
 postImage: images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
@@ -109,7 +109,18 @@ The figure below shows the endpoint for us to call the model.
 
 {{< figure_resizing src="api_endpoint.png">}}
 
-As shown, the input to the model is an image and the output, and image (with bounding boxes) and also a value of the microalgae count. You can check out the API [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
+As shown, the input to the model is an image and the output, and image (with bounding boxes) and also a value of the microalgae count. You can check out the API[here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
+
+If you'd like to test the HTTP endpoint live, head to the API [page](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
+{{< figure_resizing src="test_endpoint.png">}}
+
+Alternatively, you can also try them out on your computer with `curl`:
+
+```bash
+curl -X POST https://hf.space/embed/dnth/webdemo-microalgae-counting/+/api/predict/ 
+-H 'Content-Type: application/json' 
+-d '{"data": ["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHB..."]}'
+```
 
 Let's copy the `URL endpoint` and use in the next section
 
