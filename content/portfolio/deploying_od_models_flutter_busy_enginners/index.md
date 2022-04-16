@@ -87,10 +87,10 @@ In this post, I will use an IceVision object detection model trained to detect m
 I trained this model in under a minute with 17 labeled images. [Here's how I did it]((https://dicksonneoh.com/portfolio/training_dl_model_for_cell_counting/)).
 
 Once the Space is set, we will have a Gradio interface like the following
-{{< figure_resizing src="space_demo.png" caption="Screenshot from Hugging Face Space.">}}
+{{< figure src="space_demo.gif" width=750 >}}
 
 This Space is now ready to be shared to anyone with an internet connection and a browser.
-Click [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/+) if you'd like to check out it out.
+Click [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/+) if you'd like to try it out in a live demo.
 
 But what if we want to make the app work on a mobile device **without using a browser?** Enter 👇
 
@@ -109,7 +109,7 @@ The figure below shows the endpoint for us to call the model.
 
 {{< figure_resizing src="api_endpoint.png">}}
 
-As shown, the input to the model is an image and the output, and image (with bounding boxes) and also a value of the microalgae count. You can check out the API[here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
+As shown, the input to the model is an image and the output, and image (with bounding boxes) and also a value of the microalgae count. You can check out the API [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
 
 If you'd like to test the HTTP endpoint live, head to the API [page](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
 {{< figure_resizing src="test_endpoint.png">}}
