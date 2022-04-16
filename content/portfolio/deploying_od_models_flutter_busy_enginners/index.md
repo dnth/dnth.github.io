@@ -38,32 +38,35 @@ By the end of this post, you will learn about:
 * Displaying the results on a Flutter Android app.
 
 
-### 🪜 It starts with a demo
+### 🪜 Begin with deployment in mind
 Many ML researchers take pride in training bleeding edge models with state-of-the-art (SOTA) results on datasets.
 As a research scientist myself, I understand how deeply satisfying it gets training them successfully.
 
-However, many of these so called "SOTA models" will end up living on preprints, (or jupyter notebook) or in some obscure repository nobody cares about after the initial hype. 
+Unfortunately, many of these so called "SOTA models" will just end up on preprints, (or jupyter notebook) or in some obscure repository nobody cares about after the initial hype. 
 
 Eventually, they are forgotten and lost in the ocean of newer "SOTA models".
 To make things worse, the obsession of chasing after "SOTA models" often cause researchers to lose track of the end goal of building the model itself - deployment.
 
-We can forget about ever finding these models in production.
-
+<!-- We can forget about ever finding these models in production. -->
 
 {{< figure_resizing src="jupyter_meme.png" caption="Source: ClearML on Reddit." link="https://www.reddit.com/r/mlops/comments/o8w2e4/you_know_the_deal_if_you_dont_post_content_ill/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">}}
 
 To mitigate this, it is helpful if we build models with deployment in mind, as the end result.
 This is the beginning to getting a model into production. 
 
-Once the model is built, we can immediately spin up an interactive demo.
+Deployment, is unfortunately a messy and complicated topic in MLOps for us deeply dive in here. That is not the purpose of this post.
+
+**My objective in this post is to show you how you can deploy an ML model easily on a mobile device without getting your hands dirty with servers, backend or Kubernetes.**
+
+<!-- Once the model is built, we can immediately spin up an interactive demo.
 An interactive demo opens the door to users' feedbacks from using the model which are invaluable in product iteration to prepare for further stages.
 
 Unfortunately, many don't even make it through this phase.
-This is not anyone's fault, as making an interactive demo often requires skills beyond ML.
+This is not anyone's fault, as making an interactive demo often requires skills beyond ML. -->
 
-In this post I'm going to show you that is no longer the case.
+<!-- In this post I'm going to show you that is no longer the case.
 
-**Anyone with no knowledge about backend, servers, or Kubernetes can quickly spin up an interactive demo, deploy them on the cloud or on a mobile device and share it to users to gain feedback.**
+**Anyone with no knowledge about backend, servers, or Kubernetes can quickly spin up an interactive demo, deploy them on the cloud or on a mobile device and share it to users to gain feedback.** -->
 
 The following figure shows the deployment architecture that allows us to accomplish that.
 {{< figure_resizing src="architecture.png" caption="Deployment architecture.">}}
@@ -72,37 +75,42 @@ The following figure shows the deployment architecture that allows us to accompl
 The first part of the puzzle is to host our model on some cloud infrastructure.
 In this post, let's use a free service known as Hugging Face *Spaces*.
 
-*Spaces* is a free platform where anyone can upload their model and share to the world.
+*Spaces* is a platform where anyone can upload their model and share to the world.
 If you head to https://huggingface.co/spaces, you will find thousands of models that researchers made freely available online.
 {{< figure_resizing src="spaces_web.png">}}
 
-These models are hosted on Spaces for demo and sharing purposes. 
-But they can be scaled up into a full fledge production mode with the [Inference API](https://huggingface.co/inference-api).
+These models are hosted on *Spaces* for demo and sharing purposes. 
+But they can be scaled up into full fledge production with the [Inference API](https://huggingface.co/inference-api).
 
-Let's set up our Space to host our model.
-In this post, I will use an IceVision object detection model I trained in the [past]((https://dicksonneoh.com/portfolio/training_dl_model_for_cell_counting/)).
+Let's set up a Space to host our model. If you're unsure how to do that, I wrote a recent guide on how to set your own Space with the Gradio app [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/).
 
-I also wrote a recent guide on how to set your own Space with the Gradio app [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/).
+In this post, I will use an IceVision object detection model trained to detect microalgae cells from image.
+I trained this model in under a minute with 17 labeled images. [Here's how I did it]((https://dicksonneoh.com/portfolio/training_dl_model_for_cell_counting/)).
 
-
-Once completed, we will have a Gradio interface like the following
+Once the Space is set, we will have a Gradio interface like the following
 {{< figure_resizing src="space_demo.png" caption="Screenshot from Hugging Face Space.">}}
 
-This app is now ready to be shared to anyone with an internet connection and a browser.
-Click [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/+) if you want to check out the running app on the Space.
+This Space is now ready to be shared to anyone with an internet connection and a browser.
+Click [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/+) if you'd like to check out it out.
 
-**But what if we would like to make the app work on a mobile app?** Enter 👇
+But what if we want to make the app work on a mobile device **without using a browser?** Enter 👇
 
 ### 🔧 Calling the HTTP Endpoint
 One neat feature of the Gradio app is it exposes the model through a RESTful API.
 This makes the model prediction accessible via HTTP request which we can conveniently use on any mobile device!
 
-This is very attractive because the device that is calling the API can be extremely lightweight in computation power.
-All the heavy lifting is taken care by the Hugging Face Spaces infrastructure.
+Now, any computationally lightweight device can make use of the model's prediction just by running a simple HTTP call.
+All the heavy lifting is taken care by the Hugging Face Spaces infrastructure. 
 
-The figure below shows the endpoint for us to call the model. As shown, the input to the model is an image and the output, and image (with bounding boxes) and also a value of the microalgae count. You can check out the API [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api)
+**This can be a game-changer if the model is complex and the edge device is not powerful enough to run the model - which is a common scenario.**
+
+Additionally, this also reduces deployment hardware cost, because now any lightweight mobile device can leverage the model's capability.
+
+The figure below shows the endpoint for us to call the model.
 
 {{< figure_resizing src="api_endpoint.png">}}
+
+As shown, the input to the model is an image and the output, and image (with bounding boxes) and also a value of the microalgae count. You can check out the API [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
 
 Let's copy the `URL endpoint` and use in the next section
 
