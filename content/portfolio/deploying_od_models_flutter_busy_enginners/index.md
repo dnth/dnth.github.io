@@ -55,7 +55,7 @@ This is the beginning to getting a model into production.
 
 Deployment, is unfortunately a messy and complicated topic in MLOps for us deeply dive in here. That is not the purpose of this post.
 
-**My objective in this post is to show you how you can deploy an ML model easily on a mobile device without getting your hands dirty with servers, backend or Kubernetes.**
+**My objective in this post is to show you how you can deploy an ML model easily on a mobile device without getting your hands dirty with servers, backends or Kubernetes.**
 
 <!-- Once the model is built, we can immediately spin up an interactive demo.
 An interactive demo opens the door to users' feedbacks from using the model which are invaluable in product iteration to prepare for further stages.
@@ -83,8 +83,8 @@ But they can be scaled up into full fledge production with the [Inference API](h
 
 Let's set up a Space to host our model. If you're unsure how to do that, I wrote a recent guide on how to set your own Space with the Gradio app [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/).
 
-In this post, I will use an IceVision object detection model trained to detect microalgae cells from image.
-I trained this model in under a minute with 17 labeled images. [Here's how I did it]((https://dicksonneoh.com/portfolio/training_dl_model_for_cell_counting/)).
+In this post, I will use an IceVision object detection model trained to detect microalgae cells from an image.
+I trained this model in under a minute with only 17 labeled images. [Here](https://dicksonneoh.com/portfolio/training_dl_model_for_cell_counting/) is how I did it.
 
 Once the Space is set, we will have a Gradio interface like the following
 {{< figure src="space_demo.gif" width=750 >}}
@@ -94,16 +94,16 @@ Click [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/+) if you'd
 
 But what if we want to make the app work on a mobile device **without using a browser?** Enter 👇
 
-### 🔧 Calling the HTTP Endpoint
+### 📞 Calling the HTTP Endpoint
 One neat feature of the Gradio app is it exposes the model through a RESTful API.
 This makes the model prediction accessible via HTTP request which we can conveniently use on any mobile device!
 
 Now, any computationally lightweight device can make use of the model's prediction just by running a simple HTTP call.
-All the heavy lifting is taken care by the Hugging Face Spaces infrastructure. 
+All the heavy lifting is taken care by the Hugging Face infrastructure. 
 
 **This can be a game-changer if the model is complex and the edge device is not powerful enough to run the model - which is a common scenario.**
 
-Additionally, this also reduces deployment hardware cost, because now any lightweight mobile device can leverage the model's capability.
+Additionally, this also reduces deployment hardware cost, because now any lightweight, portable mobile device with internet connection can leverage the model's capability.
 
 The figure below shows the endpoint for us to call the model.
 
@@ -111,7 +111,7 @@ The figure below shows the endpoint for us to call the model.
 
 As shown, the input to the model is an image and the output, and image (with bounding boxes) and also a value of the microalgae count. You can check out the API [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
 
-If you'd like to test the HTTP endpoint live, head to the API [page](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
+If you'd like to test the HTTP endpoint live, head to the API [page](https://hf.space/embed/dnth/webdemo-microalgae-counting/api) as the following figure.
 {{< figure_resizing src="test_endpoint.png">}}
 
 Alternatively, you can also try them out on your computer with `curl`:
