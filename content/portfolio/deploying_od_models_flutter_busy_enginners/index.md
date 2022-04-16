@@ -169,6 +169,8 @@ The `detectImage` function in `line 4` takes in a single parameter `String` `bas
 The screenshot below illustrates the Flutter app sending a sample image to the inference server and getting a response on the number of detected microalgae cells on the image.
 {{< figure src="microsense.gif" width=500 >}}
 
+I've also published the app on Google Playstore if you'd like to try them out. [Here](https://play.google.com/store/apps/details?id=com.micro.sense) is the link to the app.
+
 ### 💡 Up Next
 Scaling up.
 Hosting on AWS Lambda.
