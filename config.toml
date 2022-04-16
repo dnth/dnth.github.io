@@ -81,7 +81,7 @@ googleAnalytics = "UA-54500366-2"
 logo = "images/site-navigation/logo_dn_resize.png"
 
 description = "Works, thoughts, and learnings."
-images = ["images/about/about_landscape.jpg"]
+images = ["images/site-navigation/preview.png"]
 
 [params.address]
 address = "Universiti Tenaga Nasional, 43000, Kajang, Malaysia."
@@ -102,7 +102,7 @@ pinImage = "images/pin.png"
 #weight = 1
 [[params.social]]
 icon = "fa-linkedin-square"
-url = "https://www.linkedin.com/in/dickson-neoh-3a6984b8/"
+url = "https://www.linkedin.com/in/dickson-neoh/"
 weight = 1
 #[[params.social]]
 #icon = "fa-pinterest-square"
