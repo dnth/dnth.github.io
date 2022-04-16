@@ -12,6 +12,7 @@ images :
 - images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
 ---
 
+
 {{< notice info >}}
 This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
 {{< /notice >}}
@@ -61,35 +62,51 @@ Unfortunately, many don't even make it through this phase.
 This is not anyone's fault, as making an interactive demo often requires skills beyond ML.
 
 In this post I'm going to show you that is no longer the case.
-Anyone with no knowledge about backend, servers, or Kubernetes can quickly spin up an interactive demo, deploy them on the cloud or on a mobile device and share it to users to gain feedback.
+
+**Anyone with no knowledge about backend, servers, or Kubernetes can quickly spin up an interactive demo, deploy them on the cloud or on a mobile device and share it to users to gain feedback.**
 
 The following figure shows the deployment architecture that allows us to accomplish that.
 {{< figure_resizing src="architecture.png" caption="Deployment architecture.">}}
 
 ### 🤗 Hosting a model on Hugging Face
+The first part of the puzzle is to host our model on some cloud infrastructure.
+In this post, let's use a free service known as Hugging Face *Spaces*.
+
+*Spaces* is a free platform where anyone can upload their model and share to the world.
+If you head to https://huggingface.co/spaces, you will find thousands of models that researchers made freely available online.
+{{< figure_resizing src="spaces_web.png">}}
+
+These models are hosted on Spaces for demo and sharing purposes. 
+But they can be scaled up into a full fledge production mode with the [Inference API](https://huggingface.co/inference-api).
+
+Let's set up our Space to host our model.
+In this post, I will use an IceVision object detection model I trained in the [past]((https://dicksonneoh.com/portfolio/training_dl_model_for_cell_counting/)).
+
+I also wrote a recent guide on how to set your own Space with the Gradio app [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/).
 
 
-Assume you already have a model ready.
-For this post I will use a trained IceVision model.
-
-[Here](https://dicksonneoh.com/portfolio/training_dl_model_for_cell_counting/) is how I train the model.
-
-A detailed guide on how I did this is [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/).
-
-Assume you already have a trained model.
-Publish model on Hugging Face Space with Gradio.
-Use Gradio to expose the model HTTP endpoint.
-
+Once completed, we will have a Gradio interface like the following
 {{< figure_resizing src="space_demo.png" caption="Screenshot from Hugging Face Space.">}}
 
-https://hf.space/embed/dnth/webdemo-microalgae-counting/+
+This app is now ready to be shared to anyone with an internet connection and a browser.
+Click [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/+) if you want to check out the running app on the Space.
+
+**But what if we would like to make the app work on a mobile app?** Enter 👇
 
 ### 🔧 Calling the HTTP Endpoint
-What if Flutter.
-Using Flutter to call the HTTP endpoint.
-Send images, get predictions.
+One neat feature of the Gradio app is it exposes the model through a RESTful API.
+This makes the model prediction accessible via HTTP request which we can conveniently use on any mobile device!
 
-{{< figure_resizing src="api_endpoint.png" caption="Exposed endpoint.">}}
+This is very attractive because the device that is calling the API can be extremely lightweight in computation power.
+All the heavy lifting is taken care by the Hugging Face Spaces infrastructure.
+
+The figure below shows the endpoint for us to call the model. As shown, the input to the model is an image and the output, and image (with bounding boxes) and also a value of the microalgae count. You can check out the API [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api)
+
+{{< figure_resizing src="api_endpoint.png">}}
+
+Let's copy the `URL endpoint` and use in the next section
+
+
 
 ### 📲 Displaying results in Flutter
 Decode prediction.
