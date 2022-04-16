@@ -129,8 +129,13 @@ Let's copy the `URL endpoint` and use in the next section
 ### 📲 Displaying results in Flutter
 We will be using Flutter to make a simple Android app that send an image and receive the bounding box prediction via HTTP calls.
 
-Flutter uses the *Dart* programming language.
-The code snippet below shows a function to perform the HTTP call in *Dart*.
+
+Flutter uses the *Dart* programming language that makes it incredible easy to construct graphical user interface (GUI).
+I omit the codes to construct the GUI in this post for simplicity. 
+Let me know if you'd like to access it. 
+There are also tons of tutorials on how to construct the GUI so, I will not cover them here too.
+
+The snippet of code that allows us to perform the HTTP call to the Hugging Face server is as follows.
 ```dart {linenos=table}
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -166,7 +171,9 @@ Future<Map> detectImage(String imageBase64) async {
 
 The `detectImage` function in `line 4` takes in a single parameter `String` `base64` format image and returns a `Map` which consists of the image with bounding box and the microalgae count in `line 22`. 
 
-The screenshot below illustrates the Flutter app sending a sample image to the inference server and getting a response on the number of detected microalgae cells on the image.
+The `URL endpoint` that we copied from the previous section is on `line 7`.
+
+The screenshot below illustrates the Flutter app sending a sample image to the Hugging Face inference server and getting a response on the number of detected microalgae cells and the image with all the bounding boxes.
 {{< figure src="microsense.gif" width=500 >}}
 
 I've also published the app on Google Playstore if you'd like to try them out. [Here](https://play.google.com/store/apps/details?id=com.micro.sense) is the link to the app.
