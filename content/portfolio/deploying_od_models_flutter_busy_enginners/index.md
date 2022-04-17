@@ -1,6 +1,6 @@
 ---
-title: "[WIP] For busy engineers: How to deploy object detection models on Android with Flutter"
-date: 2022-04-14T15:07:15+08:00
+title: "For busy engineers: How to deploy object detection models on Android with Flutter"
+date: 2022-04-17T15:00:15+08:00
 featureImage: images/portfolio/deploying_od_models_flutter_busy_enginners/thumbnail.gif
 postImage: images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
 tags: ["Flutter", "Hugging-Face", "Android", "Fast.ai", "Gradio", "IceVision"]
