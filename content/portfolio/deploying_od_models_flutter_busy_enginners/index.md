@@ -110,7 +110,7 @@ All the heavy lifting is taken care of by the Hugging Face infrastructure.
 This can be a game-changer if the model is complex and the edge device is not powerful enough to run the model - which is a common scenario.
 {{< /notice >}}
 
-Additionally, this also reduces deployment hardware costs, because now any lightweight, portable mobile device with an internet connection can leverage the model's capability.
+Additionally, this also reduces deployment hardware costs, because now any lightweight, portable mobile device with an internet connection can leverage the model's cell counting capability.
 
 The figure below shows the endpoint for us to call the model.
 
