@@ -21,13 +21,16 @@ This blog post is still a work in progress. If you require further clarification
 According to [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence), more than **85%** of machine learning (ML) models never made it into production.
 This trend is expected to continue further this year in 2022.
 
-In other words, despite all the promises and hype around ML, most models fails to deliver in a production environment.
+In other words, despite all the promises and hype around ML, most models fail to deliver in a production environment.
 According to Barr Moses, CEO, Monte Carlo, [deployment](https://towardsdatascience.com/why-production-machine-learning-fails-and-how-to-fix-it-b59616184604) is one of the critical points where many models fail.
 
-So what exactly is deployment of ML model? 
+So what exactly is the deployment of ML model? 
 Simply put, deployment is making a model's capability or insight available to other users or systems - [Luigi Patruno](https://mlinproduction.com/what-does-it-mean-to-deploy-a-machine-learning-model-deployment-series-01/).
 
-**Only when a model is deployed can they add value to businesses or organizations.**
+{{< notice tip >}}
+Only when a model is deployed can it add value to businesses or organizations.
+{{< /notice >}}
+
 
 In this post, I will outline the basic ideas to deploy ML models onto lightweight mobile devices **easily, quickly, for free**.
 By the end of this post, you will learn about:
@@ -38,24 +41,26 @@ By the end of this post, you will learn about:
 
 
 ### 🪜 Begin with deployment in mind
-Many ML researchers take pride in training bleeding edge models with state-of-the-art (SOTA) results on datasets.
-As a research scientist myself, I understand how deeply satisfying it gets training them successfully.
+Many ML researchers take pride in training bleeding-edge models with state-of-the-art (SOTA) results on datasets.
+As a research scientist myself, I understand how deeply satisfying it gets to train them successfully.
 
-Unfortunately, many of these so called "SOTA models" will just end up on preprints, (or jupyter notebook) or in some obscure repository nobody cares about after the initial hype. 
+Unfortunately, many of these so-called "SOTA models" will end up on preprints, Jupyter notebook, or in some obscure repository, nobody cares about after the initial hype. 
 
 Eventually, they are forgotten and lost in the ocean of newer "SOTA models".
-To make things worse, the obsession of chasing after "SOTA models" often cause researchers to lose track of the end goal of building the model itself - deployment.
+To make things worse, the obsession with chasing after "SOTA models" often causes researchers to lose track of the end goal of building the model itself - deployment.
 
 <!-- We can forget about ever finding these models in production. -->
 
 {{< figure_resizing src="jupyter_meme.png" caption="Source: ClearML on Reddit." link="https://www.reddit.com/r/mlops/comments/o8w2e4/you_know_the_deal_if_you_dont_post_content_ill/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">}}
 
 To mitigate this, it is helpful if we build models with deployment in mind, as the end result.
-This is the beginning to getting a model into production. 
+This is the beginning of getting a model into production. 
 
-Deployment, is unfortunately a messy and complicated topic in MLOps for us deeply dive in here. That is not the purpose of this post.
+Deployment is unfortunately a messy and complicated topic in MLOps for us deeply dive in here. That is not the purpose of this post.
 
-**My objective in this post is to show you how you can deploy an ML model easily on a mobile device without getting your hands dirty with servers, backends or Kubernetes.**
+{{< notice tip >}}
+My objective in this post is to show you how you can deploy an ML model easily on a mobile device without getting your hands dirty with servers, backends or Kubernetes.
+{{< /notice >}}
 
 <!-- Once the model is built, we can immediately spin up an interactive demo.
 An interactive demo opens the door to users' feedbacks from using the model which are invaluable in product iteration to prepare for further stages.
@@ -74,12 +79,12 @@ The following figure shows the deployment architecture that allows us to accompl
 The first piece of the puzzle is to host our model on some cloud infrastructure.
 In this post, let's use a free service known as Hugging Face *Spaces*.
 
-*Spaces* is a platform where anyone can upload their model and share to the world.
+*Spaces* is a platform where anyone can upload their model and share it with the world.
 If you head to https://huggingface.co/spaces, you will find thousands of models that researchers made freely available online.
 {{< figure_resizing src="spaces_web.png">}}
 
 These models are hosted on *Spaces* for demo and sharing purposes. 
-But they can be scaled up into full fledge production with the [Inference API](https://huggingface.co/inference-api).
+But they can be scaled up into full-fledge production with the [Inference API](https://huggingface.co/inference-api).
 
 Let's set up a Space to host our model. If you're unsure how to do that, I wrote a recent guide on how to set your own Space with the Gradio app [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/).
 
@@ -89,7 +94,7 @@ I trained this model in under a minute with only 17 labeled images. [Here](https
 Once the Space is set, we will have a Gradio interface like the following
 {{< figure src="space_demo.gif" width=750 >}}
 
-This Space is now ready to be shared to anyone with an internet connection and a browser.
+This Space is now ready to be shared with anyone with an internet connection and a browser.
 Click [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/+) if you'd like to try it out in a live demo.
 
 But what if we want to make the app work on a mobile device **without using a browser?** Enter 👇
@@ -99,17 +104,19 @@ One neat feature of the Gradio app is it exposes the model through a RESTful API
 This makes the model prediction accessible via HTTP request which we can conveniently use on any mobile device!
 
 Now, any computationally lightweight device can make use of the model's prediction just by running a simple HTTP call.
-All the heavy lifting is taken care by the Hugging Face infrastructure. 
+All the heavy lifting is taken care of by the Hugging Face infrastructure. 
 
-**This can be a game-changer if the model is complex and the edge device is not powerful enough to run the model - which is a common scenario.**
+{{< notice tip >}}
+This can be a game-changer if the model is complex and the edge device is not powerful enough to run the model - which is a common scenario.
+{{< /notice >}}
 
-Additionally, this also reduces deployment hardware cost, because now any lightweight, portable mobile device with internet connection can leverage the model's capability.
+Additionally, this also reduces deployment hardware costs, because now any lightweight, portable mobile device with an internet connection can leverage the model's capability.
 
 The figure below shows the endpoint for us to call the model.
 
 {{< figure_resizing src="api_endpoint.png">}}
 
-As shown, the input to the model is an image and the output, and image (with bounding boxes) and also a value of the microalgae count. You can check out the API [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
+As shown, the input to the model is an image, and the output, an image (with bounding boxes) and also a value of the microalgae count. You can check out the API [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
 
 If you'd like to test the HTTP endpoint live, head to the API [page](https://hf.space/embed/dnth/webdemo-microalgae-counting/api) as the following figure.
 {{< figure_resizing src="test_endpoint.png">}}
@@ -127,10 +134,10 @@ Let's copy the `URL endpoint` and use in the next section
 
 
 ### 📲 Displaying results in Flutter
-We will be using Flutter to make a simple Android app that send an image and receive the bounding box prediction via HTTP calls.
+We will be using Flutter to make a simple Android app that sends an image and receive the bounding box prediction via HTTP calls.
 
 
-Flutter uses the *Dart* programming language that makes it incredible easy to construct graphical user interface (GUI).
+Flutter uses the *Dart* programming language that makes it incredibly easy to construct a graphical user interface (GUI).
 I omit the codes to construct the GUI in this post for simplicity. 
 Let me know if you'd like to access it. 
 There are also tons of tutorials on how to construct the GUI so, I will not cover them here too.
@@ -178,24 +185,24 @@ The screenshot below illustrates the Flutter app sending a sample image to the H
 
 I've also published the app on Google Playstore.
 If you like, try them out [here]((https://play.google.com/store/apps/details?id=com.micro.sense)). 
-I've also a published a similar app that deploys a deep learning classifier model (trained with Fastai) that categorizes paddy leaf diseases [here](https://play.google.com/store/apps/details?id=com.rice.net) using the same approach outlined in this post.
+I've also published a similar app that deploys a deep learning classifier model (trained with Fastai) that categorizes paddy leaf diseases [here](https://play.google.com/store/apps/details?id=com.rice.net) using the same approach outlined in this post.
 
 ### 💡 Up Next
-That about it! In this post hopefully it's clear now that deploying deep learning models on mobile devices doesn't need to be complicated - at least in the beginning when it's critical to gain users feedback before deciding if it's right to scale up.
+That's about it! In this post hopefully, it's clear now that deploying deep learning models on mobile devices doesn't need to be complicated - at least in the beginning when it's critical to gain users' feedback before deciding if it's right to scale up.
 
 Caveat: I do acknowledge that the approach in this post might not be optimal in some circumstances, especially if you have thousands of users on your app.
 
-For that, I would recommend scaling up to use the Hugging Face [Inference API](https://huggingface.co/inference-api) - a fully hosted production ready solution.
+For that, I would recommend scaling up to use the Hugging Face [Inference API](https://huggingface.co/inference-api) - a fully hosted production-ready solution.
 {{< figure_resizing src="inference_api.png">}}
 
 It is also possible now to deploy Hugging Face models on AWS Sagemaker for serverless inference. 
 Check them out [here](https://aws.amazon.com/machine-learning/hugging-face/).
 
 ### 🙏 Comments & Feedback
-If you like this and don't want to miss any of my future contents, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these in a bite size posts.
+If you like this and don't want to miss any of my future content, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these in bite-size posts.
 
-If you have any questions, comments, or feedback, please you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
-<!-- {{< tweet 1513478343726809090>}} -->
+If you have any questions, comments, or feedback, please leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
+{{< tweet 1513478343726809090>}}
 
 <!-- ### Motivation
 Deploying 
