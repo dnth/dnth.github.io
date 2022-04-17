@@ -183,9 +183,10 @@ The `URL endpoint` that we copied from the previous section is on `line 7`.
 The screenshot below illustrates the Flutter app sending a sample image to the Hugging Face inference server and getting a response on the number of detected microalgae cells and the image with all the bounding boxes.
 {{< figure src="microsense.gif" width=500 >}}
 
-I've also published the app on Google Playstore.
+I published the app on Google Playstore.
 If you like, try them out [here]((https://play.google.com/store/apps/details?id=com.micro.sense)). 
-I've also published a similar app that deploys a deep learning classifier model (trained with Fastai) that categorizes paddy leaf diseases [here](https://play.google.com/store/apps/details?id=com.rice.net) using the same approach outlined in this post.
+
+I've also published another similar app that deploys a deep learning classifier model (trained with Fastai) that categorizes paddy leaf diseases [here](https://play.google.com/store/apps/details?id=com.rice.net) using the same approach outlined in this post.
 
 ### 💡 Up Next
 That's about it! In this post hopefully, it's clear now that deploying deep learning models on mobile devices doesn't need to be complicated - at least in the beginning when it's critical to gain users' feedback before deciding if it's right to scale up.
