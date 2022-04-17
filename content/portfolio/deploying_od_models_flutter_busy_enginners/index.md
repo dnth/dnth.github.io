@@ -176,16 +176,23 @@ The `URL endpoint` that we copied from the previous section is on `line 7`.
 The screenshot below illustrates the Flutter app sending a sample image to the Hugging Face inference server and getting a response on the number of detected microalgae cells and the image with all the bounding boxes.
 {{< figure src="microsense.gif" width=500 >}}
 
-I've also published the app on Google Playstore if you'd like to try them out. [Here](https://play.google.com/store/apps/details?id=com.micro.sense) is the link to the app.
+I've also published the app on Google Playstore.
+If you like, try them out [here]((https://play.google.com/store/apps/details?id=com.micro.sense)). 
+I've also a published a similar app that deploys a deep learning classifier model (trained with Fastai) that categorizes paddy leaf diseases [here](https://play.google.com/store/apps/details?id=com.rice.net) using the same approach outlined in this post.
 
 ### 💡 Up Next
-Scaling up.
-Hosting on AWS Lambda.
-Using Hugging Face Inference API.
+That about it! In this post hopefully it's clear now that deploying deep learning models on mobile devices doesn't need to be complicated - at least in the beginning when it's critical to gain users feedback before deciding if it's right to scale up.
 
+Caveat: I do acknowledge that the approach in this post might not be optimal in some circumstances, especially if you have thousands of users on your app.
+
+For that, I would recommend scaling up to use the Hugging Face [Inference API](https://huggingface.co/inference-api) - a fully hosted production ready solution.
+{{< figure_resizing src="inference_api.png">}}
+
+It is also possible now to deploy Hugging Face models on AWS Sagemaker for serverless inference. 
+Check them out [here](https://aws.amazon.com/machine-learning/hugging-face/).
 
 ### 🙏 Comments & Feedback
-If you like this and don't want to miss any of my future posts, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these contents in a bite size post.
+If you like this and don't want to miss any of my future contents, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these in a bite size posts.
 
 If you have any questions, comments, or feedback, please you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 <!-- {{< tweet 1513478343726809090>}} -->
