@@ -42,21 +42,21 @@ By the end of this post, you will learn about:
 
 ### 🪜 Begin with deployment in mind
 Many ML researchers take pride in training bleeding-edge models with state-of-the-art (SOTA) results on datasets.
-As a research scientist myself, I understand how deeply satisfying it gets to train them successfully.
+As a researcher, I understand how deeply satisfying it feels to accomplish that.
 
 Unfortunately, many of these so-called "SOTA models" will end up on preprints, Jupyter notebook, or in some obscure repository, nobody cares about after the initial hype. 
 
 Eventually, they are forgotten and lost in the ocean of newer "SOTA models".
-To make things worse, the obsession with chasing after "SOTA models" often causes researchers to lose track of the end goal of building the model itself - deployment.
+To make things worse, the obsession with chasing after "SOTA models" often causes researchers to lose track of the end goal of building the model - deployment.
 
 <!-- We can forget about ever finding these models in production. -->
 
 {{< figure_resizing src="jupyter_meme.png" caption="Source: ClearML on Reddit." link="https://www.reddit.com/r/mlops/comments/o8w2e4/you_know_the_deal_if_you_dont_post_content_ill/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">}}
 
-To mitigate this, it is helpful if we build models with deployment in mind, as the end result.
+Hence, as ML engineers, it is very helpful if we build models with deployment in mind, as the end result.
 This is the beginning of getting a model into production. 
 
-Deployment is unfortunately a messy and complicated topic in MLOps for us deeply dive in here. That is not the purpose of this post.
+*Deployment* is unfortunately a messy and complicated topic in [MLOps](https://databricks.com/glossary/mlops) - too deep for us to cover here. Luckily, that is not the purpose of this post.
 
 {{< notice tip >}}
 My objective in this post is to show you how you can deploy an ML model easily on a mobile device without getting your hands dirty with servers, backends or Kubernetes.
@@ -192,7 +192,7 @@ That's about it! In this post hopefully, it's clear now that deploying deep lear
 
 Caveat: I do acknowledge that the approach in this post might not be optimal in some circumstances, especially if you have thousands of users on your app.
 
-For that, I would recommend scaling up to use the Hugging Face [Inference API](https://huggingface.co/inference-api) - a fully hosted production-ready solution.
+For that, I would recommend scaling up to use the Hugging Face [Inference API](https://huggingface.co/inference-api) - a fully hosted production-ready solution 👇.
 {{< figure_resizing src="inference_api.png">}}
 
 It is also possible now to deploy Hugging Face models on AWS Sagemaker for serverless inference. 
