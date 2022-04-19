@@ -1,5 +1,5 @@
 ---
-title: "For busy engineers: How to deploy object detection models on Android with Flutter"
+title: "How to Deploy Object Detection Models on Android with Flutter"
 date: 2022-04-17T15:00:15+08:00
 featureImage: images/portfolio/deploying_od_models_flutter_busy_enginners/thumbnail.gif
 postImage: images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
@@ -18,6 +18,17 @@ This blog post is still a work in progress. If you require further clarification
 {{< /notice >}}
 
 ### 🚑 Deployment: Where ML models go to die
+
+In this post, I will outline the basic steps to deploy ML models onto lightweight mobile devices **easily, quickly and for free**.
+
+{{< notice tip >}}
+By the end of this post, you will learn about:
+
+* Leveraging Hugging Face infrastructure to host models.
+* Deploying on any edge device with a REST API.
+* Displaying the results on a Flutter Android app.
+{{< /notice >}}
+
 According to [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence), more than **85%** of machine learning (ML) models never made it into production.
 This trend is expected to continue further this year in 2022.
 
@@ -27,33 +38,26 @@ According to Barr Moses, CEO, Monte Carlo, [deployment](https://towardsdatascien
 So what exactly is the deployment of ML model? 
 Simply put, deployment is making a model's capability or insight available to other users or systems - [Luigi Patruno](https://mlinproduction.com/what-does-it-mean-to-deploy-a-machine-learning-model-deployment-series-01/).
 
-{{< notice tip >}}
-Only when a model is deployed can it add value to businesses or organizations.
-{{< /notice >}}
 
 
-In this post, I will outline the basic ideas to deploy ML models onto lightweight mobile devices **easily, quickly, for free**.
-By the end of this post, you will learn about:
-
-* Leveraging Hugging Face infrastructure to host models.
-* Deploying on any edge device with HTTP calls.
-* Displaying the results on a Flutter Android app.
 
 
-### 🪜 Begin with deployment in mind
+### 🏹 Begin with deployment in mind
 Many ML researchers take pride in training bleeding-edge models with state-of-the-art (SOTA) results on datasets.
 As a researcher, I understand how deeply satisfying it feels to accomplish that.
 
-Unfortunately, many of these so-called "SOTA models" will end up on preprints, Jupyter notebook, or in some obscure repository, nobody cares about after the initial hype. 
+Unfortunately, many of these so-called "SOTA models" will end up on preprints, Jupyter notebooks, or in some obscure repository, nobody cares about after the initial hype. 
 
 Eventually, they are forgotten and lost in the ocean of newer "SOTA models".
-To make things worse, the obsession with chasing after "SOTA models" often causes researchers to lose track of the end goal of building the model - deployment.
+To make things worse, the obsession with chasing after "SOTA models" often causes researchers to lose track of the end goal of building the model - **deployment**.
 
 <!-- We can forget about ever finding these models in production. -->
 
 {{< figure_resizing src="jupyter_meme.png" caption="Source: ClearML on Reddit." link="https://www.reddit.com/r/mlops/comments/o8w2e4/you_know_the_deal_if_you_dont_post_content_ill/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">}}
 
 Hence, as ML engineers, it is very helpful if we build models with deployment in mind, as the end result.
+
+Because only when a model is deployed can it add value to businesses or organizations.
 This is the beginning of getting a model into production. 
 
 *Deployment* is unfortunately a messy and complicated topic in [MLOps](https://databricks.com/glossary/mlops) - too deep for us to cover here. Luckily, that is not the purpose of this post.
@@ -181,7 +185,13 @@ The `detectImage` function in `line 4` takes in a single parameter `String` `bas
 The `URL endpoint` that we copied from the previous section is on `line 7`.
 
 The screenshot below illustrates the Flutter app sending a sample image to the Hugging Face inference server and getting a response on the number of detected microalgae cells and the image with all the bounding boxes.
-{{< figure src="microsense.gif" width=500 >}}
+
+
+<!-- {{< figure src="microsense.gif" width=500 >}}
+{{< youtube DLmyG-K8lAw >}} -->
+
+{{< video src="algae1.webm" width="600px" >}}
+
 
 I published the app on Google Playstore.
 If you like, try them out [here]((https://play.google.com/store/apps/details?id=com.micro.sense)). 
@@ -198,6 +208,10 @@ For that, I would recommend scaling up to use the Hugging Face [Inference API](h
 
 It is also possible now to deploy Hugging Face models on AWS Sagemaker for serverless inference. 
 Check them out [here](https://aws.amazon.com/machine-learning/hugging-face/).
+
+Finally, you could also use the same Flutter codebase and export it into an iOS, Windows, or even a Web app. 
+This is the beauty of using Flutter for front-end development.
+Code once, and export to multiple platforms.
 
 ### 🙏 Comments & Feedback
 If you like this and don't want to miss any of my future content, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these in bite-size posts.
