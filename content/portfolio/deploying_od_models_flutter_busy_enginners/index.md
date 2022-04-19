@@ -184,13 +184,13 @@ The `detectImage` function in `line 4` takes in a single parameter `String` `bas
 
 The `URL endpoint` that we copied from the previous section is on `line 7`.
 
-The screenshot below illustrates the Flutter app sending a sample image to the Hugging Face inference server and getting a response on the number of detected microalgae cells and the image with all the bounding boxes.
+The screen recording below illustrates the Flutter app sending a sample image to the Hugging Face inference server and getting a response on the number of detected microalgae cells and the image with all the bounding boxes.
 
 
 <!-- {{< figure src="microsense.gif" width=500 >}}
 {{< youtube DLmyG-K8lAw >}} -->
 
-{{< video src="algae1.webm" width="600px" >}}
+{{< video src="algae1.webm" width="600px" loop="true" autoplay="true" >}}
 
 
 I published the app on Google Playstore.
