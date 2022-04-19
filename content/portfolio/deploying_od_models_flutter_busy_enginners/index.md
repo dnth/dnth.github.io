@@ -7,15 +7,15 @@ tags: ["Flutter", "Hugging-Face", "Android", "Fast.ai", "Gradio", "IceVision"]
 categories: ["deployment", "object-detection"]
 toc: true
 socialshare: true
-description: "Leveraging giant models on the clouds in your palms."
+description: "Leverage giant models in the cloud on Android with Hugging Face and Flutter."
 images : 
 - images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
 ---
 
 
-{{< notice info >}}
+<!-- {{< notice info >}}
 This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
-{{< /notice >}}
+{{< /notice >}} -->
 
 ### 🚑 Deployment: Where ML models go to die
 
@@ -25,7 +25,7 @@ In this post, I will outline the basic steps to deploy ML models onto lightweigh
 By the end of this post, you will learn about:
 
 * Leveraging Hugging Face infrastructure to host models.
-* Deploying on any edge device with a REST API.
+* Deploying on any edge device using REST API.
 * Displaying the results on a Flutter Android app.
 {{< /notice >}}
 
