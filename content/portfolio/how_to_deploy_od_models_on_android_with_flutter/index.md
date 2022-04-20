@@ -12,9 +12,6 @@ images :
 - images/portfolio/how_to_deploy_od_models_on_android_with_flutter/post_image.png
 ---
 
-
-
-
 ### 🚑 Deployment: Where ML models go to die
 
 In this post, I will outline the basic steps to deploy ML models onto lightweight mobile devices **easily, quickly and for free**.
@@ -35,9 +32,6 @@ According to Barr Moses, CEO, Monte Carlo, [deployment](https://towardsdatascien
 
 So what exactly is the deployment of ML model? 
 Simply put, deployment is making a model's capability or insight available to other users or systems - [Luigi Patruno](https://mlinproduction.com/what-does-it-mean-to-deploy-a-machine-learning-model-deployment-series-01/).
-
-
-
 
 
 ### 🏹 Begin with deployment in mind
