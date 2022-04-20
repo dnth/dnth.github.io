@@ -1,15 +1,15 @@
 ---
 title: "How to Deploy Object Detection Models on Android with Flutter"
 date: 2022-04-17T15:00:15+08:00
-featureImage: images/portfolio/deploying_od_models_flutter_busy_enginners/thumbnail.gif
-postImage: images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
+featureImage: images/portfolio/how_to_deploy_od_models_on_android_with_flutter/thumbnail.gif
+postImage: images/portfolio/how_to_deploy_od_models_on_android_with_flutter/post_image.png
 tags: ["Flutter", "Hugging-Face", "Android", "Fast.ai", "Gradio", "IceVision"]
 categories: ["deployment", "object-detection"]
 toc: true
 socialshare: true
 description: "Leverage giant models in the cloud on Android with Hugging Face and Flutter."
 images : 
-- images/portfolio/deploying_od_models_flutter_busy_enginners/post_image.png
+- images/portfolio/how_to_deploy_od_models_on_android_with_flutter/post_image.png
 ---
 
 
