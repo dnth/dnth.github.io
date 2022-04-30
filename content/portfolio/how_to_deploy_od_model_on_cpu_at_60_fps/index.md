@@ -19,7 +19,7 @@ This blog post is still a work in progress. If you require further clarification
 ### 🚦 Motivation
 
 {{< notice tip >}}
-By the end of this post, you will how to:
+By the end of this post, you will learn how to:
 
 * Train state-of-the-art YOLOX model with your own data.
 * Convert the YOLOX PyTorch model into ONNX and OpenVINO IR format.
@@ -33,7 +33,7 @@ Deep learning (DL), they seem to be in popular demand these days.
 We find them everywhere - in blog posts, articles, research papers, Jupyter notebooks. 
 Except in production 🤷‍♂️.
 
-As much as we want to believe DL can solve our machine learning problems, more than 85% of DL models don't make it into production - according to a recent survey by [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence).
+As much as we were made to believe DL is the answer to our machine learning problems, more than 85% of DL models don't make it into production - according to a recent survey by [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence).
 
 The barrier? *Deployment*.
 
@@ -54,53 +54,62 @@ to this 🚀
 
 
 Yes you read that right, the model runs on a CPU 😱.
-If that looks interesting, let's dive in.
+If that looks interesting, let's dive in 👇.
 
 
 ### ⛷ Modeling with YOLOX
 {{< figure_resizing src="yolox_demo.png">}}
 
-We will use the state-of-the-art YOLOX model to detect the license plate of vehicles around the neighborhood.
+We will use the state-of-the-art [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) model to detect the license plate of vehicles around the neighborhood.
+YOLOX is one of the most recent YOLO series model that is both lightweight and accurate.
 
-Before we can do that, we will need to collect images of the license pl ate and annotate them.
-I collected about 40 images in total. 30 will be used as the training set and 10 as the validation set.
+It claims better performance than [YOLOv4](https://github.com/Tianxiaomo/pytorch-YOLOv4), [YOLOv5](https://github.com/ultralytics/yolov5), and [EfficientDet](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch) models.
+Additionally, YOLOX is a anchorless one-stage detector which makes it faster that its counterparts.
 
-To label them, let's use the open-source CVAT labeling tool by Intel.
+Before we start training any YOLOX model, let's collect images of the license plate and annotate them.
+I collected about 40 images in total in a single walk around my neighborhood. 
+30 of the images will be used as the training set and 10 as the validation set.
+These are incredibly small sample size for any DL model, but I found that it is good enough for the task at hand to work reasonably well.
+
+To label the images, let's use the open-source [CVAT](https://github.com/openvinotoolkit/cvat) labeling tool by Intel.
 There are a ton of other labeling tools out there feel free to use them if you are comfortable.
 
 If you'd like to try CVAT, head to https://cvat.org/ and create an account and log in.
+As shown below, click on *Task*, fill in the appropriate details like name of the task, add related labels and upload the images.
+{{< figure_resizing src="cvat_new.png">}}
 
-As shown below, click on *Task*, fill in the approriate details like name of the task, add related labels and upload the images.
-{{< figure_resizing src="cvat_new.png" caption="Create a new task on CVAT.">}}
-
-Since we are detecting the license plate, I've entered only one label - LP (license plate).
-Once completed, you will see a summary page as below. Click on `Job #368378` at ③ and it should bring you to the labeling page.
-{{< figure_resizing src="task_description.png" caption="Input the images and labels.">}}
+Since we are detecting the license plate, I've entered only one label - `LP` (license plate).
+Once the uploading completes, you will see a summary page as below. Click on `Job #368378` at ③ and it should bring you to the labeling page.
+{{< figure_resizing src="task_description.png">}}
 
 To start labeling, click on the square icon at ① and click Shape at ② in the figure below.
-{{< figure_resizing src="draw_box.png" caption="Draw.">}}
+{{< figure_resizing src="draw_box.png">}}
 
 You can then start drawing bounding boxes around the license plate. Do this for all 40 images.
-{{< figure_resizing src="show_bbox.png" caption="Show.">}}
+{{< figure_resizing src="show_bbox.png">}}
 
 Once done, we are ready to export the annotations on the *Tasks* page.
-{{< figure_resizing src="export.png" caption="Export.">}}
+{{< figure_resizing src="export.png">}}
 
-Make sure the format is *COCO 1.0* and click on OK.
-{{< figure_resizing src="coco.png" caption="COCO format.">}}
+Make sure the format is *COCO 1.0* and click on OK. If you'd like to download the images check the Save images box. Since I have those images already, I don't have to download them.
+{{< figure_resizing src="coco.png">}}
 
 
 Now, we have our dataset ready let's train our YOLOX model.
-If you havent already install the YOLOX library by following the instructions [here](https://github.com/Megvii-BaseDetection/YOLOX).
+If you haven't already, install the YOLOX package by following the instructions [here](https://github.com/Megvii-BaseDetection/YOLOX).
 
 Place your images and annotations in the `datasets` folder following the structure outlined [here](https://github.com/Megvii-BaseDetection/YOLOX/tree/main/datasets).
 
-You will also need to prepare a few the `Exp` config file before starting the training loop. They are documented [here](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/docs/train_custom_data.md). 
-The `Exp` file lets you configure everything about the model from the location of the dataset, model architecture, and training hyperparameters.
+Before we start training, we must prepare a custom `Exp` file.
+The `Exp` file is a `.py` file where you can configure everything about the model - dataset location, data augmentation, model architecture, and other training hyperparameters.
+More info on the `Exp` file [here](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/docs/train_custom_data.md). 
 
-For simplicity let's use the `YOLOX-s` model. There are a host of other YOLOX models you can try like `YOLOX-m`, `YOLOX-l`, `YOLOX-x`, `YOLOX-Nano`, `YOLOX-Tiny`, etc. The details are on the README on the YOLOX repo. Feel free to experiment.
 
-My `Exp` file looks like the following
+For simplicity let's use one of the smaller models - `YOLOX-s`.
+There are a host of other YOLOX models you can try like `YOLOX-m`, `YOLOX-l`, `YOLOX-x`, `YOLOX-Nano`, `YOLOX-Tiny`, etc. 
+The details are on the [README](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/README.md) of the YOLOX repo. Feel free to experiment with them.
+
+My `Exp` file for the `YOLOX-s` model looks like the following
 
 ```python {linenos=table}
 import os
@@ -145,16 +154,49 @@ class Exp(MyExp):
         self.momentum = 0.9
 ```
 
-Once done, we can run the provided training script in the `tools` folder 
+We are now ready to train. The training script is provided in the `tools` folder. To start training, run 
 ```bash
-python tools/train.py -f exps/example/custom/yolox_s.py -d 8 -b 64 --fp16 -o -c /path/to/yolox_s.pth
+python tools/train.py -f exps/example/custom/yolox_s.py -d 1 -b 64 --fp16 -o -c /path/to/yolox_s.pth
 ```
+
+
+{{< notice note >}}
+ `-d` specifies the number of GPUs available on your machine.
+
+`-b` specifies the batch size.
+
+`-c` specifies the path to save your checkpoint.
+
+`--fp16` tells the model to train in mixed precision mode.
+
+{{< /notice >}}
+
+
+
+
+
+
 
 After the training completes, you can use the model to run inference by using the `demo.py` script in the same folder.
 
 ```bash
-python tools/demo.py video -n yolox-s -c /path/to/your/yolox_s.pth --path /path/to/your/video --conf 0.25 --nms 0.45 --tsize 640 --save_result --device [cpu/gpu]
+python tools/demo.py video -f exps/example/custom/yolox_s.py -c /path/to/your/yolox_s.pth --path /path/to/your/video --conf 0.25 --nms 0.45 --tsize 640 --device [cpu/gpu]
 ```
+
+{{< notice note >}}
+`-f` specifies the path to the custom `Exp` file.
+
+`--path` specifies the path to the saved checkpoint file.
+
+`--conf` specifies the confidence threshold of the detection.
+
+`--nms` specifies the non-maximum suppression threshold.
+
+`--tsize` specifies the test image size.
+
+`--device` specifies the device to run the model on - `cpu` or `gpu`.
+
+{{< /notice >}}
 
 I'm running this on my machine with an RTX3090 GPU. The output looks like the following.
 {{< video src="yolox_gpu.mp4" width="700px" loop="true" autoplay="true">}}
@@ -168,7 +210,7 @@ Now, let's improve that by optimizing the model.
 
 ### 🤖 ONNX Runtime
 {{< figure_resizing src="onnx_runtime.png">}}
-ONNX is an open format used to represent machine learning models.
+[ONNX](https://onnx.ai/) is an open format used to represent machine learning models.
 The goal of ONNX is to ensure interoperability among machine learning models via commonly accepted standards.
 This allows developers to flexibly move between frameworks such as PyTorch or Tensorflow with less to worry about compatibility.
 
@@ -192,7 +234,7 @@ Let's run the inference now using the ONNX model and ONNX Runtime.
 
 {{< video src="onnx.mp4" width="700px" loop="true" autoplay="true">}}
 
-As you can see, the FPS slightly improved from 7+ FPS to 11+ FPS with the ONNX model and Runtime on CPU - still it's not very ideal for real-time inference.
+As you can see, the FPS slightly improved from 7+ FPS to 11+ FPS with the ONNX model and Runtime on CPU - it's still not ideal for real-time inference.
 
 Let's see if we can improve that further.
 
@@ -200,13 +242,33 @@ Let's see if we can improve that further.
 ### 🔗 OpenVINO Intermediate Representation
 {{< figure_resizing src="openvino_logo.png">}}
 
+OpenVINO is a toolkit to facilitate optimization of DL models to be run on Intel hardware.
+The toolkit enables a model to be optimized once and deployed on any supported Intel hardware including CPU, GPU, VPU and FPGAs.
+
+To optimize the model it needs to be converted into a form known as the OpenVINO Intermediate Representation (IR). This consist of a `.xml` and `.bin` file.
+With the IR files, you can deploy them on any of the supported Intel hardware.
+
+Let's now convert our model into the IR form. For that, we need to install the `openvino-dev` package.
+
 ```bash
 pip install openvino-dev[onnx]==2022.1.0
 ```
+Once installed, we can invoke the `mo` command to convert the model. `mo` is the abbreviation of Model Optimizer. 
 
 ```bash
 mo --input_model models/ONNX/yolox_s_lp.onnx --input_shape [1,3,640,640] --data_type FP16 --output_dir models/IR/
 ```
+{{< notice note >}}
+The `mo` accepts a few parameters:
+
+`--input_model` specifies the path to the previously converted ONNX model.
+
+`--input_shape` specifies the shape of the input image.
+
+`--data_type` specifies the data type.
+
+`--output_dir` specifies the directory to save the IR.
+{{< /notice >}}
 
 Now, let's run the inference on the same video and observe its performance.
 {{< video src="fp16.mp4" width="700px" loop="true" autoplay="true">}}
