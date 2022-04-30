@@ -56,6 +56,8 @@ If that looks interesting, let's dive in.
 
 
 ### ⛷ Modeling with YOLOX
+{{< figure_resizing src="yolox_demo.png">}}
+
 We will use the state-of-the-art YOLOX model to detect the license plate of vehicles around the neighborhood.
 
 Before we can do that, we will need to collect images of the license pl ate and annotate them.
@@ -158,6 +160,9 @@ I'm running this on my machine with an RTX3090 GPU. The output looks like the fo
 Without any optimization, the model runs at about 40+ FPS on a RTX3090 GPU.
 
 ### 🤖 ONNX Runtime
+{{< figure_resizing src="onnx_runtime.png">}}
+
+
 ```bash
 pip install onnxruntime
 ```
@@ -167,6 +172,7 @@ python src/export_onnx.py --output-name models/ONNX/yolox_s_lp.onnx -f exps/YOLO
 ```
 
 ### 🔗 OpenVINO Intermediate Representation
+{{< figure_resizing src="openvino_logo.png">}}
 
 ```bash
 pip install openvino-dev[onnx]==2022.1.0
