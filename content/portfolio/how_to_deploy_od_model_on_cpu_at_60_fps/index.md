@@ -206,7 +206,17 @@ pip install openvino-dev[onnx]==2022.1.0
 mo --input_model models/ONNX/yolox_s_lp.onnx --input_shape [1,3,640,640] --data_type FP16 --output_dir models/IR/
 ```
 
-### 🛠 Post-Training Optimization Toolkit
+Now, let's run the inference on the same video and observe its performance.
+{{< video src="fp16.mp4" width="700px" loop="true" autoplay="true">}}
+
+As you can see the FPS bumped up to 19+ FPS! It's now beginning to look more feasible for a real-time detection.
+Let's call it a day and celebrate the success of our model!
+
+Or, is there more to it? Enter 👇👇👇
+
+### 🛠 Post-Training Quantization
+Now this is where the real magic happens.
+
 OpenVINO provides a higly under-rate Post-training Optimization Toolkit (POT).
 Runs algorithm for 8-bit quantization over a wide variety of DNN models.
 
