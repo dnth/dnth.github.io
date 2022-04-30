@@ -17,19 +17,42 @@ This blog post is still a work in progress. If you require further clarification
 {{< /notice >}}
 
 ### 🚦 Motivation
-We train on GPU. CPU is more common for deployment.
-OD models run very slow on CPU. Lightest model runs less than 10 fps.
-Danger for mission critical application such as self-driving car that require real-time responses.
-
-{{< video src="yolox.mp4" width="700px" loop="true" autoplay="true" >}}
 
 {{< notice tip >}}
-By the end of this post, you will learn about:
+By the end of this post, you will how to:
 
 * Train state-of-the-art YOLOX model with your own data.
-* Convert the .pth model into ONNX and IR model.
-* Run post training quantization to 10x model inference speed.
+* Convert the YOLOX PyTorch model into ONNX and OpenVINO IR format.
+* Run quantization algorithm to 10x your model's inference speed.
 {{< /notice >}}
+
+
+Deep learning (DL), they seem to be in popular demand these days. 
+We find them everywhere - in blog posts, articles, research papers, Jupyter notebooks. 
+except in production 🤷‍♂️.
+
+As much as we want to believe DL can solve our machine learning problems, more than 85% of DL models don't make it into production - according to a recent survey by Gartner.
+
+The barrier? *Deployment*.
+
+For object detection models, we typically train them on massive GPUs either locally or in the cloud.
+But when it comes to deploying the model, running them on GPUs is impractical in most situations.
+
+On the other hand, CPUs are far more common in deployment settings, and a lot cheaper too.
+But DL models are orders of magnitude slower when run on CPUs right?
+
+No. This is no longer true.
+
+By the end of this post, you will see how we go from this 🐌
+
+{{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="true">}}
+
+to this 🚀
+{{< video src="int8.mp4" width="700px" loop="true" autoplay="true">}}
+
+
+Yes you read that right, the model runs on a CPU 😱.
+If that looks interesting, let's dive in.
 
 
 ### ⛷ Modeling with YOLOX
@@ -49,6 +72,9 @@ Runs fast.
 {{< figure_resizing src="export.png" caption="Export.">}}
 
 {{< figure_resizing src="coco.png" caption="COCO format.">}}
+
+Inference with RTX3090 with no optimization.
+{{< video src="yolox_gpu.mp4" width="700px" loop="true" autoplay="true">}}
 
 ### 🤖 ONNX Runtime
 ```bash
