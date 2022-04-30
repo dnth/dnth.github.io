@@ -29,31 +29,34 @@ By the end of this post, you will learn how to:
 {{< /notice >}}
 
 
-Deep learning (DL), they seem to be in popular demand these days. 
-We find them everywhere - in blog posts, articles, research papers, Jupyter notebooks. 
+Deep learning (DL), they seem to be the magic word that makes anything cool. 
+We find them everywhere - in blog posts, articles, research papers, advertisements and even [baby books](https://www.amazon.com/Neural-Networks-Babies-Baby-University/dp/1492671207). 
+
 Except in production 🤷‍♂️.
 
-As much as we were made to believe DL is the answer to our machine learning problems, more than 85% of DL models don't make it into production - according to a recent survey by [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence).
+{{< figure_resizing src="baby_nn.jpg">}}
+
+As much as we were made to believe DL is the answer to our problems, more than 85% of models don't make it into production - according to a recent survey by [Gartner](https://www.gartner.com/en/newsroom/press-releases/2018-02-13-gartner-says-nearly-half-of-cios-are-planning-to-deploy-artificial-intelligence).
 
 The barrier? *Deployment*.
 
-For object detection models, we typically train them on massive GPUs either locally or in the cloud.
-But when it comes to deploying the model, running them on GPUs is impractical in most situations.
+In object detection, we typically train models on massive GPUs either locally or in the cloud.
+But when it comes to deployment, running them on GPUs is often impractical.
 
-On the other hand, CPUs are far more common in deployment settings, and a lot cheaper too.
-But DL models are orders of magnitude slower when deployed on CPUs right?
+On the other hand, CPUs are far more common in deployment, and a lot cheaper.
+But when running DL models, they are orders of magnitude slower compared to GPU. Right?
 
-No. This is no longer true.
+**Wrong**.
 
-In this post, I will walk you through how we go from this 🐌
+ 
+In this post, I will walk you through how we go from this 🐌🐌🐌
 
 {{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="true">}}
 
-to this 🚀
+to this 🚀🚀🚀
 {{< video src="int8.mp4" width="700px" loop="true" autoplay="true">}}
 
-
-Yes you read that right, the model runs on a CPU 😱.
+Yes, you saw that right, this model runs on a CPU 😱.
 If that looks interesting, let's dive in 👇.
 
 
@@ -66,20 +69,27 @@ YOLOX is one of the most recent YOLO series model that is both lightweight and a
 It claims better performance than [YOLOv4](https://github.com/Tianxiaomo/pytorch-YOLOv4), [YOLOv5](https://github.com/ultralytics/yolov5), and [EfficientDet](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch) models.
 Additionally, YOLOX is a anchorless one-stage detector which makes it faster that its counterparts.
 
-Before we start training any YOLOX model, let's collect images of the license plate and annotate them.
+Before we start training, let's collect images of the license plate and annotate them.
 I collected about 40 images in total in a single walk around my neighborhood. 
 30 of the images will be used as the training set and 10 as the validation set.
-These are incredibly small sample size for any DL model, but I found that it is good enough for the task at hand to work reasonably well.
+These are incredibly small sample size for any DL model, but I found that it works reasonably well for our task at hand.
+
+{{< figure_resizing src="sample_imgs.png" caption="Sample images of vehicle license plates.">}}
+
 
 To label the images, let's use the open-source [CVAT](https://github.com/openvinotoolkit/cvat) labeling tool by Intel.
 There are a ton of other labeling tools out there feel free to use them if you are comfortable.
 
-If you'd like to try CVAT, head to https://cvat.org/ and create an account and log in.
-As shown below, click on *Task*, fill in the appropriate details like name of the task, add related labels and upload the images.
+If you'd like to try CVAT, head to https://cvat.org/ - create an account and log in.
+No installation needed.
+
+A top menu bar should be visible as shown below. 
+Click on *Task*, fill in the name of the task, add related labels and upload the images.
 {{< figure_resizing src="cvat_new.png">}}
 
-Since we are detecting the license plate, I've entered only one label - `LP` (license plate).
-Once the uploading completes, you will see a summary page as below. Click on `Job #368378` at ③ and it should bring you to the labeling page.
+Since we are only interested in labeling the license plate, I've entered only one label - `LP` (license plate).
+Once the uploading completes, you will see a summary page as below. 
+Click on `Job #368378` at ③ and it should bring you to the labeling page.
 {{< figure_resizing src="task_description.png">}}
 
 To start labeling, click on the square icon at ① and click Shape at ② in the figure below.
@@ -100,16 +110,18 @@ If you haven't already, install the YOLOX package by following the instructions 
 
 Place your images and annotations in the `datasets` folder following the structure outlined [here](https://github.com/Megvii-BaseDetection/YOLOX/tree/main/datasets).
 
-Before we start training, we must prepare a custom `Exp` file.
-The `Exp` file is a `.py` file where you can configure everything about the model - dataset location, data augmentation, model architecture, and other training hyperparameters.
+Prior to training, we must prepare a custom `Exp` file.
+The `Exp` file is a `.py` file where we can configure everything about the model - dataset location, data augmentation, model architecture, and other training hyperparameters.
 More info on the `Exp` file [here](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/docs/train_custom_data.md). 
 
 
 For simplicity let's use one of the smaller models - `YOLOX-s`.
-There are a host of other YOLOX models you can try like `YOLOX-m`, `YOLOX-l`, `YOLOX-x`, `YOLOX-Nano`, `YOLOX-Tiny`, etc. 
-The details are on the [README](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/README.md) of the YOLOX repo. Feel free to experiment with them.
 
-My `Exp` file for the `YOLOX-s` model looks like the following
+There are a host of other YOLOX models you can try like `YOLOX-m`, `YOLOX-l`, `YOLOX-x`, `YOLOX-Nano`, `YOLOX-Tiny`, etc. 
+Feel free to experiment with them.
+The details are on the [README](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/README.md) of the YOLOX repo. 
+
+My custom `Exp` file for the `YOLOX-s` model looks like the following
 
 ```python {linenos=table}
 import os
@@ -159,9 +171,10 @@ We are now ready to train. The training script is provided in the `tools` folder
 python tools/train.py -f exps/example/custom/yolox_s.py -d 1 -b 64 --fp16 -o -c /path/to/yolox_s.pth
 ```
 
-
 {{< notice note >}}
- `-d` specifies the number of GPUs available on your machine.
+`-f` specifies the location of the custom `Exp` file.
+
+`-d` specifies the number of GPUs available on your machine.
 
 `-b` specifies the batch size.
 
@@ -172,12 +185,7 @@ python tools/train.py -f exps/example/custom/yolox_s.py -d 1 -b 64 --fp16 -o -c 
 {{< /notice >}}
 
 
-
-
-
-
-
-After the training completes, you can use the model to run inference by using the `demo.py` script in the same folder.
+After the training completes, you can use run an inference on the model by utilizing the `demo.py` script in the same folder.
 
 ```bash
 python tools/demo.py video -f exps/example/custom/yolox_s.py -c /path/to/your/yolox_s.pth --path /path/to/your/video --conf 0.25 --nms 0.45 --tsize 640 --device [cpu/gpu]
@@ -198,13 +206,13 @@ python tools/demo.py video -f exps/example/custom/yolox_s.py -c /path/to/your/yo
 
 {{< /notice >}}
 
-I'm running this on my machine with an RTX3090 GPU. The output looks like the following.
-{{< video src="yolox_gpu.mp4" width="700px" loop="true" autoplay="true">}}
+I'm running this on a computer with an RTX3090 GPU. The output looks like the following.
+{{< video src="yolox_gpu.mp4" width="700px" loop="true" autoplay="false">}}
 
-Out of the box, the model ran at about 40+ FPS on a RTX3090 GPU.
-But, on a Core i9-11900 CPU (a relatively powerful CPU to date) it maxed out at around 7+ FPS - not ideal for a real-time detection.
+Out of the box, the model topped at 40+ FPS on a RTX3090 GPU.
+But, on a Core i9-11900 CPU (a relatively powerful CPU to date) it maxed out at 7+ FPS - not good for a real-time detection task.
 
-{{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="true">}}
+{{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="false">}}
 
 Now, let's improve that by optimizing the model.
 
@@ -232,7 +240,7 @@ python tools/export_onnx.py --output-name your_yolox.onnx -f exps/your_dir/your_
 More details can be found [here](https://github.com/Megvii-BaseDetection/YOLOX/tree/main/demo/ONNXRuntime).
 Let's run the inference now using the ONNX model and ONNX Runtime.
 
-{{< video src="onnx.mp4" width="700px" loop="true" autoplay="true">}}
+{{< video src="onnx.mp4" width="700px" loop="true" autoplay="false">}}
 
 As you can see, the FPS slightly improved from 7+ FPS to 11+ FPS with the ONNX model and Runtime on CPU - it's still not ideal for real-time inference.
 
@@ -271,7 +279,7 @@ The `mo` accepts a few parameters:
 {{< /notice >}}
 
 Now, let's run the inference on the same video and observe its performance.
-{{< video src="fp16.mp4" width="700px" loop="true" autoplay="true">}}
+{{< video src="fp16.mp4" width="700px" loop="true" autoplay="false">}}
 
 As you can see the FPS bumped up to 19+ FPS! It's now beginning to look more feasible for a real-time detection.
 Let's call it a day and celebrate the success of our model!
@@ -297,7 +305,7 @@ pot -q default -m models/IR/yolox_s_lp.xml -w models/IR/yolox_s_lp.bin --engine 
 
 ### 🚀 Real-time Inference @50+ FPS
 The moment of truth
-{{< video src="int8.mp4" width="700px" loop="true" autoplay="true" >}}
+{{< video src="int8.mp4" width="700px" loop="true" autoplay="false" >}}
 
 ### 🏁 Conclusion
 In this post you've learned how to 10x your object detection model using the techniques covered.
