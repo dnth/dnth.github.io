@@ -94,8 +94,9 @@ Place your images and annotations in the `datasets` folder following the structu
 You will also need to prepare a few the `Exp` config file before starting the training loop. They are documented [here](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/docs/train_custom_data.md). 
 The `Exp` file lets you configure everything about the model from the location of the dataset, model architecture, and training hyperparameters.
 
-Let's use the YOLOX-S model.
-My Exp file looks like the following
+For simplicity let's use the `YOLOX-s` model. There are a host of other YOLOX models you can try like `YOLOX-m`, `YOLOX-l`, `YOLOX-x`, `YOLOX-Nano`, `YOLOX-Tiny`, etc. The details are on the README on the YOLOX repo. Feel free to experiment.
+
+My `Exp` file looks like the following
 
 ```python {linenos=table}
 import os
