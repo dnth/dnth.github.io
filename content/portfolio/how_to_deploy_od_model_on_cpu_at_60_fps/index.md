@@ -157,19 +157,43 @@ python tools/demo.py video -n yolox-s -c /path/to/your/yolox_s.pth --path /path/
 I'm running this on my machine with an RTX3090 GPU. The output looks like the following.
 {{< video src="yolox_gpu.mp4" width="700px" loop="true" autoplay="true">}}
 
-Without any optimization, the model runs at about 40+ FPS on a RTX3090 GPU.
+Out of the box, the model ran at about 40+ FPS on a RTX3090 GPU.
+But, on a Core i9-11900 CPU (a relatively powerful CPU to date) it maxed out at around 7+ FPS - not ideal for a real-time detection.
+
+{{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="true">}}
+
+Now, let's improve that by optimizing the model.
 
 ### 🤖 ONNX Runtime
 {{< figure_resizing src="onnx_runtime.png">}}
+ONNX is an open format used to represent machine learning models.
+The goal of ONNX is to ensure interoperability among machine learning models via commonly accepted standards.
+This allows developers to flexibly move between frameworks such as PyTorch or Tensorflow with less to worry about compatibility.
 
+ONNX also supports cross-platform model accelerator known as ONNX Runtime.
+This improves the inference performance of a wide variety of models capable of running on various operating systems.
+
+We can now convert our trained `YOLOX-s` model into ONNX format and run it using the ONNX Runtime.
+Before that you must install the `onnxruntime` package via `pip`.
 
 ```bash
 pip install onnxruntime
 ```
 
+To convert our model run
+
 ```bash
-python src/export_onnx.py --output-name models/ONNX/yolox_s_lp.onnx -f exps/YOLOX_S/yolox_s_lp.py -c YOLOX_outputs/yolox_s_lp/best_ckpt.pth
+python tools/export_onnx.py --output-name your_yolox.onnx -f exps/your_dir/your_yolox.py -c your_yolox.pth
 ```
+More details can be found [here](https://github.com/Megvii-BaseDetection/YOLOX/tree/main/demo/ONNXRuntime).
+Let's run the inference now using the ONNX model and ONNX Runtime.
+
+{{< video src="onnx.mp4" width="700px" loop="true" autoplay="true">}}
+
+As you can see, the FPS slightly improved from 7+ FPS to 11+ FPS with the ONNX model and Runtime on CPU - still it's not very ideal for real-time inference.
+
+Let's see if we can improve that further.
+
 
 ### 🔗 OpenVINO Intermediate Representation
 {{< figure_resizing src="openvino_logo.png">}}
