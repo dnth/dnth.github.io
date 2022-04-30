@@ -43,8 +43,9 @@ The barrier? *Deployment*.
 In object detection, we typically train models on massive GPUs either locally or in the cloud.
 But when it comes to deployment, running them on GPUs is often impractical.
 
-On the other hand, CPUs are far more common in deployment, and a lot cheaper.
-But when running DL models, they are orders of magnitude slower compared to GPU. Right?
+On the other hand, CPUs are far more common in deployment, and a lot cheaper. 
+But can we feasibly deploy real-time DL models on a CPU?
+Running DL models on a CPU is orders of magnitude slower compared to GPU, right?
 
 **Wrong**.
 
