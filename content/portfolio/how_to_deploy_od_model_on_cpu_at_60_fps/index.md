@@ -23,7 +23,9 @@ By the end of this post, you will how to:
 
 * Train state-of-the-art YOLOX model with your own data.
 * Convert the YOLOX PyTorch model into ONNX and OpenVINO IR format.
-* Run quantization algorithm to 10x your model's inference speed.
+* Run quantization algorithm to 10x your model's inference speed. 
+
+**P/S**: The final model runs faster on the CPU than the GPU! 😱
 {{< /notice >}}
 
 
