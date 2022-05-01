@@ -1,15 +1,15 @@
 ---
 title: "How to 10x your Object Detection Model and Deploy on CPU at 50+ FPS"
 date: 2022-04-30T15:00:15+08:00
-featureImage: images/portfolio/how_to_deploy_od_model_on_cpu_at_60_fps/thumbnail.gif
-postImage: images/portfolio/how_to_deploy_od_model_on_cpu_at_60_fps/post_image.png
+featureImage: images/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/thumbnail.gif
+postImage: images/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/post_image.png
 tags: ["OpenVINO", "YOLOX", "ONNX", "CVAT", "real-time", "optimization", "license-plate"]
 categories: ["deployment", "object-detection"]
 toc: true
 socialshare: true
 description: "10x your YOLOX model in few simple steps!"
 images : 
-- images/portfolio/how_to_deploy_od_model_on_cpu_at_60_fps/post_image.png
+- images/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/post_image.png
 ---
 
 ### 🚦 Motivation
