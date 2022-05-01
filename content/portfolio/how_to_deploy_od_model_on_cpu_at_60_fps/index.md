@@ -25,8 +25,8 @@ By the end of this post, you will learn how to:
 {{< /notice >}}
 
 
-Deep learning (DL), they seem to be the magic word that makes anything mundane cool again. 
-We find them everywhere - in blog posts, articles, research papers, advertisements and even [baby books](https://www.amazon.com/Neural-Networks-Babies-Baby-University/dp/1492671207). 
+Deep learning (DL), seems to be the magic word that makes anything mundane cool again. 
+We find them everywhere - in news reports, blog posts, articles, research papers, advertisements, and even [baby books](https://www.amazon.com/Neural-Networks-Babies-Baby-University/dp/1492671207). 
 
 Except in production 🤷‍♂️.
 
@@ -60,15 +60,15 @@ If that looks interesting, let's dive in 👇.
 {{< figure_resizing src="yolox_demo.png">}}
 
 We will use a state-of-the-art [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) model to detect the license plate of vehicles around the neighborhood.
-YOLOX is one of the most recent YOLO series model that is both lightweight and accurate.
+YOLOX is one of the most recent YOLO series models that is both lightweight and accurate.
 
 It claims better performance than [YOLOv4](https://github.com/Tianxiaomo/pytorch-YOLOv4), [YOLOv5](https://github.com/ultralytics/yolov5), and [EfficientDet](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch) models.
-Additionally, YOLOX is an anchor free one-stage detector which makes it faster that its counterparts.
+Additionally, YOLOX is an anchor-free one-stage detector which makes it faster than its counterparts.
 
 Before we start training, let's collect images of the license plate and annotate them.
 I collected about 40 images in total. 
 30 of the images will be used as the training set and 10 as the validation set.
-These are incredibly small sample size for any DL model, but I found that it works reasonably well for our task at hand.
+These are incredibly small sample sizes for any DL model, but I found that it works reasonably well for our task at hand.
 
 {{< figure_resizing src="sample_imgs.png" caption="Sample images of vehicle license plates.">}}
 
@@ -77,10 +77,10 @@ To label the images, let's use the open-source [CVAT](https://github.com/openvin
 There are a ton of other labeling tools out there feel free to use them if you are comfortable.
 
 If you'd like to try CVAT, head to https://cvat.org/ - create an account and log in.
-No installation needed.
+No installation is needed.
 
 A top menu bar should be visible as shown below. 
-Click on *Task*, fill in the name of the task, add related labels and upload the images.
+Click on *Task*, fill in the name of the task, add related labels, and upload the images.
 {{< figure_resizing src="cvat_new.png">}}
 
 Since we are only interested in labeling the license plate, I've entered only one label - `LP` (license plate).
@@ -183,7 +183,7 @@ python tools/train.py -f exps/example/custom/yolox_s.py -d 1 -b 64 --fp16 -o -c 
 {{< /notice >}}
 
 
-After the training completes, you can use run an inference on the model by utilizing the `demo.py` script in the same folder.
+After the training completes, you can use run inference on the model by utilizing the `demo.py` script in the same folder.
 
 ```bash
 python tools/demo.py video -f exps/example/custom/yolox_s.py -c /path/to/your/yolox_s.pth --path /path/to/your/video --conf 0.25 --nms 0.45 --tsize 640 --device [cpu/gpu]
@@ -207,7 +207,7 @@ python tools/demo.py video -f exps/example/custom/yolox_s.py -c /path/to/your/yo
 I'm running this on a computer with an RTX3090 GPU. The output looks like the following.
 {{< video src="yolox_gpu.mp4" width="700px" loop="true" autoplay="false">}}
 
-Out of the box, the model averaged at 40+ FPS on a RTX3090 GPU.
+Out of the box, the model averaged 40+ FPS on an RTX3090 GPU.
 But, on a Core i9-11900 CPU (a relatively powerful CPU to date) it averaged at 5+ FPS - not good for a real-time detection task.
 
 {{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="false">}}
@@ -220,7 +220,7 @@ Now, let's improve that by optimizing the model.
 The goal of ONNX is to ensure interoperability among machine learning models via commonly accepted standards.
 This allows developers to flexibly move between frameworks such as PyTorch or Tensorflow with less to worry about compatibility.
 
-ONNX also supports cross-platform model accelerator known as ONNX Runtime.
+ONNX also supports a cross-platform model accelerator known as ONNX Runtime.
 This improves the inference performance of a wide variety of models capable of running on various operating systems.
 
 We can now convert our trained `YOLOX-s` model into ONNX format and run it using the ONNX Runtime.
@@ -249,8 +249,8 @@ Let's see if we can improve that further.
 ### 🔗 OpenVINO Intermediate Representation
 {{< figure_resizing src="openvino_logo.png">}}
 
-OpenVINO is a toolkit to facilitate optimization of DL models to be run on Intel hardware.
-The toolkit enables a model to be optimized once and deployed on any supported Intel hardware including CPU, GPU, VPU and FPGAs.
+OpenVINO is a toolkit to facilitate the optimization of DL models to be run on Intel hardware.
+The toolkit enables a model to be optimized once and deployed on any supported Intel hardware including CPU, GPU, VPU, and FPGAs.
 
 To optimize performance, the model needs to be converted into a form known as the OpenVINO Intermediate Representation (IR). 
 This consist of a `.xml` and `.bin` file.
@@ -283,7 +283,7 @@ Now, let's run the inference on the same video and observe its performance.
 {{< video src="fp16.mp4" width="700px" loop="true" autoplay="false">}}
 
 As you can see the FPS bumped up to 16+ FPS. 
-It's now beginning to look more feasible for a real-time detection.
+It's now beginning to look more feasible for real-time detection.
 Let's call it a day and celebrate the success of our model! 🥳
 
 Or, is there more to it? Enter 👇👇👇
@@ -291,10 +291,10 @@ Or, is there more to it? Enter 👇👇👇
 ### 🛠 Post-Training Quantization
 Apart from the Model Optimizer, OpenVINO also comes with a Post-training Optimization Toolkit (POT) designed to supercharge the inference of DL models without retraining or finetuning.
 
-To achieve that, POT runs 8-bit quantization algorithms and optimizes the model to use integer tensor instead of floating point tensor on some operations.
+To achieve that, POT runs 8-bit quantization algorithms and optimizes the model to use integer tensors instead of floating-point tensors on some operations.
 This results in a 2-4x faster and smaller model.
 
-Now this is where the real magic happens.
+Now, this is where the real magic happens.
 
 From the OpenVINO documentation [page](https://docs.openvino.ai/2021.1/pot_compression_algorithms_quantization_README.html), the POT supports two types of quantization:
 
@@ -343,12 +343,12 @@ In this post you've learned how to:
 + 10x the inference speed of the model with 8-bit quantization.
 {{< /notice >}}
 
-So, what's next? To squeeze even more out the model I recommend:
+So, what's next? To squeeze even more out of the model I recommend:
 + Experiment with smaller YOLOX models like YOLOX-Nano or YOLOX-Tiny.
-+ Try using smaller input resolution such as 416x416. We've used 640x640 in this post.
++ Try using a smaller input resolution such as 416x416. We've used 640x640 in this post.
 + Try using the `AccuracyAwareQuantization` which runs quantization on the model with lesser accuracy loss on the model.
 
-There also a best practice guide to quantizing your model with OpenVINO [here](https://docs.openvino.ai/latest/pot_docs_BestPractices.html).
+They're also a best practice guide to quantizing your model with OpenVINO [here](https://docs.openvino.ai/latest/pot_docs_BestPractices.html).
 
 ### 🙏 Comments & Feedback
 If you like this and don't want to miss any of my future content, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these in bite-size posts.
