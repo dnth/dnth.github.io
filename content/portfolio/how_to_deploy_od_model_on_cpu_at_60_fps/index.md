@@ -1,9 +1,9 @@
 ---
 title: "How to 10x your Object Detection Model and Deploy on CPU at 50+ FPS"
-date: 2022-04-29T15:00:15+08:00
+date: 2022-04-30T15:00:15+08:00
 featureImage: images/portfolio/how_to_deploy_od_model_on_cpu_at_60_fps/thumbnail.gif
 postImage: images/portfolio/how_to_deploy_od_model_on_cpu_at_60_fps/post_image.png
-tags: ["OpenVINO", "YOLOX", "ONNX", "CVAT"]
+tags: ["OpenVINO", "YOLOX", "ONNX", "CVAT", "real-time", "optimization", "license-plate"]
 categories: ["deployment", "object-detection"]
 toc: true
 socialshare: true
@@ -25,7 +25,7 @@ By the end of this post, you will learn how to:
 {{< /notice >}}
 
 
-Deep learning (DL), they seem to be the magic word that makes anything cool. 
+Deep learning (DL), they seem to be the magic word that makes anything mundane cool again. 
 We find them everywhere - in blog posts, articles, research papers, advertisements and even [baby books](https://www.amazon.com/Neural-Networks-Babies-Baby-University/dp/1492671207). 
 
 Except in production 🤷‍♂️.
@@ -34,10 +34,11 @@ As much as we were made to believe DL is the answer to our problems, more than 8
 
 The barrier? *Deployment*.
 
-In object detection, we typically train models on massive GPUs either locally or in the cloud.
-But when it comes to deployment, running them on GPUs is often impractical.
+For some applications such as self-driving car, real-time deployment is critical and has huge implications.
 
-On the other hand, CPUs are far more common in deployment, and a lot cheaper. 
+As data scientists, even though we can easily train our models on GPUs, it is uncommon and sometimes impractical to deploy them on GPUs in production.
+On the other hand, CPUs are far more common in production environment, and a lot cheaper.
+
 But can we feasibly deploy real-time DL models on a CPU?
 Running DL models on a CPU is orders of magnitude slower compared to GPU, right?
 
@@ -51,7 +52,7 @@ In this post, I will walk you through how we go from this 🐌🐌🐌
 to this 🚀🚀🚀
 {{< video src="int8.mp4" width="700px" loop="true" autoplay="true">}}
 
-Yes, you saw that right, this model runs on a CPU 😱.
+Yes, that's right, this model runs on a **CPU at 50+ FPS** 😱.
 If that looks interesting, let's dive in 👇.
 
 
@@ -62,7 +63,7 @@ We will use a state-of-the-art [YOLOX](https://github.com/Megvii-BaseDetection/Y
 YOLOX is one of the most recent YOLO series model that is both lightweight and accurate.
 
 It claims better performance than [YOLOv4](https://github.com/Tianxiaomo/pytorch-YOLOv4), [YOLOv5](https://github.com/ultralytics/yolov5), and [EfficientDet](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch) models.
-Additionally, YOLOX is a anchorless one-stage detector which makes it faster that its counterparts.
+Additionally, YOLOX is an anchor free one-stage detector which makes it faster that its counterparts.
 
 Before we start training, let's collect images of the license plate and annotate them.
 I collected about 40 images in total. 
@@ -342,8 +343,11 @@ In this post you've learned how to:
 + 10x the inference speed of the model with 8-bit quantization.
 {{< /notice >}}
 
-What's next? You can experiment with using other YOLOX models and see if you can squeeze more using the techniques covered in this post.
-You can also try the `AccuracyAwareQuantization` which runs quantization on the model with lesser accuracy loss on the model.
+So, what's next? To squeeze even more out the model I recommend:
++ Experiment with smaller YOLOX models like YOLOX-Nano or YOLOX-Tiny.
++ Try using smaller input resolution such as 416x416. We've used 640x640 in this post.
++ Try using the `AccuracyAwareQuantization` which runs quantization on the model with lesser accuracy loss on the model.
+
 There also a best practice guide to quantizing your model with OpenVINO [here](https://docs.openvino.ai/latest/pot_docs_BestPractices.html).
 
 ### 🙏 Comments & Feedback
