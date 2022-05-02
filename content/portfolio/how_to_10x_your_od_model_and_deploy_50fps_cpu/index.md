@@ -7,7 +7,7 @@ tags: ["OpenVINO", "YOLOX", "ONNX", "CVAT", "real-time", "optimization", "licens
 categories: ["deployment", "object-detection"]
 toc: true
 socialshare: true
-description: "10x your YOLOX model in few simple steps!"
+description: "10x your YOLOX model and run it faster than GPU in few simple steps!"
 images : 
 - images/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/post_image.png
 ---
