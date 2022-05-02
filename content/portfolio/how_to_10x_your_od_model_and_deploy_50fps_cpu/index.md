@@ -52,8 +52,8 @@ In this post, I will walk you through how we go from this 🐌🐌🐌
 to this 🚀🚀🚀
 {{< video src="int8.mp4" width="700px" loop="true" autoplay="true">}}
 
-Yes, that's right, this model runs on a **CPU at 50+ FPS** 😱.
-If that looks interesting, let's dive in 👇.
+Yes, that's right, we can run DL models on a **CPU at 50+ FPS** 😱 and I'm going to show you how in this post.
+If that looks interesting, let's dive in.
 
 
 ### ⛷ Modeling with YOLOX
@@ -63,12 +63,16 @@ We will use a state-of-the-art [YOLOX](https://github.com/Megvii-BaseDetection/Y
 YOLOX is one of the most recent YOLO series models that is both lightweight and accurate.
 
 It claims better performance than [YOLOv4](https://github.com/Tianxiaomo/pytorch-YOLOv4), [YOLOv5](https://github.com/ultralytics/yolov5), and [EfficientDet](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch) models.
-Additionally, YOLOX is an anchor-free one-stage detector which makes it faster than its counterparts.
+Additionally, YOLOX is an anchor-free, one-stage detector which makes it faster than its counterparts.
 
-Before we start training, let's collect images of the license plate and annotate them.
+Before we start training, let's collect images of the license plates and annotate them.
 I collected about 40 images in total. 
 30 of the images will be used as the training set and 10 as the validation set.
-These are incredibly small sample sizes for any DL model, but I found that it works reasonably well for our task at hand.
+
+{{< notice tip >}}
+This is an incredibly small sample size for any DL model, but I found that it works reasonably well for our task at hand.
+We likely need more images to make this model more robust. However, this is still a good starting point.
+{{< /notice >}}
 
 {{< figure_resizing src="sample_imgs.png" caption="Sample images of vehicle license plates.">}}
 
@@ -106,14 +110,13 @@ If you haven't already, install the YOLOX package by following the instructions 
 
 Place your images and annotations in the `datasets` folder following the structure outlined [here](https://github.com/Megvii-BaseDetection/YOLOX/tree/main/datasets).
 
-Next, we must also prepare a custom `Exp` class.
-The `Exp` class is a `.py` file where we can configure everything about the model - dataset location, data augmentation, model architecture, and other training hyperparameters.
+Next, we must prepare a custom `Exp` class.
+The `Exp` class is a `.py` file where we configure everything about the model - dataset location, data augmentation, model architecture, and other training hyperparameters.
 More info on the `Exp` class [here](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/docs/train_custom_data.md). 
-
 
 For simplicity let's use one of the smaller models - `YOLOX-s`.
 
-There are a host of other YOLOX models you can try like `YOLOX-m`, `YOLOX-l`, `YOLOX-x`, `YOLOX-Nano`, `YOLOX-Tiny`, etc. 
+There are other YOLOX models you can try like `YOLOX-m`, `YOLOX-l`, `YOLOX-x`, `YOLOX-Nano`, `YOLOX-Tiny`, etc. 
 Feel free to experiment with them.
 More details are on the [README](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/README.md) of the YOLOX repo. 
 
@@ -162,7 +165,7 @@ class Exp(MyExp):
         self.momentum = 0.9
 ```
 
-We are now ready to start the training. 
+We are now ready to start training. 
 The training script is provided in the `tools` folder. To start training, run 
 
 ```bash
@@ -183,16 +186,18 @@ python tools/train.py -f exps/example/custom/yolox_s.py -d 1 -b 64 --fp16 -o -c 
 {{< /notice >}}
 
 
-After the training completes, you can use run inference on the model by utilizing the `demo.py` script in the same folder.
+After the training completes, you can run inference on the model by utilizing the `demo.py` script in the same folder. Run
 
 ```bash
-python tools/demo.py video -f exps/example/custom/yolox_s.py -c /path/to/your/yolox_s.pth --path /path/to/your/video --conf 0.25 --nms 0.45 --tsize 640 --device [cpu/gpu]
+python tools/demo.py video -f exps/example/custom/yolox_s.py -c /path/to/your/yolox_s.pth --path /path/to/your/video --conf 0.25 --nms 0.45 --tsize 640 --device gpu
 ```
 
 {{< notice note >}}
 + `-f` specifies the path to the custom `Exp` file.
 
-+ `--path` specifies the path to the saved checkpoint file.
++ `-c` specifies the path to your saved checkpoint.
+
++ `--path` specifies the path to the video you want to infer on.
 
 + `--conf` specifies the confidence threshold of the detection.
 
@@ -212,18 +217,18 @@ But, on a Core i9-11900 CPU (a relatively powerful CPU to date) it averaged at 5
 
 {{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="false">}}
 
-Now, let's improve that by optimizing the model.
+Let's improve that by optimizing the model.
 
 ### 🤖 ONNX Runtime
 {{< figure_resizing src="onnx_runtime.png">}}
 [ONNX](https://onnx.ai/) is an open format built to represent machine learning models.
 The goal of ONNX is to ensure interoperability among machine learning models via commonly accepted standards.
-This allows developers to flexibly move between frameworks such as PyTorch or Tensorflow with less to worry about compatibility.
+This allows developers to flexibly move between frameworks such as PyTorch or Tensorflow with less compatibility issues.
 
-ONNX also supports a cross-platform model accelerator known as ONNX Runtime.
+ONNX supports a cross-platform model accelerator known as the ONNX Runtime.
 This improves the inference performance of a wide variety of models capable of running on various operating systems.
 
-We can now convert our trained `YOLOX-s` model into ONNX format and run it using the ONNX Runtime.
+Let's convert our trained `YOLOX-s` model into the ONNX format.
 For that, you must install the `onnxruntime` package via `pip`. 
 
 ```bash
@@ -236,11 +241,11 @@ To convert our model run
 python tools/export_onnx.py --output-name your_yolox.onnx -f exps/your_dir/your_yolox.py -c your_yolox.pth
 ```
 
-Let's run the inference now using the ONNX model and ONNX Runtime.
+Let's load the ONNX model and run the inference using the ONNX Runtime.
 
 {{< video src="onnx.mp4" width="700px" loop="true" autoplay="false">}}
 
-As you can see, the FPS slightly improved from 5+ FPS to about 10+ FPS with the ONNX model and Runtime on CPU - it's still not ideal for real-time inference.
+As shown, the FPS slightly improved from 5+ FPS to about 10+ FPS with the ONNX model and Runtime on CPU - still not ideal for real-time inference.
 Just by converting the model to ONNX, we already 2x the inference performance. 
 
 Let's see if we can improve that further.
@@ -249,14 +254,14 @@ Let's see if we can improve that further.
 ### 🔗 OpenVINO Intermediate Representation
 {{< figure_resizing src="openvino_logo.png">}}
 
-OpenVINO is a toolkit to facilitate the optimization of DL models to be run on Intel hardware.
-The toolkit enables a model to be optimized once and deployed on any supported Intel hardware including CPU, GPU, VPU, and FPGAs.
+OpenVINO is a toolkit to optimize DL models.
+It enables a model to be optimized once and deployed on any supported Intel hardware including CPU, GPU, VPU, and FPGAs.
 
-To optimize performance, the model needs to be converted into a form known as the OpenVINO Intermediate Representation (IR). 
-This consist of a `.xml` and `.bin` file.
-With the IR files, you can deploy them on any of the supported Intel hardware.
+To optimize a model, we must the ONNX model into the OpenVINO Intermediate Representation (IR) form. 
+The IR consist of a `.xml` and `.bin` file.
+With these files, you can deploy them on any of the supported Intel hardware.
 
-Let's now convert our model into the IR form. 
+Let's convert our model into the IR form. 
 For that, we need to install the `openvino-dev` package.
 
 ```bash
@@ -279,7 +284,7 @@ The `mo` accepts a few parameters:
 + `--output_dir` specifies the directory to save the IR.
 {{< /notice >}}
 
-Now, let's run the inference on the same video and observe its performance.
+Now, let's run an inference using the IR files on the same video and observe its performance.
 {{< video src="fp16.mp4" width="700px" loop="true" autoplay="false">}}
 
 As you can see the FPS bumped up to 16+ FPS. 
@@ -292,9 +297,9 @@ Or, is there more to it? Enter 👇👇👇
 Apart from the Model Optimizer, OpenVINO also comes with a Post-training Optimization Toolkit (POT) designed to supercharge the inference of DL models without retraining or finetuning.
 
 To achieve that, POT runs 8-bit quantization algorithms and optimizes the model to use integer tensors instead of floating-point tensors on some operations.
-This results in a 2-4x faster and smaller model.
+This results in a **2-4x faster and smaller model**.
 
-Now, this is where the real magic happens.
+This is where the real magic happens.
 
 From the OpenVINO documentation [page](https://docs.openvino.ai/2021.1/pot_compression_algorithms_quantization_README.html), the POT supports two types of quantization:
 
@@ -330,9 +335,13 @@ Let's load the quantized model and run the same inference again.
 
 {{< video src="int8.mp4" width="700px" loop="true" autoplay="false" >}}
 
+Boom! 
+
 The first time I saw the numbers, I could hardly believe my eyes. 50+ FPS on a CPU! 
-That's about 10x faster compared to our initial model! 🚀
-Additionally, this is also faster than the model ran on the RTX3090 GPU!
+That's about 10x faster 🚀 compared to our initial model! 
+Plus, this is also faster than the RTX3090 GPU!
+
+Mind = blown 🤯
 
 ### 🏁 Conclusion
 {{< notice tip >}}
@@ -345,10 +354,10 @@ In this post you've learned how to:
 
 So, what's next? To squeeze even more out of the model I recommend:
 + Experiment with smaller YOLOX models like YOLOX-Nano or YOLOX-Tiny.
-+ Try using a smaller input resolution such as 416x416. We've used 640x640 in this post.
-+ Try using the `AccuracyAwareQuantization` which runs quantization on the model with lesser accuracy loss on the model.
++ Try using a smaller input resolution such as `416x416`. We've used `640x640` in this post.
++ Try using the `AccuracyAwareQuantization` which runs quantization on the model with lesser accuracy loss.
 
-They're also a best practice guide to quantizing your model with OpenVINO [here](https://docs.openvino.ai/latest/pot_docs_BestPractices.html).
+They're also a best practice guide to quantize your model with OpenVINO [here](https://docs.openvino.ai/latest/pot_docs_BestPractices.html).
 
 ### 🙏 Comments & Feedback
 If you like this and don't want to miss any of my future content, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these in bite-size posts.
