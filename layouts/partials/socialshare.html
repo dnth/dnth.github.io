@@ -58,7 +58,16 @@
         </li>
         {{ end }} &nbsp;
 
-
+        <!-- LinkedIn -->
+        {{ if .Site.Params.share.linkedin }}
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ $url }}&amp;source={{ $url }}&amp;title={{ $title }}&amp;summary={{ $title }}"
+                target="_blank" rel="noopener" aria-label="Share on LinkedIn" class="share-btn linkedin">
+                {{ partial "svg/linkedin_white.svg" (dict "class" "widget-social__link-icon") }}&nbsp;
+                LinkedIn
+            </a>
+        </li>
+        {{ end }} &nbsp;
 
         <!-- Facebook -->
         {{ if .Site.Params.share.facebook }}
@@ -67,17 +76,6 @@
                 aria-label="Share on Facebook" class="share-btn facebook">
                 {{ partial "svg/facebook_white.svg" (dict "class" "widget-social__link-icon") }}&nbsp;
                 Facebook
-            </a>
-        </li>
-        {{ end }} &nbsp;
-
-        <!-- LinkedIn -->
-        {{ if .Site.Params.share.linkedin }}
-        <li>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ $url }}&amp;source={{ $url }}&amp;title={{ $title }}&amp;summary={{ $title }}"
-                target="_blank" rel="noopener" aria-label="Share on LinkedIn" class="share-btn linkedin">
-                {{ partial "svg/linkedin_white.svg" (dict "class" "widget-social__link-icon") }}&nbsp;
-                LinkedIn
             </a>
         </li>
         {{ end }} &nbsp;
