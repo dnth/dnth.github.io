@@ -360,13 +360,9 @@ So, what's next? To squeeze even more out of the model I recommend:
 They're also a best practice guide to quantize your model with OpenVINO [here](https://docs.openvino.ai/latest/pot_docs_BestPractices.html).
 
 ### 🙏 Comments & Feedback
-If you like this and don't want to miss any of my future content, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these in bite-size posts.
-
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet 1517004585495240704>}}
 
 
-
-
-
+If you like what you see and don't want to miss any of my future contents, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
