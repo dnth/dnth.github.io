@@ -1,5 +1,5 @@
 ---
-title: "How to 10x your Object Detection Model and Deploy on CPU at 50+ FPS"
+title: "Faster than GPU: How to 10x your Object Detection Model and Deploy on CPU at 50+ FPS"
 date: 2022-04-30T15:00:15+08:00
 featureImage: images/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/thumbnail.gif
 postImage: images/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/post_image.png
