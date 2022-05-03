@@ -91,7 +91,9 @@ Once the Space is set, we will have a Gradio interface like the following
 {{< figure src="space_demo.gif" width=750 >}}
 
 This Space is now ready to be shared with anyone with an internet connection and a browser.
-Click [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/+) if you'd like to try it out in a live demo.
+Try the live demo below 👇👇👇
+
+<iframe src="https://hf.space/embed/dnth/webdemo-microalgae-counting/+" frameBorder="0" width="1000" height="1000" title="Gradio app" class="container p-0 flex-grow space-iframe" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"></iframe>
 
 But what if we want to make the app work on a mobile device **without using a browser?** Enter 👇
 
