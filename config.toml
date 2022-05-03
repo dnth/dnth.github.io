@@ -44,7 +44,7 @@ name = "Skills"
 url = "#skills"
 weight = 6
 [[menu.main]]
-name = "Blog"
+name = "Blogs"
 url = "#blog"
 weight = 7
 [[menu.main]]
