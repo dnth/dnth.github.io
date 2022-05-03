@@ -225,6 +225,8 @@ You can now share the URL to your Space to anyone across the internet for free.
 This blog post outlined a step-by-step guide on how you can deploy IceVision models on HuggingFace Space in just a few steps. Hope this helps you share the awesomeness of your model to anyone across the world.
 The Space used in this blog post can be found [here](https://huggingface.co/spaces/dnth/icevision_fridge_tutorial).
 
+You can also embed the running app on any webpage in your `HTML` code like the following:
+
 
 <!-- <div id="disqus_thread"></div>
 <script>
@@ -247,15 +249,5 @@ The Space used in this blog post can be found [here](https://huggingface.co/spac
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
 
 
-<!-- <html>
-<head>
-<link rel="stylesheet" href="https://gradio.s3-us-west-2.amazonaws.com/2.6.2/static/bundle.css">
-</head>
-<body>
-<div id="target"></div>
-<script src="https://gradio.s3-us-west-2.amazonaws.com/2.6.2/static/bundle.js"></script>
-<script>
-launchGradioFromSpaces("dnth/webdemo-fridge-detection", "#target")
-</script>
-</body>
-</html> -->
+<iframe src="https://hf.space/embed/dnth/icevision_fridge_tutorial/+" frameBorder="0" width="800" height="800" title="Gradio app" class="container p-0 flex-grow space-iframe" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"></iframe>
+
