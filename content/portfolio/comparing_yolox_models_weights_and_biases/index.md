@@ -125,7 +125,21 @@ Visual inspection
 {{< video src="vids/yolox_nano.mp4" width="700px" loop="true" autoplay="false" >}}
 
 ### ⛳️ Wrapping up
-Simple easy free.
+In this post I've shown you how to
+
++ Install wandb client.
++ Use Wandb to log and compare training metrics.
++ Picking the best model using mAP values and visual inspection.
+
+Next there are other features of Wandb that we have not explored.
+
++ Hyperparameter optimization with Sweeps
++ Versioning model and data.
++ Data visualization.
+
+More can be found on the wandb [documentation](https://docs.wandb.ai/). 
+
+
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
