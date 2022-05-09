@@ -81,6 +81,14 @@ Comparison TLDR.
 FPS.
 Visual inspection
 
+
+{{< video src="vids/yolox_x.mp4" width="700px" loop="true" autoplay="false" >}}
+{{< video src="vids/yolox_l.mp4" width="700px" loop="true" autoplay="false" >}}
+{{< video src="vids/yolox_m.mp4" width="700px" loop="true" autoplay="false" >}}
+{{< video src="vids/yolox_s.mp4" width="700px" loop="true" autoplay="false" >}}
+{{< video src="vids/yolox_tiny.mp4" width="700px" loop="true" autoplay="false" >}}
+{{< video src="vids/yolox_nano.mp4" width="700px" loop="true" autoplay="false" >}}
+
 ### ⛳️ Wrapping up
 Simple easy free.
 
