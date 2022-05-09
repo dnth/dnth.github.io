@@ -1,7 +1,7 @@
 ---
 title: "How to Compare YOLOX Models with Weights and Biases and Get Your Life Back"
-date: 2022-01-07T15:00:15+08:0
-featureImage: Back images/portfolio/comparing_yolox_models_with_weights_and_biases/thumbnail.gif
+date: 2022-01-07T15:00:15+08:00
+featureImage: images/portfolio/comparing_yolox_models_with_weights_and_biases/thumbnail.gif
 postImage: images/portfolio/comparing_yolox_models_with_weights_and_biases/post_image.png
 tags: ["OpenVINO", "YOLOX", "Wandb", "real-time", "optimization", "license-plate"]
 categories: ["deployment", "object-detection", "monitoring"]
@@ -43,17 +43,17 @@ In this blog post I will show you how I accomplish all of them by using a free a
 
 **PS**: No Excel sheets involved.
 
-### 📉 Weights and Biases
-{{< figure_resizing src="wandb.png">}}
+### 📉 Wandb - Google Drive for Machine Learning
+
 
 Life is short they say. So why waste it on monitoring your deep learning models when you can automate them?
-
 This is what Wandb is trying to solve. It's like Google Drive for machine learning.
+
 Wandb helps individuals and teams build models faster.
 With just few lines of code, you can compare models, log important metrics, and collaborate with teammates.
-
 It's free to get started. Click [here](https://wandb.ai/) to create an account. 
 
+{{< figure_resizing src="wandb.png">}}
 
 This post is a sequel to my previous post where I showed [how to deploy YOLOX models on CPU at 50 FPS](https://dicksonneoh.com/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/).
 This time around I will show you how I get the most from the YOLOX models by logging the performance metrics and comparing them on Wandb.
