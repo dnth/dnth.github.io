@@ -72,8 +72,43 @@ from your terminal to authenticate your machine. The API key is stored in `~/.ne
 
 ### 👀 Monitoring Training Metrics
 Using with YOLOX.
+
+```bash
+python tools/train.py -f exps/example/custom/yolox_s.py -d 1 -b 64 --fp16 -o -c /path/to/yolox_s.pth --logger wandb wandb-project yolox-compare-blog wandb-id yolox-x-640
+```
+
+{{< notice note >}}
++ `-f` specifies the location of the custom `Exp` file.
+
++ `-d` specifies the number of GPUs available on your machine.
+
++ `-b` specifies the batch size.
+
++ `-c` specifies the path to save your checkpoint.
+
++ `--fp16` tells the model to train in mixed precision mode.
+
++ `--logger` specifies the type of logger we want to use. The default is `tensorboard`.
+
++ `wandb-project` specifies the name of the project on Wandb.
+
++ `wandb-id` specifies the id of the run.
+
+{{< /notice >}}
+
+
 Monitoring metrics.
 mAP.
+
+{{< figure_resizing src="graphs.png" >}}
+
+
+{{< figure_resizing src="mAP.png" >}}
+
+Full dashboard on wandb [here](https://wandb.ai/dnth/yolox-compare-blog?workspace=user-dnth).
+
+Specify `self.save_history_ckpt = False` in your `Exp` file.
+Otherwise logging will take long time due the uploading of the artifact to wandb.
 
 ### ⚖️ Comparing YOLOX Models 
 Convert into INT8.
