@@ -362,7 +362,7 @@ They're also a best practice guide to quantize your model with OpenVINO [here](h
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
-{{< tweet 1521342853640728576>}}
+{{< tweet dicksonneoh7 1521342853640728576>}}
 
 
 If you like what you see and don't want to miss any of my future contents, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
