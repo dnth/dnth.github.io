@@ -9,7 +9,7 @@ toc: true
 socialshare: true
 description: "Monitor your models with Wandb and get your life back!"
 images : 
-- images/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/post_image.png
+- images/portfolio/comparing_yolox_models_with_weights_and_biases/post_image.png
 ---
 {{< notice info >}}
 This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
