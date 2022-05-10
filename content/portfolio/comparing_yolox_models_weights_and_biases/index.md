@@ -145,18 +145,35 @@ Let's checkout how the models perform running on a Core i9 CPU 👇
 
 #### YOLOX-X (mAP: 0.8869, FPS: 7+)
 YOLOX-X is the largest model model that scores the highest mAP.
-However, despite that, the quantized YOLOX-X model runs only at about 7 FPS on a CPU.
+The PyTorch model is 792MB and the quantized model is about 100MB in size.
+The quantized YOLOX-X model runs only at about 7 FPS on a CPU.
 {{< video src="vids/yolox_x.mp4" width="700px" loop="true" autoplay="false" >}}
+
 #### YOLOX-L (mAP: 0.8729, FPS: 15+)
+The PyTorch model is 434MB and the quantized model is about 56MB in size.
+The quantized YOLOX-L model runs at about 15 FPS on a CPU.
 {{< video src="vids/yolox_l.mp4" width="700px" loop="true" autoplay="false" >}}
+
 #### YOLOX-M (mAP: 0.8688, FPS: 25+)
+The PyTorch model is 203MB and the quantized model is about 27MB.
+The quantized YOLOX-M model runs at about 25 FPS on a CPU.
+
 {{< video src="vids/yolox_m.mp4" width="700px" loop="true" autoplay="false" >}}
+
 #### YOLOX-S (mAP: 0.8560, FPS: 50+)
+The PyTorch model is 72MB and the quantized model is about 10MB in size.
+The quantized YOLOX-S model runs at about 50 FPS on a CPU.
 {{< video src="vids/yolox_s.mp4" width="700px" loop="true" autoplay="false" >}}
+
 #### YOLOX-Tiny (mAP: 0.8422, FPS: 70+)
+The PyTorch model is 41MB and the quantized model is about 6MB in size.
+The quantized YOLOX-Tiny model runs at about 70 FPS on a CPU.
 {{< video src="vids/yolox_tiny.mp4" width="700px" loop="true" autoplay="false" >}}
+
 #### YOLOX-Nano (mAP: 0.7905, FPS: 100+)
-YOLOX-Nano scored the lowest on the mAP compared to others. However, it is the fastest running model with over 100 FPS on CPU.
+YOLOX-Nano scored the lowest on the mAP compared to others. 
+The PyTorch model is 7.6MB and the quantized model is about 2MB in size.
+However, it is the fastest running model with over 100 FPS on CPU.
 {{< video src="vids/yolox_nano.mp4" width="700px" loop="true" autoplay="false" >}}
 
 Observing carefully, we notice that as the models get smaller, the mAP decreases and the FPS increases.
