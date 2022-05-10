@@ -143,17 +143,20 @@ If you're new to my posts, I wrote on how to run the quantization [here](https:/
 
 Let's checkout how the models perform running on a Core i9 CPU 👇
 
-#### YOLOX-X (mAP: 0.8869)
+#### YOLOX-X (mAP: 0.8869, FPS: 7+)
+YOLOX-X is the largest model model that scores the highest mAP.
+However, despite that, the quantized YOLOX-X model runs only at about 7 FPS on a CPU.
 {{< video src="vids/yolox_x.mp4" width="700px" loop="true" autoplay="false" >}}
-#### YOLOX-L (mAP: 0.8729)
+#### YOLOX-L (mAP: 0.8729, FPS: 15+)
 {{< video src="vids/yolox_l.mp4" width="700px" loop="true" autoplay="false" >}}
-#### YOLOX-M (mAP: 0.8688)
+#### YOLOX-M (mAP: 0.8688, FPS: 25+)
 {{< video src="vids/yolox_m.mp4" width="700px" loop="true" autoplay="false" >}}
-#### YOLOX-S (mAP: 0.8560)
+#### YOLOX-S (mAP: 0.8560, FPS: 50+)
 {{< video src="vids/yolox_s.mp4" width="700px" loop="true" autoplay="false" >}}
-#### YOLOX-Tiny (mAP: 0.8422)
+#### YOLOX-Tiny (mAP: 0.8422, FPS: 70+)
 {{< video src="vids/yolox_tiny.mp4" width="700px" loop="true" autoplay="false" >}}
-#### YOLOX-Nano (mAP: 0.7905)
+#### YOLOX-Nano (mAP: 0.7905, FPS: 100+)
+YOLOX-Nano scored the lowest on the mAP compared to others. However, it is the fastest running model with over 100 FPS on CPU.
 {{< video src="vids/yolox_nano.mp4" width="700px" loop="true" autoplay="false" >}}
 
 Observing carefully, we notice that as the models get smaller, the mAP decreases and the FPS increases.
