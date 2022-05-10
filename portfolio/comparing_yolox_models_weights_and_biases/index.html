@@ -6,7 +6,7 @@
 <span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-between" id=navbarCollapse><ul class="nav navbar-nav main-navigation my-0 mx-auto"><li class=nav-item><a href=https://dicksonneoh.com/#home class="nav-link text-dark text-sm-center p-2">Home</a></li><li class=nav-item><a href=https://dicksonneoh.com/#about class="nav-link text-dark text-sm-center p-2">About</a></li><li class=nav-item><a href=https://dicksonneoh.com/#service class="nav-link text-dark text-sm-center p-2">Services</a></li><li class=nav-item><a href=https://dicksonneoh.com/#portfolio class="nav-link text-dark text-sm-center p-2">Works</a></li><li class=nav-item><a href=https://dicksonneoh.com/#resume class="nav-link text-dark text-sm-center p-2">Resume</a></li><li class=nav-item><a href=https://dicksonneoh.com/#skills class="nav-link text-dark text-sm-center p-2">Skills</a></li><li class=nav-item><a href=https://dicksonneoh.com/#blog class="nav-link text-dark text-sm-center p-2">Blogs</a></li><li class=nav-item><a href=https://dicksonneoh.com/#contact class="nav-link text-dark text-sm-center p-2">Contact</a></li></ul><div class=navbar-nav><a href=https://calendly.com/dickson-neoh/discovery-call rel=noopener class="btn btn-primary btn-zoom hire_button">Book a call</a></div></div></div></nav><div id=content><header class=breadCrumb><div class=container><div class=row><div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center"><h3 class=breadCrumb__title>Choosing the Best YOLOX Model with Weights and Biases.</h3><nav aria-label=breadcrumb class="d-flex justify-content-center"></nav></div></div><div class="row p-3"><div class="col-lg-10 col-md-10 offset-lg-1 offset-md-0 text-center"><i class="fa fa-calendar"></i> &ensp;
 January 7, 2022 &ensp; &ensp;
 <i class="fa fa-clock-o"></i> &ensp;
-7 mins read</div><div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center"><i class="fa fa-tag"></i> &ensp;
+8 mins read</div><div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center"><i class="fa fa-tag"></i> &ensp;
 <a href=https://dicksonneoh.com/tags/openvino/>OpenVINO</a>
 <span class=separator>•</span>
 <a href=https://dicksonneoh.com/tags/yolox/>YOLOX</a>
@@ -49,13 +49,23 @@ To overcome that, let&rsquo;s convert the YOLOX models into a form that can run 
 Quantization optimizes the model to use integer tensors instead of floating-point tensors.
 This results in a <strong>2-4x faster and smaller models</strong>.
 Plus, we can now run the models on a CPU in for real-time inference!</p><p>If you&rsquo;re new to my posts, I wrote on how to run the quantization <a href=https://dicksonneoh.com/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/>here</a>.</p><p>Let&rsquo;s checkout how the models perform running on a Core i9 CPU 👇</p><h4 id=yolox-x-map-08869-fps-7>YOLOX-X (mAP: 0.8869, FPS: 7+)</h4><p>YOLOX-X is the largest model model that scores the highest mAP.
-However, despite that, the quantized YOLOX-X model runs only at about 7 FPS on a CPU.
+The PyTorch model is 792MB and the quantized model is about 100MB in size.
+The quantized YOLOX-X model runs only at about 7 FPS on a CPU.
 <video controls preload=auto width=700px loop playsinline class=html-video>
-<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_x.mp4 type=video/mp4><span></span></video></p><h4 id=yolox-l-map-08729-fps-15>YOLOX-L (mAP: 0.8729, FPS: 15+)</h4><video controls preload=auto width=700px loop playsinline class=html-video>
-<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_l.mp4 type=video/mp4><span></span></video><h4 id=yolox-m-map-08688-fps-25>YOLOX-M (mAP: 0.8688, FPS: 25+)</h4><video controls preload=auto width=700px loop playsinline class=html-video>
-<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_m.mp4 type=video/mp4><span></span></video><h4 id=yolox-s-map-08560-fps-50>YOLOX-S (mAP: 0.8560, FPS: 50+)</h4><video controls preload=auto width=700px loop playsinline class=html-video>
-<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_s.mp4 type=video/mp4><span></span></video><h4 id=yolox-tiny-map-08422-fps-70>YOLOX-Tiny (mAP: 0.8422, FPS: 70+)</h4><video controls preload=auto width=700px loop playsinline class=html-video>
-<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_tiny.mp4 type=video/mp4><span></span></video><h4 id=yolox-nano-map-07905-fps-100>YOLOX-Nano (mAP: 0.7905, FPS: 100+)</h4><p>YOLOX-Nano scored the lowest on the mAP compared to others. However, it is the fastest running model with over 100 FPS on CPU.
+<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_x.mp4 type=video/mp4><span></span></video></p><h4 id=yolox-l-map-08729-fps-15>YOLOX-L (mAP: 0.8729, FPS: 15+)</h4><p>The PyTorch model is 434MB and the quantized model is about 56MB in size.
+The quantized YOLOX-L model runs at about 15 FPS on a CPU.
+<video controls preload=auto width=700px loop playsinline class=html-video>
+<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_l.mp4 type=video/mp4><span></span></video></p><h4 id=yolox-m-map-08688-fps-25>YOLOX-M (mAP: 0.8688, FPS: 25+)</h4><p>The PyTorch model is 203MB and the quantized model is about 27MB.
+The quantized YOLOX-M model runs at about 25 FPS on a CPU.</p><video controls preload=auto width=700px loop playsinline class=html-video>
+<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_m.mp4 type=video/mp4><span></span></video><h4 id=yolox-s-map-08560-fps-50>YOLOX-S (mAP: 0.8560, FPS: 50+)</h4><p>The PyTorch model is 72MB and the quantized model is about 10MB in size.
+The quantized YOLOX-S model runs at about 50 FPS on a CPU.
+<video controls preload=auto width=700px loop playsinline class=html-video>
+<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_s.mp4 type=video/mp4><span></span></video></p><h4 id=yolox-tiny-map-08422-fps-70>YOLOX-Tiny (mAP: 0.8422, FPS: 70+)</h4><p>The PyTorch model is 41MB and the quantized model is about 6MB in size.
+The quantized YOLOX-Tiny model runs at about 70 FPS on a CPU.
+<video controls preload=auto width=700px loop playsinline class=html-video>
+<source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_tiny.mp4 type=video/mp4><span></span></video></p><h4 id=yolox-nano-map-07905-fps-100>YOLOX-Nano (mAP: 0.7905, FPS: 100+)</h4><p>YOLOX-Nano scored the lowest on the mAP compared to others.
+The PyTorch model is 7.6MB and the quantized model is about 2MB in size.
+However, it is the fastest running model with over 100 FPS on CPU.
 <video controls preload=auto width=700px loop playsinline class=html-video>
 <source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_nano.mp4 type=video/mp4><span></span></video></p><p>Observing carefully, we notice that as the models get smaller, the mAP decreases and the FPS increases.
 To answer the question which model is best will ultimately depend on your application.</p><p>If you need a fast model and only have a lightweight CPU on the edge, give YOLOX-Nano a try.
