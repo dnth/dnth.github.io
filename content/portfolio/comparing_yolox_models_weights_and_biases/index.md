@@ -112,6 +112,7 @@ I ran the training on my license plate dataset for all YOLOX models namely `YOLO
 
 
 To gauge the quality of the model, we can look at the `COCOAP50_95` plot or also known as the COCO Metric or mean average precision (mAP) plot.
+The higher the mAP value, the better the model performs.
 This plot shows how well the model performs on the validation set as we train the model.
 {{< figure_resizing src="mAP.png" >}}
 
@@ -120,25 +121,27 @@ It's a little hard to tell from the figure above.
 I encourage you to checkout the [dashboard](https://wandb.ai/dnth/yolox-compare-blog?workspace=user-dnth) where you can zoom in and resize the plots.
 
 
+### ⚡️ Inference with Quantized Model
+Comparing the mAP value on Wandb only gives us an idea on how well the model performs on the validation set.
+It does not indicate how fast the model will run in deployment and how well the model will perform in the real world.
 
-
-### ⚖️ Comparing YOLOX Models
-Most of the time it is not enough to just compare the models solely on the mAP values.
-In object detection, it is always good to verify the performance by visual inspection of the model.
+In object detection, it is always good to verify the performance by visual inspection of the running model.
 For that, let's run an inference on a video for each model.
 
-Running inference on a GPU is boring, we know YOLOX models can run very fast on GPUs.
+Running inference on a GPU is boring 🤷‍♂️, we know YOLOX models can run very fast on GPUs.
 To make it more interesting, let's run the models on a CPU instead.
-Before that, let's convert the YOLOX models into a form that can run efficiently on CPUs.
+
+Traditionally, object detection models run slowly on a CPU. 
+To overcome that, let's convert the YOLOX models into a form that can run efficiently on CPUs.
 
 For that, we use Intel's Post-training Optimization Toolkit (POT) that runs an `INT8` quantization algorithm on the YOLOX models.
 Quantization optimizes the model to use integer tensors instead of floating-point tensors.
 This results in a **2-4x faster and smaller models**.
-Plus, we can now run the models on a CPU!
+Plus, we can now run the models on a CPU in for real-time inference!
 
 If you're new to my posts, I wrote on how to run the quantization [here](https://dicksonneoh.com/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/).
 
-Let's checkout how the models perform running on a CPU 👇
+Let's checkout how the models perform running on a Core i9 CPU 👇
 
 #### YOLOX-X (mAP: 0.8869)
 {{< video src="vids/yolox_x.mp4" width="700px" loop="true" autoplay="false" >}}
