@@ -154,12 +154,15 @@ Let's checkout how the models perform running on a CPU 👇
 {{< video src="vids/yolox_nano.mp4" width="700px" loop="true" autoplay="false" >}}
 
 Observing carefully, we notice that as the models get smaller, the mAP decreases and the FPS increases.
-Which model to use will ultimately depend on your application.
+To answer the question which model is best will ultimately depend on your application.
 
-Need something really fast on the edge with a little compromise in accuracy, get YOLOX-Nano.
-If you don't need real-time inference on the edge and require an accurate model then YOLOX-X fits the description. 
+If you need a fast model and only have a lightweight CPU on the edge, give YOLOX-Nano a try.
+If you prioritize accuracy over anything else and have a reasonably good CPU - YOLOX-X seems to fit.
 
-This is a classic trade-off of accuracy vs latency in machine learning. Knowing your application well can help you pick the best model for the job.
+Everything else lies in between.
+
+This is a classic trade-off of accuracy vs latency in machine learning. 
+Understanding your application well will really help you pick the best model for the job.
 
 ### ⛳️ Wrapping up
 That's it! In this blog post I have shown you how easy it is to use Wandb to log the training metrics of your YOLOX models.
