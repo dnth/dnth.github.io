@@ -183,6 +183,8 @@ python tools/train.py -f exps/example/custom/yolox_s.py -d 1 -b 64 --fp16 -o -c 
 
 + `--fp16` tells the model to train in mixed precision mode.
 
++ `-o` specifies the option to occupy GPU memory first for training.
+
 {{< /notice >}}
 
 
