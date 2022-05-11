@@ -59,22 +59,22 @@ Plus, we can now run the models on a CPU for real-time inference!</p><p>If you&r
 Let&rsquo;s check out how the models perform running on a Core i9 CPU 👇</p><h4 id=yolox-x-map-08869-fps-7>YOLOX-X (mAP: 0.8869, FPS: 7+)</h4><p>YOLOX-X is the largest model that scores the highest mAP.
 The PyTorch model is 792MB and the quantized model is about 100MB in size.
 The quantized YOLOX-X model runs only at about 7 FPS on a CPU.
-<video controls preload=auto width=700px autoplay loop playsinline class=html-video>
+<video controls preload=auto width=700px autoplay loop muted playsinline class=html-video>
 <source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_x.mp4 type=video/mp4><span></span></video></p><h4 id=yolox-l-map-08729-fps-15>YOLOX-L (mAP: 0.8729, FPS: 15+)</h4><p>The PyTorch model is 434MB and the quantized model is about 56MB in size.
 The quantized YOLOX-L model runs at about 15 FPS on a CPU.
-<video controls preload=auto width=700px autoplay loop playsinline class=html-video>
+<video controls preload=auto width=700px autoplay loop muted playsinline class=html-video>
 <source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_l.mp4 type=video/mp4><span></span></video></p><h4 id=yolox-m-map-08688-fps-25>YOLOX-M (mAP: 0.8688, FPS: 25+)</h4><p>The PyTorch model is 203MB and the quantized model is about 27MB.
-The quantized YOLOX-M model runs at about 25 FPS on a CPU.</p><video controls preload=auto width=700px autoplay loop playsinline class=html-video>
+The quantized YOLOX-M model runs at about 25 FPS on a CPU.</p><video controls preload=auto width=700px autoplay loop muted playsinline class=html-video>
 <source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_m.mp4 type=video/mp4><span></span></video><h4 id=yolox-s-map-08560-fps-50>YOLOX-S (mAP: 0.8560, FPS: 50+)</h4><p>The PyTorch model is 72MB and the quantized model is about 10MB in size.
 The quantized YOLOX-S model runs at about 50 FPS on a CPU.
-<video controls preload=auto width=700px autoplay loop playsinline class=html-video>
+<video controls preload=auto width=700px autoplay loop muted playsinline class=html-video>
 <source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_s.mp4 type=video/mp4><span></span></video></p><h4 id=yolox-tiny-map-08422-fps-70>YOLOX-Tiny (mAP: 0.8422, FPS: 70+)</h4><p>The PyTorch model is 41MB and the quantized model is about 6MB in size.
 The quantized YOLOX-Tiny model runs at about 70 FPS on a CPU.
-<video controls preload=auto width=700px autoplay loop playsinline class=html-video>
+<video controls preload=auto width=700px autoplay loop muted playsinline class=html-video>
 <source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_tiny.mp4 type=video/mp4><span></span></video></p><h4 id=yolox-nano-map-07905-fps-100>YOLOX-Nano (mAP: 0.7905, FPS: 100+)</h4><p>YOLOX-Nano scored the lowest on the mAP compared to others.
 The PyTorch model is 7.6MB and the quantized model is about 2MB in size.
 However, it is the fastest running model with over 100 FPS on CPU.
-<video controls preload=auto width=700px autoplay loop playsinline class=html-video>
+<video controls preload=auto width=700px autoplay loop muted playsinline class=html-video>
 <source src=/portfolio/comparing_yolox_models_weights_and_biases/vids/yolox_nano.mp4 type=video/mp4><span></span></video></p><div class="notice tip"><p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#tip-notice"/></svg></span>tip</p><ul><li>Larger models score <strong>higher</strong> mAP and <strong>lower</strong> FPS.</li><li>Smaller models score <strong>lower</strong> mAP and <strong>higher</strong> FPS.</li></ul></div><p>To answer the question of which model is best will ultimately depend on your application.
 If you need a fast model and only have a lightweight CPU on the edge, give YOLOX-Nano a try.
 If you prioritize accuracy over anything else and have a reasonably good CPU - YOLOX-X seems to fit.</p><p>Everything else lies in between.</p><p>This is a classic trade-off of accuracy vs latency in machine learning.
