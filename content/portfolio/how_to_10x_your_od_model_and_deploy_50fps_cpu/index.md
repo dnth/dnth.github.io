@@ -47,10 +47,10 @@ Running DL models on a CPU is orders of magnitude slower compared to GPU, right?
  
 In this post, I will walk you through how we go from this 🐌🐌🐌
 
-{{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="true">}}
+{{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 to this 🚀🚀🚀
-{{< video src="int8.mp4" width="700px" loop="true" autoplay="true">}}
+{{< video src="int8.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 Yes, that's right, we can run DL models on a **CPU at 50+ FPS** 😱 and I'm going to show you how in this post.
 If that looks interesting, let's dive in.
@@ -212,12 +212,12 @@ python tools/demo.py video -f exps/example/custom/yolox_s.py -c /path/to/your/yo
 {{< /notice >}}
 
 I'm running this on a computer with an RTX3090 GPU. The output looks like the following.
-{{< video src="yolox_gpu.mp4" width="700px" loop="true" autoplay="false">}}
+{{< video src="yolox_gpu.mp4" width="700px" loop="true" autoplay="false" muted="true">}}
 
 Out of the box, the model averaged 40+ FPS on an RTX3090 GPU.
 But, on a Core i9-11900 CPU (a relatively powerful CPU to date) it averaged at 5+ FPS - not good for a real-time detection task.
 
-{{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="false">}}
+{{< video src="yolox_cpu.mp4" width="700px" loop="true" autoplay="false" muted="true">}}
 
 Let's improve that by optimizing the model.
 
@@ -245,7 +245,7 @@ python tools/export_onnx.py --output-name your_yolox.onnx -f exps/your_dir/your_
 
 Let's load the ONNX model and run the inference using the ONNX Runtime.
 
-{{< video src="onnx.mp4" width="700px" loop="true" autoplay="false">}}
+{{< video src="onnx.mp4" width="700px" loop="true" autoplay="false" muted="true">}}
 
 As shown, the FPS slightly improved from 5+ FPS to about 10+ FPS with the ONNX model and Runtime on CPU - still not ideal for real-time inference.
 Just by converting the model to ONNX, we already 2x the inference performance. 
@@ -287,7 +287,7 @@ The `mo` accepts a few parameters:
 {{< /notice >}}
 
 Now, let's run an inference using the IR files on the same video and observe its performance.
-{{< video src="fp16.mp4" width="700px" loop="true" autoplay="false">}}
+{{< video src="fp16.mp4" width="700px" loop="true" autoplay="false" muted="true">}}
 
 As you can see the FPS bumped up to 16+ FPS. 
 It's now beginning to look more feasible for real-time detection.
@@ -335,7 +335,7 @@ This results in another set of IR files saved in `--output-dir`.
 Now, the moment of truth.
 Let's load the quantized model and run the same inference again.
 
-{{< video src="int8.mp4" width="700px" loop="true" autoplay="false" >}}
+{{< video src="int8.mp4" width="700px" loop="true" autoplay="false" muted="true">}}
 
 Boom! 
 
