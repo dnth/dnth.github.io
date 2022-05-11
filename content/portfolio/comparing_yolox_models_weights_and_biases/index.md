@@ -11,9 +11,6 @@ description: "Monitor your models with Wandb and pick the best!"
 images : 
 - images/portfolio/comparing_yolox_models_with_weights_and_biases/post_image.png
 ---
-{{< notice info >}}
-This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
-{{< /notice >}}
 
 ### 🔎 Motivation
 
@@ -257,7 +254,7 @@ Here are my 3 suggestions:
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
-{{< tweet dicksonneoh7 1521342853640728576>}}
+{{< tweet dicksonneoh7 1524263583097384960>}}
 
 
 If you like what you see and don't want to miss any of my future contents, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
