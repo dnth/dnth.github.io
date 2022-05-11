@@ -87,10 +87,15 @@ Within the YOLOX series, there are at least 6 different variations of the model 
 + YOLOX-X (largest)
 + YOLOX-L
 + YOLOX-M
++ YOLOX-S
 + YOLOX-Tiny
 + YOLOX-Nano (smallest)
 
-We will attempt to train all the models above and log the training metrics to Wandb.
+Let's train all the YOLOX models and log the training metrics to Wandb.
+For that, you need to install the YOLOX library following the instructions [here](https://github.com/Megvii-BaseDetection/YOLOX).
+
+You'd also need to prepare a custom `Exp` file to specify the model and training hyperparameters.
+I will use an existing `Exp` file from my last [blog post](https://dicksonneoh.com/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/#-modeling-with-yolox).
 
 
 All you need to do is run the `train.py` script from the YOLOX [repository](https://github.com/Megvii-BaseDetection/YOLOX/blob/main/tools/train.py) and specify `wandb` in the `--logger` argument.
@@ -132,15 +137,18 @@ If set to `True` this saves the model checkpoint at every epoch and uploads them
 This makes the logging process **A LOT** slower because every checkpoint is uploaded to `wandb` as an artifact.
 
 Once everything is set in place, let's run the training script and head to the project dashboard on Wandb to monitor the logged metrics.
-The project dashboard should look like the following. 
+
+After running the training for all the YOLOX models, the project dashboard should look like the following. 
 
 {{< figure_resizing src="graphs.png" caption="Logged metrics during training for all YOLOX models." >}}
 
 {{< figure_resizing src="table.png" caption="Logged hyperparameters for all YOLOX models." >}}
 
 As shown above, all the training metrics and hyperparameters are logged for each YOLOX model in an organized table.
-You can conveniently export this table into other forms such as `.csv` if you require. 
+You can share this dashboard with your teammates so they can view the metrics in real-time as you train. 
+You can also conveniently export the table and graphs into other forms such as `.csv` should you require. 
 
+I'm not a fan of Excel sheets, so I'll keep them on Wandb 😎. 
 Access my dashboard for this post [here](https://wandb.ai/dnth/yolox-compare-blog?workspace=user-dnth).
 
 
@@ -148,10 +156,10 @@ Access my dashboard for this post [here](https://wandb.ai/dnth/yolox-compare-blo
 I ran the training on my license plate dataset for all YOLOX models namely `YOLOX-Nano`, `YOLOX-Tiny`, `YOLOX-S`, `YOLOX-M`, `YOLOX-L` and `YOLOX-X`. -->
 
 To gauge the quality of the model, we can look at the `COCOAP50_95` plot or also known as the COCO Metric or mean average precision (mAP) plot.
-This mAP plot indicates how well the model performs on the validation set (higher values are better) as we train the model and is shown below.
+The mAP plot indicates how well the model performs on the validation set (higher values are better) as we train the model and is shown below.
 {{< figure_resizing src="mAP.png" >}}
 
-From the mAP plot, looks like `YOLOX-X` got the highest score followed by `YOLOX-L`, `YOLOX-M`, `YOLOX-S`, `YOLOX-Tiny` and `YOLOX-Nano`.
+From the mAP plot, looks like `YOLOX-X` scored the highest mAP followed by `YOLOX-L`, `YOLOX-M`, `YOLOX-S`, `YOLOX-Tiny` and `YOLOX-Nano`.
 It's a little hard to tell from the figure above.
 I encourage you to check out the [dashboard](https://wandb.ai/dnth/yolox-compare-blog?workspace=user-dnth) where you can zoom in and resize the plots.
 
@@ -225,7 +233,6 @@ This is a classic trade-off of accuracy vs latency in machine learning.
 Understanding your application well goes a long way to help you pick the best model.
 
 ### ⛳️ Wrapping up
-That's it!
 
 {{< notice tip>}}
 In this post we've covered
