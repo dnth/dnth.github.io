@@ -184,7 +184,7 @@ The screen recording below illustrates the Flutter app sending a sample image to
 <!-- {{< figure src="microsense.gif" width=500 >}}
 {{< youtube DLmyG-K8lAw >}} -->
 
-{{< video src="algae1.webm" width="600px" loop="true" autoplay="true" >}}
+{{< video src="algae1.webm" width="600px" loop="true" autoplay="true" muted="true" >}}
 
 
 I published the app on Google Playstore.
