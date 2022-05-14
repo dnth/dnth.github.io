@@ -18,6 +18,10 @@ content: >
 button1Name: Let's talk
 button2Name: Download CV
 button1Target: https://calendly.com/dickson-neoh/discovery-call
-button2Target: https://nbviewer.org/github/dnth/mycv/blob/master/cv_uniten.pdf?flush_cache=false #https://github.com/dnth/mycv/blob/master/cv_uniten.pdf
+button2Target: https://nbviewer.org/github/dnth/dnth.github.io/blob/main/static/files/dickson_cv.pdf 
+
+#https://github.com/dnth/dnth.github.io/blob/main/static/files/dickson_cv.pdf 
+#https://nbviewer.org/github/dnth/mycv/blob/master/cv_uniten.pdf?flush_cache=false 
+#https://github.com/dnth/mycv/blob/master/cv_uniten.pdf
 
 image: images/about/about.jpg
