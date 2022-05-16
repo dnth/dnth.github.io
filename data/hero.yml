@@ -1,12 +1,18 @@
 ---
 enable: true
-topTitle: Hello, I am Dickson
+topTitle: Hello, I am Dickson 🚀
 content: >
-  # Deep Learning Scientist. 
+  # Deep Learning Engineer. 
   
-  I help startups and companies design and deploy custom deep learning solutions.
+  I help companies design, build, and deploy end-to-end deep learning solutions.
+
+  > I specialize in 👇
+
+  >> 🤖 Robotics | ⚡ Electronics 
   
-  > Robotics | Electronics | Time Series | Computer Vision Specialist
+  >>> 📉 Time Series | 📸 Computer Vision
+
+   
 
   
 buttonName: How I can help?
