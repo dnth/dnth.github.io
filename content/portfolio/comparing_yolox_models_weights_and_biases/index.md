@@ -1,5 +1,5 @@
 ---
-title: "See How Easily You Can Squeeze the Most Out of YOLOX with Weights and Biases"
+title: "Squeezing the Best Performance Out of YOLOX with Weights and Biases"
 date: 2022-05-11T11:00:15+08:00
 featureImage: images/portfolio/comparing_yolox_models_with_weights_and_biases/thumbnail.gif
 postImage: images/portfolio/comparing_yolox_models_with_weights_and_biases/post_image.png
