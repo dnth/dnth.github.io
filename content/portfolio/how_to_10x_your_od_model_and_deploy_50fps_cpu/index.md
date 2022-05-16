@@ -259,9 +259,12 @@ Let's see if we can improve that further.
 OpenVINO is a toolkit to optimize DL models.
 It enables a model to be optimized once and deployed on any supported Intel hardware including CPU, GPU, VPU, and FPGAs.
 
-To optimize a model, we must the ONNX model into the OpenVINO Intermediate Representation (IR) form. 
-The IR consist of a `.xml` and `.bin` file.
-With these files, you can deploy them on any of the supported Intel hardware.
+To optimize a model, we will use a tool known as [Model Optimizer](https://docs.openvino.ai/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html) (MO) by Intel.
+MO converts all floating-point weights of the original model to FP16 data type. 
+
+The resulting form is known as the OpenVINO Intermediate Representation (IR) or called the compressed FP16 model.
+The compressed FP16 model takes half the disk space compared to the original model and may have some negligible accuracy drop.
+
 
 Let's convert our model into the IR form. 
 For that, we need to install the `openvino-dev` package.
@@ -269,7 +272,8 @@ For that, we need to install the `openvino-dev` package.
 ```bash
 pip install openvino-dev[onnx]==2022.1.0
 ```
-Once installed, we can invoke the `mo` command to convert the model. `mo` is the abbreviation of Model Optimizer. 
+Once installed, we can invoke the `mo` command to convert the model. `mo` is the abbreviation of 
+
 
 ```bash
 mo --input_model models/ONNX/yolox_s_lp.onnx --input_shape [1,3,640,640] --data_type FP16 --output_dir models/IR/
@@ -285,6 +289,15 @@ The `mo` accepts a few parameters:
 
 + `--output_dir` specifies the directory to save the IR.
 {{< /notice >}}
+
+This results in a set of IR files that consists of an `.xml` and `.bin` file.
+
++ `.xml` - Describes the model architecture
+
++ `.bin` - Contains the weights and biases of the model.
+
+
+Together, you can deploy them on any of the supported Intel hardware.
 
 Now, let's run an inference using the IR files on the same video and observe its performance.
 {{< video src="fp16.mp4" width="700px" loop="true" autoplay="false" muted="true">}}
