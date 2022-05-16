@@ -6,14 +6,19 @@ content: >
   
   I help companies design, build, and deploy end-to-end deep learning solutions.
 
-  > I specialize in:
+  > I specialize in
 
-  >> 🤖 Robotics | ⚡ Electronics 
+  >> 📸 Computer Vision
+
+  >>> 📉 Time Series 
   
-  >>> 📉 Time Series | 📸 Computer Vision
+  >>>> 🤖 Robotics
+  
+  >>>>> ⚡ Electronics
 
-   
+  >>>>>> With an emphasis on data-centric pipeline modeling and deployment.
 
+  
   
 buttonName: How I can help?
 buttonURL: contact

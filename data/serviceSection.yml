@@ -44,8 +44,9 @@ service:
       Front-end development focusing on mobile and web app using Flutter as a framework of choice. Back-end and database development with Firebase, MySQL, InfluxDB etc.
     image: images/service/mobile.svg
   - content: >
-      #### Integration
+      #### Integration & Monitoring
 
       Integration with Microsoft Azure, Amazon AWS, Google Machine Learning, etc. Cross-compatibility development with existing company ecosystem. 
+      Monitoring data/concept drift in deployment pipeline.
     image: images/service/branding.svg
 
