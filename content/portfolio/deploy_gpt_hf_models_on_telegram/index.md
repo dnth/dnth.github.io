@@ -25,12 +25,22 @@ By the end of this post you will learn how to:
 + Host the Telegram bot on Hugging Face `Spaces`.
 {{< /notice >}}
 
-Deploying a state-of-the-art GPT language model on a chatbot can be tricky.
-You might wonder how to gain access the GPT model? Where to host the model? Where to host the bot?
+Deploying a state-of-the-art (SOTA) GPT language model on a chatbot can be tricky.
+You might wonder how to gain access the GPT model? On which infrastructure should you host the bot and the model? Serverless? AWS? Kubernetes?
 
-This post will answer all the above questions.
+Yada.. yada.. yada..
 
-In this post I will show you how I deploy a GPT-J model by [EleutherAI](https://www.eleuther.ai/) on a Telegram bot for free. If that looks interesting, let's begin 🤖.
+Things get complicated easily and I get it. It's definitely not worth going down that rabbit hole if you're only experimenting and toying around.
+
+{{< figure_resizing src="gpt-aws-kubernetes.jpg">}}
+
+In this post I will show you how I deploy a SOTA GPT-J model by [EleutherAI](https://www.eleuther.ai/) on a Telegram bot for free. 
+By the end of this blog post you'll have your very own Telegram bot that can query the GPT-J model with any text!
+
+{{< video src="chatbot.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
+
+
+If that looks interesting, let's begin 👩‍💻
 
 
 ### 🤖 Setting up a Telegram Bot
