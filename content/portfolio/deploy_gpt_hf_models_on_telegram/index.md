@@ -108,7 +108,7 @@ Now all you have to do is specify other commands to call any other functions of 
 
 Yes! It's that simple! 🤓
 
-But before that, let's install `python-telegram-bot` via
+So how do we get there? Let's install `python-telegram-bot` via
 
 ```bash
 pip install python-telegram-bot==13.11
@@ -118,20 +118,77 @@ pip install python-telegram-bot==13.11
 `python-telegram-bot` is under active development. Starting version `20` onward there are breaking changes. For this post, I'd recommend sticking with version `<20`.
 {{< /notice >}}
 
+You can save the 8-line code snippet above into a file and run it on your computer. Replace the `'YOUR-TOKEN'` on line 7 with your own.
 
+I will save the codes as `app.py` on my machine and run the script with
 
+```python
+python app.py
+```
+
+Now search for your bot on Telegram and it should respond to the commands you've set.
 
 ### 💡 GPT-J and the Gradio API
-Every Gradio interface comes with an API that you can use to access the functions within.
+We've setup our Telegram bot. What about the GPT model? Unless you have a powerful computer that runs 24/7 I wouldn't recommend running the GPT model on your machine (although you can).
 
-Use an availble space on https://huggingface.co/spaces/akhaliq/gpt-j-6B
+I recently found a better solution which you can use to host the GPT model. It runs 24/7 and best of all it's free!
 
-We will send `POST` request to access the GPT-J model prediction.
+Enter 👉 the Hugging Face ecosystem. 
+
+The GPT-J-6B model is generously provided by EleutherAI on the Hugging Face hub.
+It's publicly available for use. Check them out [here](https://huggingface.co/EleutherAI/gpt-j-6B).
+
+To use this model let's set up a Gradio app on Hugging Face Space.
+I've set up mine [here](https://huggingface.co/spaces/dnth/gpt-j-6B)
+
+If you peek into the app.py on the Space it looks like the following
+
+```python {linenos=table}
+import gradio as gr
+
+title = "GPT-J-6B"
+
+description = "Gradio Demo for GPT-J 6B, a transformer model trained \
+using Ben Wang's Mesh Transformer JAX. 'GPT-J' refers to the class of \
+model, while '6B' represents the number of trainable parameters. \
+To use it, simply add your text, or click one of the examples to load them. \
+I've used the API on this Space to deploy the GPT-J-6B model on a Telegram bot. \
+Link to blog post below 👇"
+
+article = "<p style='text-align: center'> \
+<a href='https://dicksonneoh.com/portfolio/deploy_gpt_hf_models_on_telegram/' \
+target='_blank'>Blog post</a></p>"
+
+examples = [
+    ['The tower is 324 metres (1,063 ft) tall,'],
+    ["The Moon's orbit around Earth has"],
+    ["The smooth Borealis basin in the Northern Hemisphere covers 40%"]
+]
+
+gr.Interface.load("huggingface/EleutherAI/gpt-j-6B", 
+                inputs=gr.inputs.Textbox(lines=5, label="Input Text"),
+                title=title,description=description,
+                article=article, 
+                examples=examples,
+                enable_queue=True).launch()
+
+```
+On `line 22` we are loading the GPT model directly from the [EleutherAI model hub](https://huggingface.co/EleutherAI) and serving the predictions on the Space.
+
+Below is a running live demo of the Gradio app hosted on Hugging Face Space. 
+Try them out 👇
+
+<iframe src="https://hf.space/embed/dnth/gpt-j-6B/+" frameBorder="0" width="800" height="900" title="Gradio app" class="container p-0 flex-grow space-iframe" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"></iframe>
+
+Every Gradio interface comes with an API that you can use to access the app from outside Gradio via API calls.
+Clicking on "view the api" button at the bottom of the Space brings you to the API [page](https://hf.space/embed/dnth/gpt-j-6B/api).
+
+All we need to do now is send a `POST` request to access the GPT-J model prediction and wrap that in a `Python` function.
 
 ```python
 def get_gpt_response(text):
     r = requests.post(
-        url="https://hf.space/embed/akhaliq/gpt-j-6B/+/api/predict/",
+        url="https://hf.space/embed/dnth/gpt-j-6B/+/api/predict/",
         json={"data": [text]},
     )
     response = r.json()
