@@ -28,7 +28,7 @@ By the end of this post you will learn how to:
 Deploying a state-of-the-art (SOTA) GPT language model on a chatbot can be tricky.
 You might wonder how to gain access the GPT model? On which infrastructure should you host the bot and the model? Serverless? AWS? Kubernetes?
 
-Yada.. yada.. yada..
+*Yada.. yada.. yada..*
 
 Things get complicated easily and I get it. It's definitely not worth going down that rabbit hole if you're only experimenting and toying around.
 
