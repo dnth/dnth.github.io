@@ -44,13 +44,14 @@ By the end of this blog post you'll have your very own Telegram bot that can que
 If that looks interesting, let's begin 👩‍💻
 
 
-### 🤖 A Token from the Botfather
-{{< figure_resizing src="botfather_img.png" width=300 >}}
+### 🤖 A Token From the Mighty Botfather
+{{< figure_resizing src="botfather_img.png" width=400 >}}
+*We shall start by first appeasing the mighty `botfather` who holds the key to the world of bots 🤖*
 
 If you don't have a Telegram account, you must first [create](https://telegram.org/) one. It's free.
 
 Next, we need to set up a bot that is associated with your Telegram account.
-For that, we must go to the `botfather` and initiate the bot creation.
+For that, let's consult the `botfather` and initiate the bot creation.
 
 This [link](https://t.me/botfather) brings you to the `botfather`.
 Alternatively, you can go to the Telegram search bar and search for `botfather`.
@@ -58,14 +59,14 @@ Alternatively, you can go to the Telegram search bar and search for `botfather`.
 {{< figure_resizing src="botfather.jpg" width=400 >}}
 
 Next, send `/start` to the `botfather` to start a conversation.
-Follow the instruction given in the botfather chat until you obtain a **token** for your bot.
+Follow the instructions given by the `botfather` until you obtain a **token** for your bot.
 
 {{< notice warning >}}
 Keep this **token** private. Anyone with this **token** has access to your bot.
 {{< /notice >}}
 
 
-This video provides a good step-by-step visual guide on how to obtain a token for your bot.
+This video provides a good step-by-step visual guide on how to obtain a **token** from the `botfather`.
 {{< youtube aNmRNjME6mE >}}
 
 
@@ -75,7 +76,7 @@ This video provides a good step-by-step visual guide on how to obtain a token fo
 
 Telegram wasn't written with `Python`.
 But we ❤️ `Python`!
-Can we still use `Python` to code our Telegram bot?
+Can we still use `Python` to code our bot?
 
 Yes! With a wrapper library like [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot).
 
@@ -104,6 +105,8 @@ Upon receiving the `/start` command it calls the `hello` function on `line 4` wh
 {{< video src="start.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
 Now all you have to do is specify some other commands to call some other functions.
+
+Yes! It's that simple! 🤓
 
 But before that, let's install `python-telegram-bot` via
 
