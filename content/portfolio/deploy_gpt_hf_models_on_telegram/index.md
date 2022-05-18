@@ -104,7 +104,7 @@ Upon receiving the `/start` command it calls the `hello` function on `line 4` wh
 
 {{< video src="start.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-Now all you have to do is specify some other commands to call some other functions.
+Now all you have to do is specify other commands to call any other functions of your choice.
 
 Yes! It's that simple! 🤓
 
