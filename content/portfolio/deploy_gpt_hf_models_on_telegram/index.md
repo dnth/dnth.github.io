@@ -35,7 +35,8 @@ Things get complicated easily and I get it. It's definitely not worth going down
 {{< figure_resizing src="gpt-aws-kubernetes.jpg">}}
 
 In this post I will show you how I deploy a SOTA GPT-J model by [EleutherAI](https://www.eleuther.ai/) on a Telegram bot for free. 
-By the end of this blog post you'll have your very own Telegram bot that can query the GPT-J model with any text!
+
+By the end of this blog post you'll have your very own Telegram bot that can query the GPT-J model with any text you send it 👇👇👇
 
 {{< video src="chatbot.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
@@ -44,10 +45,26 @@ If that looks interesting, let's begin 👩‍💻
 
 
 ### 🤖 Setting up a Telegram Bot
-First, we need to set up a Telegram bot.
-Get token from botfather.
+First, we need to set up a Telegram bot that is associated with your Telegram account.
+If you don't have a Telegram account, you can [create](https://telegram.org/) one for free.
 
-https://t.me/botfather
+Once already have an account, click [here](https://t.me/botfather) to start creating a bot.
+Alternatively, you can go to the Telegram search bar and search for `botfather`.
+
+{{< figure_resizing src="botfather.jpg" width=400 >}}
+
+Next, send `/start` to the `botfather` to start a conversation.
+Follow the instruction given in the botfather chat until you obtain a **token** for your bot.
+
+{{< notice warning >}}
+
+Keep this token private. Anyone with this token has access to your bot.
+
+{{< /notice >}}
+
+
+This video provides a good step-by-step visual guide on how to obtain a token for your bot.
+{{< youtube aNmRNjME6mE >}}
 
 
 ### 💡 Creating a Gradio App
