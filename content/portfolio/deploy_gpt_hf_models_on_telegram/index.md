@@ -155,7 +155,7 @@ https://t.me/ptbgptbot
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
-{{< tweet dicksonneoh7 1524263583097384960>}}
+{{< tweet dicksonneoh7 1523250980233510912>}}
 
 
 If you like what you see and don't want to miss any of my future contents, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
