@@ -200,7 +200,10 @@ Documentation on the Gradio API [here](https://www.gradio.app/using_the_api_docs
 
 ### 🤗 Hosting on Hugging Face Spaces
 To make sure we don't expose our Telegram **token** in the source code, let's set the token to be an environment variable.
- 
+
+On your Space, click on the `Settings` tab and enter the `Name` and `Value` of the environment variable.
+Let's put the name as `telegram_token` and the value is your Telegram **token**.
+{{< figure_resizing src="secrets.png" >}}
 
 https://huggingface.co/spaces/dnth/ptb-gpt
 
