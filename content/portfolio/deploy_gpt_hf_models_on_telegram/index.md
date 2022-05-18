@@ -44,8 +44,8 @@ By the end of this blog post you'll have your very own Telegram bot that can que
 If that looks interesting, let's begin 👩‍💻
 
 
-### 🤖 Setting up a Telegram Bot
-First, we need to set up a Telegram bot that is associated with your Telegram account.
+### 🤖 Getting A Token
+First, we need to set up a bot that is associated with your Telegram account.
 If you don't have a Telegram account, you can [create](https://telegram.org/) one for free.
 
 Once already have an account, click [here](https://t.me/botfather) to start creating a bot.
@@ -57,9 +57,7 @@ Next, send `/start` to the `botfather` to start a conversation.
 Follow the instruction given in the botfather chat until you obtain a **token** for your bot.
 
 {{< notice warning >}}
-
 Keep this token private. Anyone with this token has access to your bot.
-
 {{< /notice >}}
 
 
@@ -67,7 +65,55 @@ This video provides a good step-by-step visual guide on how to obtain a token fo
 {{< youtube aNmRNjME6mE >}}
 
 
-### 💡 Creating a Gradio App
+### 🐍 Python Telegram Bot
+{{< figure_resizing src="ptb-logo.png">}}
+Once you get the token from the botfather, we can use this token to set up the bot.
+Telegram wasn't written with `Python`.
+But we ❤️ Python!
+
+Can we still use Python to code the Telegram bot?
+Yes! With the use of a wrapper library like [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot).
+
+This wrapper allows us to code the bot using `Python`.
+There are a ton of other wrappers out there, feel free to try them out.
+
+`python-telegram-bot` is incredibly easy to use.
+With as few as 8 lines of code, you can run your own bot as shown below.
+
+```python {linenos=table}
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
+
+def hello(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text(f'Hello {update.effective_user.first_name}.')
+
+updater = Updater('YOUR-TOKEN')
+updater.dispatcher.add_handler(CommandHandler('start', hello))
+updater.start_polling()
+updater.idle()
+```
+
+The above code snippet creates a Telegram bot that recognizes the `/start` command (specified on `line 8`).
+Upon receiving the `/start` command it calls the `hello` function on `line 4` which replies to the user 👇 
+
+{{< video src="start.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
+
+Now all you have to do is specify some other commands to call some other functions.
+
+To start, install `python-telegram-bot` via
+
+```bash
+pip install python-telegram-bot==13.11
+```
+
+{{< notice warning >}}
+`python-telegram-bot` is under active development. Starting version `20` onward there are breaking changes. For this post, I'd recommend sticking with version `<20`.
+{{< /notice >}}
+
+
+
+
+### 💡 Gradio API and GPT-J
 Every Gradio interface comes with an API that you can use to access the functions within.
 
 Use an availble space on https://huggingface.co/spaces/akhaliq/gpt-j-6B
