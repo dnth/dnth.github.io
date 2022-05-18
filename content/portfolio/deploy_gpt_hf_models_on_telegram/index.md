@@ -44,29 +44,29 @@ By the end of this blog post you'll have your very own Telegram bot that can que
 If that looks interesting, let's begin 👩‍💻
 
 
-### 🤖 A Token From the Mighty Botfather
+### 🤖 A Token From the Mighty BotFather
 {{< figure_resizing src="botfather_img.png" width=400 >}}
-*We shall start by first appeasing the mighty `botfather` who holds the key to the world of bots 🤖*
+*We shall start by first appeasing the mighty `BotFather` who holds the key to the world of bots* 🤖
 
 If you don't have a Telegram account, you must first [create](https://telegram.org/) one. It's free.
 
 Next, we need to set up a bot that is associated with your Telegram account.
-For that, let's consult the `botfather` and initiate the bot creation.
+For that, let's consult the `BotFather` and initiate the bot creation. The first result is the `BotFather`.
 
-This [link](https://t.me/botfather) brings you to the `botfather`.
-Alternatively, you can go to the Telegram search bar and search for `botfather`.
+This [link](https://t.me/botfather) brings you to the `BotFather`.
+Alternatively, type `BotFather` in the Telegram search bar.
 
 {{< figure_resizing src="botfather.jpg" width=400 >}}
 
-Next, send `/start` to the `botfather` to start a conversation.
-Follow the instructions given by the `botfather` until you obtain a **token** for your bot.
+Next, send `/start` to the `BotFather` to start a conversation.
+Follow the instructions given by the `BotFather` until you obtain a **token** for your bot.
 
 {{< notice warning >}}
 Keep this **token** private. Anyone with this **token** has access to your bot.
 {{< /notice >}}
 
 
-This video provides a good step-by-step visual guide on how to obtain a **token** from the `botfather`.
+This video provides a good step-by-step visual guide on how to obtain a **token** from the `BotFather`.
 {{< youtube aNmRNjME6mE >}}
 
 
