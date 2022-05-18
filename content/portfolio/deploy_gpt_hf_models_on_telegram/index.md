@@ -44,11 +44,15 @@ By the end of this blog post you'll have your very own Telegram bot that can que
 If that looks interesting, let's begin 👩‍💻
 
 
-### 🤖 Getting A Token
-First, we need to set up a bot that is associated with your Telegram account.
-If you don't have a Telegram account, you can [create](https://telegram.org/) one for free.
+### 🤖 A Token from the Botfather
+{{< figure_resizing src="botfather_img.png" width=300 >}}
 
-Once already have an account, click [here](https://t.me/botfather) to start creating a bot.
+If you don't have a Telegram account, you must first [create](https://telegram.org/) one. It's free.
+
+Next, we need to set up a bot that is associated with your Telegram account.
+For that, we must go to the `botfather` and initiate the bot creation.
+
+This [link](https://t.me/botfather) brings you to the `botfather`.
 Alternatively, you can go to the Telegram search bar and search for `botfather`.
 
 {{< figure_resizing src="botfather.jpg" width=400 >}}
@@ -57,7 +61,7 @@ Next, send `/start` to the `botfather` to start a conversation.
 Follow the instruction given in the botfather chat until you obtain a **token** for your bot.
 
 {{< notice warning >}}
-Keep this token private. Anyone with this token has access to your bot.
+Keep this **token** private. Anyone with this **token** has access to your bot.
 {{< /notice >}}
 
 
@@ -67,18 +71,19 @@ This video provides a good step-by-step visual guide on how to obtain a token fo
 
 ### 🐍 Python Telegram Bot
 {{< figure_resizing src="ptb-logo.png">}}
-Once you get the token from the botfather, we can use this token to set up the bot.
-Telegram wasn't written with `Python`.
-But we ❤️ Python!
 
-Can we still use Python to code the Telegram bot?
-Yes! With the use of a wrapper library like [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot).
+
+Telegram wasn't written with `Python`.
+But we ❤️ `Python`!
+Can we still use `Python` to code our Telegram bot?
+
+Yes! With a wrapper library like [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot).
 
 This wrapper allows us to code the bot using `Python`.
-There are a ton of other wrappers out there, feel free to try them out.
+There are a ton of other wrappers out there for various languages, feel free to try them out.
 
 `python-telegram-bot` is incredibly easy to use.
-With as few as 8 lines of code, you can run your own bot as shown below.
+With only 8 lines of code, you can run your own bot as shown below.
 
 ```python {linenos=table}
 from telegram import Update
@@ -100,7 +105,7 @@ Upon receiving the `/start` command it calls the `hello` function on `line 4` wh
 
 Now all you have to do is specify some other commands to call some other functions.
 
-To start, install `python-telegram-bot` via
+But before that, let's install `python-telegram-bot` via
 
 ```bash
 pip install python-telegram-bot==13.11
@@ -113,7 +118,7 @@ pip install python-telegram-bot==13.11
 
 
 
-### 💡 Gradio API and GPT-J
+### 💡 GPT-J and the Gradio API
 Every Gradio interface comes with an API that you can use to access the functions within.
 
 Use an availble space on https://huggingface.co/spaces/akhaliq/gpt-j-6B
