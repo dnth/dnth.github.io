@@ -20,14 +20,21 @@ This blog post is still a work in progress. If you require further clarification
 
 {{< notice tip >}}
 By the end of this post you will learn how to:
-+ Set up a Telegram bot with the botfather.
-+ Calling the Gradio API to access the GPT-J model prediction.
-+ Hosting the Telegram bot on Hugging Face.
++ Set up a Telegram bot with a `Python` wrapper library. 
++ Use the Gradio API to access the GPT-J model prediction.
++ Host the Telegram bot on Hugging Face `Spaces`.
 {{< /notice >}}
 
+Deploying a state-of-the-art GPT language model on a chatbot can be tricky.
+You might wonder how to gain access the GPT model? Where to host the model? Where to host the bot?
+
+This post will answer all the above questions.
+
+In this post I will show you how I deploy a GPT-J model by [EleutherAI](https://www.eleuther.ai/) on a Telegram bot for free. If that looks interesting, let's begin 🤖.
 
 
 ### 🤖 Setting up a Telegram Bot
+First, we need to set up a Telegram bot.
 Get token from botfather.
 
 https://t.me/botfather
