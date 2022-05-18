@@ -199,9 +199,53 @@ Documentation on the Gradio API [here](https://www.gradio.app/using_the_api_docs
 
 
 ### 🤗 Hosting on Hugging Face Spaces
-Set up API key as secrets.
+To make sure we don't expose our Telegram **token** in the source code, let's set the token to be an environment variable.
+ 
 
 https://huggingface.co/spaces/dnth/ptb-gpt
+
+
+```python {linenos=table}
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
+import requests
+from telegram import ChatAction
+import os
+
+def hello(update: Update, context: CallbackContext) -> None:
+    intro_text = """
+    🤖 Greetings human! \n
+    🤗 I'm a bot hosted on Hugging Face Spaces. \n
+    🦾 I can query the mighty GPT-J-6B model and send you a response here. Try me.\n
+    ✉️ Send me a text to start and I shall generate a response to complete your text!\n\n
+    ‼️ PS: Responses are not my own (everything's from GPT-J-6B). I'm not conscious (yet).\n
+    Blog post: https://dicksonneoh.com/portfolio/deploy_gpt_hf_models_on_telegram/
+    """
+    update.message.reply_text(intro_text)
+
+def get_gpt_response(text):
+    r = requests.post(
+        url="https://hf.space/embed/dnth/gpt-j-6B/+/api/predict/",
+        json={"data": [text]},
+    )
+    response = r.json()
+    return response["data"][0]
+
+def respond_to_user(update: Update, context: CallbackContext):
+    update.message.chat.send_action(action=ChatAction.TYPING)
+    response_text = get_gpt_response(update.message.text)
+    update.message.reply_text(response_text)
+
+updater = Updater(os.environ['telegram_token'])
+updater.dispatcher.add_handler(CommandHandler("start", hello))
+updater.dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, respond_to_user))
+updater.start_polling()
+updater.idle()
+```
+
+`Line 31` loads the token you've set as environment variable.
+`Line 32` detects when the user sends the `/start` command and calls the `hello` function.
+`Line 33` detects texts that are non-commands and calls the `respond_to_user` function.
 
 ### 🎉 Conclusion
 
