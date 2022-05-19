@@ -294,7 +294,7 @@ On your Space, click on the `Settings` tab and enter the `Name` and `Value` of t
 Let's put the name as `telegram_token` and the value is your Telegram **token**.
 {{< figure_resizing src="secrets.png" >}}
 
-On your app.py change `line 31` to the following
+On your `app.py` change `line 31` to the following
 
 ```python
 updater = Updater(os.environ['telegram_token'])
@@ -306,7 +306,9 @@ Now, you can freely share your codes without exposing your Telegram token!
 For completeness, you can view my final `app.py` [here](https://huggingface.co/spaces/dnth/ptb-gpt/blob/main/app.py).
 {{< /notice >}}
 
-<!-- https://huggingface.co/spaces/dnth/ptb-gpt -->
+<!-- Feel free to check out my Space [here](https://huggingface.co/spaces/dnth/ptb-gpt) -->
+
+
 
 
 <!-- `Line 31` loads the token you've set as environment variable.
@@ -314,10 +316,30 @@ For completeness, you can view my final `app.py` [here](https://huggingface.co/s
 `Line 33` detects texts that are non-commands and calls the `respond_to_user` function. -->
 
 ### 🎉 Conclusion
+In this post I've shown you how easily you can leverage of SOTA models such as the GPT-J-6B and deploy it live on a Telegram bot.
 
-Link to Telegram bot
-https://t.me/ptbgptbot
+{{< notice tip >}}
+We've walked through how to:
++ Set up a Telegram bot with a `Python` wrapper library. 
++ Use the Gradio API to access the GPT-J model prediction.
++ Host the Telegram bot on Hugging Face `Spaces`.
 
+Link to my Telegram bot [here](https://t.me/ptbgptbot) - Try it out yourself.
+{{< /notice >}}
+
+
+The end result - a 24/7 working Telegram bot that has access the GPT-J-6B model. 
+
+For **FREE** 🚀
+
+{{< video src="chatbot.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
+
+That's about a wrap! Here are some of my suggestions:
++ Checkout other GPT models you can use and deploy it on your bot.
++ Try to use multiple commands that links to multiple functions on your bot.
++ Deploy other SOTA models from various domains like computer vision on your bot.
+
+Have fun 🥳
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
