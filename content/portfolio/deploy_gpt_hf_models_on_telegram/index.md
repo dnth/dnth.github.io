@@ -143,10 +143,10 @@ It should respond by replying a text back to you, just like in the screen record
 
 ### 💡 GPT-J and the Gradio API
 We've configured our Telegram bot. 
-What about the GPT model? 
-Unless you have a powerful computer that runs 24/7, I wouldn't recommend running the GPT model on your machine (although you can).
+What about the [GPT-J](https://www.narrativa.com/gpt-j-an-open-source-alternative-to-gpt-3/) model? 
+Unless you have a powerful computer that runs 24/7, I wouldn't recommend running the GPT-J model on your machine (although you can).
 
-I recently found a better solution that you can use to host the GPT model. 
+I recently found a better solution that you can use to host the GPT-J model. 
 Anyone can use it, it runs 24/7, and best of all it's free!
 
 Enter 👉 [Hugging Face Hub](https://huggingface.co/docs/hub/main).
