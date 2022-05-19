@@ -144,11 +144,9 @@ Unless you have a powerful computer that runs 24/7, I wouldn't recommend running
 I recently found a better solution which you can use to host the GPT model. 
 Anyone can use it, it runs 24/7, and best of all it's free!
 
-Enter 👉 the Hugging Face ecosystem. 
+Enter 👉 [Hugging Face Hub](https://huggingface.co/docs/hub/main).
 
-One feature in the Hugging Face ecosystem is the [Hugging Face Hub](https://huggingface.co/docs/hub/main).
-This is a central place where anyone can share their models and dataset.
-
+Hugging Face Hub is a central place where anyone can share their models, dataset and app demos.
 The 3 main repo types of the Hugging Face Hub include:
 + Models - hosts models.
 + Datasets - stores datasets.
@@ -162,8 +160,8 @@ In this post, I will show you how to set up a Gradio app on Hugging Face Space t
 
 First create a Space with your Hugging Face account.
 If you're unsure how to do that, I wrote a guide [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/#hugging-face-spaces).
+Next, add the `app.py` file to run this Space.
 
-You'll only need a single `app.py` file to run this Space.
 It looks like the following 👇
 
 ```python {linenos=table}
@@ -196,14 +194,16 @@ gr.Interface.load("huggingface/EleutherAI/gpt-j-6B",
                 enable_queue=True).launch()
 
 ```
+
 On `line 22` we are loading the GPT model directly from the [EleutherAI model hub](https://huggingface.co/EleutherAI) and serving the predictions on the Space.
 
+Once the build completes, your Space is live.
 Check out the running demo app on my [Space](https://huggingface.co/spaces/dnth/gpt-j-6B).
 Or try them out 👇
 
 <iframe src="https://hf.space/embed/dnth/gpt-j-6B/+" frameBorder="0" width="800" height="900" title="Gradio app" class="container p-0 flex-grow space-iframe" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"></iframe>
 
-Gradio apps come with an API endpoint that you can use to access the app from elsewhere. For example, I've used this feature to get model predictions on my Android app [here](https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/).
+A Gradio app comes with an API endpoint that you can use to access the app from elsewhere. For example, I've used this feature to get model predictions on my Android app [here](https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/).
 
 To view the API, click on "view the api" button at the bottom of the Space.
 It brings you to the API [page](https://hf.space/embed/dnth/gpt-j-6B/api) that shows you how to use the endpoint.
