@@ -7,7 +7,7 @@ tags: ["GPT-J", "Gradio", "Hugging Face", "Telegram"]
 categories: ["deployment", "NLP"]
 toc: true
 socialshare: true
-description: "Leverage all SOTA models for free on Hugging Face Hub!"
+description: "Leverage SOTA models on Hugging Face Hub - for free!"
 images : 
 - images/portfolio/deploy_gpt_hf_models_on_telegram/post_image.png
 ---
