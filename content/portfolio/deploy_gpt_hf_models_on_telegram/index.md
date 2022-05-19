@@ -152,6 +152,8 @@ Anyone can use it, it runs 24/7, and best of all it's free!
 
 Enter 👉 [Hugging Face Hub](https://huggingface.co/docs/hub/main).
 
+{{< youtube XvSGPZFEjDY >}}
+
 Hugging Face Hub is a central place where anyone can share their models, dataset, and app demos.
 The 3 main repo types of the Hugging Face Hub include:
 + Models - hosts models.
