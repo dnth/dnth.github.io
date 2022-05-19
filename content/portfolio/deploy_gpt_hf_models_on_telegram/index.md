@@ -281,18 +281,37 @@ Bear in mind you need to keep your machine alive 24/7 for your bot to work.
 But, if you wish to take your bot to the next level 🚀 then read on 👇
 
 ### 🤗 Hosting Your Telegram Bot
+One little known feature 🤫 that I discovered recently is that you can host your Telegram bot on Hugging Face Spaces. 
+
+If you create a **new** Space and upload the `app.py`, it will work out of the box! 
+Now you don't have to keep you computer alive 24/7 to run the bot.
+
+I'm not sure if this feature is intentional or not by Hugging Face, but this is pretty neat eh? Free hosting for your bots! 😎
+
 To make sure we don't expose our Telegram **token** in the source code, let's set the token to be an environment variable.
 
 On your Space, click on the `Settings` tab and enter the `Name` and `Value` of the environment variable.
 Let's put the name as `telegram_token` and the value is your Telegram **token**.
 {{< figure_resizing src="secrets.png" >}}
 
-https://huggingface.co/spaces/dnth/ptb-gpt
+On your app.py change `line 31` to the following
+
+```python
+updater = Updater(os.environ['telegram_token'])
+```
+
+Now, you can freely share your codes without exposing your Telegram token!
+
+{{< notice tip >}}
+For completeness, you can view my final `app.py` [here](https://huggingface.co/spaces/dnth/ptb-gpt/blob/main/app.py).
+{{< /notice >}}
+
+<!-- https://huggingface.co/spaces/dnth/ptb-gpt -->
 
 
-`Line 31` loads the token you've set as environment variable.
+<!-- `Line 31` loads the token you've set as environment variable.
 `Line 32` detects when the user sends the `/start` command and calls the `hello` function.
-`Line 33` detects texts that are non-commands and calls the `respond_to_user` function.
+`Line 33` detects texts that are non-commands and calls the `respond_to_user` function. -->
 
 ### 🎉 Conclusion
 
