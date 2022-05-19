@@ -1,21 +1,21 @@
 ---
 enable: true
-topTitle: My Skills
+topTitle: What I do best
 content: >
   ## Why hire me for your next project?
-
-  Throughout the years in acedemia and tight industry collborations I have developed a unique blend of skills and experties in both software and hardware.
+  
+  Throughout the years in academia with tight industry collaborations, I have developed a unique blend of skills and expertise in both software and hardware.
 
 image: images/skill/brushes_resize.jpg
 
 skill:
   - title: Tensorflow/Keras
     percent: 90
-  - title: Pytorch/Fastai
+  - title: PyTorch/Fastai
     percent: 90
   - title: Arduino/Raspberry Pi/ESP32/PIC Microchip
     percent: 85
-  - title: Nvidia Jetson/Intel VPU/Google Coral
+  - title: Nvidia Jetson/Intel VPU/Google Egde TPU
     percent: 80
   - title: Nao/Turtlebot/UR5/Baxter/Pioneer 3 AT Robot
     percent: 70
@@ -23,9 +23,9 @@ skill:
     percent: 60
   - title: Flutter Mobile/Web Development
     percent: 70
-  - title: Azure ML/Google Cloud Platform
+  - title: Azure ML/Google Cloud Platform / AWS
     percent: 55
   - title: InfluxDB/Hive/Firebase/MySQL Database
     percent: 60
-  - title: Cloudera Data Science Workbench/PySpark
+  - title: Cloudera Workbench/PySpark
     percent: 70

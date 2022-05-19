@@ -1,6 +1,6 @@
 ---
 enable: true
-topTitle: My Resume
+topTitle: A summary of
 title: >
   ## My Expertise
 
@@ -12,7 +12,7 @@ title: >
     
     🟩 DL experiment: Weights & Biases, CometML, Optuna, Neural Network Intelligence, Azure ML.
     
-    🟩 DL deployment: OpenVINO, TensorRT, ONNX, TFLite, Hugging Face deployment ecosystem.
+    🟩 DL deployment: OpenVINO, TensorRT, ONNX, TFLite, Hugging Face ecosystem.
     
     🟩 Database: Google Firebase, MySQL, InfluxDB, Hive.
     

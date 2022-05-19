@@ -1,9 +1,9 @@
 ---
 enable: true
-topTitle: Blog
+topTitle: Non-technical writings, thoughts, and musings
 title: >
-  ## Recent Article
+  ## Recent Blogs
 
-  Check out some of my recent blog posts!
+  Check out some of my recent posts!
 
 buttonTarget: blog
