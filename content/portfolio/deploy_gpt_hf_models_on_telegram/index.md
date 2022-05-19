@@ -23,18 +23,22 @@ By the end of this post you will learn how to:
 + Host the Telegram bot on Hugging Face `Spaces`.
 {{< /notice >}}
 
-Deploying a state-of-the-art (SOTA) GPT language model on a chatbot can be tricky.
-You might wonder how to gain access the GPT model? On which infrastructure should you host the bot and the model? Serverless? AWS? Kubernetes?
+Deploying a state-of-the-art (SOTA) GPT-like language model on a chatbot can be tricky.
+
+You might wonder how to gain access to the GPT model? On which infrastructure should you host the bot and the model? Should I go serverless? AWS? Kubernetes? 🤒
 
 *Yada.. yada.. yada..*
 
-Things get complicated easily and I get it. It's definitely not worth going down that rabbit hole if you're only experimenting and toying around.
+I get it. Things get complicated quickly. 
+It's definitely not worth going down that rabbit hole if you're only experimenting and toying around.
 
 {{< figure_resizing src="gpt-aws-kubernetes.jpg">}}
 
-In this post I will show you how I deploy a SOTA GPT-J model by [EleutherAI](https://www.eleuther.ai/) on a Telegram bot for free. 
+In this post, I will show you how I deploy a SOTA GPT-J model by [EleutherAI](https://www.eleuther.ai/) on a Telegram bot. 
 
-By the end of this blog post you'll have your very own Telegram bot that can query the GPT-J model with any text you send it 👇👇👇
+For **free**. 
+
+By the end of this blog post, you'll have your very own Telegram bot that can query the GPT-J model with any text you send it 👇
 
 {{< video src="chatbot.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
@@ -46,13 +50,14 @@ If that looks interesting, let's begin 👩‍💻
 {{< figure_resizing src="botfather_img.png" width=400 >}}
 *We shall start by first appeasing the mighty `BotFather` who holds the key to the world of bots* 🤖
 
-If you don't have a Telegram account, you must first [create](https://telegram.org/) one. It's free.
+First, you must have a Telegram account. Create one [here]((https://telegram.org/)). It's free.
 
-Next, we need to set up a bot that is associated with your Telegram account.
-For that, let's consult the `BotFather` and initiate the bot creation. The first result is the `BotFather`.
+Next, set up a bot that is associated with your Telegram account.
+For that, let's consult the mighty `BotFather` and initiate the bot creation. 
 
 This [link](https://t.me/botfather) brings you to the `BotFather`.
 Alternatively, type `BotFather` in the Telegram search bar.
+The first result is the `BotFather`.
 
 {{< figure_resizing src="botfather.jpg" width=400 >}}
 
@@ -81,7 +86,7 @@ Yes! ✅ With a wrapper library like [`python-telegram-bot`](https://github.com/
 
 `python-telegram-bot` provides a pure `Python`, asynchronous interface for the [Telegram Bot API](https://core.telegram.org/bots/api).
 It is also incredibly user-friendly and easy to start.
-You can start running your own Telegram bot with only 8 lines of code 👇
+You can start running your Telegram bot with only 8 lines of code 👇
 
 ```python {linenos=table}
 from telegram import Update
@@ -114,7 +119,7 @@ pip install python-telegram-bot==13.11
 ```
 
 {{< notice warning >}}
-`python-telegram-bot` is under active development. There are breaking changes starting version `20` and onward. For this post, I'd recommend sticking with version `<20`.
+`python-telegram-bot` is under active development. There are breaking changes starting with version `20` and onward. For this post, I'd recommend sticking with version `<20`.
 {{< /notice >}}
 
 To run the bot, save the 8-line code snippet above into a `.py` file and run it on your computer. 
@@ -139,12 +144,12 @@ We've configured our Telegram bot.
 What about the GPT model? 
 Unless you have a powerful computer that runs 24/7, I wouldn't recommend running the GPT model on your machine (although you can).
 
-I recently found a better solution which you can use to host the GPT model. 
+I recently found a better solution that you can use to host the GPT model. 
 Anyone can use it, it runs 24/7, and best of all it's free!
 
 Enter 👉 [Hugging Face Hub](https://huggingface.co/docs/hub/main).
 
-Hugging Face Hub is a central place where anyone can share their models, dataset and app demos.
+Hugging Face Hub is a central place where anyone can share their models, dataset, and app demos.
 The 3 main repo types of the Hugging Face Hub include:
 + Models - hosts models.
 + Datasets - stores datasets.
@@ -156,7 +161,7 @@ It's publicly available for use. Check them out [here](https://huggingface.co/El
 You can interact with the model directly on the GPT-J-6B model repo, or create a demo on your Space.
 In this post, I will show you how to set up a Gradio app on Hugging Face Space to interact with the GPT-J-6B model.
 
-First create a Space with your Hugging Face account.
+First, create a Space with your Hugging Face account.
 If you're unsure how to do that, I wrote a guide [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/#hugging-face-spaces).
 Next, add the `app.py` file to run this Space.
 
@@ -279,10 +284,10 @@ Bear in mind you need to keep your machine alive 24/7 for your bot to work.
 But, if you wish to take your bot to the next level 🚀 then read on 👇
 
 ### 🤗 Hosting Your Telegram Bot
-One little known feature 🤫 that I discovered recently is that you can host your Telegram bot on Hugging Face Spaces. 
+One little-known feature 🤫 that I discovered recently is that you can host your Telegram bot on Hugging Face Spaces. 
 
 If you create a **new** Space and upload the `app.py`, it will work out of the box! 
-Now you don't have to keep you computer alive 24/7 to run the bot.
+Now you don't have to keep your computer alive 24/7 to run the bot.
 
 I'm not sure if this feature is intentional or not by Hugging Face, but this is pretty neat eh? Free hosting for your bots! 😎
 
@@ -314,7 +319,7 @@ For completeness, you can view my final `app.py` [here](https://huggingface.co/s
 `Line 33` detects texts that are non-commands and calls the `respond_to_user` function. -->
 
 ### 🎉 Conclusion
-In this post I've shown you how easily you can leverage of SOTA models such as the GPT-J-6B and deploy it live on a Telegram bot.
+In this post, I've shown you how easily you can leverage SOTA models such as the GPT-J-6B and deploy it live on a Telegram bot.
 
 {{< notice tip >}}
 We've walked through how to:
@@ -326,15 +331,15 @@ Link to my Telegram bot [here](https://t.me/ptbgptbot) - Try it out yourself.
 {{< /notice >}}
 
 
-The end result - a 24/7 working Telegram bot that has access the GPT-J-6B model. 
+The end result - a 24/7 working Telegram bot that has access to the GPT-J-6B model. 
 
 For **FREE** 🚀
 
 {{< video src="chatbot.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
 That's about a wrap! Here are some of my suggestions:
-+ Checkout other GPT models you can use and deploy it on your bot.
-+ Try to use multiple commands that links to multiple functions on your bot.
++ Check out other GPT models you can use and deploy them on your bot.
++ Try to use multiple commands that link to multiple functions on your bot.
 + Deploy other SOTA models from various domains like computer vision on your bot.
 
 Have fun 🥳
@@ -345,4 +350,4 @@ If you have any questions, comments, or feedback, please leave them on the follo
 {{< tweet dicksonneoh7 1523250980233510912>}}
 
 
-If you like what you see and don't want to miss any of my future contents, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
+If you like what you see and don't want to miss any of my future content, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
