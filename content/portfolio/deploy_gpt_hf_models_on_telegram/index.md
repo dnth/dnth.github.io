@@ -22,25 +22,26 @@ By the end of this post you will learn how to:
 + Use the Gradio API to access the GPT-J model prediction.
 + Host the Telegram bot on Hugging Face `Spaces`.
 
-You'll have your own Telegram bot that has access to the GPT-J-6B model. All for free.
+At the end, you'll have your own Telegram bot that has access to the GPT-J-6B model. All for free.
 {{< /notice >}}
 
 Deploying a state-of-the-art (SOTA) GPT-like language model on a chatbot can be tricky.
 
-You might wonder how to gain access to the GPT model? On which infrastructure should you host the bot and the model? Should I go serverless? AWS? Kubernetes? 🤒
+You might wonder how to access to the GPT model? Or which infrastructure to host the bot and the model? Should it be serverless? AWS? Kubernetes? 🤒
 
 *Yada.. yada.. yada..*
 
-I get it. Things get complicated quickly. 
-It's definitely not worth going down that rabbit hole if you're only experimenting and toying around.
-
 {{< figure_resizing src="gpt-aws-kubernetes.jpg">}}
+
+I get it. Things get complicated quickly. 
+It's not worth going down the rabbit hole especially if you're only experimenting or prototyping a feature.
+
 
 In this post, I will show you how I deploy a SOTA GPT-J model by [EleutherAI](https://www.eleuther.ai/) on a Telegram bot. 
 
-For **free**. 
+For **FREE**🚀. 
 
-By the end of this blog post, you'll have your very own Telegram bot that can query the GPT-J model with any text you send it 👇
+By the end of this post, you'll have your very own Telegram bot that can query the GPT-J model with any text you send it 👇
 
 {{< video src="chatbot.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
@@ -50,7 +51,7 @@ If that looks interesting, let's begin 👩‍💻
 
 ### 🤖 Token From the Mighty BotFather
 {{< figure_resizing src="botfather_img.png" width=400 >}}
-*We shall start by first appeasing the mighty `BotFather` who holds the key to the world of bots* 🤖
+*We shall start by appeasing the mighty `BotFather` who holds the key to the world of bots* 🤖
 
 First, you must have a Telegram account. Create one [here]((https://telegram.org/)). It's free.
 
@@ -59,7 +60,7 @@ For that, let's consult the mighty `BotFather` and initiate the bot creation.
 
 This [link](https://t.me/botfather) brings you to the `BotFather`.
 Alternatively, type `BotFather` in the Telegram search bar.
-The first result is the `BotFather`.
+The first result leads you to the `BotFather`.
 
 {{< figure_resizing src="botfather.jpg" width=400 >}}
 
@@ -87,7 +88,7 @@ Yes! ✅ With a wrapper library like [`python-telegram-bot`](https://github.com/
 {{< figure_resizing src="ptb-logo.png" link="https://github.com/python-telegram-bot/python-telegram-bot" >}}
 
 `python-telegram-bot` provides a pure `Python`, asynchronous interface for the [Telegram Bot API](https://core.telegram.org/bots/api).
-It is also incredibly user-friendly and easy to start.
+It's incredibly user-friendly too.
 You can start running your Telegram bot with only 8 lines of code 👇
 
 ```python {linenos=table}
@@ -106,7 +107,7 @@ updater.idle()
 The above code snippet creates a Telegram bot that recognizes the `/start` command (specified on `line 8`).
 Upon receiving the `/start` command it calls the `hello` function on `line 4` which replies to the user.
 
-Here's a screen recording showing that 👇 
+Here's how it looks like if you run the code 👇 
 
 {{< video src="start.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
@@ -165,9 +166,9 @@ In this post, I will show you how to set up a Gradio app on Hugging Face Space t
 
 First, create a Space with your Hugging Face account.
 If you're unsure how to do that, I wrote a guide [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/#hugging-face-spaces).
-Next, add the `app.py` file to run this Space.
+Next, create an `app.py` file in your Space repo.
 
-It looks like the following 👇
+Here's the content of `app.py` 👇
 
 ```python {linenos=table}
 import gradio as gr
@@ -200,15 +201,15 @@ gr.Interface.load("huggingface/EleutherAI/gpt-j-6B",
 
 ```
 
-On `line 22` we are loading the GPT model directly from the [EleutherAI model hub](https://huggingface.co/EleutherAI) and serving the predictions on the Space.
+On `line 22` we load the GPT-J-6B model from the [EleutherAI model hub](https://huggingface.co/EleutherAI) and serve the predictions on the Space with a Gradio app.
 
-Once the build completes, your Space is live.
-Check out the running demo app on my [Space](https://huggingface.co/spaces/dnth/gpt-j-6B).
+Check out my Gradio demo app on my [Space](https://huggingface.co/spaces/dnth/gpt-j-6B).
 Or try them out 👇
 
 <iframe src="https://hf.space/embed/dnth/gpt-j-6B/+" frameBorder="0" width="800" height="900" title="Gradio app" class="container p-0 flex-grow space-iframe" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"></iframe>
 
-A Gradio app comes with an API endpoint that you can use to access the app from elsewhere. For example, I've used this feature to get model predictions on my Android app [here](https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/).
+Other than having a user interface, hosting a Gradio app on Space also allows you to use the API endpoint to access the app from elsewhere. 
+For example, I've used this feature to get model predictions on my Android app [here](https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/).
 
 To view the API, click on "view the api" button at the bottom of the Space.
 It brings you to the API [page](https://hf.space/embed/dnth/gpt-j-6B/api) that shows you how to use the endpoint.
@@ -272,10 +273,10 @@ I'm gonna save this as `app.py` on my computer and run it via
 python app.py
 ```
 
-Now, your bot will respond to `/start` command by calling the `hello` function.
-And additionally, it will respond to all non-command texts by calling the `respond_to_user` function (Configured on `line 33`).
+Now, your bot will respond to `/start` command by calling the `hello` function (Configured on `line 32`).
+Additionally, it will also respond to all *non-command texts* by calling the `respond_to_user` function (Configured on `line 33`).
 
-That is how we get GPT-J's response via the Telegram bot 🤖.
+That is how we get GPT-J's response through the Telegram bot 🤖.
 If you've made it to this point, congratulations! We're almost done!
 
 {{< notice tip>}}
@@ -286,17 +287,29 @@ Bear in mind you need to keep your machine alive 24/7 for your bot to work.
 But, if you wish to take your bot to the next level 🚀 then read on 👇
 
 ### 🤗 Hosting Your Telegram Bot
-One little-known feature 🤫 that I discovered recently is that you can host your Telegram bot on Hugging Face Spaces. 
+A little-known feature that I discovered recently is that you can host your Telegram bot on Hugging Face Spaces 🤫. 
 
-If you create a **new** Space and upload the `app.py`, it will work out of the box! 
+If you create a **new** Space, upload the `app.py` script and a `requirement.txt` file, it will work out of the box! 
+
+The contents of `requirements.txt` are
+
+```bash
+python-telegram-bot==13.11
+requests==2.27.1
+```
+
+If all is well, the Space will start building, and your bot now functional.
 Now you don't have to keep your computer alive 24/7 to run the bot.
 
-I'm not sure if this feature is intentional or not by Hugging Face, but this is pretty neat eh? Free hosting for your bots! 😎
+I'm not sure if this is a *feature* or a *bug*, but this is pretty neat eh? **Free hosting** for your bots! Now let's create Skynet 🤖
 
-To make sure we don't expose our Telegram **token** in the source code, let's set the token to be an environment variable.
+{{< notice warning >}}
+Jokes aside, make sure you don't expose your Telegram **token** by putting them in the source code. 
+To hide your **token**, create an environment variable for it.
+{{< /notice >}}
 
 On your Space, click on the `Settings` tab and enter the `Name` and `Value` of the environment variable.
-Let's put the name as `telegram_token` and the value is your Telegram **token**.
+Let's put the name as `telegram_token` and the value, your Telegram **token**.
 {{< figure_resizing src="secrets.png" >}}
 
 On your `app.py` change `line 31` to the following
@@ -306,10 +319,8 @@ updater = Updater(os.environ['telegram_token'])
 ```
 
 Now, you can freely share your codes without exposing your Telegram token!
-
-{{< notice tip >}}
 For completeness, you can view my final `app.py` [here](https://huggingface.co/spaces/dnth/ptb-gpt/blob/main/app.py).
-{{< /notice >}}
+
 
 <!-- Feel free to check out my Space [here](https://huggingface.co/spaces/dnth/ptb-gpt) -->
 
@@ -339,14 +350,16 @@ For **FREE** 🚀
 
 {{< video src="chatbot.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-That's about a wrap! Where do we go from here? 
+That's about a wrap! Congratulations for making it 🥳 
 
-Here are some of my suggestions:
-+ Check out other GPT models you can use and deploy them on your bot.
-+ Try to use multiple commands that link to multiple functions on your bot.
-+ Deploy other SOTA models from various domains like computer vision on your bot.
-
-Have fun 🥳
+So, where do we go from here? 
+Here are some of my suggestions to level-up your bot:
++ Make your bot multifunctional by creating other commands that correspond to other functions.
++ Check out other SOTA language models or hybrid models like [DALL-E](https://openai.com/blog/dall-e/) and deploy them on your bot.
++ Create a Discord bot and deploy a model of your choice.
+ 
+I'd love to see what you create 😍. 
+Tag me in your Twitter/LinkedIn post!
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
