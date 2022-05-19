@@ -21,6 +21,8 @@ By the end of this post you will learn how to:
 + Set up a Telegram bot with a `Python` wrapper library. 
 + Use the Gradio API to access the GPT-J model prediction.
 + Host the Telegram bot on Hugging Face `Spaces`.
+
+You'll have your own Telegram bot that has access to the GPT-J-6B model. All for free.
 {{< /notice >}}
 
 Deploying a state-of-the-art (SOTA) GPT-like language model on a chatbot can be tricky.
@@ -327,7 +329,7 @@ We've walked through how to:
 + Use the Gradio API to access the GPT-J model prediction.
 + Host the Telegram bot on Hugging Face `Spaces`.
 
-Link to my Telegram bot [here](https://t.me/ptbgptbot) - Try it out yourself.
+Link to my Telegram bot [here](https://t.me/ptbgptbot) - Try it out.
 {{< /notice >}}
 
 
@@ -337,7 +339,9 @@ For **FREE** 🚀
 
 {{< video src="chatbot.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-That's about a wrap! Here are some of my suggestions:
+That's about a wrap! Where do we go from here? 
+
+Here are some of my suggestions:
 + Check out other GPT models you can use and deploy them on your bot.
 + Try to use multiple commands that link to multiple functions on your bot.
 + Deploy other SOTA models from various domains like computer vision on your bot.
