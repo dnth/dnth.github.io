@@ -44,7 +44,7 @@ By the end of this blog post you'll have your very own Telegram bot that can que
 If that looks interesting, let's begin 👩‍💻
 
 
-### 🤖 A Token From the Mighty BotFather
+### 🤖 Token From the Mighty BotFather
 {{< figure_resizing src="botfather_img.png" width=400 >}}
 *We shall start by first appeasing the mighty `BotFather` who holds the key to the world of bots* 🤖
 
@@ -71,20 +71,19 @@ This video provides a good step-by-step visual guide on how to obtain a **token*
 
 
 ### 🐍 Python Telegram Bot
-{{< figure_resizing src="ptb-logo.png">}}
+
 
 
 Telegram wasn't written with `Python`.
 But we ❤️ `Python`!
 Can we still use `Python` to code our bot?
 
-Yes! With a wrapper library like [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot).
+Yes! ✅ With a wrapper library like [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot).
+{{< figure_resizing src="ptb-logo.png" link="https://github.com/python-telegram-bot/python-telegram-bot" >}}
 
-This wrapper allows us to code the bot using `Python`.
-There are a ton of other wrappers out there for various languages, feel free to try them out.
-
-`python-telegram-bot` is incredibly easy to use.
-With only 8 lines of code, you can run your own bot as shown below.
+`python-telegram-bot` provides a pure `Python`, asynchronous interface for the [Telegram Bot API](https://core.telegram.org/bots/api).
+It is also incredibly user-friendly and easy to start.
+You can start running your own Telegram bot with only 8 lines of code 👇
 
 ```python {linenos=table}
 from telegram import Update
@@ -100,48 +99,72 @@ updater.idle()
 ```
 
 The above code snippet creates a Telegram bot that recognizes the `/start` command (specified on `line 8`).
-Upon receiving the `/start` command it calls the `hello` function on `line 4` which replies to the user 👇 
+Upon receiving the `/start` command it calls the `hello` function on `line 4` which replies to the user.
+
+Here's a screen recording showing that 👇 
 
 {{< video src="start.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-Now all you have to do is specify other commands to call any other functions of your choice.
-
 Yes! It's that simple! 🤓
 
-So how do we get there? Let's install `python-telegram-bot` via
+Now all you have to do is specify other commands to call any other functions of your choice.
+
+Before we do that, let's first install `python-telegram-bot` via
 
 ```bash
 pip install python-telegram-bot==13.11
 ```
 
 {{< notice warning >}}
-`python-telegram-bot` is under active development. Starting version `20` onward there are breaking changes. For this post, I'd recommend sticking with version `<20`.
+`python-telegram-bot` is under active development. There are breaking changes starting version `20` and onward. For this post, I'd recommend sticking with version `<20`.
 {{< /notice >}}
 
-You can save the 8-line code snippet above into a file and run it on your computer. Replace the `'YOUR-TOKEN'` on line 7 with your own.
+To run the bot, save the 8-line code snippet above into a `.py` file and run it on your computer. 
+Remember to replace `'YOUR-TOKEN'` on `line 7` with your own **token** from the `BotFather`.
 
-I will save the codes as `app.py` on my machine and run the script with
+I will save the codes as `bot.py` on my machine and run the script with
 
 ```python
-python app.py
+python bot.py
 ```
 
-Now search for your bot on Telegram and it should respond to the commands you've set.
+*Voila!*
+
+Your bot is now live and ready to chat.
+Search for your bot on the Telegram search bar, and send it the `/start` command.
+It should respond by replying a text back to you, just like in the screen recording above.
+
+
 
 ### 💡 GPT-J and the Gradio API
-We've setup our Telegram bot. What about the GPT model? Unless you have a powerful computer that runs 24/7 I wouldn't recommend running the GPT model on your machine (although you can).
+We've configured our Telegram bot. 
+What about the GPT model? 
+Unless you have a powerful computer that runs 24/7, I wouldn't recommend running the GPT model on your machine (although you can).
 
-I recently found a better solution which you can use to host the GPT model. It runs 24/7 and best of all it's free!
+I recently found a better solution which you can use to host the GPT model. 
+Anyone can use it, it runs 24/7, and best of all it's free!
 
 Enter 👉 the Hugging Face ecosystem. 
 
-The GPT-J-6B model is generously provided by EleutherAI on the Hugging Face hub.
+One feature in the Hugging Face ecosystem is the [Hugging Face Hub](https://huggingface.co/docs/hub/main).
+This is a central place where anyone can share their models and dataset.
+
+The 3 main repo types of the Hugging Face Hub include:
++ Models - hosts models.
++ Datasets - stores datasets.
++ Spaces - hosts demo apps.
+
+The GPT-J-6B model is generously provided by EleutherAI on the Hugging Face Hub as a model repository.
 It's publicly available for use. Check them out [here](https://huggingface.co/EleutherAI/gpt-j-6B).
 
-To use this model let's set up a Gradio app on Hugging Face Space.
-I've set up mine [here](https://huggingface.co/spaces/dnth/gpt-j-6B)
+You can interact with the model directly on the GPT-J-6B model repo, or create a demo on your Space.
+In this post, I will show you how to set up a Gradio app on Hugging Face Space to interact with the GPT-J-6B model.
 
-If you peek into the app.py on the Space it looks like the following
+First create a Space with your Hugging Face account.
+If you're unsure how to do that, I wrote a guide [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/#hugging-face-spaces).
+
+You'll only need a single `app.py` file to run this Space.
+It looks like the following 👇
 
 ```python {linenos=table}
 import gradio as gr
@@ -175,15 +198,17 @@ gr.Interface.load("huggingface/EleutherAI/gpt-j-6B",
 ```
 On `line 22` we are loading the GPT model directly from the [EleutherAI model hub](https://huggingface.co/EleutherAI) and serving the predictions on the Space.
 
-Below is a running live demo of the Gradio app hosted on Hugging Face Space. 
-Try them out 👇
+Check out the running demo app on my [Space](https://huggingface.co/spaces/dnth/gpt-j-6B).
+Or try them out 👇
 
 <iframe src="https://hf.space/embed/dnth/gpt-j-6B/+" frameBorder="0" width="800" height="900" title="Gradio app" class="container p-0 flex-grow space-iframe" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"></iframe>
 
-Every Gradio interface comes with an API that you can use to access the app from outside Gradio via API calls.
-Clicking on "view the api" button at the bottom of the Space brings you to the API [page](https://hf.space/embed/dnth/gpt-j-6B/api).
+Gradio apps come with an API endpoint that you can use to access the app from elsewhere. For example, I've used this feature to get model predictions on my Android app [here](https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/).
 
-All we need to do now is send a `POST` request to access the GPT-J model prediction and wrap that in a `Python` function.
+To view the API, click on "view the api" button at the bottom of the Space.
+It brings you to the API [page](https://hf.space/embed/dnth/gpt-j-6B/api) that shows you how to use the endpoint.
+
+All we need to do now is send a `POST` request from our Telegram bot to access the GPT-J model prediction.
 
 ```python
 def get_gpt_response(text):
@@ -195,18 +220,8 @@ def get_gpt_response(text):
     return response["data"][0]
 ```
 
-Documentation on the Gradio API [here](https://www.gradio.app/using_the_api_docs/).
-
-
-### 🤗 Hosting on Hugging Face Spaces
-To make sure we don't expose our Telegram **token** in the source code, let's set the token to be an environment variable.
-
-On your Space, click on the `Settings` tab and enter the `Name` and `Value` of the environment variable.
-Let's put the name as `telegram_token` and the value is your Telegram **token**.
-{{< figure_resizing src="secrets.png" >}}
-
-https://huggingface.co/spaces/dnth/ptb-gpt
-
+Let's add this function into the `bot.py` file we created earlier.
+Here's mine
 
 ```python {linenos=table}
 from telegram import Update
@@ -239,12 +254,41 @@ def respond_to_user(update: Update, context: CallbackContext):
     response_text = get_gpt_response(update.message.text)
     update.message.reply_text(response_text)
 
-updater = Updater(os.environ['telegram_token'])
+updater = Updater('YOUR-TOKEN')
 updater.dispatcher.add_handler(CommandHandler("start", hello))
 updater.dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, respond_to_user))
 updater.start_polling()
 updater.idle()
 ```
+
+I'm gonna save this as `app.py` on my computer and run it via
+
+```bash
+python app.py
+```
+
+Now, your bot will respond to `/start` command by calling the `hello` function.
+And additionally, it will respond to all non-command texts by calling the `respond_to_user` function (Configured on `line 33`).
+
+That is how we get GPT-J's response via the Telegram bot 🤖.
+If you've made it to this point, congratulations! We're almost done!
+
+{{< notice tip>}}
+If you wish to run the Telegram bot on your machine you can stop here.
+Bear in mind you need to keep your machine alive 24/7 for your bot to work.
+{{< /notice >}}
+
+But, if you wish to take your bot to the next level 🚀 then read on 👇
+
+### 🤗 Hosting Your Telegram Bot
+To make sure we don't expose our Telegram **token** in the source code, let's set the token to be an environment variable.
+
+On your Space, click on the `Settings` tab and enter the `Name` and `Value` of the environment variable.
+Let's put the name as `telegram_token` and the value is your Telegram **token**.
+{{< figure_resizing src="secrets.png" >}}
+
+https://huggingface.co/spaces/dnth/ptb-gpt
+
 
 `Line 31` loads the token you've set as environment variable.
 `Line 32` detects when the user sends the `/start` command and calls the `hello` function.
