@@ -152,13 +152,13 @@ Anyone can use it, it runs 24/7, and best of all it's free!
 
 Enter 👉 [Hugging Face Hub](https://huggingface.co/docs/hub/main).
 
-{{< youtube XvSGPZFEjDY >}}
-
 Hugging Face Hub is a central place where anyone can share their models, dataset, and app demos.
 The 3 main repo types of the Hugging Face Hub include:
 + Models - hosts models.
 + Datasets - stores datasets.
 + Spaces - hosts demo apps.
+
+{{< youtube XvSGPZFEjDY >}}
 
 The GPT-J-6B model is generously provided by EleutherAI on the Hugging Face Hub as a model repository.
 It's publicly available for use. Check them out [here](https://huggingface.co/EleutherAI/gpt-j-6B).
