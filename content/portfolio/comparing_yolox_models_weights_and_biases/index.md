@@ -45,14 +45,16 @@ We will answer the following questions by the end of the post.
 + How to pick the best model for your application?
 
 
-In this blog post I will show you how I accomplish all of them by using a free and simple tool from [Weights and Biases](https://wandb.ai/home) (Wandb) 👇
+In this blog post I will show you how I accomplish all of them by using Wandb.
 
-**PS**: No Excel sheets involved.
+**PS**: No Excel sheets involved 🤫
 
 ### 🕹 Wandb - Google Drive for Machine Learning
 
 
-Life is short they say. So why waste it on monitoring your deep learning models when you can automate them?
+Life is short they say. 
+
+So why waste it on monitoring your deep learning models when you can automate them?
 This is what Wandb is trying to solve. It's like Google Drive for machine learning.
 
 Wandb helps individuals and teams build models faster.
