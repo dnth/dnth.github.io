@@ -1,19 +1,19 @@
 ---
 enable: true
-topTitle: About
+topTitle: Something personal
 title: >
   ## About me
   
-  My name is Dickson Neoh from Kuala Lumpur, Malaysia. I enjoy building deep learning-based solutions to help companies scale up their business.
+  I am an experienced deep learning scientist with a proven track record. I have published in reputable journals including [Nature](https://www.nature.com/articles/s41598-021-98915-8), [Elsevier](https://www.sciencedirect.com/science/article/abs/pii/S095965262034155X), and [IEEE Transactions](https://ieeexplore.ieee.org/abstract/document/9276459). Full publication [list](https://scholar.google.com/citations?hl=en&user=CBGCEskAAAAJ).
+  
+  >> In my free time I enjoy reading self-development books on psychology, nutrition and bio-hacking.
 
-  > ⚠️ I'm currently searching for remote employment opportunies. [Book a call](https://calendly.com/dickson-neoh/discovery-call) with me if you're interested to talk.
+  >>> ⚠️ I'm currently searching for remote employment opportunies. [Book a call](https://calendly.com/dickson-neoh/discovery-call) with me if you're interested to talk.
   
 content: >
   ### Unique blend of acacemic and industry experience.
 
-  I am an experienced deep learning scientist with a proven track record. I have published in reputable journals including [Nature](https://www.nature.com/articles/s41598-021-98915-8), [Elsevier](https://www.sciencedirect.com/science/article/abs/pii/S095965262034155X), and [IEEE Transactions](https://ieeexplore.ieee.org/abstract/document/9276459). 
-  
-  > Other than academic publications, I'm well-versed with data scientist and machine learning engineer roles within an organization. I have helped companies design end-to-end deep learning (DL) solutions and deploy them into production. 
+  I'm well-versed with data scientist and machine learning engineer roles within an organization. I've helped companies design end-to-end deep learning (DL) solutions and deploy them into production. 
 
    
   What I bring to the table --
