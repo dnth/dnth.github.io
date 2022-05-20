@@ -10,7 +10,7 @@ title: >
     
     🟩 DL framework -- Tensorflow, PyTorch, Keras, Fastai.
     
-    🟩 DL experiment -- Weights & Biases, CometML, Optuna, Neural Network Intelligence, Azure ML.
+    🟩 DL experiment -- Weights & Biases, CometML, Optuna, Neural Network Intelligence.
     
     🟩 DL deployment -- OpenVINO, TensorRT, ONNX, TFLite, Hugging Face ecosystem.
     
@@ -18,7 +18,7 @@ title: >
     
     🟩 UI -- Flutter, Grafana, PyQt, Gradio.
     
-    🟩 Hardware -- Arduino, Raspberry Pi, Google Coral TPU, Intel Neural Compute Stick.
+    🟩 Hardware -- Arduino, Raspberry Pi, Coral Edge TPU, Intel Neural Compute Stick.
 
 tab1Name: Education
 tab2Name: Experiences
