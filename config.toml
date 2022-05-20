@@ -32,7 +32,7 @@ name = "Services"
 url = "#service"
 weight = 3
 [[menu.main]]
-name = "Works"
+name = "Projects"
 url = "#portfolio"
 weight = 4
 [[menu.main]]

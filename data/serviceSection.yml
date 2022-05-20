@@ -4,12 +4,12 @@ topTitle: Working Area
 title: >
   ## Services
 
-  I provide end-to-end deep learning pipeline services.
+  I provide end-to-end deep learning pipeline design, modeling and deployment services.
 service:
   - content: >
       #### Ideation
 
-      Consultancy on problem definition and formulation, feasibility analysis, and project scoping.
+      Consultancy on problem definition, feasibility analysis, and project scoping.
     image: images/service/consultancy.svg
   - content: >
       #### Exploratory Data Analysis
@@ -19,12 +19,12 @@ service:
   - content: >
       #### Data Labeling and Cleaning
       
-      Cleaning and de-biasing data, crafting dataset, feature engineering, data transformation for model ingestion.
+      Cleaning and de-biasing data, crafting dataset, feature engineering, and data transformation.
     image: images/service/clean2.svg
   - content: >
       #### Model Development
 
-      Run model selection and establish benchmark performance.
+      Model selection and establishing benchmark performance.
       Iterate on training and evaluating model on dataset. Selecting most promising models for further development.
     image: images/service/model2.svg
   - content: >
