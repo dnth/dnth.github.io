@@ -27,7 +27,7 @@ tab2Target: experience
 
 education:
   - content: >
-      #### PhD. in Engineering
+      #### Ph.D. in Engineering
 
       My Ph.D. work explores the effectiveness of using deep learning models to estimate
       state-of-charge (SOC) in the batteries of hybrid electric vehicles. The study conducts
@@ -39,7 +39,7 @@ education:
       See our published [paper](https://www.nature.com/articles/s41598-021-98915-8).
     time: 2018-2022
   - content: >
-      #### Master of Electrical Engineering
+      #### Master's Degree in Electrical Engineering
 
       My Master's Degree work explores the idea of recognizing the behavior of humanoid robots using
       a Long Short-Term Memory (LSTM), a variation of recurrent neural networks. The
@@ -47,10 +47,12 @@ education:
       data. See our published [paper](https://doi.org/10.1177%2F1729881416663369) and demo [video](https://www.youtube.com/watch?v=j_JIlfgBD_4&ab_channel=dicksonneoh).
     time: 2012-2015
   - content: >
-      #### Bachelor of Electrical and Electronics Engineering (Hons.)
+      #### Bachelor of Electrical and Electronics Engineering (Honours)
 
-      This study explored the idea of building a torque control DC motor driver using
-      pulse width modulation (PWM) techniques in combination with PID control algorithms. See our published [paper](https://www.sciencedirect.com/science/article/pii/S1877705812027385).
+      I graduated first class with a cumulative GPA of 3.71/4.00.
+      My bachelor's thesis explores the idea of using pulse width modulation (PWM) techniques in combination with PID control algorithms to control the torque of a brushed DC motor.
+      I fabricated a custom printed circuit board (PCB) to proof the working principle of the motor driver.
+      See our published [paper](https://www.sciencedirect.com/science/article/pii/S1877705812027385).
     time: 2007-2012
 
 
