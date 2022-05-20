@@ -1,5 +1,5 @@
 ---
-title: "Deploying GPT-J Models on Telegram Bots with Hugging Face Hub - For Free"
+title: "Deploying GPT-J Models on a Telegram Bot with Hugging Face Hub - For Free"
 date: 2022-05-19T11:00:15+08:00
 featureImage: images/portfolio/deploy_gpt_hf_models_on_telegram/thumbnail.gif
 postImage: images/portfolio/deploy_gpt_hf_models_on_telegram/post_image.png
@@ -22,7 +22,7 @@ By the end of this post you will learn how to:
 + Use the Gradio API to access the GPT-J model prediction.
 + Host the Telegram bot on Hugging Face `Spaces`.
 
-At the end, you'll have your own Telegram bot that has access to the GPT-J-6B model. All for free.
+By the end of this post, you'll have your own Telegram bot that has access to the GPT-J-6B model. All for free.
 {{< /notice >}}
 
 Deploying a state-of-the-art (SOTA) GPT-like language model on a chatbot can be tricky.
@@ -84,7 +84,7 @@ Telegram wasn't written with `Python`.
 But we ❤️ `Python`!
 Can we still use `Python` to code our bot?
 
-Yes! ✅ With a wrapper library like [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot).
+✅ Yes! With a wrapper library like [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot).
 {{< figure_resizing src="ptb-logo.png" link="https://github.com/python-telegram-bot/python-telegram-bot" >}}
 
 `python-telegram-bot` provides a pure `Python`, asynchronous interface for the [Telegram Bot API](https://core.telegram.org/bots/api).
@@ -158,13 +158,15 @@ The 3 main repo types of the Hugging Face Hub include:
 + Datasets - stores datasets.
 + Spaces - hosts demo apps.
 
-{{< youtube XvSGPZFEjDY >}}
 
 The GPT-J-6B model is generously provided by EleutherAI on the Hugging Face Hub as a model repository.
 It's publicly available for use. Check them out [here](https://huggingface.co/EleutherAI/gpt-j-6B).
 
+{{< youtube XvSGPZFEjDY >}}
+
+
 You can interact with the model directly on the GPT-J-6B model repo, or create a demo on your Space.
-In this post, I will show you how to set up a Gradio app on Hugging Face Space to interact with the GPT-J-6B model.
+In this post, I will show you how to set up a Gradio app as a demo on Hugging Face Space to interact with the GPT-J-6B model.
 
 First, create a Space with your Hugging Face account.
 If you're unsure how to do that, I wrote a guide [here](https://dicksonneoh.com/portfolio/deploy_icevision_models_on_huggingface_spaces/#hugging-face-spaces).
@@ -346,22 +348,24 @@ Link to my Telegram bot [here](https://t.me/ptbgptbot) - Try it out.
 {{< /notice >}}
 
 
-The end result - a 24/7 working Telegram bot that has access to the GPT-J-6B model. 
+The end result 👉 a 24/7 working Telegram bot that has access to the GPT-J-6B model 🥳
 
 For **FREE** 🚀
 
 {{< video src="chatbot.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-That's about a wrap! Congratulations for making it 🥳 
+That's about a wrap! Congratulations on making it!
+So, what's next? 
 
-So, where do we go from here? 
+{{< notice tip >}}
 Here are some of my suggestions to level-up your bot:
-+ Make your bot multifunctional by creating other commands that correspond to other functions.
++ Make your bot **multifunctional** by creating commands that query other GPT models - try using a GPT-Neo model [here](https://huggingface.co/spaces/dnth/gpt-neo-paraphrase).
 + Check out other SOTA language models or hybrid models like [DALL-E](https://openai.com/blog/dall-e/) and deploy them on your bot.
 + Create a Discord bot and deploy a model of your choice.
- 
-I'd love to see what you create 😍. 
-Tag me in your Twitter/LinkedIn post!
+{{< /notice >}}
+
+I'd love to see what you create. 
+Tag me in your Twitter/LinkedIn post! 😍
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
