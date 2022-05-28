@@ -33,7 +33,7 @@ service:
       Run hyperparameter optimization algorithm to gain the best performance from model.
     image: images/service/tune.svg
   - content: >
-      #### Deployment & Model Optimization
+      #### Model Optimization
 
       Optimize model for inferencing by quantization and conversion into portable form such as OpenVINO, ONNX, Tflite.
       Deploy to live environment for inferencing and monitoring. Refine model by observing model performance.
@@ -49,4 +49,10 @@ service:
       Integration with Microsoft Azure, Amazon AWS, Google Machine Learning, etc. Cross-compatibility development with existing company ecosystem. 
       Monitoring data/concept drift in deployment pipeline.
     image: images/service/branding.svg
+
+  - content: >
+      #### Edge Deployment and Serving
+
+      Deploy trained and optimized model on CPU or GPU hardware on the edge for inference with model serving framework such as Triton or Tensorflow Serving.
+    image: images/service/circuit.svg
 
