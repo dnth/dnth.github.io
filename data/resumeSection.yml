@@ -6,19 +6,19 @@ title: >
 
   Tech stack --
 
-    > 🟩 Python, C, PySpark, Docker, Jupyter, VSCode, Git.
+    > 🟩 Python, C, Assembly, PySpark, Docker, Jupyter, VSCode, Git.
     
     🟩 DL framework -- Tensorflow, PyTorch, Keras, Fastai.
     
     🟩 DL experiment -- Weights & Biases, CometML, Optuna, Neural Network Intelligence.
     
-    🟩 DL deployment -- OpenVINO, TensorRT, ONNX, TFLite, Hugging Face ecosystem.
+    🟩 DL deployment -- OpenVINO, TensorRT, ONNX, TFLite, Hugging Face Hub.
     
     🟩 Database -- Firebase, MySQL, InfluxDB, Hive.
     
     🟩 UI -- Flutter, Grafana, PyQt, Gradio.
     
-    🟩 Hardware -- Arduino, Raspberry Pi, Coral Edge TPU, Intel Neural Compute Stick.
+    🟩 Hardware -- Raspberry Pi, NVIDIA Jetson, Arduino, PIC/AVR MCU, Coral Edge TPU, Intel Neural Compute Stick.
 
 tab1Name: Education
 tab2Name: Experiences
