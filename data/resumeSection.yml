@@ -10,15 +10,21 @@ title: >
     
     🟩 DL framework -- Tensorflow, PyTorch, Keras, Fastai.
     
-    🟩 DL experiment -- Weights & Biases, CometML, Optuna, Neural Network Intelligence.
+    🟩 DL experiment -- Weights & Biases, Tensorboard, CometML, Optuna, Neural Network Intelligence.
     
-    🟩 DL deployment -- OpenVINO, TensorRT, ONNX, TFLite, Hugging Face Hub.
+    🟩 DL deployment -- OpenVINO, TensorRT, ONNX, TFLite, Hugging Face Hub, DeepSparse.
     
     🟩 Database -- Firebase, MySQL, InfluxDB, Hive.
     
     🟩 UI -- Flutter, Grafana, PyQt, Gradio.
     
-    🟩 Hardware -- Raspberry Pi, NVIDIA Jetson, Arduino, PIC/AVR MCU, Coral Edge TPU, Intel Neural Compute Stick.
+    🟩 Edge Device -- Raspberry Pi, NVIDIA Jetson, Arduino/ESP32/PIC/AVR MCU, Coral Edge TPU, Intel Neural Compute Stick.
+
+    🟩 Current Github Stats --
+
+    ![Dickson's github stats](https://github-readme-stats.vercel.app/api?username=dnth&show_icons=true&theme=nightowl&hide=stars&count_private=true) 
+
+    ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=dnth&langs_count=8&&layout=compact&theme=nightowl&card_width=445)
 
 tab1Name: Education
 tab2Name: Experiences
