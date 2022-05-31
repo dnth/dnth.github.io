@@ -372,7 +372,7 @@ So, what's next? To squeeze even more out of the model I recommend:
 + Try using a smaller input resolution such as `416x416`. We've used `640x640` in this post.
 + Try using the `AccuracyAwareQuantization` which runs quantization on the model with lesser accuracy loss.
 
-They're also a best practice guide to quantize your model with OpenVINO [here](https://docs.openvino.ai/latest/pot_docs_BestPractices.html).
+There's also a best practice guide to quantize your model with OpenVINO [here](https://docs.openvino.ai/latest/pot_docs_BestPractices.html).
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
