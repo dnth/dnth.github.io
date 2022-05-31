@@ -22,9 +22,9 @@ title: >
 
     🟩 Current [Github](https://github.com/dnth) Stats --
 
-    ![Dickson's github stats](https://github-readme-stats.vercel.app/api?username=dnth&show_icons=true&theme=nightowl&hide=stars&count_private=true) 
+    ![Dickson's github stats](https://github-readme-stats.vercel.app/api?username=dnth&show_icons=true&theme=nightowl&hide=stars&count_private=true&title_color=5d78ff&bg_color=1c2030&icon_color=86b453&text_color=ffffff) 
 
-    ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=dnth&langs_count=8&&layout=compact&theme=nightowl&card_width=445)
+    ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=dnth&langs_count=8&layout=compact&theme=nightowl&card_width=445&title_color=5d78ff&bg_color=1c2030&text_color=ffffff)
 
 
 tab1Name: Education
@@ -56,7 +56,7 @@ education:
   - content: >
       #### Bachelor of Electrical and Electronics Engineering (Honours)
 
-      I graduated first class with a cumulative GPA of 3.71/4.00.
+      I graduated first class with a cumulative GPA of `3.71/4.00`.
       My bachelor's thesis explores the idea of using pulse width modulation (PWM) techniques in combination with PID control algorithms to control the torque of a brushed DC motor.
       I fabricated a custom printed circuit board (PCB) to proof the working principle of the motor driver.
       See our published [paper](https://www.sciencedirect.com/science/article/pii/S1877705812027385).
