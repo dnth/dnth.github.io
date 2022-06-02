@@ -20,7 +20,14 @@ This blog post is still a work in progress. If you require further clarification
 
 ### ⛳ Baseline YOLOv5 inference
 
+Inference on CPU with YOLOv5-S PyTorch model.
+{{< video src="baseline_torch.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
+{{< video src="baseline_onnxruntime.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
 ### 🪄 DeepSparse Engine
+Out of the box, no modifications to the model.
+{{< video src="baseline_deepsparse.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### 🌀 Sparsify Models with SparseML
 Sparsification is the process of removing redundant information from a model.
@@ -31,6 +38,7 @@ Several ways:
 + Transfer Learning
 
 ### ✂ Pruned YOLOv5
+{{< video src="pruned.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### ♒ Pruned and Quantized YOLOv5
 
