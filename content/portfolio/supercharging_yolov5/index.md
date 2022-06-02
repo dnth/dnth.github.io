@@ -1,15 +1,15 @@
 ---
-title: "DeepSparse: How I get 70 FPS YOLOv5 running on a CPU"
+title: "Supercharging YOLOv5: How I get 70+ FPS Inference on CPUs"
 date: 2022-01-19T11:00:15+08:00
-featureImage: images/portfolio/deploy_gpt_hf_models_on_telegram/thumbnail.gif
-postImage: images/portfolio/deploy_gpt_hf_models_on_telegram/post_image.png
+featureImage: images/portfolio/supercharging_yolov5/thumbnail.gif
+postImage: images/portfolio/supercharging_yolov5/post_image.png
 tags: ["DeepSparse", "ONNX", "YOLOv5", "real-time", "optimization", "pistol"]
 categories: ["deployment", "object-detection", "modeling"]
 toc: true
 socialshare: true
 description: "Accelerate inference up to 70 FPS on a CPU!"
 images : 
-- images/portfolio/deploy_gpt_hf_models_on_telegram/post_image.png
+- images/portfolio/supercharging_yolov5/post_image.png
 ---
 
 {{< notice info >}}
@@ -23,6 +23,12 @@ This blog post is still a work in progress. If you require further clarification
 ### 🪄 DeepSparse Engine
 
 ### 🌀 Sparsify Models with SparseML
+Sparsification is the process of removing redundant information from a model.
+
+Several ways:
++ One shot
++ Training Aware
++ Transfer Learning
 
 ### ✂ Pruned YOLOv5
 
