@@ -21,13 +21,22 @@ This blog post is still a work in progress. If you require further clarification
 ### ⛳ Baseline YOLOv5 inference
 
 Inference on CPU with YOLOv5-S PyTorch model.
-{{< video src="baseline_torch.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
-{{< video src="baseline_onnxruntime.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
++ Average FPS : 21.91
++ Average inference time (ms) : 45.58
+
+{{< video src="vids/torch-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
 
 ### 🪄 DeepSparse Engine
 Out of the box, no modifications to the model.
-{{< video src="baseline_deepsparse.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+Input the unoptimized onnx model.
+
++ Average FPS : 29.48
++ Average inference time (ms) : 33.91
+
+{{< video src="vids/onnx-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
 
 ### 🌀 Sparsify Models with SparseML
 Sparsification is the process of removing redundant information from a model.
@@ -38,11 +47,28 @@ Several ways:
 + Transfer Learning
 
 ### ✂ Pruned YOLOv5
-{{< video src="pruned.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
++ Average FPS : 35.50
++ Average inference time (ms) : 31.73
+{{< video src="vids/yolov5s-pruned/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### ♒ Pruned and Quantized YOLOv5
 
++ Average FPS : 58.06
++ Average inference time (ms) : 17.22
+{{< video src="vids/yolov5s-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
+
 ### 🤹‍♂️ Sparse Transfer Learning
++ Average FPS : 51.56
++ Average inference time (ms) : 19.39
+{{< video src="vids/yolov5s-pruned-quant-tl/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
+### 🚀 Pruned and Quantized YOLOv5n + Hardswish
+
++ Average FPS : 93.33
++ Average inference time (ms) : 10.71
+{{< video src="vids/yolov5n-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### 🚧 Conclusion
 
