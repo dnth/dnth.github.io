@@ -7,7 +7,7 @@ tags: ["DeepSparse", "ONNX", "YOLOv5", "real-time", "optimization", "pistol"]
 categories: ["deployment", "object-detection", "modeling"]
 toc: true
 socialshare: true
-description: "Accelerate inference up to 70 FPS on a CPU!"
+description: "Accelerate inference up to 180 FPS on a CPU!"
 images : 
 - images/portfolio/supercharging_yolov5/post_image.png
 ---
@@ -19,7 +19,21 @@ This blog post is still a work in progress. If you require further clarification
 ### 🔥 Motivation
 So you've trained the most popular object detection model - YOLOv5 and got some impressive results.
 
-### ⛳ Baseline YOLOv5 inference
+I will show you how you can supercharge your inference from 20+ FPS to 180+ FPS.
+
+By the end of the blog post you will learn how to
+
+### 🕸 Sparse Neural Network
+
+
+### 🔩 Setting Up
+
+Use Ultralytic YOLOv5 implementations.
+Clone repo from NM fork.
+
+Roboflow pistol dataset.
+
+### ⛳ Baseline PyTorch Inference
 
 Inference on CPU with YOLOv5-S PyTorch model.
 
@@ -29,7 +43,7 @@ Inference on CPU with YOLOv5-S PyTorch model.
 {{< video src="vids/torch-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 
-### 🪄 DeepSparse Engine
+### 🪄 Dense Model Inference with DeepSparse Engine
 Out of the box, no modifications to the model.
 Input the unoptimized onnx model.
 
@@ -61,18 +75,22 @@ Several ways:
 
 
 ### 🤹‍♂️ Sparse Transfer Learning
+Taking an already sparsified (pruned and quantized) and fine-tune it on your own dataset.
+
 + Average FPS : 51.56
 + Average inference time (ms) : 19.39
 {{< video src="vids/yolov5s-pruned-quant-tl/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
-### 🚀 Pruned and Quantized YOLOv5n + Hardswish
+### 🚀 Pruned and Quantized YOLOv5n + Hardswish Activation
+Hardswish activation performs better with DeepSparse.
+
 
 + Average FPS : 93.33
 + Average inference time (ms) : 10.71
 {{< video src="vids/yolov5n-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### 🚧 Conclusion
-
+In this blog post I've shown you
 
 
 ### 🙏 Comments & Feedback
