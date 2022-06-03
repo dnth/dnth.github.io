@@ -1,5 +1,5 @@
 ---
-title: "Supercharging YOLOv5: How I get 70+ FPS Inference on CPUs"
+title: "Supercharging YOLOv5: How I get 180+ FPS Inference on CPUs with only 4 Cores"
 date: 2022-01-19T11:00:15+08:00
 featureImage: images/portfolio/supercharging_yolov5/thumbnail.gif
 postImage: images/portfolio/supercharging_yolov5/post_image.png
@@ -17,6 +17,7 @@ This blog post is still a work in progress. If you require further clarification
 {{< /notice >}}
 
 ### 🔥 Motivation
+So you've trained the most popular object detection model - YOLOv5 and got some impressive results.
 
 ### ⛳ Baseline YOLOv5 inference
 
