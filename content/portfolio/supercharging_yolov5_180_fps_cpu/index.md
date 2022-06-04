@@ -174,9 +174,7 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
 
 {{< /notice >}}
 
-This trains a YOLOv5-S model without any modification to serve as a baseline. All metrics are logged to Weights & Biases (Wandb).
-
-View my training metrics [here](https://wandb.ai/dnth/yolov5-deepsparse).
+This trains a YOLOv5-S model without any modification to serve as a baseline. All metrics are logged to Weights & Biases (Wandb). View my training metrics on Wandb [here](https://wandb.ai/dnth/yolov5-deepsparse).
 
 ### ⛳ Baseline Inference
 Let's first establish a baseline before we start optimizing.
