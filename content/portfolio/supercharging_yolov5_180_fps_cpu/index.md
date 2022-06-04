@@ -75,9 +75,11 @@ Clone repo from NM fork.
 
 Roboflow pistol dataset.
 
-### 🕸 Sparse Neural Network
 
-### ⛳ Baseline PyTorch Inference
+### ⛳ Baseline
+Let's first establish a baseline before we start optimizing.
+
+#### 🔦 PyTorch
 
 Inference on CPU with YOLOv5-S PyTorch model.
 
@@ -96,8 +98,8 @@ On a RTX3090 GPU
 {{< video src="vids/torch-gpu/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 
-### 🪄 Dense Model Inference with DeepSparse Engine
-Out of the box, no modifications to the model.
+#### 🕸 DeepSparse Engine
+Out of the box, no modifications to the model running at 4 CPU cores.
 Input the unoptimized onnx model.
 
 + Average FPS : 29.48
@@ -106,15 +108,15 @@ Input the unoptimized onnx model.
 {{< video src="vids/onnx-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 
-### 🌀 Sparsify Models with SparseML
+### 🌀 SparseML
 Sparsification is the process of removing redundant information from a model.
 
-Several ways:
-+ One shot
-+ Training Aware
-+ Transfer Learning
+Several ways to sparsify models:
++ Post-training (One-shot) - Quantization
++ Training Aware - Pruning & Quantization
++ Sparse Transfer Learning
 
-### ☝️ One Shot
+#### ☝️ One-Shot
 No re-training. Just dynamic quantization. Easiest.
 
 + Average FPS : 32.00
@@ -122,7 +124,7 @@ No re-training. Just dynamic quantization. Easiest.
 
 {{< video src="vids/one-shot/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
-### ✂ Pruned YOLOv5
+#### ✂ Pruned YOLOv5-S
 Re-training with recipe.
 
 + Average FPS : 35.50
@@ -130,7 +132,7 @@ Re-training with recipe.
 
 {{< video src="vids/yolov5s-pruned/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
-### ♒ Pruned and Quantized YOLOv5
+#### 🪚 Pruned + Quantized YOLOv5-S
 Re-training with recipe.
 
 + Average FPS : 58.06
@@ -139,14 +141,16 @@ Re-training with recipe.
 {{< video src="vids/yolov5s-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 
-### 🤹‍♂️ Sparse Transfer Learning
+#### 🤹‍♂️ Sparse Transfer Learning
 Taking an already sparsified (pruned and quantized) and fine-tune it on your own dataset.
 
 + Average FPS : 51.56
 + Average inference time (ms) : 19.39
 {{< video src="vids/yolov5s-pruned-quant-tl/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
-### 🚀 Pruned and Quantized YOLOv5n + Hardswish Activation
+### 🚀 Supercharging FPS
+
+Pruned and Quantized YOLOv5n + Hardswish Activation
 Hardswish activation performs better with DeepSparse.
 
 
