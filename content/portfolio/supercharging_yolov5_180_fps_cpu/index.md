@@ -70,11 +70,40 @@ If that sounds interesting let's get into it ⛷.
 
 ### 🔩 Setting Up
 
-Use Ultralytic YOLOv5 implementations.
-Clone repo from NM fork.
 
-Roboflow pistol dataset.
+#### 🔫 Dataset
 
+The [recent gun violence](https://edition.cnn.com/2022/05/25/us/uvalde-texas-elementary-school-shooting-what-we-know/index.html) news had me thinking deeply about how we can prevent incidents like these again. 
+This is the worst gun violence since 2021, and 21 innocent lives were lost.
+
+My heart goes out to all victims of the violence and their loved ones.
+
+I'm not a lawmaker, so there is little I can do there. 
+But, I think I know something in computer vision that might help.
+That's when I came across the [Pistols Dataset](https://public.roboflow.com/object-detection/pistols) from Roboflow.
+
+
+This dataset contains 2986 images and 3448 labels across a single annotation class: pistols. Images are wide-ranging: pistols in-hand, cartoons, and staged studio quality images of guns. The dataset was originally released by the University of Grenada.
+
+{{< figure_resizing src="pistol.png">}}
+
+#### 🦸 YOLOv5 Object Detection Library
+Let's first install the YOLOv5 object detection library from Github.
+
+For this post, we are going to use a [forked version](https://github.com/neuralmagic/yolov5) of the YOLOv5 library that will allow us to do custom optimizations in the upcoming section.
+
+To install, run the following commands
+
+```bash
+git clone https://github.com/neuralmagic/yolov5.git
+cd yolov5
+git checkout release/0.12
+pip install -r requirements.txt
+```
+
+Now let's put the downloaded Pistols Dataset into the appropriate folder for us to start training.
+You can refer to my folder structure [here](https://github.com/dnth/yolov5-deepsparse-blogpost).
+Feel free to fork and use it on your own dataset.
 
 ### ⛳ Baseline
 Let's first establish a baseline before we start optimizing.
