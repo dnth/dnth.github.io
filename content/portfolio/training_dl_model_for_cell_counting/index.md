@@ -13,23 +13,28 @@ images :
 ---
 
 ### 🕶️ Motivation
-Numerous biology and medical procedures involve counting cells from images taken with a microscope.
+Many biology and medical procedures involve counting cells from images taken with a microscope.
 Counting cells reveals the concentration of bacteria and viruses and gives vital information on the progress of a disease.
+
 To accomplish the counting, researchers painstakingly count the cells by hand with the assistance of a device called [hemocytometer](https://www.youtube.com/watch?v=WWS9sZbGj6A&ab_channel=ThermoFisherScientific).
 This process is repetitive, tedious, and prone to errors.
 
-What if we could automate the counting by using an intelligent deep learning algorithm instead?
+*What if we could automate the counting by using an intelligent deep learning algorithm instead?*
 
 In this blog post, I will walk you through how to use the [IceVision](https://airctic.com/dev/getting_started_object_detection/) library and train a state-of-the-art deep learning model with [Fastai](https://github.com/fastai/fastai) to count microalgae cells.
 
-Among the things you will learn: 
 
-* Installation of the libraries.
+{{< notice tip >}}
+By the end of this post, you will learn how to:
+
+* How to install the IceVision and and labelImg package.
 * Prepare and label any dataset for object detection.
-* Train a high-performance VFNet model with IceVision & Fastai.
+* Train a high-performance `VFNet` model with IceVision & Fastai.
 * Use the model for inference on new images.
 
-By the end of the post, you will have an object detection model that will automatically detect microalgae cells from an image.
+**P/S**: The end result - A high performance object detector in only 17 lines of code! 🚀
+{{< /notice >}}
+
 {{< figure_resizing src="inference.png" >}}
 
 Did I mention that all the tools used in this project are completely open-source and free of charge? Yes!
@@ -249,7 +254,7 @@ So each run on the snippet produces slightly different results.
 IceVision supports hundreds of high-quality pre-trained models from [Torchvision](https://github.com/pytorch/vision), Open MMLab's [MMDetection](https://github.com/open-mmlab/mmdetection), Ultralytic's [YOLOv5](https://github.com/ultralytics/yolov5) and Ross Wightman's [EfficientDet](https://github.com/rwightman/efficientdet-pytorch).
 
 Depending on your preference, you may choose the model and backbone from these libraries.
-In this post I will choose the [VarifocalNet](https://arxiv.org/abs/2008.13367) (VFNet) model from MMDetection which can be accomplished with:
+In this post I will choose the [VarifocalNet](https://arxiv.org/abs/2008.13367) (`VFNet`) model from MMDetection which can be accomplished with:
 
 ```python
 model_type = models.mmdet.vfnet
@@ -504,6 +509,16 @@ Hopefully, this post also boosted your confidence that object detection is not a
 With many high-level open-source packages like IceVision and Fastai, anyone with a computer and a little patience can break into object detection.
 
 In this post, I've shown you how you can construct a model that detects microalgae cells.
+
+{{< notice tip >}}
+You've learned:
+
+* How to install the IceVision and and labelImg package.
+* Prepare a dataset of images and bounding boxes with 17 images.
+* Train a high-performance `VFNet` model with IceVision in only 17 lines of code.
+* Use the model for inference to detect microalgae cells.
+{{< /notice >}}
+
 In reality, the same steps can be used to detect any other cells or any other objects for that matter.
 Realizing this is an extremely powerful paradigm shift for me.
 
