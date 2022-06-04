@@ -43,7 +43,7 @@ One of the clients asked
 
 You flinched. That wasn't something you anticipated. You tried to convince them that GPUs are the way forward and it is the "best" way to run your model in real-time.
 
-You scanned the room and begin to see your clients faces, not particularly happy 👇
+You scanned the room and begin to notice their faces, they don't look particularly happy 👇
 
 {{< figure_resizing src="meme.jpg">}}
 
