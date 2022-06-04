@@ -105,7 +105,21 @@ Now let's put the downloaded Pistols Dataset into the appropriate folder for us 
 You can refer to my folder structure [here](https://github.com/dnth/yolov5-deepsparse-blogpost).
 Feel free to fork and use it on your own dataset.
 
-### ⛳ Baseline
+#### 🥋 Training
+
+To start training we will run the `train.py` script from the YOLOv5 repo.
+
+```bash
+python train.py --cfg ./models_v5.0/yolov5s.yaml \
+                --data pistols.yaml \
+                --hyp data/hyps/hyp.scratch.yaml \
+                --weights yolov5s.pt --img 416 --batch-size 64 \
+                --optimizer SGD --epochs 240 --device 0 \
+                --project yolov5-deepsparse --name yolov5s-sgd
+```
+
+
+### ⛳ Baseline Inference
 Let's first establish a baseline before we start optimizing.
 
 #### 🔦 PyTorch
@@ -137,10 +151,17 @@ Input the unoptimized onnx model.
 {{< video src="vids/onnx-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 
-### 🌀 SparseML
+### 🌀 Sparsify with SparseML
 Sparsification is the process of removing redundant information from a model.
 
-Several ways to sparsify models:
+[SparseML](https://github.com/neuralmagic/sparseml) is an open-source library by Neural Magic to apply sparsification recipes to neural networks.
+It currently supports integration with several well known libraries from computer vision and natural language processing domain.
+
+
+Sparsification results in a smaller and faster model. 
+This is how we can significantly speed up our YOLOv5 model, by a lot!
+
+There are several ways to sparsify models with SparseML:
 + Post-training (One-shot) - Quantization
 + Training Aware - Pruning & Quantization
 + Sparse Transfer Learning
