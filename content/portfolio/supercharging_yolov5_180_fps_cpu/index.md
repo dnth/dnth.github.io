@@ -27,12 +27,14 @@ I'm taking about the awesome [YOLOv5](https://github.com/ultralytics/yolov5) obj
 Elated, you quickly find an interesting dataset from [Roboflow](https://roboflow.com/) and finally trained a state-of-the-art (SOTA) YOLOv5 model to detect firearms from image streams.
 
 You ran through a quick checklist --
-+ Inference results, check ✅.
-+ COCO metrics, check ✅.
-+ Live inference latency, check ✅.
++ Inference results, checked ✅
++ COCO mAP, checked ✅
++ Live inference latency, checked ✅
 
-You're on top of the world. You can finally pitch the results to your clients next Monday.
-At the back of you mind, you imagined the clients' impressed looks on the astonishing feat.
+You're on top of the world. 
+
+You can finally pitch the results to your clients next Monday.
+At the back of your mind, you imagined the clients' impressed looks on the astonishing feat.
 
 Finally, on the pitching day, just when you thought things are going in the right direction.
 One of the clients asked
@@ -51,14 +53,13 @@ You don't have to learn it the hard way, like I did.
 How, you asked? This post is exactly that.
 
 I will show you how you can supercharge your YOLOv5 inference performance running on a consumer CPU.
-with free and open-source tools from [Neural Magic](https://neuralmagic.com/). 
-
+Oh, we'll be using free and open-source tools from [Neural Magic](https://neuralmagic.com/). 
 
 {{< notice tip >}}
 By the end of this post, you will learn how to:
 
 * Train state-of-the-art YOLOv5 model with your own data.
-* Sparsify the model using SparseML quantization aware aware training loop.
+* Sparsify the model using SparseML quantization aware training loop.
 * Export the sparsified model and run it using the DeepSparse engine at insane speed. 
 
 **P/S**: The end result - YOLOv5 on CPU at 180+ FPS using only 4 cores! 🚀
