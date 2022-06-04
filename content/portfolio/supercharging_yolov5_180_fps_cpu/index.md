@@ -1,5 +1,5 @@
 ---
-title: "Supercharging YOLOv5: How I get 180+ FPS Inference on a CPU using only 4 Cores"
+title: "Supercharging YOLOv5: How I Get 180+ FPS Inference on a CPU Using 4 Cores"
 date: 2022-01-19T11:00:15+08:00
 featureImage: images/portfolio/supercharging_yolov5/thumbnail.gif
 postImage: images/portfolio/supercharging_yolov5/post_image.png
@@ -7,7 +7,7 @@ tags: ["DeepSparse", "ONNX", "YOLOv5", "real-time", "optimization", "pistol"]
 categories: ["deployment", "object-detection", "modeling"]
 toc: true
 socialshare: true
-description: "Accelerate inference up to 180 FPS on a CPU!"
+description: "Accelerate inference up to 180+ FPS on a CPU!"
 images : 
 - images/portfolio/supercharging_yolov5/post_image.png
 ---
@@ -22,13 +22,13 @@ After months of searching, you've finally found the *one*.
 The *one* object detection library that just works.
 No installation hassle, no package version mismatch, and no `CUDA` errors. 
 
-I'm taking about the ubiquitous [YOLOv5](https://github.com/ultralytics/yolov5) object detection library by [Ultralytics](https://ultralytics.com/yolov5).
+I'm talking about the ubiquitous [YOLOv5](https://github.com/ultralytics/yolov5) object detection library by [Ultralytics](https://ultralytics.com/yolov5).
 
 Elated, you quickly find an interesting dataset from [Roboflow](https://roboflow.com/) and finally trained a state-of-the-art (SOTA) YOLOv5 model to detect firearms from image streams.
 
 You ran through a quick checklist --
 + Inference results, checked ✅
-+ COCO mAP, checked ✅
++ `COCO` mAP, checked ✅
 + Live inference latency, checked ✅
 
 You're on top of the world. 
@@ -37,14 +37,14 @@ You're on top of the world.
 
 
 You can finally pitch the results to your clients next Monday.
-At the back of your mind, you imagined the clients' impressed looks on the astonishing feat.
+At the back of your mind, you can already see your clients' impressed look on the astonishing feat.
 
-Finally, on the pitching day, just when you thought things are going in the right direction.
+On the pitching day, just when you thought things are going in the right direction.
 One of the clients asked,
 
 "**Does your model run on our existing CPU?**"
 
-You flinched. That wasn't something you anticipated. You tried to convince them that GPUs are "the way forward" and it is "the best way" to run your model in real-time.
+You flinched. That wasn't something you anticipated. You tried to convince them that GPUs are *"the way forward"* and it's *"the best way"* to run your model in real-time.
 
 You scanned the room and begin to notice the looks on their faces 👇
 
@@ -54,10 +54,13 @@ Needless to say it didn't go well.
 I hope nobody will ever have to face this awkward situation in a pitching session, ever.
 You don't have to learn it the hard way, like I did.
 
-How, you asked? Can we really use CPUs to run models in real-time? This post is exactly that.
+You may wonder, can we really use consumer grade CPUs to run models in real-time?
 
-I will show you how you can supercharge your YOLOv5 inference performance running on a consumer CPU.
-Oh, we'll be using **free** and open-source tools and it only takes few steps to start.
+🦾**YES we can!**
+
+I wasn't a believer, but now I am.
+
+In this post I show you how you can supercharge your YOLOv5 inference performance running on CPUs using **free** and open-source tools.
 
 {{< notice tip >}}
 By the end of this post, you will learn how to:
