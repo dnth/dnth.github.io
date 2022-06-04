@@ -104,8 +104,38 @@ pip install -r requirements.txt
 ```
 
 Now let's put the downloaded Pistols Dataset into the appropriate folder for us to start training.
+I will put the downloaded images and labels into the `datasets` folder.
+
+Here's a high level overview of the structure of the directory.
+
+```tree
+├── datasets
+│   ├── pistols
+│   │   ├── train
+|   |   ├── valid
+├── recipes
+│   ├── yolov5s.pruned.md
+│   ├── yolov5.transfer_learn_pruned.md
+│   ├── yolov5.transfer_learn_pruned_quantized.md
+|   └── ...
+└── yolov5-train
+        ├── data
+        |   ├── hyps
+        |   |   ├── hyps.scratch.yaml
+        |   |   └── ...
+        |   ├── pistols.yaml
+        |   └── ...
+        ├── models_v5.0
+        |   ├── yolov5s.yaml
+        |   └── ...
+        ├── train.py
+        ├── export.py
+        ├── annotate.py
+        └── ...
+```
+
 You can refer to my folder structure [here](https://github.com/dnth/yolov5-deepsparse-blogpost).
-Feel free to fork and use it on your own dataset.
+Feel free to fork my folder on Github and use it on your own dataset.
 
 #### 🥋 Training
 
