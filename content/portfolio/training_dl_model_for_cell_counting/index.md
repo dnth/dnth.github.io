@@ -525,4 +525,4 @@ If you find this useful, or if you have any questions, comments, or feedback, I 
 {{< tweet dicksonneoh7 1513478343726809090>}}
 
 
-So what's next? If you are interested to learn how I deploy this model on Android checkout this [post](https://dicksonneoh.com/portfolio/microsense_a_deep_learning_powered_cell_counting_app_with_flutter/).
+So what's next? If you are interested to learn how I deploy this model on Android checkout this [post](https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/).
