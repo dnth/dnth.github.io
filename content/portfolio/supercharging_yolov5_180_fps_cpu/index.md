@@ -33,6 +33,9 @@ You ran through a quick checklist --
 
 You're on top of the world. 
 
+<iframe src="https://giphy.com/embed/zEJRrMkDvRe5G" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/win-zEJRrMkDvRe5G"></a></p>
+
+
 You can finally pitch the results to your clients next Monday.
 At the back of your mind, you imagined the clients' impressed looks on the astonishing feat.
 
