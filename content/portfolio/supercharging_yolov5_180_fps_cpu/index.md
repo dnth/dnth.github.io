@@ -153,6 +153,30 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
                 --project yolov5-deepsparse --name yolov5s-sgd
 ```
 
+{{< notice note >}}
++ `--cfg` specifies the location of the configuration file which stores the model architecture.
+
++ `--data` specifies location of the `.yaml` file that stores the details of the pistols dataset.
+
++ `--hyp` specifies the training hyperparameter configurations.
+
++ `--weights` specifies the path to a pretrained weight.
+
++ `--img` specifies the input image size.
+
++ `--batch-size` specifies the batch size used in training.
+
++ `--optimizer` specifies the type of optimizer. Options include `SGD`, `Adam`, `AdamW`.
+
++ `--project` specifies the name of the wandb project.
+
++ `--name` specifies the wanb run name.
+
+{{< /notice >}}
+
+This trains a YOLOv5-S model without any modification to serve as a baseline. All metrics are logged to Weights & Biases (Wandb).
+
+View my training metrics [here](https://wandb.ai/dnth/yolov5-deepsparse).
 
 ### ⛳ Baseline Inference
 Let's first establish a baseline before we start optimizing.
