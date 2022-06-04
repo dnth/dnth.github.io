@@ -17,32 +17,54 @@ This blog post is still a work in progress. If you require further clarification
 {{< /notice >}}
 
 ### 🔥 Motivation
-So you've trained the most popular object detection model - YOLOv5 and got some impressive results.
+After months of searching, you've finally found the *one*. 
 
-Now you finally get to deploy and run the model on a real.
+The *one* object detection library that just works.
+No installation issues, no package version mismatch and no `CUDA` errors. 
 
-But there's only one problem. Not everyone has a GPU to run the model.
+I'm taking about the awesome [YOLOv5](https://github.com/ultralytics/yolov5) object detection library by Ultralytics.
+
+Elated, you quickly find an interesting dataset from [Roboflow](https://roboflow.com/) and finally trained a state-of-the-art (SOTA) YOLOv5 model to detect firearms from image streams.
+
+You ran through a quick checklist --
++ Inference results, check ✅.
++ COCO metrics, check ✅.
++ Live inference latency, check ✅.
+
+You're on top of the world. You can finally pitch the results to your clients next Monday.
+At the back of you mind, you imagined the clients' impressed looks on the astonishing feat.
+
+Finally, on the pitching day, just when you thought things are going in the right direction.
+One of the clients asked
+
+"**Does your model run on our existing CPU?**"
+
+You flinched. That wasn't something you anticipated. You tried to convince them that GPUs are the way forward and it is the "best" way to run your model in real-time.
+
+You scanned the room and begin to see your clients faces, not particularly happy 👇
 
 {{< figure_resizing src="meme.jpg">}}
 
-I will show you how you can supercharge your YOLOv5 inference performance from 20+ FPS to 180+ FPS on a CPU.
-With free and open-source tools from [Neural Magic](https://neuralmagic.com/) you'll get GPU-class performance on commodity CPUs.
+I hope nobody will ever have to face this awkward situation in a pitching session, ever.
+You don't have to learn it the hard way, like I did.
 
+How, you asked? This post is exactly that.
 
-
+I will show you how you can supercharge your YOLOv5 inference performance running on a consumer CPU.
+with free and open-source tools from [Neural Magic](https://neuralmagic.com/). 
 
 
 {{< notice tip >}}
 By the end of this post, you will learn how to:
 
 * Train state-of-the-art YOLOv5 model with your own data.
-* Prune and quantize the YOLOv5 model using SparseML.
-* Export the sparsified YOLOv5 and run it using the DeepSparse engine. 
+* Sparsify the model using SparseML quantization aware aware training loop.
+* Export the sparsified model and run it using the DeepSparse engine at insane speed. 
 
-**P/S**: You'll get GPU-class inference performance on a CPU using only 4 cores! 😱
+**P/S**: The end result - YOLOv5 on CPU at 180+ FPS using only 4 cores! 🚀
 {{< /notice >}}
 
-### 🕸 Sparse Neural Network
+If that sounds interesting let's get into it ⛷.
 
 
 ### 🔩 Setting Up
@@ -51,6 +73,8 @@ Use Ultralytic YOLOv5 implementations.
 Clone repo from NM fork.
 
 Roboflow pistol dataset.
+
+### 🕸 Sparse Neural Network
 
 ### ⛳ Baseline PyTorch Inference
 
