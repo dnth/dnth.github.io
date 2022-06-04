@@ -74,7 +74,7 @@ If that sounds interesting let's get into it ⛷.
 #### 🔫 Dataset
 
 The [recent gun violence](https://edition.cnn.com/2022/05/25/us/uvalde-texas-elementary-school-shooting-what-we-know/index.html) news had me thinking deeply about how we can prevent incidents like these again. 
-This is the worst gun violence since 2021, and 21 innocent lives were lost.
+This is the worst gun violence since 2012, and 21 innocent lives were lost.
 
 My heart goes out to all victims of the violence and their loved ones.
 
