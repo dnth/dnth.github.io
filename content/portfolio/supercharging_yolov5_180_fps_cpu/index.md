@@ -20,7 +20,7 @@ This blog post is still a work in progress. If you require further clarification
 After months of searching, you've finally found the *one*. 
 
 The *one* object detection library that just works.
-No installation hassle, no package version mismatch and no `CUDA` errors. 
+No installation hassle, no package version mismatch, and no `CUDA` errors. 
 
 I'm taking about the ubiquitous [YOLOv5](https://github.com/ultralytics/yolov5) object detection library by [Ultralytics](https://ultralytics.com/yolov5).
 
