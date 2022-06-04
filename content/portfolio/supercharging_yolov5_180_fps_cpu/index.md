@@ -40,23 +40,24 @@ You can finally pitch the results to your clients next Monday.
 At the back of your mind, you imagined the clients' impressed looks on the astonishing feat.
 
 Finally, on the pitching day, just when you thought things are going in the right direction.
-One of the clients asked
+One of the clients asked,
 
 "**Does your model run on our existing CPU?**"
 
-You flinched. That wasn't something you anticipated. You tried to convince them that GPUs are the way forward and it is the "best" way to run your model in real-time.
+You flinched. That wasn't something you anticipated. You tried to convince them that GPUs are "the way forward" and it is "the best way" to run your model in real-time.
 
-You scanned the room and begin to notice their faces, they don't look particularly happy 👇
+You scanned the room and begin to notice the looks on their faces 👇
 
 {{< figure_resizing src="meme.jpg">}}
 
+Needless to say it didn't go well.
 I hope nobody will ever have to face this awkward situation in a pitching session, ever.
 You don't have to learn it the hard way, like I did.
 
-How, you asked? This post is exactly that.
+How, you asked? Can we really use CPUs to run models in real-time? This post is exactly that.
 
 I will show you how you can supercharge your YOLOv5 inference performance running on a consumer CPU.
-Oh, we'll be using free and open-source tools from [Neural Magic](https://neuralmagic.com/). 
+Oh, we'll be using **free** and open-source tools and it only takes few steps to start.
 
 {{< notice tip >}}
 By the end of this post, you will learn how to:
@@ -91,8 +92,6 @@ This dataset contains 2986 images and 3448 labels across a single annotation cla
 {{< figure_resizing src="pistol.png">}}
 
 #### 🦸 YOLOv5 Object Detection Library
-Let's first install the YOLOv5 object detection library from Github.
-
 For this post, we are going to use a [forked version](https://github.com/neuralmagic/yolov5) of the YOLOv5 library that will allow us to do custom optimizations in the upcoming section.
 
 To install, run the following commands
