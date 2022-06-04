@@ -22,7 +22,7 @@ After months of searching, you've finally found the *one*.
 The *one* object detection library that just works.
 No installation issues, no package version mismatch and no `CUDA` errors. 
 
-I'm taking about the awesome [YOLOv5](https://github.com/ultralytics/yolov5) object detection library by Ultralytics.
+I'm taking about the awesome [YOLOv5](https://github.com/ultralytics/yolov5) object detection library by [Ultralytics](https://ultralytics.com/yolov5).
 
 Elated, you quickly find an interesting dataset from [Roboflow](https://roboflow.com/) and finally trained a state-of-the-art (SOTA) YOLOv5 model to detect firearms from image streams.
 
