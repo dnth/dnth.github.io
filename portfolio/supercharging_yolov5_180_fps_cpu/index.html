@@ -6,7 +6,7 @@
 <span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-between" id=navbarCollapse><ul class="nav navbar-nav main-navigation my-0 mx-auto"><li class=nav-item><a href=https://dicksonneoh.com/#home class="nav-link text-dark text-sm-center p-2">Home</a></li><li class=nav-item><a href=https://dicksonneoh.com/#about class="nav-link text-dark text-sm-center p-2">About</a></li><li class=nav-item><a href=https://dicksonneoh.com/#service class="nav-link text-dark text-sm-center p-2">Services</a></li><li class=nav-item><a href=https://dicksonneoh.com/#portfolio class="nav-link text-dark text-sm-center p-2">Projects</a></li><li class=nav-item><a href=https://dicksonneoh.com/#resume class="nav-link text-dark text-sm-center p-2">Resume</a></li><li class=nav-item><a href=https://dicksonneoh.com/#skills class="nav-link text-dark text-sm-center p-2">Skills</a></li><li class=nav-item><a href=https://dicksonneoh.com/#blog class="nav-link text-dark text-sm-center p-2">Blogs</a></li><li class=nav-item><a href=https://dicksonneoh.com/#contact class="nav-link text-dark text-sm-center p-2">Contact</a></li></ul><div class=navbar-nav><a href=https://calendly.com/dickson-neoh/discovery-call rel=noopener class="btn btn-primary btn-zoom hire_button">Book a call</a></div></div></div></nav><div id=content><header class=breadCrumb><div class=container><div class=row><div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center"><h3 class=breadCrumb__title>Supercharging YOLOv5: How I get 180+ FPS Inference on a CPU using only 4 Cores</h3><nav aria-label=breadcrumb class="d-flex justify-content-center"></nav></div></div><div class="row p-3"><div class="col-lg-10 col-md-10 offset-lg-1 offset-md-0 text-center"><i class="fa fa-calendar"></i> &ensp;
 January 19, 2022 &ensp; &ensp;
 <i class="fa fa-clock-o"></i> &ensp;
-5 mins read</div><div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center"><i class="fa fa-tag"></i> &ensp;
+6 mins read</div><div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center"><i class="fa fa-tag"></i> &ensp;
 <a href=https://dicksonneoh.com/tags/deepsparse/>DeepSparse</a>
 <span class=separator>•</span>
 <a href=https://dicksonneoh.com/tags/onnx/>ONNX</a>
@@ -36,8 +36,31 @@ That&rsquo;s when I came across the <a href=https://public.roboflow.com/object-d
 </span></span><span style=display:flex><span>git checkout release/0.12
 </span></span><span style=display:flex><span>pip install -r requirements.txt
 </span></span></code></pre></div><p>Now let&rsquo;s put the downloaded Pistols Dataset into the appropriate folder for us to start training.
-You can refer to my folder structure <a href=https://github.com/dnth/yolov5-deepsparse-blogpost>here</a>.
-Feel free to fork and use it on your own dataset.</p><h4 id=-training>🥋 Training</h4><p>To start training we will run the <code>train.py</code> script from the YOLOv5 repo.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>python train.py --cfg ./models_v5.0/yolov5s.yaml <span style=color:#ae81ff>\
+I will put the downloaded images and labels into the <code>datasets</code> folder.</p><p>Here&rsquo;s a high level overview of the structure of the directory.</p><pre tabindex=0><code class=language-tree data-lang=tree>├── datasets
+│   ├── pistols
+│   │   ├── train
+|   |   ├── valid
+├── recipes
+│   ├── yolov5s.pruned.md
+│   ├── yolov5.transfer_learn_pruned.md
+│   ├── yolov5.transfer_learn_pruned_quantized.md
+|   └── ...
+└── yolov5-train
+        ├── data
+        |   ├── hyps
+        |   |   ├── hyps.scratch.yaml
+        |   |   └── ...
+        |   ├── pistols.yaml
+        |   └── ...
+        ├── models_v5.0
+        |   ├── yolov5s.yaml
+        |   └── ...
+        ├── train.py
+        ├── export.py
+        ├── annotate.py
+        └── ...
+</code></pre><p>You can refer to my folder structure <a href=https://github.com/dnth/yolov5-deepsparse-blogpost>here</a>.
+Feel free to fork my folder on Github and use it on your own dataset.</p><h4 id=-training>🥋 Training</h4><p>To start training we will run the <code>train.py</code> script from the YOLOv5 repo.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>python train.py --cfg ./models_v5.0/yolov5s.yaml <span style=color:#ae81ff>\
 </span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                --data pistols.yaml <span style=color:#ae81ff>\
 </span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                --hyp data/hyps/hyp.scratch.yaml <span style=color:#ae81ff>\
 </span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                --weights yolov5s.pt --img <span style=color:#ae81ff>416</span> --batch-size <span style=color:#ae81ff>64</span> <span style=color:#ae81ff>\
