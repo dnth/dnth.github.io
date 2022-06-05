@@ -1,5 +1,5 @@
 ---
-title: "Supercharging YOLOv5: How I Get 180+ FPS Inference on a CPU Using 4 Cores"
+title: "Supercharging YOLOv5: How I Get 182.4 FPS Inference Without a GPU"
 date: 2022-01-19T11:00:15+08:00
 featureImage: images/portfolio/supercharging_yolov5/thumbnail.gif
 postImage: images/portfolio/supercharging_yolov5/post_image.png
@@ -17,12 +17,12 @@ This blog post is still a work in progress. If you require further clarification
 {{< /notice >}}
 
 ### 🔥 Motivation
-After months of searching, you've finally found the *one*. 
+After months of searching, you've finally found *the one*. 
 
-The *one* object detection library that just works.
+The one object detection library that just works.
 No installation hassle, no package version mismatch, and no `CUDA` errors. 
 
-I'm talking about the ubiquitous [YOLOv5](https://github.com/ultralytics/yolov5) object detection library by [Ultralytics](https://ultralytics.com/yolov5).
+I'm talking about the amazingly engineered [YOLOv5](https://github.com/ultralytics/yolov5) object detection library by [Ultralytics](https://ultralytics.com/yolov5).
 
 Elated, you quickly find an interesting dataset from [Roboflow](https://roboflow.com/) and finally trained a state-of-the-art (SOTA) YOLOv5 model to detect firearms from image streams.
 
@@ -44,9 +44,11 @@ One of the clients asked,
 
 "**Does your model run on our existing CPU?**"
 
-You flinched. That wasn't something you anticipated. You tried to convince them that GPUs are *"the way forward"* and it's *"the best way"* to run your model in real-time.
+You flinched. 
 
-You scanned the room and begin to notice the looks on their faces 👇
+That wasn't something you anticipated. You tried to convince them that GPUs are *"the way forward"* and it's *"the best way"* to run your model in real-time.
+
+You scanned the room and begin to notice the stiff looks on their faces 👇
 
 {{< figure_resizing src="meme.jpg">}}
 
@@ -58,16 +60,16 @@ You may wonder, can we really use consumer grade CPUs to run models in real-time
 
 🦾**YES we can!**
 
-I wasn't a believer, but now I am.
+I wasn't a believer, but now I am, after discovering [Neural Magic](https://neuralmagic.com/).
 
-In this post I show you how you can supercharge your YOLOv5 inference performance running on CPUs using **free** and open-source tools.
+In this post I show you how you can supercharge your YOLOv5 inference performance running on CPUs using **free** and open-source tools by Neural Magic.
 
 {{< notice tip >}}
 By the end of this post, you will learn how to:
 
-* Train state-of-the-art YOLOv5 model with your own data.
+* Train a state-of-the-art YOLOv5 model with your own data.
 * Sparsify the model using SparseML quantization aware training loop.
-* Export the sparsified model and run it using the DeepSparse engine at insane speed. 
+* Export the sparsified model and run it using the DeepSparse engine at insane speeds. 
 
 **P/S**: The end result - YOLOv5 on CPU at 180+ FPS using only 4 cores! 🚀
 {{< /notice >}}
