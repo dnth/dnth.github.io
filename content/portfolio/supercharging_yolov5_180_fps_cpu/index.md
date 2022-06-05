@@ -68,7 +68,7 @@ In this post I show you how you can supercharge your YOLOv5 inference performanc
 By the end of this post, you will learn how to:
 
 * Train a state-of-the-art YOLOv5 model with your own data.
-* Sparsify the model using SparseML quantization aware training loop.
+* Sparsify the model using SparseML quantization aware training and one-shot quantization.
 * Export the sparsified model and run it using the DeepSparse engine at insane speeds. 
 
 **P/S**: The end result - YOLOv5 on CPU at 180+ FPS using only 4 cores! 🚀
@@ -151,16 +151,16 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
                 --data pistols.yaml \
                 --hyp data/hyps/hyp.scratch.yaml \
                 --weights yolov5s.pt --img 416 --batch-size 64 \
-                --optimizer SGD --epochs 240 --device 0 \
+                --optimizer SGD --epochs 240 \
                 --project yolov5-deepsparse --name yolov5s-sgd
 ```
 
 {{< notice note >}}
 + `--cfg` specifies the location of the configuration file which stores the model architecture.
 
-+ `--data` specifies location of the `.yaml` file that stores the details of the pistols dataset.
++ `--data` specifies location of the `.yaml` file that stores the details of the Pistols dataset.
 
-+ `--hyp` specifies the training hyperparameter configurations.
++ `--hyp` specifies the location to the `.yaml` file that stores the training hyperparameter configurations.
 
 + `--weights` specifies the path to a pretrained weight.
 
@@ -170,13 +170,16 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
 
 + `--optimizer` specifies the type of optimizer. Options include `SGD`, `Adam`, `AdamW`.
 
-+ `--project` specifies the name of the wandb project.
++ `--epochs` specifies the number of training epochs.
 
-+ `--name` specifies the wanb run name.
++ `--project` specifies the name of the Wandb project.
+
++ `--name` specifies the Wandb run name.
 
 {{< /notice >}}
 
 This trains a YOLOv5-S model without any modification to serve as a baseline. All metrics are logged to Weights & Biases (Wandb). View my training metrics on Wandb [here](https://wandb.ai/dnth/yolov5-deepsparse).
+
 
 ### ⛳ Baseline Inference
 Let's first establish a baseline before we start optimizing.
@@ -216,22 +219,44 @@ Sparsification is the process of removing redundant information from a model.
 [SparseML](https://github.com/neuralmagic/sparseml) is an open-source library by Neural Magic to apply sparsification recipes to neural networks.
 It currently supports integration with several well known libraries from computer vision and natural language processing domain.
 
-
 Sparsification results in a smaller and faster model. 
 This is how we can significantly speed up our YOLOv5 model, by a lot!
 
-There are several ways to sparsify models with SparseML:
+There are several methods to sparsify models with SparseML:
 + Post-training (One-shot) - Quantization
 + Training Aware - Pruning & Quantization
 + Sparse Transfer Learning
 
 #### ☝️ One-Shot
-No re-training. Just dynamic quantization. Easiest.
+The one-shot method is by far the easiest way to sparsify a model as it doesn't require re-training.
+
+But this only works well for dynamic quantization for now.
+More research works are ongoing on making one-shot work well for pruning.
+
+Let's run one-shot quantization on the baseline model we trained earlier.
+All you need to do is add a `--one-shot` argument to the training script.
+Remember to specify `--weights` to the location of the best checkpoint from the training.
+
+```python
+python train.py --cfg ./models_v5.0/yolov5s.yaml 
+                --data pistols.yaml --hyp data/hyps/hyp.scratch.yaml 
+                --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt 
+                --img 416 --batch-size 64 --optimizer SGD --epochs 240
+                --project yolov5-deepsparse --name yolov5s-sgd-one-shot 
+                --one-shot
+```
+
+It should generate another `.pt` in the same directory of your weights.
+This `.pt` file stores the quantized weights in `INT8` instead of `FLOAT32` resulting in a reduction in model size and inference speedups.
+
 
 + Average FPS : 32.00
 + Average inference time (ms) : 31.24
 
 {{< video src="vids/one-shot/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
+At no retraining cost we are performing 10+ FPS better than the original model with no quantization.
+We maxed out at about 40 FPS!
 
 #### ✂ Pruned YOLOv5-S
 Re-training with recipe.
@@ -255,6 +280,7 @@ Taking an already sparsified (pruned and quantized) and fine-tune it on your own
 
 + Average FPS : 51.56
 + Average inference time (ms) : 19.39
+
 {{< video src="vids/yolov5s-pruned-quant-tl/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### 🚀 Supercharging FPS
@@ -268,7 +294,13 @@ Hardswish activation performs better with DeepSparse.
 {{< video src="vids/yolov5n-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### 🚧 Conclusion
-In this blog post I've shown you
+{{< notice tip >}}
+In this post you've learned how to:
+
+* Train a state-of-the-art YOLOv5 model with your own data.
+* Sparsify the model using SparseML quantization aware training and one-shot quantization.
+* Export the sparsified model and run it using the DeepSparse engine at insane speeds. 
+{{< /notice >}}
 
 
 ### 🙏 Comments & Feedback
