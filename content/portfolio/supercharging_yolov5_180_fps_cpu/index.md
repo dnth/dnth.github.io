@@ -238,17 +238,36 @@ All you need to do is add a `--one-shot` argument to the training script.
 Remember to specify `--weights` to the location of the best checkpoint from the training.
 
 ```python
-python train.py --cfg ./models_v5.0/yolov5s.yaml 
-                --data pistols.yaml --hyp data/hyps/hyp.scratch.yaml 
-                --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt 
-                --img 416 --batch-size 64 --optimizer SGD --epochs 240
-                --project yolov5-deepsparse --name yolov5s-sgd-one-shot 
+python train.py --cfg ./models_v5.0/yolov5s.yaml \
+                --data pistols.yaml --hyp data/hyps/hyp.scratch.yaml \
+                --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
+                --img 416 --batch-size 64 --optimizer SGD --epochs 240 \
+                --project yolov5-deepsparse --name yolov5s-sgd-one-shot \
                 --one-shot
 ```
 
-It should generate another `.pt` in the same directory of your weights.
+It should generate another `.pt` in the directory specified in `--name`.
 This `.pt` file stores the quantized weights in `INT8` instead of `FLOAT32` resulting in a reduction in model size and inference speedups.
 
+Next we export the quantized .pt file into onnx.
+
+```python
+python export.py --weights yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkpoint-one-shot.pt \
+                 --include onnx \
+                 --imgsz 416 \
+                 --dynamic \
+                 --simplify
+```
+
+```python
+python annotate.py yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkpoint-one-shot.onnx \
+                --source data/pexels-cottonbro-8717592.mp4 \
+                --engine deepsparse \
+                --device cpu \
+                --conf-thres 0.7 \
+                --image-shape 416 416 \
+                --num-cores 4
+```
 
 + Average FPS : 32.00
 + Average inference time (ms) : 31.24
