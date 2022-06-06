@@ -297,7 +297,7 @@ Without any optimization, we improved the FPS from 21 (PyTorch engine on CPU usi
 
 We are done with the baselines. Let's see how we can start optimizing the model by sparsification.
 
-### 🌀 Sparsify with SparseML
+### 👨‍🍳 SparseML and Recipes
 
 
 <img alt="SparseML Flow" src="https://docs.neuralmagic.com/docs/source/infographics/sparseml.png" width="700"/>
