@@ -1,5 +1,5 @@
 ---
-title: "Supercharging YOLOv5: How I Get 182.4 FPS Inference Without a GPU"
+title: "Supercharging YOLOv5: How I Got 182.4 FPS Inference Without a GPU"
 date: 2022-01-19T11:00:15+08:00
 featureImage: images/portfolio/supercharging_yolov5/thumbnail.gif
 postImage: images/portfolio/supercharging_yolov5/post_image.png
@@ -111,6 +111,8 @@ pip install -r requirements.txt
 Now let's put the downloaded Pistols Dataset into the appropriate folder for us to start training.
 I will put the downloaded images and labels into the `datasets` folder.
 
+Let's also put the sparsifation recipes from [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) into the `recipes` folder.
+
 Here's a high level overview of the structure of the directory.
 
 ```tree
@@ -139,13 +141,25 @@ Here's a high level overview of the structure of the directory.
         └── ...
 ```
 
-You can refer to my folder structure [here](https://github.com/dnth/yolov5-deepsparse-blogpost).
-Feel free to fork my folder on Github and use it on your own dataset.
+{{< notice note >}}
+
++ `datasets` - Train/validation labels and images downloaded from Roboflow.
+
++ `recipes` - Sparsification recipes from the [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) repo.
+
++ `yolov5-train` - cloned directory from Neural Magic's YOLOv5 [fork](https://github.com/neuralmagic/yolov5). 
+
+⚠️ **IMPORTANT**: The sparsification recipes will only work with Neural Magic's YOLOv5 fork and **will NOT WORK** with the original YOLOv5 by Ultralytics.
+
+{{< /notice >}}
+
+You can explore further into the folder structure on my [Github repo](https://github.com/dnth/yolov5-deepsparse-blogpost).
+Feel free to fork repo and use it on your own dataset.
 
 #### 🥋 Training
+Now that we have everything in the right place, let's start by training a baseline model with no optimization.
 
-To start training we will run the `train.py` script from the YOLOv5 repo.
-
+For that, run the `train.py` script in the `yolov5-train` folder.
 ```bash
 python train.py --cfg ./models_v5.0/yolov5s.yaml \
                 --data pistols.yaml \
@@ -178,8 +192,38 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
 
 {{< /notice >}}
 
-This trains a YOLOv5-S model without any modification to serve as a baseline. All metrics are logged to Weights & Biases (Wandb). View my training metrics on Wandb [here](https://wandb.ai/dnth/yolov5-deepsparse).
+This trains a baseline YOLOv5-S model without any modification. All metrics are logged to Weights & Biases (Wandb). 
 
+
+To sparsify a model we will use pre-made recipes on the SparseML [repo](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes).
+These recipes tell the training script how to sparsify the model during training.
+
+Next, let's train a pruned YOLOv5-S.
+For that we slightly modify the command as follows
+
+```bash
+python train.py --cfg ./models_v5.0/yolov5s.yaml \
+                --recipe ../recipes/yolov5s.pruned.md
+                --data pistols.yaml \
+                --hyp data/hyps/hyp.scratch.yaml \
+                --weights yolov5s.pt --img 416 --batch-size 64 \
+                --optimizer SGD --epochs 240 \
+                --project yolov5-deepsparse --name yolov5s-sgd-pruned
+```
+
+The only change here is the `--recipe` and the `--name` argument.
+
+
+
+
+`--recipe` tells the training script to use a sparsification recipe for the YOLOv5-S model.
+In this case we are using the `yolov5s.pruned.md` recipe which prunes the model as it trains.
+
+
+
+{{< figure_resizing src="mAP.png">}}
+
+View all of the training metrics on Wandb [here](https://wandb.ai/dnth/yolov5-deepsparse).
 
 ### ⛳ Baseline Inference
 Let's first establish a baseline before we start optimizing.
