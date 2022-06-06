@@ -203,11 +203,11 @@ This trains a baseline YOLOv5-S model without any modification. All metrics are 
 Once training completes, let's run an inference on a video with the `annotate.py` script.
 
 ```bash
-python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.pt 
-                --source data/pexels-cottonbro-8717592.mp4 
-                --engine torch 
-                --image-shape 416 416 
-                --device cpu 
+python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
+                --source data/pexels-cottonbro-8717592.mp4 \
+                --engine torch \
+                --image-shape 416 416 \
+                --device cpu \
                 --conf-thres 0.7
 ```
 
@@ -256,10 +256,10 @@ It expects a onnx model.
 Let's export our .pt file into onnx using the `export.py` script.
 
 ```bash
-python export.py --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt 
-                --include onnx 
-                --imgsz 416 
-                --dynamic 
+python export.py --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
+                --include onnx \
+                --imgsz 416 \
+                --dynamic \
                 --simplify
 ```
 
@@ -279,12 +279,12 @@ python export.py --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt
 Let's run the inference script again, this time using the `deepsparse` engine and using only 4 CPU cores.
 
 ```bash
-python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.onnx 
-        --source data/pexels-cottonbro-8717592.mp4 
-        --image-shape 416 416 
-        --conf-thres 0.7 
-        --engine deepsparse 
-        --device cpu 
+python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.onnx \
+        --source data/pexels-cottonbro-8717592.mp4 \
+        --image-shape 416 416 \
+        --conf-thres 0.7 \
+        --engine deepsparse \
+        --device cpu \
         --num-cores 4
 ```
 
@@ -339,7 +339,7 @@ Let's run one-shot quantization on the baseline model we trained earlier.
 All you need to do is add a `--one-shot` argument to the training script.
 Remember to specify `--weights` to the location of the best checkpoint from the training.
 
-```python
+```bash
 python train.py --cfg ./models_v5.0/yolov5s.yaml \
                 --data pistols.yaml --hyp data/hyps/hyp.scratch.yaml \
                 --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
@@ -353,7 +353,7 @@ This `.pt` file stores the quantized weights in `INT8` instead of `FLOAT32` resu
 
 Next we export the quantized .pt file into onnx.
 
-```python
+```bash
 python export.py --weights yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkpoint-one-shot.pt \
                  --include onnx \
                  --imgsz 416 \
@@ -361,13 +361,13 @@ python export.py --weights yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkp
                  --simplify
 ```
 
-```python
+```bash
 python annotate.py yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkpoint-one-shot.onnx \
                 --source data/pexels-cottonbro-8717592.mp4 \
+                --image-shape 416 416 \
+                --conf-thres 0.7 \
                 --engine deepsparse \
                 --device cpu \
-                --conf-thres 0.7 \
-                --image-shape 416 416 \
                 --num-cores 4
 ```
 
@@ -433,15 +433,15 @@ Re-training with recipe.
 
 
 
-### 🚀 Supercharging FPS
+### 🚀 Supercharging with Smaller Models
 
 Pruned and Quantized YOLOv5n + Hardswish Activation
 Hardswish activation performs better with DeepSparse.
 
+{{< video src="vids/yolov5n-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 + Average FPS : 93.33
 + Average inference time (ms) : 10.71
-{{< video src="vids/yolov5n-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### 🚧 Conclusion
 
