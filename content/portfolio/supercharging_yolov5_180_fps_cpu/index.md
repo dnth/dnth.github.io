@@ -111,7 +111,7 @@ pip install -r requirements.txt
 Now let's put the downloaded Pistols Dataset into the appropriate folder for us to start training.
 I will put the downloaded images and labels into the `datasets` folder.
 
-Let's also put the sparsifation recipes from [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) into the `recipes` folder.
+Let's also put the sparsification recipes from [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) into the `recipes` folder.
 
 Here's a high level overview of the structure of the directory.
 
@@ -149,15 +149,15 @@ Here's a high level overview of the structure of the directory.
 
 + `yolov5-train` - cloned directory from Neural Magic's YOLOv5 [fork](https://github.com/neuralmagic/yolov5). 
 
-⚠️ **IMPORTANT**: The sparsification recipes will only work with Neural Magic's YOLOv5 fork and **will NOT WORK** with the original YOLOv5 by Ultralytics.
-
-{{< /notice >}}
-
 You can explore further into the folder structure on my [Github repo](https://github.com/dnth/yolov5-deepsparse-blogpost).
 Feel free to fork repo and use it on your own dataset.
+{{< /notice >}}
+
+{{< notice warning >}}
+**IMPORTANT**: The sparsification recipes will only work with Neural Magic's YOLOv5 fork and will **NOT WORK** with the original YOLOv5 by Ultralytics.
+{{< /notice >}}
 
 ### ⛳ Baseline Performance
-Let's first establish a baseline before we start optimizing.
 
 #### 🔦 PyTorch
 
@@ -174,35 +174,35 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
 ```
 
 {{< notice note >}}
-+ `--cfg` specifies the location of the configuration file which stores the model architecture.
++ `--cfg` -- Path to the configuration file which stores the model architecture.
 
-+ `--data` specifies location of the `.yaml` file that stores the details of the Pistols dataset.
++ `--data` -- Path to the `.yaml` file that stores the details of the Pistols dataset.
 
-+ `--hyp` specifies the location to the `.yaml` file that stores the training hyperparameter configurations.
++ `--hyp` -- Path to the `.yaml` file that stores the training hyperparameter configurations.
 
-+ `--weights` specifies the path to a pretrained weight.
++ `--weights` -- Path to a pretrained weight.
 
-+ `--img` specifies the input image size.
++ `--img` -- Input image size.
 
-+ `--batch-size` specifies the batch size used in training.
++ `--batch-size` -- Batch size used in training.
 
-+ `--optimizer` specifies the type of optimizer. Options include `SGD`, `Adam`, `AdamW`.
++ `--optimizer` -- Type of optimizer. Options include `SGD`, `Adam`, `AdamW`.
 
-+ `--epochs` specifies the number of training epochs.
++ `--epochs` -- Number of training epochs.
 
-+ `--project` specifies the name of the Wandb project.
++ `--project` -- Wandb project name.
 
-+ `--name` specifies the Wandb run name.
++ `--name` -- Wandb run id.
 
 {{< /notice >}}
 
-This trains a baseline YOLOv5-S model without any modification. All metrics are logged to Weights & Biases (Wandb). 
+This trains a baseline YOLOv5-S model without any modification. All metrics are logged to Weights & Biases (Wandb). View the training metrics [here](https://wandb.ai/dnth/yolov5-deepsparse).
 
 
 
+Once training completes, let's run an inference on a video from [Pexels](https://www.pexels.com/videos).
 
-Inference on CPU with YOLOv5-S PyTorch model.
-
+You can run the inference using the `annotate.py` script.
 
 ```bash
 python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.pt 
@@ -229,19 +229,21 @@ The first argument points to the `.pt` saved checkpoint.
 
 {{< /notice >}}
 
-On a Intel i9-11900 8 core processor
+The inference result is saved into the `annotation_results` folder.
+
+Here's how it looks like running the inference on an Intel i9-11900 8 core processor.
+
+{{< video src="vids/torch-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 + Average FPS : 21.91
 + Average inference time (ms) : 45.58
 
-{{< video src="vids/torch-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+On a RTX3090 GPU.
 
-On a RTX3090 GPU
+{{< video src="vids/torch-gpu/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 + Average FPS : 89.20
 + Average inference time (ms) : 11.21
-
-{{< video src="vids/torch-gpu/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 
 #### 🕸 DeepSparse Engine
@@ -318,6 +320,15 @@ python annotate.py yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkpoint-one
 At no retraining cost we are performing 10+ FPS better than the original model with no quantization.
 We maxed out at about 40 FPS!
 
+
+#### 🤹‍♂️ Sparse Transfer Learning
+Taking an already sparsified (pruned and quantized) and fine-tune it on your own dataset.
+
++ Average FPS : 51.56
++ Average inference time (ms) : 19.39
+
+{{< video src="vids/yolov5s-pruned-quant-tl/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
 #### ✂ Pruned YOLOv5-S
 To sparsify a model we will use pre-made recipes on the SparseML [repo](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes).
 These recipes tell the training script how to sparsify the model during training.
@@ -361,13 +372,7 @@ Re-training with recipe.
 {{< video src="vids/yolov5s-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 
-#### 🤹‍♂️ Sparse Transfer Learning
-Taking an already sparsified (pruned and quantized) and fine-tune it on your own dataset.
 
-+ Average FPS : 51.56
-+ Average inference time (ms) : 19.39
-
-{{< video src="vids/yolov5s-pruned-quant-tl/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### 🚀 Supercharging FPS
 
@@ -388,7 +393,7 @@ Once the training is done, we have a nice visualization of the metrics on Wandb 
 {{< figure_resizing src="mAP.png">}}
 
 From the graph, it looks like the YOLOv5-S pruned+quantized model performed the best on the mAP.
-View all of the training metrics on Wandb [here](https://wandb.ai/dnth/yolov5-deepsparse).
+
 
 
 
