@@ -218,11 +218,24 @@ The only change here is the `--recipe` and the `--name` argument.
 
 `--recipe` tells the training script to use a sparsification recipe for the YOLOv5-S model.
 In this case we are using the `yolov5s.pruned.md` recipe which prunes the model as it trains.
+You can change how aggressive your model is pruned by modifying the `yolov5s.pruned.md` recipe.
+
+Let's run the `train.py` for all cases. We are interested to compare
+
++ YOLOv5-S Baseline
++ YOLOv5-S Pruned
++ YOLOv5-S Pruned + Quantized
++ YOLOv5-S Transfer Learning (Fine-tuning on an already sparsified model)
 
 
+
+I listed all commands I used to train all models on the [README](https://github.com/dnth/yolov5-deepsparse-blogpost) of my repo.
+
+Once the training is done, we have a nice visualization of the metrics on Wandb that compares the mAP.
 
 {{< figure_resizing src="mAP.png">}}
 
+From the graph, it looks like the YOLOv5-S pruned+quantized model performed the best on the mAP.
 View all of the training metrics on Wandb [here](https://wandb.ai/dnth/yolov5-deepsparse).
 
 ### ⛳ Baseline Inference
