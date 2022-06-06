@@ -200,9 +200,7 @@ This trains a baseline YOLOv5-S model without any modification. All metrics are 
 
 
 
-Once training completes, let's run an inference on a video from [Pexels](https://www.pexels.com/videos).
-
-You can run the inference using the `annotate.py` script.
+Once training completes, let's run an inference on a video with the `annotate.py` script.
 
 ```bash
 python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.pt 
@@ -226,12 +224,13 @@ The first argument points to the `.pt` saved checkpoint.
 
 + `--conf-thres` -- Confidence threshold for inference.
 
+**Note**: The inference result will be saved in the `annotation_results` folder.
 
 {{< /notice >}}
 
-The inference result is saved into the `annotation_results` folder.
 
-Here's how it looks like running the inference on an Intel i9-11900 8 core processor.
+
+Here's how it looks like running the inference on an Intel i9-11900, 8-core processor using the baseline YOLOv5-S with no optimizations.
 
 {{< video src="vids/torch-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
@@ -245,30 +244,90 @@ On a RTX3090 GPU.
 + Average FPS : 89.20
 + Average inference time (ms) : 11.21
 
+Frankly, the FPS looks quite decent already and might suit some applications even without further optimization.
+
+But if you're looking to improve this then read on.
 
 #### 🕸 DeepSparse Engine
-Out of the box, no modifications to the model running at 4 CPU cores.
-Input the unoptimized onnx model.
+DeepSparse engine is an inference engine that runs optimally on CPU.
+
+It expects a onnx model. 
+
+Let's export our .pt file into onnx using the `export.py` script.
+
+```bash
+python export.py --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt 
+                --include onnx 
+                --imgsz 416 
+                --dynamic 
+                --simplify
+```
+
+{{< notice note >}}
+`--weight` -- Path to the `.pt` checkpoint.
+
+`--include` -- Which file to export to. Options: `torchscript`, `onnx`, [etc](https://github.com/dnth/yolov5-deepsparse-blogpost/blob/4d44b32909bbc9e8b3bb7f8bf89f0e50361872f7/yolov5-train/export.py#L694).
+
+`--imgsz` -- Image size.
+
+`--dynamic` -- Dynamic axes.
+
+`--simplify` -- Simplify the ONNX model.
+
+{{< /notice >}}
+
+Let's run the inference script again, this time using the `deepsparse` engine and using only 4 CPU cores.
+
+```bash
+python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.onnx 
+        --source data/pexels-cottonbro-8717592.mp4 
+        --image-shape 416 416 
+        --conf-thres 0.7 
+        --engine deepsparse 
+        --device cpu 
+        --num-cores 4
+```
+
+{{< video src="vids/onnx-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 + Average FPS : 29.48
 + Average inference time (ms) : 33.91
 
-{{< video src="vids/onnx-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+Without any optimization, we improved the FPS from 21 (PyTorch engine on CPU using 8 cores) to 29 just by using the ONNX model with `deepsparse` engine CPU using 4 cores.
 
+We are done with the baselines. Let's see how we can start optimizing the model by sparsification.
 
 ### 🌀 Sparsify with SparseML
+
+
+<img alt="SparseML Flow" src="https://docs.neuralmagic.com/docs/source/infographics/sparseml.png" width="700"/>
+
+
+
 Sparsification is the process of removing redundant information from a model.
-
-[SparseML](https://github.com/neuralmagic/sparseml) is an open-source library by Neural Magic to apply sparsification recipes to neural networks.
-It currently supports integration with several well known libraries from computer vision and natural language processing domain.
-
-Sparsification results in a smaller and faster model. 
+The result is a smaller and faster model. 
 This is how we can significantly speed up our YOLOv5 model, by a lot!
 
-There are several methods to sparsify models with SparseML:
-+ Post-training (One-shot) - Quantization
-+ Training Aware - Pruning & Quantization
-+ Sparse Transfer Learning
+
+
+[SparseML](https://github.com/neuralmagic/sparseml) is an open-source library by Neural Magic to sparsify neural networks.
+The sparsification is done by applying pre-made recipes to the model. 
+You can also modify the recipes to suit your needs.
+
+
+It currently supports integration with several well known libraries from computer vision and natural language processing domain.
+
+
+
+There are 3 methods to sparsify models with SparseML:
+
+1. Post-training (One-shot) 
+2. Sparse Transfer Learning
+3. Training Aware
+
+`1.` does not require retraining but only supports dynamic quantization. `2.` and `3.` requires retraining and supports pruning and quantization which may give better results.
+
+
 
 #### ☝️ One-Shot
 The one-shot method is by far the easiest way to sparsify a model as it doesn't require re-training.
