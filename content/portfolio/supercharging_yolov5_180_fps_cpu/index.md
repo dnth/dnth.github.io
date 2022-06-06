@@ -156,7 +156,11 @@ Here's a high level overview of the structure of the directory.
 You can explore further into the folder structure on my [Github repo](https://github.com/dnth/yolov5-deepsparse-blogpost).
 Feel free to fork repo and use it on your own dataset.
 
-#### 🥋 Training
+### ⛳ Baseline Performance
+Let's first establish a baseline before we start optimizing.
+
+#### 🔦 PyTorch
+
 Now that we have everything in the right place, let's start by training a baseline model with no optimization.
 
 For that, run the `train.py` script in the `yolov5-train` folder.
@@ -195,55 +199,35 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
 This trains a baseline YOLOv5-S model without any modification. All metrics are logged to Weights & Biases (Wandb). 
 
 
-To sparsify a model we will use pre-made recipes on the SparseML [repo](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes).
-These recipes tell the training script how to sparsify the model during training.
 
-Next, let's train a pruned YOLOv5-S.
-For that we slightly modify the command as follows
-
-```bash
-python train.py --cfg ./models_v5.0/yolov5s.yaml \
-                --recipe ../recipes/yolov5s.pruned.md
-                --data pistols.yaml \
-                --hyp data/hyps/hyp.scratch.yaml \
-                --weights yolov5s.pt --img 416 --batch-size 64 \
-                --optimizer SGD --epochs 240 \
-                --project yolov5-deepsparse --name yolov5s-sgd-pruned
-```
-
-The only change here is the `--recipe` and the `--name` argument.
-
-
-
-
-`--recipe` tells the training script to use a sparsification recipe for the YOLOv5-S model.
-In this case we are using the `yolov5s.pruned.md` recipe which prunes the model as it trains.
-You can change how aggressive your model is pruned by modifying the `yolov5s.pruned.md` recipe.
-
-Let's run the `train.py` for all cases. We are interested to compare
-
-+ YOLOv5-S Baseline
-+ YOLOv5-S Pruned
-+ YOLOv5-S Pruned + Quantized
-+ YOLOv5-S Transfer Learning (Fine-tuning on an already sparsified model)
-
-
-
-I listed all commands I used to train all models on the [README](https://github.com/dnth/yolov5-deepsparse-blogpost) of my repo.
-
-Once the training is done, we have a nice visualization of the metrics on Wandb that compares the mAP.
-
-{{< figure_resizing src="mAP.png">}}
-
-From the graph, it looks like the YOLOv5-S pruned+quantized model performed the best on the mAP.
-View all of the training metrics on Wandb [here](https://wandb.ai/dnth/yolov5-deepsparse).
-
-### ⛳ Baseline Inference
-Let's first establish a baseline before we start optimizing.
-
-#### 🔦 PyTorch
 
 Inference on CPU with YOLOv5-S PyTorch model.
+
+
+```bash
+python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.pt 
+                --source data/pexels-cottonbro-8717592.mp4 
+                --engine torch 
+                --image-shape 416 416 
+                --device cpu 
+                --conf-thres 0.7
+```
+
+{{< notice note >}}
+The first argument points to the `.pt` saved checkpoint.
+
++ `--source` - The input to run inference on. Options: path to video/images or just specify `0` to infer on your webcam.
+
++ `--engine` - Which engine to use. Options: `torch`, `deepsparse`, `onnxruntime`.
+
++ `--image-size` -- Input resolution.
+
++ `--device` -- Which device to use for inference. Options: `cpu` or `0` (GPU).
+
++ `--conf-thres` -- Confidence threshold for inference.
+
+
+{{< /notice >}}
 
 On a Intel i9-11900 8 core processor
 
@@ -335,7 +319,33 @@ At no retraining cost we are performing 10+ FPS better than the original model w
 We maxed out at about 40 FPS!
 
 #### ✂ Pruned YOLOv5-S
-Re-training with recipe.
+To sparsify a model we will use pre-made recipes on the SparseML [repo](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes).
+These recipes tell the training script how to sparsify the model during training.
+
+Next, let's train a pruned YOLOv5-S.
+For that we slightly modify the command as follows
+
+```bash
+python train.py --cfg ./models_v5.0/yolov5s.yaml \
+                --recipe ../recipes/yolov5s.pruned.md
+                --data pistols.yaml \
+                --hyp data/hyps/hyp.scratch.yaml \
+                --weights yolov5s.pt --img 416 --batch-size 64 \
+                --optimizer SGD --epochs 240 \
+                --project yolov5-deepsparse --name yolov5s-sgd-pruned
+```
+
+The only change here is the `--recipe` and the `--name` argument.
+
+
+
+
+`--recipe` tells the training script to use a sparsification recipe for the YOLOv5-S model.
+In this case we are using the `yolov5s.pruned.md` recipe which prunes the model as it trains.
+You can change how aggressive your model is pruned by modifying the `yolov5s.pruned.md` recipe.
+
+
+
 
 + Average FPS : 35.50
 + Average inference time (ms) : 31.73
@@ -370,6 +380,18 @@ Hardswish activation performs better with DeepSparse.
 {{< video src="vids/yolov5n-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 ### 🚧 Conclusion
+
+I listed all commands I used to train all models on the [README](https://github.com/dnth/yolov5-deepsparse-blogpost) of my repo.
+
+Once the training is done, we have a nice visualization of the metrics on Wandb that compares the mAP.
+
+{{< figure_resizing src="mAP.png">}}
+
+From the graph, it looks like the YOLOv5-S pruned+quantized model performed the best on the mAP.
+View all of the training metrics on Wandb [here](https://wandb.ai/dnth/yolov5-deepsparse).
+
+
+
 {{< notice tip >}}
 In this post you've learned how to:
 
