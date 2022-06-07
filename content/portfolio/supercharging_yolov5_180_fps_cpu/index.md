@@ -1,6 +1,6 @@
 ---
 title: "Supercharging YOLOv5: How I Got 182.4 FPS Inference Without a GPU"
-date: 2022-01-19T11:00:15+08:00
+date: 2022-06-07T11:00:15+08:00
 featureImage: images/portfolio/supercharging_yolov5/thumbnail.gif
 postImage: images/portfolio/supercharging_yolov5/post_image.png
 tags: ["DeepSparse", "ONNX", "YOLOv5", "real-time", "optimization", "pistol"]
@@ -74,7 +74,7 @@ By the end of this post, you will learn how to:
 **P/S**: The end result - YOLOv5 on CPU at 180+ FPS using only 4 CPU cores! 🚀
 {{< /notice >}}
 
-If that sounds interesting let's get into it ⛷.
+If that sounds interesting let's dive in 🧙
 
 
 ### 🔩 Setting Up
@@ -111,9 +111,9 @@ pip install -r requirements.txt
 Now let's put the downloaded Pistols Dataset into the appropriate folder for us to start training.
 I will put the downloaded images and labels into the `datasets` folder.
 
-Let's also put the sparsification recipes from [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) into the `recipes` folder.
+Let's also put the sparsification recipes from [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) into the `recipes` folder. More on `recipes` later.
 
-Here's a high level overview of the structure of the directory.
+Here's a high level overview of the directory.
 
 ```tree
 ├── datasets
@@ -143,14 +143,13 @@ Here's a high level overview of the structure of the directory.
 
 {{< notice note >}}
 
-+ `datasets` - Train/validation labels and images downloaded from Roboflow.
++ `datasets/` - Stores the train and validation images/labels downloaded from Roboflow.
 
-+ `recipes` - Sparsification recipes from the [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) repo.
++ `recipes/` - Stores the sparsification recipes from the [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) repo.
 
-+ `yolov5-train` - cloned directory from Neural Magic's YOLOv5 [fork](https://github.com/neuralmagic/yolov5). 
++ `yolov5-train/` - Cloned directory from Neural Magic's YOLOv5 [fork](https://github.com/neuralmagic/yolov5). 
 
-You can explore further into the folder structure on my [Github repo](https://github.com/dnth/yolov5-deepsparse-blogpost).
-Feel free to fork repo and use it on your own dataset.
+**NOTE**: You can explore further into the folder structure on my [Github repo](https://github.com/dnth/yolov5-deepsparse-blogpost).
 {{< /notice >}}
 
 {{< notice warning >}}
@@ -222,18 +221,18 @@ The first argument points to the `.pt` saved checkpoint.
 
 + `--conf-thres` -- Confidence threshold for inference.
 
-**Note**: The inference result will be saved in the `annotation_results` folder.
+**NOTE**: The inference result will be saved in the `annotation_results/` folder.
 
 {{< /notice >}}
 
-Here's how it looks like running the inference on an Intel i9-11900, 8-core processor using the baseline YOLOv5-S with no optimizations.
+Here's how it looks like running the inference on an Intel i9-11900, an 8-core processor using the baseline YOLOv5-S.
 
 {{< video src="vids/torch-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 + Average FPS : 21.91
 + Average inference time (ms) : 45.58
 
-On a RTX3090 GPU.
+And for reference, inference on an RTX3090 GPU.
 
 {{< video src="vids/torch-gpu/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
