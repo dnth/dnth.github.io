@@ -67,11 +67,11 @@ In this post I show you how you can supercharge your YOLOv5 inference performanc
 {{< notice tip >}}
 By the end of this post, you will learn how to:
 
-* Train a state-of-the-art YOLOv5 model with your own data.
-* Sparsify the model using SparseML quantization aware training and one-shot quantization.
+* Train a SOTA YOLOv5 model on your own data.
+* Sparsify the model using SparseML quantization aware training, sparse transfer learning and one-shot quantization.
 * Export the sparsified model and run it using the DeepSparse engine at insane speeds. 
 
-**P/S**: The end result - YOLOv5 on CPU at 180+ FPS using only 4 cores! 🚀
+**P/S**: The end result - YOLOv5 on CPU at 180+ FPS using only 4 CPU cores! 🚀
 {{< /notice >}}
 
 If that sounds interesting let's get into it ⛷.
