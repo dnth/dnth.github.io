@@ -440,8 +440,8 @@ Hardswish activation performs better with DeepSparse.
 
 {{< video src="vids/yolov5n-pruned-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
-+ Average FPS : 93.33
-+ Average inference time (ms) : 10.71
++ Average FPS : 101.52
++ Average inference time (ms) : 9.84
 
 ### 🚧 Conclusion
 
