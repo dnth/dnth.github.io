@@ -456,7 +456,7 @@ Running inference, we find
 The drop in FPS is expected compared to the Sparse Transfer Learning method because this model is only pruned and not quantized. 
 But we gain higher `mAP` values. 
 
-What if we can run both pruning and quantization? And still score high mAP values? 
+What if we run both pruning and quantization? And still score high mAP values? 
 
 Why not? 🤖
 
