@@ -85,7 +85,7 @@ If that sounds interesting let's get into it ⛷.
 The [recent gun violence](https://edition.cnn.com/2022/05/25/us/uvalde-texas-elementary-school-shooting-what-we-know/index.html) news had me thinking deeply about how we can prevent incidents like these again. 
 This is the worst gun violence since 2012, and 21 innocent lives were lost.
 
-My heart goes out to all victims of the violence and their loved ones.
+I'm deeply saddened, and my heart goes out to all victims of the violence and their loved ones.
 
 I'm not a lawmaker, so there is little I can do there. 
 But, I think I know something in computer vision that might help.
@@ -161,7 +161,7 @@ Feel free to fork repo and use it on your own dataset.
 
 #### 🔦 PyTorch
 
-Now that we have everything in the right place, let's start by training a baseline model with no optimization.
+Now that everything's in place, let's start by training a baseline model with no optimization.
 
 For that, run the `train.py` script in the `yolov5-train` folder.
 ```bash
@@ -196,9 +196,7 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
 
 {{< /notice >}}
 
-This trains a baseline YOLOv5-S model without any modification. All metrics are logged to Weights & Biases (Wandb). View the training metrics [here](https://wandb.ai/dnth/yolov5-deepsparse).
-
-
+All metrics are logged to Weights & Biases (Wandb) [here](https://wandb.ai/dnth/yolov5-deepsparse).
 
 Once training completes, let's run an inference on a video with the `annotate.py` script.
 
@@ -228,8 +226,6 @@ The first argument points to the `.pt` saved checkpoint.
 
 {{< /notice >}}
 
-
-
 Here's how it looks like running the inference on an Intel i9-11900, 8-core processor using the baseline YOLOv5-S with no optimizations.
 
 {{< video src="vids/torch-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
@@ -246,14 +242,16 @@ On a RTX3090 GPU.
 
 Frankly, the FPS looks quite decent already and might suit some applications even without further optimization.
 
-But if you're looking to improve this then read on.
+But why settle when you can have all the good stuffs? 
+After all, that's why you're here, right? 😉
+
+Meet..
 
 #### 🕸 DeepSparse Engine
-DeepSparse engine is an inference engine that runs optimally on CPU.
+DeepSparse is an inference engine by Neural Magic that runs optimally on CPUs.
+It's incredibly easy to use. Just give it an ONNX model and you're ready to roll.
 
-It expects a onnx model. 
-
-Let's export our .pt file into onnx using the `export.py` script.
+Let's export our `.pt` file into ONNX using the `export.py` script.
 
 ```bash
 python export.py --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
@@ -276,7 +274,7 @@ python export.py --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
 
 {{< /notice >}}
 
-Let's run the inference script again, this time using the `deepsparse` engine and using only 4 CPU cores.
+And now, run the inference script again, this time using the `deepsparse` engine and with only 4 CPU cores (`--num-cores` argument).
 
 ```bash
 python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.onnx \
@@ -293,9 +291,10 @@ python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.onnx \
 + Average FPS : 29.48
 + Average inference time (ms) : 33.91
 
-Without any optimization, we improved the FPS from 21 (PyTorch engine on CPU using 8 cores) to 29 just by using the ONNX model with `deepsparse` engine CPU using 4 cores.
+Without optimization, we improved the average FPS from 21+ (PyTorch engine on CPU using 8 cores) to 29+ just by using the ONNX model with `deepsparse` engine CPU using 4 cores.
 
-We are done with the baselines. Let's see how we can start optimizing the model by sparsification.
+We are done with the **just the baselines** here! 
+The real action only happens next - when we run sparsification with 👇
 
 ### 👨‍🍳 SparseML and Recipes
 
@@ -305,17 +304,17 @@ We are done with the baselines. Let's see how we can start optimizing the model 
 
 
 Sparsification is the process of removing redundant information from a model.
-The result is a smaller and faster model. 
+The result is a **smaller and faster** model. 
 This is how we can significantly speed up our YOLOv5 model, by a lot!
 
 
 
 [SparseML](https://github.com/neuralmagic/sparseml) is an open-source library by Neural Magic to sparsify neural networks.
-The sparsification is done by applying pre-made recipes to the model. 
+The sparsification is done by applying pre-made **recipes** to the model. 
 You can also modify the recipes to suit your needs.
 
 
-It currently supports integration with several well known libraries from computer vision and natural language processing domain.
+<!-- It currently supports integration with several well known libraries from computer vision and natural language processing domain. -->
 
 
 
@@ -384,8 +383,9 @@ python annotate.py yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkpoint-one
 + Average FPS : 32.00
 + Average inference time (ms) : 31.24
 
-At no re-training cost we are performing 10 FPS better than the original model without quantization.
+At no re-training cost we are performing 10 FPS better than the original model.
 We maxed out at about 40 FPS!
+
 The one-shot method only took seconds to complete.
 If you're looking for the easiest method for performance gain, one-shot is the way to go.
 
@@ -407,7 +407,10 @@ python train.py --data pistols.yaml --cfg ./models_v5.0/yolov5s.yaml
 ```
 
 The above command loads a sparse YOLOv5-S from Neural Magic's [SparseZoo](https://github.com/neuralmagic/sparsezoo) and runs the training on your dataset.
-There are more sparsified models available in SparseZoo. I will leave it to you to explore which model works best.
+
+The `--weights` argument now points to a model from the SparseZoo.
+There are more sparsified models available in SparseZoo. 
+I will leave it to you to explore which model works best.
 
 Running inference with `annotate.py` results in
 {{< video src="vids/yolov5s-pruned-quant-tl/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
@@ -422,7 +425,7 @@ But, if you look into the `mAP` metric on the [Wandb dashboard](https://wandb.ai
 If you require higher `mAP` value without sacrificing speed, then read on 💪
 
 #### ✂ Pruned YOLOv5-S
-Here, instead of taking an already sparsified model, we are going to sparsify our model (by pruning) during training.
+Here, instead of taking an already sparsified model, we are going to sparsify our model by pruning.
 
 To do that we will use a pre-made recipe on the SparseML [repo](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes).
 This recipe tells the training script how to prune the the model during training.
