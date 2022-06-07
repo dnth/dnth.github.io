@@ -325,17 +325,21 @@ There are 3 methods to sparsify models with SparseML:
 2. Sparse Transfer Learning
 3. Training Aware
 
-`1.` does not require retraining but only supports dynamic quantization. `2.` and `3.` requires retraining and supports pruning and quantization which may give better results.
 
+{{< notice note >}}
++ `1.` does not require re-training but only supports dynamic quantization. 
 
++ `2.` and `3.` requires re-training and supports pruning and quantization which may give better results.
+
+{{< /notice >}}
 
 #### ☝️ One-Shot
-The one-shot method is by far the easiest way to sparsify a model as it doesn't require re-training.
+The one-shot method is the easiest way to sparsify an existing model as it doesn't require re-training.
 
 But this only works well for dynamic quantization for now.
-More research works are ongoing on making one-shot work well for pruning.
+There are ongoing works in making one-shot work well for pruning.
 
-Let's run one-shot quantization on the baseline model we trained earlier.
+Let's run one-shot method on the baseline model we trained earlier.
 All you need to do is add a `--one-shot` argument to the training script.
 Remember to specify `--weights` to the location of the best checkpoint from the training.
 
@@ -349,9 +353,9 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
 ```
 
 It should generate another `.pt` in the directory specified in `--name`.
-This `.pt` file stores the quantized weights in `INT8` instead of `FLOAT32` resulting in a reduction in model size and inference speedups.
+This `.pt` file stores the quantized weights in `int8` format instead of `fp32` resulting in a reduction in model size and inference speedups.
 
-Next we export the quantized .pt file into onnx.
+Next let's export the quantized `.pt` file into `ONNX` format.
 
 ```bash
 python export.py --weights yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkpoint-one-shot.pt \
@@ -360,6 +364,8 @@ python export.py --weights yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkp
                  --dynamic \
                  --simplify
 ```
+
+And run an inference 
 
 ```bash
 python annotate.py yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkpoint-one-shot.onnx \
@@ -371,29 +377,57 @@ python annotate.py yolov5-deepsparse/yolov5s-sgd-one-shot/weights/checkpoint-one
                 --num-cores 4
 ```
 
-+ Average FPS : 32.00
-+ Average inference time (ms) : 31.24
+
 
 {{< video src="vids/one-shot/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
-At no retraining cost we are performing 10+ FPS better than the original model with no quantization.
-We maxed out at about 40 FPS!
++ Average FPS : 32.00
++ Average inference time (ms) : 31.24
 
+At no re-training cost we are performing 10 FPS better than the original model without quantization.
+We maxed out at about 40 FPS!
+The one-shot method only took seconds to complete.
+If you're looking for the easiest method for performance gain, one-shot is the way to go.
+
+But, if you're willing to re-train the model to double its performance and speed, read on 👇
 
 #### 🤹‍♂️ Sparse Transfer Learning
-Taking an already sparsified (pruned and quantized) and fine-tune it on your own dataset.
+With SparseML you can take an already sparsified model (pruned and quantized) and fine-tune it on your own dataset.
+This is known as *Sparse Transfer Learning*.
+
+This can be done by running
+
+```bash
+python train.py --data pistols.yaml --cfg ./models_v5.0/yolov5s.yaml 
+                --weights zoo:cv/detection/yolov5-s/pytorch/ultralytics/coco/pruned_quant-aggressive_94?recipe_type=transfer 
+                --img 416 --batch-size 64 --hyp data/hyps/hyp.scratch.yaml 
+                --recipe ../recipes/yolov5.transfer_learn_pruned_quantized.md 
+                --optimizer SGD
+                --project yolov5-deepsparse --name yolov5s-sgd-pruned-quantized-transfer
+```
+
+The above command loads a sparse YOLOv5-S from Neural Magic's [SparseZoo](https://github.com/neuralmagic/sparsezoo) and runs the training on your dataset.
+There are more sparsified models available in SparseZoo. I will leave it to you to explore which model works best.
+
+Running inference with `annotate.py` results in
+{{< video src="vids/yolov5s-pruned-quant-tl/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 + Average FPS : 51.56
 + Average inference time (ms) : 19.39
 
-{{< video src="vids/yolov5s-pruned-quant-tl/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+We almost 2x the FPS from the previous one-shot method!
+Judging from the FPS value, Sparse Transfer Learning makes a lot of sense for most applications.
+
+But, if you look into the `mAP` metric on the [Wandb dashboard](https://wandb.ai/dnth/yolov5-deepsparse), you'll notice it's slightly lower than the next method.
+If you require higher `mAP` value without sacrificing speed, then read on 💪
 
 #### ✂ Pruned YOLOv5-S
-To sparsify a model we will use pre-made recipes on the SparseML [repo](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes).
-These recipes tell the training script how to sparsify the model during training.
+Here, instead of taking an already sparsified model, we are going to sparsify our model (by pruning) during training.
 
-Next, let's train a pruned YOLOv5-S.
-For that we slightly modify the command as follows
+To do that we will use a pre-made recipe on the SparseML [repo](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes).
+This recipe tells the training script how to prune the the model during training.
+
+For that we slightly modify the arguments to `train.py`
 
 ```bash
 python train.py --cfg ./models_v5.0/yolov5s.yaml \
@@ -408,19 +442,23 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
 The only change here is the `--recipe` and the `--name` argument.
 
 
-
-
-`--recipe` tells the training script to use a sparsification recipe for the YOLOv5-S model.
-In this case we are using the `yolov5s.pruned.md` recipe which prunes the model as it trains.
+`--recipe` tells the training script which recipe to use for the YOLOv5-S model.
+In this case we are using the `yolov5s.pruned.md` recipe which only prunes the model as it trains.
 You can change how aggressive your model is pruned by modifying the `yolov5s.pruned.md` recipe.
 
+Running inference, we find
 
-
+{{< video src="vids/yolov5s-pruned/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 + Average FPS : 35.50
 + Average inference time (ms) : 31.73
 
-{{< video src="vids/yolov5s-pruned/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+The drop in FPS is expected compared to the Sparse Transfer Learning method because this model is only pruned and not quantized. 
+But we gain higher `mAP` values. 
+
+What if we can run both pruning and quantization? And still score high mAP values? 
+
+Why not? 🤖
 
 #### 🪚 Pruned + Quantized YOLOv5-S
 Re-training with recipe.
