@@ -95,7 +95,7 @@ The dataset was originally released by the University of Grenada.
 
 {{< figure_resizing src="pistol.png">}}
 
-#### 🦸 YOLOv5 Object Detection Library
+#### 🦸 YOLOv5 & Installation
 For this post, we are going to use a [forked version](https://github.com/neuralmagic/yolov5) of the YOLOv5 library that will allow us to do custom optimizations in the upcoming section.
 
 To install, run the following commands
@@ -158,7 +158,7 @@ Here's a high-level overview of the directory.
 **IMPORTANT**: The sparsification recipes will only work with Neural Magic's YOLOv5 fork and will **NOT WORK** with the original YOLOv5 by Ultralytics.
 {{< /notice >}}
 
-To install the remaining packages used in this post, run
+To install all remaining packages used in this post, run
 ```bash
 pip install -r req.txt
 ```
