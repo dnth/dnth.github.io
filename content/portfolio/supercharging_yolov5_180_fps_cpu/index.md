@@ -7,7 +7,7 @@ tags: ["DeepSparse", "ONNX", "YOLOv5", "real-time", "optimization", "pistol"]
 categories: ["deployment", "object-detection", "modeling"]
 toc: true
 socialshare: true
-description: "Accelerate inference up to 180+ FPS on a CPU!"
+description: "Accelerate inference up to 180+ FPS on a CPU! For free!"
 images : 
 - images/portfolio/supercharging_yolov5/post_image.png
 ---
