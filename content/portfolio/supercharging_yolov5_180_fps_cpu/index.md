@@ -115,6 +115,7 @@ Let's also put the sparsification recipes from [SparseML](https://github.com/neu
 Here's a high-level overview of the directory.
 
 ```tree
+├── req.txt
 ├── datasets
 │   ├── pistols
 │   │   ├── train
@@ -148,12 +149,19 @@ Here's a high-level overview of the directory.
 
 + `yolov5-train/` - Cloned directory from Neural Magic's YOLOv5 [fork](https://github.com/neuralmagic/yolov5). 
 
++ `req.txt` - Requirement file to install all packages used in this post.
+
 **NOTE**: You can explore further into the folder structure on my [Github repo](https://github.com/dnth/yolov5-deepsparse-blogpost).
 {{< /notice >}}
 
 {{< notice warning >}}
 **IMPORTANT**: The sparsification recipes will only work with Neural Magic's YOLOv5 fork and will **NOT WORK** with the original YOLOv5 by Ultralytics.
 {{< /notice >}}
+
+To install the remaining packages used in this post, run
+```bash
+pip install -r req.txt
+```
 
 ### ⛳ Baseline Performance
 
