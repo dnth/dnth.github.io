@@ -62,19 +62,19 @@ You may wonder, can we really use consumer grade CPUs to run models in real-time
 
 I wasn't a believer, but now I am, after discovering [Neural Magic](https://neuralmagic.com/).
 
-In this post I show you how you can supercharge your YOLOv5 inference performance running on CPUs using **free** and open-source tools by Neural Magic.
+In this post, I show you how you can supercharge your YOLOv5 inference performance running on CPUs using **free** and open-source tools by Neural Magic.
 
 {{< notice tip >}}
 By the end of this post, you will learn how to:
 
 * Train a SOTA YOLOv5 model on your own data.
-* Sparsify the model using SparseML quantization aware training, sparse transfer learning and one-shot quantization.
+* Sparsify the model using SparseML quantization aware training, sparse transfer learning, and one-shot quantization.
 * Export the sparsified model and run it using the DeepSparse engine at insane speeds. 
 
 **P/S**: The end result - YOLOv5 on CPU at 180+ FPS using only 4 CPU cores! 🚀
 {{< /notice >}}
 
-If that sounds interesting let's dive in 🧙
+If that sounds exciting let's dive in 🧙
 
 
 ### 🔩 Setting Up
@@ -92,7 +92,9 @@ But, I think I know something in computer vision that might help.
 That's when I came across the [Pistols Dataset](https://public.roboflow.com/object-detection/pistols) from Roboflow.
 
 
-This dataset contains 2986 images and 3448 labels across a single annotation class: pistols. Images are wide-ranging: pistols in-hand, cartoons, and staged studio quality images of guns. The dataset was originally released by the University of Grenada.
+This dataset contains 2986 images and 3448 labels across a single annotation class: pistols. 
+Images are wide-ranging: pistols in hand, cartoons, and staged studio-quality images of guns. 
+The dataset was originally released by the University of Grenada.
 
 {{< figure_resizing src="pistol.png">}}
 
@@ -113,7 +115,7 @@ I will put the downloaded images and labels into the `datasets` folder.
 
 Let's also put the sparsification recipes from [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) into the `recipes` folder. More on `recipes` later.
 
-Here's a high level overview of the directory.
+Here's a high-level overview of the directory.
 
 ```tree
 ├── datasets
@@ -143,9 +145,9 @@ Here's a high level overview of the directory.
 
 {{< notice note >}}
 
-+ `datasets/` - Stores the train and validation images/labels downloaded from Roboflow.
++ `datasets/` - Contains the train and validation images/labels downloaded from Roboflow.
 
-+ `recipes/` - Stores the sparsification recipes from the [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) repo.
++ `recipes/` - Contains sparsification recipes from the [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) repo.
 
 + `yolov5-train/` - Cloned directory from Neural Magic's YOLOv5 [fork](https://github.com/neuralmagic/yolov5). 
 
@@ -197,7 +199,7 @@ python train.py --cfg ./models_v5.0/yolov5s.yaml \
 
 All metrics are logged to Weights & Biases (Wandb) [here](https://wandb.ai/dnth/yolov5-deepsparse).
 
-Once training completes, let's run an inference on a video with the `annotate.py` script.
+Once training's done, let's run inference on a video with the `annotate.py` script.
 
 ```bash
 python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
@@ -217,15 +219,15 @@ The first argument points to the `.pt` saved checkpoint.
 
 + `--image-size` -- Input resolution.
 
-+ `--device` -- Which device to use for inference. Options: `cpu` or `0` (GPU).
++ `--device` -- Device to use for inference. Options: `cpu` or `0` (GPU).
 
 + `--conf-thres` -- Confidence threshold for inference.
 
-**NOTE**: The inference result will be saved in the `annotation_results/` folder.
+**NOTE**: The inference output will be saved in the `annotation_results/` folder.
 
 {{< /notice >}}
 
-Here's how it looks like running the inference on an Intel i9-11900, an 8-core processor using the baseline YOLOv5-S.
+Here's how it looks like running the baseline YOLOv5-S on an Intel i9-11900 using all 8 CPU cores.
 
 {{< video src="vids/torch-annotation/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
@@ -239,12 +241,12 @@ Here's how it looks like running the inference on an Intel i9-11900, an 8-core p
 + Average FPS : 89.20
 + Average inference time (ms) : 11.21 -->
 
-Frankly, the FPS looks quite decent already and might suit some applications even without further optimization.
+Actually, the FPS looks quite decent already and might suit some applications even without further optimization.
 
-But why settle when you can something better? 
+But why settle when you can get something better? 
 After all, that's why you're here, right? 😉
 
-Meet..
+Meet 👇
 
 #### 🕸 DeepSparse Engine
 DeepSparse is an inference engine by Neural Magic that runs optimally on CPUs.
@@ -273,7 +275,7 @@ python export.py --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
 
 {{< /notice >}}
 
-And now, run the inference script again, this time using the `deepsparse` engine and with only 4 CPU cores (`--num-cores` argument).
+And now, run the inference script again, this time using the `deepsparse` engine and with only 4 CPU cores in the `--num-cores` argument.
 
 ```bash
 python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.onnx \
@@ -290,9 +292,10 @@ python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.onnx \
 + Average FPS : 29.48
 + Average inference time (ms) : 33.91
 
-Without optimization, we improved the average FPS from 21+ (PyTorch engine on CPU using 8 cores) to 29+ just by using the ONNX model with `deepsparse` engine CPU using 4 cores.
+Just like that, we improved the average FPS from 21+ (PyTorch engine on CPU using 8 cores) to 29+ FPS. 
+All we did was use the ONNX model with the DeepSparse engine.
 
-We are done with the **just the baselines** here! 
+**P/S**: are done with the **just the baselines** here! 
 The real action only happens next - when we run sparsification with 👇
 
 ### 👨‍🍳 SparseML and Recipes
@@ -304,12 +307,11 @@ The real action only happens next - when we run sparsification with 👇
 
 Sparsification is the process of removing redundant information from a model.
 The result is a **smaller and faster** model. 
-This is how we can significantly speed up our YOLOv5 model, by a lot!
 
+This is how we speed up our YOLOv5 model, by a lot!
 
-
-[SparseML](https://github.com/neuralmagic/sparseml) is an open-source library by Neural Magic to sparsify neural networks.
-The sparsification is done by applying pre-made **recipes** to the model. 
+How do we do it? It's by using [SparseML](https://github.com/neuralmagic/sparseml) - an open-source library by Neural Magic.
+With SparseML you can sparsify neural networks by applying pre-made **recipes** to the model. 
 You can also modify the recipes to suit your needs.
 
 
