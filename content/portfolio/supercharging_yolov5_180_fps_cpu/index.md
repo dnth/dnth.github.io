@@ -232,12 +232,12 @@ Here's how it looks like running the inference on an Intel i9-11900, an 8-core p
 + Average FPS : 21.91
 + Average inference time (ms) : 45.58
 
-And for reference, inference on an RTX3090 GPU.
+<!-- And for reference, inference on an RTX3090 GPU.
 
 {{< video src="vids/torch-gpu/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
 
 + Average FPS : 89.20
-+ Average inference time (ms) : 11.21
++ Average inference time (ms) : 11.21 -->
 
 Frankly, the FPS looks quite decent already and might suit some applications even without further optimization.
 
