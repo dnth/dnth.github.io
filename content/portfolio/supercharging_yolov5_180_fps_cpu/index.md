@@ -143,13 +143,13 @@ Here's a high-level overview of the directory.
 
 {{< notice note >}}
 
++ `req.txt` - Requirement file to install all packages used in this post.
+
 + `datasets/` - Contains the train and validation images/labels downloaded from Roboflow.
 
 + `recipes/` - Contains sparsification recipes from the [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) repo.
 
 + `yolov5-train/` - Cloned directory from Neural Magic's YOLOv5 [fork](https://github.com/neuralmagic/yolov5). 
-
-+ `req.txt` - Requirement file to install all packages used in this post.
 
 **NOTE**: You can explore further into the folder structure on my [Github repo](https://github.com/dnth/yolov5-deepsparse-blogpost).
 {{< /notice >}}
@@ -270,7 +270,7 @@ python export.py --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
 {{< notice note >}}
 `--weight` -- Path to the `.pt` checkpoint.
 
-`--include` -- Which file to export to. Options: `torchscript`, `onnx`, [etc](https://github.com/dnth/yolov5-deepsparse-blogpost/blob/4d44b32909bbc9e8b3bb7f8bf89f0e50361872f7/yolov5-train/export.py#L694).
+`--include` -- Which format to export to. Options: `torchscript`, `onnx`, [etc](https://github.com/dnth/yolov5-deepsparse-blogpost/blob/4d44b32909bbc9e8b3bb7f8bf89f0e50361872f7/yolov5-train/export.py#L694).
 
 `--imgsz` -- Image size.
 
@@ -305,8 +305,11 @@ The real action only happens next - when we run sparsification with 👇
 
 ### 👨‍🍳 SparseML and Recipes
 
+<a href="https://docs.neuralmagic.com/sparseml/"> <img alt="SparseML Flow" src="https://docs.neuralmagic.com/docs/source/infographics/sparseml.png" width="700"/> </a>
 
-<img alt="SparseML Flow" src="https://docs.neuralmagic.com/docs/source/infographics/sparseml.png" width="700"/>
+
+
+
 
 
 
