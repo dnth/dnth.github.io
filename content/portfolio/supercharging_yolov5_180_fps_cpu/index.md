@@ -527,15 +527,15 @@ And
 + Average FPS : 101.52
 + Average inference time (ms) : 9.84
 
-This is mindblowing! The max FPS hit the 180+ range.
-I never imagine these numbers are possible especially using only 4 CPU cores 🤯.
+🤯 This is mindblowing! The max FPS hit the 180+ range.
+I never imagine these numbers are possible, especially using only 4 CPU cores.
 
 Seeing this, I can now sleep peacefully at night 😴
 
 ### 🚧 Conclusion
 What a journey this has been. 
 
-Gone are they days when we need GPUs to run models in real-time. 
+Gone are the days when we need GPUs to run models in real-time. 
 With DeepSparse and SparseML, you can get GPU-class performance on commodity CPUs.
 
 {{< notice tip >}}
@@ -551,7 +551,7 @@ In this post I've shown you how to:
 If you ever get lost in the commands that I used for this post, fear not.
 I listed all commands I used to train all models on the [README](https://github.com/dnth/yolov5-deepsparse-blogpost) of the repo.
 
-Also feel to use the repo with your own dataset and give it a ⭐ if it helps your work.
+Also, feel to use the repo with your own dataset and give it a ⭐ if it helps your work.
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
