@@ -100,6 +100,7 @@ You can also modify the recipes to suit your needs.</p><div class="notice note">
 There are ongoing works in making one-shot work well for pruning.</p><p>Let&rsquo;s run the one-shot method on the baseline model we trained earlier.
 All you need to do is add a <code>--one-shot</code> argument to the training script.
 Remember to specify <code>--weights</code> to the location of the best checkpoint from the training.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>python train.py --cfg ./models_v5.0/yolov5s.yaml <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                --recipe ../recipes/yolov5s.pruned.md <span style=color:#ae81ff>\
 </span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                --data pistols.yaml --hyp data/hyps/hyp.scratch.yaml <span style=color:#ae81ff>\
 </span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt <span style=color:#ae81ff>\
 </span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                --img <span style=color:#ae81ff>416</span> --batch-size <span style=color:#ae81ff>64</span> --optimizer SGD --epochs <span style=color:#ae81ff>240</span> <span style=color:#ae81ff>\
