@@ -363,6 +363,7 @@ Remember to specify `--weights` to the location of the best checkpoint from the 
 
 ```bash
 python train.py --cfg ./models_v5.0/yolov5s.yaml \
+                --recipe ../recipes/yolov5s.pruned.md \
                 --data pistols.yaml --hyp data/hyps/hyp.scratch.yaml \
                 --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt \
                 --img 416 --batch-size 64 --optimizer SGD --epochs 240 \
