@@ -95,24 +95,14 @@ The dataset was originally released by the University of Grenada.
 
 {{< figure_resizing src="pistol.png">}}
 
-#### 🦸 YOLOv5 & Installation
-For this post, we are going to use a [forked version](https://github.com/neuralmagic/yolov5) of the YOLOv5 library that will allow us to do custom optimizations in the upcoming section.
+#### 🦸 Installation 
 
-To install, run the following commands
+Now let's put the downloaded Pistols Dataset into the appropriate folder first.
+I will put the downloaded images and labels into the `datasets/` folder.
 
-```bash
-git clone https://github.com/neuralmagic/yolov5.git
-cd yolov5
-git checkout release/0.12
-pip install -r requirements.txt
-```
+Let's also put the sparsification recipes from [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) into the `recipes/` folder. More on `recipes` later.
 
-Now let's put the downloaded Pistols Dataset into the appropriate folder for us to start training.
-I will put the downloaded images and labels into the `datasets` folder.
-
-Let's also put the sparsification recipes from [SparseML](https://github.com/neuralmagic/sparseml/tree/main/integrations/ultralytics-yolov5/recipes) into the `recipes` folder. More on `recipes` later.
-
-Here's a high-level overview of the directory.
+Here's a high-level overview of my directory.
 
 ```tree
 ├── req.txt
@@ -158,10 +148,25 @@ Here's a high-level overview of the directory.
 **IMPORTANT**: The sparsification recipes will only work with Neural Magic's YOLOv5 fork and will **NOT WORK** with the original YOLOv5 by Ultralytics.
 {{< /notice >}}
 
+For this post, we are going to use a [forked version](https://github.com/neuralmagic/yolov5) of the YOLOv5 library that will allow us to do custom optimizations in the upcoming section.
+
+To install, run the following commands
+
+```bash
+git clone https://github.com/neuralmagic/yolov5.git
+cd yolov5
+git checkout release/0.12
+pip install -r requirements.txt
+```
+
 To install all remaining packages used in this post, run
 ```bash
 pip install -r req.txt
 ```
+
+
+
+
 
 ### ⛳ Baseline Performance
 
@@ -169,7 +174,7 @@ pip install -r req.txt
 
 Now that everything's in place, let's start by training a baseline model with no optimization.
 
-For that, run the `train.py` script in the `yolov5-train` folder.
+For that, run the `train.py` script in the `yolov5-train/` folder.
 ```bash
 python train.py --cfg ./models_v5.0/yolov5s.yaml \
                 --data pistols.yaml \
@@ -300,7 +305,7 @@ python annotate.py yolov5-deepsparse/yolov5s-sgd/weights/best.onnx \
 Just like that, we improved the average FPS from 21+ (PyTorch engine on CPU using 8 cores) to 29+ FPS. 
 All we did was use the ONNX model with the DeepSparse engine.
 
-**P/S**: are done with the **just the baselines** here! 
+**P/S**: We are done with **just the baselines** here! 
 The real action only happens next - when we run sparsification with 👇
 
 ### 👨‍🍳 SparseML and Recipes
