@@ -323,9 +323,23 @@ The result is a **smaller and faster** model.
 
 This is how we speed up our YOLOv5 model, by a lot!
 
+{{< notice tip>}}
+In general, there are 2 methods to sparsify a model - Pruning and Quantization.
+
++ ✂ Pruning - Removing unused weights in the model.
+
++ 🔮 Quantization - Forcing a model to use a less accurate storage format i.e. from 32-bit floating point (FP32) to 8-bit integer (INT8).
+
+Used together or separately, this results in a smaller and faster model.
+
+{{< /notice >}}
+
+
 How do we do it? It's by using [SparseML](https://github.com/neuralmagic/sparseml) - an open-source library by Neural Magic.
 With SparseML you can sparsify neural networks by applying pre-made **recipes** to the model. 
 You can also modify the recipes to suit your needs.
+
+
 
 
 <!-- It currently supports integration with several well known libraries from computer vision and natural language processing domain. -->
@@ -351,6 +365,22 @@ There are 3 methods to sparsify models with SparseML:
 
 {{< /notice >}}
 
+You may wonder, this sounds too good to be true! 
+
+*What's the caveat*?
+
+Good question!
+
+With sparsification, you can expect a slight loss in accuracy depending on the degree of sparsification.
+Highly sparse models are usually less accurate than the original model but gains significant boost in speed and latency.
+
+With the recipes from SparseML, the loss of accuracy ranges from 2% to 6%.
+In other words the *recovery* is 94% to 98% compared to the performance of the original model.
+But the gains in speed are phenomenal and range from 2x to 10x faster!
+
+In most situations, this is not a big deal. 
+If the accuracy loss is something you can tolerate, then let's sparsify some models already! 🤏.
+
 #### ☝️ One-Shot
 The one-shot method is the easiest way to sparsify an existing model as it doesn't require re-training.
 
@@ -358,7 +388,7 @@ But this only works well for dynamic quantization, for now.
 There are ongoing works in making one-shot work well for pruning.
 
 Let's run the one-shot method on the baseline model we trained earlier.
-All you need to do is add a `--one-shot` argument to the training script.
+All you need to do is add a `--one-shot` argument to the training script, and specify a pruning `--recipe`.
 Remember to specify `--weights` to the location of the best checkpoint from the training.
 
 ```bash
