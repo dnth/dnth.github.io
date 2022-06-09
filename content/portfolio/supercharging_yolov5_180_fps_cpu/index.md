@@ -376,7 +376,7 @@ Highly sparse models are usually less accurate than the original model but gains
 
 With the recipes from SparseML, the loss of accuracy ranges from 2% to 6%.
 In other words the *recovery* is 94% to 98% compared to the performance of the original model.
-But the gains in speed are phenomenal and range from 2x to 10x faster!
+In exchange, we gain phenomenal speedups, ranging from 2x to 10x faster!
 
 In most situations, this is not a big deal. 
 If the accuracy loss is something you can tolerate, then let's sparsify some models already! 🤏.
