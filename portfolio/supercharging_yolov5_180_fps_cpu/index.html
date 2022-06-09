@@ -99,7 +99,7 @@ You can also modify the recipes to suit your needs.</p><div class="notice note">
 2️⃣ and 3️⃣ requires re-training and supports pruning and quantization which may give better results.</p></div><p>You may wonder, this sounds too good to be true!</p><p><em>What&rsquo;s the caveat</em>?</p><p>Good question!</p><p>With sparsification, you can expect a slight loss in accuracy depending on the degree of sparsification.
 Highly sparse models are usually less accurate than the original model but gains significant boost in speed and latency.</p><p>With the recipes from SparseML, the loss of accuracy ranges from 2% to 6%.
 In other words the <em>recovery</em> is 94% to 98% compared to the performance of the original model.
-But the gains in speed are phenomenal and range from 2x to 10x faster!</p><p>In most situations, this is not a big deal.
+In exchange, we gain phenomenal speedups, ranging from 2x to 10x faster!</p><p>In most situations, this is not a big deal.
 If the accuracy loss is something you can tolerate, then let&rsquo;s sparsify some models already! 🤏.</p><h4 id=-one-shot>☝️ One-Shot</h4><p>The one-shot method is the easiest way to sparsify an existing model as it doesn&rsquo;t require re-training.</p><p>But this only works well for dynamic quantization, for now.
 There are ongoing works in making one-shot work well for pruning.</p><p>Let&rsquo;s run the one-shot method on the baseline model we trained earlier.
 All you need to do is add a <code>--one-shot</code> argument to the training script, and specify a pruning <code>--recipe</code>.
