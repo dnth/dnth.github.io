@@ -150,19 +150,24 @@ Here's a high-level overview of my directory.
 
 For this post, we are going to use a [forked version](https://github.com/neuralmagic/yolov5) of the YOLOv5 library that will allow us to do custom optimizations in the upcoming section.
 
-To install, run the following commands
+To install, all packages in this blog post, run the following commands
 
 ```bash
+git clone https://github.com/dnth/yolov5-deepsparse-blogpost
+cd yolov5-deepsparse-blogpost/
+pip install torch==1.9.0 torchvision==0.10.0 --extra-index-url https://download.pytorch.org/whl/cu111
+pip install -r req.txt
+```
+
+🔥 Or you can run everything in Colab with a notebook I made [here](https://colab.research.google.com/drive/1GL1ChGjOG25BxP9EfkiTxO83sEraBu-7?usp=sharing).
+
+<!-- ```bash
 git clone https://github.com/neuralmagic/yolov5.git
 cd yolov5
 git checkout release/0.12
 pip install -r requirements.txt
-```
+``` -->
 
-To install all remaining packages used in this post, run
-```bash
-pip install -r req.txt
-```
 
 
 
