@@ -380,7 +380,7 @@ With sparsification, you can expect a slight loss in accuracy depending on the d
 Highly sparse models are usually less accurate than the original model but gains significant boost in speed and latency.
 
 With the recipes from SparseML, the loss of accuracy ranges from 2% to 6%.
-In other words the *recovery* is 94% to 98% compared to the performance of the original model.
+In other words the *recovery* is [94% to 98%](https://github.com/neuralmagic/deepsparse/tree/main/examples/ultralytics-yolo) compared to the performance of the original model.
 In exchange, we gain phenomenal speedups, ranging from 2x to 10x faster!
 
 In most situations, this is not a big deal. 
