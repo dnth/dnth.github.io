@@ -159,7 +159,9 @@ pip install torch==1.9.0 torchvision==0.10.0 --extra-index-url https://download.
 pip install -r req.txt
 ```
 
-🔥 Or you can run everything in Colab with a notebook I made [here](https://colab.research.google.com/github/dnth/yolov5-deepsparse-blogpost/blob/master/notebooks/deepsparse_blogpost.ipynb).
+Or, if you're just getting started, I'd recommend 👇
+
+🔥 Running everything in Colab with a notebook I made [here](https://colab.research.google.com/github/dnth/yolov5-deepsparse-blogpost/blob/master/notebooks/deepsparse_blogpost.ipynb).
 
 <!-- ```bash
 git clone https://github.com/neuralmagic/yolov5.git
