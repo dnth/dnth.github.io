@@ -335,11 +335,11 @@ This is how we speed up our YOLOv5 model, by a lot!
 {{< notice tip>}}
 In general, there are 2 methods to sparsify a model - Pruning and Quantization.
 
-+ ✂ Pruning - Removing unused weights in the model.
++ **Pruning** - Removing unused weights in the model.
 
-+ 🔮 Quantization - Forcing a model to use a less accurate storage format i.e. from 32-bit floating point (FP32) to 8-bit integer (INT8).
++ **Quantization** - Forcing a model to use a less accurate storage format i.e. from 32-bit floating point (FP32) to 8-bit integer (INT8).
 
-Used together or separately, this results in a smaller and faster model.
+⚡ **P/S**: Used together or separately results in a smaller and faster model!
 
 {{< /notice >}}
 
@@ -362,11 +362,11 @@ You can also modify the recipes to suit your needs.
 
 There are 3 methods to sparsify models with SparseML:
 
-1️⃣ Post-training (One-shot).
++ 1️⃣ Post-training (One-shot).
 
-2️⃣ Sparse Transfer Learning.
++ 2️⃣ Sparse Transfer Learning.
 
-3️⃣ Training Aware.
++ 3️⃣ Training Aware.
 
 
 **NOTE**: 1️⃣ does not require re-training but only supports dynamic quantization. 
