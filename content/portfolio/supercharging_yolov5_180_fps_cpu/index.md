@@ -161,7 +161,9 @@ pip install -r req.txt
 
 Or, if you're just getting started, I'd recommend 👇
 
-🔥 Running everything in Colab with a notebook I made [here](https://colab.research.google.com/github/dnth/yolov5-deepsparse-blogpost/blob/master/notebooks/deepsparse_blogpost.ipynb).
+{{< notice tip >}}
+🔥 Run everything in Colab with a notebook I made [here](https://colab.research.google.com/github/dnth/yolov5-deepsparse-blogpost/blob/master/notebooks/deepsparse_blogpost.ipynb).
+{{< /notice >}}
 
 <!-- ```bash
 git clone https://github.com/neuralmagic/yolov5.git
@@ -172,7 +174,7 @@ pip install -r requirements.txt
 
 
 
-
+> Block quote
 
 
 ### ⛳ Baseline Performance
