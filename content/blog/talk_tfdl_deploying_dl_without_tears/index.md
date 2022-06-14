@@ -12,7 +12,7 @@ images :
 - images/blog/talk_tfdl_deploying_dl_without_tears/post_image.jpeg
 ---
 
-### Introduction
+### 💡 Introduction
 This is a talk given to the Tensorflow Deep Learning Malaysia Facebook [group](https://www.facebook.com/groups/TensorFlowMY/) with over 7.5k members.
 
 The goal of the talk is to introduce the members to existing open-source tools they can use to deploy models on the cloud and edge.
@@ -20,18 +20,29 @@ The goal of the talk is to introduce the members to existing open-source tools t
 Half of the audience has no experience with deep learning. 
 Hence, the talk was tailored to beginners in the field.
 
-### The Deep Gap
+### 🪂 The Deep Gap
 I started the talk by introducing my background and experience in the field.
 
-### Technical Walkthrough
+### ⚙ Technical Walkthrough
 
-#### Cloud Deployment
+#### 🌧 Cloud Deployment
 
-#### Edge Deployment
+#### 📱 Edge Deployment
 
-### Conclusion
+### 🍧 Takeaways
+
+{{< notice tip >}}
+
++ Begin with deployment in mind as the end goal.
++ The gap is deeper at the deployment side.
++ MLOps - hot topic.
++ Many open-source tools make it easy to deploy models.
+
+{{< /notice >}}
 
 
+### 📽 Video & Presentation Deck
+Recorded video
 {{< youtube sVAZevq-8Lc >}}
 
 My presentation deck 
