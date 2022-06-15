@@ -173,7 +173,9 @@ pip install -r requirements.txt
 ``` -->
 
 
-
+<!-- {{% blockquote author="Laura Ingalls" %}}
+I am beginning to learn that it is the sweet, simple things of life which are the real ones after all.  
+{{% /blockquote %}} -->
 
 
 ### ⛳ Baseline Performance
