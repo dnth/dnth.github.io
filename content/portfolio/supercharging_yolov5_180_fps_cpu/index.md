@@ -174,7 +174,6 @@ pip install -r requirements.txt
 
 
 
-> Block quote
 
 
 ### ⛳ Baseline Performance
