@@ -6,7 +6,9 @@ title: >
 
   Tech stack --
 
-    > 🟩 Python, C, Assembly, PySpark, Docker, Jupyter, VSCode, Git.
+    > 🟩 Python, C, Assembly, PySpark, Robot Operating System.
+    
+    🟩 Docker, Jupyter, VSCode, Git. 
     
     🟩 DL framework -- Tensorflow, PyTorch, Keras, Fastai.
     
@@ -20,7 +22,7 @@ title: >
     
     🟩 Edge Device -- Raspberry Pi, NVIDIA Jetson, Arduino/ESP32/PIC/AVR MCU, Coral Edge TPU, Intel Neural Compute Stick.
 
-    🟩 Current [Github](https://github.com/dnth) Stats --
+    🟩 My current [Github](https://github.com/dnth) Stats --
 
     ![Dickson's github stats](https://github-readme-stats.vercel.app/api?username=dnth&show_icons=true&theme=nightowl&hide=stars&count_private=true&include_all_commits=true&title_color=6677f9&bg_color=1c2030&icon_color=82b651&text_color=ffffff&border_radius=20) 
 
