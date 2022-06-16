@@ -12,6 +12,9 @@ images :
 - images/portfolio/supercharging_yolov5/post_image.png
 ---
 
+{{% blockquote author="Laura Ingalls" %}}
+I am beginning to learn that it is the sweet, simple things of life which are the real ones after all.  
+{{% /blockquote %}}
 
 ### 🔥 Motivation
 After months of searching, you've finally found *the one*. 
@@ -171,11 +174,6 @@ cd yolov5
 git checkout release/0.12
 pip install -r requirements.txt
 ``` -->
-
-
-<!-- {{% blockquote author="Laura Ingalls" %}}
-I am beginning to learn that it is the sweet, simple things of life which are the real ones after all.  
-{{% /blockquote %}} -->
 
 
 ### ⛳ Baseline Performance
