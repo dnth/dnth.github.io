@@ -14,7 +14,7 @@ title: >
     
     🟩 DL experiment -- Weights & Biases, Tensorboard, CometML, Optuna, Neural Network Intelligence.
     
-    🟩 DL deployment -- OpenVINO, TensorRT, ONNX, TFLite, Hugging Face Hub, DeepSparse.
+    🟩 DL deployment -- OpenVINO, TensorRT, ONNX, TFLite, Torchscript, Hugging Face Hub, DeepSparse.
     
     🟩 Database -- Firebase, MySQL, InfluxDB, Hive.
     
