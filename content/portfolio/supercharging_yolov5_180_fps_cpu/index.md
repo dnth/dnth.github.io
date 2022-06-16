@@ -12,9 +12,7 @@ images :
 - images/portfolio/supercharging_yolov5/post_image.png
 ---
 
-{{% blockquote author="Laura Ingalls" %}}
-I am beginning to learn that it is the sweet, simple things of life which are the real ones after all.  
-{{% /blockquote %}}
+
 
 ### 🔥 Motivation
 After months of searching, you've finally found *the one*. 
@@ -615,3 +613,7 @@ If you have any questions, comments, or feedback, please leave them on the follo
 
 
 If you like what you see and don't want to miss any of my future content, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
+
+{{% blockquote author="Jimmy Dean" %}}
+I can't change the direction of the wind, but I can adjust my sails to always reach my destination.
+{{% /blockquote %}}
