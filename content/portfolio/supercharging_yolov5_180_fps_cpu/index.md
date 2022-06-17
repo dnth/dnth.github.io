@@ -614,7 +614,7 @@ If you have any questions, comments, or feedback, please leave them on the follo
 
 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6940225157286264834" height="2406" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 
-If you like what you see and don't want to miss any of my future content, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
+
 
 {{% blockquote author="Jimmy Dean" %}}
 I can't change the direction of the wind, but I can adjust my sails to always reach my destination.
