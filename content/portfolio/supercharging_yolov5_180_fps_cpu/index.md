@@ -46,7 +46,7 @@ You flinched.
 
 That wasn't something you anticipated. You tried to convince them that GPUs are *"the way forward"* and it's *"the best way"* to run your model in real-time.
 
-You scanned the room and begin to notice the stiff looks on their faces 👇
+You scanned the room and begin to notice the looks on their faces every time you said the word *GPU* and *CPU*.
 
 {{< figure_resizing src="meme.jpg">}}
 
