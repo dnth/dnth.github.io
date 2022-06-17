@@ -597,9 +597,9 @@ It's keeping me awake at night. So I had to do this 🤷‍♂️.
 
 **Just how fast can you run YOLOv5 on CPUs? I mean the maximum possible FPS with DeepSparse.**
 
-This led me to 👇.
+This led me to 👇
 ### 🚀 Supercharging with Smaller Models
-In the YOLOv5 series, the YOLOv5-Nano is the smallest model of all. So in theory, this should be the fastest.
+In the YOLOv5 series, the YOLOv5-Nano is the smallest model of all. In theory, this should be the fastest.
 
 So I'm putting my bets on this model. 
 Let's apply the same steps again with the YOLOv5-Nano model.
@@ -608,7 +608,7 @@ And
 
 ..
 
-...
+..
 
 🚀🚀🚀
 
