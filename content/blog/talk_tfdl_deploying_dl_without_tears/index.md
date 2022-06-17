@@ -60,6 +60,16 @@ The details can be found in the following posts:
 #### 📱 Edge Deployment
 Edge deployment is a setting where the trained DL model is place on a physical hardware where the data is collected.
 
+I shared how I trained a state-of-the-art object detection model, YOLOX to accurately detect license plate on Malaysian vehicles. I also shared how I optimize the model to run 10x faster (at 50 FPS) on a CPU using the OpenVINO toolkit.
+
+I also briefly talked about an alternative to the OpenVINO toolkit which can accelerate inference up to 180 FPS using DeepSparse and SparseML library by Neural Magic.
+
+The details can be found in the following posts:
+
++ [Faster than GPU: How to 10x your Object Detection Model and Deploy on CPU at 50+ FPS.](https://dicksonneoh.com/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/)
+
++ [Supercharging YOLOv5: How I Got 182.4 FPS Inference Without a GPU.](https://dicksonneoh.com/portfolio/supercharging_yolov5_180_fps_cpu/)
+
 ### 🍧 Takeaways
 
 {{< notice tip >}}
