@@ -48,7 +48,11 @@ I unveiled that the deep gap is that not enough attention is placed on deploying
 
 ### ⛏ Technical Walkthrough
 I transition the talk to share on some of my recent projects on deploying DL models.
-Two general categories of deployment environments are cloud and edge deployment.
+
+I elaborated on two general categories of deployment environments: 
+
++ Cloud Deployment. 
++ Edge Deployment.
 
 #### 🌧 Cloud Deployment
 Cloud deployment is a setting where the trained DL model is hosted on the cloud infrastructure.
