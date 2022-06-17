@@ -39,7 +39,10 @@ More than 85% of machine learning models fail to make it into production.
 
 I unveiled that the deep gap is that not enough attention is placed on deploying deep learning models in real world applications.
 
-### ⚙ Technical Walkthrough
+{{< figure_resizing src="meme.jpg" >}}
+
+
+### ⛏ Technical Walkthrough
 I transition the talk to share on some of my recent projects on deploying DL models.
 Two general categories of deployment environments are cloud and edge deployment.
 
