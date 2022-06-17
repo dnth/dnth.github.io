@@ -608,9 +608,11 @@ Also, feel to use the repo with your own dataset and give it a ⭐ if it helps y
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
-If you have any questions, comments, or feedback, please leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
+If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet dicksonneoh7 1534395572022480896>}}
 
+
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6940225157286264834" height="2406" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 
 If you like what you see and don't want to miss any of my future content, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
 
