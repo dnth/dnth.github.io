@@ -372,3 +372,4 @@ I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet dicksonneoh7 1527512946603020288>}}
 
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6933290054622572544" height="948" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
