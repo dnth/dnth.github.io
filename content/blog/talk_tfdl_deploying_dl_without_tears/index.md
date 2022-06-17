@@ -13,6 +13,10 @@ images :
 ---
 
 ### 💡 Introduction
+
+{{< figure_resizing src="aboutme.png" >}}
+
+
 This talk was given to the Tensorflow Deep Learning Malaysia Facebook [group](https://www.facebook.com/groups/TensorFlowMY/) during the June 2022 online meetup.
 The group had over 7.5k members consisting of audience from various background related to artificial intelligence in Malaysia.
 
