@@ -49,6 +49,14 @@ Two general categories of deployment environments are cloud and edge deployment.
 #### 🌧 Cloud Deployment
 Cloud deployment is a setting where the trained DL model is hosted on the cloud infrastructure.
 
+I shared how I trained a state-of-the-art VFNet model with IceVision and deploy them on an Android phone using the Hugging Face Hub ecosystem.
+
+The details can be found in the following posts:
+
++ [Training a Deep Learning Model for Cell Counting in 17 Lines of Code with 17 Images.](https://dicksonneoh.com/portfolio/training_dl_model_for_cell_counting/)
+
++ [How to Deploy Object Detection Models on Android with Flutter.](https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/)
+
 #### 📱 Edge Deployment
 Edge deployment is a setting where the trained DL model is place on a physical hardware where the data is collected.
 
