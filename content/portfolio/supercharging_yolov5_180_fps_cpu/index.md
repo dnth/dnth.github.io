@@ -636,7 +636,7 @@ In this post I've shown you how to:
 * Sparsify the model using SparseML quantization aware training and one-shot quantization.
 * Export the sparsified model and run it using the DeepSparse engine at insane speeds. 
 
-**P/S**: The codes are on my GitHub [repo](https://github.com/dnth/yolov5-deepsparse-blogpost). Check it out.
+**P/S**: Check out codes on my GitHub [repo](https://github.com/dnth/yolov5-deepsparse-blogpost).
 {{< /notice >}}
 
 If you ever get lost in the commands that I used for this post, fear not.
@@ -652,8 +652,3 @@ If you have any questions, comments, or feedback, please leave them on the follo
 
 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6940225157286264834" height="2406" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 
-
-
-{{% blockquote author="Jimmy Dean" %}}
-I can't change the direction of the wind, but I can adjust my sails to always reach my destination.
-{{% /blockquote %}}
