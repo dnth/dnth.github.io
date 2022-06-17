@@ -522,7 +522,45 @@ Running inference, we find
 The drop in FPS is expected compared to the Sparse Transfer Learning method because this model is only pruned and **not quantized**. 
 But we gain higher `mAP` values. 
 
-But, what if we can run both pruning and quantization? And still score high `mAP` values? 
+
+#### 🔬 Quantized YOLOv5-S
+We've seen the effects of pruning, what about quantization? Let's run quantization for the YOLOv5-S model and see how it behaves.
+
+We could run the quantization without training (one-shot). But for better effects let's train the model for 2 epochs. 
+Re-training for 2 epochs allow the weights to re-adjust to the quantized values and hence produce better results.
+
+The number of training epochs is specified in the `yolov5s.quantized.md` file.
+
+Let's run the `train.py`
+```bash
+python train.py --cfg ./models_v5.0/yolov5s.yaml \
+                --recipe ../recipes/yolov5s.quantized.md \
+                --data pistols.yaml \
+                --hyp data/hyps/hyp.scratch.yaml \
+                --weights yolov5-deepsparse/yolov5s-sgd/weights/best.pt --img 416 \
+                --batch-size 64 --project yolov5-deepsparse --name yolov5s-sgd-quantized
+```
+
+Inferencing with `annotate.py`
+
+{{< video src="vids/yolov5-quant/results_.mp4" width="700px" loop="true" autoplay="true" muted="true">}}
+
++ Average FPS : 43.29
++ Average inference time (ms) : 23.09
+
+We have a bump in the FPS compared to the pruned model. 
+With careful observation you'd notice a misdetection at the `0:03` second.
+
+Here, we see that the quantized model is faster than the pruned model at the cost of detection accuracy.
+But note, in this model we've only trained for 2 epochs compared to 240 epochs with the pruned model.
+Re-training for longer may solve the mis-detection issue.
+
+We've seen how the YOLOv5-S model performs when it is 
+
++ Only pruned
++ Only quantized
+
+But, can we run both pruning and quantization?
 
 Of course, why not? 🤖
 
