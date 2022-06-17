@@ -208,8 +208,6 @@ This is the beauty of using Flutter for front-end development.
 Code once, and export to multiple platforms.
 
 ### 🙏 Comments & Feedback
-If you like this and don't want to miss any of my future content, follow me on [Twitter](https://twitter.com/dicksonneoh7) and [LinkedIn](https://www.linkedin.com/in/dickson-neoh/) where I share more of these in bite-size posts.
-
 If you have any questions, comments, or feedback, please leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
 {{< tweet dicksonneoh7 1517004585495240704>}}
 

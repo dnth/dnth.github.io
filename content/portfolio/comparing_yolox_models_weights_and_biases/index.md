@@ -259,4 +259,3 @@ If you have any questions, comments, or feedback, please leave them on the follo
 {{< tweet dicksonneoh7 1524263583097384960>}}
 
 
-If you like what you see and don't want to miss any of my future contents, follow me on Twitter and LinkedIn where I deliver more of these tips in bite-size posts.
