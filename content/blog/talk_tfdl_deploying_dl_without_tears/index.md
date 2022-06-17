@@ -65,10 +65,11 @@ Edge deployment is a setting where the trained DL model is place on a physical h
 
 
 ### 📽 Video & Presentation Deck
-Recorded video
+Recorded video 👇
 {{< youtube sVAZevq-8Lc >}}
 
-My presentation [deck](https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFCzWH0RXA&#x2F;view?utm_content=DAFCzWH0RXA&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link) 
+My presentation [deck](https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFCzWH0RXA&#x2F;view?utm_content=DAFCzWH0RXA&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link) 👇
+
 <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
  padding-bottom: 48px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
  border-radius: 8px; will-change: transform;">
