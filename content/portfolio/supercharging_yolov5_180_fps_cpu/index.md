@@ -600,7 +600,7 @@ It's keeping me awake at night. So I had to do this 🤷‍♂️.
 
 
 {{% blockquote %}}
-Every night I wonder how fast can you run YOLOv5 on CPUs? I mean the maximum possible FPS with SparseML + DeepSparse.
+Every night I wonder how fast can we run YOLOv5 on CPUs? I mean the maximum possible FPS with SparseML + DeepSparse.
 {{% /blockquote %}}
 
 
