@@ -316,7 +316,7 @@ The real action only happens next - when we run sparsification with 👇
 
 ### 👨‍🍳 SparseML and Recipes
 
-<a href="https://docs.neuralmagic.com/sparseml/"> <img alt="SparseML Flow" src="https://docs.neuralmagic.com/docs/source/infographics/sparseml.png" width="700"/> </a>
+{{< figure_resizing src="sparseml.png" caption="Image from SparseML documentation page." link="https://docs.neuralmagic.com/sparseml/">}}
 
 
 
