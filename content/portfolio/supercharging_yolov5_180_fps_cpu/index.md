@@ -597,7 +597,12 @@ It's getting the best of both! 🎯
 I wanted to end the post here. But there is still this nagging thought that I can't ignore.
 It's keeping me awake at night. So I had to do this 🤷‍♂️.
 
-**Just how fast can you run YOLOv5 on CPUs? I mean the maximum possible FPS with DeepSparse.**
+
+
+{{% blockquote %}}
+Every night I wonder how fast can you run YOLOv5 on CPUs? I mean the maximum possible FPS with SparseML + DeepSparse.
+{{% /blockquote %}}
+
 
 This led me to 👇
 ### 🚀 Supercharging with Smaller Models
