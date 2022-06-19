@@ -336,12 +336,14 @@ In general, there are 2 methods to sparsify a model - Pruning and Quantization.
 
 + **Quantization** - Forcing a model to use a less accurate storage format i.e. from 32-bit floating point (FP32) to 8-bit integer (INT8).
 
-⚡ **P/S**: Used together or separately results in a smaller and faster model!
+⚡ **P/S**: Used together or separately both pruning and quantization result in a smaller and faster model!
 
 {{< /notice >}}
 
 
-How do we do it? It's by using [SparseML](https://github.com/neuralmagic/sparseml) - an open-source library by Neural Magic.
+How do we sparsify models? 
+
+Using [SparseML](https://github.com/neuralmagic/sparseml) - an open-source library by Neural Magic.
 With SparseML you can sparsify neural networks by applying pre-made **recipes** to the model. 
 You can also modify the recipes to suit your needs.
 
@@ -553,7 +555,7 @@ With careful observation you'd notice a misdetection at the `0:03` second.
 
 Here, we see that the quantized model is faster than the pruned model at the cost of detection accuracy.
 But note, in this model we've only trained for 2 epochs compared to 240 epochs with the pruned model.
-Re-training for longer may solve the mis-detection issue.
+Re-training for longer may solve the misdetection issue.
 
 We've seen how the YOLOv5-S model performs when it is 
 
