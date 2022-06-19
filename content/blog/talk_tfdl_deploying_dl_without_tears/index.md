@@ -41,7 +41,7 @@ The consequence?
 More than 85% of machine learning models fail to make it into production.
 {{% /blockquote %}}
 
-I unveiled that the deep gap is that not enough attention is placed on deploying deep learning models in real world applications.
+I unveiled that the deep gap is that not enough attention is placed on productionizing/deploying DL models in real world applications.
 
 {{< figure_resizing src="meme.jpg" >}}
 
@@ -57,7 +57,7 @@ I elaborated on two general categories of deployment environments:
 #### 🌧 Cloud Deployment
 Cloud deployment is a setting where the trained DL model is hosted on the cloud infrastructure.
 
-I shared how I trained a state-of-the-art VFNet model with IceVision and deploy them on an Android phone using the Hugging Face Hub ecosystem.
+I shared how I trained a state-of-the-art VFNet model with [IceVision](https://github.com/airctic/icevision) and deploy them on an Android phone using the [Hugging Face Hub](https://huggingface.co/docs/hub/index) ecosystem.
 
 The details can be found in the following posts:
 
@@ -66,11 +66,11 @@ The details can be found in the following posts:
 + [How to Deploy Object Detection Models on Android with Flutter.](https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/)
 
 #### 📱 Edge Deployment
-Edge deployment is a setting where the trained DL model is place on a physical hardware where the data is collected.
+Edge deployment is a setting where the trained DL model is placed on a physical computing hardware (also known as edge device) where the data is collected.
 
-I shared how I trained a state-of-the-art object detection model, YOLOX to accurately detect license plate on Malaysian vehicles. I also shared how I optimize the model to run 10x faster (at 50 FPS) on a CPU using the OpenVINO toolkit.
+I shared how I trained a state-of-the-art object detection model, [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) to accurately detect license plates on Malaysian vehicles. I also shared how I optimize the model to run 10x faster (at 50 FPS) on a CPU using the [OpenVINO](https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html) toolkit.
 
-I also briefly talked about an alternative to the OpenVINO toolkit which can accelerate inference up to 180 FPS using DeepSparse and SparseML library by Neural Magic.
+I briefly talked about an alternative to the OpenVINO toolkit which can accelerate inference up to 180 FPS using [DeepSparse](https://github.com/neuralmagic/deepsparse) and [SparseML](https://github.com/neuralmagic/sparseml/) library by [Neural Magic](https://neuralmagic.com/).
 
 The details can be found in the following posts:
 
@@ -79,13 +79,15 @@ The details can be found in the following posts:
 + [Supercharging YOLOv5: How I Got 182.4 FPS Inference Without a GPU.](https://dicksonneoh.com/portfolio/supercharging_yolov5_180_fps_cpu/)
 
 ### 🍧 Takeaways
+Here are the takeaways from the brief talk
 
 {{< notice tip >}}
 
 + Begin with deployment in mind as the end goal.
 + The gap is deeper at the deployment side.
-+ MLOps - hot topic.
 + Many open-source tools make it easy to deploy models.
++ MLOps - hot topic worth exploring.
+
 
 {{< /notice >}}
 
