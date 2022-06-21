@@ -13,7 +13,7 @@ service:
 
       <br>
       <br>
-      <a href=https://buy.stripe.com/00g3eleIL0hwekw6oo rel=noopener class="btn btn-primary btn-zoom hire_button">Pay now</a>
+      <a href=https://buy.stripe.com/00g3eleIL0hwekw6oo rel=noopener class="btn btn-primary btn-zoom hire_button">Pay with Stripe</a>
 
     image: images/service/consultancy.svg
   - content: >
