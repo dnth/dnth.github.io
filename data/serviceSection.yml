@@ -7,9 +7,14 @@ title: >
   I provide end-to-end deep learning pipeline design, modeling and deployment services.
 service:
   - content: >
-      #### Ideation
+      #### Consultation
 
-      Consultancy on problem definition, feasibility analysis, and project scoping.
+      Book a 1-hour personal video call session with me to discuss problem definition, feasibility analysis, project scoping or any general questions on machine learning.
+
+      <br>
+      <br>
+      <a href=https://buy.stripe.com/00g3eleIL0hwekw6oo rel=noopener class="btn btn-primary btn-zoom hire_button">Pay now</a>
+
     image: images/service/consultancy.svg
   - content: >
       #### Exploratory Data Analysis
