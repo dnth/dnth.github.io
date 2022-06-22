@@ -2,14 +2,14 @@
 title: "PyTorch at the Edge: How I Deploy SOTA Image Model on Android with TorchScript and Flutter"
 date: 2022-01-09T11:00:15+08:00
 featureImage: images/portfolio/timm_torchscript_flutter/thumbnail.gif
-postImage: images/portfolio/supercharging_yolov5/post_image.png
-tags: ["TIMM", "TorchScript", "ConvNeXT", "optimization", "paddy", "Fastai"]
+postImage: images/portfolio/timm_torchscript_flutter/post_image.png
+tags: ["TIMM", "TorchScript", "ConvNeXT", "optimization", "paddy", "Fastai", "Flutter", "Android"]
 categories: ["deployment", "object-classification"]
 toc: true
 socialshare: true
 description: "Deploy any TIMM models on Android with Torchscript!"
 images : 
-- images/portfolio/supercharging_yolov5/post_image.png
+- images/portfolio/timm_torchscript_flutter/post_image.png
 ---
 
 {{< notice info >}}
