@@ -22,7 +22,17 @@ title: >
     
     🟩 Edge Device -- Raspberry Pi, NVIDIA Jetson, Arduino/ESP32/PIC/AVR MCU, Coral Edge TPU, Intel Neural Compute Stick.
 
-    🟩 My current [Github](https://github.com/dnth) Stats --
+    🟩 Current GitHub Stats --
+
+    
+
+    <div class="github-profile-badge" data-user="dnth"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Rapsssito/github-profile-badge@latest/src/widget.min.js"></script>
+
+    <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fdnth"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fdnth&labelColor=%23697689&countColor=%23d9e3f0" /></a>
+    <br>
+
+    
 
     ![Dickson's github stats](https://github-readme-stats.vercel.app/api?username=dnth&show_icons=true&theme=nightowl&hide=stars&count_private=true&include_all_commits=true&title_color=6677f9&bg_color=1c2030&icon_color=82b651&text_color=ffffff&border_radius=20) 
 
