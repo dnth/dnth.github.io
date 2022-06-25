@@ -38,7 +38,7 @@ Top results in leaderboard.
 
 ### 📲 Inference in Flutter
 
-
+{{< video src="vids/inference.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
