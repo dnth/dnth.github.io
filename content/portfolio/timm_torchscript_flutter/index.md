@@ -18,7 +18,25 @@ This blog post is still a work in progress. If you require further clarification
 
 
 ### 🔥 Motivation
+SOTA models usually take a lot of resources to run.
 
+Putting complicated model on mobile is painful.
+
+With Torchscript its possible.
+
+### 🏋️‍♀️ Training with Fastai and TIMM
+Using Jeremy's Kaggle notebook.
+
+Convnext for paddy disease classification.
+
+TIMM model
+
+Top results in leaderboard.
+
+
+### 📀 Exporting to TorchScript
+
+### 📲 Inference in Flutter
 
 
 
