@@ -1,5 +1,5 @@
 ---
-title: "PyTorch at the Edge: How I Deploy SOTA Image Model on Android with TorchScript and Flutter"
+title: "TIMM at the Edge: How I Deploy SOTA PyTorch Image Model on Android with TorchScript and Flutter"
 date: 2022-01-09T11:00:15+08:00
 featureImage: images/portfolio/timm_torchscript_flutter/thumbnail.gif
 postImage: images/portfolio/timm_torchscript_flutter/post_image.png
@@ -18,9 +18,13 @@ This blog post is still a work in progress. If you require further clarification
 
 
 ### 🔥 Motivation
-SOTA models usually take a lot of resources to run.
+SOTA models usually take a lot of resources to train and deploy.
 
 Putting complicated model on mobile is painful.
+
+What if you can do it completely for free?
+
+I'm going to show you how you can put a SOTA model on an Android phone easily.
 
 With [TorchScript](https://pytorch.org/docs/stable/jit.html) its possible.
 
@@ -37,9 +41,20 @@ PyTorch Image Models or [TIMM](https://github.com/rwightman/pytorch-image-models
 
 The TIMM repository hosts hundreds of recent SOTA models maintained by Ross.
 
+Other than models TIMM also provides layers, utilities, optimizers, schedulers, data-loaders, augmentations
+
+
+```bash
+pip install timm
+```
 
 
 ### 🏋️‍♀️ Training with Fastai and TIMM
+
+How do we effectively train a model from TIMM?
+
+Fastai has all the best practices that allows you to train any TIMM models and achieve top ranks in Kaggle leaderboards.
+
 Using Jeremy's Kaggle notebook.
 
 Convnext for paddy disease classification.
@@ -51,9 +66,34 @@ Top results in leaderboard.
 
 ### 📀 Exporting to TorchScript
 
+{{% blockquote author="TorchScript Docs" %}}
+TorchScript is a way to create serializable and optimizable models from PyTorch code.
+{{% /blockquote %}}
+
+
+
 All the models on TIMM can be exported to TorchScript
 
 ### 📲 Inference in Flutter
+
+We will be using the [pytorch_lite](https://github.com/zezo357/pytorch_lite) Flutter package.
+
+Supports object classification and detection with TorchScript.
+
+Preparing the model
+
+```python
+import torch
+from torch.utils.mobile_optimizer import optimize_for_mobile
+
+model = torch.load('model_scripted.pt',map_location="cpu")
+model.eval()
+example = torch.rand(1, 3, 224, 224)
+traced_script_module = torch.jit.trace(model, example)
+optimized_traced_model = optimize_for_mobile(traced_script_module)
+optimized_traced_model._save_for_lite_interpreter("model.pt")
+
+```
 
 {{< video src="vids/inference.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
