@@ -22,7 +22,22 @@ SOTA models usually take a lot of resources to run.
 
 Putting complicated model on mobile is painful.
 
-With Torchscript its possible.
+With [TorchScript](https://pytorch.org/docs/stable/jit.html) its possible.
+
+{{< notice tip >}}
+By the end of this post you will learn how to:
++ Train a SOTA ConvNext from TIMM for free on Kaggle.
++ Export the trained model into TorchScript.
++ Create a beaufiful UI and run the model on your Android device with Flutter.
+{{< /notice >}}
+
+### 🥇 PyTorch Image Models
+
+PyTorch Image Models or [TIMM](https://github.com/rwightman/pytorch-image-models) is an open source computer vision library by Ross Wightman.
+
+The TIMM repository hosts hundreds of recent SOTA models maintained by Ross.
+
+
 
 ### 🏋️‍♀️ Training with Fastai and TIMM
 Using Jeremy's Kaggle notebook.
@@ -35,6 +50,8 @@ Top results in leaderboard.
 
 
 ### 📀 Exporting to TorchScript
+
+All the models on TIMM can be exported to TorchScript
 
 ### 📲 Inference in Flutter
 
