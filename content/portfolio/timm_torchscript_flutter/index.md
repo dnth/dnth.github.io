@@ -1,5 +1,5 @@
 ---
-title: "TIMM at the Edge: How I Deploy SOTA PyTorch Image Model on Android with TorchScript and Flutter"
+title: "TIMM at the Edge: How to Deploy 645 PyTorch Image Models on Android with TorchScript and Flutter"
 date: 2022-01-09T11:00:15+08:00
 featureImage: images/portfolio/timm_torchscript_flutter/thumbnail.gif
 postImage: images/portfolio/timm_torchscript_flutter/post_image.png
