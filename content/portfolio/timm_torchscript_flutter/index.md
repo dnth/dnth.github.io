@@ -36,7 +36,7 @@ On top of that with platforms like Colab and Kaggle, pretty much anyone can trai
 
 The question is no longer "*can we train a SOTA model?*", but "*what happens after that?*"
 
-Majority data scientists wash their hands off at this point claiming their model works. 
+Unfortunately, after getting the model trained, majority data scientists wash their hands off at this point claiming their model works. 
 
 The proof? 👉 Kaggle leaderboard.
 
@@ -51,7 +51,7 @@ Forget it 🤷‍♂️.
 
 The frustration is real. I remember spending nights exporting models into ONNX and it still fails me.
 
-It doesn't need to be complicated.
+Deployment on mobile doesn't need to be complicated.
 
 In this post I'm going to show you how you can pick from over 600+ SOTA models and deploy them on Android, for free.
 
