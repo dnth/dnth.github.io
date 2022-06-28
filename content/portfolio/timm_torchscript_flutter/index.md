@@ -51,7 +51,7 @@ Forget it 🤷‍♂️.
 
 The frustration is real. I remember spending nights exporting models into ONNX and it still fails me.
 
-Deployment on mobile doesn't need to be complicated.
+Mobile deployment doesn't need to be complicated.
 
 In this post I'm going to show you how you can pick from over 600+ SOTA models and deploy them on Android, for free.
 
