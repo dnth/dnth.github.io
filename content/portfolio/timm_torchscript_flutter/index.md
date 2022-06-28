@@ -38,22 +38,22 @@ The question is no longer "*can we train a SOTA model?*", but "*what happens aft
 
 Majority data scientists wash their hands off at this point claiming their model works. 
 
-The proof is on the Kaggle leaderboard.
+The proof? 👉 Kaggle leaderboard.
 
-But, what good would SOTA models do to everyone else if it's just in notebooks and Kaggle leaderboards?
-Unless the model is deployed, it's of limited benefit to anyone out there.
+But, what good would SOTA models do if it's just in notebooks and Kaggle leaderboards?
+Unless the model is deployed and put to use, it's of limited benefit to anyone out there.
 
 {{< figure_resizing src="meme.jpg" >}}
 
-But deployment is painful. Running a model on mobile? 
+But deployment is painful. Running a model on a mobile phone? 
 
-Forget it.
+Forget it 🤷‍♂️.
 
 The frustration is real. I remember spending nights exporting models into ONNX and it still fails me.
 
-Deployment doesn't need to be complicated.
+It doesn't need to be complicated.
 
-In this post I'm going to show you how you can put a SOTA model on an Android phone easily, for free.
+In this post I'm going to show you how you can pick from over 600+ SOTA models and deploy them on Android, for free.
 
 <!-- With [TorchScript](https://pytorch.org/docs/stable/jit.html) its possible. -->
 
