@@ -18,48 +18,70 @@ This blog post is still a work in progress. If you require further clarification
 
 
 ### 🔥 Motivation
-So you know how to train a computer vision model. 
-With various packages anyone can train a model.
+You finally got into a Kaggle competition. You found a *getting-started notebook* written by a Kaggle Grandmaster and immediately trained a state-of-the-art (SOTA) image classification model.
 
-The question is what happens next?
-Do you let the model rot in your notebook? Or do you do something with it?
+After some fiddling, you found yourself in the leaderboard topping the charts with **99.9851247\% accuracy** on the test set!
 
-Majority data scientist wash their hands off at this point claiming my model works, I got SOTA or I won a Kaggle competition.
+Proud of your achievement you reward yourself to some rest and a good night's sleep. 
 
-A SOTA model means little if it's not put to good use in deployment.
+And then..
+
+{{< figure_resizing src="meme_sleep.jpg" >}}
+
+<!-- I hope this doesn't keep you awake at night like it did for me. -->
+
+With various high level libraries like Keras, Transformer and Fastai, the barrier to SOTA models have never been lower.
+
+On top of that with platforms like Colab and Kaggle, pretty much anyone can train a reasonably good model using an old laptop or even a mobile phone (with some patience).
+
+The question is no longer "*can we train a SOTA model?*", but "*what happens after that?*"
+
+Majority data scientists wash their hands off at this point claiming their model works. 
+
+The proof is on the Kaggle leaderboard.
+
+But, what good would SOTA models do to everyone else if it's just in notebooks and Kaggle leaderboards?
+Unless the model is deployed, it's of limited benefit to anyone out there.
 
 {{< figure_resizing src="meme.jpg" >}}
 
-But deploying is painful. Do I need to learn ONNX? TensorRT? TFLite?
-Maybe.
+But deployment is painful. Running a model on mobile? 
 
-Learning each on of them is not easy. I had to pull my hair over sleepless nights exporting to ONNX.
-They are out of the PyTorch ecosystem.
+Forget it.
 
-Here's a solution that hold the best chances of working - TorchScript.
-Integrated within the PyTorch ecosystem.
+The frustration is real. I remember spending nights exporting models into ONNX and it still fails me.
 
+Deployment doesn't need to be complicated.
 
+In this post I'm going to show you how you can put a SOTA model on an Android phone easily, for free.
 
-Putting complicated model on mobile is painful.
-
-What if you can do it completely for free?
-
-I'm going to show you how you can put a SOTA model on an Android phone easily.
-
-With [TorchScript](https://pytorch.org/docs/stable/jit.html) its possible.
+<!-- With [TorchScript](https://pytorch.org/docs/stable/jit.html) its possible. -->
 
 {{< notice tip >}}
 By the end of this post you will learn how to:
-+ Train a SOTA ConvNext from TIMM for free on Kaggle.
++ Train a SOTA ConvNeXt from TIMM for free on Kaggle.
 + Export the trained model into TorchScript.
 + Create a beaufiful UI and run the model on your Android device with Flutter.
+
+💡**NOTE**: If you already have a [TIMM](https://github.com/rwightman/pytorch-image-models) model feel free to jump straight into [📀 Exporting to TorchScript](https://dicksonneoh.com/portfolio/timm_torchscript_flutter/#-exporting-to-torchscript) section.
 {{< /notice >}}
 
 
-If you already have a TIMM model feel free to jump straight into [Exporting to TorchScript](https://dicksonneoh.com/portfolio/timm_torchscript_flutter/#-exporting-to-torchscript) section.
+<!-- You might wonder, do I need to learn ONNX? TensorRT? TFLite?
 
-If you'd want to learn how I train a model using some of the best practices, read on 👇
+Maybe.
+
+Learning each on of them takes time. Personally, I never had a very positive experience with exporting PyTorch models into ONNX.
+It doesn't work every time. -->
+<!-- I had to pull my hair over sleepless nights exporting to ONNX.
+They are out of the PyTorch ecosystem. -->
+
+<!-- But in this post I will show you solution that holds the best chances of working - TorchScript. -->
+<!-- Integrated within the PyTorch ecosystem. -->
+
+
+
+But, if you'd like to discover how I train a model using some of the best techniques on Kaggle, read on 👇
 
 ### 🥇 PyTorch Image Models
 
