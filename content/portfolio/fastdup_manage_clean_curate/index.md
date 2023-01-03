@@ -14,6 +14,8 @@ images :
 
 ### ✅ Motivation
 
+{{< figure_resizing src="meme.jpg" caption="My model be like.">}}
+
 ### ⚡ Fastdup
 
 ### 📖 Installation
