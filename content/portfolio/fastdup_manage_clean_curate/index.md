@@ -1,15 +1,15 @@
 ---
 title: "Fastdup: Manage, Clean & Curate Visual Data at Scale on a Single CPU Machine (For Free)"
 date: 2023-01-03T11:00:15+08:00
-featureImage: images/portfolio/supercharging_yolov5/thumbnail.gif
-postImage: images/portfolio/fastdup/post_image.png
+featureImage: images/portfolio/fastdup_manage_clean_curate/thumbnail.gif
+postImage: images/portfolio/fastdup_manage_clean_curate/post_image.png
 tags: ["Fastdup", "Fast.ai", "scene-classification"]
 categories: ["data-validation", "object-classification", "modeling"]
 toc: true
 socialshare: true
 description: "Manage, Clean & Curate Visual Data at Scale on a CPU! For free!"
 images : 
-- images/portfolio/fastdup/post_image.png
+- images/portfolio/fastdup_manage_clean_curate/post_image.png
 ---
 
 ### ✅ Motivation
