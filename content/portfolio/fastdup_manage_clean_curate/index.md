@@ -1,5 +1,5 @@
 ---
-title: "Fastdup: Manage, Clean & Curate Visual Data at Scale on a Single CPU Machine (For Free)"
+title: "Fastdup: A Free, Underated Tool to Manage, Clean & Curate Visual Data at Scale on a Single CPU"
 date: 2023-01-03T11:00:15+08:00
 featureImage: images/portfolio/fastdup_manage_clean_curate/thumbnail.gif
 postImage: images/portfolio/fastdup_manage_clean_curate/post_image.png
