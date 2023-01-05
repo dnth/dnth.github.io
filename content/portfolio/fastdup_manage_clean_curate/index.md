@@ -20,6 +20,8 @@ After all that is the sexiest part of the entire workflow.
 But, jumping straight into modeling without first spending time with the problem and data
 is a perfect recipe for failure.
 
+You may feel like a superstar, with a model that doesn't work.
+
 {{< figure_resizing src="meme2.jpeg" caption="" >}}
 
 You can spend hours modeling only to find the model "works" but on the data.
