@@ -13,49 +13,62 @@ images :
 ---
 
 ### ✅ Motivation
-As an ML practitioner, you might be tempted to jump into modeling as soon as you can.
-After all that is the sexiest part or the entire workflow.
 
-But jumping straight into modeling without first spending time with the problem and data
+As a computer vision practitioner, you might be tempted to jump into modeling as soon as you can.
+After all that is the sexiest part of the entire workflow.
+
+But, jumping straight into modeling without first spending time with the problem and data
 is a perfect recipe for failure.
 
+{{< figure_resizing src="meme2.jpeg" caption="" >}}
+
+You can spend hours modeling only to find the model "works" but on the data.
+Or worse, the model works, but is secretly failing - because of the data.
 A model can only be as good as the data it's trained on.
 Bad data produces bad model.
 
-{{< figure_resizing src="meme.jpg" caption="The consequence of modeling over bad data. The model works but in a wrong way." >}}
+**But how exactly do you check your data? In computer vision the number of images can be huge. Can you do it quickly on your computer?**
 
-But then how do you check your data? There are a plethora of data validation tools out there but they require some learning curve and time investement in the beginning.
+Yes! With 👇
 
-Well, except Fastdup.
+### ⚡ Fastdup
 
-Fastdup is a data validation tool that let's you manage, clean and curate your images at scale.
-It's easy to get started and use. This should be everyone's first step before diving into modeling.
+Fastdup is a data cleaning tool that let's you manage, clean and curate your images at scale.
+It's incredibly easy to use and highly efficient. 
+
+At first, I was skeptical. How could a single tool handle all my data cleaning and curation needs on a single CPU machine? Especially if the dataset is huge. But I was curious, so I decided to give it a try. And I have to say, I was pleasantly surprised.
+
+Fastdup lets me clean my visual data with ease, freeing up valuable resources and time. 
+But that's not all - it also had powerful curation features that helped me organize and prioritize my data, making it easier to find what I needed when I needed it.
+
+Fastdup let's you find 👇
+
+{{< figure_resizing src="features.png" caption="Fastdup superpowers. Source: Fastdup GitHub." link="https://github.com/visual-layer/fastdup" >}}
+
+
+In short, Fastdup is 👇
+* **Unsupervised**: fits any visual dataset.
+* **Scalable** : handles 400M images on a single machine.
+* **Efficient**: works on CPU (even on [Colab](https://colab.research.google.com/github/visualdatabase/fastdup/blob/main/examples/fastdup.ipynb) with only 2 CPU cores!).
+* **Low Cost**: can process 12M images on a $1 cloud machine budget.
+
+The best part? Fastdup is free.
+
+It's easy to get started and use. 
+I think it should in your toolbox if you're doing computer vision.
+
+
 
 {{< notice tip >}}
 By the end of this post, you will learn how to:
 
-* Install Fastdup and run it on your own dataset.
+* Install Fastdup and run it on your own dataset on your local machine.
 * Find dataset issues like duplicates, anomalies, wrong labels and train-test leak.
-* Train a state-of-the-art classifier with Fastai library.
+* Train a state-of-the-art classifier with Fastai library and compare the performance gain.
 
 {{< /notice >}}
 
-### ⚡ Fastdup
-Okay first, what in the world is Fastdup?
 
-{{% blockquote %}}
-fastdup is a tool for gaining insights from a large image/video collection. It can find anomalies, duplicate and near duplicate images/videos, clusters of similarity, learn the normal behavior and temporal interactions between images/videos. It can be used for smart subsampling of a higher quality dataset, outlier removal, novelty detection of new information to be sent for tagging.{{% /blockquote %}}
-
-Fastdup is:
-* Unsupervised: fits any dataset
-* Scalable : handles 400M images on a single machine
-* Efficient: works on CPU only
-* Low Cost: can process 12M images on a $1 cloud machine budget
-
-From the authors of GraphLab and Turi Create.
-Link to articles and other works.
-
-{{< figure_resizing src="features.png" caption="Fastdup superpowers. Source: Gitub">}}
 
 ### 📖 Installation
 To start run 
