@@ -147,30 +147,72 @@ First, let's see if there are duplicates in the `train_set`.
 Run:
 ```python
 from IPython.display import HTML
-fastdup.create_duplicates_gallery('scene_classification/report/train/similarity.csv', save_path='scene_classification/report/train/', num_images=20, max_width=400)
+fastdup.create_duplicates_gallery(similarity_file='scene_classification/report/train/similarity.csv'
+                                  save_path='scene_classification/report/train/', 
+                                  num_images=5)
+
 HTML('scene_classification/report/train/similarity.html')
 ```
 
-You'd see something like the following.
+You'd see something like the following 👇
 
 {{< include_html "./content/portfolio/fastdup_manage_clean_curate/similarity.html" >}}
 
+We can already spot a couple of issues here in the `train_set`.
+
+Firstly, in `row 1` and `row 2` of the table. We see that `19255.jpg` and `7872.jpg`
+are **duplicates of the same class**. We know this by the `Distance` value of `1.0`. 
+You can also see that they are exactly the same side-by-side. 
+
+Next, here's a fun one, take a look at `row 0`.
+Image `9769.jpg` and `7293.jpg` are exact copies but they exist in both the `buildings` and `street` folders!
+The same can be seen on `row 3` and `row 4`. 
+These are **duplicate images but labeled as different classes** and will end up confusing your model.
+
+For the sake of simplicity I've only shown five rows, if you run the code, you'd find more!
+Eliminating these images can already improve your model quite a bit.
+
+<!-- {{< figure_resizing src="dup_1.png" caption="Fastdup superpowers. Source: Fastdup GitHub." >}} -->
+
 
 #### 🦄 Anomalies
+Next, let's take a look at the anomalies found in the `train_set`.
 
+Run:
 ```python
-fastdup.create_outliers_gallery('scene_classification/report/train/outliers.csv', save_path='scene_classification/report/train/', num_images=10, max_width=400)
+fastdup.create_outliers_gallery(outliers_file='scene_classification/report/train/outliers.csv',            
+                                save_path='scene_classification/report/train/', 
+                                num_images=5)
 HTML('scene_classification/report/train/outliers.html')
 ```
+You'd see something like the following 👇
+
+{{< include_html "./content/portfolio/fastdup_manage_clean_curate/outliers.html" >}}
+
+What do we find here?
+
+Image `12723.jpg` in the first row is labeled as `glacier`, but it doesn't look like one to me. I guess you can evaluate the rest if they belong to the right classes as labeled.
+
+Again, I'm not showing the full list of anomalies here for brevity.
+Run the code and you'll find more.
+
 
 #### 💆 Wrong or Confusing Labels
+We already found wrong labels by finding duplicates. Now 
 
 ```python
-fastdup.create_similarity_gallery("scene_classification/report/train/similarity.csv", save_path="scene_classification/report/train/", get_label_func=my_label_func, num_images=100,
-                             get_reformat_filename_func=lambda x: os.path.basename(x), max_width=180, slice='label_score', descending=False)
+fastdup.create_similarity_gallery(similarity_file="scene_classification/report/train/similarity.csv",
+                                  save_path="scene_classification/report/train/", get_label_func=my_label_func, num_images=5,
+                                  get_reformat_filename_func=lambda x: os.path.basename(x), slice='label_score', descending=False)
 
 HTML('./scene_classification/report/train/topk_similarity.html')
 ```
+
+You'd see something like 👇
+
+{{< include_html "./content/portfolio/fastdup_manage_clean_curate/topk_similarity.html" >}}
+
+
 
 #### 🚰 Train-Test Leak
 Find if there are duplciates in the train and test dataset.
