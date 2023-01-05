@@ -126,25 +126,35 @@ Next, all you have to do is run:
 
 ```python
 import fastdup
-fastdup.run(input_dir='scene_classification/data/seg_train/', 
+fastdup.run(input_dir='scene_classification/data/train_set/', 
             work_dir="scene_classification/report/train/")
 ```
 
 {{< notice note >}}
-* `input_dir` -- Path to the images folder.
+* `input_dir` -- Path to the images folder. In this example we are checking the training dataset. Change this accordingly if you're running this on the validation/test set.
 * `work_dir` -- Path to save the Fastdup reports.
 {{< /notice >}}
 
-Fastdup will take some time to run through all the images in the folder.
-The time it takes depends on how powerful if your CPU. 
+Fastdup will run through all the images in the folder to check for issues.
+How long it takes depends on how powerful is your CPU. 
 On my machine with an Intel Core™ i9-11900 it takes **under 1 minute** to check through (approx. 25,000) images in the folder 🤯.
 
+Once it's done running, you can view the reports generated.
+
 #### 🧑‍🤝‍🧑 Duplicates
+First, let's see if there are duplicates in the `train_set`.
+
+Run:
 ```python
 from IPython.display import HTML
 fastdup.create_duplicates_gallery('scene_classification/report/train/similarity.csv', save_path='scene_classification/report/train/', num_images=20, max_width=400)
 HTML('scene_classification/report/train/similarity.html')
 ```
+
+You'd see something like the following.
+
+{{< include_html "./content/portfolio/fastdup_manage_clean_curate/similarity.html" >}}
+
 
 #### 🦄 Anomalies
 
