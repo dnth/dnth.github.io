@@ -57,18 +57,13 @@ The best part? Fastdup is free.
 It's easy to get started and use. 
 I think it should in your toolbox if you're doing computer vision.
 
-
-
 {{< notice tip >}}
 By the end of this post, you will learn how to:
 
 * Install Fastdup and run it on your own dataset on your local machine.
 * Find dataset issues like duplicates, anomalies, wrong labels and train-test leak.
 * Train a state-of-the-art classifier with Fastai library and compare the performance gain.
-
 {{< /notice >}}
-
-
 
 ### 📖 Installation
 To start run 
@@ -80,58 +75,69 @@ pip install fastdup
 ### 🖼 Dataset
 We will be using an openly available image classification [dataset](https://www.kaggle.com/datasets/puneet6060/intel-image-classification) from Intel.
 
+
 The dataset contains 25,000 images (150 x 150 pixels) of natural scenes from around the world in six categories:
-* buildings
-* forest
-* glacier
-* mountain
-* sea
-* tree
+1. buildings
+2. forest
+3. glacier
+4. mountain
+5. sea
+6. tree
 
-At this point it's tempting to start modeling right away.
-Well let's that now - not for the reason you think, but to get a baseline model performance.
-
-
-### 📖 Baseline Performance - Fastai
-The easiest way to start modeling right away is by using Fastai.
-With just a few lines of code you can create a reasonably recent model and train it with the best practices included.
-
-View my training notebook [here](https://github.com/dnth/fastdup-blogpost/blob/main/train.ipynb).
-
-```python {linenos=table}
-from fastai.vision.all import *
-path = Path('./scene_classification/data/seg_train/')
-block = DataBlock(
-            blocks=(ImageBlock, CategoryBlock), 
-            get_items=get_image_files,
-            splitter=RandomSplitter(valid_pct=0.2, seed=42),
-            get_y=parent_label, item_tfms=[Resize(150)],
-            batch_tfms=aug_transforms(mult=1.5, size=384, min_scale=0.75))
-loaders = block.dataloaders(path)
-learn = cnn_learner(loaders, resnet18, metrics=accuracy)
-learn.fine_tune(5, base_lr=1e-3)
-```
-The above are all the codes you'll need to create a CNN model (resnet18) that performs >90% accuracy!
-
-Confusion matrix.
+{{< figure_resizing src="dataset_sample.png" caption="Samples from dataset." link="https://www.kaggle.com/datasets/puneet6060/intel-image-classification" >}}
 
 ### 🏋️‍♀️ Fastdup in Action: Discovering Data Issues
-So is it time to rejoice and call it a day?
 
-The performance metric can be misleading.
-Now let's see what underling issue with this.
+Once we have the data locally, let's organize the folder structure.
 
-We will be using Fastdup to discover the problems. 
+```tree
+├── scene_classification
+   ├── data
+   │   ├── train_set
+   │   |   ├── buildings
+   │   |   |   ├── image1.jpg
+   │   |   |   ├── image2.jpg
+   │   |   |   ├── ...
+   │   |   ├── mountain
+   │   |   |   ├── image10.jpg
+   │   |   |   ├── image11.jpg
+   │   |   |   ├── ...
+   |   ├── valid_set
+   |   |   ├── buildings
+   |   |   |   ├── image100.jpg
+   │   |   |   ├── ...
+   |   └── test_set
+   └── report
+        ├── train
+        └── test
+```
 
-It's so simple you'll only need to run one line of code.
+{{< notice note >}}
++ `data/train_set/` - Where all images are placed.
++ `data/valid_set/` - Where all validation images are placed.
++ `data/test_set/` - Where all test images are placed.
++ `report/` - Where the reports from Fastdup are kept.
+
+**NOTE**: You can explore further into the folder structure on my [Github repo](https://github.com/dnth/fastdup-manage-clean-curate-blogpost). Alternatively you can [run this example in Colab](https://github.com/dnth/fastdup-blogpost/blob/main/scene_train.ipynb).
+
+{{< /notice >}}
+
+Next, all you have to do is run:
 
 ```python
 import fastdup
-fastdup.run(input_dir='scene_classification/data/seg_train/', work_dir="scene_classification/report/train/")
+fastdup.run(input_dir='scene_classification/data/seg_train/', 
+            work_dir="scene_classification/report/train/")
 ```
 
-View the notebook [here](https://github.com/dnth/fastdup-blogpost/blob/main/scene_train.ipynb).
+{{< notice note >}}
+* `input_dir` -- Path to the images folder.
+* `work_dir` -- Path to save the Fastdup reports.
+{{< /notice >}}
 
+Fastdup will take some time to run through all the images in the folder.
+The time it takes depends on how powerful if your CPU. 
+On my machine with an Intel Core™ i9-11900 it takes **under 1 minute** to check through (approx. 25,000) images in the folder 🤯.
 
 #### 🧑‍🤝‍🧑 Duplicates
 ```python
@@ -166,6 +172,33 @@ HTML('scene_classification/report/train_test/similarity.html')
 
 Yes there are duplicates found!
 This means that the model might just memorize the data from the train set to do well on the test set.
+
+
+
+### 📖 Baseline Performance - Fastai
+With the unmodified dataset let's model a quickly model it using Fastai.
+
+Using Fastai, you can create a reasonably decent model and train it with the best practices included.
+
+View my training notebook [here](https://github.com/dnth/fastdup-blogpost/blob/main/train.ipynb).
+
+```python {linenos=table}
+from fastai.vision.all import *
+path = Path('./scene_classification/data/seg_train/')
+block = DataBlock(
+            blocks=(ImageBlock, CategoryBlock), 
+            get_items=get_image_files,
+            splitter=RandomSplitter(valid_pct=0.2, seed=42),
+            get_y=parent_label, item_tfms=[Resize(150)],
+            batch_tfms=aug_transforms(mult=1.5, size=384, min_scale=0.75))
+loaders = block.dataloaders(path)
+learn = cnn_learner(loaders, resnet18, metrics=accuracy)
+learn.fine_tune(5, base_lr=1e-3)
+```
+The above are all the codes you'll need to create a CNN model (resnet18) that performs >90% accuracy!
+
+Confusion matrix.
+
 
 ### 🎯 Optimized Performance - Fastdup + Fastai
 
