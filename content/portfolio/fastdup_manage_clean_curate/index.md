@@ -214,17 +214,38 @@ You'd see something like 👇
 
 
 
-#### 🚰 Train-Test Leak
-Find if there are duplciates in the train and test dataset.
+#### 🚰 Train-Validation Leak
+In the previous section we try to find duplicates that exist in the same dataset, eg `train_set`.
+But if we try to find if there are duplicates from the validation set?
 
+Validation set is so important because it determines a lot of things in training, eg when the model is generalizes well enough during training to combat overfitting.
+
+Because in theory, there should not be exact duplicates in the train and validation set. [On the importance of validation set](https://www.brandonwolfson.com/2020/08/17/the-importance-of-validation-and-test-sets.html).
+
+But, let's find out if this dataset is free from this issue.
+
+Run:
 ```python
-fastdup.create_duplicates_gallery('scene_classification/report/train_test/similarity.csv', save_path='scene_classification/report/train_test/', num_images=20, max_width=400)
+import fastdup
+fastdup.run(input_dir='scene_classification/data/train_set/', work_dir="scene_classification/report/train_test/", test_dir='scene_classification/data/test_set/')
+
+fastdup.create_duplicates_gallery(similarity_file='scene_classification/report/train_test/similarity.csv', 
+                                  save_path='scene_classification/report/train_test/', num_images=5, max_width=400)
 HTML('scene_classification/report/train_test/similarity.html')
 ```
+
+Note the input_dir and test_dir is differnet.
 
 Yes there are duplicates found!
 This means that the model might just memorize the data from the train set to do well on the test set.
 
+And..
+
+{{< include_html "./content/portfolio/fastdup_manage_clean_curate/train_valid_similarity.html" >}}
+
+Duplicate images.
+
+Different classes.
 
 
 ### 📖 Baseline Performance - Fastai
