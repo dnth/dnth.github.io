@@ -1,5 +1,5 @@
 ---
-title: "Fastdup: A Free, Underated Tool to Manage, Clean & Curate Visual Data at Scale on a Single CPU"
+title: "Fastdup: An Underated Tool to Manage, Clean & Curate Visual Data at Scale on a Single CPU - For Free."
 date: 2023-01-03T11:00:15+08:00
 featureImage: images/portfolio/fastdup_manage_clean_curate/thumbnail.gif
 postImage: images/portfolio/fastdup_manage_clean_curate/post_image.png
@@ -14,24 +14,26 @@ images :
 
 ### ✅ Motivation
 
-As a computer vision practitioner, you might be tempted to jump into modeling as soon as you can.
-After all that is the sexiest part of the entire workflow.
+As a data scientist, you might be tempted to jump into modeling as soon as you can.
+I mean, that's the fun part, right? 
 
-But, jumping straight into modeling without first spending time with the problem and data
-is a perfect recipe for failure.
+But trust me, if you skip straight to modeling without taking the time to really 
+understand the problem and analyze the data, you're setting yourself up for failure.
 
-You may feel like a superstar, with a model that doesn't work.
+I've been there.
+
+You might feel like a superstar, but you'll have with a model that doesn't work 🤦‍♂️.
 
 {{< figure_resizing src="meme2.jpeg" caption="" >}}
 
-You can spend hours modeling only to find the model "works" but on the data.
-Or worse, the model works, but is secretly failing - because of the data.
 A model can only be as good as the data it's trained on.
 Bad data produces bad model.
 
-**But how exactly do you check your data? In computer vision the number of images can be huge. Can you do it quickly on your computer?**
+**But how exactly do we inspect large volume of images? And do it on a local computer quickly, for free?**
 
-Yes! With 👇
+Sounds too good to be true eh?
+
+It's not, with 👇
 
 ### ⚡ Fastdup
 
