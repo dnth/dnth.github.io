@@ -219,8 +219,8 @@ You'd see something like the following 👇
 
 What do we find here?
 
-* Image `12723.jpg` in the first row is labeled as `glacier`, but it doesn't look like one to me. 
-* Image `5610.jpg` doen't look like a `forest`.
+* Image `12723.jpg` in the top row is labeled as `glacier`, but it doesn't look like one to me. 
+* Image `5610.jpg` doesn't look like a `forest`.
 
 All the other images doesn't look too convincing to me either.
 I guess you can evaluate the rest if they belong to the right classes as labeled.
@@ -231,13 +231,15 @@ Also repeat this with `valid_set`.
 
 
 #### 💆 Wrong or Confusing Labels
-We already found wrong labels by finding duplicates. Now 
+Other than duplicates and anomalies, one of my favorite capabilities of Fastdup is finding wrong or confusing labels.
+Similar to previous sections, we can simply run:
 
 ```python
-fastdup.create_similarity_gallery(similarity_file="scene_classification/report/train/similarity.csv",
-                                  save_path="scene_classification/report/train/", get_label_func=my_label_func, num_images=5,
-                                  get_reformat_filename_func=lambda x: os.path.basename(x), slice='label_score', descending=False)
-
+fastdup.create_similarity_gallery(similarity_file="scene_classification/report/train/similarity.csv", 
+                                  save_path="scene_classification/report/train/", 
+                                  get_label_func=lambda x: x.split('/')[-2], 
+                                  num_images=5, max_width=180, slice='label_score', 
+                                  descending=False)
 HTML('./scene_classification/report/train/topk_similarity.html')
 ```
 
@@ -245,9 +247,21 @@ You'd see something like 👇
 
 {{< include_html "./content/portfolio/fastdup_manage_clean_curate/topk_similarity.html" >}}
 
+Under the hood, Fastdup finds images that are similar to one another at the embedding level but are assigned different labels.
 
+{{< notice info >}}
+What can we observe here?
 
-#### 🚰 Train-Validation Leak
+* On the top row, we find that `3279.jpg` is labeled `forest` but looks very similar to `mountains`. 
+* On the remaining rows, we see confusing labels between `glacier` and `mountains`.
+
+{{< /notice >}}
+
+It is important to address these confusing labels because if the training data contains confusing or incorrect labels, it can negatively impact the performance of the model.
+
+At this point, you might want to invest some time to review and correct these wrong/confusing labels before training a model.
+
+#### 🚰 Data Leakage
 In the previous section we try to find duplicates that exist in the same dataset, eg `train_set`.
 But if we try to find if there are duplicates from the validation set?
 
