@@ -262,38 +262,64 @@ It is important to address these confusing labels because if the training data c
 At this point, you might want to invest some time to review and correct these wrong/confusing labels before training a model.
 
 #### 🚰 Data Leakage
-In the previous section we try to find duplicates that exist in the same dataset, eg `train_set`.
-But if we try to find if there are duplicates from the validation set?
+In the [first section](#-duplicates) we tried finding duplicates within the `train_set`. 
+Now, what if we try to find overlapping images from the `train_set` and `valid_set`/`test_set`?
 
-Validation set is so important because it determines a lot of things in training, eg when the model is generalizes well enough during training to combat overfitting.
+If there are overlaps, then we have a problem of data leakage!
+Let's find out.
 
-Because in theory, there should not be exact duplicates in the train and validation set. [On the importance of validation set](https://www.brandonwolfson.com/2020/08/17/the-importance-of-validation-and-test-sets.html).
+For this we'd have to call the `run` method again and specify an additional parameter `test_dir`.
 
-But, let's find out if this dataset is free from this issue.
-
-Run:
 ```python
 import fastdup
-fastdup.run(input_dir='scene_classification/data/train_set/', work_dir="scene_classification/report/train_test/", test_dir='scene_classification/data/test_set/')
+fastdup.run(input_dir='scene_classification/data/train_set/', 
+            work_dir="scene_classification/report/train_test/", 
+            test_dir='scene_classification/data/valid_set/')
 
 fastdup.create_duplicates_gallery(similarity_file='scene_classification/report/train_test/similarity.csv', 
-                                  save_path='scene_classification/report/train_test/', num_images=5, max_width=400)
+                                  save_path='scene_classification/report/train_test/', num_images=5)
 HTML('scene_classification/report/train_test/similarity.html')
 ```
 
-Note the input_dir and test_dir is differnet.
+{{< notice note >}}
+* The `input_dir` and `test_dir` are different. 
 
-Yes there are duplicates found!
-This means that the model might just memorize the data from the train set to do well on the test set.
+* The `test_dir` parameter should point to `valid_set` or `test_set` folder.
+{{< /notice >}}
 
-And..
+In the code snippet above, we find duplicates from the `train_set` and `valid_set`.
+
+And.. 👇
 
 {{< include_html "./content/portfolio/fastdup_manage_clean_curate/train_valid_similarity.html" >}}
 
-Duplicate images.
 
-Different classes.
+From the visualization above, we find various duplicates from the `train_set` and `valid_set`.
 
+{{< notice info >}}
+If you see carefully we have two issues here:
+
+* Duplicate images in different dataset - On the top row, `21469.jpg` and `14341.jpg` are duplicates but they exist in `train_set` and `valid_set` respectively.
+
+* Duplicate images with different labels - On the top row, `21469.jpg` is labeled as `glacier` in the `valid_set` and `mountain` in the `train_set`.
+
+{{< /notice >}}
+
+Bad news. We just uncovered a **train-validation data leakage**! 
+
+This is a common reason a model performs all-too-well during training and fails in production because the model might just 
+memorize the training set without generalizing to unseen data.
+
+Rachel Thomas from [Fastai](https://www.fast.ai/) wrote a good piece on [how to craft
+a good validation set](https://www.fast.ai/posts/2017-11-13-validation-sets.html).
+
+{{< notice tip >}}
+* A validation set consist of a **representative** and **non-overlapping** samples from the train set and is used to evaluate models during training.
+* Overlapping images in the train and validation set may lead to a poor performance on new data.
+* The way we craft our validation set is extremely important to ensure the model does not overfit. 
+{{< /notice >}}
+
+Spending time in crafting your validation set though takes a little effort, will pay off well in the future.
 
 ### 📖 Baseline Performance - Fastai
 With the unmodified dataset let's model a quickly model it using Fastai.
