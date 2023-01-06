@@ -62,15 +62,17 @@ It's easy to get started and use.
 I think it should in your toolbox if you're doing computer vision.
 
 {{< notice tip >}}
-By the end of this post, you will learn how to:
+⚡ By the end of this post, you will learn how to:
 
-* Install Fastdup and run it on your own dataset on your local machine.
-* Find dataset issues like duplicates, anomalies, wrong labels and train-test leak.
-* Train a state-of-the-art classifier with Fastai library and compare the performance gain.
+* Install Fastdup and run it on your local machine.
+* Find duplicate and anomalies in your dataset.
+* Identify wrong/confusing labels in your dataset. 
+* Uncover data leak in your dataset.
+* Train a state-of-the-art model with [Fastai](https://www.fast.ai/).
 {{< /notice >}}
 
 ### 📖 Installation
-To start run 
+To start run:
 
 ```bash
 pip install fastdup
@@ -78,7 +80,6 @@ pip install fastdup
 
 ### 🖼 Dataset
 We will be using an openly available image classification [dataset](https://www.kaggle.com/datasets/puneet6060/intel-image-classification) from Intel.
-
 
 The dataset contains 25,000 images (150 x 150 pixels) of natural scenes from around the world in six categories:
 1. buildings
