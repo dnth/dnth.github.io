@@ -215,12 +215,19 @@ You'd see something like the following 👇
 
 {{< include_html "./content/portfolio/fastdup_manage_clean_curate/outliers.html" >}}
 
+{{< notice info >}}
+
 What do we find here?
 
-Image `12723.jpg` in the first row is labeled as `glacier`, but it doesn't look like one to me. I guess you can evaluate the rest if they belong to the right classes as labeled.
+* Image `12723.jpg` in the first row is labeled as `glacier`, but it doesn't look like one to me. 
+* Image `5610.jpg` doen't look like a `forest`.
 
-Again, I'm not showing the full list of anomalies here for brevity.
-Run the code and you'll find more.
+All the other images doesn't look too convincing to me either.
+I guess you can evaluate the rest if they belong to the right classes as labeled.
+
+**NOTE**: Run the code snippet and increase the `num_images` parameter to see more anomalies. 
+Also repeat this with `valid_set`.
+{{< /notice >}}
 
 
 #### 💆 Wrong or Confusing Labels
