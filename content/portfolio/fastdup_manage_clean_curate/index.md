@@ -202,6 +202,12 @@ These are **duplicate images but labeled as different classes** and will end up 
 For the sake of simplicity I've only shown five rows, if you run the code, you'd find more!
 Eliminating these images can already improve your model quite a bit.
 
+Using Fastdup we can remove the duplicates quite easily.
+```python
+top_components = fastdup.find_top_components(work_dir="scene_classification_clean/report/")
+fastdup.delete_components(top_components, None, how='one', dry_run=False)
+```
+
 That's how easy it is to find duplicate images in your dataset! Let's see if we can find more issues.
 
 #### 🦄 Anomalies
@@ -224,12 +230,20 @@ What do we find here?
 * Image `12723.jpg` in the top row is labeled as `glacier`, but it doesn't look like one to me. 
 * Image `5610.jpg` doesn't look like a `forest`.
 
-All the other images doesn't look too convincing to me either.
-I guess you can evaluate the rest if they belong to the right classes as labeled.
-
 **NOTE**: Run the code snippet and increase the `num_images` parameter to see more anomalies. 
 Also repeat this with `valid_set`.
 {{< /notice >}}
+
+All the other images doesn't look too convincing to me either.
+I guess you can evaluate the rest if they belong to the right classes as labeled.
+
+Remove these outliers programmatically with:
+```python
+fastdup.delete_or_retag_stats_outliers(stats_file="scene_classification_clean/report/outliers.csv", 
+                                       metric='distance', filename_col='from', 
+                                       lower_threshold=0.6, dry_run=False)
+```
+
 
 #### 💆 Wrong or Confusing Labels
 Other than duplicates and anomalies, one of my favorite capabilities of Fastdup is finding wrong or confusing labels.
@@ -267,6 +281,12 @@ At this point, you might want to invest some time to review and correct these wr
 You can repeat the steps to find duplicates, anomalies and problematic labels for the `valid_set` and `test_set`. 
 To do so, you'd have to call the `run` method again specifying the appropriate dataset folders.
 {{< /notice >}}
+
+Using Fastdup we can delete or retag these images.
+
+```python
+fastdup.delete_or_retag_stats_outliers(stats_file=df, metric='score', filename_col='from', lower_threshold=51, dry_run=False, how='delete')
+```
 
 #### 🚰 Data Leakage
 In the [first section](#-duplicates) we tried finding duplicates within the `train_set`. We found a few duplicate images within the same folder.
@@ -325,7 +345,7 @@ Spending time in crafting your validation set though takes a little effort, will
 Rachel Thomas from [Fastai](https://www.fast.ai/) wrote a good piece on [how to craft
 a good validation set](https://www.fast.ai/posts/2017-11-13-validation-sets.html).
 
-### 📖 Baseline Performance - Fastai
+<!-- ### 📖 Baseline Performance - Fastai
 With the unmodified dataset let's model a quickly model it using Fastai.
 
 Using Fastai, you can create a reasonably decent model and train it with the best practices included.
@@ -347,16 +367,22 @@ learn.fine_tune(5, base_lr=1e-3)
 ```
 The above are all the codes you'll need to create a CNN model (resnet18) that performs >90% accuracy!
 
-Confusion matrix.
+Confusion matrix. -->
 
 
-### 🎯 Optimized Performance - Fastdup + Fastai
+<!-- ### 🎯 Optimized Performance - Fastdup + Fastai -->
 
 
 ### 🙏 Comments & Feedback
-Using fastdup with fastai lets you iterate quickly.
-Fastdup lets you quickly check for data problems. 
-Fastai lets you quickly train a model and validate.
+In this post I've shown you how to
+
+{{< notice tip >}}
+* **Install** Fastdup and run it on your local machine.
+* Find **duplicate** and **anomalies** in your dataset.
+* Identify **wrong/confusing labels** in your dataset. 
+* Uncover **data leak** in your dataset.
+* Train a state-of-the-art model with [Fastai](https://www.fast.ai/).
+{{< /notice >}}
 
 
 I hope you've learned a thing or two from this blog post.
