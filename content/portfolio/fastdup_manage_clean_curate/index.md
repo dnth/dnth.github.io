@@ -309,7 +309,11 @@ Checkout the [Fastdup documentation](https://visual-layer.github.io/fastdup/) to
 {{< /notice >}}
 
 ```python
-fastdup.delete_or_retag_stats_outliers(stats_file=df, metric='score', filename_col='from', lower_threshold=51, dry_run=False, how='delete')
+fastdup.delete_or_retag_stats_outliers(stats_file=df, 
+                                       metric='score', 
+                                       filename_col='from', 
+                                       lower_threshold=51, 
+                                       dry_run=False, how='delete')
 ```
 
 #### 🚰 Data Leakage
