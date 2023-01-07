@@ -210,10 +210,17 @@ For the sake of simplicity I've only shown five rows, if you run the code, you'd
 Eliminating these images can already improve your model quite a bit.
 
 Using Fastdup we can remove the duplicates quite easily.
+
+{{< notice warning >}}
+The following code will delete all duplicate images from your folder. I recommend setting `dry_run=True` to see which files will be deleted.
+Checkout the [Fastdup documentation](https://visual-layer.github.io/fastdup/) to learn more about the function parameters.
+{{< /notice >}}
+
 ```python
 top_components = fastdup.find_top_components(work_dir="scene_classification_clean/report/")
 fastdup.delete_components(top_components, None, how='one', dry_run=False)
 ```
+
 
 That's how easy it is to find duplicate images in your dataset! Let's see if we can find more issues.
 
@@ -244,7 +251,12 @@ Also, repeat this with `valid_set`.
 All the other images don't look too convincing to me either.
 I guess you can evaluate the rest if they belong to the right classes as labeled.
 
-Remove these outliers programmatically with:
+{{< notice warning >}}
+The following code will delete all outliers from your folder. I recommend setting `dry_run=True` to see which files will be deleted.
+Checkout the [Fastdup documentation](https://visual-layer.github.io/fastdup/) to learn more about the function parameters.
+{{< /notice >}}
+
+Remove the outliers programmatically with:
 ```python
 fastdup.delete_or_retag_stats_outliers(stats_file="scene_classification_clean/report/outliers.csv", 
                                        metric='distance', filename_col='from', 
@@ -290,6 +302,11 @@ To do so, you'd have to call the `run` method again specifying the appropriate d
 {{< /notice >}}
 
 Using Fastdup we can delete or retag these images.
+
+{{< notice warning >}}
+The following code will delete all outliers from your folder. I recommend setting `dry_run=True` to see which files will be deleted.
+Checkout the [Fastdup documentation](https://visual-layer.github.io/fastdup/) to learn more about the function parameters.
+{{< /notice >}}
 
 ```python
 fastdup.delete_or_retag_stats_outliers(stats_file=df, metric='score', filename_col='from', lower_threshold=51, dry_run=False, how='delete')
