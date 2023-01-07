@@ -77,13 +77,20 @@ education:
 
 experience:
   - content: >
-      #### National Energy University, Malaysia.
+      #### [ZenML](https://zenml.io/)
+        
+      Developer Advocate. Responsible of creating content strategy on social media content on Twitter and LinkedIn. Wrote blogs and spoke in podcasts/talks on behalf of ZenML. 
+      I've also helped and communicate with community members on Slack ensuring their questions are addresed on time.
+    time: July 2022 - December 2022
+
+  - content: >
+      #### [National Energy University, Malaysia](https://www.uniten.edu.my/).
       
       Lecturer. Taught undergraduate and diploma level courses. 
       Primary subjects taught include [Microprocessor Systems](https://www.youtube.com/playlist?list=PLqGyAx3n9NxoxuqQd7YVtI-O0lY32Hr2d), 
       [Digital Logic Design](https://www.youtube.com/playlist?list=PLqGyAx3n9NxriN8V6ar-x-GFnkAtkTL1n) and Random Process.
       I was also featured once on Malaysia's [national TV](https://www.youtube.com/watch?v=RRW__wJiDIs&ab_channel=dicksonneoh) showcasing my efforts on robotics education to the younger generation.
-    time: 2016-Present
+    time: May 2016-November 2022
   
   - content: >
       #### Center for Advanced Mechatronics and Robotics. 
