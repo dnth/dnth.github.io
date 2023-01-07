@@ -70,10 +70,10 @@ Read more [here](https://medium.com/@amiralush/large-image-datasets-today-are-a-
 {{< notice tip >}}
 ⚡ By the end of this post, you will learn how to:
 
-* Install Fastdup and run it on your local machine.
-* Find duplicates and anomalies in your dataset.
-* Identify wrong/confusing labels in your dataset. 
-* Uncover data leaks in your dataset.
+* **Install** Fastdup and run it on your local machine.
+* Find **duplicate** and **anomalies** in your dataset.
+* Identify **wrong/confusing labels** in your dataset. 
+* Uncover **data leak** in your dataset.
 
 **NOTE**: All codes are on my [Github repo](https://github.com/dnth/fastdup-manage-clean-curate-blogpost). Alternatively, you can [run this example in Colab](https://github.com/dnth/fastdup-manage-clean-curate-blogpost/blob/main/clean.ipynb).
 
