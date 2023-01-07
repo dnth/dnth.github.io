@@ -74,7 +74,6 @@ Read more [here](https://medium.com/@amiralush/large-image-datasets-today-are-a-
 * Find duplicates and anomalies in your dataset.
 * Identify wrong/confusing labels in your dataset. 
 * Uncover data leaks in your dataset.
-* Train a state-of-the-art model with [Fastai](https://www.fast.ai/).
 
 **NOTE**: All codes are on my [Github repo](https://github.com/dnth/fastdup-manage-clean-curate-blogpost). Alternatively, you can [run this example in Colab](https://github.com/dnth/fastdup-manage-clean-curate-blogpost/blob/main/clean.ipynb).
 
@@ -413,7 +412,6 @@ In this post I've shown you how to:
 * Find **duplicate** and **anomalies** in your dataset.
 * Identify **wrong/confusing labels** in your dataset. 
 * Uncover **data leak** in your dataset.
-* Train a state-of-the-art model with [Fastai](https://www.fast.ai/).
 {{< /notice >}}
 
 Additionally, I trained a deep learning classification model on the clean data using Fastai. View the training notebook [here](https://github.com/dnth/fastdup-manage-clean-curate-blogpost/blob/main/train_clean.ipynb). 
