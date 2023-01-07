@@ -12,6 +12,10 @@ images :
 - images/portfolio/fastdup_manage_clean_curate/post_image.png
 ---
 
+{{< notice info >}}
+This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
+{{< /notice >}}
+
 ### ✅ Motivation
 
 As a data scientist, you might be tempted to jump into modeling as soon as you can.
