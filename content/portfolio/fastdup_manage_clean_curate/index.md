@@ -376,8 +376,6 @@ Confusion matrix. -->
 
 
 ### 🙏 Comments & Feedback
-I trained a deep learning classification model on the clean data using Fastai. View the training notebook [here](https://github.com/dnth/fastdup-manage-clean-curate-blogpost/blob/main/train_clean.ipynb). 
-The performance on the validation set is approximately 94.9% comparable to the [winning solutions of the competition](https://medium.com/@afzalsayed96/1st-place-solution-for-intel-scene-classification-challenge-c95cf941f8ed).
 
 That's a wrap!
 
@@ -392,8 +390,10 @@ In this post I've shown you how to:
 * Train a state-of-the-art model with [Fastai](https://www.fast.ai/).
 {{< /notice >}}
 
+Additionally, I trained a deep learning classification model on the clean data using Fastai. View the training notebook [here](https://github.com/dnth/fastdup-manage-clean-curate-blogpost/blob/main/train_clean.ipynb). 
+The performance on the validation set is approximately 94.9% comparable to the [winning solutions of the competition](https://medium.com/@afzalsayed96/1st-place-solution-for-intel-scene-classification-challenge-c95cf941f8ed).
 
-I hope you've learned a thing or two from this blog post.
+I hope you've enjoyed and learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).
 <!-- {{< tweet dicksonneoh7 1534395572022480896>}}
 
