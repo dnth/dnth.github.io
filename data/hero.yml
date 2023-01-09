@@ -2,17 +2,17 @@
 enable: true
 topTitle: Hello, I am Dickson 🚀
 content: >
-  # Deep Learning Data Scientist. 
+  # Deep Learning Data Scientist
   
-  I help companies design, build, and deploy end-to-end deep learning and MLOps solutions.
+  I help companies design and implement deep learning solutions.
 
-  > I specialize in Computer Vision, Time Series, Robotics, and Electronics.
+  > I specialize in computer vision, time series modeling, robotics, and electronics.
 
-  >> Open for consultation services, gigs, and remote employment.
+  >> Open for consultation services, gigs, and remote employment opportunities.
 
   
   
-buttonName: How I can help?
+buttonName: Get in touch
 buttonURL: contact
 image: images/hero/self-potrait.jpg
 #videoThumb: images/hero/self-square.jpg
