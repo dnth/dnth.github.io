@@ -1,63 +1,105 @@
 ---
 enable: true
-topTitle: Working Area
+topTitle: How can I help
 title: >
   ## Services
 
-  I provide end-to-end deep learning pipeline design, modeling and deployment services.
+  Data & Model Development, Writing, and Consultation
 service:
   - content: >
-      #### Consultation
+       #### Consultation
 
-      Book a 1-hour personal video call session with me to discuss general issues on your projects including problem definition, feasibility analysis, project scoping, etc.
-
-      <br>
-      <br>
-      <a href=https://buy.stripe.com/00g3eleIL0hwekw6oo rel=noopener class="btn btn-primary btn-zoom hire_button">Pay with Stripe</a>
+       1-hour personal video call session with me to discuss anything related to your project.
 
     image: images/service/consultancy.svg
-  - content: >
-      #### Exploratory Data Analysis
 
-      Data collection, exploring insights from existing dataset, discovering dataset issues such as class imbalance and biases. 
+
+  - content: >
+       #### Writing
+
+       I will write one technical blog post on your tech.
     image: images/service/ui-ux.svg
+
   - content: >
-      #### Data Labeling and Cleaning
-      
-      Cleaning and de-biasing data, crafting dataset, feature engineering, and data transformation.
+       #### Data Engineering
+
+       I will clean your image dataset, label them and craft a balanced train, validation and test set.
     image: images/service/clean2.svg
-  - content: >
-      #### Model Development
 
-      Model selection and establishing benchmark performance.
-      Iterate on training and evaluating model on dataset. Selecting most promising models for further development.
+  
+  - content: >
+       #### Model Development
+
+       I will train a computer vision model for you with a provided dataset.
     image: images/service/model2.svg
+  
   - content: >
-      #### Hyperparameter Optimization
+       #### Optimization
 
-      Run hyperparameter optimization algorithm to gain the best performance from model.
+       I will optimize your model for low-latency inferencing (OpenVINO, DeepSparse, ONNX, TFLite, Torchscript).
     image: images/service/tune.svg
-  - content: >
-      #### Model Optimization
 
-      Optimize model for inferencing by quantization and conversion into portable form such as OpenVINO, ONNX, Tflite.
-      Deploy to live environment for inferencing and monitoring. Refine model by observing model performance.
-    image: images/service/deploy.svg
   - content: >
-      #### Front-end \& Back-end Development
+       #### Front End Application
 
-      Front-end development focusing on mobile and web app using Flutter as a framework of choice. Back-end and database development with Firebase, MySQL, InfluxDB etc.
+       I will develop a Flutter app (Android/iOS/Web) for your computer vision model.
     image: images/service/mobile.svg
-  - content: >
-      #### Integration & Monitoring
 
-      Integration with Microsoft Azure, Amazon AWS, Google Machine Learning, etc. Cross-compatibility development with existing company ecosystem. 
-      Monitoring data/concept drift in deployment pipeline.
-    image: images/service/branding.svg
+    
 
-  - content: >
-      #### Edge Deployment and Serving
+  # - content: >
+  #     #### Consultation
 
-      Deploy trained and optimized model on CPU or GPU hardware on the edge for inference with model serving framework such as Triton or Tensorflow Serving.
-    image: images/service/circuit.svg
+  #     A 1-hour personal video call session with me to discuss anything related to your project.
+
+  #     <br>
+  #     <br>
+  #     <a href=https://buy.stripe.com/00g3eleIL0hwekw6oo rel=noopener class="btn btn-primary btn-zoom hire_button">Pay with Stripe</a>
+
+  #   image: images/service/consultancy.svg
+
+  # - content: >
+  #     #### Exploratory Data Analysis
+
+  #     Data collection, exploring insights from existing dataset, discovering dataset issues such as class imbalance and biases. 
+  #   image: images/service/ui-ux.svg
+  # - content: >
+  #     #### Data Labeling and Cleaning
+      
+  #     Cleaning and de-biasing data, crafting dataset, feature engineering, and data transformation.
+  #   image: images/service/clean2.svg
+#   - content: >
+#       #### Model Development
+
+#       Model selection and establishing benchmark performance.
+#       Iterate on training and evaluating model on dataset. Selecting most promising models for further development.
+#     image: images/service/model2.svg
+#   - content: >
+#       #### Hyperparameter Optimization
+
+#       Run hyperparameter optimization algorithm to gain the best performance from model.
+#     image: images/service/tune.svg
+#   - content: >
+#       #### Model Optimization
+
+#       Optimize model for inferencing by quantization and conversion into portable form such as OpenVINO, ONNX, Tflite.
+#       Deploy to live environment for inferencing and monitoring. Refine model by observing model performance.
+#     image: images/service/deploy.svg
+#   - content: >
+#       #### Front-end \& Back-end Development
+
+#       Front-end development focusing on mobile and web app using Flutter as a framework of choice. Back-end and database development with Firebase, MySQL, InfluxDB etc.
+#     image: images/service/mobile.svg
+#   - content: >
+#       #### Integration & Monitoring
+
+#       Integration with Microsoft Azure, Amazon AWS, Google Machine Learning, etc. Cross-compatibility development with existing company ecosystem. 
+#       Monitoring data/concept drift in deployment pipeline.
+#     image: images/service/branding.svg
+
+#   - content: >
+#       #### Edge Deployment and Serving
+
+#       Deploy trained and optimized model on CPU or GPU hardware on the edge for inference with model serving framework such as Triton or Tensorflow Serving.
+#     image: images/service/circuit.svg
 
