@@ -20,7 +20,7 @@ This blog post is still a work in progress. If you require further clarification
 ### 🔥 Motivation
 You finally got into a Kaggle competition. You found a *getting-started notebook* written by a Kaggle Grandmaster and immediately trained a state-of-the-art (SOTA) image classification model.
 
-After some fiddling, you found yourself in the leaderboard topping the charts with **99.9851247\% accuracy** on the test set!
+After some fiddling, you found yourself in the leaderboard topping the charts with **99.9851247\% accuracy** on the test set 😎!
 
 Proud of your achievement you reward yourself to some rest and a good night's sleep. 
 
@@ -30,18 +30,16 @@ And then..
 
 <!-- I hope this doesn't keep you awake at night like it did for me. -->
 
-With various high level libraries like Keras, Transformer and Fastai, the barrier to SOTA models have never been lower.
+With various high level libraries like [Keras](https://keras.io/), [Transformer](https://huggingface.co/docs/transformers/index) and [Fastai](https://www.fast.ai/), the barrier to SOTA models have never been lower.
 
-On top of that with platforms like Colab and Kaggle, pretty much anyone can train a reasonably good model using an old laptop or even a mobile phone (with some patience).
+On top of that with platforms like [Google Colab](https://colab.research.google.com/) and [Kaggle](https://www.kaggle.com/), pretty much anyone can train a reasonably good model using an old laptop or even a mobile phone (with some patience).
 
-The question is no longer "*can we train a SOTA model?*", but "*what happens after that?*"
+**The question is no longer "*can we train a SOTA model?*", but "*what happens after that?*"**
 
 Unfortunately, after getting the model trained, majority data scientists wash their hands off at this point claiming their model works. 
-
-The proof? 👉 Kaggle leaderboard.
-
 But, what good would SOTA models do if it's just in notebooks and Kaggle leaderboards?
-Unless the model is deployed and put to use, it's of limited benefit to anyone out there.
+
+Unless the model is deployed and put to use, it's of little benefit to anyone out there.
 
 {{< figure_resizing src="meme.jpg" >}}
 
@@ -49,11 +47,10 @@ But deployment is painful. Running a model on a mobile phone?
 
 Forget it 🤷‍♂️.
 
-The frustration is real. I remember spending nights exporting models into ONNX and it still fails me.
+The frustration is real. I remember spending nights exporting models into `ONNX` and it still fails me.
 
 Mobile deployment doesn't need to be complicated.
-
-In this post I'm going to show you how you can pick from over 600+ SOTA models and deploy them on Android, for free.
+In this post I'm going to show you how you can pick from over 600+ SOTA models on [TIMM](https://github.com/rwightman/pytorch-image-models) and deploy them on Android, for free.
 
 <!-- With [TorchScript](https://pytorch.org/docs/stable/jit.html) its possible. -->
 
@@ -79,16 +76,14 @@ They are out of the PyTorch ecosystem. -->
 <!-- But in this post I will show you solution that holds the best chances of working - TorchScript. -->
 <!-- Integrated within the PyTorch ecosystem. -->
 
-
-
 But, if you'd like to discover how I train a model using some of the best techniques on Kaggle, read on 👇
 
 ### 🥇 PyTorch Image Models
 
-PyTorch Image Models or [TIMM](https://github.com/rwightman/pytorch-image-models) is an open source computer vision library by Ross Wightman.
+PyTorch Image Models or [TIMM](https://github.com/rwightman/pytorch-image-models) is the open-source computer vision library by [Ross Wightman](https://www.linkedin.com/in/wightmanr/).
 
 The TIMM repository hosts hundreds of recent SOTA models maintained by Ross.
-At this point we have 645 pretrained model on TIMM. Increasing daily.
+At this point we have 645 pretrained model on TIMM and increasing as we speak.
 
 Other than models TIMM also provides layers, utilities, optimizers, schedulers, data-loaders, augmentations
 
@@ -97,45 +92,53 @@ Other than models TIMM also provides layers, utilities, optimizers, schedulers, 
 pip install timm
 ```
 
-We can use training script in TIMM and it give you the SOTA results.
-TIMM has a lot of advanced techniques, layers, optmizers and so on.
+The TIMM repo also provides training scripts that will let you get SOTA results on your dataset. Feel free to use them to train your model.
 
-But if you're just exploring and learning, it can take a long time to learn all that. 
-
-If you don't have a lot of time to learn and just want to start training immediately to see how things work, meet Fastai.
+In this post I'm going to show you an easy way to train a TIMM model using Fastai 👇
 
 
-### 🏋️‍♀️ Training with Fastai 
-Top down learning approach. Learn by doing. You don't need to be a PhD or a "math person".
+### 🏋️‍♀️ Training with Fastai
+[Fastai](https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/) is a deep learning library which provides practitioners with high high-level components that can quickly provide SOTA results.
+Under the hood Fastai uses PyTorch but it abstracts away the details and incorporates various best practices in training a model.
 
-[Intro to fastai](https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/)
+```bash
+pip install fastai
+```
 
-A kid learns to throw a ball by throwing, not learn physics first.
+You can access all TIMM models within fastai
+It is also possible to search for model architectures using Wildcard as below.
 
-How do we effectively train a model from TIMM?
+```python
+import timm
+timm.list_models('*conv*t*')
+```
 
-Fastai has all the best practices that allows you to train any TIMM models and achieve top ranks in Kaggle leaderboards.
+```python
+from fastai.vision.all import *
 
-Using Jeremy's Kaggle notebook.
+def train(arch, item, batch, epochs=5):
+    dls = ImageDataLoaders.from_folder(trn_path, seed=42, valid_pct=0.2, 
+                                       item_tfms=item, batch_tfms=batch)
+    learn = vision_learner(dls, arch, metrics=error_rate).to_fp16()
+    learn.fine_tune(epochs, 0.01)
+    return learn
 
-Convnext for paddy disease classification.
+trn_path = path/'train_images'
+arch = 'convnext_small_in22k'
+learn = train(arch, epochs=12,
+              item=Resize((480, 360), method=ResizeMethod.Pad, pad_mode=PadMode.Zeros),
+              batch=aug_transforms(size=(256,192), min_scale=0.75))
+```
 
-TIMM model
-
-Top results in leaderboard.
-
-Here is the link to Jeremy's notebook.
-
-Here is the link to my notebook modified from Jeremy's.
-
+{{< notice tip >}}
+View and fork my training notebook [here](https://www.kaggle.com/code/dnth90/timm-at-the-edge).
+{{< /notice >}}
 
 ### 📀 Exporting to TorchScript
 
 {{% blockquote author="TorchScript Docs" %}}
 TorchScript is a way to create serializable and optimizable models from PyTorch code.
 {{% /blockquote %}}
-
-
 
 All the models on TIMM can be exported to TorchScript
 
