@@ -1,5 +1,5 @@
 ---
-title: "TIMM at the Edge: How to Deploy 645 PyTorch Image Models on Android with TorchScript and Flutter"
+title: "TIMM at the Edge: Deploying Over 964 PyTorch Image Models on Android with TorchScript and Flutter"
 date: 2022-01-09T11:00:15+08:00
 featureImage: images/portfolio/timm_torchscript_flutter/thumbnail.gif
 postImage: images/portfolio/timm_torchscript_flutter/post_image.png
@@ -7,7 +7,7 @@ tags: ["TIMM", "TorchScript", "ConvNeXT", "optimization", "paddy", "Fastai", "Fl
 categories: ["deployment", "object-classification"]
 toc: true
 socialshare: true
-description: "Unlocking 600+ SOTA TIMM models on Android with Torchscript!"
+description: "Unlocking Over 900 SOTA TIMM models on Android with Torchscript!"
 images : 
 - images/portfolio/timm_torchscript_flutter/post_image.png
 ---
@@ -55,12 +55,12 @@ In this post I'm going to show you how you can pick from over 600+ SOTA models o
 <!-- With [TorchScript](https://pytorch.org/docs/stable/jit.html) its possible. -->
 
 {{< notice tip >}}
-By the end of this post you will learn how to:
-+ Train a SOTA ConvNeXt from TIMM for free on Kaggle.
+⚡ By the end of this post you will learn how to:
++ Train a SOTA model using TIMM and Fastai.
 + Export the trained model into TorchScript.
-+ Create a beaufiful UI and run the model on your Android device with Flutter.
++ Create a beautiful Flutter app and run the model inference on your Android device.
 
-💡**NOTE**: If you already have a [TIMM](https://github.com/rwightman/pytorch-image-models) model feel free to jump straight into [📀 Exporting to TorchScript](https://dicksonneoh.com/portfolio/timm_torchscript_flutter/#-exporting-to-torchscript) section.
+💡**NOTE**: If you already have a trained [TIMM](https://github.com/rwightman/pytorch-image-models) model, feel free to jump straight into [Exporting to TorchScript](https://dicksonneoh.com/portfolio/timm_torchscript_flutter/#-exporting-to-torchscript) section.
 {{< /notice >}}
 
 
@@ -83,17 +83,14 @@ But, if you'd like to discover how I train a model using some of the best techni
 PyTorch Image Models or [TIMM](https://github.com/rwightman/pytorch-image-models) is the open-source computer vision library by [Ross Wightman](https://www.linkedin.com/in/wightmanr/).
 
 The TIMM repository hosts hundreds of recent SOTA models maintained by Ross.
-At this point we have 645 pretrained model on TIMM and increasing as we speak.
+At this point we have 964 pretrained model on TIMM and increasing as we speak.
 
-Other than models TIMM also provides layers, utilities, optimizers, schedulers, data-loaders, augmentations
-
-
+You can install TIMM by simply:
 ```bash
 pip install timm
 ```
 
-The TIMM repo also provides training scripts that will let you get SOTA results on your dataset. Feel free to use them to train your model.
-
+The TIMM repo provides various utility functions and training script. Feel free to use them.
 In this post I'm going to show you an easy way to train a TIMM model using Fastai 👇
 
 
@@ -101,33 +98,97 @@ In this post I'm going to show you an easy way to train a TIMM model using Fasta
 [Fastai](https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/) is a deep learning library which provides practitioners with high high-level components that can quickly provide SOTA results.
 Under the hood Fastai uses PyTorch but it abstracts away the details and incorporates various best practices in training a model.
 
+Install Fastai with:
 ```bash
 pip install fastai
 ```
 
-You can access all TIMM models within fastai
-It is also possible to search for model architectures using Wildcard as below.
+You can access all TIMM models within Fastai.
+For example, we can search for model architectures a [wildcard](https://www.delftstack.com/howto/python/python-wildcard/).
+Since we will be running the model on a mobile device, let's search for models that has the word `edge`.
 
 ```python
 import timm
-timm.list_models('*conv*t*')
+timm.list_models('*edge*')
 ```
 
+This outputs all models that match the wildcard.
+```bash
+['cs3edgenet_x',
+ 'cs3se_edgenet_x',
+ 'edgenext_base',
+ 'edgenext_small',
+ 'edgenext_small_rw',
+ 'edgenext_x_small',
+ 'edgenext_xx_small']
+```
+
+Since, we'd run our model on a mobile device, let's select the smallest model available `edgenext_xx_small`.
+Now let's use Fastai and quickly train the model.
+
+Firstly import all the necessary packages with
 ```python
 from fastai.vision.all import *
+```
 
-def train(arch, item, batch, epochs=5):
-    dls = ImageDataLoaders.from_folder(trn_path, seed=42, valid_pct=0.2, 
-                                       item_tfms=item, batch_tfms=batch)
-    learn = vision_learner(dls, arch, metrics=error_rate).to_fp16()
-    learn.fine_tune(epochs, 0.01)
-    return learn
+Next, load the images into a `DataLoader`.
 
-trn_path = path/'train_images'
-arch = 'convnext_small_in22k'
-learn = train(arch, epochs=12,
-              item=Resize((480, 360), method=ResizeMethod.Pad, pad_mode=PadMode.Zeros),
-              batch=aug_transforms(size=(256,192), min_scale=0.75))
+```python
+trn_path = Path('../data/train_images')
+dls = ImageDataLoaders.from_folder(trn_path, seed=316, 
+                                   valid_pct=0.2, bs=128,
+                                   item_tfms=[Resize((224, 224))], 
+                                   batch_tfms=aug_transforms(min_scale=0.75))
+```
+
+{{< notice note >}}
+
+Parameters for the `from_folder` method:
+
+* `trn_path` -- A `Path` to the training images.
+* `valid_pct` -- The percentage of dataset to allocate as the validation set.
+* `bs` -- Batch size to use during training.
+* `item_tfms` -- Transformation applied to each item.
+* `batch_tfms` -- Random transformations applied to each batch to augment the dataset.
+
+
+{{< /notice >}}
+
+You can show a batch of the images loaded into the `DataLoader` with:
+
+```python
+dls.train.show_batch(max_n=8, nrows=2)
+```
+
+{{< figure_resizing src="show_batch.png" >}}
+
+Next create a `Learner` object which combines the model and data into one object for training.
+
+```python
+learn = vision_learner(dls, 'edgenext_xx_small', metrics=accuracy).to_fp16()
+```
+
+Find the best learning rate.
+
+```python
+learn.lr_find()
+```
+
+{{< figure_resizing src="lr_find.png" >}}
+
+Now train the model.
+
+```python
+learn.fine_tune(5, base_lr=1e-2, cbs=[ShowGraphCallback()])
+```
+
+{{< figure_resizing src="train.png" >}}
+
+
+Optionally export the Learner.
+
+```python
+learn.export("../../train/export.pkl")
 ```
 
 {{< notice tip >}}
@@ -168,8 +229,9 @@ Supports object classification and detection with TorchScript.
 Link to my GitHub [repo](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost).
 
 
+The screen capture shows the Flutter app in action. The clip runs in real-time and not sped up.
 
-{{< video src="vids/inference.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
+{{< video src="vids/inference_edgenext.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
