@@ -232,7 +232,10 @@ The following code will **delete all duplicate images** from your folder. I reco
 top_components = fastdup.find_top_components(work_dir="scene_classification_clean/report/")
 fastdup.delete_components(top_components, dry_run=False)
 ```
-The snippet above removes duplicates of the same images ensuring you only have one copy of the image in your dataset.
+
+In Fastdup, a **component** is a **cluster** of similar images.
+The snippet above removes duplicates of the same images (from the top cluster) ensuring you only have one copy of the image in your dataset.
+
 
 That's how easy it is to find duplicate images and remove them from your dataset! 
 Let's see if we can find more issues.
