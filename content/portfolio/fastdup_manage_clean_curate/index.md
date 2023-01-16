@@ -455,6 +455,14 @@ In this post I've shown you how to:
 * Uncover **data leak** in your dataset.
 {{< /notice >}}
 
+By using Fastdup and cleaning your dataset, you saved yourself:
+* Unnecessary labeling cost.
+* Long computation/training time.
+* Headaches from debugging model predictions due to problems in data.
+
+I believe Fastdup is one of the easiest tool to get started for data cleaning. 
+It's a low-hanging fruit and ought to be in your toolkit if you're working with image dataset.
+
 If you're interested to learn more, I've trained a deep learning classification model on the clean version of the data using [Fastai](https://www.fast.ai/). View the training notebook [here](https://github.com/dnth/fastdup-manage-clean-curate-blogpost/blob/main/train_clean.ipynb). 
 The accuracy on the validation set is approximately **94.9%** - comparable to the [winning solutions of the competition](https://medium.com/@afzalsayed96/1st-place-solution-for-intel-scene-classification-challenge-c95cf941f8ed) (96.48% with ensembling).
 
