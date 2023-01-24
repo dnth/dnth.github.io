@@ -1,5 +1,5 @@
 ---
-title: "Fastdup: An Underrated Tool to Manage, Clean & Curate Visual Data at Scale on Your CPU - For Free."
+title: "Fastdup: A Powerful Tool to Manage, Clean & Curate Visual Data at Scale on Your CPU - For Free."
 date: 2023-01-03T11:00:15+08:00
 featureImage: images/portfolio/fastdup_manage_clean_curate/thumbnail.gif
 postImage: images/portfolio/fastdup_manage_clean_curate/post_image.png
