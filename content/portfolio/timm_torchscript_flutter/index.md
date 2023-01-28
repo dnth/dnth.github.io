@@ -1,10 +1,10 @@
 ---
 title: "TIMM at the Edge: Deploying Over 964 PyTorch Image Models on Android with TorchScript and Flutter"
-date: 2022-01-09T11:00:15+08:00
+date: 2022-04-18T11:00:15+08:00
 featureImage: images/portfolio/timm_torchscript_flutter/thumbnail.gif
 postImage: images/portfolio/timm_torchscript_flutter/post_image.png
-tags: ["TIMM", "TorchScript", "ConvNeXT", "optimization", "paddy", "Fastai", "Flutter", "Android"]
-categories: ["deployment", "object-classification"]
+tags: ["TIMM", "TorchScript", "paddy-disease", "Fastai", "Flutter", "Android"]
+categories: ["deployment", "object-classification", "edge"]
 toc: true
 socialshare: true
 description: "Unlocking Over 900 SOTA TIMM models on Android with Torchscript!"
@@ -196,22 +196,23 @@ View and fork my training notebook [here](https://www.kaggle.com/code/dnth90/tim
 {{< /notice >}}
 
 ### 📀 Exporting to TorchScript
+Now that we are done training the model, it's time we export the model in a form suiteble on a mobile device.
+We can do that easily with [TorchScript](https://pytorch.org/docs/stable/jit.html).
 
 {{% blockquote author="TorchScript Docs" %}}
 TorchScript is a way to create serializable and optimizable models from PyTorch code.
 {{% /blockquote %}}
 
-All the models on TIMM can be exported to TorchScript
-
+All the models on TIMM can be exported to TorchScript with the following code snippet.
 
 ```python
 import torch
 from torch.utils.mobile_optimizer import optimize_for_mobile
 
-model = torch.load('model_scripted.pt',map_location="cpu")
-model.eval()
+learn.model.cpu()
+learn.model.eval()
 example = torch.rand(1, 3, 224, 224)
-traced_script_module = torch.jit.trace(model, example)
+traced_script_module = torch.jit.trace(learn.model, example)
 optimized_traced_model = optimize_for_mobile(traced_script_module)
 optimized_traced_model._save_for_lite_interpreter("model.pt")
 
@@ -224,7 +225,6 @@ optimized_traced_model._save_for_lite_interpreter("model.pt")
 We will be using the [pytorch_lite](https://github.com/zezo357/pytorch_lite) Flutter package.
 
 Supports object classification and detection with TorchScript.
-
 
 Link to my GitHub [repo](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost).
 
