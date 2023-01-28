@@ -1,5 +1,5 @@
 ---
-title: "TIMM at the Edge: Deploying Over 964 PyTorch Image Models on Android with TorchScript and Flutter"
+title: "PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter"
 date: 2022-04-18T11:00:15+08:00
 featureImage: images/portfolio/timm_torchscript_flutter/thumbnail.gif
 postImage: images/portfolio/timm_torchscript_flutter/post_image.png
