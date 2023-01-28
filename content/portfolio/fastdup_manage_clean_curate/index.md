@@ -474,5 +474,5 @@ If you have any questions, comments, or feedback, please leave them on the follo
 
 {{< tweet dicksonneoh7 1618622445581393920>}}
 
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7024313080490721280/" height="1560" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7024313080490721280/" height="1760" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 
