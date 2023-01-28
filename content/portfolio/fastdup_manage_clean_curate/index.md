@@ -55,7 +55,7 @@ It lets you identify:
 
 In short, Fastdup is 👇
 * **Unsupervised**: fits any visual dataset.
-* **Scalable** : handles 400M images on a single machine.
+* **Scalable**: handles 400M images on a single machine.
 * **Efficient**: works on CPU (even on Google Colab with only 2 CPU cores!).
 * **Low Cost**: can process 12M images on a $1 cloud machine budget.
 
@@ -471,8 +471,8 @@ The accuracy on the validation set is approximately **94.9%** - comparable to th
 
 I hope you've enjoyed and learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).
-<!-- {{< tweet dicksonneoh7 1534395572022480896>}}
 
+{{< tweet dicksonneoh7 1618622445581393920>}}
 
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6940225157286264834" height="2406" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe> -->
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7024313080490721280/" height="1560" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 
