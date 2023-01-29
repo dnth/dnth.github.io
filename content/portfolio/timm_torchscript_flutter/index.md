@@ -2,14 +2,14 @@
 title: "PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter"
 date: 2022-04-18T11:00:15+08:00
 featureImage: images/portfolio/timm_torchscript_flutter/thumbnail.gif
-postImage: images/portfolio/timm_torchscript_flutter/post_image.png
-tags: ["TIMM", "TorchScript", "paddy-disease", "Fastai", "Flutter", "Android"]
+postImage: images/portfolio/timm_torchscript_flutter/post_image.gif
+tags: ["TIMM", "TorchScript", "paddy-disease", "Fastai", "Flutter", "Android", "EdgeNeXt"]
 categories: ["deployment", "object-classification", "edge"]
 toc: true
 socialshare: true
-description: "Unlocking Over 900 SOTA TIMM models on Android with Torchscript!"
+description: "Unlock Over 900 SOTA TIMM models on Android with Torchscript!"
 images : 
-- images/portfolio/timm_torchscript_flutter/post_image.png
+- images/portfolio/timm_torchscript_flutter/post_image.gif
 ---
 
 {{< notice info >}}

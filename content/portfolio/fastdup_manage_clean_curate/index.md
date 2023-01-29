@@ -2,14 +2,14 @@
 title: "Fastdup: A Powerful Tool to Manage, Clean & Curate Visual Data at Scale on Your CPU - For Free."
 date: 2023-01-03T11:00:15+08:00
 featureImage: images/portfolio/fastdup_manage_clean_curate/thumbnail.gif
-postImage: images/portfolio/fastdup_manage_clean_curate/post_image.png
+postImage: images/portfolio/fastdup_manage_clean_curate/post_image.gif
 tags: ["Fastdup", "natural-scene-classification", "intel"]
 categories: ["data-cleaning", "object-classification"]
 toc: true
 socialshare: true
 description: "Say goodbye to cluttered visual data."
 images : 
-- images/portfolio/fastdup_manage_clean_curate/post_image.png
+- images/portfolio/fastdup_manage_clean_curate/post_image.gif
 ---
 
 ### ✅ Motivation
