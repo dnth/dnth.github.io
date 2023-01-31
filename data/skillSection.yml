@@ -23,7 +23,7 @@ skill:
     percent: 60
   - title: Flutter Mobile/Web Development
     percent: 70
-  - title: Azure ML/Google Cloud Platform / AWS
+  - title: Azure ML/Google Cloud Platform/AWS
     percent: 55
   - title: InfluxDB/Hive/Firebase/MySQL Database
     percent: 60
