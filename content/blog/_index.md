@@ -1,3 +1,3 @@
 ---
-title: Recent Article
+title: Recent Contents
 ---
