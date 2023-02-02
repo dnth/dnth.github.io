@@ -12,4 +12,6 @@ images :
 - images/blog/course_digital_logic_design/post_image.png
 ---
 
+A collection of recorded lecture classes for the Digital Logic Design course I taught at National Energy University, Malaysia.
+
 View the playlist [here](https://www.youtube.com/playlist?list=PLqGyAx3n9NxriN8V6ar-x-GFnkAtkTL1n)
