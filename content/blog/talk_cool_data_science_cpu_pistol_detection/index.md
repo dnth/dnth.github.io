@@ -1,7 +1,7 @@
 ---
-title: "Running Models on CPU instead of GPUs and Detecting Pistols with CV!"
+title: "Cool Data Projects Show with Kristen - Gun Detection on CPU"
 date: 2022-08-23T20:48:15+08:00
-featureImage: images/blog/talk_cool_data_science_cpu_pistol_detection/post_image.png
+featureImage: images/blog/talk_cool_data_science_cpu_pistol_detection/thumbnail.gif
 postImage: images/blog/talk_cool_data_science_cpu_pistol_detection/post_image.png
 tags: ["open-source", "deployment"]
 categories: ["invited-talks"]
