@@ -1,7 +1,7 @@
 ---
 title: "ML Pipelines from the Get Go (Without Tears)"
 date: 2022-08-25T20:48:15+08:00
-featureImage: images/blog/talk_ml_pipelines_from_the_get_go/post_image.jpeg
+featureImage: images/blog/talk_ml_pipelines_from_the_get_go/thumbnail.gif
 postImage: images/blog/talk_ml_pipelines_from_the_get_go/post_image.jpeg
 tags: ["open-source", "deployment"]
 categories: ["invited-talks"]
