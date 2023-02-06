@@ -23,7 +23,7 @@ In this talk, we will delve into what it means to run AI on the Edge, the benefi
 
 Edge AI is important because it enables IoT devices, such as cameras and sensors, to process data locally and respond quickly to changing conditions without relying on a constant connection to the cloud. This can lead to improved efficiency, security, and privacy, as well as enabling new use cases for AI in areas such as autonomous vehicles and industrial control systems. -->
 
-In this talk, I discuss importance and applications of Edge AI with Sage Elliot from [Whylabs](https://whylabs.ai/).
+Here's my conversation Sage Elliot from [Whylabs](https://whylabs.ai/).
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JD0wQK2agSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -46,7 +46,7 @@ There are several reasons why one might want to run AI on the Edge. Here are som
 ### 💫 Use Cases of Edge AI
 Edge AI has found applications in several industries, including:
 
-+ **Computer Vision**: Edge AI can be used to implement face recognition or image classification on devices like smartphones. Read some of my recent projects on running object detection models real-time on a CPU using OpenVINO [here](../../portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/) and DeepSparse [here](../../portfolio/supercharging_yolov5_180_fps_cpu/).
++ **Computer Vision**: Edge AI can be used to implement face recognition or image classification on devices like smartphones. Read some of my recent projects on running object detection models real-time on a CPU using [OpenVINO](../../portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/) and [DeepSparse](../../portfolio/supercharging_yolov5_180_fps_cpu/).
 
 + **Agriculture**: Edge AI can be used in agriculture to monitor crops and provide real-time predictions on their growth.
 
