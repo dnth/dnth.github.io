@@ -1,13 +1,13 @@
 ---
 title: "PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter"
-date: 2022-04-18T11:00:15+08:00
+date: 2023-02-07T11:00:15+08:00
 featureImage: images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/thumbnail.gif
 postImage: images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/post_image.gif
 tags: ["TIMM", "TorchScript", "paddy-disease", "Fastai", "Flutter", "Android", "EdgeNeXt"]
 categories: ["deployment", "object-classification", "edge"]
 toc: true
 socialshare: true
-description: "Unlock Over 900 SOTA TIMM models on Android with Torchscript!"
+description: "Unlock and Deploy Over 900+ SOTA TIMM models on Android with Torchscript!"
 images : 
 - images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/post_image.gif
 ---
@@ -46,7 +46,7 @@ Forget it 🤷‍♂️.
 The frustration is real. I remember spending nights exporting models into `ONNX` and it still fails me.
 
 Mobile deployment doesn't need to be complicated.
-In this post I'm going to show you how you can pick from over 600+ SOTA models on [TIMM](https://github.com/rwightman/pytorch-image-models) and deploy them on Android, for free.
+In this post I'm going to show you how you can pick from over 900+ SOTA models on [TIMM](https://github.com/rwightman/pytorch-image-models), train them with best practices with Fastai, and deploy them on Android, for free.
 
 <!-- With [TorchScript](https://pytorch.org/docs/stable/jit.html) its possible. -->
 
@@ -54,10 +54,14 @@ In this post I'm going to show you how you can pick from over 600+ SOTA models o
 ⚡ By the end of this post you will learn how to:
 + Train a SOTA model using TIMM and Fastai.
 + Export the trained model into TorchScript.
-+ Create a beautiful Flutter app and run the model inference on your Android device.
++ Create a functional Android app and run the model inference on your device.
 
 💡**NOTE**: If you already have a trained [TIMM](https://github.com/rwightman/pytorch-image-models) model, feel free to jump straight into [Exporting to TorchScript](https://dicksonneoh.com/portfolio/timm_torchscript_flutter/#-exporting-to-torchscript) section.
 {{< /notice >}}
+
+Demo of the app 👇
+
+![img](./vids/anim.gif)
 
 
 <!-- You might wonder, do I need to learn ONNX? TensorRT? TFLite?
@@ -72,7 +76,7 @@ They are out of the PyTorch ecosystem. -->
 <!-- But in this post I will show you solution that holds the best chances of working - TorchScript. -->
 <!-- Integrated within the PyTorch ecosystem. -->
 
-But, if you'd like to discover how I train a model using some of the best techniques on Kaggle, read on 👇
+If that looks interesting, read on 👇
 
 ### 🥇 PyTorch Image Models
 
@@ -187,10 +191,6 @@ Optionally export the Learner.
 learn.export("../../train/export.pkl")
 ```
 
-{{< notice tip >}}
-View and fork my training notebook [here](https://www.kaggle.com/code/dnth90/timm-at-the-edge).
-{{< /notice >}}
-
 ### 📀 Exporting to TorchScript
 Now that we are done training the model, it's time we export the model in a form suitable on a mobile device.
 
@@ -206,7 +206,7 @@ TorchScript is a way to create serializable and optimizable models from PyTorch 
 
 All the models on TIMM can be exported to TorchScript with the following code snippet.
 
-```python
+```python {linenos=table}
 import torch
 from torch.utils.mobile_optimizer import optimize_for_mobile
 
@@ -217,11 +217,21 @@ traced_script_module = torch.jit.trace(learn.model, example)
 optimized_traced_model = optimize_for_mobile(traced_script_module)
 optimized_traced_model._save_for_lite_interpreter("torchscript_edgenext_xx_small.pt")
 ```
+
+&nbsp;
+
+{{< notice note >}}
+From the snippet above we need to specify a few things:
++ `Line 6`: The shape of the input image tensor.
++ `Line 9`: "torchscript_edgenext_xx_small.pt" is the name of the resulting TorchScript serialized model.
+{{< /notice >}}
+
+
 Once completed, you'll have a file `torchscript_edgenext_xx_small.pt` that can be ported to other devices for inference.
 In this post, I will be porting it to Android using a framework known as Flutter. 
 
 ### 📲 Inference in Flutter
-In Flutter, we can load the `torchscript_edgenext_xx_small.pt` and use if for inference.
+We can load the `torchscript_edgenext_xx_small.pt` and use if for inference.
 To do so, we will use the [pytorch_lite](https://github.com/zezo357/pytorch_lite) Flutter package.
 The `pytorch_lite` package supports image classification and detection with TorchScript.
 
@@ -239,6 +249,8 @@ Future loadModel() async {
     }
 }
 ```
+
+&nbsp;
 
 {{< notice note >}}
 From the snippet above we need to specify a few things:
@@ -294,7 +306,8 @@ The clip runs in real-time and not sped up!
 
 {{< video src="vids/inference_edgenext_new.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-Install the pre-built `.apk`file on your Android phone [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true).
+The compiled `.apk` file is about **77MB** in size.
+Install the pre-built `.apk` file on your Android phone [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true).
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
