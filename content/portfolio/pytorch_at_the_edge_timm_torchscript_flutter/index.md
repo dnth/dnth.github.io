@@ -215,21 +215,21 @@ learn.model.eval()
 example = torch.rand(1, 3, 224, 224)
 traced_script_module = torch.jit.trace(learn.model, example)
 optimized_traced_model = optimize_for_mobile(traced_script_module)
-optimized_traced_model._save_for_lite_interpreter("model_edgenextxxs.pt")
+optimized_traced_model._save_for_lite_interpreter("torchscript_edgenext_xx_small.pt")
 ```
-Once completed, you'll have a file `model_edgenextxxs.pt` that can be ported to other devices for inference.
+Once completed, you'll have a file `torchscript_edgenext_xx_small.pt` that can be ported to other devices for inference.
 In this post, I will be porting it to Android using a framework known as Flutter. 
 
 ### 📲 Inference in Flutter
-In Flutter, we can load the `model_edgenextxxs.pt` and use if for inference.
+In Flutter, we can load the `torchscript_edgenext_xx_small.pt` and use if for inference.
 To do so, we will use the [pytorch_lite](https://github.com/zezo357/pytorch_lite) Flutter package.
 The `pytorch_lite` package supports image classification and detection with TorchScript.
 
-The following code snippet shows a function to load our serialized model `model_edgenextxxs.pt`.
+The following code snippet shows a function to load our serialized model `torchscript_edgenext_xx_small.pt`.
 
 ```dart {linenos=table}
 Future loadModel() async {
-    String pathImageModel = "assets/models/model_edgenextxxs.pt";
+    String pathImageModel = "assets/models/torchscript_edgenext_xx_small.pt";
     try {
         _imageModel = await PytorchLite.loadClassificationModel(
             pathImageModel, 224, 224,
@@ -293,6 +293,8 @@ The following screen capture shows the Flutter app in action.
 The clip runs in real-time and not sped up! 
 
 {{< video src="vids/inference_edgenext_new.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
+
+Install the pre-built `.apk`file on your Android phone [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true).
 
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
