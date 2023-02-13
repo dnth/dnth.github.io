@@ -14,20 +14,20 @@ images :
 
 
 ### 🔥 Motivation
-You finally got into a Kaggle competition. You found a *getting-started notebook* written by a Kaggle Grandmaster and immediately trained a state-of-the-art (SOTA) image classification model.
+<!-- You finally got into a Kaggle competition. You found a *getting-started notebook* written by a Kaggle Grandmaster and immediately trained a state-of-the-art (SOTA) image classification model.
 
 After some fiddling, you found yourself in the leaderboard topping the charts with **99.9851247\% accuracy** on the test set 😎!
 
 Proud of your achievement you reward yourself to some rest and a good night's sleep. 
-And tomorrow it's time to move on to the next dataset (again).
+And tomorrow it's time to move on to the next dataset (again). -->
 
 <!-- And then..
 
 {{< figure_resizing src="meme_sleep.jpg" >}} -->
 
-<!-- I hope this doesn't keep you awake at night like it did for me. -->
+<!-- I hope this doesn't keep you awake at night as it did for me. -->
 
-With various high level libraries like [Keras](https://keras.io/), [Transformer](https://huggingface.co/docs/transformers/index) and [Fastai](https://www.fast.ai/), the barrier to training a SOTA models has never been lower.
+With various high-level libraries like [Keras](https://keras.io/), [Transformer](https://huggingface.co/docs/transformers/index), and [Fastai](https://www.fast.ai/), the barrier to training SOTA models has never been lower.
 
 On top of that with platforms like [Google Colab](https://colab.research.google.com/) and [Kaggle](https://www.kaggle.com/), pretty much anyone can train a reasonably good model using an old laptop or even a mobile phone (with some patience).
 
@@ -54,7 +54,7 @@ Deploying models on mobile for edge inference used to be complex.
 
 Not anymore.
 
-In this post I'm going to show you how you can pick from over 900+ SOTA models on [TIMM](https://github.com/rwightman/pytorch-image-models), train them with best practices with [Fastai](https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/), and deploy them on Android using [Flutter](https://flutter.dev/). 
+In this post, I'm going to show you how you can pick from over 900+ SOTA models on [TIMM](https://github.com/rwightman/pytorch-image-models), train them with best practices with [Fastai](https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/), and deploy them on Android using [Flutter](https://flutter.dev/). 
 
 ✅ Yes, for free.
 
@@ -64,7 +64,7 @@ In this post I'm going to show you how you can pick from over 900+ SOTA models o
 + Export the trained model into TorchScript for inference.
 + Create a functional Android app and run the model inference on your device.
 
-💡**NOTE**: If you already have a trained TIMM model, feel free to jump straight into [Exporting to TorchScript](https://dicksonneoh.com/portfolio/timm_torchscript_flutter/#-exporting-to-torchscript) section.
+💡 **NOTE**: Code and data for this post are available on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost).
 {{< /notice >}}
 
 Demo of the app 👇
@@ -76,12 +76,12 @@ Demo of the app 👇
 
 Maybe.
 
-Learning each on of them takes time. Personally, I never had a very positive experience with exporting PyTorch models into ONNX.
+Learning each one of them takes time. Personally, I never had a very positive experience with exporting PyTorch models into ONNX.
 It doesn't work every time. -->
 <!-- I had to pull my hair over sleepless nights exporting to ONNX.
 They are out of the PyTorch ecosystem. -->
 
-<!-- But in this post I will show you solution that holds the best chances of working - TorchScript. -->
+<!-- But in this post, I will show you a solution that holds the best chance of working - TorchScript. -->
 <!-- Integrated within the PyTorch ecosystem. -->
 
 If that looks interesting, read on 👇
@@ -89,7 +89,7 @@ If that looks interesting, read on 👇
 ### 🌿 Dataset
 We will be working with the Paddy Disease Classification [dataset](https://www.kaggle.com/competitions/paddy-disease-classification) from Kaggle. 
 
-The dataset consist of `10,407` labeled images across ten classes (9 diseases and 1 normal):
+The dataset consists of `10,407` labeled images across ten classes (9 diseases and 1 normal):
 1. `bacterial_leaf_blight`
 2. `bacterial_leaf_streak`
 3. `bacterial_panicle_blight`
@@ -103,7 +103,7 @@ The dataset consist of `10,407` labeled images across ten classes (9 diseases an
 
 The task is to classify the paddy images into `1` of the `9` diseases or `normal`. 
 
-Here's how the images look like.
+Here's what the images look like.
 {{< figure_resizing src="test_img.jpg" >}}
 
 Next, I download the data locally and organize them in a folder structure. 
@@ -129,7 +129,7 @@ Here's the structure I have on my computer.
 {{< notice note >}}
 Descriptions of the folders:
 + `data/` - A folder to store train and test images.
-+ `train/` - A folder to store training related files and notebooks.
++ `train/` - A folder to store training-related files and notebooks.
 
 View the full structure by browsing my GitHub [repo](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost).
 {{< /notice  >}}
@@ -149,10 +149,10 @@ Now that we've got the data, let's see how to start building a model out of it
 For that we need 👇
 
 ### 🥇 PyTorch Image Models
-There are many libraries to model computer vision tasts but PyTorch Image Models or [TIMM](https://github.com/rwightman/pytorch-image-models) by [Ross Wightman](https://www.linkedin.com/in/wightmanr/) is arguably the most prominent one today.
+There are many libraries to model computer vision tasks but PyTorch Image Models or [TIMM](https://github.com/rwightman/pytorch-image-models) by [Ross Wightman](https://www.linkedin.com/in/wightmanr/) is arguably the most prominent one today.
 
 The TIMM repository hosts hundreds of recent SOTA models maintained by Ross.
-At this point (January 2023) we have 964 pretrained model on TIMM and increasing as we speak.
+At this point (January 2023) we have 964 pre-trained models on TIMM and increasing as we speak.
 
 You can install TIMM by simply:
 ```bash
@@ -162,9 +162,9 @@ pip install timm
 One line of code, and we'd have access to all models on TIMM!
 
 With such a massive collection, it can be disorienting which model to start from.
-Worry not, TIMM provides a function to search for model architectures a [wildcard](https://www.delftstack.com/howto/python/python-wildcard/).
+Worry not, TIMM provides a function to search for model architectures with a [wildcard](https://www.delftstack.com/howto/python/python-wildcard/).
 
-Since we will be running the model on a mobile device, let's search for models that has the word `edge`.
+Since we will be running the model on a mobile device, let's search for models that have the word *edge* with:
 
 ```python
 import timm
@@ -181,14 +181,18 @@ This outputs all models that match the wildcard.
  'edgenext_x_small',
  'edgenext_xx_small']
 ```
-With the right model name, you can start training.
-The TIMM repo also provides various utility functions and training script. Feel free to use them.
+Looks like we have something related to the EdgeNeXt model. 
 
-In this post I'm going to show you an easy way to train a TIMM model using Fastai 👇
+With a simple search and reading through the preprint [EdgeNeXt - Efficiently Amalgamated CNN-Transformer Architecture for Mobile Vision Applications](https://arxiv.org/abs/2206.10589), looks like it's a fitting model for our application!
+
+With the model name, you can now start training.
+The TIMM repo provides various utility functions and training scripts. Feel free to use them.
+
+In this post, I'm going to show you an easy way to train a TIMM model using Fastai 👇
 
 
 ### 🏋️‍♀️ Training with Fastai
-[Fastai](https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/) is a deep learning library which provides practitioners with high high-level components that can quickly provide SOTA results.
+[Fastai](https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/) is a deep learning library that provides practitioners with high high-level components that can quickly provide SOTA results.
 Under the hood Fastai uses PyTorch but it abstracts away the details and incorporates various best practices in training a model.
 
 Install Fastai with:
@@ -198,7 +202,7 @@ pip install fastai
 
 Since, we'd run our model on a mobile device, let's select the smallest model we got from the previous section - `edgenext_xx_small`.
 
-Now let's use Fastai and quickly train the model. Let's import all the necessary packages with:
+Let's import all the necessary packages with:
 ```python
 from fastai.vision.all import *
 ```
@@ -213,7 +217,7 @@ dls = ImageDataLoaders.from_folder(trn_path, seed=316,
                                    batch_tfms=aug_transforms(min_scale=0.75))
 ```
 
-{{< notice note >}}
+{{< notice note >}} 
 
 Parameters for the `from_folder` method:
 
@@ -221,12 +225,14 @@ Parameters for the `from_folder` method:
 * `valid_pct` -- The percentage of dataset to allocate as the validation set.
 * `bs` -- Batch size to use during training.
 * `item_tfms` -- Transformation applied to each item.
-* `batch_tfms` -- Random transformations applied to each batch to augment the dataset.
+* `batch_tfms` -- Random transformations applied to each batch to augment the dataset. Read more [here](https://docs.fast.ai/vision.augment.html#aug_transforms).
+
+📝 **NOTE**: Check out the Fastai [docs](https://docs.fast.ai/) for more information on the parameters.
 
 
 {{< /notice >}}
 
-You can show a batch of the images loaded into the `DataLoader` with:
+You can show a batch of the train images loaded into the `DataLoader` with:
 
 ```python
 dls.train.show_batch(max_n=8, nrows=2)
@@ -234,13 +240,29 @@ dls.train.show_batch(max_n=8, nrows=2)
 
 {{< figure_resizing src="show_batch.png" >}}
 
-Next create a `Learner` object which combines the model and data into one object for training.
+Next create a `Learner` object which stores the model, dataloaders, and loss function to train a model. 
+Read more about the `Learner` [here](https://docs.fast.ai/learner.html#learner).
+
+For vision classification tasks we can create a `Learner` by calling the `vision_learner` function and providing the necessary parameters:
 
 ```python
 learn = vision_learner(dls, 'edgenext_xx_small', metrics=accuracy).to_fp16()
 ```
 
-Find the best learning rate.
+{{< notice note >}} 
+Parameters for `vision_learner`:
++ **dls** - The `Dataloader` object.
++ **edgenext_xx_small** - Model name from TIMM.
+
+📝 **NOTE**: Read more on vision_learner [here](https://docs.fast.ai/vision.learner.html#vision_learner).
+
+In Fastai, you can easily incorporate [Mixed Precision Training](https://on-demand.gputechconf.com/gtc/2019/video/_/S9143/) by adding the `.to_fp16()` method. This little trick reduces memory usage and trains your model faster at the cost of precision.
+{{< /notice >}}
+
+One of my favorite features in Fastai is the learning rate finder. 
+It lets you estimate the range of learning rate to train the model for the best results.
+
+Find the best learning rate with:
 
 ```python
 learn.lr_find()
@@ -248,7 +270,19 @@ learn.lr_find()
 
 {{< figure_resizing src="lr_find.png" >}}
 
-Now train the model for 5 `epochs` and a base learning rate of `0.002`.
+{{< notice tip >}} 
+
+The orange dot 🟠 shows the suggested learning rate which is approximately at `2e-3`.
+
+A good learning rate lies at the point where the loss is **decreasing most rapidly**. On the plot, it's anywhere 
+from the orange dot 🟠 to the point where the loss starts increasing again approximately at `1e-1`. I'll pick `1e-2` as my learning rate.
+
+Read a post by Zach Mueller on [how to pick a good learning rate](https://walkwithfastai.com/lr_finder).
+
+
+{{< /notice >}}
+
+Now train the model for 5 `epochs` and a base learning rate of `0.002` with the [1cycle policy](https://arxiv.org/pdf/1803.09820.pdf).
 The `ShowGraphCallback` callback plots the progress of the training.
 
 ```python
@@ -257,25 +291,40 @@ learn.fine_tune(5, base_lr=1e-2, cbs=[ShowGraphCallback()])
 
 {{< figure_resizing src="train.png" >}}
 
-The `Learner` object stores the model, dataloaders and loss function for the purpose of training a model.
-Read more about the `Learner` [here](https://docs.fast.ai/learner.html#learner).
+With just a few lines of code, we can train a reasonably good model with Fastai. 
+For completeness, here are the few lines of codes you need to load and train the model:
+
+```python {linenos=table}
+from fastai.vision.all import *
+trn_path = Path('../data/train_images')
+dls = ImageDataLoaders.from_folder(trn_path, seed=316,
+                                  valid_pct=0.2, bs=128,
+                                  item_tfms=[Resize((224, 224))], 
+                                  batch_tfms=aug_transforms(min_scale=0.75))
+learn = vision_learner(dls, 'edgenext_xx_small', metrics=accuracy).to_fp16()
+learn.fine_tune(5, base_lr=1e-2, cbs=[ShowGraphCallback()])
+
+```
+
+&nbsp;
+
+{{< notice tip >}}
+For demonstration purposes, I've only with only 5 `epochs`. You can train for longer to obtain better accuracy and model performance. 
+
+📝 **NOTE**: View my training notebook [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/train/train.ipynb).
+{{< /notice >}}
 
 You can optionally export the `Learner` object and import it from another script or notebook with:
 ```python
 learn.export("../../train/export.pkl")
 ```
 
-{{< notice tip >}}
-For demonstration purposes I've only with only 5 `epochs`. You can train for longer to obtain better accuracy and model performance in general.
-{{< /notice >}}
-
-Iterate on training the model until you're satisfied with the result.
 Once done, now it's time we transform the model into a form we can use for mobile inference.
 
-For that we'll need 👇
+For that, we'll need 👇
 
 ### 📀 Exporting to TorchScript
-In this section we export the model in a form suitable on a mobile device.
+In this section, we export the model in a form suitable for a mobile device.
 We can do that easily with [TorchScript](https://pytorch.org/docs/stable/jit.html).
 
 {{% blockquote author="TorchScript Docs" %}}
@@ -324,7 +373,7 @@ In this post, I will be porting it to Android using a framework known as [Flutte
 ![img](./vids/flutter.gif)
 
 {{% blockquote author="Flutter Webpage" %}}
-Flutter is an open source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.
+Flutter is an open-source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.
 {{% /blockquote %}} 
 
 We can load the `torchscript_edgenext_xx_small.pt` and use if for inference.
@@ -398,7 +447,7 @@ Future runClassification() async {
 Those are the two important functions to load and run the TorchScript model.
 
 The following screen capture shows the Flutter app in action. 
-The clip runs in real-time and not sped up! 
+The clip runs in real-time and is **NOT sped up**! 
 
 {{< video src="vids/inference_edgenext_new.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
@@ -415,7 +464,7 @@ That's a wrap! In this post, I've shown you how you can start from a model, trai
 + Export the trained model into TorchScript for inference.
 + Create a functional Android app and run the model inference on your device.
 
-💡**NOTE**: View the codes for the entire post on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/).
+📝 **NOTE**: View the codes for the entire post on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/).
 {{< /notice >}}
 
 I hope you've learned a thing or two from this blog post.
