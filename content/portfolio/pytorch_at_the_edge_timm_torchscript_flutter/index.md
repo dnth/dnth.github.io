@@ -248,7 +248,8 @@ learn.lr_find()
 
 {{< figure_resizing src="lr_find.png" >}}
 
-Now train the model.
+Now train the model for 5 `epochs` and a base learning rate of `0.002`.
+The `ShowGraphCallback` callback plots the progress of the training.
 
 ```python
 learn.fine_tune(5, base_lr=1e-2, cbs=[ShowGraphCallback()])
@@ -256,21 +257,36 @@ learn.fine_tune(5, base_lr=1e-2, cbs=[ShowGraphCallback()])
 
 {{< figure_resizing src="train.png" >}}
 
+The `Learner` object stores the model, dataloaders and loss function for the purpose of training a model.
+Read more about the `Learner` [here](https://docs.fast.ai/learner.html#learner).
 
-Optionally export the Learner.
-
+You can optionally export the `Learner` object and import it from another script or notebook with:
 ```python
 learn.export("../../train/export.pkl")
 ```
 
-### 📀 Exporting to TorchScript
-Now that we are done training the model, it's time we export the model in a form suitable on a mobile device.
+{{< notice tip >}}
+For demonstration purposes I've only with only 5 `epochs`. You can train for longer to obtain better accuracy and model performance in general.
+{{< /notice >}}
 
+Iterate on training the model until you're satisfied with the result.
+Once done, now it's time we transform the model into a form we can use for mobile inference.
+
+For that we'll need 👇
+
+### 📀 Exporting to TorchScript
+In this section we export the model in a form suitable on a mobile device.
 We can do that easily with [TorchScript](https://pytorch.org/docs/stable/jit.html).
+
+{{% blockquote author="TorchScript Docs" %}}
+
 TorchScript is a way to create serializable and optimizable models from PyTorch code on 
 a variety of platforms, including desktop and mobile devices, without requiring a Python runtime. 
+{{% /blockquote %}} 
 
-With TorchScript, the model's code is converted into a static graph that can be optimized for faster performance, and then saved and loaded as a serialized representation of the model. This allows for deployment to a variety of platforms and acceleration with hardware such as GPUs, TPUs, and mobile devices.
+With TorchScript, the model's code is converted into a static graph that can be optimized for faster performance, and then saved and loaded as a serialized representation of the model. 
+
+This allows for deployment to a variety of platforms and acceleration with hardware such as GPUs, TPUs, and mobile devices.
 
 <!-- {{% blockquote author="TorchScript Docs" %}}
 TorchScript is a way to create serializable and optimizable models from PyTorch code.
@@ -296,13 +312,21 @@ optimized_traced_model._save_for_lite_interpreter("torchscript_edgenext_xx_small
 From the snippet above we need to specify a few things:
 + `Line 6`: The shape of the input image tensor.
 + `Line 9`: "torchscript_edgenext_xx_small.pt" is the name of the resulting TorchScript serialized model.
+
+📝 **NOTE**: View the full notebook from training to exporting the model on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/train/train.ipynb).
 {{< /notice >}}
 
 
 Once completed, you'll have a file `torchscript_edgenext_xx_small.pt` that can be ported to other devices for inference.
-In this post, I will be porting it to Android using a framework known as Flutter. 
+In this post, I will be porting it to Android using a framework known as [Flutter](https://flutter.dev/). 
 
 ### 📲 Inference in Flutter
+![img](./vids/flutter.gif)
+
+{{% blockquote author="Flutter Webpage" %}}
+Flutter is an open source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.
+{{% /blockquote %}} 
+
 We can load the `torchscript_edgenext_xx_small.pt` and use if for inference.
 To do so, we will use the [pytorch_lite](https://github.com/zezo357/pytorch_lite) Flutter package.
 The `pytorch_lite` package supports image classification and detection with TorchScript.
