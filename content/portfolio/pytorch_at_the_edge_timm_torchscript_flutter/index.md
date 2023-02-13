@@ -62,7 +62,9 @@ In this post, I'm going to show you how you can pick from over 900+ SOTA models 
 ⚡ By the end of this post you will learn how to:
 + Load a SOTA classification model from TIMM and train it with Fastai.
 + Export the trained model with TorchScript for inference.
-+ Create a functional Android app and run the model inference on your device.
++ Create a functional Android app and run the inference on your device.
+
+🔥 The inference time averages at about **200ms** on my Pixel 3 XL!
 
 💡 **NOTE**: Code and data for this post are available on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost).
 {{< /notice >}}
@@ -451,7 +453,7 @@ The clip runs in real-time and is **NOT sped up**!
 
 {{< video src="vids/inference_edgenext.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-The compiled `.apk` file is about **77MB** in size and the inference time is approximately 1 second on my Pixel 3 XL.
+The compiled `.apk` file is about **77MB** in size and the inference time is approximately **200 ms** on my Pixel 3 XL.
 
 Try it out and install the pre-built `.apk` file on your Android phone [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true).
 
