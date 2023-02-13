@@ -61,7 +61,7 @@ In this post, I'm going to show you how you can pick from over 900+ SOTA models 
 {{< notice tip >}}
 ⚡ By the end of this post you will learn how to:
 + Load a SOTA classification model from TIMM and train it with Fastai.
-+ Export the trained model into TorchScript for inference.
++ Export the trained model with TorchScript for inference.
 + Create a functional Android app and run the model inference on your device.
 
 💡 **NOTE**: Code and data for this post are available on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost).
@@ -323,7 +323,7 @@ Once done, now it's time we transform the model into a form we can use for mobil
 
 For that, we'll need 👇
 
-### 📀 Exporting to TorchScript
+### 📀 Exporting with TorchScript
 In this section, we export the model in a form suitable for a mobile device.
 We can do that easily with [TorchScript](https://pytorch.org/docs/stable/jit.html).
 
@@ -341,7 +341,7 @@ This allows for deployment to a variety of platforms and acceleration with hardw
 TorchScript is a way to create serializable and optimizable models from PyTorch code.
 {{% /blockquote %}} -->
 
-All the models on TIMM can be exported to TorchScript with the following code snippet.
+All the models on TIMM can be exported with TorchScript using the following code snippet.
 
 ```python {linenos=table}
 import torch
@@ -461,7 +461,7 @@ That's a wrap! In this post, I've shown you how you can start from a model, trai
 {{< notice tip >}}
 ⚡ In short we learned how to:
 + Load a SOTA classification model from TIMM and train it with Fastai.
-+ Export the trained model into TorchScript for inference.
++ Export the trained model with TorchScript for inference.
 + Create a functional Android app and run the model inference on your device.
 
 📝 **NOTE**: View the codes for the entire post on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/).
