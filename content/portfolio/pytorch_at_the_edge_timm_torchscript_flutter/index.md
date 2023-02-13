@@ -38,9 +38,9 @@ The question is no longer "**can we train a SOTA model?**", but "**what happens 
 Unfortunately, after getting the model trained, most people wash their hands off at this point claiming their model works. 
 But, what good would SOTA models do if it's just in notebooks and Kaggle leaderboards?
 
-{{% blockquote %}}
+
 Unless the model is deployed and put to use, it's of little benefit to anyone out there.
-{{% /blockquote %}}
+
 
 {{< figure_resizing src="meme.jpg" >}}
 
@@ -69,7 +69,7 @@ In this post, I'm going to show you how you can pick from over 900+ SOTA models 
 
 Demo of the app 👇
 
-![img](./vids/anim.gif)
+{{< video src="vids/inference_edgenext.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
 
 <!-- You might wonder, do I need to learn ONNX? TensorRT? TFLite?
@@ -449,9 +449,9 @@ Those are the two important functions to load and run the TorchScript model.
 The following screen capture shows the Flutter app in action. 
 The clip runs in real-time and is **NOT sped up**! 
 
-{{< video src="vids/inference_edgenext_new.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
+{{< video src="vids/inference_edgenext.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-The compiled `.apk` file is about **77MB** in size.
+The compiled `.apk` file is about **77MB** in size and the inference time is approximately 1 second on my Pixel 3 XL.
 
 Try it out and install the pre-built `.apk` file on your Android phone [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true).
 
