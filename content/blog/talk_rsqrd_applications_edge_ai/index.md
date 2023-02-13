@@ -27,6 +27,8 @@ Here's my conversation Sage Elliot from [Whylabs](https://whylabs.ai/).
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JD0wQK2agSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+&nbsp;
+
 ### 🤖 What is Edge AI?
 Edge AI is the implementation of Artificial Intelligence (AI) models directly on the device where data is generated, rather than relying on a remote server. 
 
