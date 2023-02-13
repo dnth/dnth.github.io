@@ -403,9 +403,21 @@ The clip runs in real-time and not sped up!
 {{< video src="vids/inference_edgenext_new.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
 The compiled `.apk` file is about **77MB** in size.
-Install the pre-built `.apk` file on your Android phone [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true).
+
+Try it out and install the pre-built `.apk` file on your Android phone [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true).
 
 ### 🙏 Comments & Feedback
+That's a wrap! In this post, I've shown you how you can start from a model, train it, and deploy it on a mobile device for edge inference.
+
+{{< notice tip >}}
+⚡ In short we learned how to:
++ Load a SOTA classification model from TIMM and train it with Fastai.
++ Export the trained model into TorchScript for inference.
++ Create a functional Android app and run the model inference on your device.
+
+💡**NOTE**: View the codes for the entire post on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/).
+{{< /notice >}}
+
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).
 <!-- {{< tweet dicksonneoh7 1534395572022480896>}}
