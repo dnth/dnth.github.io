@@ -471,8 +471,9 @@ That's a wrap! In this post, I've shown you how you can start from a model, trai
 
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).
-<!-- {{< tweet dicksonneoh7 1534395572022480896>}}
 
+{{< tweet dicksonneoh7 1625367344712388609>}}
 
+<!--
 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6940225157286264834" height="2406" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe> -->
 
