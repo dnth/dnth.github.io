@@ -139,9 +139,9 @@ View the full structure by browsing my GitHub [repo](https://github.com/dnth/tim
 {{< notice tip >}}
 🔔 If you'd like to explore the dataset and excel in the competition, I'd encourage you to check out a series of Kaggle notebooks by Jeremy Howard.
 + [First Steps.](https://www.kaggle.com/code/jhoward/first-steps-road-to-the-top-part-1) - Setting up, looking at the data and training your first model.
-+ [Small Models.](https://www.kaggle.com/code/jhoward/small-models-road-to-the-top-part-2) - Iterate faster with small models, test time augmentation and then scaling up.
-+ [Scaling Up.](https://www.kaggle.com/code/jhoward/scaling-up-road-to-the-top-part-3) - Testing various models, Vision Transformers and Ensembles.
-+ [Multi-target.](https://www.kaggle.com/code/jhoward/multi-target-road-to-the-top-part-4) - Train a multi target model with Fastai.
++ [Small Models.](https://www.kaggle.com/code/jhoward/small-models-road-to-the-top-part-2) - Iterate faster with small models, test time augmentation, and then scale up.
++ [Scaling Up.](https://www.kaggle.com/code/jhoward/scaling-up-road-to-the-top-part-3) - Testing various models, Vision Transformers, and Ensembles.
++ [Multi-target.](https://www.kaggle.com/code/jhoward/multi-target-road-to-the-top-part-4) - Train a multi-target model with Fastai.
 
 I've personally learned a lot from the notebooks. Part of the codes in the post is adapted from the notebooks.
 {{< /notice  >}}
@@ -166,7 +166,7 @@ One line of code, and we'd have access to all models on TIMM!
 With such a massive collection, it can be disorienting which model to start from.
 Worry not, TIMM provides a function to search for model architectures with a [wildcard](https://www.delftstack.com/howto/python/python-wildcard/).
 
-Since we will be running the model on a mobile device, let's search for models that have the word *edge* with:
+Since we will be running the model on a mobile device, let's search for model names that contain the word *edge*:
 
 ```python
 import timm
@@ -326,7 +326,7 @@ Once done, now it's time we transform the model into a form we can use for mobil
 For that, we'll need 👇
 
 ### 📀 Exporting with TorchScript
-In this section, we export the model in a form suitable for a mobile device.
+In this section, we export the model into a form suitable for a mobile device.
 We can do that easily with [TorchScript](https://pytorch.org/docs/stable/jit.html).
 
 {{% blockquote author="TorchScript Docs" %}}
