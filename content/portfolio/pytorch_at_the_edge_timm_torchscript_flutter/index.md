@@ -49,12 +49,11 @@ But deployment is painful. Running a model on a mobile phone?
 Forget it 🤷‍♂️.
 
 The frustration is real. I remember spending nights exporting models into `ONNX` and it still failed me.
-
 Deploying models on mobile for edge inference used to be complex. 
 
 Not anymore.
 
-In this post, I'm going to show you how you can pick from over 900+ SOTA models on [TIMM](https://github.com/rwightman/pytorch-image-models), train them with best practices with [Fastai](https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/), and deploy them on Android using [Flutter](https://flutter.dev/). 
+In this post, I'm going to show you how you can pick from over 900+ SOTA models on [TIMM](https://github.com/rwightman/pytorch-image-models), train them using best practices with [Fastai](https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/), and deploy them on Android using [Flutter](https://flutter.dev/). 
 
 ✅ Yes, for free.
 
@@ -90,7 +89,6 @@ If that looks interesting, read on 👇
 
 ### 🌿 Dataset
 We will be working with the Paddy Disease Classification [dataset](https://www.kaggle.com/competitions/paddy-disease-classification) from Kaggle. 
-
 The dataset consists of `10,407` labeled images across ten classes (9 diseases and 1 normal):
 1. `bacterial_leaf_blight`
 2. `bacterial_leaf_streak`
@@ -104,8 +102,7 @@ The dataset consists of `10,407` labeled images across ten classes (9 diseases a
 10. `normal`
 
 The task is to classify the paddy images into `1` of the `9` diseases or `normal`. 
-
-Here's what the images look like.
+Few sample images shown below.
 {{< figure_resizing src="test_img.jpg" >}}
 
 Next, I download the data locally and organize them in a folder structure. 
