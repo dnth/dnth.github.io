@@ -137,11 +137,11 @@ View the full structure by browsing my GitHub [repo](https://github.com/dnth/tim
 {{< /notice  >}}
 
 {{< notice tip >}}
-If you'd like to explore the dataset and excel in the competition, I'd encourage you to check out a series of Kaggle notebooks by Jeremy Howard.
-+ [First Steps.](https://www.kaggle.com/code/jhoward/first-steps-road-to-the-top-part-1)
-+ [Small Models.](https://www.kaggle.com/code/jhoward/small-models-road-to-the-top-part-2)
-+ [Scaling Up.](https://www.kaggle.com/code/jhoward/scaling-up-road-to-the-top-part-3)
-+ [Multi-target.](https://www.kaggle.com/code/jhoward/multi-target-road-to-the-top-part-4)
+🔔 If you'd like to explore the dataset and excel in the competition, I'd encourage you to check out a series of Kaggle notebooks by Jeremy Howard.
++ [First Steps.](https://www.kaggle.com/code/jhoward/first-steps-road-to-the-top-part-1) - Setting up, looking at the data and training your first model.
++ [Small Models.](https://www.kaggle.com/code/jhoward/small-models-road-to-the-top-part-2) - Iterate faster with small models, test time augmentation and then scaling up.
++ [Scaling Up.](https://www.kaggle.com/code/jhoward/scaling-up-road-to-the-top-part-3) - Testing various models, Vision Transformers and Ensembles.
++ [Multi-target.](https://www.kaggle.com/code/jhoward/multi-target-road-to-the-top-part-4) - Train a multi target model with Fastai.
 
 I've personally learned a lot from the notebooks. Part of the codes in the post is adapted from the notebooks.
 {{< /notice  >}}
