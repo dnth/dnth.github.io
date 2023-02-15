@@ -84,7 +84,7 @@ description = "Practical Deep Learning for business owners."
 images = ["images/site-navigation/preview.png"]
 
 [params.address]
-address = "Universiti Tenaga Nasional, 43000, Kajang, Malaysia."
+address = "Kuala Lumpur, Malaysia."
 email = "dickson.neoh@gmail.com"
 openingHours = "Open from 10am to 6pm (close at 5pm Sundays)"
 phone = "+(60) 3 8921 2020"
