@@ -450,7 +450,7 @@ The clip runs in real-time and is **NOT sped up**!
 
 {{< video src="vids/inference_edgenext.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-The compiled `.apk` file is about **77MB** in size and the inference time is approximately **200 ms** on my Pixel 3 XL.
+The compiled `.apk` file is about **77MB** in size and the inference time is approximately **100 ms** or below on my Pixel 3 XL!
 
 Try it out and install the pre-built `.apk` file on your Android phone [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true).
 
