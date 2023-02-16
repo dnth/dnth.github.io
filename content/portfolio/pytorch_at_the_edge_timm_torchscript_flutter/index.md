@@ -63,7 +63,7 @@ In this post, I'm going to show you how you can pick from over 900+ SOTA models 
 + Export the trained model with TorchScript for inference.
 + Create a functional Android app and run the inference on your device.
 
-🔥 The inference time averages at about **200ms** on my Pixel 3 XL!
+🔥 The inference time is at **100ms** and below on my Pixel 3 XL! The lowest I got was **37ms**!
 
 💡 **NOTE**: Code and data for this post are available on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost).
 {{< /notice >}}
@@ -410,37 +410,28 @@ View the full code on my GitHub [repo](https://github.com/dnth/timm-flutter-pyto
 The following code snippet shows a function to run the inference.
 ```dart {linenos=table}
 Future runClassification() async {
-    objDetect = [];
-    //pick a random image
-    final PickedFile? image =
-        await _picker.getImage(source: ImageSource.gallery);
+    //pick an image
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
-    //get prediction
-    _imagePrediction = await _imageModel!
-        .getImagePrediction(await File(image!.path).readAsBytes());
+    if (image != null) {
+      stopwatch.start();
 
-    List<double?>? predictionList = await _imageModel!.getImagePredictionList(
-      await File(image.path).readAsBytes(),
-    );
+      // run inference
+      var result = await _imageModel!
+          .getImagePredictionResult(await File(image.path).readAsBytes());
 
-    List<double?>? predictionListProbabilites =
-        await _imageModel!.getImagePredictionListProbabilities(
-      await File(image.path).readAsBytes(),
-    );
+      stopwatch.stop();
 
-    //Gettting the highest Probability
-    double maxScoreProbability = double.negativeInfinity;
-    double sumOfProbabilites = 0;
-    int index = 0;
-    for (int i = 0; i < predictionListProbabilites!.length; i++) {
-      if (predictionListProbabilites[i]! > maxScoreProbability) {
-        maxScoreProbability = predictionListProbabilites[i]!;
-        sumOfProbabilites = sumOfProbabilites + predictionListProbabilites[i]!;
-        index = i;
-      }
+      setState(() {
+        _imagePrediction = result['label'];
+        _predictionConfidence =
+            (result['probability'] * 100).toStringAsFixed(2);
+        _image = File(image.path);
+        _inferenceTime = stopwatch.elapsedMilliseconds;
+      });
+
+      stopwatch.reset();
     }
-    _predictionConfidence = (maxScoreProbability * 100).toStringAsFixed(2);
-
   }
 ```
 Those are the two important functions to load and run the TorchScript model.
@@ -450,7 +441,7 @@ The clip runs in real-time and is **NOT sped up**!
 
 {{< video src="vids/inference_edgenext.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
 
-The compiled `.apk` file is about **77MB** in size and the inference time is approximately **100 ms** or below on my Pixel 3 XL!
+The compiled `.apk` file is about **77MB** in size and the inference time is at **100 ms** or below on my Pixel 3 XL!
 
 Try it out and install the pre-built `.apk` file on your Android phone [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true).
 
