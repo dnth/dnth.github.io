@@ -71,7 +71,7 @@ In this post, I'm going to show you how you can pick from over 900+ SOTA models 
 
 Here's a TLDR 👇
 
-<iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/tno2F3Hp5dA" title="YouTube video player" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:500px;width:100%;border:none;overflow:hidden;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/tno2F3Hp5dA" title="YouTube video player" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:500px;width:100%;border:none;overflow:hidden;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <!-- You might wonder, do I need to learn ONNX? TensorRT? TFLite?
 
