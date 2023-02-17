@@ -14,6 +14,7 @@ images :
 
 
 ### 🔥 Motivation
+
 <!-- You finally got into a Kaggle competition. You found a *getting-started notebook* written by a Kaggle Grandmaster and immediately trained a state-of-the-art (SOTA) image classification model.
 
 After some fiddling, you found yourself in the leaderboard topping the charts with **99.9851247\% accuracy** on the test set 😎!
@@ -68,10 +69,9 @@ In this post, I'm going to show you how you can pick from over 900+ SOTA models 
 💡 **NOTE**: Code and data for this post are available on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost).
 {{< /notice >}}
 
-Demo of the app 👇
+Here's a TLDR 👇
 
-{{< video src="vids/inference_edgenext.mp4" width="400px" loop="true" autoplay="true" muted="true">}}
-
+<iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/tno2F3Hp5dA" title="YouTube video player" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:500px;width:100%;border:none;overflow:hidden;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <!-- You might wonder, do I need to learn ONNX? TensorRT? TFLite?
 
