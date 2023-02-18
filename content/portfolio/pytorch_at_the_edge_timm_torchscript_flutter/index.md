@@ -450,11 +450,15 @@ That's a wrap! In this post, I've shown you how you can start from a model, trai
 📝 **NOTE**: View the codes for the entire post on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/).
 {{< /notice >}}
 
+What's next? If you'd like to learn about how I deploy a cloud based object detection model on Android, check it out [here](../how_to_deploy_od_models_on_android_with_flutter/).
+
+
+
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).
 
 {{< tweet dicksonneoh7 1625367344712388609>}}
 
 
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7031180496961232896" height="700" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7032246822186209280" height="1198" width="504" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 
