@@ -414,23 +414,16 @@ Future runClassification() async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
     if (image != null) {
-      stopwatch.start();
-
       // run inference
       var result = await _imageModel!
           .getImagePredictionResult(await File(image.path).readAsBytes());
-
-      stopwatch.stop();
 
       setState(() {
         _imagePrediction = result['label'];
         _predictionConfidence =
             (result['probability'] * 100).toStringAsFixed(2);
         _image = File(image.path);
-        _inferenceTime = stopwatch.elapsedMilliseconds;
       });
-
-      stopwatch.reset();
     }
   }
 ```
