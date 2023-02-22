@@ -463,7 +463,7 @@ What's next? If you'd like to learn about how I deploy a cloud based object dete
 
 
 I hope you've learned a thing or two from this blog post.
-If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).
+If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/). Alternatively you can also comment on this Hacker News [thread](https://news.ycombinator.com/item?id=34799597#34801672).
 
 {{< tweet dicksonneoh7 1625367344712388609>}}
 
