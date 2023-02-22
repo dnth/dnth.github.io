@@ -361,6 +361,13 @@ From the snippet above we need to specify a few things:
 + `Line 6`: The shape of the input image tensor.
 + `Line 9`: "torchscript_edgenext_xx_small.pt" is the name of the resulting TorchScript serialized model.
 
+If you already have your own `model.pt` file, replace `Line 4` and Line `5` with:
+
+```python 
+model = torch.load('model.pt',map_location="cpu")
+model.eval()
+```
+
 📝 **NOTE**: View the full notebook from training to exporting the model on my GitHub repo [here](https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/train/train.ipynb).
 {{< /notice >}}
 
