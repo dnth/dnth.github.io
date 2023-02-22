@@ -364,7 +364,7 @@ From the snippet above we need to specify a few things:
 If you already have your own `model.pt` file, replace `Line 4` and Line `5` with:
 
 ```python 
-model = torch.load('model.pt',map_location="cpu")
+model = torch.load('model.pt', map_location="cpu")
 model.eval()
 ```
 
