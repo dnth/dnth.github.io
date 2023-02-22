@@ -77,7 +77,7 @@ contactLink = "contact"
 copyright = "All right reserved copyright © Dickson Neoh 2023"
 footerLogo = "images/site-navigation/logo_dn_resize.png"
 formspreeURL = "https://formspree.io/f/xgedowjr"
-googleAnalytics = "$HUGO_GOOGLEANALYTICS"
+googleAnalytics = "UA-54500366-2"
 logo = "images/site-navigation/logo_dn_resize.png"
 
 description = "Explore my diverse projects showcasing my creativity, tech skills, and passion. Browse now to hire me."
