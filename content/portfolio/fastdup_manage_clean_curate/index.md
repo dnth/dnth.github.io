@@ -4,10 +4,10 @@ date: 2023-01-03T11:00:15+08:00
 featureImage: images/portfolio/fastdup_manage_clean_curate/thumbnail.gif
 postImage: images/portfolio/fastdup_manage_clean_curate/post_image.gif
 tags: ["Fastdup", "natural-scene-classification", "intel"]
-categories: ["data-cleaning", "object-classification"]
+categories: ["data-cleaning", "image-classification"]
 toc: true
 socialshare: true
-description: "Say goodbye to cluttered visual data."
+description: "Learn how to use Fastdup to clean and improve your visual data. Say goodbye to cluttered folders."
 images : 
 - images/portfolio/fastdup_manage_clean_curate/post_image.gif
 ---

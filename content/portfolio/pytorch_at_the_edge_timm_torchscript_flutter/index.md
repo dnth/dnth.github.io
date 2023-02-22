@@ -4,10 +4,11 @@ date: 2023-02-07T11:00:15+08:00
 featureImage: images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/thumbnail.gif
 postImage: images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/post_image.gif
 tags: ["TIMM", "TorchScript", "paddy-disease", "Fastai", "Flutter", "Android", "EdgeNeXt"]
-categories: ["deployment", "object-classification", "edge"]
+categories: ["deployment", "image-classification", "edge-ai"]
 toc: true
 socialshare: true
-description: "Unlock and Deploy Over 900+ SOTA TIMM models on Android with Torchscript!"
+description: "Learn and deploy over 900+ cutting edge PyTorch classification models on Android.
+"
 images : 
 - images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/post_image.gif
 ---
