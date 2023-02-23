@@ -35,12 +35,15 @@ Also, consider these -
 - A well-organized digital photo collection can be a source of pride and enjoyment.
 - It's easier to share organized photos with others through social media or physical photo albums or prints.
 
-Sorting through your photos and deleting unwanted photos can be a time-consuming task and nobody wants to spend hours doing just that. 
+If you're convinced, then comes the next hurdle.
 
+{{% blockquote %}}
+Spending hours sorting through your photos and cleaning them is a pain. 
 Nobody has time for that. We’re busy people.
+{{% /blockquote %}}
 
-Don't fret, that's what this blog is about.
-In this post, I'll show you how to tidy up your digital life by organizing your photo collection and not spending an entire weekend.
+Don't fret, that's what this post is about.
+In this post, I'll show you how to tidy up your digital life by organizing your photo collection and not spending an entire weekend doing it.
 
 {{< notice tip >}}
 💫 Here's what you'll learn by the end -
@@ -48,6 +51,7 @@ In this post, I'll show you how to tidy up your digital life by organizing your 
 - How to identify duplicates in your photo album using Python code.
 - How to filter out photos that are too dark, too bright, or blurry.
 - How to group similar-looking shots together.
+- How to bulk-delete photos.
 
 📝 **NOTE**: All codes used in the post are on my [Github repository](https://github.com/dnth/clean-up-digital-life-fastdup-blogpost).
 
@@ -57,8 +61,7 @@ In this post, I'll show you how to tidy up your digital life by organizing your 
 
 [Fastdup](https://github.com/visual-layer/fastdup) is a tool that let us gain insights from a large image/video collection. 
 
-You can manage, clean, and curate your images at scale on your local machine with a single CPU.
-It's incredibly easy to use and highly efficient. 
+You can manage, clean, and curate your images at scale on your local machine event with a single CPU.
 Fastdup lets you clean visual data with ease, freeing up valuable resources and time. 
 
 Here are some superpowers you get with Fastdup.
@@ -85,7 +88,7 @@ The best part? Fastdup is **free**.
 Fastdup offers an Enterprise edition of the tool that lets you do more. Find out more [here]((https://www.visual-layer.com/)).
 {{< /notice >}}
 
-If all that looks interesting, let's get started with..
+If all that looks interesting, let's get started with.. 👇
 
 
 
@@ -340,6 +343,7 @@ In this blog post, I’ve shown you how to use Fastdup to programmatically clean
 - How to identify duplicates in your photo album using Python code.
 - How to filter out photos that are too dark, too bright, or blurry.
 - How to group similar-looking shots together.
+- How to bulk-delete photos.
 
 📝 **NOTE**: All codes used in the post are on my [Github repository](https://github.com/dnth/clean-up-digital-life-fastdup-blogpost).
 
