@@ -24,7 +24,9 @@ For most of us, what you see on Instagram vs what's *behind the scenes* are wild
 
 {{< figure_resizing src="meme.png" caption="Me and my album." >}}
 
-I know, I know you'll there's no harm in keeping those extra selfies in your phone. But over time, these photos will just clutter your devices taking up valuable disk space.
+I know, I know you'll say there's no harm in keeping those extra selfies in your phone. Right?
+
+But over time, these photos will just clutter your devices taking up valuable disk space.
 
 But consider these -
 - Disorganized photos make it difficult to find specific photos when you need them.
