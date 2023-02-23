@@ -26,9 +26,9 @@ For most of us, what you see on Instagram vs what's *behind the scenes* are wild
 
 I know, I know you'll say there's no harm in keeping those extra selfies in your phone. Right?
 
-But over time, these photos will just clutter your devices taking up valuable disk space.
+But over time, these photos will just clutter your devices taking up valuable disk space and maybe [slow down your device](https://askleo.com/deal-with-computer-clutter-to-speed-things-up/).
 
-But consider these -
+Also, consider these -
 - Disorganized photos make it difficult to find specific photos when you need them.
 - Photo organization saves time and energy when searching for specific photos.
 - Digital clutter can take up valuable storage space on your devices, which can slow down their performance.
