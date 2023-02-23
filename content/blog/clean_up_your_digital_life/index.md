@@ -215,7 +215,7 @@ You can either refer to the file name and delete the duplicate images by hand.
 
 Or
 
-Use a convenient function in fastdup to bulk delete images that are EXACT copies.
+Use a convenient function in fastdup to bulk delete images that are **EXACT** copies.
 
 ```python
 top_components = fastdup.find_top_components(work_dir="fastdup_report/")
@@ -224,7 +224,9 @@ fastdup.delete_components(top_components, dry_run=False)
 
 {{< notice warning >}}
 The above code will **delete all duplicate images** from your folder. 
-I recommend setting `dry_run=True` to see which files will be deleted first and then doing the actual bulk deletion.
+To not risk losing any data, I recommend making a backup copy of your files before deleting.
+
+Setting `dry_run=True` in the function tells Fastdup to list all files that will be deleted. Once you're sure, then set `dry_run=False` to perform the actual deletion.
 
 📝 **NOTE**: Check out the [Fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.delete_components) to learn more about the parameters you can tweak.
 {{< /notice >}}
