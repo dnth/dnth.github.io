@@ -55,7 +55,7 @@ In this post, I'll show you how to tidy up your digital life by organizing your 
 
 ### ⚡ Fastdup
 
-Fastdup is a tool that let us gain insights from a large image/video collection. 
+[Fastdup](https://github.com/visual-layer/fastdup) is a tool that let us gain insights from a large image/video collection. 
 
 You can manage, clean, and curate your images at scale on your local machine with a single CPU.
 It's incredibly easy to use and highly efficient. 
