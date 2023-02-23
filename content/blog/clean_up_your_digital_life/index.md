@@ -82,7 +82,7 @@ Here are a few:
 
 The best part? Fastdup is **free**.
 
-{{< notice tip >}}
+{{< notice info >}}
 Fastdup offers an enterprise edition of the tool that lets you do more. [Learn more here](https://www.visual-layer.com/).
 {{< /notice >}}
 
@@ -98,10 +98,12 @@ If all that looks interesting, let's get started with..
 
 As we are going to clean up messy albums, the first step is to download the photos from your Google Photos, Onedrive or wherever you have your images into your local drive.
 
-I don't have a massive photo collection, so I’ll be using a dataset from [Kaggle](https://www.kaggle.com/datasets/duttadebadri/image-classification) that was scraped off Google Download them into a folder on your computer. The contributor [Debadri Dutta](https://www.linkedin.com/in/debadridtt/) has a knack of photography and travelling. 
+I don't have a massive photo collection, so I’ll be using a dataset from [Kaggle](https://www.kaggle.com/datasets/duttadebadri/image-classification) that was scraped off Google Images.
+
+The contributor [Debadri Dutta](https://www.linkedin.com/in/debadridtt/) has a knack of photography and travelling. A lot of the images from the dataset are uploaded by users on social media.
+So I thought it would be a good fit to use it for this post.
 
 Here are a few sample images.
-
 {{< figure_resizing src="sample.png" caption="Sample images scraped from Google." link="https://www.kaggle.com/datasets/duttadebadri/image-classification" >}}
 
 
@@ -110,6 +112,9 @@ Here's how the folders look on my computer.
 
 ```tree
 ├── images
+|   ├── image001.jpg
+|   ├── image002.jpg
+|   └── ...
 ├── fastdup_report
 └── fastdup_analyze.ipynb
 ```
@@ -125,17 +130,29 @@ Description -
 
 ### ❌ Duplicate Photos
 
-### 🗂 Clustering Similar Shots
+You'll see something like the following.
+{{< figure_resizing src="duplicates.png" caption="A generated gallery of duplicates." >}}
 
 ### 🤳 Dark/Bright Blurry Shots
 
-### 🔓 Conclusion
+{{< figure_resizing src="dark.png" caption="A generated gallery of dark images." >}}
 
+{{< figure_resizing src="bright.png" caption="A generated gallery of bright images." >}}
+
+{{< figure_resizing src="blur.png" caption="A generated gallery of blur images." >}}
+
+### 🗂 Clustering Similar Shots
+
+{{< figure_resizing src="cluster_160.png" caption="" >}}
+{{< figure_resizing src="cluster_6667.png" caption="" >}}
+{{< figure_resizing src="cluster_16356.png" caption="A gallery of similar shots." >}}
+
+### 🔓 Conclusion
+In this blog post, I’ve shown you how to use Fastdup to programmatically clean your photo collections.
 
 {{< notice tip >}}
-In this blog post, I’ve shown you how to use Fastdup to programmatically -
-
-- Identify duplicate or near identical photos.
-- Cluster similar shots together.
-- Filter out unnecessary photos that take up storage space.
+Specifically, we've seen how to -
+- Identify duplicate.
+- Identify  dark, bright and blurry shots.
+- Cluster near identical photos together.
 {{< /notice >}}
