@@ -18,13 +18,13 @@ In today's world of selfies and Instagram, we all take tons of photos on our pho
 
 But let's be real, it's easy for our photo collections to become a chaotic mess, making it impossible to find that one special memory. 
 
-I’ve had gigabytes in my Google Photo filled with dark shots taken accidentally, overly exposed shots, blurry shots, and tons of duplicate shots.
+I mean, I've got *gigabytes* of photos on my Google Photo app  filled with dark shots, overly exposed shots, blurry shots, and tons of duplicate stills.
 
-For most of us, what you see on Instagram vs what's *behind the scenes* are wildly different.
+And let's face it, what we post on Instagram vs what's *behind the scenes* can be totally different.
 
 {{< figure_resizing src="meme.png" caption="Me and my album." >}}
 
-I know, I know you'll say there's no harm in keeping those extra selfies in your phone. Right?
+I know, I know, you'll say there's no harm in keeping those extra selfies in your phone. Right?
 
 But over time, these photos will just clutter your devices taking up valuable disk space and maybe [slow down your device](https://askleo.com/deal-with-computer-clutter-to-speed-things-up/).
 
@@ -37,9 +37,9 @@ Also, consider these -
 
 Sorting through your photos and deleting unwanted photos can be a time-consuming task and nobody wants to spend hours doing just that. 
 
-We’re busy people.
-Don't fret, that's what this blog is about.
+Nobody has time for that. We’re busy people.
 
+Don't fret, that's what this blog is about.
 In this post, I'll show you how to tidy up your digital life by organizing your photo collection and not spending an entire weekend.
 
 {{< notice tip >}}
@@ -82,14 +82,13 @@ Here are a few:
 The best part? Fastdup is **free**.
 
 {{< notice info >}}
-Fastdup offers an enterprise edition of the tool that lets you do more. [Learn more here](https://www.visual-layer.com/).
+Fastdup offers an Enterprise edition of the tool that lets you do more. Find out more [here]((https://www.visual-layer.com/)).
 {{< /notice >}}
 
-It's easy to get started and use. 
-The [authors of Fastdup](https://www.visual-layer.com/) even used it to uncover over **1.2M duplicates** and **104K data train/validation leaks** in the ImageNet-21K dataset [here](https://medium.com/@amiralush/large-image-datasets-today-are-a-mess-e3ea4c9e8d22).
-
-
 If all that looks interesting, let's get started with..
+
+
+
 
 ### ☕ Messy Images
 
