@@ -2,7 +2,7 @@
 title: "Clean Up Your Digital Life: Simplify Your Photo Organization and Say Goodbye to Photo Clutter."
 date: 2023-02-07T11:00:15+08:00
 featureImage: images/portfolio/fastdup_manage_clean_curate/thumbnail.gif
-postImage: images/portfolio/fastdup_manage_clean_curate/post_image.gif
+postImage: images/blog/blog_clean_up_your_digital_life/post_image.gif
 tags: ["Fastdup", "google-images"]
 categories: ["data-cleaning", "image-classification"]
 toc: true
@@ -89,7 +89,9 @@ Now it's time to take on the huge task of cleaning up the...
 
 You can download the photos from your Google Photos, Onedrive or wherever you have your images into your local drive.
 
-I don't have a massive photo collection, so I’ll be using a dataset from Kaggle that was scraped off Google Download them into a folder on your computer.
+I don't have a massive photo collection, so I’ll be using a dataset from Kaggle that was scraped off Google Download them into a folder on your computer. The contributor [Debadri Dutta](https://www.linkedin.com/in/debadridtt/) has a knack of photography and travelling. 
+
+
 
 Here's how the folders look on my computer.
 
