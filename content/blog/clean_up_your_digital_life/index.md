@@ -1,15 +1,15 @@
 ---
-title: "Clean Up Your Digital Life: Simplify Your Photo Organization and Say Goodbye to Photo Clutter."
-date: 2023-02-07T11:00:15+08:00
-featureImage: images/portfolio/fastdup_manage_clean_curate/thumbnail.gif
-postImage: images/blog/blog_clean_up_your_digital_life/post_image.gif
-tags: ["Fastdup", "google-images"]
-categories: ["data-cleaning", "image-classification"]
+title: "Clean Up Your Digital Life: Simplify Your Photo Organization and Say Goodbye to Photo Clutter"
+date: 2023-02-23T11:00:15+08:00
+featureImage: images/blog/clean_up_your_digital_life/thumbnail.gif
+postImage: images/blog/clean_up_your_digital_life/post_image.gif
+tags: ["Fastdup", "google-images", "Python", "C"]
+categories: ["data-cleaning", "clustering"]
 toc: true
 socialshare: true
 description: "Even pros have dark, blurry & duplicate shots. But disorganization can make it hard to find those special memories. Let's fix that."
 images : 
-- images/portfolio/fastdup_manage_clean_curate/post_image.gif
+- images/blog/clean_up_your_digital_life/post_image.gif
 ---
 
 ### ✅ Motivation
