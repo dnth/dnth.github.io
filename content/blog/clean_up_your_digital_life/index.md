@@ -14,45 +14,42 @@ images :
 
 ### ✅ Motivation
 
-In today's world of selfies and Instagram, we all take tons of photos on our phones, cameras, and other gadgets. But let's be real, it's easy for our photo collections to become a chaotic mess, making it impossible to find that one special memory. 
+In today's world of selfies and Instagram, we all take tons of photos on our phones, cameras, and other gadgets. 
 
-I’ve had gigabytes in my Google Photo filled with dark shots taken accidentally, overly exposed shots, blurry shots, and tons of duplicate shots. Let’s be honest, we all tap on the camera button multiple times to take burst shots in an attempt to capture the best look.
+But let's be real, it's easy for our photo collections to become a chaotic mess, making it impossible to find that one special memory. 
+
+I’ve had gigabytes in my Google Photo filled with dark shots taken accidentally, overly exposed shots, blurry shots, and tons of duplicate shots.
+
+For most of us what you see on Instagram vs what's *behind the scenes* are wildly different.
 
 {{< figure_resizing src="meme.png" caption="Me and my album." >}}
 
+I know, I know you'll there's no harm in keeping those extra selfies in your phone. But over time, these photos will just clutter your devices taking up valuable disk space.
 
-Why photo organization is important
-
+But consider these -
 - Disorganized photos make it difficult to find specific photos when you need them.
 - Photo organization saves time and energy when searching for specific photos.
 - Digital clutter can take up valuable storage space on your devices, which can slow down their performance.
 - A well-organized digital photo collection can be a source of pride and enjoyment.
 - It's easier to share organized photos with others through social media or physical photo albums or prints.
 
-Sorting through your photos and deleting unwanted photos can be a time-consuming task and nobody wants to spend hours doing just that. We’re busy people.
+Sorting through your photos and deleting unwanted photos can be a time-consuming task and nobody wants to spend hours doing just that. 
 
-Don't fret, though! With a few easy-peasy steps, you can declutter your photo library and say goodbye to the headache of searching for your favorite pics. In this article, we'll show you how to tidy up your digital life by organizing your photo collection.
+We’re busy people.
+Don't fret, that's what this blog is about.
 
-This blog will demonstrate how to use Fastup to effectively clean up your photo collection through programming. 
+In this post, I'll show you how to tidy up your digital life by organizing your photo collection and not spending an entire weekend.
 
 {{< notice tip >}}
-We will cover the following topics:
+💫 Here's what you'll learn by the end -
 
-- Identifying duplicate or nearly identical photos.
-- Grouping similar photos together and selectively deleting them.
-- Filtering out photos that are too dark, too bright, or blurry.
+- How to identify duplicates in your photo album using Python code.
+- How to filter out photos that are too dark, too bright, or blurry.
+- How to group similar looking shots together.
 
-
-📝 **NOTE**: All codes used in the post are on my [Github repo](https://github.com/dnth/clean-up-digital-life-fastdup-blogpost). Alternatively, you can [run this example in Colab](https://github.com/dnth/fastdup-manage-clean-curate-blogpost/blob/main/clean.ipynb).
+📝 **NOTE**: All codes used in the post are on my [Github repository](https://github.com/dnth/clean-up-digital-life-fastdup-blogpost).
 
 {{< /notice >}}
-
-If you have a messy photo collection, you can manually go through the images and remove them one by one. I've done that myself.
-
-But if you have thousands of them.. It will take forever. 
-And why do it manually when you can get a machine to do it for you?
-
-Enter 👇
 
 ### ⚡ Fastdup
 
@@ -231,27 +228,94 @@ Setting `dry_run=True` in the function tells Fastdup to list all files that will
 📝 **NOTE**: Check out the [Fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.delete_components) to learn more about the parameters you can tweak.
 {{< /notice >}}
 
+Just like that we've eliminated duplicates from the album! Now on to the next common problem in photo albums 👇
 
 ### 🤳 Dark/Bright Blurry Shots
 
+Let's be real, even pros have overly dark bright and blurry shots in their albums. 
+These shots are probably not going to be used and hogs your storage space.
+
+With Fastdup you can filter them out with:
+
+
+```python
+fastdup.create_stats_gallery('./fastdup_report/atrain_stats.csv', 
+                             save_path='./fastdup_report', descending=False,
+                             max_width=400, metric='mean')
+HTML('./fastdup_report/mean.html')
+```
+
 {{< figure_resizing src="dark.png" caption="A generated gallery of dark images." >}}
 
+To view the brightest shots, change the parameter to `descending=True`
+
+```python
+fastdup.create_stats_gallery('./fastdup_report/atrain_stats.csv', 
+                             save_path='./fastdup_report', descending=True,
+                             max_width=400, metric='mean')
+HTML('./fastdup_report/mean.html')
+```
+
 {{< figure_resizing src="bright.png" caption="A generated gallery of bright images." >}}
+
+```python
+fastdup.create_stats_gallery('./fastdup_report/atrain_stats.csv', 
+                             save_path='./fastdup_report', descending=False,
+                             max_width=400,metric='blur')
+HTML('./fastdup_report/blur.html')
+```
 
 {{< figure_resizing src="blur.png" caption="A generated gallery of blur images." >}}
 
 ### 🗂 Clustering Similar Shots
+This is one of my favourite functions in Fastdup.
+
+With all the thousands of photos in one album, it will be interesting to group similar shots together to assess them as a whole.
+
+It's also easier to identify patterns and trends in these similar shots. Or you may find that these shots are just redundant shots that will not be used.
+
+To group similar shots together run:
+
+```python
+fastdup.create_components_gallery(work_dir='./fastdup_report/',
+                                  save_path='./fastdup_report/')
+HTML('./fastdup_report/components.html')
+```
+
+And you'll find something like the following.
 
 {{< figure_resizing src="cluster_160.png" caption="" >}}
 {{< figure_resizing src="cluster_6667.png" caption="" >}}
 {{< figure_resizing src="cluster_16356.png" caption="A gallery of similar shots." >}}
 
+In the above example I've shown you three example of similar looking shots grouped together. There are more. Check them out in the [notebook](https://github.com/dnth/clean-up-digital-life-fastdup-blogpost/blob/main/fastdup_analyze.ipynb).
+
 ### 🔓 Conclusion
-In this blog post, I’ve shown you how to use Fastdup to programmatically clean your photo collections.
+
+<div style="width:480px"><iframe allow="fullscreen" frameBorder="0" height="270" src="https://giphy.com/embed/8qxVaAQ9jycFRhWITO/video" width="480"></iframe></div>
+
+Cleaning up your digital photo collection is an important step towards simplifying your digital life. 
+
+Disorganized photos can take up valuable storage space, slow down your device's performance, and make it difficult to find specific photos when you need them. 
+
+In this blog post, I’ve shown you how to use Fastdup to programmatically clean your photo collections without spending a lot of time.
 
 {{< notice tip >}}
-Specifically, we've seen how to -
-- Identify duplicate.
-- Identify  dark, bright and blurry shots.
-- Cluster near identical photos together.
+💫 Here's what we learned -
+
+- How to identify duplicates in your photo album using Python code.
+- How to filter out photos that are too dark, too bright, or blurry.
+- How to group similar looking shots together.
+
+📝 **NOTE**: All codes used in the post are on my [Github repository](https://github.com/dnth/clean-up-digital-life-fastdup-blogpost).
+
 {{< /notice >}}
+
+By using Fastdup to identify and delete duplicate and unwanted photos, and clustering similar photos for easy organization, you can save time and energy and enjoy a well-organized digital photo collection.
+
+I hope you've enjoyed and learned a thing or two from this blog post.
+If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).
+
+{{< tweet dicksonneoh7 1618622445581393920>}}
+
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7024313080490721280/" height="1800" width="504" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
