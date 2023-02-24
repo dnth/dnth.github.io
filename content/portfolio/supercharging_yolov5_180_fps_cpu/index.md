@@ -72,8 +72,11 @@ By the end of this post, you will learn how to:
 **P/S**: The end result - YOLOv5 on CPU at 180+ FPS using only 4 CPU cores! 🚀
 {{< /notice >}}
 
-If that sounds exciting let's dive in 🧙
+{{< notice info>}}
+If you're completely new to YOLOv5, get up to speed by reading [this tutorial](https://www.exxactcorp.com/blog/Deep-Learning/YOLOv5-PyTorch-Tutorial) by Exxact.
+{{< /notice >}}
 
+If that sounds exciting let's dive in 🧙
 
 ### 🔩 Setting Up
 
@@ -648,6 +651,8 @@ In this post I've shown you how to:
 
 If you ever get lost in the commands that I used for this post, fear not.
 I listed all commands I used to train all models on the [README](https://github.com/dnth/yolov5-deepsparse-blogpost) of the repo.
+
+
 
 Also, feel to use the repo with your own dataset and give it a ⭐ if it helps your work.
 
