@@ -4,26 +4,23 @@
 {{ $url := printf "%s" .Permalink }}
 {{ $body := print $title ", by " .Site.Title "\n" .Params.description "\n\n" $url "\n" }}
 
-<!--  -->
-
-
-
 
 <section class="social-share">
 
     <ul class="share-icons">
         <hr>
 
-        <h5>Follow me 👇</h5>
+        <h5>🤟 Follow me</h5>
 
         <p>
-            Don't want to miss any of my future content? Follow me on Twitter and LinkedIn where I share these tips in bite-size posts.
+            Don't want to miss any of my future content? Follow me on Twitter and LinkedIn where I share these tips in
+            bite-size posts.
         </p>
 
         <!-- Twitter -->
         <li>
-            <a href="https://twitter.com/dicksonneoh7" target="_blank"
-                rel="noopener" aria-label="Follow on Twitter" class="share-btn twitter">
+            <a href="https://twitter.com/dicksonneoh7" target="_blank" rel="noopener" aria-label="Follow on Twitter"
+                class="share-btn twitter">
                 {{ partial "svg/twitter_white.svg" (dict "class" "widget-social__link-icon") }}&nbsp;
                 Twitter
             </a>
@@ -31,8 +28,8 @@
         &nbsp;
 
         <li>
-            <a href="https://www.linkedin.com/in/dickson-neoh/"
-                target="_blank" rel="noopener" aria-label="Follow on LinkedIn" class="share-btn linkedin">
+            <a href="https://www.linkedin.com/in/dickson-neoh/" target="_blank" rel="noopener"
+                aria-label="Follow on LinkedIn" class="share-btn linkedin">
                 {{ partial "svg/linkedin_white.svg" (dict "class" "widget-social__link-icon") }}&nbsp;
                 LinkedIn
             </a>
@@ -40,25 +37,20 @@
         &nbsp;
 
         <li>
-            <a href="https://github.com/dnth/"
-                target="_blank" rel="noopener" aria-label="Follow on GitHub" class="share-btn github">
+            <a href="https://github.com/dnth/" target="_blank" rel="noopener" aria-label="Follow on GitHub"
+                class="share-btn github">
                 {{ partial "svg/github-icon_white.svg" (dict "class" "widget-social__link-icon") }}&nbsp;
                 GitHub
             </a>
         </li>
         &nbsp;
-
-
-        
-
         <hr>
-
-        <h5>Share this post 💯</h5>
+        <h5>🔄 Share this post</h5>
         <!-- Twitter -->
         {{ if .Site.Params.share.twitter }}
         <li>
-            <a href="https://twitter.com/intent/tweet?&amp;url={{ .Permalink }}&amp;text={{ .Title }} @dicksonneoh7" target="_blank"
-                rel="noopener" aria-label="Share on Twitter" class="share-btn twitter">
+            <a href="https://twitter.com/intent/tweet?&amp;url={{ .Permalink }}&amp;text={{ .Title }} @dicksonneoh7"
+                target="_blank" rel="noopener" aria-label="Share on Twitter" class="share-btn twitter">
                 {{ partial "svg/twitter_white.svg" (dict "class" "widget-social__link-icon") }}&nbsp;
                 Twitter
             </a>
@@ -122,32 +114,32 @@
         </li>
         <hr>
 
-        <section>
+        {{/* <section>
             <h5>I need your help 🙏</h5>
-            <a href="https://calendly.com/dickson-neoh/discovery-call" target="_blank"><img src="https://raw.githubusercontent.com/dnth/dnth.github.io/main/static/images/site-navigation/seeking.gif" width="700"></a>
-  
+            <a href="https://calendly.com/dickson-neoh/discovery-call" target="_blank"><img
+                    src="https://raw.githubusercontent.com/dnth/dnth.github.io/main/static/images/site-navigation/seeking.gif"
+                    width="700"></a>
+
             <p>
                 ⚠️ I'm seeking remote employment opportunities as a Data Scientist or Machine Learning Engineer.
                 If you know of any openings, I'd be forever grateful if you can connect me.
             </p>
-            <p>
-                Or, if you wish to support me in creating more contents on machine learning deployment tips and tricks, consider buying me a coffee. Your support means a lot to me 🤗
-            </p>
 
-        </section>
 
+        </section> */}}
         <section>
+            <h5>❤️ Show some love</h5>
+            <p>
+                Support me in creating more contents on machine learning deployment tips and tricks, consider buying me
+                a coffee. Your support means a lot to me 🤗
+            </p>
             <div style="text-align:center">
-                <a href="https://www.buymeacoffee.com/dicksonneoh" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+                <a href="https://www.buymeacoffee.com/dicksonneoh" target="_blank"><img
+                        src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee"
+                        style="height: 60px !important;width: 217px !important;"></a>
             </div>
-            
         </section>
-        
         <hr>
-
-
-        
-
     </ul>
 </section>
 {{ end }}
