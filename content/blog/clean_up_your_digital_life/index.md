@@ -18,22 +18,24 @@ In today's world of selfies and Instagram, we all take tons of photos on our pho
 
 But let's be real, it's easy for our photo collections to become a chaotic mess, making it impossible to find that one special memory. 
 
-I mean, I've got *gigabytes* of photos on my Google Photo app  filled with dark shots, overly exposed shots, blurry shots, and tons of duplicate stills.
+I mean, I've got *gigabytes* of photos on my Google Photo app filled with dark shots, overly exposed shots, blurry shots, and tons of duplicate stills.
 
-And let's face it, what we post on Instagram vs what's *behind the scenes* can be totally different.
+And let's face it, what we post on Instagram vs what's *behind the scenes* can be wildly different.
 
-{{< figure_resizing src="meme.png" caption="Me and my album." >}}
+{{< figure_resizing src="meme.png" caption="Me vs my photo album." >}}
 
-I know, I know, you'll say there's no harm in keeping those extra selfies in your phone. Right?
+I know, you'll say that there's no harm in keeping those extra selfies in your phone. Right?
 
-But over time, these photos will just clutter your devices taking up valuable disk space and maybe [slow down your device](https://askleo.com/deal-with-computer-clutter-to-speed-things-up/).
+Not in the short term.
+But over time, these photos will just clutter your devices taking up valuable disk space and [slow down your device](https://askleo.com/deal-with-computer-clutter-to-speed-things-up/).
 
 Also, consider these -
-- Disorganized photos make it difficult to find specific photos when you need them.
-- Photo organization saves time and energy when searching for specific photos.
-- Digital clutter can take up valuable storage space on your devices, which can slow down their performance.
-- A well-organized digital photo collection can be a source of pride and enjoyment.
-- It's easier to share organized photos with others through social media or physical photo albums or prints.
++ It's difficult to find specific photos when your collection is in a mess.
++ Organizing your collection saves you time spending searching for photos.
++ An organized photo collection can be a source of pride especially when you share them.
++ Digital clutter not only affects your device but also [impacts you psychologically](https://www.bbc.com/future/article/20190104-are-you-a-digital-hoarder).
+
+So consider cleaning up your digital clutter, because it pays in the long run.
 
 If you're convinced, then comes the next hurdle.
 
@@ -74,15 +76,15 @@ Fastdup offers a range of benefits that make it the ultimate tool for managing y
 
 Here are a few:
 
-+ **Efficient**: Fastdup's algorithms enable you to quickly identify and eliminate duplicate images and videos, freeing up valuable storage space and ensuring that your data is clean and organized.
++ **Efficient**: Fastdup's algorithms enable you to quickly identify and eliminate duplicate images and videos. All you need a mediocre PC. If you don't have access to a computer, you can even run it on [Google Colab](https://colab.research.google.com/) for free. 
 
-+ **Easy to use**: Fastdup is incredibly user-friendly, with a simple and intuitive interface that makes it easy to manage even large image and video collections.
++ **Easy to use**: Get started with only few lines of Python code.
 
-+ **Fast**: With Fastdup, you can gain insights from your visual data quickly, saving you valuable time and resources.
++ **Fast**: Gain insights from your visual data quickly, saving you valuable time and resources. On a reasonably modern computer it takes only minutes to scan through thousands of images.
 
-+ **Scalable**: Fastdup is designed to work with large image and video collections, allowing you to manage and curate your data at scale.
++ **Scalable**: Fastdup is designed to work with large image and video collections, allowing you to manage and curate your data at scale if you require.
 
-The best part? Fastdup is **free**.
+🌟 The best part? Fastdup is **free**.
 
 {{< notice info >}}
 Fastdup offers an Enterprise edition of the tool that lets you do more. Find out more [here]((https://www.visual-layer.com/)).
