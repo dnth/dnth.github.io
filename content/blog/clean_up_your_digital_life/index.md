@@ -4,7 +4,7 @@ date: 2023-02-23T11:00:15+08:00
 featureImage: images/blog/clean_up_your_digital_life/thumbnail.gif
 postImage: images/blog/clean_up_your_digital_life/post_image.gif
 tags: ["fastdup", "google-images", "Python"]
-categories: ["data-cleaning", "clustering", "duplicate-detection", "blur-detection"]
+categories: ["data-cleaning", "clustering", "duplicate-detection", "blur-detection", "photo-organization"]
 toc: true
 socialshare: true
 description: "Even pros have dark, blurry & duplicate shots. But disorganization can make it hard to find those special memories. Let's fix that."
@@ -27,9 +27,9 @@ And let's face it, what we post on Instagram vs what's *behind the scenes* can b
 I know, you'll say that there's no harm in keeping those extra selfies in your phone. Right?
 
 Not in the short term.
-But over time, these photos will just clutter your devices taking up valuable disk space and [slow down your device](https://askleo.com/deal-with-computer-clutter-to-speed-things-up/).
+But over time, these photos will just clutter your devices taking up valuable disk space and [slowing down your device](https://askleo.com/deal-with-computer-clutter-to-speed-things-up/).
 
-Also, consider these -
+Also, think about these -
 + It's difficult to find specific photos when your collection is in a mess.
 + Organizing your collection saves you time spending searching for photos.
 + An organized photo collection can be a source of pride especially when you share them.
@@ -37,7 +37,7 @@ Also, consider these -
 
 So consider cleaning up your digital clutter, because it pays in the long run.
 
-If you're convinced, then comes the next hurdle.
+If you're convinced, now comes the next hurdle.
 
 {{% blockquote %}}
 Spending hours sorting through your photos and cleaning them is a pain. 
@@ -61,13 +61,12 @@ In this post, I'll show you how to tidy up your digital life by organizing your 
 
 ### ⚡ fastdup
 
-[fastdup](https://github.com/visual-layer/fastdup) is a tool that let us gain insights from a large image/video collection. 
+[fastdup](https://github.com/visual-layer/fastdup) is a tool that let you gain insights from a large image/video collection. 
 
 You can manage, clean, and curate your images at scale on your local machine event with a single CPU.
 fastdup lets you clean visual data with ease, freeing up valuable resources and time. 
 
-Here are some superpowers you get with fastdup.
-It lets you identify:
+Here are some superpowers you get with fastdup - it lets you identify:
 
 {{< figure_resizing src="features.png" caption="fastdup superpowers. Source: fastdup GitHub." link="https://github.com/visual-layer/fastdup" >}}
 
