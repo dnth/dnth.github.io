@@ -23,12 +23,23 @@ Bob was me 5 years ago.
 
 Before joining the industry, I was an academic and researcher in a university in Malaysia.
 
-My favorite part of the job? You've guessed it. Hitting `model.train` on SOTA models and publish them on some journal just to wash my hands clean and repeat.
+My favorite part of the job? You've guessed it. Hitting `model.train` on SOTA models and publish them on "reputable journals" just to wash my hands clean and repeat.
 
+{{< figure_resizing src="meme.jpg" >}}
 
-- Brief overview of computer vision and its importance in mobile applications
-- The challenge of bringing high-quality image models to mobile devices
-- The goal of the article and a preview of what will be covered
+I realized that it doesn't matter how many papers publish about SOTA models, it would not change anything it stays on paper. 
+
+{{% blockquote %}}
+Like a painting that remains unseen in an artist's studio, a machine learning model that remains undeployed is a missed opportunity to enrich and enhance the lives of those it was intended to serve
+{{% /blockquote %}}
+
+Why would anyone want to deploy models on mobile devices? 
+
+Here are a few reasons -
++ Accessibility - Most people carry their mobile phones with them. A model accessible on mobile devices lets users use models on the go.
++ Built-in hardware - Mobile devices comes packaged with on board camera and various sensors. Not worry about integrating new hardware.
++ User experience - Enables new form of interaction between apps and sensors on the phone.
+
 
 Hurdles in mobile computer vision -
 
