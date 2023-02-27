@@ -1,7 +1,7 @@
 ---
-title: "Bringing High-Quality Image Models to Mobile: HuggingFace TIMM Meets Android & iOS"
+title: "Bringing High-Quality Image Models to Mobile: HuggingFace TIMM x Android & iOS"
 date: 2023-02-27T11:00:15+08:00
-featureImage: images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/thumbnail.gif
+featureImage: images/portfolio/bringing_high_quality_image_models_to_mobile/thumbnail.gif
 postImage: images/portfolio/bringing_high_quality_image_models_to_mobile/post_image.gif
 tags: ["TIMM", "HuggingFace", "paddy-disease", "Flutter", "Android", "iOS", "EdgeNeXt"]
 categories: ["deployment", "image-classification", "cloud-ai"]
@@ -89,7 +89,7 @@ Demo on iOS iPhone 14 Pro
 - Discussion of future possibilities for mobile computer vision using HuggingFace TIMM and other emerging technologies
 
 
-## ⛄ FAQs
+### ⛄ FAQs
 - What is computer vision, and why is it important for mobile applications?
 - What is HuggingFace, and how does it relate to computer vision?
 - What is the TIMM library, and what makes it unique compared to other computer vision libraries?
