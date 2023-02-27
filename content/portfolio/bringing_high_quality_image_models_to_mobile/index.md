@@ -13,7 +13,19 @@ images :
 ---
 
 
-### 🔥 Motivation
+### 🌟 Motivation
+
+Meet Bob, a data scientist with a passion for computer vision. Bob had been working on a project to build a model that could identify different types of fruits, from apples to pineapples. He spent countless hours training and fine-tuning the model until it could recognize fruits with 98% accuracy.
+
+Bob even bagged few hackathon awards and praised my many to be the "expert" in computer vision.
+
+Bob was me 5 years ago.
+
+Before joining the industry, I was an academic and researcher in a university in Malaysia.
+
+My favorite part of the job? You've guessed it. Hitting `model.train` on SOTA models and publish them on some journal just to wash my hands clean and repeat.
+
+
 - Brief overview of computer vision and its importance in mobile applications
 - The challenge of bringing high-quality image models to mobile devices
 - The goal of the article and a preview of what will be covered
@@ -32,12 +44,25 @@ Hurdles in mobile computer vision -
 
 + Deployment: Finally, deploying computer vision models on mobile devices requires careful consideration of factors such as app size, download times, and compatibility with different operating systems and devices.
 
+
+✅ Yes, for free.
+
+{{< notice tip >}}
+⚡ By the end of this post you will learn how to:
++ Upload a SOTA classification model to HuggingFace Spaces and get an inference endpoint.
++ Create a functional mobile app that runs on Android and iOS to call the inference endpoint.
++ Display the inference results on the screen with a beautiful UI.
+
+💡 **NOTE**: Code and data for this post are available on my GitHub repo [here](https://github.com/dnth/huggingface-timm-mobile-blogpost).
+{{< /notice >}}
+
+
 Demo on iOS iPhone 14 Pro
 
 ![demo on ios](demo_ios.gif)
 
 
-### HuggingFace x TIMM
+### 🤗 HuggingFace x TIMM
 
 - Introducing HuggingFace and TIMM as a solution
 - Introduction to the TIMM (Timm Image Models) library and its architecture
@@ -47,21 +72,24 @@ Demo on iOS iPhone 14 Pro
 - Comparison of the performance of pretrained models with custom models on mobile devices
 - Advantages and disadvantages of using pretrained models
 
-### REST API
+
+### 📥 Hosting a Model on HuggingFace Hub
+
+### 🔄 Inference Endpoint
 - Rest API with Gradio.
 
-### Flutter
+### 📲 Flutter
 - Build user interface.
 - Don't want to get user lost in the detail implementation. Refer to GitHub repo.
 
-### Conclusion and Future of Mobile Computer Vision
+### 🎄 Conclusion and Future of Mobile Computer Vision
 
 - Summary of the importance of high-quality image models for mobile applications
 - Recap of HuggingFace TIMM's role in bringing these models to mobile devices
 - Discussion of future possibilities for mobile computer vision using HuggingFace TIMM and other emerging technologies
 
 
-## **FAQs**
+## ⛄ FAQs
 - What is computer vision, and why is it important for mobile applications?
 - What is HuggingFace, and how does it relate to computer vision?
 - What is the TIMM library, and what makes it unique compared to other computer vision libraries?
