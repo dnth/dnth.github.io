@@ -2,14 +2,14 @@
 title: "Bringing High-Quality Image Models to Mobile: HuggingFace TIMM Meets Android & iOS"
 date: 2023-02-27T11:00:15+08:00
 featureImage: images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/thumbnail.gif
-postImage: images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/post_image.gif
+postImage: images/portfolio/bringing_high_quality_image_models_to_mobile/post_image.gif
 tags: ["TIMM", "HuggingFace", "paddy-disease", "Flutter", "Android", "iOS", "EdgeNeXt"]
 categories: ["deployment", "image-classification", "cloud-ai"]
 toc: true
 socialshare: true
 description: "Discover how HuggingFace's TIMM library enables integration of state-of-the-art computer vision models on mobile."
 images : 
-- images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/post_image.gif
+- images/portfolio/bringing_high_quality_image_models_to_mobile/post_image.gif
 ---
 
 
