@@ -12,6 +12,10 @@ images :
 - images/portfolio/bringing_high_quality_image_models_to_mobile/post_image.gif
 ---
 
+{{< notice info >}}
+This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
+{{< /notice >}}
+
 
 ### 🌟 Motivation
 
@@ -60,21 +64,6 @@ Demo on Android - Google Pixel 3 XL.
 ![demo on android](demo_android.gif)
 
 I've also uploaded the app to Google Playstore. Download and try it out [here](https://play.google.com/store/apps/details?id=com.rice.net).
-
-
-<!-- Hurdles in mobile computer vision -
-
-+ Limited hardware resources: Mobile devices have limited hardware resources compared to desktop computers or cloud servers. This means that the computational power available on mobile devices may not be enough to run complex computer vision models.
-
-+ Limited memory: Mobile devices also have limited memory, which can make it difficult to store and retrieve large amounts of data required for computer vision models.
-
-+ Battery life: Running complex computer vision models on mobile devices can consume a lot of battery power, which can significantly reduce the battery life of the device.
-
-+ Processing speed: Mobile devices typically have slower processing speeds than desktop computers or cloud servers. This can make it difficult to process large amounts of data required for computer vision models in real-time.
-
-+ Optimization: In order to run computer vision models efficiently on mobile devices, they need to be optimized for the specific hardware and software environment of the device. This requires specialized knowledge and expertise in both computer vision and mobile development.
-
-+ Deployment: Finally, deploying computer vision models on mobile devices requires careful consideration of factors such as app size, download times, and compatibility with different operating systems and devices. -->
 
 Making computer vision models (especially large ones) available on mobile devices sounds interesting in theory.
 
@@ -127,6 +116,13 @@ The HuggingFace docs shows [how you can do it using Python](https://huggingface.
 
 ### 📥 Hosting a Model on HuggingFace Spaces
 
+Spaces are one of the most popular ways to share ML applications and demos with the world.
+
+Hardware specs [here](https://huggingface.co/pricing#spaces).
+
+{{< figure_resizing src="spaces_specs.png" caption="Hardware specs on Spaces." >}}
+
+
 Details on how I trained the model is [here](../pytorch_at_the_edge_timm_torchscript_flutter/#-training-with-fastai).
 
 Here's the model that I trained using Fastai ahd hosted on HuggingFace Space. 
@@ -135,7 +131,7 @@ Here's the model that I trained using Fastai ahd hosted on HuggingFace Space.
 Try it out 👇
 <iframe
 	src="https://dnth-edgenext-paddy-disease-classifie-dc60651.hf.space"
-	frameborder="0"
+	frameborder="1"
 	width="900"
 	height="800"
 ></iframe>
