@@ -7,7 +7,7 @@ tags: ["TIMM", "HuggingFace", "paddy-disease", "Flutter", "Android", "iOS", "Edg
 categories: ["deployment", "image-classification", "cloud-ai"]
 toc: true
 socialshare: true
-description: "Discover how HuggingFace's TIMM library enables integration of state-of-the-art computer vision models on mobile."
+description: "Discover how HuggingFace's TIMM library brings state-of-the-art computer vision models to iOS and Android."
 images : 
 - images/portfolio/bringing_high_quality_image_models_to_mobile/post_image.gif
 ---
