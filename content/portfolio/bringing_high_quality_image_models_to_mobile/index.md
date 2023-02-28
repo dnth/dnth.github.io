@@ -29,19 +29,40 @@ My favorite part of the job? You've guessed it. Hitting `model.train` on SOTA mo
 
 I realized that it doesn't matter how many papers publish about SOTA models, it would not change anything it stays on paper. 
 
-{{% blockquote %}}
-Like a painting that remains unseen in an artist's studio, a machine learning model that remains undeployed is a missed opportunity to enrich and enhance the lives of those it was intended to serve
+{{% blockquote author="ChatGPT"%}}
+Like a painting that remains unseen in an artist's studio, a machine learning model that remains undeployed is a missed opportunity to enrich and enhance the lives of those it was intended to serve.
 {{% /blockquote %}}
 
 Why would anyone want to deploy models on mobile devices? 
 
 Here are a few reasons -
-+ Accessibility - Most people carry their mobile phones with them. A model accessible on mobile devices lets users use models on the go.
-+ Built-in hardware - Mobile devices comes packaged with on board camera and various sensors. Not worry about integrating new hardware.
-+ User experience - Enables new form of interaction between apps and sensors on the phone.
++ **Accessibility** - Most people carry their mobile phones with them. A model accessible on mobile devices lets users use models on the go.
++ **Built-in hardware** - Mobile devices comes packaged with on board camera and various sensors. Not worry about integrating new hardware.
++ **User experience** - Enables new form of interaction between apps and sensors on the phone. E.g. computer vision models can be used in an image editing app on the phone.
+
+✅ Yes, for free.
+
+{{< notice tip >}}
+⚡ By the end of this post you will learn how to:
++ Upload a SOTA classification model to HuggingFace Spaces and get an inference endpoint.
++ Create a Flutter mobile app that runs on **Android** and **iOS** to call the inference endpoint.
++ Display the inference results on the screen with a beautiful UI.
+
+💡 **NOTE**: Code and data for this post are available on my GitHub repo [here](https://github.com/dnth/huggingface-timm-mobile-blogpost).
+{{< /notice >}}
+
+Demo on iOS iPhone 14 Pro
+
+![demo on ios](demo_ios.gif)
+
+Demo on Android - Google Pixel 3 XL.
+
+![demo on android](demo_android.gif)
+
+I've also uploaded the app to Google Playstore. Download and try it out [here](https://play.google.com/store/apps/details?id=com.rice.net).
 
 
-Hurdles in mobile computer vision -
+<!-- Hurdles in mobile computer vision -
 
 + Limited hardware resources: Mobile devices have limited hardware resources compared to desktop computers or cloud servers. This means that the computational power available on mobile devices may not be enough to run complex computer vision models.
 
@@ -53,39 +74,31 @@ Hurdles in mobile computer vision -
 
 + Optimization: In order to run computer vision models efficiently on mobile devices, they need to be optimized for the specific hardware and software environment of the device. This requires specialized knowledge and expertise in both computer vision and mobile development.
 
-+ Deployment: Finally, deploying computer vision models on mobile devices requires careful consideration of factors such as app size, download times, and compatibility with different operating systems and devices.
++ Deployment: Finally, deploying computer vision models on mobile devices requires careful consideration of factors such as app size, download times, and compatibility with different operating systems and devices. -->
 
+Making computer vision models (especially large ones) available on mobile devices sounds interesting in theory.
 
-✅ Yes, for free.
+But in practice there are many hurdles -
 
-{{< notice tip >}}
-⚡ By the end of this post you will learn how to:
-+ Upload a SOTA classification model to HuggingFace Spaces and get an inference endpoint.
-+ Create a functional mobile app that runs on Android and iOS to call the inference endpoint.
-+ Display the inference results on the screen with a beautiful UI.
++ **Hardware limitation** - Mobile devices usually run on portable hardware with limited processing power, RAM, and battery life. Models needs to be optimized and efficient catering to these limitations.
++ **Optimization** - To put computer vision models on mobile hardware, they usually need to be optimized to run on specific hardware and software environment on the device. This requires specialized knowledge in computer vision and mobile development. 
++ **Practicality** - User experience is a big factor in whether your app will be used by anyone. Nobody wants to use a bloated, slow and inefficient mobile app.
 
-💡 **NOTE**: Code and data for this post are available on my GitHub repo [here](https://github.com/dnth/huggingface-timm-mobile-blogpost).
-{{< /notice >}}
+I know that sounds complicated. 
+Don't worry because we are **NOT** going to deal with any of that in this blog post!
 
-
-Demo on iOS iPhone 14 Pro
-
-![demo on ios](demo_ios.gif)
-
-Demo on Android - Google Pixel 3 XL.
-
-![demo on android](demo_android.gif)
+Enter 👇
 
 
 ### 🤗 HuggingFace x TIMM
 
-- Introducing HuggingFace and TIMM as a solution
+<!-- - Introducing HuggingFace and TIMM as a solution
 - Introduction to the TIMM (Timm Image Models) library and its architecture
 - Advantages of using HuggingFace TIMM for mobile computer vision applications
 - Introduction to the HuggingFace Model Hub and its collection of pretrained models
 - Explanation of how to use pretrained models with HuggingFace TIMM for mobile computer vision applications
 - Comparison of the performance of pretrained models with custom models on mobile devices
-- Advantages and disadvantages of using pretrained models
+- Advantages and disadvantages of using pretrained models -->
 
 
 ### 📥 Hosting a Model on HuggingFace Hub
