@@ -72,6 +72,10 @@ Demo on iOS iPhone 14 Pro
 
 ![demo on ios](demo_ios.gif)
 
+Demo on Android - Google Pixel 3 XL.
+
+![demo on android](demo_android.gif)
+
 
 ### 🤗 HuggingFace x TIMM
 
