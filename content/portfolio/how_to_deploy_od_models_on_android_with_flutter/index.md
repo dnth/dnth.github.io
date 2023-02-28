@@ -4,7 +4,7 @@ date: 2022-04-17T15:00:15+08:00
 featureImage: images/portfolio/how_to_deploy_od_models_on_android_with_flutter/thumbnail.gif
 postImage: images/portfolio/how_to_deploy_od_models_on_android_with_flutter/post_image.png
 tags: ["Flutter", "Hugging-Face", "Android", "Fast.ai", "Gradio", "IceVision"]
-categories: ["deployment", "object-detection"]
+categories: ["deployment", "object-detection", "cloud-ai"]
 toc: true
 socialshare: true
 description: "Leverage giant models in the cloud on Android with Hugging Face and Flutter."
