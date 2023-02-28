@@ -1,13 +1,13 @@
 ---
-title: "Bringing High-Quality Image Models to Mobile: HuggingFace TIMM Meets Android & iOS"
+title: "Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android & iOS"
 date: 2022-02-27T11:00:15+08:00
 featureImage: images/portfolio/bringing_high_quality_image_models_to_mobile/thumbnail.gif
 postImage: images/portfolio/bringing_high_quality_image_models_to_mobile/post_image.gif
-tags: ["TIMM", "HuggingFace", "paddy-disease", "Flutter", "Android", "iOS", "EdgeNeXt"]
+tags: ["TIMM", "Hugging Face", "paddy-disease", "Flutter", "Android", "iOS", "EdgeNeXt", "Gradio"]
 categories: ["deployment", "image-classification", "cloud-ai"]
 toc: true
 socialshare: true
-description: "Discover how HuggingFace's TIMM library brings state-of-the-art computer vision models to iOS and Android."
+description: "Discover how Hugging Face's TIMM library brings state-of-the-art computer vision models to iOS and Android."
 images : 
 - images/portfolio/bringing_high_quality_image_models_to_mobile/post_image.gif
 ---
@@ -48,7 +48,7 @@ Here are a few reasons -
 
 {{< notice tip >}}
 ⚡ By the end of this post you will learn how to:
-+ Upload a SOTA classification model to HuggingFace Spaces and get an inference endpoint.
++ Upload a SOTA classification model to Hugging Face Spaces and get an inference endpoint.
 + Create a Flutter mobile app that runs on **Android** and **iOS** to call the inference endpoint.
 + Display the inference results on the screen with a beautiful UI.
 
@@ -79,10 +79,10 @@ Don't worry because we are **NOT** going to deal with any of that in this blog p
 Enter 👇
 
 
-### 🤗 HuggingFace x TIMM
-[HuggingFace](https://huggingface.co/) is a platform that allows users to host and share machine learning models and dataset. It's most notable for its Transformers model for Natural Language Processing (NLP).
+### 🤗 Hugging Face x TIMM
+[Hugging Face](https://huggingface.co/) is a platform that allows users to host and share machine learning models and dataset. It's most notable for its Transformers model for Natural Language Processing (NLP).
 
-Recently HuggingFace has been expanding its territory beyond NLP and venturing into computer vision. 
+Recently Hugging Face has been expanding its territory beyond NLP and venturing into computer vision. 
 
 Ross Wightman, the creator of the wildly popular PyTorch Image Model (TIMM) repo joins forces. 
 
@@ -90,7 +90,7 @@ TIMM is a open-source computer vision repo used in research and commercial appli
 
 
 
-{{< figure_resizing src="hf_timm.png" caption="TIMM joins HuggingFace." >}}
+{{< figure_resizing src="hf_timm.png" caption="TIMM joins Hugging Face." >}}
 
 {{< notice tip >}}
 
@@ -100,21 +100,21 @@ Check out the TIMM repo [here](https://github.com/huggingface/pytorch-image-mode
 
 What does it mean for you?
 
-Now you can use any models from TIMM with HuggingFace on platforms of your choice.
-The HuggingFace docs shows [how you can do it using Python](https://huggingface.co/docs/hub/timm). 
+Now you can use any models from TIMM with Hugging Face on platforms of your choice.
+The Hugging Face docs shows [how you can do it using Python](https://huggingface.co/docs/hub/timm). 
 
 
 
-<!-- - Introducing HuggingFace and TIMM as a solution
+<!-- - Introducing Hugging Face and TIMM as a solution
 - Introduction to the TIMM (Timm Image Models) library and its architecture
-- Advantages of using HuggingFace TIMM for mobile computer vision applications
-- Introduction to the HuggingFace Model Hub and its collection of pretrained models
-- Explanation of how to use pretrained models with HuggingFace TIMM for mobile computer vision applications
+- Advantages of using Hugging Face TIMM for mobile computer vision applications
+- Introduction to the Hugging Face Model Hub and its collection of pretrained models
+- Explanation of how to use pretrained models with Hugging Face TIMM for mobile computer vision applications
 - Comparison of the performance of pretrained models with custom models on mobile devices
 - Advantages and disadvantages of using pretrained models -->
 
 
-### 📥 Hosting a Model on HuggingFace Spaces
+### 📥 Hosting a Model on Hugging Face Spaces
 
 Spaces are one of the most popular ways to share ML applications and demos with the world.
 
@@ -125,7 +125,7 @@ Hardware specs [here](https://huggingface.co/pricing#spaces).
 
 Details on how I trained the model is [here](../pytorch_at_the_edge_timm_torchscript_flutter/#-training-with-fastai).
 
-Here's the model that I trained using Fastai ahd hosted on HuggingFace Space. 
+Here's the model that I trained using Fastai ahd hosted on Hugging Face Space. 
 
 
 Try it out 👇
@@ -136,7 +136,7 @@ Try it out 👇
 	height="800"
 ></iframe>
 
-View on the HuggingFace webpage [here](https://dnth-edgenext-paddy-disease-classifie-dc60651.hf.space).
+View on the Hugging Face webpage [here](https://dnth-edgenext-paddy-disease-classifie-dc60651.hf.space).
 
 Deployed using Gradio.
 
@@ -178,7 +178,7 @@ If we want to use other language then we'll need an API endpoint.
 ### 🔄 Inference API Endpoint
 All applications deployed using Gradio has an API endpoint.
 
-{{< figure_resizing src="api_endpoint.png" caption="TIMM joins HuggingFace." >}}
+{{< figure_resizing src="api_endpoint.png" caption="TIMM joins Hugging Face." >}}
 
 View the API endpoint [here](https://dnth-edgenext-paddy-disease-classifie-dc60651.hf.space/?view=api)
 
@@ -240,7 +240,7 @@ That's a wrap! In this post, I've shown you how you can start from a model, trai
 
 {{< notice tip >}}
 ⚡ By the end of this post you will learn how to:
-+ Upload a SOTA classification model to HuggingFace Spaces and get an inference endpoint.
++ Upload a SOTA classification model to Hugging Face Spaces and get an inference endpoint.
 + Create a Flutter mobile app that runs on **Android** and **iOS** to call the inference endpoint.
 + Display the inference results on the screen with a beautiful UI.
 
@@ -264,18 +264,18 @@ If you have any questions, comments, or feedback, please leave them on the follo
 <!-- ### 🎄 Conclusion
 
 - Summary of the importance of high-quality image models for mobile applications
-- Recap of HuggingFace TIMM's role in bringing these models to mobile devices
-- Discussion of future possibilities for mobile computer vision using HuggingFace TIMM and other emerging technologies
+- Recap of Hugging Face TIMM's role in bringing these models to mobile devices
+- Discussion of future possibilities for mobile computer vision using Hugging Face TIMM and other emerging technologies
 
 
 ### ⛄ FAQs
 - What is computer vision, and why is it important for mobile applications?
-- What is HuggingFace, and how does it relate to computer vision?
+- What is Hugging Face, and how does it relate to computer vision?
 - What is the TIMM library, and what makes it unique compared to other computer vision libraries?
 - What are the limitations of Android and iOS for computer vision applications?
-- What is the Android Neural Networks API (NNAPI), and how does it work with HuggingFace TIMM?
-- What is the Core ML framework, and how does it work with HuggingFace TIMM?
+- What is the Android Neural Networks API (NNAPI), and how does it work with Hugging Face TIMM?
+- What is the Core ML framework, and how does it work with Hugging Face TIMM?
 - What are pretrained models, and why are they important in computer vision?
-- How do I use pretrained models with HuggingFace TIMM for mobile computer vision applications?
+- How do I use pretrained models with Hugging Face TIMM for mobile computer vision applications?
 - How does the performance of pretrained models compare to custom models on mobile devices?
 - What are the advantages and disadvantages of using pretrained models for mobile computer vision applications? -->
