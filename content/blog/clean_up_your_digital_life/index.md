@@ -303,7 +303,8 @@ To group similar shots together run:
 
 ```python
 fastdup.create_components_gallery(work_dir='./fastdup_report/',
-                                  save_path='./fastdup_report/')
+                                  save_path='./fastdup_report/',
+                                  get_label_func=lambda x:x)
 HTML('./fastdup_report/components.html')
 ```
 
@@ -313,7 +314,12 @@ And you'll find something like the following.
 {{< figure_resizing src="cluster_6667.png" caption="" >}}
 {{< figure_resizing src="cluster_16356.png" caption="A gallery of similar shots." >}}
 
-Above, I've shown you three examples of similar-looking shots grouped. There are more. Check them out in the [notebook](https://github.com/dnth/clean-up-digital-life-fastdup-blogpost/blob/main/fastdup_analyze.ipynb).
+Above, I've shown you three examples of similar-looking shots grouped together with the file path of each image.
+It's up to you to decide what to do with the similar looking shots. Not going to use them? Delete. Otherwise you can also keep them organized in a folder of some sort.
+
+{{< notice tip >}}
+Check out the full output of the above code in the [notebook](https://github.com/dnth/clean-up-digital-life-fastdup-blogpost/blob/main/fastdup_analyze.ipynb).
+{{< /notice >}}
 
 ### 🔓 Conclusion
 
