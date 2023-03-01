@@ -14,32 +14,49 @@ images :
 
 ### 💫 AI/ML Data Talks Podcast 
 
-In this podcast episode I share with about my journey from academia to industry and share some insights into the latest AI and ML trends. We'll talk about how important it is for AI systems to be able to communicate with each other, and how ZenML is helping with that.
+In this podcast episode I share about my journey and transition from academia to industry and the lessons I learned along the way.
 
-If you're interested in pursuing a career in AI or ML, I've got some advice for you! Starting projects and writing about them publicly is a great way to solidify your understanding of the material.
+During our chat, we talk about some of the hottest topics in machine learning, like What is MLOps? Data Drift vs Concept Drift, and Monitoring Machine Learning Model.
 
-During our chat, I'm gonna break down some of the hottest topics in machine learning, like What is MLOps? Data Drift vs Concept Drift, and Monitoring Machine Learning Model.
+We also talked about some insights into the latest AI and ML trends and ecosystem. Specifically how important it is for various tools to be able to communicate with each other, and how [ZenML](https://zenml.io/home) helps with that.
+
+Additionally, if you're interested in pursuing a career in AI or ML, I also discussed what worked for me during my transition and potential pitfalls.
+
+{{% blockquote %}}
+Starting projects and writing about them publicly is a great way to solidify your understanding of the material.
+{{% /blockquote %}}
 
 So if you're curious about the current state of AI and ML, and you're looking for some practical advice on how to get started in the field, this episode is definitely for you!
 
 Catch my discussion with [Poo Kuan Hoong, PhD](https://www.linkedin.com/in/kuanhoong/) - Google Developer Expert and Lead Data Scientist at [BAT](https://www.linkedin.com/company/british-american-tobacco/) 👇
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/3IWktvF7Q6Dmem8QbP20FT?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-### ⛄ Machine Learning Operations (MLOps)
+&nbsp;
+
+<!-- ### ⛄ Machine Learning Operations (MLOps)
 
 MLOps (Machine Learning Operations) is a set of practices for managing the lifecycle of machine learning models in production. 
 
-It involves collaboration between data scientists, software engineers, and IT operations teams to automate and streamline the process of developing, deploying, and maintaining machine learning models.
+It involves collaboration between data scientists, software engineers, and IT operations teams to automate and streamline the process of developing, deploying, and maintaining machine learning models. -->
 
-### 👍 Tips for Getting Started with AI and ML Engineering
+### 👍 Tips to Get Started with ML
 
 If you're interested in AI or ML engineering but don't know where to start, now is a great time to jump in. There are many resources available to help you learn and get started with these technologies. 
 
-One important tip is to start writing about your projects and experiences. Writing can help you solidify your understanding and connect the dots between different concepts. Don't be afraid to learn in public and share your work, even if you don't think anyone else will read it. 
+One important tip is to start writing about your projects and experiences. 
+Writing can help you solidify your understanding and connect the dots between different concepts. 
+Don't be afraid to learn in public and share your work, even if you don't think anyone else will read it. 
 
-Remember, writing is for you, and it can do more good for your own learning than for anyone else. Another tip is to practice coding and work through different tutorials and exercises. Don't get stuck in "tutorial hell" by only following tutorials without applying your knowledge to real-world problems. 
+{{% blockquote %}}
+Remember, writing is for you, and it can do more good for your own learning than for anyone else. So do yourself this favor.
+{{% /blockquote %}}
 
-Finally, don't be discouraged by the steep learning curve of AI and ML. With persistence and dedication, you can develop the skills to become a successful AI or ML engineer.
+If you don't know what to write about, start with writing to yourself six months ago. What you wish you knew? What are the lessons learned? What advice you'd give to someone trying to walk the same path you took?
+
+Another tip is to practice coding and work through different tutorials and exercises. Don't get stuck in "tutorial hell" by only following tutorials without applying your knowledge to real-world problems. 
+
+Finally, don't be discouraged by the steep learning curve of AI and ML especially if you're coming from another field. 
+With persistence and dedication, you can develop the skills to become a successful AI or ML engineer.
 
 ### 📖 Lessons Learned
 
