@@ -104,7 +104,7 @@ The dataset consists of `10,407` labeled images across ten classes (9 diseases a
 
 The task is to classify the paddy images into `1` of the `9` diseases or `normal`. 
 Few sample images shown below.
-{{< figure_resizing src="test_img.jpg" >}}
+{{< figure_resizing src="test_img.jpg" link="test_img.jpg" >}}
 
 Next, I download the data locally and organize them in a folder structure. 
 Here's the structure I have on my computer.
@@ -238,7 +238,7 @@ You can show a batch of the train images loaded into the `DataLoader` with:
 dls.train.show_batch(max_n=8, nrows=2)
 ```
 
-{{< figure_resizing src="show_batch.png" >}}
+{{< figure_resizing src="show_batch.png" link="./show_batch.png" >}}
 
 Next create a `Learner` object which stores the model, dataloaders, and loss function to train a model. 
 Read more about the `Learner` [here](https://docs.fast.ai/learner.html#learner).
@@ -268,7 +268,7 @@ Find the best learning rate with:
 learn.lr_find()
 ```
 
-{{< figure_resizing src="lr_find.png" >}}
+{{< figure_resizing src="lr_find.png" link="lr_find.png" >}}
 
 {{< notice tip >}} 
 
@@ -289,7 +289,7 @@ The `ShowGraphCallback` callback plots the progress of the training.
 learn.fine_tune(5, base_lr=1e-2, cbs=[ShowGraphCallback()])
 ```
 
-{{< figure_resizing src="train.png" >}}
+{{< figure_resizing src="train.png" link="train.png">}}
 
 With just a few lines of code, we can train a reasonably good model with Fastai. 
 For completeness, here are the few lines of codes you need to load and train the model:
