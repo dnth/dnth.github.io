@@ -192,7 +192,7 @@ HTML('./fastdup_report/similarity.html')
 This generates a file `similarity.html` in the `save_path` directory. You can open the `.html` file in your browser to view it.
 
 If you're running this in a Jupyter notebook, you'll see something like the following.
-{{< figure_resizing src="duplicates.png" caption="A generated gallery of duplicates." >}}
+{{< figure_resizing src="duplicates.png" link="duplicates.png" caption="A generated gallery of duplicates." >}}
 
 
 In <span style="color:red">❶</span>,  <span style="color:red">❷</span> and <span style="color:red">❸</span> we find duplicate images with a `Distance` score of `1.0`. These are **EXACT** copies of one another taking up valuable disk space.
@@ -239,7 +239,7 @@ HTML('./fastdup_report/mean.html')
 
 The above snippet sorts all the photos in your folder following ascending `mean` values. So the darker images (lower `mean` value) should appear at the top.
 
-{{< figure_resizing src="dark.png" caption="A generated gallery of dark images." >}}
+{{< figure_resizing src="dark.png" link="dark.png" caption="A generated gallery of dark images." >}}
 
 Image <span style="color:red">❶</span> (totally black) is classic. I always find these somewhere in my albums due to accidental press when the phone is in my pocket.
 
@@ -256,7 +256,7 @@ fastdup.create_stats_gallery('./fastdup_report/atrain_stats.csv',
 HTML('./fastdup_report/mean.html')
 ```
 
-{{< figure_resizing src="bright.png" caption="A generated gallery of bright images." >}}
+{{< figure_resizing src="bright.png" link="bright.png" caption="A generated gallery of bright images." >}}
 
 Again we see Image <span style="color:red">❶</span> (totally white) which happens sometimes when your shots are overexposed.
 
@@ -274,7 +274,7 @@ fastdup.create_stats_gallery('./fastdup_report/atrain_stats.csv',
 HTML('./fastdup_report/blur.html')
 ```
 
-{{< figure_resizing src="blur.png" caption="A generated gallery of blur images." >}}
+{{< figure_resizing src="blur.png" link="blur.png" caption="A generated gallery of blur images." >}}
 
 
 There are more ways we can view our photos using statistical metrics. So you can change the `metric` argument to:
@@ -310,9 +310,9 @@ HTML('./fastdup_report/components.html')
 
 And you'll find something like the following.
 
-{{< figure_resizing src="cluster_160.png" caption="" >}}
-{{< figure_resizing src="cluster_6667.png" caption="" >}}
-{{< figure_resizing src="cluster_16356.png" caption="A gallery of similar shots." >}}
+{{< figure_resizing src="cluster_160.png" caption="" link="cluster_160.png" >}}
+{{< figure_resizing src="cluster_6667.png" caption="" link="cluster_6667.png">}}
+{{< figure_resizing src="cluster_16356.png" caption="A gallery of similar shots." link="cluster_16356.png" >}}
 
 Above, I've shown you three examples of similar-looking shots grouped together with the file path of each image.
 It's up to you to decide what to do with the similar looking shots. Not going to use them? Delete. Otherwise you can also keep them organized in a folder of some sort.
