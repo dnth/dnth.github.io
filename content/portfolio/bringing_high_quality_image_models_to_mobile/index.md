@@ -18,37 +18,64 @@ This blog post is still a work in progress. If you require further clarification
 
 
 ### 🌟 Motivation
+For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%. 
 
-Meet Bob, a data scientist with a passion for computer vision. Bob had been working on a project to build a model that could identify different types of fruits, from apples to pineapples. He spent countless hours training and fine-tuning the model until it could recognize fruits with 98% accuracy.
+Why not?
 
-Bob even bagged few hackathon awards and praised my many to be the "expert" in computer vision.
+This is the after all the juiciest part of the job. "Solving" one dataset after another, it may seem like anything around you can be *conquered* with a simple `model.fit`.
 
-Bob was me 5 years ago.
+That was me two years ago.
 
-Before joining the industry, I was an academic and researcher in a university in Malaysia.
+The naive version of me thought that was all about it with machine learning (ML).
+As long as we have a dataset, ML is the way to go.
 
-My favorite part of the job? You've guessed it. Hitting `model.train` on SOTA models and publish them on "reputable journals" just to wash my hands clean and repeat.
+Almost nobody talked about what happens to the model after that.
+
 
 {{< figure_resizing src="meme.jpg" >}}
 
-I realized that it doesn't matter how many papers publish about SOTA models, it would not change anything it stays on paper. 
-
 {{% blockquote author="ChatGPT"%}}
-Like a painting that remains unseen in an artist's studio, a machine learning model that remains undeployed is a missed opportunity to enrich and enhance the lives of those it was intended to serve.
+Like a painting not shown in an artist's studio, a machine learning model not deployed is a missed opportunity to enrich and enhance the lives of those it was intended to serve.
 {{% /blockquote %}}
 
-Why would anyone want to deploy models on mobile devices? 
+<!-- So what is deployment anyway?
 
-Here are a few reasons -
+In simple terms, it is taking the trained model (that you took pride on) and integrating it into a system that can be used in real-world applications.
+
+Broadly speaking, there are two deployment strategies in use today:
++ **Cloud-based Deployment** - This involves putting your model onto a cloud-based infrastructure (like AWS or Hugging Face) and running the inference on the cloud.
++ **Edge Deployment** - This involves putting your model on a device (like a mobile phone) and running the inference on the device.
+
+Each has its pros and cons. So choose based on your use case.
+
+Cloud-based deployment scales well. With the right infrastructure, your model can run thousands of inferences a second to serve millions of people. -->
+
+Without deployment the model you've trained only benefits you.
+
+So how do we maximize the number of people you can serve with the model?
+
+Mobile device.
+
+It's 2023, if you're reading this, chances are you own a mobile device.
+
+<!-- [Interesting facts](https://techjury.net/blog/mobile-vs-desktop-usage/) -
++ In 2023, there are an estimated 16.8 billion mobile devices and counting!
++ 92.1% of internet users access the Web through mobile devices.
++ American adults spend an average of 5.5 hours daily on their cell phones in 2022. -->
+
+Hands down, having a model that can work on mobile is going to reach many.
+
 + **Accessibility** - Most people carry their mobile phones with them. A model accessible on mobile devices lets users use models on the go.
 + **Built-in hardware** - Mobile devices comes packaged with on board camera and various sensors. Not worry about integrating new hardware.
 + **User experience** - Enables new form of interaction between apps and sensors on the phone. E.g. computer vision models can be used in an image editing app on the phone.
+
+In this blog post, I will show you how you can make a model accessible through your mobile phone with Hugging Face and Flutter.
 
 ✅ Yes, for free.
 
 {{< notice tip >}}
 ⚡ By the end of this post you will learn how to:
-+ Upload a SOTA classification model to Hugging Face Spaces and get an inference endpoint.
++ Upload a state-of-the-art image classification model to Hugging Face Spaces and get an inference endpoint.
 + Create a Flutter mobile app that runs on **Android** and **iOS** to call the inference endpoint.
 + Display the inference results on the screen with a beautiful UI.
 
@@ -65,6 +92,11 @@ Demo on Android - Google Pixel 3 XL.
 
 I've also uploaded the app to Google Playstore. Download and try it out [here](https://play.google.com/store/apps/details?id=com.rice.net).
 
+If that looks interesting, let's start!
+
+
+### 🤗 Hugging Face x TIMM
+
 Making computer vision models (especially large ones) available on mobile devices sounds interesting in theory.
 
 But in practice there are many hurdles -
@@ -79,7 +111,6 @@ Don't worry because we are **NOT** going to deal with any of that in this blog p
 Enter 👇
 
 
-### 🤗 Hugging Face x TIMM
 [Hugging Face](https://huggingface.co/) is a platform that allows users to host and share machine learning models and dataset. It's most notable for its Transformers model for Natural Language Processing (NLP).
 
 Recently Hugging Face has been expanding its territory beyond NLP and venturing into computer vision. 
