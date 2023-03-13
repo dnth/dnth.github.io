@@ -203,6 +203,9 @@ I tried to open this images on my machine, but they could not be viewed.
 
 {{< figure_resizing src="sample_invalid.png" link="sample_invalid.png" >}}
 
+Invalid images can't be used but takes up disk space. 
+There's only one way to deal with it - Delete.
+
 ### 👯‍♂️ Duplicate Images
 To view the duplicate photos run:
 
