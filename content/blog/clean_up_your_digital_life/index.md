@@ -310,9 +310,7 @@ HTML('./fastdup_report/components.html')
 
 And you'll find something like the following.
 
-{{< figure_resizing src="cluster_160.png" caption="" link="cluster_160.png" >}}
-{{< figure_resizing src="cluster_6667.png" caption="" link="cluster_6667.png">}}
-{{< figure_resizing src="cluster_16356.png" caption="A gallery of similar shots." link="cluster_16356.png" >}}
+{{< figure_resizing src="components.png" caption="" link="components.png" >}}
 
 Above, I've shown you three examples of similar-looking shots grouped together with the file path of each image.
 It's up to you to decide what to do with the similar looking shots. Not going to use them? Delete. Otherwise you can also keep them organized in a folder of some sort.
