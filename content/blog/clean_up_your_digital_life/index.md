@@ -268,12 +268,12 @@ The above snippet sorts all the photos in your folder following ascending `mean`
 
 {{< figure_resizing src="dark.png" link="dark.png" caption="A generated gallery of dark images." >}}
 
-Image <span style="color:red">❶</span> (totally black) is classic. I always find these somewhere in my albums due to accidental press when the phone is in my pocket.
+The first 3 images (totally black) are classic. I always find these somewhere in my albums due to accidental press when the phone is in my pocket.
 
-Image <span style="color:red">❷</span> and <span style="color:red">❸</span> looks legit to me, but I leave it to you to judge if you'd keep or discard those.
+I leave it to you to judge if you'd keep or discard the rest of the images.
 
 
-If we change the parameter to `descending=True` in the above snippet, it should show the opposite ie. sorting from the brightest image first.
+Conversely, get the brightest images on top with:
 
 ```python
 fd.vis.stats_gallery(metric='bright')
@@ -281,9 +281,8 @@ fd.vis.stats_gallery(metric='bright')
 
 {{< figure_resizing src="bright.png" link="bright.png" caption="A generated gallery of bright images." >}}
 
-Again we see Image <span style="color:red">❶</span> (totally white) which happens sometimes when your shots are overexposed.
+Again, see the first 3 images (totally white) which happens sometimes when your shots are overexposed.
 
-Image <span style="color:red">❷</span> and <span style="color:red">❸</span> looks like it's a random text document scraped off the internet. Probably irrelevant. I'd remove those.
 
 And next let's sort our album with the `blur` metric.
 You've guessed it, this sorts our album with the most blurry image on top.
