@@ -206,6 +206,104 @@ I tried to open this images on my machine, but they could not be viewed.
 Invalid images can't be used but takes up disk space. 
 There's only one way to deal with it - Delete.
 
+
+To delete corrupted images with fastdup, let's collect the images into a list:
+
+```python
+invalid_images = fd.invalid_instances()
+images_to_delete = invalid_images['img_filename'].to_list()
+```
+
+`images_to_delete` now contains a list of file directories to be deleted.
+
+```python
+['art and culture/145.jpg',
+ 'art and culture/148 (9).jpg',
+ 'art and culture/155 (3).jpg',
+ 'art and culture/156 (5).jpg',
+ 'art and culture/184 (7).jpg',
+ 'art and culture/188 (5).jpg',
+ 'art and culture/218 (6).jpg',
+ 'art and culture/219 (5).jpg',
+ 'art and culture/266 (2).jpg',
+ 'art and culture/266.jpg',
+ 'art and culture/315 (5).jpg',
+ 'art and culture/316 (5).jpg',
+ 'art and culture/320 (5).jpg',
+ 'art and culture/325 (5).jpg',
+ 'art and culture/325 (6).jpg',
+ 'art and culture/349 (5).jpg',
+ 'art and culture/352 (6).jpg',
+ 'art and culture/358 (4).jpg',
+ 'art and culture/366 (9).jpg',
+ 'art and culture/368 (3).jpg',
+ 'art and culture/370 (2).jpg',
+ 'art and culture/370 (7).jpg',
+ 'art and culture/371 (6).jpg',
+ 'art and culture/395 (6).jpg',
+ 'art and culture/412 (4).jpg',
+ 'art and culture/423 (6).jpg',
+ 'art and culture/431 (4).jpg',
+ 'art and culture/440 (5).jpg',
+ 'art and culture/448.jpg',
+ 'art and culture/451.jpg',
+ 'art and culture/460 (3).jpg',
+ 'art and culture/478 (2).jpg',
+ 'art and culture/482 (3).jpg',
+ 'art and culture/485 (5).jpg',
+ 'art and culture/497 (2).jpg',
+ 'art and culture/504 (5).jpg',
+ 'art and culture/508 (5).jpg',
+ 'art and culture/51 (6).jpg',
+ 'art and culture/545 (8).jpg',
+ 'art and culture/551 (6).jpg',
+ 'art and culture/570 (7).jpg',
+ 'art and culture/577 (4).jpg',
+ 'art and culture/580 (5).jpg',
+ 'art and culture/59 (2).jpg',
+ 'art and culture/608 (3).jpg',
+ 'art and culture/626 (4).jpg',
+ 'art and culture/635.jpg',
+ 'art and culture/637 (2).jpg',
+ 'art and culture/716 (3).jpg',
+ 'art and culture/754.jpg',
+ 'art and culture/781.jpg',
+ 'art and culture/81 (5).jpg',
+ 'art and culture/834.jpg',
+ 'art and culture/90 (5).jpg',
+ 'art and culture/98 (5).jpg',
+ 'food and d rinks/1.jpg',
+ 'food and d rinks/28 (2).jpg',
+ 'food and d rinks/325 (3).jpg',
+ 'food and d rinks/424.jpg']
+```
+
+What's left to do next is to write a function to delete images from `images_to_delete`.
+
+{{< notice warning >}}
+The following code will **DELETE ALL** corrupted images specified in `images_to_delete`.
+I recommend **making a backup** of your existing dataset before proceeding.
+{{< /notice >}}
+
+```python
+from pathlib import Path
+
+def delete_files_in_directories(file_paths):
+    for file_path in file_paths:
+        path = images_dir / Path(file_path)
+        if path.is_file():
+            print(f"Deleting {path}")
+            path.unlink()
+
+delete_files_in_directories(images_to_delete)
+```
+
+Just like that, we've deleted all corrupted images from our dataset.
+
+{{< notice tip >}}
+You can optionally choose move the images to another folder instead of deleting like what we did above.
+{{< /notice >}}
+
 ### 👯‍♂️ Duplicate Images
 To view the duplicate photos run:
 
