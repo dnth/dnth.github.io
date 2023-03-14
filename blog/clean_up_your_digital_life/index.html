@@ -46,78 +46,45 @@ Depending on your CPU power, this may take a few seconds to a few minutes to com
 To get the list of invalid images, run:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>fd<span style=color:#f92672>.</span>invalid_instances()
 </span></span></code></pre></div><p>which outputs</p><figure><a href=invalid.png><img src=/blog/clean_up_your_digital_life/invalid.png srcset="/blog/clean_up_your_digital_life/invalid_hu8e1eea3a9d68112803696e4da293dc2e_201638_360x0_resize_box_3.png 360w, /blog/clean_up_your_digital_life/invalid_hu8e1eea3a9d68112803696e4da293dc2e_201638_720x0_resize_box_3.png 720w, /blog/clean_up_your_digital_life/invalid_hu8e1eea3a9d68112803696e4da293dc2e_201638_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px"></a></figure><p>I tried to open this images on my machine, but they could not be viewed.</p><figure><a href=sample_invalid.png><img src=/blog/clean_up_your_digital_life/sample_invalid.png srcset="/blog/clean_up_your_digital_life/sample_invalid_hu6e62ce00b39bcceafb3638f280039eb7_58519_360x0_resize_box_3.png 360w, /blog/clean_up_your_digital_life/sample_invalid_hu6e62ce00b39bcceafb3638f280039eb7_58519_720x0_resize_box_3.png 720w, /blog/clean_up_your_digital_life/sample_invalid_hu6e62ce00b39bcceafb3638f280039eb7_58519_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px"></a></figure><p>Invalid images can&rsquo;t be used but takes up disk space.
 There&rsquo;s only one way to deal with it - Delete.</p><p>To delete corrupted images with fastdup, let&rsquo;s collect the images into a list:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>invalid_images <span style=color:#f92672>=</span> fd<span style=color:#f92672>.</span>invalid_instances()
-</span></span><span style=display:flex><span>images_to_delete <span style=color:#f92672>=</span> invalid_images[<span style=color:#e6db74>&#39;img_filename&#39;</span>]<span style=color:#f92672>.</span>to_list()
+</span></span><span style=display:flex><span>list_of_invalid_images <span style=color:#f92672>=</span> invalid_images[<span style=color:#e6db74>&#39;img_filename&#39;</span>]<span style=color:#f92672>.</span>to_list()
 </span></span></code></pre></div><p><code>images_to_delete</code> now contains a list of file directories to be deleted.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>[<span style=color:#e6db74>&#39;art and culture/145.jpg&#39;</span>,
 </span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/148 (9).jpg&#39;</span>,
 </span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/155 (3).jpg&#39;</span>,
 </span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/156 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/184 (7).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/188 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/218 (6).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/219 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/266 (2).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/266.jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/315 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/316 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/320 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/325 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/325 (6).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/349 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/352 (6).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/358 (4).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/366 (9).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/368 (3).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/370 (2).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/370 (7).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/371 (6).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/395 (6).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/412 (4).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/423 (6).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/431 (4).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/440 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/448.jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/451.jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/460 (3).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/478 (2).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/482 (3).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/485 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/497 (2).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/504 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/508 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/51 (6).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/545 (8).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/551 (6).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/570 (7).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/577 (4).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/580 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/59 (2).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/608 (3).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/626 (4).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/635.jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/637 (2).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/716 (3).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/754.jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/781.jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/81 (5).jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/834.jpg&#39;</span>,
-</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/90 (5).jpg&#39;</span>,
+</span></span><span style=display:flex><span> <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>...</span>
 </span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;art and culture/98 (5).jpg&#39;</span>,
 </span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;food and d rinks/1.jpg&#39;</span>,
 </span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;food and d rinks/28 (2).jpg&#39;</span>,
 </span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;food and d rinks/325 (3).jpg&#39;</span>,
 </span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;food and d rinks/424.jpg&#39;</span>]
-</span></span></code></pre></div><p>What&rsquo;s left to do next is to write a function to delete images from <code>images_to_delete</code>.</p><div class="notice warning"><p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#warning-notice"/></svg></span>warning</p><p>The following code will <strong>DELETE ALL</strong> corrupted images specified in <code>images_to_delete</code>.
+</span></span></code></pre></div><p>What&rsquo;s left to do next is to write a function to delete images in <code>list_of_invalid_images</code>.</p><div class="notice warning"><p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#warning-notice"/></svg></span>warning</p><p>The following code will <strong>DELETE ALL</strong> corrupted images specified in <code>list_of_invalid_images</code>.
 I recommend <strong>making a backup</strong> of your existing dataset before proceeding.</p></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> pathlib <span style=color:#f92672>import</span> Path
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>delete_files_in_directories</span>(file_paths):
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>delete_images</span>(file_paths):
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> file_path <span style=color:#f92672>in</span> file_paths:
 </span></span><span style=display:flex><span>        path <span style=color:#f92672>=</span> images_dir <span style=color:#f92672>/</span> Path(file_path)
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> path<span style=color:#f92672>.</span>is_file():
 </span></span><span style=display:flex><span>            print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Deleting </span><span style=color:#e6db74>{</span>path<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
 </span></span><span style=display:flex><span>            path<span style=color:#f92672>.</span>unlink()
+</span></span></code></pre></div><p>And call the function:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>delete_images(list_of_invalid_images)
+</span></span></code></pre></div><p>Just like that, we&rsquo;ve deleted all corrupted images from our dataset!</p><div class="notice tip"><p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#tip-notice"/></svg></span>tip</p><p>You can optionally choose move the images to another folder instead of deleting like what we did above.</p></div><p>We can do that with the following function:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> shutil
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pathlib <span style=color:#f92672>import</span> Path
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>delete_files_in_directories(images_to_delete)
-</span></span></code></pre></div><p>Just like that, we&rsquo;ve deleted all corrupted images from our dataset.</p><div class="notice tip"><p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#tip-notice"/></svg></span>tip</p><p>You can optionally choose move the images to another folder instead of deleting like what we did above.</p></div><h3 id=-duplicate-images>👯‍♂️ Duplicate Images</h3><p>To view the duplicate photos run:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>fd<span style=color:#f92672>.</span>vis<span style=color:#f92672>.</span>duplicates_gallery()
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>move_images_to_folder</span>(file_paths, folder_name<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;invalid_images&#34;</span>):
+</span></span><span style=display:flex><span>    corrupted_images_dir <span style=color:#f92672>=</span> Path(folder_name)
+</span></span><span style=display:flex><span>    corrupted_images_dir<span style=color:#f92672>.</span>mkdir(exist_ok<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)  <span style=color:#75715e># create the directory if it doesn&#39;t exist</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> file_path <span style=color:#f92672>in</span> file_paths:
+</span></span><span style=display:flex><span>        path <span style=color:#f92672>=</span> images_dir <span style=color:#f92672>/</span> Path(file_path)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> path<span style=color:#f92672>.</span>is_file():
+</span></span><span style=display:flex><span>            new_path <span style=color:#f92672>=</span> corrupted_images_dir <span style=color:#f92672>/</span> Path(file_path)
+</span></span><span style=display:flex><span>            new_path<span style=color:#f92672>.</span>parent<span style=color:#f92672>.</span>mkdir(parents<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, exist_ok<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)  <span style=color:#75715e># create the parent directory if it doesn&#39;t exist</span>
+</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Moving </span><span style=color:#e6db74>{</span>path<span style=color:#e6db74>}</span><span style=color:#e6db74> to </span><span style=color:#e6db74>{</span>new_path<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>            shutil<span style=color:#f92672>.</span>move(str(path), str(new_path))
+</span></span></code></pre></div><p>And call the function:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>move_images_to_folder(list_of_invalid_images)
+</span></span></code></pre></div><p>This should move the invalid images in to the <code>folder_name</code> directory.</p><h3 id=-duplicate-images>👯‍♂️ Duplicate Images</h3><p>To view the duplicate photos run:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>fd<span style=color:#f92672>.</span>vis<span style=color:#f92672>.</span>duplicates_gallery()
 </span></span></code></pre></div><p>If you&rsquo;re running this in a Jupyter notebook, you&rsquo;ll see something like the following.<figure><a href=duplicates.png><img src=/blog/clean_up_your_digital_life/duplicates.png srcset="/blog/clean_up_your_digital_life/duplicates_huf2becdebd2731c4a08100a79d91da545_3875225_360x0_resize_box_3.png 360w, /blog/clean_up_your_digital_life/duplicates_huf2becdebd2731c4a08100a79d91da545_3875225_720x0_resize_box_3.png 720w, /blog/clean_up_your_digital_life/duplicates_huf2becdebd2731c4a08100a79d91da545_3875225_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" alt="A generated gallery of duplicates."></a><figcaption><p style=text-align:center><small>A generated gallery of duplicates.</small></p></figcaption></figure></p><div class="notice note"><p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#note-notice"/></svg></span>note</p><p>You can optionally specify <code>num_images</code> &ndash; The max number of images to display. Defaults to <code>20</code>.</p><p><strong>📝 NOTE</strong>: More info on other parameters <a href=https://visual-layer.readme.io/docs/v1-api#fastdup.fastdup_galleries.FastdupVisualizer.duplicates_gallery target=_blank rel="nofollow noopener noreferrer">here</a>.</p></div><p>In the visualization above we see that there are exact copies residing in different folders within the <code>images_dir</code>.</p><p>So what do we do about it?
 You can either refer to the file name and delete the duplicate images by hand.</p><p>Or</p><p>Use a convenient function in fastdup to bulk delete images that are <strong>EXACT</strong> copies.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>top_components <span style=color:#f92672>=</span> fastdup<span style=color:#f92672>.</span>find_top_components(work_dir<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;fastdup_report/&#34;</span>)
 </span></span><span style=display:flex><span>fastdup<span style=color:#f92672>.</span>delete_components(top_components, dry_run<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
