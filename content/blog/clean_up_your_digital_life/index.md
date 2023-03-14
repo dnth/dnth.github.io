@@ -314,19 +314,97 @@ Or
 
 Use a convenient function in fastdup to bulk delete images that are **EXACT** copies.
 
+
+
+
+To do that, let's first get the connected components dataframe:
+
 ```python
-top_components = fastdup.find_top_components(work_dir="fastdup_report/")
-fastdup.delete_components(top_components, dry_run=False)
+cc_df, _ = fd.connected_components()
 ```
 
-{{< notice warning >}}
-The above code will **delete all duplicate images** from your folder. 
-To not risk losing any data, I recommend making a backup copy of your files before deleting.
+Next we will group the connected components dataframe to show only the duplicates:
 
-Setting `dry_run=True` in the function tells fastdup to list all files that will be deleted. Once you're sure, then set `dry_run=False` to perform the actual deletion.
+```python
+def get_clusters_of_duplicates(df, sort_by='count', min_count=2, ascending=False):
+    agg_dict = {'img_filename': list, 'mean_distance': max, 'count': len}
+    df = df[df['count'] >= min_count]
+    df = df[df["mean_distance"]==1.0]
+    grouped_df = df.groupby('component_id').agg(agg_dict).sort_values(by=[sort_by], ascending=ascending)
+    return grouped_df
 
-📝 **NOTE**: Check out the [fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.delete_components) to learn more about the parameters you can tweak.
-{{< /notice >}}
+duplicates_df=get_clusters_of_duplicates(cc_df)
+```
+
+In `duplicates_df` you'll now find
+
+
+```python
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|   component_id | img_filename                                                                 |   mean_distance |   count |
++================+==============================================================================+=================+=========+
+|             15 | ['978580450_e862715aba.jpg.jpg']                                             |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|            929 | ['architecure/14217992353_2b5120f5b8_m.jpg']                                 |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|          17774 | ['food and d rinks/z3jQCkYBoXtDrw8mxnkH.jpg']                                |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|          17731 | ['food and d rinks/PYFXUZZDGzcsoUAEWLhH.png']                                |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|          17003 | ['food and d rinks/kbcgoFeL1BXZzWKSEwfU.png']                                |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|          16672 | ['food and d rinks/pIX6YKvYX2sJcgAk5aCo.jpg']                                |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|          16647 | ['food and d rinks/kkABreqygbXm2Ks4XEoC.png']                                |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|           5938 | ['architecure/90px-Oreitia_-_Iglesia_de_San_Juli�n_y_Santa_Basilisa_03.jpg'] |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|          16548 | ['food and d rinks/VNjdWpUOpDniqRBLwGyA.jpg']                                |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+|          16516 | ['food and d rinks/PGYqlhHyGjQPa2pQN5db.png']                                |               1 |       3 |
++----------------+------------------------------------------------------------------------------+-----------------+---------+
+```
+
+<!-- {{< figure_resizing src="duplicates_df.png" link="duplicates_df.png" >}} -->
+
+
+Now let's turn the contents of `duplicates_df` into a list of images using the function:
+
+```python
+def get_list_of_duplicate_images(df):
+    df['img_filename'] = df['img_filename'].apply(lambda row: row[1:])
+    # Get a list of images to delete from the df
+    list_of_duplicate_images=duplicates_df['img_filename'].to_list()
+    # Flatten list
+    list_of_duplicate_images = [item for sublist in list_of_duplicate_images for item in sublist]
+    return list_of_duplicate_images
+```
+
+Calling the function
+
+```python
+list_of_duplicate_images = get_list_of_duplicate_images(duplicates_df)
+```
+
+We end up with `list_of_duplicate_images`
+
+```python
+['978580450_e862715aba.jpg.jpg',
+ 'architecure/14217992353_2b5120f5b8_m.jpg',
+ 'food and d rinks/z3jQCkYBoXtDrw8mxnkH.jpg',
+ 'food and d rinks/PYFXUZZDGzcsoUAEWLhH.png',
+ 'food and d rinks/kbcgoFeL1BXZzWKSEwfU.png',
+ 'food and d rinks/pIX6YKvYX2sJcgAk5aCo.jpg',
+ ..
+ ..
+ ..
+ 'architecure/11543398565_7a25482b20.jpg',
+ 'food and d rinks/uO6H0sqpkRdg20J3QvzX.jpg',
+ 'food and d rinks/zxN445iYMYExleeeKhA6.jpg']
+```
+
+With this you can use the functions `move_images_to_folder` or `delete_images` we defined earlier.
+
 
 Just like that, we've eliminated duplicates from the album! In this post, I found a total of **1929 fully identical images**!
 
