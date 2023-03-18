@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dicksonneoh.com/sitemap.xml
