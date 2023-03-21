@@ -31,7 +31,7 @@ But over time, these photos will just clutter your devices taking up valuable di
 
 Also, think about these -
 + It's difficult to find specific photos when your collection is in a mess.
-+ Organizing your collection saves you time spending searching for photos.
++ Organizing your collection saves you time spent searching for photos.
 + An organized photo collection can be a source of pride especially when you share them.
 + Digital clutter not only affects your device but also [impacts you psychologically](https://www.bbc.com/future/article/20190104-are-you-a-digital-hoarder).
 
@@ -155,7 +155,7 @@ fd.run()
 This starts the process of detecting all issues on the images in `images_dir`.
 Depending on your CPU power, this may take a few seconds to a few minutes to complete.
 
-On my machine, with an Intel Core™ i9-11900 it takes **under 1 minute** to check through (approx. 35,000) images in the folder 🤯.
+On my machine, with an Intel Core™ i9-11900 it takes **under 1-minute** to check through (approx. 35,000) images in the folder 🤯.
 
 Once the run completes, you'll find the `work_dir` populated with all files from the run.
 
@@ -176,7 +176,7 @@ fd.summary()
 Here are some useful information from the summary.
  
  + Dataset contains 35136 images.
- + Valid images are 99.83% (35,077) of the data, invalid are 0.17% (59) of the data'
+ + Valid images are 99.83% (35,077) of the data, invalids are 0.17% (59) of the data'
  + 2.15% (756) belong to 12 similarity clusters (components).
  + Largest cluster has 16 (0.05%) images.
  + 6.16% (2,163) of images are possible outliers, and fall in the bottom 5.00% of similarity values.
@@ -199,11 +199,11 @@ which outputs
 
 {{< figure_resizing src="invalid.png" link="invalid.png" >}}
 
-I tried to open this images on my machine, but they could not be viewed.
+I tried to open these images on my machine, but they could not be viewed.
 
 {{< figure_resizing src="sample_invalid.png" link="sample_invalid.png" >}}
 
-Invalid images can't be used but takes up disk space. 
+Invalid images can't be used but take up disk space. 
 There's only one way to deal with it - Delete.
 
 
@@ -257,7 +257,7 @@ delete_images(list_of_invalid_images)
 Just like that, we've deleted all corrupted images from our dataset!
 
 {{< notice tip >}}
-You can optionally choose move the images to another folder instead of deleting like what we did above.
+You can optionally choose to move the images to another folder instead of deleting them like what we did above.
 {{< /notice >}}
 
 We can do that with the following function:
@@ -284,7 +284,7 @@ And call the function:
 move_images_to_folder(list_of_invalid_images)
 ```
 
-This should move the invalid images in to the `folder_name` directory.
+This should move the invalid images into the `folder_name` directory.
 
 ### 👯‍♂️ Duplicate Images
 To view the duplicate photos run:
@@ -317,13 +317,13 @@ Use a convenient function in fastdup to bulk delete images that are **EXACT** co
 
 
 
-To do that, let's first get the connected components dataframe:
+To do that, let's first get the connected components `DataFrame`:
 
 ```python
 cc_df, _ = fd.connected_components()
 ```
 
-Next we will group the connected components dataframe to show only the duplicates:
+Next, we will group the connected components `DataFrame` to show only the duplicates:
 
 ```python
 def get_clusters_of_duplicates(df, sort_by='count', min_count=2, ascending=False):
@@ -442,7 +442,7 @@ fd.vis.stats_gallery(metric='bright')
 Again, see the first 3 images (totally white) which happens sometimes when your shots are overexposed.
 
 
-And next let's sort our album with the `blur` metric.
+And next, let's sort our album with the `blur` metric.
 You've guessed it, this sorts our album with the most blurry image on top.
 
 
@@ -486,7 +486,7 @@ And you'll find something like the following.
 {{< figure_resizing src="components.png" caption="" link="components.png" >}}
 
 Above, I've shown you three examples of similar-looking shots grouped together with the file path of each image.
-It's up to you to decide what to do with the similar looking shots. Not going to use them? Delete. Otherwise you can also keep them organized in a folder of some sort.
+It's up to you to decide what to do with the similar-looking shots. Not going to use them? Delete. Otherwise, you can also keep them organized in a folder of some sort.
 
 {{< notice tip >}}
 Check out the full output of the above code in the [notebook](https://github.com/dnth/clean-up-digital-life-fastdup-blogpost/blob/main/fastdup_analyze.ipynb).
