@@ -336,10 +336,13 @@ def get_clusters_of_duplicates(df, sort_by='count', min_count=2, ascending=False
 duplicates_df=get_clusters_of_duplicates(cc_df)
 ```
 
-In `duplicates_df` you'll now find
+In `duplicates_df` you'll now find:
 
 
-```python
+
+
+
+<!-- ```python
 +----------------+------------------------------------------------------------------------------+-----------------+---------+
 |   component_id | img_filename                                                                 |   mean_distance |   count |
 +================+==============================================================================+=================+=========+
@@ -363,9 +366,9 @@ In `duplicates_df` you'll now find
 +----------------+------------------------------------------------------------------------------+-----------------+---------+
 |          16516 | ['food and d rinks/PGYqlhHyGjQPa2pQN5db.png']                                |               1 |       3 |
 +----------------+------------------------------------------------------------------------------+-----------------+---------+
-```
+``` -->
 
-<!-- {{< figure_resizing src="duplicates_df.png" link="duplicates_df.png" >}} -->
+{{< figure_resizing src="duplicates_df.png" link="duplicates_df.png" >}}
 
 
 Now let's turn the contents of `duplicates_df` into a list of images using the function:
