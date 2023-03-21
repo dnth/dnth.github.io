@@ -1,6 +1,6 @@
 ---
 title: "Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android & iOS"
-date: 2022-02-27T11:00:15+08:00
+date: 2023-03-16T11:00:15+08:00
 featureImage: images/portfolio/bringing_high_quality_image_models_to_mobile/thumbnail.gif
 postImage: images/portfolio/bringing_high_quality_image_models_to_mobile/post_image.gif
 tags: ["TIMM", "Hugging Face", "paddy-disease", "Flutter", "Android", "iOS", "EdgeNeXt", "Gradio"]
