@@ -1,5 +1,5 @@
 ---
-title: "Clean Up Your Digital Life: Simplify Your Photo Organization and Say Goodbye to Photo Clutter"
+title: "Clean Up Your Digital Life: How I Found 1929 Fully Identical Images, Dark, Bright and Blurry Shots in Minutes, For Free."
 date: 2023-02-23T11:00:15+08:00
 featureImage: images/blog/clean_up_your_digital_life/thumbnail.gif
 postImage: images/blog/clean_up_your_digital_life/post_image.gif
