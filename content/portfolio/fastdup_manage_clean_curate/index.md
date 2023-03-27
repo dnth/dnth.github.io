@@ -480,6 +480,9 @@ In this post I've shown you how to:
 * Uncover **data leak** in your dataset.
 {{< /notice >}}
 
+If you'd like to remove problematic files programatically refer to my other blog post [here](../../blog/clean_up_your_digital_life/).
+
+
 By using fastdup and cleaning your dataset, you saved yourself:
 * Unnecessary labeling cost.
 * Long computation/training time.
