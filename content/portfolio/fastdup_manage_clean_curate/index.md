@@ -168,7 +168,17 @@ Feel free to repeat the steps for `valid_set` and `test_set` by pointing `input_
 
 {{< /notice >}} -->
 
-Once complete, you'll find a bunch of output files in the `work_dir` folder.
+Once complete, a run summary will be printed out.
+
+```bash
+Found a total of 118 fully identical images (d>0.990), which are 0.16 %
+Found a total of 108 nearly identical images(d>0.980), which are 0.15 %
+Found a total of 11908 above threshold images (d>0.900), which are 16.31 %
+Found a total of 2433 outlier images         (d<0.050), which are 3.33 %
+
+```
+
+You'll also find a bunch of output files in the `work_dir` folder.
 We can now visualize them accordingly.
 
 The upcoming sections show how you can visualize [duplicates](#-duplicates), [anomalies](#-anomalies), [confusing labels](#-wrong-or-confusing-labels) 
