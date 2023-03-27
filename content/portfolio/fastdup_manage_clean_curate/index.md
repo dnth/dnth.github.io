@@ -141,22 +141,25 @@ Description of folders:
 To start checking through the images, create a Jupyter notebook and run:
 
 ```python
-import fastdup
-fastdup.run(input_dir='scene_classification/data/train_set/', 
-            work_dir="scene_classification/report/train/")
+work_dir = "scene_classification/report/"
+images_dir = "scene_classification/data/"
+
+fd = fastdup.create(work_dir, images_dir)
+fd.run()
 ```
 
 {{< notice note >}}
 Parameters for the `run` method:
-* `input_dir` -- Path to the folder containing images. In this post, we are checking the training dataset.
-* `work_dir` -- **Optional**. Path to save the outputs from the run. If not specified, the output will be saved to the current directory.
+* `work_dir` -- Path to save the output artifacts from the run.
+* `input_dir` -- Path to the folder containing images.
 
-**📝 NOTE**: More info on other parameters [here](https://visual-layer.github.io/fastdup/#fastdup.run).
+
+**📝 NOTE**: More info on other parameters [here](https://visual-layer.readme.io/docs/v1-api#fastdup.engine.Fastdup.run).
 {{< /notice >}}
 
 fastdup will run through all images in the folder to check for issues.
 How long it takes depends on how powerful is your CPU. 
-On my machine, with an Intel Core™ i9-11900 it takes **under 1 minute** to check through (approx. 25,000) images in the folder 🤯.
+On my machine, with an Intel Core™ i9-11900 it takes about **1 minute** to check through (approx. 25,000) images in the folder 🤯.
 
 <!-- {{< notice tip >}}
 In this post, I'm only running on the `train_set` folder to illustrate what's possible. 
@@ -170,7 +173,6 @@ We can now visualize them accordingly.
 
 The upcoming sections show how you can visualize [duplicates](#-duplicates), [anomalies](#-anomalies), [confusing labels](#-wrong-or-confusing-labels) 
 and [data leakage](#-data-leakage). 
-Read on.
 
 #### 🧑‍🤝‍🧑 Duplicates
 
