@@ -55,10 +55,10 @@ It lets you identify:
 
 
 In short, fastdup is 👇
-* **Unsupervised**: fits any visual dataset.
-* **Scalable**: handles 400M images on a single machine.
-* **Efficient**: works on CPU (even on Google Colab with only 2 CPU cores!).
-* **Low Cost**: can process 12M images on a $1 cloud machine budget.
+* **Fast**: Efficient C++ engine processes up to 7000 images in less than 3 minutes with a 2-core CPU (Google Colab).
+* **Scalable**: Handles up to 400M images on a single CPU machine.
+* **Unsupervised**: Runs on unlabeled (or labeled) image/video data.
+* **Cost**: Basic functions are free to use. Process up to 12M images on a $1 cloud machine budget. 
 
 The best part? fastdup is **free**. 
 
@@ -353,29 +353,30 @@ One of my favorite capabilities of fastdup is finding wrong or confusing labels.
 Similar to previous sections, we can simply run:
 
 ```python
-df = fastdup.create_similarity_gallery(similarity_file="scene_classification/report/train/similarity.csv", 
-                                  save_path="scene_classification/report/train/", 
-                                  get_label_func=lambda x: x.split('/')[-2], 
-                                  num_images=5, max_width=180, slice='label_score', 
-                                  descending=False)
-HTML('./scene_classification/report/train/topk_similarity.html')
-
+fd.vis.similarity_gallery()
 ```
 
-{{< notice note >}}
+<!-- {{< notice note >}}
 In case the dataset is labeled, you can specify the label using the function `get_label_func`. 
 
 📝 **NOTE**: Check out the [fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.create_similarity_gallery) for parameters description.
-{{< /notice >}}
+{{< /notice >}} -->
 
 You'd see something like 👇
 
 {{< figure_resizing src="similarity_report.png" caption="" link="./similarity_report.png">}}
 
+That looks like a lot of information. Let's break it down a little.
 
-Under the hood, fastdup finds images that are similar to one another at the embedding level but are assigned different labels.
+What's happening here is that, under the hood, fastdup finds images that are similar to one another at the embedding level but are assigned different labels.
 
-A `score` metric is computed to reflect how similar the query image to the most similar images in terms of class label.
+For instance, the `glacier` image below is a duplicate of another image labeled `mountain` and another image of `glacier`. 
+
+{{< figure_resizing src="similarity_1.png" caption="" link="./similarity_1.png">}}
+
+It is important to address these confusing labels because if the training data contains confusing or incorrect labels, it can negatively impact the performance of the model.
+
+<!-- A `score` metric is computed to reflect how similar the query image to the most similar images in terms of class label.
 
 A **high** `score` means the query image looks similar to other images in the same class. Conversely, a **low** `score` indicates the query image is similar
 to images from other classes.
@@ -388,7 +389,7 @@ What can we see in the table above?
 
 {{< /notice >}}
 
-It is important to address these confusing labels because if the training data contains confusing or incorrect labels, it can negatively impact the performance of the model.
+
 
 {{< notice tip >}}
 You can repeat the steps to find duplicates, anomalies, and problematic labels for the `valid_set` and `test_set`. 
@@ -419,7 +420,7 @@ A score 0 means this image is only similar to images from other class labels.
 
 📝 **NOTE**: Checkout the [fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.delete_or_retag_stats_outliers) to learn more about the parameters.
 
-{{< /notice >}}
+{{< /notice >}} -->
 
 <!-- #### 🚰 Data Leakage
 In the [Duplicates section](#-duplicates) above, we tried finding duplicates within the `train_set`. We found a few duplicate images within the same folder.
