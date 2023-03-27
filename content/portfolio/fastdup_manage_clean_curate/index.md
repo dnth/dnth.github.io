@@ -12,6 +12,7 @@ images :
 - images/portfolio/fastdup_manage_clean_curate/post_image.gif
 ---
 
+⏳ **Last Updated**: March 27, 2023.
 ### ✅ Motivation
 
 As a data scientist, you might be tempted to jump into modeling as soon as you can.
@@ -82,10 +83,9 @@ If that looks interesting, let's dive in.
 To start, run:
 
 ```bash
-pip install fastdup
+pip install fastdup==0.909
 ```
-Feel free to use the latest version available.
-I'm running `fastdup==0.189` for this post.
+I'm using version 0.909 for this post but, feel free to use the latest version available if they are compatible.
 
 ### 🖼 Dataset
 I will be using an openly available image classification [dataset](https://www.kaggle.com/datasets/puneet6060/intel-image-classification) from Intel.
