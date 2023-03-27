@@ -7,11 +7,12 @@ tags: ["fastdup", "natural-scene-classification", "intel"]
 categories: ["data-cleaning", "image-classification"]
 toc: true
 socialshare: true
-description: "Learn how to use fastdup to clean and improve your visual data. Say goodbye to cluttered folders."
+description: "Learn how to use fastdup to find image duplicates, anomalies, wrong labels and data leakage. Say goodbye to cluttered folders."
 images : 
 - images/portfolio/fastdup_manage_clean_curate/post_image.gif
 ---
 
+⏳ **Last Updated**: March 27, 2023.
 ### ✅ Motivation
 
 As a data scientist, you might be tempted to jump into modeling as soon as you can.
@@ -54,10 +55,10 @@ It lets you identify:
 
 
 In short, fastdup is 👇
-* **Unsupervised**: fits any visual dataset.
-* **Scalable**: handles 400M images on a single machine.
-* **Efficient**: works on CPU (even on Google Colab with only 2 CPU cores!).
-* **Low Cost**: can process 12M images on a $1 cloud machine budget.
+* **Fast**: Efficient C++ engine processes up to 7000 images in less than 3 minutes with a 2-core CPU (Google Colab).
+* **Scalable**: Handles up to 400M images on a single CPU machine.
+* **Unsupervised**: Runs on unlabeled (or labeled) image/video data.
+* **Cost**: Basic functions are free to use. Process up to 12M images on a $1 cloud machine budget. 
 
 The best part? fastdup is **free**. 
 
@@ -82,10 +83,9 @@ If that looks interesting, let's dive in.
 To start, run:
 
 ```bash
-pip install fastdup
+pip install fastdup==0.909
 ```
-Feel free to use the latest version available.
-I'm running `fastdup==0.189` for this post.
+I'm using version 0.909 for this post but, feel free to use the latest version available if they are compatible.
 
 ### 🖼 Dataset
 I will be using an openly available image classification [dataset](https://www.kaggle.com/datasets/puneet6060/intel-image-classification) from Intel.
@@ -141,22 +141,25 @@ Description of folders:
 To start checking through the images, create a Jupyter notebook and run:
 
 ```python
-import fastdup
-fastdup.run(input_dir='scene_classification/data/train_set/', 
-            work_dir="scene_classification/report/train/")
+work_dir = "scene_classification/report/"
+images_dir = "scene_classification/data/"
+
+fd = fastdup.create(work_dir, images_dir)
+fd.run()
 ```
 
 {{< notice note >}}
 Parameters for the `run` method:
-* `input_dir` -- Path to the folder containing images. In this post, we are checking the training dataset.
-* `work_dir` -- **Optional**. Path to save the outputs from the run. If not specified, the output will be saved to the current directory.
+* `work_dir` -- Path to save the output artifacts from the run.
+* `input_dir` -- Path to the folder containing images.
 
-**📝 NOTE**: More info on other parameters [here](https://visual-layer.github.io/fastdup/#fastdup.run).
+
+**📝 NOTE**: More info on other parameters [here](https://visual-layer.readme.io/docs/v1-api#fastdup.engine.Fastdup.run).
 {{< /notice >}}
 
 fastdup will run through all images in the folder to check for issues.
 How long it takes depends on how powerful is your CPU. 
-On my machine, with an Intel Core™ i9-11900 it takes **under 1 minute** to check through (approx. 25,000) images in the folder 🤯.
+On my machine, with an Intel Core™ i9-11900 it takes about **1 minute** to check through (approx. 25,000) images in the folder 🤯.
 
 <!-- {{< notice tip >}}
 In this post, I'm only running on the `train_set` folder to illustrate what's possible. 
@@ -165,41 +168,44 @@ Feel free to repeat the steps for `valid_set` and `test_set` by pointing `input_
 
 {{< /notice >}} -->
 
-Once complete, you'll find a bunch of output files in the `work_dir` folder.
+Once complete, a run summary will be printed out.
+
+```bash
+Found a total of 118 fully identical images (d>0.990), which are 0.16 %
+Found a total of 108 nearly identical images(d>0.980), which are 0.15 %
+Found a total of 11908 above threshold images (d>0.900), which are 16.31 %
+Found a total of 2433 outlier images         (d<0.050), which are 3.33 %
+
+```
+
+You'll also find a bunch of output files in the `work_dir` folder.
 We can now visualize them accordingly.
 
 The upcoming sections show how you can visualize [duplicates](#-duplicates), [anomalies](#-anomalies), [confusing labels](#-wrong-or-confusing-labels) 
 and [data leakage](#-data-leakage). 
-Read on.
 
 #### 🧑‍🤝‍🧑 Duplicates
 
-First, let's see if there are duplicates in the `train_set`. Let's load the file and visualize them with:
+First, let's see if there are duplicates in the dataset with:
 
 ```python
-from IPython.display import HTML
-fastdup.create_duplicates_gallery(similarity_file='scene_classification/report/train/similarity.csv'
-                                  save_path='scene_classification/report/train/', 
-                                  num_images=5)
-
-HTML('scene_classification/report/train/similarity.html')
+fd.vis.duplicates_gallery()
 ```
 {{< notice note >}}
-Parameters for `create_duplicates_gallery` method:
-* `similarity_file` -- A `.csv` file with the computer similarity generated by the `run` method.
-* `save_path` -- Path to save the visualization. Defaults `'./'`.
-* `num_images` -- The max number of images to display. Defaults to `50`. For brevity, I've set it to `5`.
+Other parameters for `duplicates_gallery` method:
+* `save_path` -- Path to save the visualization. Defaults `work_dir`.
+* `num_images` -- The max number of images to display. Defaults to `20`.
 
-**📝 NOTE**: More info on other parameters [here](https://visual-layer.github.io/fastdup/#fastdup.create_duplicates_gallery).
+**📝 NOTE**: More info on other parameters [here](https://visual-layer.readme.io/docs/v1-api#fastdup.fastdup_galleries.FastdupVisualizer.duplicates_gallery).
 
 {{< /notice >}}
 
 You'd see something like the following 👇
 
-{{< include_html "./content/portfolio/fastdup_manage_clean_curate/similarity.html" >}}
+{{< figure_resizing src="duplicates_report.png" caption="" link="./duplicates_report.png">}}
 
 
-{{< notice info >}}
+<!-- {{< notice info >}}
 
 We can already spot a few issues in the `train_set`:
 
@@ -211,18 +217,58 @@ You can also see that they are exactly the same side-by-side. The same with `row
 The same can be seen on `row 3` and `row 4`. 
 These are **duplicate images but labeled as different classes** and will end up confusing your model!
 
+{{< /notice >}} -->
+
+Here, we can already spot a few issues in our dataset. As shown below, `10234.jpg` and `7654.jpg` are exact duplicates.
+We know that through the `Distance` score of `1.0`.
+
+{{< figure_resizing src="dup_1.png" caption="" link="./dup_1.png">}}
+
+But that's not the only problem.
+They are labeled differently! One if labeled `glacier` and the other `mountain`.
+If you look further there are a bunch of other duplicates too.
+
+In this example both the duplicates belong to the `train_set` (see the path of the images above).
+In the event they do not belong to the same set, then we have 👇
+
+#### 🚰 Data Leakage
+In machine learning [data leakage](https://insidebigdata.com/2014/11/26/ask-data-scientist-data-leakage/) is when data from outside the training dataset is used to train the model. Read more about data leakage in machine learning [here](https://machinelearningmastery.com/data-leakage-machine-learning/).
+
+Can you spot any data leakage in the gallery above?
+
+{{< figure_resizing src="data_leakage.png" caption="" link="./data_leakage.png">}}
+
+The gallery above shows that we indeed discovered a data leakage:
++ **Train-validation leak** - Image from the training set is found in the validation set.
++ **Train-test leak** - Image from the training set is found in the test set.
+
+If you train a model on this data, you'd get a model that performs extremely well on the test set.
+Along the process, you also convinced yourself that the model is robust. When in reality, it's not.
+
+This is why models fail in production. 
+
+
+It's because the model might just memorize the training set without generalizing to unseen data. 
+That's why it's important to make sure the training and validation/test sets do not contain duplicates!
+
+{{< notice tip >}}
+* A validation set consists of **representative** and **non-overlapping** samples from the train set and is used to evaluate models during training.
+* Overlapping images in the train and validation set may lead to poor performance on new data.
+* The way we craft our validation set is extremely important to ensure the model does not overfit. 
 {{< /notice >}}
 
-For brevity, I've only shown 5 rows, if you run the code increasing `num_images`, you'd find more!
+Spending time crafting your validation set takes a little effort, but will pay off well in the future.
+Rachel Thomas from [Fastai](https://www.fast.ai/) wrote a good piece on [how to craft
+a good validation set](https://www.fast.ai/posts/2017-11-13-validation-sets.html).
 
-Duplicate images do not provide value to your model, they take up hard drive space and increase your training time.
+<!-- Duplicate images do not provide value to your model, they take up hard drive space and increase your training time.
 Eliminating these images improves your model performance, and reduces cloud billing costs for training and storage.
 
 Plus, you save valuable time (and sleepless nights 🤷‍♂️) to train and troubleshoot your models down the pipeline. 
 
-You can choose to remove the images by hand (e.g. going through them one by one and hitting the delete key on your keyboard.) There are cases you might want to do so. But fastdup also provides a convenient method to remove them programmatically.
+You can choose to remove the images by hand (e.g. going through them one by one and hitting the delete key on your keyboard.) There are cases you might want to do so.  -->
 
-{{< notice warning >}}
+<!-- {{< notice warning >}}
 The following code will **delete all duplicate images** from your folder. I recommend setting `dry_run=True` to see which files will be deleted.
 
 📝 **NOTE**: Checkout the [fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.delete_components) to learn more about the parameters you can tweak.
@@ -234,7 +280,7 @@ fastdup.delete_components(top_components, dry_run=False)
 ```
 
 In fastdup, a **component** is a **cluster** of similar images.
-The snippet above removes duplicates of the same images (from the top cluster) ensuring you only have one copy of the image in your dataset.
+The snippet above removes duplicates of the same images (from the top cluster) ensuring you only have one copy of the image in your dataset. -->
 
 
 That's how easy it is to find duplicate images and remove them from your dataset! 
@@ -244,16 +290,13 @@ Let's see if we can find more issues.
 Similar to duplicates, it's easy to visualize anomalies in your dataset:
 
 ```python
-fastdup.create_outliers_gallery(outliers_file='scene_classification/report/train/outliers.csv',            
-                                save_path='scene_classification/report/train/', 
-                                num_images=5)
-HTML('scene_classification/report/train/outliers.html')
+fd.vis.outliers_gallery()
 ```
 You'd see something like the following 👇
 
-{{< include_html "./content/portfolio/fastdup_manage_clean_curate/outliers.html" >}}
+{{< figure_resizing src="outliers_report.png" caption="" link="./outliers_report.png">}}
 
-{{< notice info >}}
+<!-- {{< notice info >}}
 
 What do we find here?
 
@@ -262,13 +305,33 @@ What do we find here?
 
 📝 **NOTE**: Run the code snippet and increase the `num_images` parameter to see more anomalies. 
 Also, repeat this with `valid_set` and see if there are more.
+{{< /notice >}} -->
+
+Well, what do we find here? The image below is certainly a mistake. 
+
+It's not a broken image (it's still a valid image file) but there's no useful information on the image for it to be in the `test_set`.
+
+{{< figure_resizing src="anomaly_1.png" caption="" link="./anomaly_1.png">}}
+
+This type of image is common in [large dataset such as LAION and ImageNet](https://medium.com/@amiralush/large-image-datasets-today-are-a-mess-e3ea4c9e8d22).
+
+
+
+
+All the other images above don't look too convincing to me either. Take a look at the images labeled as `forest` and `glacier` below. 
+
+{{< figure_resizing src="anomaly_2.png" caption="" link="./anomaly_2.png">}}
+{{< figure_resizing src="anomaly_3.png" caption="" link="./anomaly_3.png">}}
+
+{{< notice tip>}}
+Note that the lower the `Distance` value, the more likely it will be an outlier.
 {{< /notice >}}
 
-All the other images above don't look too convincing to me either.
-I guess you can evaluate the rest if they belong to the right classes as labeled. 
-Now let's see how we can programmatically remove them.
 
-{{< notice warning >}}
+I guess you can evaluate the rest if they belong to the right classes as labeled. 
+<!-- Now let's see how we can programmatically remove them. -->
+
+<!-- {{< notice warning >}}
 The following code will **delete all outliers** from your folder. I recommend setting `dry_run=True` to see which files will be deleted.
 
 📝 **NOTE**: Checkout the [fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.delete_or_retag_stats_outliers) to learn more about the function parameters.
@@ -283,35 +346,37 @@ The above command removes all images with the `distance` value of `0.6` or below
 
 What value you pick for the `lower_threshold` will depend on the dataset. In this example, I notice that as `distance` go higher than `0.6`, the images look less like outliers. 
 
-This isn't a foolproof solution, but it should remove the bulk of anomalies present in your dataset.
+This isn't a foolproof solution, but it should remove the bulk of anomalies present in your dataset. -->
 
 #### 💆 Wrong or Confusing Labels
 One of my favorite capabilities of fastdup is finding wrong or confusing labels.
 Similar to previous sections, we can simply run:
 
 ```python
-df = fastdup.create_similarity_gallery(similarity_file="scene_classification/report/train/similarity.csv", 
-                                  save_path="scene_classification/report/train/", 
-                                  get_label_func=lambda x: x.split('/')[-2], 
-                                  num_images=5, max_width=180, slice='label_score', 
-                                  descending=False)
-HTML('./scene_classification/report/train/topk_similarity.html')
-
+fd.vis.similarity_gallery()
 ```
 
-{{< notice note >}}
+<!-- {{< notice note >}}
 In case the dataset is labeled, you can specify the label using the function `get_label_func`. 
 
 📝 **NOTE**: Check out the [fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.create_similarity_gallery) for parameters description.
-{{< /notice >}}
+{{< /notice >}} -->
 
 You'd see something like 👇
 
-{{< include_html "./content/portfolio/fastdup_manage_clean_curate/topk_similarity.html" >}}
+{{< figure_resizing src="similarity_report.png" caption="" link="./similarity_report.png">}}
 
-Under the hood, fastdup finds images that are similar to one another at the embedding level but are assigned different labels.
+That looks like a lot of information. Let's break it down a little.
 
-A `score` metric is computed to reflect how similar the query image to the most similar images in terms of class label.
+What's happening here is that, under the hood, fastdup finds images that are similar to one another at the embedding level but are assigned different labels.
+
+For instance, the `glacier` image below is a duplicate of another image labeled `mountain` and another image of `glacier`. 
+
+{{< figure_resizing src="similarity_1.png" caption="" link="./similarity_1.png">}}
+
+It is important to address these confusing labels because if the training data contains confusing or incorrect labels, it can negatively impact the performance of the model.
+
+<!-- A `score` metric is computed to reflect how similar the query image to the most similar images in terms of class label.
 
 A **high** `score` means the query image looks similar to other images in the same class. Conversely, a **low** `score` indicates the query image is similar
 to images from other classes.
@@ -324,7 +389,7 @@ What can we see in the table above?
 
 {{< /notice >}}
 
-It is important to address these confusing labels because if the training data contains confusing or incorrect labels, it can negatively impact the performance of the model.
+
 
 {{< notice tip >}}
 You can repeat the steps to find duplicates, anomalies, and problematic labels for the `valid_set` and `test_set`. 
@@ -355,9 +420,9 @@ A score 0 means this image is only similar to images from other class labels.
 
 📝 **NOTE**: Checkout the [fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.delete_or_retag_stats_outliers) to learn more about the parameters.
 
-{{< /notice >}}
+{{< /notice >}} -->
 
-#### 🚰 Data Leakage
+<!-- #### 🚰 Data Leakage
 In the [Duplicates section](#-duplicates) above, we tried finding duplicates within the `train_set`. We found a few duplicate images within the same folder.
 
 In this section, we check for duplicate images that exist in the train and validation dataset.
@@ -398,50 +463,7 @@ From the table above, we find the following issues:
 * Duplicate images with **different labels** - On the top row, `21469.jpg` is labeled as `glacier` in the `valid_set` and `mountain` in the `train_set`.
 
 {{< /notice >}}
-
-This is bad news. We just uncovered a **train-validation data leakage**! 
-
-This is a common reason a model performs all too well during training and fails in production because the model might just 
-memorize the training set without generalizing to unseen data. It's important to make sure the training and validation sets do not contain duplicates!
-
-<!-- {{< notice tip >}}
-* A validation set consists of **representative** and **non-overlapping** samples from the train set and is used to evaluate models during training.
-* Overlapping images in the train and validation set may lead to poor performance on new data.
-* The way we craft our validation set is extremely important to ensure the model does not overfit. 
-{{< /notice >}} -->
-
-Spending time crafting your validation set takes a little effort, but will pay off well in the future.
-Rachel Thomas from [Fastai](https://www.fast.ai/) wrote a good piece on [how to craft
-a good validation set](https://www.fast.ai/posts/2017-11-13-validation-sets.html).
-
-You can remove the duplicate images using the `delete_components` method as shown in the [Duplicates section](#-duplicates).
-
-<!-- ### 📖 Baseline Performance - Fastai
-With the unmodified dataset let's model a quick model it using Fastai.
-
-Using Fastai, you can create a reasonably decent model and train it with the best practices included.
-
-View my training notebook [here](https://github.com/dnth/fastdup-blogpost/blob/main/train.ipynb).
-
-```python {linenos=table}
-from fastai.vision.all import *
-path = Path('./scene_classification/data/seg_train/')
-block = DataBlock(
-            blocks=(ImageBlock, CategoryBlock), 
-            get_items=get_image_files,
-            splitter=RandomSplitter(valid_pct=0.2, seed=42),
-            get_y=parent_label, item_tfms=[Resize(150)],
-            batch_tfms=aug_transforms(mult=1.5, size=384, min_scale=0.75))
-loaders = block.dataloaders(path)
-learn = cnn_learner(loaders, resnet18, metrics=accuracy)
-learn.fine_tune(5, base_lr=1e-3)
-```
-The above are all the codes you'll need to create a CNN model (resnet18) that performs >90% accuracy!
-
-Confusion matrix. -->
-
-
-<!-- ### 🎯 Optimized Performance - fastdup + Fastai -->
+ -->
 
 
 ### 🙏 Comments & Feedback
@@ -456,7 +478,12 @@ In this post I've shown you how to:
 * Find **duplicate** and **anomalies** in your dataset.
 * Identify **wrong/confusing labels** in your dataset. 
 * Uncover **data leak** in your dataset.
+
+📝 **NOTE**: Find all codes follow along in my GitHub repo [here](https://github.com/dnth/fastdup-manage-clean-curate-blogpost).
 {{< /notice >}}
+
+If you'd like to remove problematic files programatically refer to my other blog post [here](../../blog/clean_up_your_digital_life/).
+
 
 By using fastdup and cleaning your dataset, you saved yourself:
 * Unnecessary labeling cost.
