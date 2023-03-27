@@ -478,6 +478,8 @@ In this post I've shown you how to:
 * Find **duplicate** and **anomalies** in your dataset.
 * Identify **wrong/confusing labels** in your dataset. 
 * Uncover **data leak** in your dataset.
+
+📝 **NOTE**: Find all codes follow along in my GitHub repo [here](https://github.com/dnth/fastdup-manage-clean-curate-blogpost).
 {{< /notice >}}
 
 If you'd like to remove problematic files programatically refer to my other blog post [here](../../blog/clean_up_your_digital_life/).
