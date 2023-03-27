@@ -7,7 +7,7 @@ tags: ["fastdup", "natural-scene-classification", "intel"]
 categories: ["data-cleaning", "image-classification"]
 toc: true
 socialshare: true
-description: "Learn how to use fastdup to clean and improve your visual data. Say goodbye to cluttered folders."
+description: "Learn how to use fastdup to find image duplicates, anomalies, wrong labels and data leakage. Say goodbye to cluttered folders."
 images : 
 - images/portfolio/fastdup_manage_clean_curate/post_image.gif
 ---
