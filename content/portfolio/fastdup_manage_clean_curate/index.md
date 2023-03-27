@@ -290,16 +290,13 @@ Let's see if we can find more issues.
 Similar to duplicates, it's easy to visualize anomalies in your dataset:
 
 ```python
-fastdup.create_outliers_gallery(outliers_file='scene_classification/report/train/outliers.csv',            
-                                save_path='scene_classification/report/train/', 
-                                num_images=5)
-HTML('scene_classification/report/train/outliers.html')
+fd.vis.outliers_gallery()
 ```
 You'd see something like the following 👇
 
 {{< figure_resizing src="outliers_report.png" caption="" link="./outliers_report.png">}}
 
-{{< notice info >}}
+<!-- {{< notice info >}}
 
 What do we find here?
 
@@ -308,13 +305,33 @@ What do we find here?
 
 📝 **NOTE**: Run the code snippet and increase the `num_images` parameter to see more anomalies. 
 Also, repeat this with `valid_set` and see if there are more.
+{{< /notice >}} -->
+
+Well, what do we find here? The image below is certainly a mistake. 
+
+It's not a broken image (it's still a valid image file) but there's no useful information on the image for it to be in the `test_set`.
+
+{{< figure_resizing src="anomaly_1.png" caption="" link="./anomaly_1.png">}}
+
+This type of image is common in [large dataset such as LAION and ImageNet](https://medium.com/@amiralush/large-image-datasets-today-are-a-mess-e3ea4c9e8d22).
+
+
+
+
+All the other images above don't look too convincing to me either. Take a look at the images labeled as `forest` and `glacier` below. 
+
+{{< figure_resizing src="anomaly_2.png" caption="" link="./anomaly_2.png">}}
+{{< figure_resizing src="anomaly_3.png" caption="" link="./anomaly_3.png">}}
+
+{{< notice tip>}}
+Note that the lower the `Distance` value, the more likely it will be an outlier.
 {{< /notice >}}
 
-All the other images above don't look too convincing to me either.
-I guess you can evaluate the rest if they belong to the right classes as labeled. 
-Now let's see how we can programmatically remove them.
 
-{{< notice warning >}}
+I guess you can evaluate the rest if they belong to the right classes as labeled. 
+<!-- Now let's see how we can programmatically remove them. -->
+
+<!-- {{< notice warning >}}
 The following code will **delete all outliers** from your folder. I recommend setting `dry_run=True` to see which files will be deleted.
 
 📝 **NOTE**: Checkout the [fastdup documentation](https://visual-layer.github.io/fastdup/#fastdup.delete_or_retag_stats_outliers) to learn more about the function parameters.
@@ -329,7 +346,7 @@ The above command removes all images with the `distance` value of `0.6` or below
 
 What value you pick for the `lower_threshold` will depend on the dataset. In this example, I notice that as `distance` go higher than `0.6`, the images look less like outliers. 
 
-This isn't a foolproof solution, but it should remove the bulk of anomalies present in your dataset.
+This isn't a foolproof solution, but it should remove the bulk of anomalies present in your dataset. -->
 
 #### 💆 Wrong or Confusing Labels
 One of my favorite capabilities of fastdup is finding wrong or confusing labels.
