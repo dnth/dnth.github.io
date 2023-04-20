@@ -73,7 +73,7 @@ By the end of this post, you will learn how to:
 {{< /notice >}}
 
 {{< notice info>}}
-If you're completely new to YOLOv5, get up to speed by reading [this tutorial](https://www.exxactcorp.com/blog/Deep-Learning/YOLOv5-PyTorch-Tutorial) by Exxact.
+If you're completely new to YOLOv5, get up to speed by reading [this tutorial](https://www.exxactcorp.com/blog/Deep-Learning/YOLOv5-PyTorch-Tutorial?utm_source=web%20referral&utm_medium=backlink&utm_campaign=BP%20YOLOv5%20PyTorch%20Tutorial&utm_term=Dickson%20Neoh%20Supercharging%20YOLOv5) by Exxact.
 {{< /notice >}}
 
 If that sounds exciting let's dive in 🧙
