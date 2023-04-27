@@ -12,11 +12,6 @@ images :
 - images/portfolio/bringing_high_quality_image_models_to_mobile/post_image.gif
 ---
 
-{{< notice info >}}
-This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
-{{< /notice >}}
-
-
 ### 🌟 Motivation
 For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%. 
 
@@ -124,8 +119,6 @@ TIMM is a open-source computer vision repo used in research and commercial appli
 {{< figure_resizing src="hf_timm.png" caption="TIMM joins Hugging Face." >}}
 
 {{< notice tip >}}
-
-
 Check out the TIMM repo [here](https://github.com/huggingface/pytorch-image-models).
 {{< /notice >}}
 
@@ -161,13 +154,15 @@ Here's the model that I trained using Fastai ahd hosted on Hugging Face Space.
 
 Try it out 👇
 <iframe
-	src="https://dnth-edgenext-paddy-disease-classifie-dc60651.hf.space"
+	src="https://dnth-edgenext-paddy-disease-classifier.hf.space"
 	frameborder="1"
 	width="900"
 	height="800"
 ></iframe>
 
-View on the Hugging Face webpage [here](https://dnth-edgenext-paddy-disease-classifie-dc60651.hf.space).
+
+
+View on the Hugging Face webpage [here](https://dnth-edgenext-paddy-disease-classifier.hf.space).
 
 Deployed using Gradio.
 
