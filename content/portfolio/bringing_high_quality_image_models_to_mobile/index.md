@@ -142,12 +142,13 @@ The Hugging Face docs shows [how you can do it using Python](https://huggingface
 
 Spaces are one of the most popular ways to share ML applications and demos with the world.
 
-Hardware specs [here](https://huggingface.co/pricing#spaces).
+Details on the Hardware specifications and pricing [here](https://huggingface.co/pricing#spaces).
 
 {{< figure_resizing src="spaces_specs.png" caption="Hardware specs on Spaces." >}}
 
-
-Details on how I trained the model is [here](../pytorch_at_the_edge_timm_torchscript_flutter/#-training-with-fastai).
+{{< notice tip >}}
+Details on how I trained the model using fastai [here](../pytorch_at_the_edge_timm_torchscript_flutter/#-training-with-fastai).
+{{< /notice >}}
 
 Here's the model that I trained using Fastai ahd hosted on Hugging Face Space. 
 
@@ -161,10 +162,12 @@ Try it out 👇
 ></iframe>
 
 
-
+{{< notice tip >}}
 View on the Hugging Face webpage [here](https://dnth-edgenext-paddy-disease-classifier.hf.space).
+{{< /notice >}}
 
-Deployed using Gradio.
+
+The inference endpoind is deployed using Gradio in just a few lines of code.
 
 ```python {linenos=table}
 import os
