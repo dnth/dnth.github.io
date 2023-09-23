@@ -12,11 +12,13 @@ images :
 - images/blog/unlocking_edge_ml_from_timm_to_onnx_torchscript/post_image.jpg
 ---
 
-### 🚀 Motivation: Why Edge Deployment?
+### 🚀 Motivation: Edge Deployment
 It's late 2023, everyone seems to be talking about complex and larger models.
 
-Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power. And typically that's available only in cloud-based environments.
-Cloud-based environments come with limitations, such as latency, bandwidth constraints, and sometimes even privacy concerns.
+Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power. 
+
+Typically that's available in cloud-based environments.
+Cloud-based environments has limitations, such as latency, bandwidth constraints, and privacy concerns.
 
 This is when edge deployment comes into play.
 
@@ -24,21 +26,42 @@ This is when edge deployment comes into play.
 In simple terms, edge deployment means running a model close to the source of the data. For example running a face recognition model on an IPhone. 
 {{% /blockquote %}}
 
-Some advantage of edge deployment:
+Why edge deployment:
 
-1. **Low Latency**: Edge devices process data locally. This reduces the time it takes to receive a response compared to sending a query to the cloud.
+1. **Low Latency**: Edge devices process data locally. This reduces the time it takes for a model to produce an output.
   
-2. **Reduced Bandwidth**: By processing data on the device, you minimize the amount of data that needs to be sent back and forth between the cloud and the edge device. Useful in scenarios where you have limited network connectivity.
-  
-3. **Privacy and Security**: Your data stays on the device. This reduces the risk of data breaches and better compliance with data privacy regulations.
+2. **Privacy**: Your data stays on the device. This reduces the risk of data breaches and better compliance with data privacy regulations.
 
-But, edge devices often have limited computational resources. 
- 
-This is why model optimization techniques, such as converting models to ONNX format, are crucial. 
+3. **Robustness**: Edge devices can function with or without an internet connection. This provides reliability and robustness.
 
-They allow us to compress the model size without a significant loss in performance, making it feasible to deploy advanced machine learning models on edge devices.
+{{< notice note >}}
+But, there's a caveat - Edge devices often have limited computational resources. 
+{{< /notice >}}
+
+This is why large models typically go through optimizations before it is deployed on edge devices. In this blog post, we'll look into ONNX, one of the many optimization steps for edge device deployment.
+
+Wait but what's ONNX?
+
+### 🏆 ONNX (Open Neural Network Exchange)
+
+{{% blockquote %}}
+ONNX is an open format built to represent machine learning models. 
+{{% /blockquote %}}
+
+ONNX defines a common set of operators - the building blocks of machine learning and deep learning models - and a common file format to enable AI developers to use models with a variety of frameworks, tools, runtimes, and compilers.
+
+With ONNX, you can train a machine learning model in one framework (e.g. PyTorch) use the trained model in another (e.g. Tensorflow)
+
+{{< notice tip >}}
+💫 In short, ONNX offers two benefits that helps edge deployment:
+
++ Interoperability - Develop in your preferred framework and not worry about deployment contranints.
++ Hardware access - ONNX compatible runtimes can maximize performance across hardware.
+{{< /notice >}}
 
 In this guide, you'll learn how to convert PyTorch Image Models (TIMM) into ONNX format, a crucial step in preparing your models for efficient edge deployment.
+
+
 
 
 ### 🖼️ Torch Image Models (TIMM)
