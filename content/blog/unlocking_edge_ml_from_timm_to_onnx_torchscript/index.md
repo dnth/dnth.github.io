@@ -267,4 +267,24 @@ With this backend, Torch FX subgraphs are directly converted to OpenVINO represe
 With this backend, Torch FX subgraphs are first traced/scripted with PyTorch Torchscript, and then converted to OpenVINO representation.
 {{< /notice >}}
 
+
+```python
+import openvino as ov
+
+# Create OpenVINO Core object instance
+core = ov.Core()
+
+# Convert model to openvino.runtime.Model object
+ov_model = ov.convert_model(model)
+
+MODEL_NAME = "DINOV2S"
+# Save openvino.runtime.Model object on disk
+ov.save_model(ov_model, f"{MODEL_NAME}_dynamic.xml")
+
+# Load OpenVINO model on device
+compiled_model = core.compile_model(ov_model, 'AUTO')
+
+input_tensor=transforms(img).unsqueeze(0)
+result = compiled_model(input_tensor)[0]
+```
 ### 🏁 Wrap Up
