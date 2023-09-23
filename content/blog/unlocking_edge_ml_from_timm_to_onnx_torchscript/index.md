@@ -52,19 +52,44 @@ ONNX defines a common set of operators - the building blocks of machine learning
 
 With ONNX, you can train a machine learning model in one framework (e.g. PyTorch) use the trained model in another (e.g. Tensorflow)
 
-{{< notice tip >}}
+{{< notice note >}}
 💫 In short, ONNX offers two benefits that helps edge deployment:
 
-+ Interoperability - Develop in your preferred framework and not worry about deployment contranints.
-+ Hardware access - ONNX compatible runtimes can maximize performance across hardware.
++ **Interoperability** - Develop in your preferred framework and not worry about deployment contranints.
++ **Hardware access** - ONNX compatible runtimes can maximize performance across hardware.
 {{< /notice >}}
 
 In this guide, you'll learn how to convert PyTorch Image Models (TIMM) into ONNX format, a crucial step in preparing your models for efficient edge deployment.
 
-
+{{< notice tip >}}
+By the end of this post you'll learn how to
++ Load any model from TIMM.
++ Convert the model into ONNX format.
++ Simplify and visualize the ONNX model.
++ Convert the model into Torchscript.
+{{< /notice >}}
 
 
 ### 🖼️ Torch Image Models (TIMM)
+
+TIMM, or [Torch Image Models](https://huggingface.co/docs/timm/quickstart), is a Python library that provides a collection of pre-trained machine learning models specifically designed for computer vision tasks.
+
+To date, TIMM provides more than 1000 state-of-the-art computer vision models.
+
+Install TIMM by running:
+
+```shell
+pip install timm
+```
+
+Once installed load any model with 2 lines of code:
+
+```python
+import timm
+model = timm.create_model('mobilenetv3_large_100', pretrained=True)
+```
+
+The following is a code snippet that shows how perform an inference on a DINOv2 model.
 
 ```python
 from urllib.request import urlopen
@@ -107,7 +132,7 @@ Output shape is `torch.Size([1, 384])`.
 Using TIMM export
 
 ```bash
-python onnx_export.py vit_base_patch14_dinov2.lvd142m.onnx --model timm/vit_base_patch14_dinov2.lvd142m --opset 10 --num-classes 0 --reparam --verbose
+python onnx_export.py vit_base_patch14_dinov2.lvd142m.onnx --model timm/vit_base_patch14_dinov2.lvd142m --opset 16 --num-classes 0 --reparam --verbose
 ```
 
 Using torch export
@@ -127,19 +152,64 @@ torch.onnx.export(model,
                  do_constant_folding=True,
                  input_names=['input'],
                  output_names=['output'], 
-                 dynamic_axes={'input' : {0 : 'batch_size'},    # variable length axes
+                 dynamic_axes={'input' : {0 : 'batch_size'},   
                                'output' : {0 : 'batch_size'}}
 )
 
 ```
 
+Simplify the converted ONNX model.
+
 ```bash
 pip install onnxsim -Uq
-onnxsim efficientvit_m5.r224_in1k.onnx efficientvit_m5.r224_in1k_simplified.onnx
+onnxsim vit_small_patch14_dinov2.lvd142m.onnx vit_small_patch14_dinov2.lvd142m_simplified.onnx
+```
+
+To run an inference in ONNX, install `onnxruntime`:
+
+```shell
+pip install onnxruntime
+```
+
+```python
+import numpy as np
+import onnxruntime as ort
+from PIL import Image
+from urllib.request import urlopen
+
+# Load ONNX model
+session = ort.InferenceSession("vit_small_patch14_dinov2.lvd142m_simplified.onnx")
+
+# Load an image
+img = Image.open(urlopen('https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/beignets-task-guide.png'))
+img = img.convert('RGB')
+img = img.resize((518, 518))
+img_np = np.array(img).astype(np.float32)
+
+# Convert data to the shape the ONNX model expects
+input_data = np.transpose(img_np, (2, 0, 1))  # Convert to (C, H, W)
+input_data = np.expand_dims(input_data, axis=0)  # Add a batch dimension
+
+input_data.shape # (1, 3, 518, 518)
+
+# Get input name from the model
+input_name = session.get_inputs()[0].name
+
+# Perform inference
+output = session.run(None, {input_name: input_data})
+
+# Extract output data (assuming model has a single output)
+output_data = output[0]
+
+output_data.shape
+# (1, 384)
 ```
 
 ### 👁️ Visualize Model with Netron
 Netron.app
+
+{{< figure_resizing src="dinov2_simplified.png" caption="DINOv2 simplified ONNX model." >}}
+
 
 ### 📜 Convert to Torchscript
 
@@ -154,5 +224,23 @@ optimized_traced_model = optimize_for_mobile(traced_script_module)
 optimized_traced_model._save_for_lite_interpreter("torchscript_edgenext_xx_small.pt")
 ```
 
+### 💫 ONNX to tflite with onnx2tf
+[onnx2tf](https://github.com/PINTO0309/onnx2tf) is a tool to convert ONNX files (NCHW) to TensorFlow/TFLite/Keras format (NHWC).
+
+### 💥 TIMM to OpenVINO
+
+```python
+import openvino.torch
+model = torch.compile(model, backend='openvino')
+# OR
+model = torch.compile(model, backend='openvino_ts')
+```
+{{< notice note >}}
+
++ `openvino` -
+With this backend, Torch FX subgraphs are directly converted to OpenVINO representation without any additional PyTorch based tracing/scripting.
++ `openvino_ts` -
+With this backend, Torch FX subgraphs are first traced/scripted with PyTorch Torchscript, and then converted to OpenVINO representation.
+{{< /notice >}}
 
 ### 🏁 Wrap Up
