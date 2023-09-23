@@ -211,7 +211,7 @@ Netron.app
 {{< figure_resizing src="dinov2_simplified.png" caption="DINOv2 simplified ONNX model." >}}
 
 
-### 📜 Convert to Torchscript
+### 📜 PyTorch to Torchscript
 
 ```python
 import torch
@@ -224,10 +224,34 @@ optimized_traced_model = optimize_for_mobile(traced_script_module)
 optimized_traced_model._save_for_lite_interpreter("torchscript_edgenext_xx_small.pt")
 ```
 
-### 💫 ONNX to tflite with onnx2tf
+### 🪜 ONNX to OpenVINO
+
+```python
+import openvino as ov
+ov_model = ov.convert_model('dv2s_redo_simplified.onnx')
+
+###### Option 1: Save to OpenVINO IR:
+
+# save model to OpenVINO IR for later use
+ov.save_model(ov_model, 'dv2s_redo_simplified.xml')
+
+###### Option 2: Compile and infer with OpenVINO:
+
+# compile model
+compiled_model = ov.compile_model(ov_model)
+
+# prepare input_data
+import numpy as np
+input_data = np.random.rand(1, 3, 224, 224)
+
+# run inference
+result = compiled_model(input_data)
+```
+
+### 💫 ONNX to TFlite with onnx2tf
 [onnx2tf](https://github.com/PINTO0309/onnx2tf) is a tool to convert ONNX files (NCHW) to TensorFlow/TFLite/Keras format (NHWC).
 
-### 💥 TIMM to OpenVINO
+### 💥 PyTorch to OpenVINO
 
 ```python
 import openvino.torch
