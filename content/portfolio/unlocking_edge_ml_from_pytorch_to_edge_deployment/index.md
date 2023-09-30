@@ -1,15 +1,15 @@
 ---
-title: "Unlocking Edge ML: From PyTorch Image Models (TIMM) to ONNX/Torchscript"
+title: "Unlocking Edge ML: From PyTorch to Edge Deployment"
 date: 2023-09-16T11:00:15+08:00
-featureImage: images/blog/unlocking_edge_ml_from_timm_to_onnx_torchscript/thumbnail.jpg
-postImage: images/blog/unlocking_edge_ml_from_timm_to_onnx_torchscript/post_image.jpg
+featureImage: images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/thumbnail.jpg
+postImage: images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.jpg
 tags: ["TIMM", "PyTorch", "Hugging Face", "ONNX", "Torchscript", "Netron"]
 categories: ["optimization", "edge-deployment", "computer-vision", "real-time"]
 toc: true
 socialshare: true
 description: "Learn how to convert PyTorch Image Models (TIMM) to ONNX format for efficient edge deployment. This step-by-step guide covers model optimization techniques, code examples, and troubleshooting tips, making it a go-to resource for machine learning practitioners looking to deploy models on edge devices."
 images : 
-- images/blog/unlocking_edge_ml_from_timm_to_onnx_torchscript/post_image.jpg
+- images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.jpg
 ---
 
 ### 🚀 Motivation: Edge Deployment
@@ -38,9 +38,7 @@ Why edge deployment:
 But, there's a caveat - Edge devices often have limited computational resources. 
 {{< /notice >}}
 
-This is why large models typically go through optimizations before it is deployed on edge devices. In this blog post, we'll look into ONNX, one of the many optimization steps for edge device deployment.
-
-Wait but what's ONNX?
+This is why large models typically go through optimizations before it is deployed on edge devices. In this blog post, we'll look into ONNX, OpenVINO and TFlite - some of the most popular form of deployement format.
 
 ### 🏆 ONNX (Open Neural Network Exchange)
 
@@ -127,7 +125,7 @@ Output shape is `torch.Size([1, 384])`.
 
 
 
-### 🔁 Convert to ONNX
+### 🔁 PyTorch to ONNX
 
 Using TIMM export
 
