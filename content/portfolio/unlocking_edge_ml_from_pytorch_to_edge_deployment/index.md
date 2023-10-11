@@ -12,7 +12,7 @@ images :
 - images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.jpg
 ---
 
-### 🚀 Motivation: Edge Deployment
+### 🚀 Motivation - Edge Deployment
 It's late 2023, everyone seems to be talking about complex and larger models.
 
 Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power. 
@@ -40,45 +40,39 @@ But, there's a caveat - Edge devices often have limited computational resources.
 
 This is why large models typically go through optimizations before it is deployed on edge devices. In this blog post, we'll look into ONNX, OpenVINO and TFlite - some of the most popular form of deployement format.
 
-### 🏆 ONNX (Open Neural Network Exchange)
 
-{{% blockquote %}}
-ONNX is an open format built to represent machine learning models. 
-{{% /blockquote %}}
-
-ONNX defines a common set of operators - the building blocks of machine learning and deep learning models - and a common file format to enable AI developers to use models with a variety of frameworks, tools, runtimes, and compilers.
-
-With ONNX, you can train a machine learning model in one framework (e.g. PyTorch) use the trained model in another (e.g. Tensorflow)
-
-{{< notice note >}}
-💫 In short, ONNX offers two benefits that helps edge deployment:
-
-+ **Interoperability** - Develop in your preferred framework and not worry about deployment contranints.
-+ **Hardware access** - ONNX compatible runtimes can maximize performance across hardware.
-{{< /notice >}}
-
-In this guide, you'll learn how to convert PyTorch Image Models (TIMM) into ONNX format, a crucial step in preparing your models for efficient edge deployment.
+In this post, you'll learn how to convert PyTorch Image Models (TIMM) into ONNX format, a crucial step in preparing your models for efficient edge deployment.
 
 {{< notice tip >}}
 By the end of this post you'll learn how to
 + Load any model from TIMM.
-+ Convert the model into ONNX format.
-+ Simplify and visualize the ONNX model.
-+ Convert the model into Torchscript.
++ Convert the model into ONNX, OpenVINO and TFlite format.
++ Optmize the model to improve inference latency.
+
+The codes for this post are on my [GitHub repo](https://github.com/dnth/from-pytorch-to-edge-deployment-blogpost).
 {{< /notice >}}
 
+But first, let's load a PyTorch computer vision model from TIMM.
 
 ### 🖼️ Torch Image Models (TIMM)
 
 TIMM, or [Torch Image Models](https://huggingface.co/docs/timm/quickstart), is a Python library that provides a collection of pre-trained machine learning models specifically designed for computer vision tasks.
 
-To date, TIMM provides more than 1000 state-of-the-art computer vision models.
+To date, TIMM provides more than 1000 state-of-the-art computer vision models trained on various datasets.
+Many state-of-the-art models are also build using TIMM. 
 
 Install TIMM by running:
 
 ```shell
 pip install timm
 ```
+
+I'm using version `timm==0.9.7` in the post.
+
+Presently there are 1212 models on timm as listed on [Hugging Face](https://huggingface.co/timm).
+
+{{< figure_resizing src="timm_hf.png" caption="DINOv2 simplified ONNX model." >}}
+
 
 Once installed load any model with 2 lines of code:
 
@@ -122,6 +116,23 @@ output = model.forward_head(output, pre_logits=True)
 ```
 
 Output shape is `torch.Size([1, 384])`.
+
+### 🏆 ONNX (Open Neural Network Exchange)
+
+{{% blockquote %}}
+ONNX is an open format built to represent machine learning models. 
+{{% /blockquote %}}
+
+ONNX defines a common set of operators - the building blocks of machine learning and deep learning models - and a common file format to enable AI developers to use models with a variety of frameworks, tools, runtimes, and compilers.
+
+With ONNX, you can train a machine learning model in one framework (e.g. PyTorch) use the trained model in another (e.g. Tensorflow)
+
+{{< notice note >}}
+💫 In short, ONNX offers two benefits that helps edge deployment:
+
++ **Interoperability** - Develop in your preferred framework and not worry about deployment contranints.
++ **Hardware access** - ONNX compatible runtimes can maximize performance across hardware.
+{{< /notice >}}
 
 
 
