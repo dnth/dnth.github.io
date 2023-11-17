@@ -15,16 +15,29 @@ images:
 I'm really excited to tell you that I'm one of the top 2% of scientists in the world for 2023, according to Stanford University. It's been ten years of hard work in research and learning, and this award means a lot.
 
 ### 🛤️ The Journey
-When I started, it wasn't easy. 
+When I started, it was easy. 
 
-There were tough times and I sometimes wondered if I could do it. If you're researching or studying and it feels tough, keep going. The hard work is worth it because of all the good things you learn and do along the way.
+I had been in academic for some time as a student and research assistant. And I had the resources, for a good start. I thought it's too good to be true. But reality hits mid journey.
+
+As a researcher and student, I can recall the moment there was time pressure to publish papers because it's been 3 years and I had no publications under my name. 
+
+I could not graduate. 
+
+I doubted myself a lot. Sleepless nights are a routine. But I'm glad I persevered.
+
+If you're researching or studying and it feels tough, keep going. The hard work is worth it because of all the good things you learn and do along the way. The skills that I have today, I owe it to the times I spent in research labs, sifting through papers and code.
+
+In 2022, I graduated with Ph.D of Engineering. My thesis was about using deep learning techniques to estimate the amount of charge in a Lithium ion battery commonly found in electric vehicles.
+
+I had the privilege (and luck) to be [published in Nature](https://www.nature.com/articles/s41598-021-98915-8). 
 
 ### 🚀 Transition to Industry
-Moving from university to working in business was a big change. 
+By now, I've been in academia for 10 years and I decided to move into the industry because I see huge potential in the deep learning field from the academic stand point.
 
-I didn't have much experience outside of school, but I learned that the way you learn to think in research is very helpful in business too.
+Needless to say, it was a big change. 
 
-### 💡 Critical Skills and Mindset
+I didn't have much industry experience outside of school. But I learned that the rigor and mindset from the research world is very helpful in business too.
+
 Being able to think through problems and figure out how to solve them is a big deal in any job. 
 
 These skills from university have helped me a lot in the business world, and they help you keep learning new things too.
@@ -32,7 +45,6 @@ These skills from university have helped me a lot in the business world, and the
 ### 🙏 Acknowledgments
 I want to say a big thank you to the people I work with, my mentors, and my teachers, especially at Universiti Tenaga Nasional. They've all helped me get here.
 
-### 🌱 Conclusion
 Getting this award shows that sticking with it and working hard can lead to great things. 
 
 I hope this encourages you to keep on with your own work and chase your goals.
