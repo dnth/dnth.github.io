@@ -1,8 +1,8 @@
 ---
 title: "Unlocking Edge ML: From PyTorch to Edge Deployment"
 date: 2023-09-16T11:00:15+08:00
-featureImage: images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/thumbnail.jpg
-postImage: images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.jpg
+featureImage: images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/thumbnail.png
+postImage: images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.png
 tags: ["TIMM", "PyTorch", "Hugging Face", "ONNX", "Torchscript", "Netron"]
 categories: ["optimization", "edge-deployment", "computer-vision", "real-time"]
 toc: true
@@ -11,6 +11,9 @@ description: "Learn how to convert PyTorch Image Models (TIMM) to ONNX format fo
 images : 
 - images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.jpg
 ---
+{{< notice info >}}
+This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).
+{{< /notice >}}
 
 ### 🚀 Motivation - Edge Deployment
 It's late 2023, everyone seems to be talking about complex and larger models.
