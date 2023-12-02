@@ -74,17 +74,102 @@ I'm using version `timm==0.9.7` in the post.
 
 Presently there are 1212 models on timm as listed on [Hugging Face](https://huggingface.co/timm).
 
-{{< figure_resizing src="timm_hf.png" caption="DINOv2 simplified ONNX model." >}}
+{{< figure_resizing src="timm_hf.png" caption="Over a thousand pre-trained models on TIMM." >}}
 
 
 Once installed load any model with 2 lines of code:
 
 ```python
 import timm
-model = timm.create_model('mobilenetv3_large_100', pretrained=True)
+model = timm.create_model('convnextv2_base.fcmae_ft_in22k_in1k', 
+                          pretrained=True)
+
 ```
 
-The following is a code snippet that shows how perform an inference on a DINOv2 model.
+Now, put model in evaluation mode for inference.
+
+```python
+model = model.eval()
+```
+
+Next let's load an image from the web.
+
+```python
+from urllib.request import urlopen
+from PIL import Image
+
+img = Image.open(urlopen(
+    'https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/beignets-task-guide.png'
+))
+```
+ 
+{{< figure_resizing src="image_from_web.png" caption="Download a random image from the web for inference." >}}
+
+
+Next let's get the model's specific transforms
+
+```python
+data_config = timm.data.resolve_model_data_config(model)
+transforms = timm.data.create_transform(**data_config, is_training=False)
+```
+
+With the right transforms we can run an inference on the downloaded image.
+
+```python
+output = model(transforms(img).unsqueeze(0))  # unsqueeze single image into batch of 1
+```
+
+And view the results
+```python
+top5_probabilities, top5_class_indices = torch.topk(output.softmax(dim=1) * 100, k=5)
+
+top5_probabilities
+>>> tensor([[12.4517,  8.8304,  5.8010,  3.0997,  3.0730]], grad_fn=<TopkBackward0>)
+
+top5_class_indices
+>>> tensor([[968, 967, 969, 960, 504]])
+
+output.shape
+>>> torch.Size([1, 1000])
+```
+
+To view the class names we load the ImageNet classe names with the corresponding index from the inference results.
+
+```python
+from imagenet_classes import IMAGENET2012_CLASSES
+
+# Retrieving class names
+im_classes = list(IMAGENET2012_CLASSES.values())
+class_names = [im_classes[i] for i in top5_class_indices[0]]
+
+class_names
+>>> ['cup', 'espresso', 'eggnog', 'chocolate sauce, chocolate syrup', 'coffee mug']
+```
+
+Now let's measure the inference time on CPU.
+
+```python
+import time
+num_images = 100
+
+with torch.inference_mode():
+    start = time.perf_counter()
+    for _ in range(num_images):
+        model(transforms(img).unsqueeze(0)) 
+    end = time.perf_counter()
+    time_taken = end - start
+```
+
+```python
+print(
+    f"PyTorch model on CPU: {time_taken/num_images*1000:.3f} ms per image,\n"
+    f"FPS: {num_images/time_taken:.2f}")
+
+>>> PyTorch model on CPU: 109.419 ms per image,
+>>> FPS: 9.14
+```
+
+<!-- The following is a code snippet that shows how perform an inference on a DINOv2 model.
 
 ```python
 from urllib.request import urlopen
@@ -116,9 +201,9 @@ output = model.forward_features(transforms(img).unsqueeze(0))
 output = model.forward_head(output, pre_logits=True)
 # output is a (1, num_features) shaped tensor
 
-```
+``` -->
 
-Output shape is `torch.Size([1, 384])`.
+<!-- Output shape is `torch.Size([1, 384])`. -->
 
 ### 🏆 ONNX (Open Neural Network Exchange)
 
