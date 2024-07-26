@@ -1,1 +1,362 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Dickson Neoh - Personal Portfolio</title><link>https://dicksonneoh.com/tags/</link><description>Recent content in Tags on Dickson Neoh - Personal Portfolio</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 30 Apr 2022 15:00:15 +0800</lastBuildDate><atom:link href="https://dicksonneoh.com/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>CVAT</title><link>https://dicksonneoh.com/tags/cvat/</link><pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/cvat/</guid><description/></item><item><title>license-plate</title><link>https://dicksonneoh.com/tags/license-plate/</link><pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/license-plate/</guid><description/></item><item><title>ONNX</title><link>https://dicksonneoh.com/tags/onnx/</link><pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/onnx/</guid><description/></item><item><title>OpenVINO</title><link>https://dicksonneoh.com/tags/openvino/</link><pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/openvino/</guid><description/></item><item><title>optimization</title><link>https://dicksonneoh.com/tags/optimization/</link><pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/optimization/</guid><description/></item><item><title>real-time</title><link>https://dicksonneoh.com/tags/real-time/</link><pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/real-time/</guid><description/></item><item><title>YOLOX</title><link>https://dicksonneoh.com/tags/yolox/</link><pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/yolox/</guid><description/></item><item><title>Android</title><link>https://dicksonneoh.com/tags/android/</link><pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/android/</guid><description/></item><item><title>Fast.ai</title><link>https://dicksonneoh.com/tags/fast.ai/</link><pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/fast.ai/</guid><description/></item><item><title>Flutter</title><link>https://dicksonneoh.com/tags/flutter/</link><pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/flutter/</guid><description/></item><item><title>Gradio</title><link>https://dicksonneoh.com/tags/gradio/</link><pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/gradio/</guid><description/></item><item><title>Hugging-Face</title><link>https://dicksonneoh.com/tags/hugging-face/</link><pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/hugging-face/</guid><description/></item><item><title>IceVision</title><link>https://dicksonneoh.com/tags/icevision/</link><pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/icevision/</guid><description/></item><item><title>cell-counting</title><link>https://dicksonneoh.com/tags/cell-counting/</link><pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/cell-counting/</guid><description/></item><item><title>labelImg</title><link>https://dicksonneoh.com/tags/labelimg/</link><pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/labelimg/</guid><description/></item><item><title>microbiology</title><link>https://dicksonneoh.com/tags/microbiology/</link><pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/microbiology/</guid><description/></item><item><title>lessons-learned</title><link>https://dicksonneoh.com/tags/lessons-learned/</link><pubDate>Mon, 04 Apr 2022 20:48:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/lessons-learned/</guid><description/></item><item><title>open-source</title><link>https://dicksonneoh.com/tags/open-source/</link><pubDate>Mon, 04 Apr 2022 20:48:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/open-source/</guid><description/></item><item><title>fridge-objects</title><link>https://dicksonneoh.com/tags/fridge-objects/</link><pubDate>Thu, 17 Feb 2022 13:42:56 +0800</pubDate><guid>https://dicksonneoh.com/tags/fridge-objects/</guid><description/></item><item><title>Wandb</title><link>https://dicksonneoh.com/tags/wandb/</link><pubDate>Fri, 07 Jan 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/tags/wandb/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Dickson Neoh - Personal Portfolio</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Dickson Neoh - Personal Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Nov 2023 12:00:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Academic</title>
+      <link>http://localhost:1313/tags/academic/</link>
+      <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/academic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Industry</title>
+      <link>http://localhost:1313/tags/industry/</link>
+      <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/industry/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>http://localhost:1313/tags/research/</link>
+      <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/research/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Stanford University</title>
+      <link>http://localhost:1313/tags/stanford-university/</link>
+      <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/stanford-university/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Top Scientists</title>
+      <link>http://localhost:1313/tags/top-scientists/</link>
+      <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/top-scientists/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugging Face</title>
+      <link>http://localhost:1313/tags/hugging-face/</link>
+      <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/hugging-face/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Netron</title>
+      <link>http://localhost:1313/tags/netron/</link>
+      <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/netron/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ONNX</title>
+      <link>http://localhost:1313/tags/onnx/</link>
+      <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/onnx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PyTorch</title>
+      <link>http://localhost:1313/tags/pytorch/</link>
+      <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TIMM</title>
+      <link>http://localhost:1313/tags/timm/</link>
+      <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/timm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Torchscript</title>
+      <link>http://localhost:1313/tags/torchscript/</link>
+      <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/torchscript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Android</title>
+      <link>http://localhost:1313/tags/android/</link>
+      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/android/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>EdgeNeXt</title>
+      <link>http://localhost:1313/tags/edgenext/</link>
+      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/edgenext/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flutter</title>
+      <link>http://localhost:1313/tags/flutter/</link>
+      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/flutter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gradio</title>
+      <link>http://localhost:1313/tags/gradio/</link>
+      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/gradio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IOS</title>
+      <link>http://localhost:1313/tags/ios/</link>
+      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/ios/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Paddy-Disease</title>
+      <link>http://localhost:1313/tags/paddy-disease/</link>
+      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/paddy-disease/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fastdup</title>
+      <link>http://localhost:1313/tags/fastdup/</link>
+      <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/fastdup/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Google-Images</title>
+      <link>http://localhost:1313/tags/google-images/</link>
+      <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/google-images/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>http://localhost:1313/tags/python/</link>
+      <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fastai</title>
+      <link>http://localhost:1313/tags/fastai/</link>
+      <pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/fastai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Intel</title>
+      <link>http://localhost:1313/tags/intel/</link>
+      <pubDate>Tue, 03 Jan 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/intel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Natural-Scene-Classification</title>
+      <link>http://localhost:1313/tags/natural-scene-classification/</link>
+      <pubDate>Tue, 03 Jan 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/natural-scene-classification/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Concept-Drift</title>
+      <link>http://localhost:1313/tags/concept-drift/</link>
+      <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/concept-drift/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data-Drift</title>
+      <link>http://localhost:1313/tags/data-drift/</link>
+      <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/data-drift/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ml-Monitoring</title>
+      <link>http://localhost:1313/tags/ml-monitoring/</link>
+      <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/ml-monitoring/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mlops</title>
+      <link>http://localhost:1313/tags/mlops/</link>
+      <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/mlops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open-Source</title>
+      <link>http://localhost:1313/tags/open-source/</link>
+      <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/open-source/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deployment</title>
+      <link>http://localhost:1313/tags/deployment/</link>
+      <pubDate>Thu, 29 Sep 2022 20:48:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/deployment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DeepSparse</title>
+      <link>http://localhost:1313/tags/deepsparse/</link>
+      <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/deepsparse/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimization</title>
+      <link>http://localhost:1313/tags/optimization/</link>
+      <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/optimization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pistol</title>
+      <link>http://localhost:1313/tags/pistol/</link>
+      <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/pistol/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Real-Time</title>
+      <link>http://localhost:1313/tags/real-time/</link>
+      <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/real-time/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>YOLOv5</title>
+      <link>http://localhost:1313/tags/yolov5/</link>
+      <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/yolov5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GPT-J</title>
+      <link>http://localhost:1313/tags/gpt-j/</link>
+      <pubDate>Thu, 19 May 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/gpt-j/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Telegram</title>
+      <link>http://localhost:1313/tags/telegram/</link>
+      <pubDate>Thu, 19 May 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/telegram/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>License-Plate</title>
+      <link>http://localhost:1313/tags/license-plate/</link>
+      <pubDate>Wed, 11 May 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/license-plate/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenVINO</title>
+      <link>http://localhost:1313/tags/openvino/</link>
+      <pubDate>Wed, 11 May 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/openvino/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wandb</title>
+      <link>http://localhost:1313/tags/wandb/</link>
+      <pubDate>Wed, 11 May 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/wandb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>YOLOX</title>
+      <link>http://localhost:1313/tags/yolox/</link>
+      <pubDate>Wed, 11 May 2022 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/yolox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CVAT</title>
+      <link>http://localhost:1313/tags/cvat/</link>
+      <pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/cvat/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fast.ai</title>
+      <link>http://localhost:1313/tags/fast.ai/</link>
+      <pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/fast.ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IceVision</title>
+      <link>http://localhost:1313/tags/icevision/</link>
+      <pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/icevision/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cell-Counting</title>
+      <link>http://localhost:1313/tags/cell-counting/</link>
+      <pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/cell-counting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LabelImg</title>
+      <link>http://localhost:1313/tags/labelimg/</link>
+      <pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/labelimg/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Microbiology</title>
+      <link>http://localhost:1313/tags/microbiology/</link>
+      <pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/microbiology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lessons-Learned</title>
+      <link>http://localhost:1313/tags/lessons-learned/</link>
+      <pubDate>Mon, 04 Apr 2022 20:48:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/lessons-learned/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fridge-Objects</title>
+      <link>http://localhost:1313/tags/fridge-objects/</link>
+      <pubDate>Thu, 17 Feb 2022 13:42:56 +0800</pubDate>
+      <guid>http://localhost:1313/tags/fridge-objects/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Digital-Logic-Design</title>
+      <link>http://localhost:1313/tags/digital-logic-design/</link>
+      <pubDate>Tue, 07 Sep 2021 20:48:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/digital-logic-design/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Uniten</title>
+      <link>http://localhost:1313/tags/uniten/</link>
+      <pubDate>Tue, 07 Sep 2021 20:48:15 +0800</pubDate>
+      <guid>http://localhost:1313/tags/uniten/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <title>PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter</title>
+  <meta name="description" content="Learn and deploy over 900&#43; cutting edge PyTorch classification models on Android. " />
+
+  <meta property="og:url" content="http://localhost:1313/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/">
+  <meta property="og:site_name" content="Dickson Neoh - Personal Portfolio">
+  <meta property="og:title" content="PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter">
+  <meta property="og:description" content="Learn and deploy over 900&#43; cutting edge PyTorch classification models on Android. ">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="portfolio">
+    <meta property="article:published_time" content="2023-02-07T11:00:15+08:00">
+    <meta property="article:modified_time" content="2023-02-07T11:00:15+08:00">
+    <meta property="article:tag" content="TIMM">
+    <meta property="article:tag" content="Torchscript">
+    <meta property="article:tag" content="Paddy-Disease">
+    <meta property="article:tag" content="Fastai">
+    <meta property="article:tag" content="Flutter">
+    <meta property="article:tag" content="Android">
+    <meta property="og:image" content="http://localhost:1313/images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/post_image.gif">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/post_image.gif">
+  <meta name="twitter:title" content="PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter">
+  <meta name="twitter:description" content="Learn and deploy over 900&#43; cutting edge PyTorch classification models on Android. ">
+
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="http://localhost:1313/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="http://localhost:1313/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://localhost:1313/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="http://localhost:1313/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="http://localhost:1313/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="http://localhost:1313/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="http://localhost:1313/images/favicon.gif" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54500366-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-54500366-2');
+  </script>
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="http://localhost:1313/" class="navbar-brand">
+      <img src="http://localhost:1313/images/site-navigation/logo_dn_resize.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#service"
+            class="nav-link text-dark text-sm-center p-2 ">Services</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#portfolio"
+            class="nav-link text-dark text-sm-center p-2 ">Projects</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Resume</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blogs</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#contact"
+            class="nav-link text-dark text-sm-center p-2 ">Contact</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="http://localhost:1313/contact" class="btn btn-primary btn-zoom hire_button">Hire Me Now</a>
+      </div>
+       
+
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          
+        </nav>
+      </div>
+    </div>
+
+    <div class="row p-3">
+      <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-0 text-center">
+        <i class="fa fa-calendar"></i> &ensp;
+        February 7, 2023 &ensp; &ensp;
+        <i class="fa fa-clock-o"></i> &ensp;
+        10 mins read
+      </div>
+      
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <i class="fa fa-tag"></i> &ensp;
+        
+        <a href="http://localhost:1313/tags/timm/">TIMM</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/torchscript/">Torchscript</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/paddy-disease/">Paddy-Disease</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/fastai/">Fastai</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/flutter/">Flutter</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/android/">Android</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/edgenext/">EdgeNeXt</a> 
+        
+        
+      </div>
+      
+      
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <i class="fa fa-folder"></i> &ensp;
+        
+        <a href="http://localhost:1313/categories/deployment/">Deployment</a>
+        
+        <span class="separator">•</span>
+        
+        
+        
+        
+        <a href="http://localhost:1313/categories/image-classification/">Image-Classification</a>
+        
+        <span class="separator">•</span>
+        
+        
+        
+        
+        <a href="http://localhost:1313/categories/edge-ai/">Edge-Ai</a>
+        
+        
+        
+      
+      
+      
+    </div>
+    
+  </div>
+  
+  </div>
+  
+  </div>
+  
+  </div>
+  
+</header>
+
+
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=http://localhost:1313/images/hero/figure-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=http://localhost:1313/images/skill/skill-background-shape.svg alt="">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
+      <defs>
+        <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#f1f6f9" />
+          <stop offset="1" stop-color="#f1f6f9" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g data-name="blob-shape (3)">
+        <path class="blob" fill="url(#d)"
+          d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z" />
+      </g>
+    </svg>
+  </div>
+  <div class="animate-pattern">
+    <img src=http://localhost:1313/images/service/background-pattern.svg alt="background-shape">
+  </div>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=http://localhost:1313/images/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/post_image.gif alt="feature-image">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+          <hr>
+          
+          <h3>Table of Contents</h3>
+          <nav id="TableOfContents">
+  <ul>
+        <li><a href="#-motivation">🔥 Motivation</a></li>
+        <li><a href="#-dataset">🌿 Dataset</a></li>
+        <li><a href="#-pytorch-image-models">🥇 PyTorch Image Models</a></li>
+        <li><a href="#-training-with-fastai">🏋️‍♀️ Training with Fastai</a></li>
+        <li><a href="#-exporting-with-torchscript">📀 Exporting with TorchScript</a></li>
+        <li><a href="#-inference-in-flutter">📲 Inference in Flutter</a></li>
+        <li><a href="#-comments--feedback">🙏 Comments &amp; Feedback</a></li>
+      </ul>
+</nav>
+          
+          <hr>
+          <h3 id="-motivation">🔥 Motivation</h3>
+<!-- You finally got into a Kaggle competition. You found a *getting-started notebook* written by a Kaggle Grandmaster and immediately trained a state-of-the-art (SOTA) image classification model.
+
+After some fiddling, you found yourself in the leaderboard topping the charts with **99.9851247\% accuracy** on the test set 😎!
+
+Proud of your achievement you reward yourself to some rest and a good night's sleep. 
+And tomorrow it's time to move on to the next dataset (again). -->
+<!-- And then..
+
+
+
+
+
+
+<figure>
+	
+    
+        <img src="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_sleep.jpg" srcset="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_sleep_hu16763e964aed26d0f41c773fb11f8a58_68824_360x0_resize_q75_box.jpg 360w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_sleep_hu16763e964aed26d0f41c773fb11f8a58_68824_720x0_resize_q75_box.jpg 720w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_sleep_hu16763e964aed26d0f41c773fb11f8a58_68824_1920x0_resize_q75_box.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
+    
+    
+</figure>
+
+ -->
+<!-- I hope this doesn't keep you awake at night as it did for me. -->
+<p>With various high-level libraries like <a href="https://keras.io/" target="_blank" rel="nofollow noopener noreferrer">Keras</a>, <a href="https://huggingface.co/docs/transformers/index" target="_blank" rel="nofollow noopener noreferrer">Transformer</a>, and <a href="https://www.fast.ai/" target="_blank" rel="nofollow noopener noreferrer">Fastai</a>, the barrier to training SOTA models has never been lower.</p>
+<p>On top of that with platforms like <a href="https://colab.research.google.com/" target="_blank" rel="nofollow noopener noreferrer">Google Colab</a> and <a href="https://www.kaggle.com/" target="_blank" rel="nofollow noopener noreferrer">Kaggle</a>, pretty much anyone can train a reasonably good model using an old laptop or even a mobile phone (with some patience).</p>
+<blockquote class="blockquote">
+  <p class="mb-0">The question is no longer &ldquo;<strong>can we train a SOTA model?</strong>&rdquo;, but &ldquo;<strong>what happens after that?</strong>&rdquo;</p>
+</blockquote>
+<p>Unfortunately, after getting the model trained, most people wash their hands off at this point claiming their model works.
+But, what good would SOTA models do if it&rsquo;s just in notebooks and Kaggle leaderboards?</p>
+<p>Unless the model is deployed and put to use, it&rsquo;s of little benefit to anyone out there.</p>
+
+
+
+
+
+<figure>
+	
+    
+        <img src="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme.jpg" srcset="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_hu837a4392153a49e1573ab877c8748e3c_65319_360x0_resize_q75_box.jpg 360w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_hu837a4392153a49e1573ab877c8748e3c_65319_720x0_resize_q75_box.jpg 720w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_hu837a4392153a49e1573ab877c8748e3c_65319_1920x0_resize_q75_box.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
+    
+    
+</figure>
+
+
+<p>But deployment is painful. Running a model on a mobile phone?</p>
+<p>Forget it 🤷‍♂️.</p>
+<p>The frustration is real. I remember spending nights exporting models into <code>ONNX</code> and it still failed me.
+Deploying models on mobile for edge inference used to be complex.</p>
+<p>Not anymore.</p>
+<p>In this post, I&rsquo;m going to show you how you can pick from over 900+ SOTA models on <a href="https://github.com/rwightman/pytorch-image-models" target="_blank" rel="nofollow noopener noreferrer">TIMM</a>, train them using best practices with <a href="https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/" target="_blank" rel="nofollow noopener noreferrer">Fastai</a>, and deploy them on Android using <a href="https://flutter.dev/" target="_blank" rel="nofollow noopener noreferrer">Flutter</a>.</p>
+<p>✅ Yes, for free.</p>
+<style type="text/css">
+    .notice{padding:18px;line-height:24px;margin-bottom:24px;border-radius:4px;color:#6c757d;background:#e7f2fa}.notice
+    p:last-child{margin-bottom:0}.notice-title{margin:-18px -18px 12px;padding:4px 18px;border-radius:4px 4px 0
+    0;font-weight:700;color:#fff;background:#6ab0de; text-transform:uppercase}.notice.warning
+    .notice-title{background:rgba(217,83,79,.9)}.notice.warning{background:#fae2e2}.notice.info
+    .notice-title{background:#f0b37e;}.notice.info{background:#fff2db}.notice.note
+    .notice-title{background:#6ab0de}.notice.note{background:#e7f2fA}.notice.tip
+    .notice-title{background:rgba(92,184,92,.8)}.notice.tip{background:#e6f9e6}.icon-notice{display:inline-flex;align-self:center;margin-right:8px}.icon-notice
+    img,.icon-notice svg{height:1em;width:1em;fill:currentColor}.icon-notice img,.icon-notice.baseline
+    svg{top:0.125em;position:relative}</style>
+    <div><svg width="0" height="0" display="none" xmlns="http://www.w3.org/2000/svg">
+            <symbol id="tip-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+                <path
+                    d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z" />
+            </symbol>
+            <symbol id="note-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+                <path
+                    d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z" />
+            </symbol>
+            <symbol id="warning-notice" viewBox="0 0 576 512" preserveAspectRatio="xMidYMid meet">
+                <path
+                    d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z" />
+            </symbol>
+            <symbol id="info-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+                <path
+                    d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" />
+            </symbol>
+        </svg></div><div class="notice tip" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>⚡ By the end of this post you will learn how to:</p>
+<ul>
+<li>Load a SOTA classification model from TIMM and train it with Fastai.</li>
+<li>Export the trained model with TorchScript for inference.</li>
+<li>Create a functional Android app and run the inference on your device.</li>
+</ul>
+<p>🔥 The inference time is at <strong>100ms</strong> and below on my Pixel 3 XL! The lowest I got was <strong>37ms</strong>!</p>
+<p>💡 <strong>NOTE</strong>: Code and data for this post are available on my GitHub repo <a href="https://github.com/dnth/timm-flutter-pytorch-lite-blogpost" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
+<p>Here&rsquo;s a TLDR 👇</p>
+<iframe src="https://www.youtube-nocookie.com/embed/tno2F3Hp5dA" title="YouTube video player" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:500px;width:100%;border:none;overflow:hidden;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<!-- You might wonder, do I need to learn ONNX? TensorRT? TFLite?
+
+Maybe.
+
+Learning each one of them takes time. Personally, I never had a very positive experience with exporting PyTorch models into ONNX.
+It doesn't work every time. -->
+<!-- I had to pull my hair over sleepless nights exporting to ONNX.
+They are out of the PyTorch ecosystem. -->
+<!-- But in this post, I will show you a solution that holds the best chance of working - TorchScript. -->
+<!-- Integrated within the PyTorch ecosystem. -->
+<p>If that looks interesting, read on 👇</p>
+<h3 id="-dataset">🌿 Dataset</h3>
+<p>We will be working with the Paddy Disease Classification <a href="https://www.kaggle.com/competitions/paddy-disease-classification" target="_blank" rel="nofollow noopener noreferrer">dataset</a> from Kaggle.
+The dataset consists of <code>10,407</code> labeled images across ten classes (9 diseases and 1 normal):</p>
+<ol>
+<li><code>bacterial_leaf_blight</code></li>
+<li><code>bacterial_leaf_streak</code></li>
+<li><code>bacterial_panicle_blight</code></li>
+<li><code>blast</code></li>
+<li><code>brown_spot</code></li>
+<li><code>dead_heart</code></li>
+<li><code>downy_mildew</code></li>
+<li><code>hispa</code></li>
+<li><code>tungro</code></li>
+<li><code>normal</code></li>
+</ol>
+<p>The task is to classify the paddy images into <code>1</code> of the <code>9</code> diseases or <code>normal</code>.
+Few sample images shown below.
+
+
+
+
+
+<figure>
+	
+    <a href="test_img.jpg">
+        <img src="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/test_img.jpg" srcset="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/test_img_huf9611a5d8b83fa8276183d52e772329a_134184_360x0_resize_q75_box.jpg 360w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/test_img_huf9611a5d8b83fa8276183d52e772329a_134184_720x0_resize_q75_box.jpg 720w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/test_img_huf9611a5d8b83fa8276183d52e772329a_134184_1920x0_resize_q75_box.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
+    </a>
+    
+</figure>
+
+</p>
+<p>Next, I download the data locally and organize them in a folder structure.
+Here&rsquo;s the structure I have on my computer.</p>
+<pre tabindex="0"><code class="language-tree" data-lang="tree">├── data
+│   ├── test_images
+│   └── train_images
+│       ├── bacterial_leaf_blight 
+│       ├── bacterial_leaf_streak 
+│       ├── bacterial_panicle_blight 
+│       ├── blast 
+│       ├── brown_spot 
+│       ├── dead_heart 
+│       ├── downy_mildew 
+│       ├── hispa 
+│       ├── models
+│       ├── normal 
+│       └── tungro 
+└── train
+    └── train.ipynb
+</code></pre><div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>Descriptions of the folders:</p>
+<ul>
+<li><code>data/</code> - A folder to store train and test images.</li>
+<li><code>train/</code> - A folder to store training-related files and notebooks.</li>
+</ul>
+<p>View the full structure by browsing my GitHub <a href="https://github.com/dnth/timm-flutter-pytorch-lite-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>.</p></div>
+<div class="notice tip" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>🔔 If you&rsquo;d like to explore the dataset and excel in the competition, I&rsquo;d encourage you to check out a series of Kaggle notebooks by Jeremy Howard.</p>
+<ul>
+<li><a href="https://www.kaggle.com/code/jhoward/first-steps-road-to-the-top-part-1" target="_blank" rel="nofollow noopener noreferrer">First Steps.</a> - Setting up, looking at the data and training your first model.</li>
+<li><a href="https://www.kaggle.com/code/jhoward/small-models-road-to-the-top-part-2" target="_blank" rel="nofollow noopener noreferrer">Small Models.</a> - Iterate faster with small models, test time augmentation, and then scale up.</li>
+<li><a href="https://www.kaggle.com/code/jhoward/scaling-up-road-to-the-top-part-3" target="_blank" rel="nofollow noopener noreferrer">Scaling Up.</a> - Testing various models, Vision Transformers, and Ensembles.</li>
+<li><a href="https://www.kaggle.com/code/jhoward/multi-target-road-to-the-top-part-4" target="_blank" rel="nofollow noopener noreferrer">Multi-target.</a> - Train a multi-target model with Fastai.</li>
+</ul>
+<p>I&rsquo;ve personally learned a lot from the notebooks. Part of the codes in the post is adapted from the notebooks.</p></div>
+<p>Now that we&rsquo;ve got the data, let&rsquo;s see how to start building a model out of it</p>
+<p>For that we need 👇</p>
+<h3 id="-pytorch-image-models">🥇 PyTorch Image Models</h3>
+<p>There are many libraries to model computer vision tasks but PyTorch Image Models or <a href="https://github.com/rwightman/pytorch-image-models" target="_blank" rel="nofollow noopener noreferrer">TIMM</a> by <a href="https://www.linkedin.com/in/wightmanr/" target="_blank" rel="nofollow noopener noreferrer">Ross Wightman</a> is arguably the most prominent one today.</p>
+<p>The TIMM repository hosts hundreds of recent SOTA models maintained by Ross.
+At this point (January 2023) we have 964 pre-trained models on TIMM and increasing as we speak.</p>
+<p>You can install TIMM by simply:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install timm
+</span></span></code></pre></div><p>One line of code, and we&rsquo;d have access to all models on TIMM!</p>
+<p>With such a massive collection, it can be disorienting which model to start from.
+Worry not, TIMM provides a function to search for model architectures with a <a href="https://www.delftstack.com/howto/python/python-wildcard/" target="_blank" rel="nofollow noopener noreferrer">wildcard</a>.</p>
+<p>Since we will be running the model on a mobile device, let&rsquo;s search for model names that contain the word <em>edge</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> timm
+</span></span><span style="display:flex;"><span>timm<span style="color:#f92672">.</span>list_models(<span style="color:#e6db74">&#39;*edge*&#39;</span>)
+</span></span></code></pre></div><p>This outputs all models that match the wildcard.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;cs3edgenet_x&#39;</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;cs3se_edgenet_x&#39;</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;edgenext_base&#39;</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;edgenext_small&#39;</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;edgenext_small_rw&#39;</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;edgenext_x_small&#39;</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;edgenext_xx_small&#39;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Looks like we have something related to the EdgeNeXt model.</p>
+<p>With a simple search and reading through the preprint <a href="https://arxiv.org/abs/2206.10589" target="_blank" rel="nofollow noopener noreferrer">EdgeNeXt - Efficiently Amalgamated CNN-Transformer Architecture for Mobile Vision Applications</a>, looks like it&rsquo;s a fitting model for our application!</p>
+<p>With the model name, you can now start training.
+The TIMM repo provides various utility functions and training scripts. Feel free to use them.</p>
+<p>In this post, I&rsquo;m going to show you an easy way to train a TIMM model using Fastai 👇</p>
+<h3 id="-training-with-fastai">🏋️‍♀️ Training with Fastai</h3>
+<p><a href="https://www.fast.ai/2020/02/13/fastai-A-Layered-API-for-Deep-Learning/" target="_blank" rel="nofollow noopener noreferrer">Fastai</a> is a deep learning library that provides practitioners with high high-level components that can quickly provide SOTA results.
+Under the hood Fastai uses PyTorch but it abstracts away the details and incorporates various best practices in training a model.</p>
+<p>Install Fastai with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install fastai
+</span></span></code></pre></div><p>Since, we&rsquo;d run our model on a mobile device, let&rsquo;s select the smallest model we got from the previous section - <code>edgenext_xx_small</code>.</p>
+<p>Let&rsquo;s import all the necessary packages with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastai.vision.all <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span></code></pre></div><p>Next, load the images into a <code>DataLoader</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>trn_path <span style="color:#f92672">=</span> Path(<span style="color:#e6db74">&#39;../data/train_images&#39;</span>)
+</span></span><span style="display:flex;"><span>dls <span style="color:#f92672">=</span> ImageDataLoaders<span style="color:#f92672">.</span>from_folder(trn_path, seed<span style="color:#f92672">=</span><span style="color:#ae81ff">316</span>, 
+</span></span><span style="display:flex;"><span>                                   valid_pct<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, bs<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>,
+</span></span><span style="display:flex;"><span>                                   item_tfms<span style="color:#f92672">=</span>[Resize((<span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">224</span>))], 
+</span></span><span style="display:flex;"><span>                                   batch_tfms<span style="color:#f92672">=</span>aug_transforms(min_scale<span style="color:#f92672">=</span><span style="color:#ae81ff">0.75</span>))
+</span></span></code></pre></div><div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>Parameters for the <code>from_folder</code> method:</p>
+<ul>
+<li><code>trn_path</code> &ndash; A <code>Path</code> to the training images.</li>
+<li><code>valid_pct</code> &ndash; The percentage of dataset to allocate as the validation set.</li>
+<li><code>bs</code> &ndash; Batch size to use during training.</li>
+<li><code>item_tfms</code> &ndash; Transformation applied to each item.</li>
+<li><code>batch_tfms</code> &ndash; Random transformations applied to each batch to augment the dataset. Read more <a href="https://docs.fast.ai/vision.augment.html#aug_transforms" target="_blank" rel="nofollow noopener noreferrer">here</a>.</li>
+</ul>
+<p>📝 <strong>NOTE</strong>: Check out the Fastai <a href="https://docs.fast.ai/" target="_blank" rel="nofollow noopener noreferrer">docs</a> for more information on the parameters.</p></div>
+<p>You can show a batch of the train images loaded into the <code>DataLoader</code> with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dls<span style="color:#f92672">.</span>train<span style="color:#f92672">.</span>show_batch(max_n<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>, nrows<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span></code></pre></div>
+
+
+
+
+<figure>
+	
+    <a href="./show_batch.png">
+        <img src="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/show_batch.png" srcset="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/show_batch_hucecf67f548be7e303644e798dd8afd17_730278_360x0_resize_box_3.png 360w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/show_batch_hucecf67f548be7e303644e798dd8afd17_730278_720x0_resize_box_3.png 720w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/show_batch_hucecf67f548be7e303644e798dd8afd17_730278_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
+    </a>
+    
+</figure>
+
+
+<p>Next create a <code>Learner</code> object which stores the model, dataloaders, and loss function to train a model.
+Read more about the <code>Learner</code> <a href="https://docs.fast.ai/learner.html#learner" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<p>For vision classification tasks we can create a <code>Learner</code> by calling the <code>vision_learner</code> function and providing the necessary parameters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>learn <span style="color:#f92672">=</span> vision_learner(dls, <span style="color:#e6db74">&#39;edgenext_xx_small&#39;</span>, metrics<span style="color:#f92672">=</span>accuracy)<span style="color:#f92672">.</span>to_fp16()
+</span></span></code></pre></div><div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>Parameters for <code>vision_learner</code>:</p>
+<ul>
+<li><strong>dls</strong> - The <code>Dataloader</code> object.</li>
+<li><strong>edgenext_xx_small</strong> - Model name from TIMM.</li>
+</ul>
+<p>📝 <strong>NOTE</strong>: Read more on vision_learner <a href="https://docs.fast.ai/vision.learner.html#vision_learner" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<p>In Fastai, you can easily incorporate <a href="https://on-demand.gputechconf.com/gtc/2019/video/_/S9143/" target="_blank" rel="nofollow noopener noreferrer">Mixed Precision Training</a> by adding the <code>.to_fp16()</code> method. This little trick reduces memory usage and trains your model faster at the cost of precision.</p></div>
+<p>One of my favorite features in Fastai is the learning rate finder.
+It lets you estimate the range of learning rate to train the model for the best results.</p>
+<p>Find the best learning rate with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>learn<span style="color:#f92672">.</span>lr_find()
+</span></span></code></pre></div>
+
+
+
+
+<figure>
+	
+    <a href="lr_find.png">
+        <img src="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/lr_find.png" srcset="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/lr_find_hu99e6eb1b20f728b920631645a7f5b897_23295_360x0_resize_box_3.png 360w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/lr_find_hu99e6eb1b20f728b920631645a7f5b897_23295_720x0_resize_box_3.png 720w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/lr_find_hu99e6eb1b20f728b920631645a7f5b897_23295_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
+    </a>
+    
+</figure>
+
+
+<div class="notice tip" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>The orange dot 🟠 shows the suggested learning rate which is approximately at <code>2e-3</code>.</p>
+<p>A good learning rate lies at the point where the loss is <strong>decreasing most rapidly</strong>. On the plot, it&rsquo;s anywhere
+from the orange dot 🟠 to the point where the loss starts increasing again approximately at <code>1e-1</code>. I&rsquo;ll pick <code>1e-2</code> as my learning rate.</p>
+<p>Read a post by Zach Mueller on <a href="https://walkwithfastai.com/lr_finder" target="_blank" rel="nofollow noopener noreferrer">how to pick a good learning rate</a>.</p></div>
+<p>Now train the model for 5 <code>epochs</code> and a base learning rate of <code>0.002</code> with the <a href="https://arxiv.org/pdf/1803.09820.pdf" target="_blank" rel="nofollow noopener noreferrer">1cycle policy</a>.
+The <code>ShowGraphCallback</code> callback plots the progress of the training.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>learn<span style="color:#f92672">.</span>fine_tune(<span style="color:#ae81ff">5</span>, base_lr<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-2</span>, cbs<span style="color:#f92672">=</span>[ShowGraphCallback()])
+</span></span></code></pre></div>
+
+
+
+
+<figure>
+	
+    <a href="train.png">
+        <img src="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/train.png" srcset="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/train_hue163433df998bfba1575a9b983a6d3bf_57741_360x0_resize_box_3.png 360w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/train_hue163433df998bfba1575a9b983a6d3bf_57741_720x0_resize_box_3.png 720w, /portfolio/pytorch_at_the_edge_timm_torchscript_flutter/train_hue163433df998bfba1575a9b983a6d3bf_57741_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
+    </a>
+    
+</figure>
+
+
+<p>With just a few lines of code, we can train a reasonably good model with Fastai.
+For completeness, here are the few lines of codes you need to load and train the model:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastai.vision.all <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>trn_path <span style="color:#f92672">=</span> Path(<span style="color:#e6db74">&#39;../data/train_images&#39;</span>)
+</span></span><span style="display:flex;"><span>dls <span style="color:#f92672">=</span> ImageDataLoaders<span style="color:#f92672">.</span>from_folder(trn_path, seed<span style="color:#f92672">=</span><span style="color:#ae81ff">316</span>,
+</span></span><span style="display:flex;"><span>                                  valid_pct<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, bs<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>,
+</span></span><span style="display:flex;"><span>                                  item_tfms<span style="color:#f92672">=</span>[Resize((<span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">224</span>))], 
+</span></span><span style="display:flex;"><span>                                  batch_tfms<span style="color:#f92672">=</span>aug_transforms(min_scale<span style="color:#f92672">=</span><span style="color:#ae81ff">0.75</span>))
+</span></span><span style="display:flex;"><span>learn <span style="color:#f92672">=</span> vision_learner(dls, <span style="color:#e6db74">&#39;edgenext_xx_small&#39;</span>, metrics<span style="color:#f92672">=</span>accuracy)<span style="color:#f92672">.</span>to_fp16()
+</span></span><span style="display:flex;"><span>learn<span style="color:#f92672">.</span>fine_tune(<span style="color:#ae81ff">5</span>, base_lr<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-2</span>, cbs<span style="color:#f92672">=</span>[ShowGraphCallback()])
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<div class="notice tip" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>For demonstration purposes, I&rsquo;ve only with only 5 <code>epochs</code>. You can train for longer to obtain better accuracy and model performance.</p>
+<p>📝 <strong>NOTE</strong>: View my training notebook <a href="https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/train/train.ipynb" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
+<p>You can optionally export the <code>Learner</code> object and import it from another script or notebook with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>learn<span style="color:#f92672">.</span>export(<span style="color:#e6db74">&#34;../../train/export.pkl&#34;</span>)
+</span></span></code></pre></div><p>Once done, now it&rsquo;s time we transform the model into a form we can use for mobile inference.</p>
+<p>For that, we&rsquo;ll need 👇</p>
+<h3 id="-exporting-with-torchscript">📀 Exporting with TorchScript</h3>
+<p>In this section, we export the model into a form suitable for a mobile device.
+We can do that easily with <a href="https://pytorch.org/docs/stable/jit.html" target="_blank" rel="nofollow noopener noreferrer">TorchScript</a>.</p>
+<blockquote class="blockquote">
+  <p class="mb-0">TorchScript is a way to create serializable and optimizable models from PyTorch code on
+a variety of platforms, including desktop and mobile devices, without requiring a Python runtime.</p>
+  <footer class="blockquote-footer">TorchScript Docs</footer>
+</blockquote> 
+<p>With TorchScript, the model&rsquo;s code is converted into a static graph that can be optimized for faster performance, and then saved and loaded as a serialized representation of the model.</p>
+<p>This allows for deployment to a variety of platforms and acceleration with hardware such as GPUs, TPUs, and mobile devices.</p>
+<!-- <blockquote class="blockquote">
+  <p class="mb-0">TorchScript is a way to create serializable and optimizable models from PyTorch code.</p>
+  
+  <footer class="blockquote-footer">TorchScript Docs</footer>
+  
+</blockquote> -->
+<p>All the models on TIMM can be exported with TorchScript using the following code snippet.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> torch.utils.mobile_optimizer <span style="color:#f92672">import</span> optimize_for_mobile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>learn<span style="color:#f92672">.</span>model<span style="color:#f92672">.</span>cpu()
+</span></span><span style="display:flex;"><span>learn<span style="color:#f92672">.</span>model<span style="color:#f92672">.</span>eval()
+</span></span><span style="display:flex;"><span>example <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">224</span>)
+</span></span><span style="display:flex;"><span>traced_script_module <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>jit<span style="color:#f92672">.</span>trace(learn<span style="color:#f92672">.</span>model, example)
+</span></span><span style="display:flex;"><span>optimized_traced_model <span style="color:#f92672">=</span> optimize_for_mobile(traced_script_module)
+</span></span><span style="display:flex;"><span>optimized_traced_model<span style="color:#f92672">.</span>_save_for_lite_interpreter(<span style="color:#e6db74">&#34;torchscript_edgenext_xx_small.pt&#34;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>From the snippet above we need to specify a few things:</p>
+<ul>
+<li><code>Line 6</code>: The shape of the input image tensor.</li>
+<li><code>Line 9</code>: &ldquo;torchscript_edgenext_xx_small.pt&rdquo; is the name of the resulting TorchScript serialized model.</li>
+</ul>
+<p>If you already have your own <code>model.pt</code> file, replace <code>Line 4</code> and Line <code>5</code> with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#39;model.pt&#39;</span>, map_location<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cpu&#34;</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>eval()
+</span></span></code></pre></div><p>📝 <strong>NOTE</strong>: View the full notebook from training to exporting the model on my GitHub repo <a href="https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/train/train.ipynb" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
+<p>Once completed, you&rsquo;ll have a file <code>torchscript_edgenext_xx_small.pt</code> that can be ported to other devices for inference.
+In this post, I will be porting it to Android using a framework known as <a href="https://flutter.dev/" target="_blank" rel="nofollow noopener noreferrer">Flutter</a>.</p>
+<h3 id="-inference-in-flutter">📲 Inference in Flutter</h3>
+<p><img src="./vids/flutter.gif" alt="img"></p>
+<blockquote class="blockquote">
+  <p class="mb-0">Flutter is an open-source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.</p>
+  <footer class="blockquote-footer">Flutter Webpage</footer>
+</blockquote> 
+<p>We can load the <code>torchscript_edgenext_xx_small.pt</code> and use if for inference.
+To do so, we will use the <a href="https://github.com/zezo357/pytorch_lite" target="_blank" rel="nofollow noopener noreferrer">pytorch_lite</a> Flutter package.
+The <code>pytorch_lite</code> package supports image classification and detection with TorchScript.</p>
+<p>The following code snippet shows a function to load our serialized model <code>torchscript_edgenext_xx_small.pt</code>.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Future loadModel() <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">String</span> pathImageModel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;assets/models/torchscript_edgenext_xx_small.pt&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        _imageModel <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> PytorchLite.loadClassificationModel(
+</span></span><span style="display:flex;"><span>            pathImageModel, <span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">224</span>,
+</span></span><span style="display:flex;"><span>            labelPath: <span style="color:#e6db74">&#34;assets/labels/label_classification_paddy.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>    } on PlatformException {
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;only supported for Android&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>From the snippet above we need to specify a few things:</p>
+<ul>
+<li><code>Line 2</code>: Path to the serialized model.</li>
+<li><code>Line 5</code>: The input image size - <code>224</code> by <code>224</code> pixels.</li>
+<li><code>Line 6</code>: A text file with labels associated with each class.</li>
+</ul>
+<p>View the full code on my GitHub <a href="https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/flutter_app/lib/main.dart" target="_blank" rel="nofollow noopener noreferrer">repo</a>.</p></div>
+<p>The following code snippet shows a function to run the inference.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Future runClassification() <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//pick an image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> XFile<span style="color:#f92672">?</span> image <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> _picker.pickImage(<span style="color:#66d9ef">source</span><span style="color:#f92672">:</span> ImageSource.gallery);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (image <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// run inference
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> _imageModel<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>          .getImagePredictionResult(<span style="color:#66d9ef">await</span> File(image.path).readAsBytes());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      setState(() {
+</span></span><span style="display:flex;"><span>        _imagePrediction <span style="color:#f92672">=</span> result[<span style="color:#e6db74">&#39;label&#39;</span>];
+</span></span><span style="display:flex;"><span>        _predictionConfidence <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>            (result[<span style="color:#e6db74">&#39;probability&#39;</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>).toStringAsFixed(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>        _image <span style="color:#f92672">=</span> File(image.path);
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Those are the two important functions to load and run the TorchScript model.</p>
+<p>The following screen capture shows the Flutter app in action.
+The clip runs in real-time and is <strong>NOT sped up</strong>!</p>
+<video controls preload="auto" width="400px"  autoplay loop muted playsinline class="html-video">
+    <source src="/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/vids/inference_edgenext.mp4" type="video/mp4">
+  <span></span>
+</video>
+<p>The compiled <code>.apk</code> file is about <strong>77MB</strong> in size and the inference time is at <strong>100 ms</strong> or below on my Pixel 3 XL!</p>
+<p>Try it out and install the pre-built <code>.apk</code> file on your Android phone <a href="https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/blob/main/app-release.apk?raw=true" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<h3 id="-comments--feedback">🙏 Comments &amp; Feedback</h3>
+<p>That&rsquo;s a wrap! In this post, I&rsquo;ve shown you how you can start from a model, train it, and deploy it on a mobile device for edge inference.</p>
+<div class="notice tip" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>⚡ In short we learned how to:</p>
+<ul>
+<li>Load a SOTA classification model from TIMM and train it with Fastai.</li>
+<li>Export the trained model with TorchScript for inference.</li>
+<li>Create a functional Android app and run the model inference on your device.</li>
+</ul>
+<p>📝 <strong>NOTE</strong>: View the codes for the entire post on my GitHub repo <a href="https://github.com/dnth/timm-flutter-pytorch-lite-blogpost/" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
+<p>What&rsquo;s next? If you&rsquo;d like to learn about how I deploy a cloud based object detection model on Android, check it out <a href="../how_to_deploy_od_models_on_android_with_flutter/">here</a>.</p>
+<p>I hope you&rsquo;ve learned a thing or two from this blog post.
+If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or <a href="https://dicksonneoh.com/contact/" target="_blank" rel="nofollow noopener noreferrer">drop me a message</a>. Alternatively you can also comment on this Hacker News <a href="https://news.ycombinator.com/item?id=34799597#34801672" target="_blank" rel="nofollow noopener noreferrer">thread</a>.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Tired of training models that never see the light of day? Don&#39;t let your hard work go to waste! <br><br>In this 🧵, I&#39;ll show you how to pick from over 900+ models from TIMM by <a href="https://twitter.com/wightmanr?ref_src=twsrc%5Etfw">@wightmanr</a> , train them with Fastai by <a href="https://twitter.com/jeremyphoward?ref_src=twsrc%5Etfw">@jeremyphoward</a> , and deploy them on Android – all for free. <a href="https://t.co/25pgunaJNM">pic.twitter.com/25pgunaJNM</a></p>&mdash; Dickson Neoh 🚀 (@dicksonneoh7) <a href="https://twitter.com/dicksonneoh7/status/1625367344712388609?ref_src=twsrc%5Etfw">February 14, 2023</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7032246822186209280" height="1198" width="504" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+
+          
+
+
+
+
+
+<section class="social-share">
+
+    <ul class="share-icons">
+        <hr>
+
+        <h5>🤟 Follow me</h5>
+
+        <p>
+            Don't want to miss any of my future content? Follow me on Twitter and LinkedIn where I share these tips in
+            bite-size posts.
+        </p>
+
+        
+        <li>
+            <a href="https://twitter.com/dicksonneoh7" target="_blank" rel="noopener" aria-label="Follow on Twitter"
+                class="share-btn twitter">
+                <svg
+   width="6.3503098mm"
+   height="5.1592798mm"
+   viewBox="0 0 6.3503098 5.1592799"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="twitter_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-38.14813"
+     inkscape:cy="32.360138"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-125.63688,-104.07795)">
+    <path
+       d="m 131.98686,104.68815 c -0.23316,0.10418 -0.48452,0.17363 -0.74745,0.20505 0.26955,-0.1604 0.47625,-0.41672 0.57216,-0.72099 -0.25135,0.14883 -0.53082,0.25797 -0.82682,0.31585 -0.23812,-0.25136 -0.57712,-0.41011 -0.95084,-0.41011 -0.71934,0 -1.30308,0.58374 -1.30308,1.30307 0,0.10253 0.0116,0.20175 0.0331,0.29601 -1.08314,-0.0546 -2.04226,-0.57216 -2.68553,-1.36095 -0.11079,0.19182 -0.17528,0.41672 -0.17528,0.65484 0,0.45145 0.22985,0.84997 0.57877,1.08479 -0.21332,-0.007 -0.41506,-0.0661 -0.59035,-0.16371 v 0.0165 c 0,0.63169 0.44979,1.15755 1.04511,1.27661 -0.10914,0.0298 -0.2249,0.0463 -0.34396,0.0463 -0.0843,0 -0.16537,-0.008 -0.24474,-0.0232 0.16536,0.51759 0.64657,0.89463 1.21708,0.90455 -0.44648,0.34892 -1.00707,0.55728 -1.61726,0.55728 -0.10584,0 -0.20836,-0.007 -0.31089,-0.0182 0.57712,0.37041 1.26173,0.58539 1.9976,0.58539 2.39614,0 3.70583,-1.98438 3.70583,-3.70582 0,-0.0562 -0.002,-0.11245 -0.003,-0.16868 0.25466,-0.18355 0.47459,-0.41341 0.64988,-0.67468 z"
+       id="path1039"
+       style="fill:#ffffff;stroke-width:0.0165365" />
+  </g>
+</svg>
+&nbsp;
+                Twitter
+            </a>
+        </li>
+        &nbsp;
+
+        <li>
+            <a href="https://www.linkedin.com/in/dickson-neoh/" target="_blank" rel="noopener"
+                aria-label="Follow on LinkedIn" class="share-btn linkedin">
+                <svg
+   width="6.3499999mm"
+   height="6.3499999mm"
+   viewBox="0 0 6.3499999 6.3499999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="linkedin_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-6.2264764"
+     inkscape:cy="40.603642"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-129.66672,-101.87176)">
+    <path
+       d="m 129.66672,102.59335 v 4.90682 c 0,0.39507 0.32652,0.72159 0.72159,0.72159 h 4.90682 c 0.39507,0 0.72159,-0.32652 0.72159,-0.72159 v -4.90682 c 0,-0.39507 -0.32652,-0.72159 -0.72159,-0.72159 h -4.90682 c -0.39507,0 -0.72159,0.32652 -0.72159,0.72159 z m 5.62841,-0.14432 c 0.083,0 0.14432,0.0613 0.14432,0.14432 v 4.90682 c 0,0.083 -0.0613,0.14431 -0.14432,0.14431 h -4.90682 c -0.083,0 -0.14432,-0.0613 -0.14432,-0.14431 v -4.90682 c 0,-0.083 0.0613,-0.14432 0.14432,-0.14432 z m -4.55504,0.99219 c 0,0.2742 0.22189,0.49609 0.49609,0.49609 0.27421,0 0.4961,-0.22189 0.4961,-0.49609 0,-0.27421 -0.22189,-0.4961 -0.4961,-0.4961 -0.2742,0 -0.49609,0.22189 -0.49609,0.4961 z m 2.30007,1.26278 h -0.018 v -0.37883 h -0.81179 v 2.74204 h 0.84787 v -1.35298 c 0,-0.35719 0.0703,-0.70355 0.51413,-0.70355 0.43657,0 0.44198,0.40409 0.44198,0.72159 v 1.33494 h 0.84787 v -1.50632 c 0,-0.73783 -0.15695,-1.29886 -1.01925,-1.29886 -0.41492,0 -0.68912,0.2273 -0.80277,0.44197 z m -2.21889,2.36321 h 0.85689 v -2.74204 h -0.85689 z"
+       id="path1321"
+       style="stroke-width:0.0180398;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                LinkedIn
+            </a>
+        </li>
+        &nbsp;
+
+        <li>
+            <a href="https://github.com/dnth/" target="_blank" rel="noopener" aria-label="Follow on GitHub"
+                class="share-btn github">
+                <svg width="24" height="24" viewBox="0 0 256 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+    <g>
+        <path d="M128.00106,0 C57.3172926,0 0,57.3066942 0,128.00106 C0,184.555281 36.6761997,232.535542 87.534937,249.460899 C93.9320223,250.645779 96.280588,246.684165 96.280588,243.303333 C96.280588,240.251045 96.1618878,230.167899 96.106777,219.472176 C60.4967585,227.215235 52.9826207,204.369712 52.9826207,204.369712 C47.1599584,189.574598 38.770408,185.640538 38.770408,185.640538 C27.1568785,177.696113 39.6458206,177.859325 39.6458206,177.859325 C52.4993419,178.762293 59.267365,191.04987 59.267365,191.04987 C70.6837675,210.618423 89.2115753,204.961093 96.5158685,201.690482 C97.6647155,193.417512 100.981959,187.77078 104.642583,184.574357 C76.211799,181.33766 46.324819,170.362144 46.324819,121.315702 C46.324819,107.340889 51.3250588,95.9223682 59.5132437,86.9583937 C58.1842268,83.7344152 53.8029229,70.715562 60.7532354,53.0843636 C60.7532354,53.0843636 71.5019501,49.6441813 95.9626412,66.2049595 C106.172967,63.368876 117.123047,61.9465949 128.00106,61.8978432 C138.879073,61.9465949 149.837632,63.368876 160.067033,66.2049595 C184.49805,49.6441813 195.231926,53.0843636 195.231926,53.0843636 C202.199197,70.715562 197.815773,83.7344152 196.486756,86.9583937 C204.694018,95.9223682 209.660343,107.340889 209.660343,121.315702 C209.660343,170.478725 179.716133,181.303747 151.213281,184.472614 C155.80443,188.444828 159.895342,196.234518 159.895342,208.176593 C159.895342,225.303317 159.746968,239.087361 159.746968,243.303333 C159.746968,246.709601 162.05102,250.70089 168.53925,249.443941 C219.370432,232.499507 256,184.536204 256,128.00106 C256,57.3066942 198.691187,0 128.00106,0 Z M47.9405593,182.340212 C47.6586465,182.976105 46.6581745,183.166873 45.7467277,182.730227 C44.8183235,182.312656 44.2968914,181.445722 44.5978808,180.80771 C44.8734344,180.152739 45.876026,179.97045 46.8023103,180.409216 C47.7328342,180.826786 48.2627451,181.702199 47.9405593,182.340212 Z M54.2367892,187.958254 C53.6263318,188.524199 52.4329723,188.261363 51.6232682,187.366874 C50.7860088,186.474504 50.6291553,185.281144 51.2480912,184.70672 C51.8776254,184.140775 53.0349512,184.405731 53.8743302,185.298101 C54.7115892,186.201069 54.8748019,187.38595 54.2367892,187.958254 Z M58.5562413,195.146347 C57.7719732,195.691096 56.4895886,195.180261 55.6968417,194.042013 C54.9125733,192.903764 54.9125733,191.538713 55.713799,190.991845 C56.5086651,190.444977 57.7719732,190.936735 58.5753181,192.066505 C59.3574669,193.22383 59.3574669,194.58888 58.5562413,195.146347 Z M65.8613592,203.471174 C65.1597571,204.244846 63.6654083,204.03712 62.5716717,202.981538 C61.4524999,201.94927 61.1409122,200.484596 61.8446341,199.710926 C62.5547146,198.935137 64.0575422,199.15346 65.1597571,200.200564 C66.2704506,201.230712 66.6095936,202.705984 65.8613592,203.471174 Z M75.3025151,206.281542 C74.9930474,207.284134 73.553809,207.739857 72.1039724,207.313809 C70.6562556,206.875043 69.7087748,205.700761 70.0012857,204.687571 C70.302275,203.678621 71.7478721,203.20382 73.2083069,203.659543 C74.6539041,204.09619 75.6035048,205.261994 75.3025151,206.281542 Z M86.046947,207.473627 C86.0829806,208.529209 84.8535871,209.404622 83.3316829,209.4237 C81.8013,209.457614 80.563428,208.603398 80.5464708,207.564772 C80.5464708,206.498591 81.7483088,205.631657 83.2786917,205.606221 C84.8005962,205.576546 86.046947,206.424403 86.046947,207.473627 Z M96.6021471,207.069023 C96.7844366,208.099171 95.7267341,209.156872 94.215428,209.438785 C92.7295577,209.710099 91.3539086,209.074206 91.1652603,208.052538 C90.9808515,206.996955 92.0576306,205.939253 93.5413813,205.66582 C95.054807,205.402984 96.4092596,206.021919 96.6021471,207.069023 Z" fill="#FFFFFF"></path>
+    </g>
+</svg>&nbsp;
+                GitHub
+            </a>
+        </li>
+        &nbsp;
+        <hr>
+        <h5>🔄 Share this post</h5>
+        
+        
+        <li>
+            <a href="https://twitter.com/intent/tweet?&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fpytorch_at_the_edge_timm_torchscript_flutter%2f&amp;text=PyTorch%20at%20the%20Edge%3a%20Deploying%20Over%20964%20TIMM%20Models%20on%20Android%20with%20TorchScript%20and%20Flutter @dicksonneoh7"
+                target="_blank" rel="noopener" aria-label="Share on Twitter" class="share-btn twitter">
+                <svg
+   width="6.3503098mm"
+   height="5.1592798mm"
+   viewBox="0 0 6.3503098 5.1592799"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="twitter_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-38.14813"
+     inkscape:cy="32.360138"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-125.63688,-104.07795)">
+    <path
+       d="m 131.98686,104.68815 c -0.23316,0.10418 -0.48452,0.17363 -0.74745,0.20505 0.26955,-0.1604 0.47625,-0.41672 0.57216,-0.72099 -0.25135,0.14883 -0.53082,0.25797 -0.82682,0.31585 -0.23812,-0.25136 -0.57712,-0.41011 -0.95084,-0.41011 -0.71934,0 -1.30308,0.58374 -1.30308,1.30307 0,0.10253 0.0116,0.20175 0.0331,0.29601 -1.08314,-0.0546 -2.04226,-0.57216 -2.68553,-1.36095 -0.11079,0.19182 -0.17528,0.41672 -0.17528,0.65484 0,0.45145 0.22985,0.84997 0.57877,1.08479 -0.21332,-0.007 -0.41506,-0.0661 -0.59035,-0.16371 v 0.0165 c 0,0.63169 0.44979,1.15755 1.04511,1.27661 -0.10914,0.0298 -0.2249,0.0463 -0.34396,0.0463 -0.0843,0 -0.16537,-0.008 -0.24474,-0.0232 0.16536,0.51759 0.64657,0.89463 1.21708,0.90455 -0.44648,0.34892 -1.00707,0.55728 -1.61726,0.55728 -0.10584,0 -0.20836,-0.007 -0.31089,-0.0182 0.57712,0.37041 1.26173,0.58539 1.9976,0.58539 2.39614,0 3.70583,-1.98438 3.70583,-3.70582 0,-0.0562 -0.002,-0.11245 -0.003,-0.16868 0.25466,-0.18355 0.47459,-0.41341 0.64988,-0.67468 z"
+       id="path1039"
+       style="fill:#ffffff;stroke-width:0.0165365" />
+  </g>
+</svg>
+&nbsp;
+                Twitter
+            </a>
+        </li>
+         &nbsp;
+
+        
+        
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fpytorch_at_the_edge_timm_torchscript_flutter%2f&amp;source=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fpytorch_at_the_edge_timm_torchscript_flutter%2f&amp;title=PyTorch%20at%20the%20Edge%3a%20Deploying%20Over%20964%20TIMM%20Models%20on%20Android%20with%20TorchScript%20and%20Flutter&amp;summary=PyTorch%20at%20the%20Edge%3a%20Deploying%20Over%20964%20TIMM%20Models%20on%20Android%20with%20TorchScript%20and%20Flutter"
+                target="_blank" rel="noopener" aria-label="Share on LinkedIn" class="share-btn linkedin">
+                <svg
+   width="6.3499999mm"
+   height="6.3499999mm"
+   viewBox="0 0 6.3499999 6.3499999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="linkedin_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-6.2264764"
+     inkscape:cy="40.603642"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-129.66672,-101.87176)">
+    <path
+       d="m 129.66672,102.59335 v 4.90682 c 0,0.39507 0.32652,0.72159 0.72159,0.72159 h 4.90682 c 0.39507,0 0.72159,-0.32652 0.72159,-0.72159 v -4.90682 c 0,-0.39507 -0.32652,-0.72159 -0.72159,-0.72159 h -4.90682 c -0.39507,0 -0.72159,0.32652 -0.72159,0.72159 z m 5.62841,-0.14432 c 0.083,0 0.14432,0.0613 0.14432,0.14432 v 4.90682 c 0,0.083 -0.0613,0.14431 -0.14432,0.14431 h -4.90682 c -0.083,0 -0.14432,-0.0613 -0.14432,-0.14431 v -4.90682 c 0,-0.083 0.0613,-0.14432 0.14432,-0.14432 z m -4.55504,0.99219 c 0,0.2742 0.22189,0.49609 0.49609,0.49609 0.27421,0 0.4961,-0.22189 0.4961,-0.49609 0,-0.27421 -0.22189,-0.4961 -0.4961,-0.4961 -0.2742,0 -0.49609,0.22189 -0.49609,0.4961 z m 2.30007,1.26278 h -0.018 v -0.37883 h -0.81179 v 2.74204 h 0.84787 v -1.35298 c 0,-0.35719 0.0703,-0.70355 0.51413,-0.70355 0.43657,0 0.44198,0.40409 0.44198,0.72159 v 1.33494 h 0.84787 v -1.50632 c 0,-0.73783 -0.15695,-1.29886 -1.01925,-1.29886 -0.41492,0 -0.68912,0.2273 -0.80277,0.44197 z m -2.21889,2.36321 h 0.85689 v -2.74204 h -0.85689 z"
+       id="path1321"
+       style="stroke-width:0.0180398;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                LinkedIn
+            </a>
+        </li>
+         &nbsp;
+
+        
+        
+        <li>
+            <a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fpytorch_at_the_edge_timm_torchscript_flutter%2f" target="_blank" rel="noopener"
+                aria-label="Share on Facebook" class="share-btn facebook">
+                <svg
+   width="6.3499999mm"
+   height="6.3499999mm"
+   viewBox="0 0 6.3499999 6.3499999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="facebook_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-7.8050197"
+     inkscape:cy="32.710925"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-130.36281,-104.14567)">
+    <path
+       d="m 130.36281,104.72294 v 5.19545 c 0,0.3157 0.26158,0.57728 0.57727,0.57728 h 5.19546 c 0.3157,0 0.57727,-0.26158 0.57727,-0.57728 v -5.19545 c 0,-0.3157 -0.26157,-0.57727 -0.57727,-0.57727 h -5.19546 c -0.31569,0 -0.57727,0.26157 -0.57727,0.57727 z m 5.77273,0 v 5.19545 h -1.4973 v -1.94829 h 0.74865 l 0.10824,-0.86591 h -0.85689 v -0.55923 c 0,-0.25256 0.0631,-0.42394 0.42393,-0.42394 h 0.46904 v -0.78473 c -0.0794,-0.0108 -0.35719,-0.0271 -0.67649,-0.0271 -0.66567,0 -1.11847,0.40048 -1.11847,1.14553 v 0.64943 h -0.75767 v 0.86591 h 0.75767 v 1.94829 h -2.79617 v -5.19545 z"
+       id="path1085"
+       style="stroke-width:0.0180398;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                Facebook
+            </a>
+        </li>
+         &nbsp;
+
+        <br>
+
+        
+        
+        <li>
+            <a href="https://telegram.me/share/url?text=PyTorch%20at%20the%20Edge%3a%20Deploying%20Over%20964%20TIMM%20Models%20on%20Android%20with%20TorchScript%20and%20Flutter&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fpytorch_at_the_edge_timm_torchscript_flutter%2f" target="_blank"
+                rel="noopener" aria-label="Share on Telegram" class="share-btn telegram">
+                <svg width="7.3503098mm"
+   height="7.1592798mm" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 189.473 189.473" style="enable-background:new 0 0 189.473 189.473;" xml:space="preserve">
+<g>
+	<path d="M152.531,179.476c-1.48,0-2.95-0.438-4.211-1.293l-47.641-32.316l-25.552,18.386c-2.004,1.441-4.587,1.804-6.914,0.972
+		c-2.324-0.834-4.089-2.759-4.719-5.146l-12.83-48.622L4.821,93.928c-2.886-1.104-4.8-3.865-4.821-6.955
+		c-0.021-3.09,1.855-5.877,4.727-7.02l174.312-69.36c0.791-0.336,1.628-0.53,2.472-0.582c0.302-0.018,0.605-0.018,0.906-0.001
+		c1.748,0.104,3.465,0.816,4.805,2.13c0.139,0.136,0.271,0.275,0.396,0.42c1.11,1.268,1.72,2.814,1.835,4.389
+		c0.028,0.396,0.026,0.797-0.009,1.198c-0.024,0.286-0.065,0.571-0.123,0.854L159.898,173.38c-0.473,2.48-2.161,4.556-4.493,5.523
+		C154.48,179.287,153.503,179.476,152.531,179.476z M104.862,130.579l42.437,28.785L170.193,39.24l-82.687,79.566l17.156,11.638
+		C104.731,130.487,104.797,130.533,104.862,130.579z M69.535,124.178l5.682,21.53l12.242-8.809l-16.03-10.874
+		C70.684,125.521,70.046,124.893,69.535,124.178z M28.136,86.782l31.478,12.035c2.255,0.862,3.957,2.758,4.573,5.092l3.992,15.129
+		c0.183-1.745,0.974-3.387,2.259-4.624L149.227,38.6L28.136,86.782z"
+		id="path1039"
+       style="fill:#ffffff;stroke-width:0.0165365"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+&nbsp;
+                Telegram
+            </a>
+        </li>
+         &nbsp;
+
+        
+        
+        <li>
+            <a href="whatsapp://send?text=PyTorch%20at%20the%20Edge%3a%20Deploying%20Over%20964%20TIMM%20Models%20on%20Android%20with%20TorchScript%20and%20Flutter%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20and%20deploy%20over%20900%2b%20cutting%20edge%20PyTorch%20classification%20models%20on%20Android.%20%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fpytorch_at_the_edge_timm_torchscript_flutter%2f%0a" target="_blank" aria-label="Share on WhatsApp"
+                class="share-btn whatsapp">
+                <svg
+   width="6.0324998mm"
+   height="6.05896mm"
+   viewBox="0 0 6.0324997 6.05896"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="whatsapp_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="4.9987205"
+     inkscape:cy="35.692618"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-126.67735,-103.17712)">
+    <path
+       d="m 131.83672,104.07671 c -0.58208,-0.58209 -1.34937,-0.89959 -2.14312,-0.89959 -1.64042,0 -2.98979,1.34938 -2.98979,3.01625 0,0.52917 0.13229,1.03188 0.39687,1.48167 l -0.42333,1.56104 1.5875,-0.42333 c 0.42333,0.23812 0.92604,0.34396 1.42875,0.34396 1.66687,0 3.01625,-1.34938 3.01625,-3.01625 -0.0265,-0.74084 -0.3175,-1.50813 -0.87313,-2.06375 z m -2.14312,4.6302 c -0.44979,0 -0.87313,-0.13229 -1.27,-0.34395 l -0.10583,-0.0529 -0.92605,0.26458 0.26459,-0.89958 -0.0794,-0.13229 c -0.26458,-0.39688 -0.37041,-0.84667 -0.37041,-1.34938 0,-1.37583 1.11125,-2.48708 2.48708,-2.48708 0.66146,0 1.29646,0.26458 1.77271,0.74083 0.47625,0.47625 0.74083,1.11125 0.74083,1.77271 -0.0265,1.37583 -1.13771,2.48708 -2.51354,2.48708 z m 1.34937,-1.87854 c -0.0794,-0.0265 -0.44979,-0.23812 -0.5027,-0.26458 -0.0794,-0.0265 -0.1323,-0.0265 -0.18521,0.0265 -0.0529,0.0794 -0.21167,0.26458 -0.23813,0.29104 -0.0529,0.0529 -0.0794,0.0529 -0.15875,0.0265 -0.0794,-0.0265 -0.3175,-0.13229 -0.60854,-0.37042 -0.23812,-0.21167 -0.37042,-0.44979 -0.42333,-0.52917 -0.0529,-0.0794 0,-0.13229 0.0265,-0.15875 0.0265,-0.0264 0.0794,-0.0794 0.10583,-0.13229 0.0529,-0.0265 0.0794,-0.0794 0.10583,-0.13229 0.0265,-0.0529 0,-0.10583 0,-0.13229 0,-0.0265 -0.18521,-0.39688 -0.26458,-0.55563 -0.0265,-0.10583 -0.10583,-0.0794 -0.13229,-0.0794 h -0.15875 c 0,0 -0.10584,0.0265 -0.18521,0.0794 -0.0794,0.0794 -0.26458,0.26459 -0.26458,0.635 0,0.37042 0.26458,0.74084 0.29104,0.79375 0.0265,0.0529 0.52916,0.82021 1.29646,1.13771 0.1852,0.0794 0.3175,0.13229 0.42333,0.15875 0.18521,0.0529 0.34396,0.0529 0.47625,0.0265 0.15875,-0.0265 0.44979,-0.18521 0.50271,-0.34396 0.0529,-0.18521 0.0529,-0.3175 0.0529,-0.34396 -0.0264,-0.0794 -0.0794,-0.10583 -0.15875,-0.13229 z"
+       id="path1793"
+       style="stroke-width:0.264583;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                WhatsApp
+            </a>
+        </li>
+         &nbsp;
+
+        
+        
+        <li>
+            <a href="mailto:?subject=Dickson%20Neoh%20-%20Personal%20Portfolio - PyTorch%20at%20the%20Edge%3a%20Deploying%20Over%20964%20TIMM%20Models%20on%20Android%20with%20TorchScript%20and%20Flutter.&amp;body=PyTorch%20at%20the%20Edge%3a%20Deploying%20Over%20964%20TIMM%20Models%20on%20Android%20with%20TorchScript%20and%20Flutter%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20and%20deploy%20over%20900%2b%20cutting%20edge%20PyTorch%20classification%20models%20on%20Android.%20%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fpytorch_at_the_edge_timm_torchscript_flutter%2f%0a" target="_blank"
+                class="share-btn email" aria-label="Share via Email">
+                <svg
+   width="6.3499999mm"
+   height="4.3961601mm"
+   viewBox="0 0 6.3499999 4.3961601"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="email_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-6.7526575"
+     inkscape:cy="33.4125"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-130.10375,-103.97942)">
+    <path
+       d="m 130.10375,104.22365 v 3.9077 0.24423 h 0.24423 5.86154 0.24423 v -0.24423 -3.9077 -0.24423 h -0.24423 -5.86154 -0.24423 z m 5.29675,0.24423 -2.12175,1.41196 -2.12175,-1.41196 z m -2.25913,1.91569 0.13738,0.0839 0.13738,-0.0839 2.54916,-1.70198 v 3.20553 h -5.37308 v -3.20553 z"
+       id="path824"
+       style="stroke-width:0.0152644;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                Email
+            </a>
+        </li>
+        <hr>
+
+        
+        <section>
+            <h5>❤️ Show some love</h5>
+            <p>
+                Creating free ML contents doesn't pay my bills. Support me in creating more free contents like these. 
+                Consider buying me a coffee. Your support means a lot to me.
+            </p>
+            <div style="text-align:center">
+                <a href="https://www.buymeacoffee.com/dicksonneoh" target="_blank"><img
+                        src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee"
+                        style="height: 60px !important;width: 217px !important;"></a>
+            </div>
+        </section>
+        <hr>
+    </ul>
+</section>
+
+        </div>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <nav class="case-details-nav d-flex justify-content-between align-items-center">
+          
+          <div class="previous d-flex align-items-center">
+            <div class="icon mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15.556" height="28.285" viewBox="0 0 15.556 28.285">
+                <g data-name="Group 1243" fill="#2d2d2d">
+                  <path data-name="Path 1456" d="M3.391 12.728l9.75 14.142-.982 1.414-9.742-14.142z" />
+                  <path data-name="Path 1455" d="M13.137 1.41L3.39 15.558l-.975-1.415L12.166 0z" />
+                </g>
+              </svg>
+            </div>
+            <div class="content">
+              <span class="small">Prev blog</span>
+              <div class="col-lg-9">
+                <div class="blog-page__item">
+                  <div class="blog-page__item-thumb">
+                    <a href="http://localhost:1313/portfolio/fastdup_manage_clean_curate/">
+                      <img src="http://localhost:1313/images/portfolio/fastdup_manage_clean_curate/thumbnail.gif" alt="post-image">
+                    </a>
+                  </div>
+                  <h5 class="title"><a class="text-dark"
+                    href="http://localhost:1313/portfolio/fastdup_manage_clean_curate/">fastdup: A Powerful Tool to Manage, Clean &amp; Curate Visual Data at Scale on Your CPU - For Free.</a></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="previous d-flex align-items-center">
+          <div class="content" align="right">
+              <span class="small">Next blog</span>
+              <div class="col-lg-9" align="right">
+                <div class="blog-page__item">
+                  <div class="blog-page__item-thumb">
+                    <a href="http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/">
+                      <img src="http://localhost:1313/images/portfolio/bringing_high_quality_image_models_to_mobile/thumbnail.gif" alt="post-image">
+                    </a>
+                  </div>
+                  <h5 class="title"><a class="text-dark"
+                    href="http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/">Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</a></h5>
+                </div>
+              </div>
+            </div>
+            <div class="icon ml-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15.556" height="28.285" viewBox="0 0 15.556 28.285">
+                <g data-name="Group 1244" fill="#2d2d2d">
+                  <path data-name="Path 1456" d="M12.162 12.725L2.416 26.87l.978 1.41 9.746-14.138z" />
+                  <path data-name="Path 1455" d="M2.416 1.415l9.743 14.141.975-1.414L3.39 0z" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0 mb-3">Let’s Start a Project</h2>
+					</div>
+					<div class="footer__cta_action">
+						
+					</div>
+					<a href="https://api.whatsapp.com/send?phone=60133250827" rel="noopener" target="_blank" class="btn btn-light btn-zoom mr-3 mb-3 fa fa-whatsapp my-float">&nbsp&nbspChat on WhatsApp</a>
+					<a href="https://t.me/dicksonneoh" rel="noopener" target="_blank" class="btn btn-light btn-zoom mr-3 mb-3 fa fa-telegram my-float">&nbsp&nbspChat on Telegram</a>
+					<a class="btn btn-light btn-zoom mb-3 fa fa-envelope" href="http://localhost:1313/contact">&nbsp&nbspSend me a message</a>
+				</div>
+			</div>
+		</div>
+		<div class="row footer__widget">
+			<div class="col-lg-4">
+				<div class="footer__widget_logo mb-5">
+					<img src="http://localhost:1313/images/site-navigation/logo_dn_resize.png" alt="widget-logo">
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="text-light footer__widget_sitemap mb-5">
+					<h4 class="base-font">Sitemap</h4>
+					<ul class="unstyle-list small">
+						
+						
+						<li class="mb-2"><a class="text-light" href="http://localhost:1313/#about">About me</a></li>
+						
+						<li class="mb-2"><a class="text-light" href="http://localhost:1313/">Frequently Ask Question</a></li>
+						
+						<li class="mb-2"><a class="text-light" href="http://localhost:1313/">Privacy &amp; Policy</a></li>
+						
+						<li class="mb-2"><a class="text-light" href="http://localhost:1313/#portfolio">Latest Article</a></li>
+						
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="text-light footer__widget_address mb-5">
+					<h4 class="base-font">Address</h4>
+					
+					<ul class="fa-ul small">
+						<li class="mb-2"><a class="text-light" href="tel:&#43;%2860%29%203%208921%202020"><span class="fa-li"><i
+										class="fa fa-phone"></i></span>&#43;(60) 3 8921 2020</a></li>
+						<li class="mb-2"><a class="text-light" href="mailto:dickson.neoh@gmail.com"><span class="fa-li"><i
+										class="fa fa-envelope"></i></span>dickson.neoh@gmail.com</a></li>
+						<li class="mb-2">
+							<span class="fa-li"><i class="fa fa-map-marker"></i></span>Kuala Lumpur, Malaysia.</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>All right reserved copyright © Dickson Neoh 2023</p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/dickson-neoh/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://twitter.com/dicksonneoh7"><i
+									class="fa fa-twitter-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://github.com/dnth"><i
+									class="fa fa-github-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR%20GOOGLE%20MAP%20API&libraries=geometry"></script>
+<script src="http://localhost:1313/plugins/jQuery/jquery.min.js"></script>
+<script src="http://localhost:1313/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="http://localhost:1313/plugins/slick/slick.min.js"></script>
+<script src="http://localhost:1313/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="http://localhost:1313/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="http://localhost:1313/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="http://localhost:1313/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="http://localhost:1313/plugins/masonry/masonry.min.js"></script>
+
+<script src="http://localhost:1313/js/form-handler.min.js"></script>
+
+<script src="http://localhost:1313/js/script.min.js"></script>
+
+</body>
+
+</html>

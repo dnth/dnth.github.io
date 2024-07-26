@@ -209,7 +209,7 @@ Code once, and export to multiple platforms.
 
 ### 🙏 Comments & Feedback
 If you have any questions, comments, or feedback, please leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
-{{< tweet dicksonneoh7 1517004585495240704>}}
+{{< tweet user="dicksonneoh7" id="1517004585495240704">}}
 
 <!-- {{< notice info >}}
 This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me [here](https://dicksonneoh.com/contact/), on [LinkedIn](https://www.linkedin.com/in/dickson-neoh/), or [Twitter](https://twitter.com/dicksonneoh7).

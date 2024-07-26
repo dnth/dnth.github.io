@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <title>Unlocking Edge ML: From PyTorch to Edge Deployment</title>
+  <meta name="description" content="Learn how to convert PyTorch Image Models (TIMM) to ONNX format for efficient edge deployment. This step-by-step guide covers model optimization techniques, code examples, and troubleshooting tips, making it a go-to resource for machine learning practitioners looking to deploy models on edge devices." />
+
+  <meta property="og:url" content="http://localhost:1313/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/">
+  <meta property="og:site_name" content="Dickson Neoh - Personal Portfolio">
+  <meta property="og:title" content="Unlocking Edge ML: From PyTorch to Edge Deployment">
+  <meta property="og:description" content="Learn how to convert PyTorch Image Models (TIMM) to ONNX format for efficient edge deployment. This step-by-step guide covers model optimization techniques, code examples, and troubleshooting tips, making it a go-to resource for machine learning practitioners looking to deploy models on edge devices.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="portfolio">
+    <meta property="article:published_time" content="2023-09-16T11:00:15+08:00">
+    <meta property="article:modified_time" content="2023-09-16T11:00:15+08:00">
+    <meta property="article:tag" content="TIMM">
+    <meta property="article:tag" content="PyTorch">
+    <meta property="article:tag" content="Hugging Face">
+    <meta property="article:tag" content="ONNX">
+    <meta property="article:tag" content="Torchscript">
+    <meta property="article:tag" content="Netron">
+    <meta property="og:image" content="http://localhost:1313/images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.jpg">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.jpg">
+  <meta name="twitter:title" content="Unlocking Edge ML: From PyTorch to Edge Deployment">
+  <meta name="twitter:description" content="Learn how to convert PyTorch Image Models (TIMM) to ONNX format for efficient edge deployment. This step-by-step guide covers model optimization techniques, code examples, and troubleshooting tips, making it a go-to resource for machine learning practitioners looking to deploy models on edge devices.">
+
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="http://localhost:1313/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="http://localhost:1313/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://localhost:1313/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="http://localhost:1313/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="http://localhost:1313/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="http://localhost:1313/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="http://localhost:1313/images/favicon.gif" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54500366-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-54500366-2');
+  </script>
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="http://localhost:1313/" class="navbar-brand">
+      <img src="http://localhost:1313/images/site-navigation/logo_dn_resize.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#service"
+            class="nav-link text-dark text-sm-center p-2 ">Services</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#portfolio"
+            class="nav-link text-dark text-sm-center p-2 ">Projects</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Resume</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blogs</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="http://localhost:1313/#contact"
+            class="nav-link text-dark text-sm-center p-2 ">Contact</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="http://localhost:1313/contact" class="btn btn-primary btn-zoom hire_button">Hire Me Now</a>
+      </div>
+       
+
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">Unlocking Edge ML: From PyTorch to Edge Deployment</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          
+        </nav>
+      </div>
+    </div>
+
+    <div class="row p-3">
+      <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-0 text-center">
+        <i class="fa fa-calendar"></i> &ensp;
+        September 16, 2023 &ensp; &ensp;
+        <i class="fa fa-clock-o"></i> &ensp;
+        6 mins read
+      </div>
+      
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <i class="fa fa-tag"></i> &ensp;
+        
+        <a href="http://localhost:1313/tags/timm/">TIMM</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/pytorch/">PyTorch</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/hugging-face/">Hugging Face</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/onnx/">ONNX</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/torchscript/">Torchscript</a> 
+        
+        <span class="separator">•</span>
+        
+        
+        <a href="http://localhost:1313/tags/netron/">Netron</a> 
+        
+        
+      </div>
+      
+      
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <i class="fa fa-folder"></i> &ensp;
+        
+        <a href="http://localhost:1313/categories/optimization/">Optimization</a>
+        
+        <span class="separator">•</span>
+        
+        
+        
+        
+        <a href="http://localhost:1313/categories/edge-deployment/">Edge-Deployment</a>
+        
+        <span class="separator">•</span>
+        
+        
+        
+        
+        <a href="http://localhost:1313/categories/computer-vision/">Computer-Vision</a>
+        
+        <span class="separator">•</span>
+        
+        
+        
+        
+        <a href="http://localhost:1313/categories/real-time/">Real-Time</a>
+        
+        
+        
+      
+      
+      
+    </div>
+    
+  </div>
+  
+  </div>
+  
+  </div>
+  
+  </div>
+  
+</header>
+
+
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=http://localhost:1313/images/hero/figure-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=http://localhost:1313/images/skill/skill-background-shape.svg alt="">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
+      <defs>
+        <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#f1f6f9" />
+          <stop offset="1" stop-color="#f1f6f9" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g data-name="blob-shape (3)">
+        <path class="blob" fill="url(#d)"
+          d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z" />
+      </g>
+    </svg>
+  </div>
+  <div class="animate-pattern">
+    <img src=http://localhost:1313/images/service/background-pattern.svg alt="background-shape">
+  </div>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=http://localhost:1313/images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.png alt="feature-image">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+          <hr>
+          
+          <h3>Table of Contents</h3>
+          <nav id="TableOfContents">
+  <ul>
+        <li><a href="#-motivation---edge-deployment">🚀 Motivation - Edge Deployment</a></li>
+        <li><a href="#-torch-image-models-timm">🖼️ Torch Image Models (TIMM)</a></li>
+        <li><a href="#-onnx-open-neural-network-exchange">🏆 ONNX (Open Neural Network Exchange)</a></li>
+        <li><a href="#-pytorch-to-onnx">🔁 PyTorch to ONNX</a></li>
+        <li><a href="#-visualize-model-with-netron">👁️ Visualize Model with Netron</a></li>
+        <li><a href="#-pytorch-to-torchscript">📜 PyTorch to Torchscript</a></li>
+        <li><a href="#-onnx-to-openvino">🪜 ONNX to OpenVINO</a></li>
+        <li><a href="#-onnx-to-tflite-with-onnx2tf">💫 ONNX to TFlite with onnx2tf</a></li>
+        <li><a href="#-pytorch-to-openvino">💥 PyTorch to OpenVINO</a></li>
+        <li><a href="#-wrap-up">🏁 Wrap Up</a></li>
+      </ul>
+</nav>
+          
+          <hr>
+          <style type="text/css">
+    .notice{padding:18px;line-height:24px;margin-bottom:24px;border-radius:4px;color:#6c757d;background:#e7f2fa}.notice
+    p:last-child{margin-bottom:0}.notice-title{margin:-18px -18px 12px;padding:4px 18px;border-radius:4px 4px 0
+    0;font-weight:700;color:#fff;background:#6ab0de; text-transform:uppercase}.notice.warning
+    .notice-title{background:rgba(217,83,79,.9)}.notice.warning{background:#fae2e2}.notice.info
+    .notice-title{background:#f0b37e;}.notice.info{background:#fff2db}.notice.note
+    .notice-title{background:#6ab0de}.notice.note{background:#e7f2fA}.notice.tip
+    .notice-title{background:rgba(92,184,92,.8)}.notice.tip{background:#e6f9e6}.icon-notice{display:inline-flex;align-self:center;margin-right:8px}.icon-notice
+    img,.icon-notice svg{height:1em;width:1em;fill:currentColor}.icon-notice img,.icon-notice.baseline
+    svg{top:0.125em;position:relative}</style>
+    <div><svg width="0" height="0" display="none" xmlns="http://www.w3.org/2000/svg">
+            <symbol id="tip-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+                <path
+                    d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z" />
+            </symbol>
+            <symbol id="note-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+                <path
+                    d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z" />
+            </symbol>
+            <symbol id="warning-notice" viewBox="0 0 576 512" preserveAspectRatio="xMidYMid meet">
+                <path
+                    d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z" />
+            </symbol>
+            <symbol id="info-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+                <path
+                    d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" />
+            </symbol>
+        </svg></div><div class="notice info" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#info-notice"></use>
+                </svg></span>info</p><p>This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me <a href="https://dicksonneoh.com/contact/" target="_blank" rel="nofollow noopener noreferrer">here</a>, on <a href="https://www.linkedin.com/in/dickson-neoh/" target="_blank" rel="nofollow noopener noreferrer">LinkedIn</a>, or <a href="https://twitter.com/dicksonneoh7" target="_blank" rel="nofollow noopener noreferrer">Twitter</a>. </p></div>
+<h3 id="-motivation---edge-deployment">🚀 Motivation - Edge Deployment</h3>
+<p>It&rsquo;s late 2023, everyone seems to be talking about complex and larger models.</p>
+<p>Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power.</p>
+<p>Typically that&rsquo;s available in cloud-based environments.
+Cloud-based environments has limitations, such as latency, bandwidth constraints, and privacy concerns.</p>
+<p>This is when edge deployment comes into play.</p>
+<blockquote class="blockquote">
+  <p class="mb-0">In simple terms, edge deployment means running a model close to the source of the data. For example running a face recognition model on an IPhone.</p>
+</blockquote>
+<p>Why edge deployment:</p>
+<ol>
+<li>
+<p><strong>Low Latency</strong>: Edge devices process data locally. This reduces the time it takes for a model to produce an output.</p>
+</li>
+<li>
+<p><strong>Privacy</strong>: Your data stays on the device. This reduces the risk of data breaches and better compliance with data privacy regulations.</p>
+</li>
+<li>
+<p><strong>Robustness</strong>: Edge devices can function with or without an internet connection. This provides reliability and robustness.</p>
+</li>
+</ol>
+<div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>But, there&rsquo;s a caveat - Edge devices often have limited computational resources. </p></div>
+<p>This is why large models typically go through optimizations before it is deployed on edge devices. In this blog post, we&rsquo;ll look into ONNX, OpenVINO and TFlite - some of the most popular form of deployement format.</p>
+<p>In this post, you&rsquo;ll learn how to convert PyTorch Image Models (TIMM) into ONNX format, a crucial step in preparing your models for efficient edge deployment.</p>
+<div class="notice tip" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>By the end of this post you&rsquo;ll learn how to</p>
+<ul>
+<li>Load any model from TIMM.</li>
+<li>Convert the model into ONNX, OpenVINO and TFlite format.</li>
+<li>Optmize the model to improve inference latency.</li>
+</ul>
+<p>The codes for this post are on my <a href="https://github.com/dnth/from-pytorch-to-edge-deployment-blogpost" target="_blank" rel="nofollow noopener noreferrer">GitHub repo</a>.</p></div>
+<p>But first, let&rsquo;s load a PyTorch computer vision model from TIMM.</p>
+<h3 id="-torch-image-models-timm">🖼️ Torch Image Models (TIMM)</h3>
+<p>TIMM, or <a href="https://huggingface.co/docs/timm/quickstart" target="_blank" rel="nofollow noopener noreferrer">Torch Image Models</a>, is a Python library that provides a collection of pre-trained machine learning models specifically designed for computer vision tasks.</p>
+<p>To date, TIMM provides more than 1000 state-of-the-art computer vision models trained on various datasets.
+Many state-of-the-art models are also build using TIMM.</p>
+<p>Install TIMM by running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pip install timm
+</span></span></code></pre></div><p>I&rsquo;m using version <code>timm==0.9.7</code> in the post.</p>
+<p>Presently there are 1212 models on timm as listed on <a href="https://huggingface.co/timm" target="_blank" rel="nofollow noopener noreferrer">Hugging Face</a>.</p>
+
+
+
+
+
+<figure>
+	
+    
+        <img src="/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/timm_hf.png" srcset="/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/timm_hf_hu3df36cd3fe1310cb97c9ae9ac098a4fd_223703_360x0_resize_box_3.png 360w, /portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/timm_hf_hu3df36cd3fe1310cb97c9ae9ac098a4fd_223703_720x0_resize_box_3.png 720w, /portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/timm_hf_hu3df36cd3fe1310cb97c9ae9ac098a4fd_223703_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" alt="Over a thousand pre-trained models on TIMM." />
+    
+    
+    <figcaption>
+        <p style="text-align: center;"><small>
+        Over a thousand pre-trained models on TIMM.
+        
+            
+        
+        </small></p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>Once installed load any model with 2 lines of code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> timm
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> timm<span style="color:#f92672">.</span>create_model(<span style="color:#e6db74">&#39;convnextv2_base.fcmae_ft_in22k_in1k&#39;</span>, 
+</span></span><span style="display:flex;"><span>                          pretrained<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p>Now, put model in evaluation mode for inference.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>eval()
+</span></span></code></pre></div><p>Next let&rsquo;s load an image from the web.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.request <span style="color:#f92672">import</span> urlopen
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>img <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(urlopen(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/beignets-task-guide.png&#39;</span>
+</span></span><span style="display:flex;"><span>))
+</span></span></code></pre></div>
+
+
+
+
+<figure>
+	
+    
+        <img src="/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/image_from_web.png" srcset="/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/image_from_web_hu5b09e0268a4b374bee9c06ad380c9f94_382010_360x0_resize_box_3.png 360w, /portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/image_from_web_hu5b09e0268a4b374bee9c06ad380c9f94_382010_720x0_resize_box_3.png 720w, /portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/image_from_web_hu5b09e0268a4b374bee9c06ad380c9f94_382010_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" alt="Download a random image from the web for inference." />
+    
+    
+    <figcaption>
+        <p style="text-align: center;"><small>
+        Download a random image from the web for inference.
+        
+            
+        
+        </small></p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>Next let&rsquo;s get the model&rsquo;s specific transforms</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data_config <span style="color:#f92672">=</span> timm<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>resolve_model_data_config(model)
+</span></span><span style="display:flex;"><span>transforms <span style="color:#f92672">=</span> timm<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>create_transform(<span style="color:#f92672">**</span>data_config, is_training<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div><p>With the right transforms we can run an inference on the downloaded image.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>output <span style="color:#f92672">=</span> model(transforms(img)<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">0</span>))  <span style="color:#75715e"># unsqueeze single image into batch of 1</span>
+</span></span></code></pre></div><p>And view the results</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>top5_probabilities, top5_class_indices <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>topk(output<span style="color:#f92672">.</span>softmax(dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>, k<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>top5_probabilities
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> tensor([[<span style="color:#ae81ff">12.4517</span>,  <span style="color:#ae81ff">8.8304</span>,  <span style="color:#ae81ff">5.8010</span>,  <span style="color:#ae81ff">3.0997</span>,  <span style="color:#ae81ff">3.0730</span>]], grad_fn<span style="color:#f92672">=&lt;</span>TopkBackward0<span style="color:#f92672">&gt;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>top5_class_indices
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> tensor([[<span style="color:#ae81ff">968</span>, <span style="color:#ae81ff">967</span>, <span style="color:#ae81ff">969</span>, <span style="color:#ae81ff">960</span>, <span style="color:#ae81ff">504</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> torch<span style="color:#f92672">.</span>Size([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1000</span>])
+</span></span></code></pre></div><p>To view the class names we load the ImageNet classe names with the corresponding index from the inference results.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> imagenet_classes <span style="color:#f92672">import</span> IMAGENET2012_CLASSES
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Retrieving class names</span>
+</span></span><span style="display:flex;"><span>im_classes <span style="color:#f92672">=</span> list(IMAGENET2012_CLASSES<span style="color:#f92672">.</span>values())
+</span></span><span style="display:flex;"><span>class_names <span style="color:#f92672">=</span> [im_classes[i] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> top5_class_indices[<span style="color:#ae81ff">0</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>class_names
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#e6db74">&#39;cup&#39;</span>, <span style="color:#e6db74">&#39;espresso&#39;</span>, <span style="color:#e6db74">&#39;eggnog&#39;</span>, <span style="color:#e6db74">&#39;chocolate sauce, chocolate syrup&#39;</span>, <span style="color:#e6db74">&#39;coffee mug&#39;</span>]
+</span></span></code></pre></div><p>Now let&rsquo;s measure the inference time on CPU.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>num_images <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>inference_mode():
+</span></span><span style="display:flex;"><span>    start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(num_images):
+</span></span><span style="display:flex;"><span>        model(transforms(img)<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">0</span>)) 
+</span></span><span style="display:flex;"><span>    end <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
+</span></span><span style="display:flex;"><span>    time_taken <span style="color:#f92672">=</span> end <span style="color:#f92672">-</span> start
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;PyTorch model on CPU: </span><span style="color:#e6db74">{</span>time_taken<span style="color:#f92672">/</span>num_images<span style="color:#f92672">*</span><span style="color:#ae81ff">1000</span><span style="color:#e6db74">:</span><span style="color:#e6db74">.3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> ms per image,</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;FPS: </span><span style="color:#e6db74">{</span>num_images<span style="color:#f92672">/</span>time_taken<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> PyTorch model on CPU: <span style="color:#ae81ff">109.419</span> ms per image,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> FPS: <span style="color:#ae81ff">9.14</span>
+</span></span></code></pre></div><!-- The following is a code snippet that shows how perform an inference on a DINOv2 model.
+
+```python
+from urllib.request import urlopen
+from PIL import Image
+import timm
+
+img = Image.open(urlopen(
+    'https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/beignets-task-guide.png'
+))
+
+model = timm.create_model(
+    'vit_small_patch14_dinov2.lvd142m',
+    pretrained=True,
+    num_classes=0,  # remove classifier nn.Linear
+)
+model = model.eval()
+
+# get model specific transforms (normalization, resize)
+data_config = timm.data.resolve_model_data_config(model)
+transforms = timm.data.create_transform(**data_config, is_training=False)
+
+output = model(transforms(img).unsqueeze(0))  # output is (batch_size, num_features) shaped tensor
+
+# or equivalently (without needing to set num_classes=0)
+
+output = model.forward_features(transforms(img).unsqueeze(0))
+# output is unpooled, a (1, 1370, 384) shaped tensor
+
+output = model.forward_head(output, pre_logits=True)
+# output is a (1, num_features) shaped tensor
+
+``` -->
+<!-- Output shape is `torch.Size([1, 384])`. -->
+<h3 id="-onnx-open-neural-network-exchange">🏆 ONNX (Open Neural Network Exchange)</h3>
+<blockquote class="blockquote">
+  <p class="mb-0">ONNX is an open format built to represent machine learning models.</p>
+</blockquote>
+<p>ONNX defines a common set of operators - the building blocks of machine learning and deep learning models - and a common file format to enable AI developers to use models with a variety of frameworks, tools, runtimes, and compilers.</p>
+<p>With ONNX, you can train a machine learning model in one framework (e.g. PyTorch) use the trained model in another (e.g. Tensorflow)</p>
+<div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>💫 In short, ONNX offers two benefits that helps edge deployment:</p>
+<ul>
+<li><strong>Interoperability</strong> - Develop in your preferred framework and not worry about deployment contranints.</li>
+<li><strong>Hardware access</strong> - ONNX compatible runtimes can maximize performance across hardware.</li>
+</ul></div>
+<h3 id="-pytorch-to-onnx">🔁 PyTorch to ONNX</h3>
+<p>Using TIMM export</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python onnx_export.py vit_base_patch14_dinov2.lvd142m.onnx --model timm/vit_base_patch14_dinov2.lvd142m --opset <span style="color:#ae81ff">16</span> --num-classes <span style="color:#ae81ff">0</span> --reparam --verbose
+</span></span></code></pre></div><p>Using torch export</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> timm.utils.model <span style="color:#f92672">import</span> reparameterize_model
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> reparameterize_model(model)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.onnx
+</span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model,
+</span></span><span style="display:flex;"><span>                 torch<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">518</span>, <span style="color:#ae81ff">518</span>, requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>),
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;vit_small_patch14_dinov2.lvd142m.onnx&#34;</span>,
+</span></span><span style="display:flex;"><span>                 export_params<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>                 opset_version<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>,
+</span></span><span style="display:flex;"><span>                 do_constant_folding<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>                 input_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;input&#39;</span>],
+</span></span><span style="display:flex;"><span>                 output_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;output&#39;</span>], 
+</span></span><span style="display:flex;"><span>                 dynamic_axes<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;input&#39;</span> : {<span style="color:#ae81ff">0</span> : <span style="color:#e6db74">&#39;batch_size&#39;</span>},   
+</span></span><span style="display:flex;"><span>                               <span style="color:#e6db74">&#39;output&#39;</span> : {<span style="color:#ae81ff">0</span> : <span style="color:#e6db74">&#39;batch_size&#39;</span>}}
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Simplify the converted ONNX model.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnxsim -Uq
+</span></span><span style="display:flex;"><span>onnxsim vit_small_patch14_dinov2.lvd142m.onnx vit_small_patch14_dinov2.lvd142m_simplified.onnx
+</span></span></code></pre></div><p>To run an inference in ONNX, install <code>onnxruntime</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pip install onnxruntime
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> onnxruntime <span style="color:#66d9ef">as</span> ort
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.request <span style="color:#f92672">import</span> urlopen
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load ONNX model</span>
+</span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> ort<span style="color:#f92672">.</span>InferenceSession(<span style="color:#e6db74">&#34;vit_small_patch14_dinov2.lvd142m_simplified.onnx&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load an image</span>
+</span></span><span style="display:flex;"><span>img <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(urlopen(<span style="color:#e6db74">&#39;https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/beignets-task-guide.png&#39;</span>))
+</span></span><span style="display:flex;"><span>img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#39;RGB&#39;</span>)
+</span></span><span style="display:flex;"><span>img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>resize((<span style="color:#ae81ff">518</span>, <span style="color:#ae81ff">518</span>))
+</span></span><span style="display:flex;"><span>img_np <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(img)<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float32)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert data to the shape the ONNX model expects</span>
+</span></span><span style="display:flex;"><span>input_data <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>transpose(img_np, (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))  <span style="color:#75715e"># Convert to (C, H, W)</span>
+</span></span><span style="display:flex;"><span>input_data <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(input_data, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)  <span style="color:#75715e"># Add a batch dimension</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>input_data<span style="color:#f92672">.</span>shape <span style="color:#75715e"># (1, 3, 518, 518)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get input name from the model</span>
+</span></span><span style="display:flex;"><span>input_name <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>get_inputs()[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform inference</span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>run(<span style="color:#66d9ef">None</span>, {input_name: input_data})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Extract output data (assuming model has a single output)</span>
+</span></span><span style="display:flex;"><span>output_data <span style="color:#f92672">=</span> output[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output_data<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (1, 384)</span>
+</span></span></code></pre></div><h3 id="-visualize-model-with-netron">👁️ Visualize Model with Netron</h3>
+<p>Netron.app</p>
+
+
+
+
+
+<figure>
+	
+    
+        <img src="/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/dinov2_simplified.png" srcset="/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/dinov2_simplified_hu29722ba11400fac6449481bacb617d5f_63805_360x0_resize_box_3.png 360w, /portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/dinov2_simplified_hu29722ba11400fac6449481bacb617d5f_63805_720x0_resize_box_3.png 720w, /portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/dinov2_simplified_hu29722ba11400fac6449481bacb617d5f_63805_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" alt="DINOv2 simplified ONNX model." />
+    
+    
+    <figcaption>
+        <p style="text-align: center;"><small>
+        DINOv2 simplified ONNX model.
+        
+            
+        
+        </small></p> 
+    </figcaption>
+    
+</figure>
+
+
+<h3 id="-pytorch-to-torchscript">📜 PyTorch to Torchscript</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> torch.utils.mobile_optimizer <span style="color:#f92672">import</span> optimize_for_mobile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>eval()
+</span></span><span style="display:flex;"><span>example <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">224</span>)
+</span></span><span style="display:flex;"><span>traced_script_module <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>jit<span style="color:#f92672">.</span>trace(model, example)
+</span></span><span style="display:flex;"><span>optimized_traced_model <span style="color:#f92672">=</span> optimize_for_mobile(traced_script_module)
+</span></span><span style="display:flex;"><span>optimized_traced_model<span style="color:#f92672">.</span>_save_for_lite_interpreter(<span style="color:#e6db74">&#34;torchscript_edgenext_xx_small.pt&#34;</span>)
+</span></span></code></pre></div><h3 id="-onnx-to-openvino">🪜 ONNX to OpenVINO</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> openvino <span style="color:#66d9ef">as</span> ov
+</span></span><span style="display:flex;"><span>ov_model <span style="color:#f92672">=</span> ov<span style="color:#f92672">.</span>convert_model(<span style="color:#e6db74">&#39;dv2s_redo_simplified.onnx&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###### Option 1: Save to OpenVINO IR:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># save model to OpenVINO IR for later use</span>
+</span></span><span style="display:flex;"><span>ov<span style="color:#f92672">.</span>save_model(ov_model, <span style="color:#e6db74">&#39;dv2s_redo_simplified.xml&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###### Option 2: Compile and infer with OpenVINO:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># compile model</span>
+</span></span><span style="display:flex;"><span>compiled_model <span style="color:#f92672">=</span> ov<span style="color:#f92672">.</span>compile_model(ov_model)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># prepare input_data</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>input_data <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">224</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># run inference</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> compiled_model(input_data)
+</span></span></code></pre></div><h3 id="-onnx-to-tflite-with-onnx2tf">💫 ONNX to TFlite with onnx2tf</h3>
+<p><a href="https://github.com/PINTO0309/onnx2tf" target="_blank" rel="nofollow noopener noreferrer">onnx2tf</a> is a tool to convert ONNX files (NCHW) to TensorFlow/TFLite/Keras format (NHWC).</p>
+<h3 id="-pytorch-to-openvino">💥 PyTorch to OpenVINO</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> openvino.torch
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>compile(model, backend<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;openvino&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># OR</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>compile(model, backend<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;openvino_ts&#39;</span>)
+</span></span></code></pre></div><div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><ul>
+<li><code>openvino</code> -
+With this backend, Torch FX subgraphs are directly converted to OpenVINO representation without any additional PyTorch based tracing/scripting.</li>
+<li><code>openvino_ts</code> -
+With this backend, Torch FX subgraphs are first traced/scripted with PyTorch Torchscript, and then converted to OpenVINO representation.</li>
+</ul></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> openvino <span style="color:#66d9ef">as</span> ov
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create OpenVINO Core object instance</span>
+</span></span><span style="display:flex;"><span>core <span style="color:#f92672">=</span> ov<span style="color:#f92672">.</span>Core()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert model to openvino.runtime.Model object</span>
+</span></span><span style="display:flex;"><span>ov_model <span style="color:#f92672">=</span> ov<span style="color:#f92672">.</span>convert_model(model)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MODEL_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;DINOV2S&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Save openvino.runtime.Model object on disk</span>
+</span></span><span style="display:flex;"><span>ov<span style="color:#f92672">.</span>save_model(ov_model, <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>MODEL_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">_dynamic.xml&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load OpenVINO model on device</span>
+</span></span><span style="display:flex;"><span>compiled_model <span style="color:#f92672">=</span> core<span style="color:#f92672">.</span>compile_model(ov_model, <span style="color:#e6db74">&#39;AUTO&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>input_tensor<span style="color:#f92672">=</span>transforms(img)<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> compiled_model(input_tensor)[<span style="color:#ae81ff">0</span>]
+</span></span></code></pre></div><h3 id="-wrap-up">🏁 Wrap Up</h3>
+
+          
+
+
+
+
+
+<section class="social-share">
+
+    <ul class="share-icons">
+        <hr>
+
+        <h5>🤟 Follow me</h5>
+
+        <p>
+            Don't want to miss any of my future content? Follow me on Twitter and LinkedIn where I share these tips in
+            bite-size posts.
+        </p>
+
+        
+        <li>
+            <a href="https://twitter.com/dicksonneoh7" target="_blank" rel="noopener" aria-label="Follow on Twitter"
+                class="share-btn twitter">
+                <svg
+   width="6.3503098mm"
+   height="5.1592798mm"
+   viewBox="0 0 6.3503098 5.1592799"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="twitter_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-38.14813"
+     inkscape:cy="32.360138"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-125.63688,-104.07795)">
+    <path
+       d="m 131.98686,104.68815 c -0.23316,0.10418 -0.48452,0.17363 -0.74745,0.20505 0.26955,-0.1604 0.47625,-0.41672 0.57216,-0.72099 -0.25135,0.14883 -0.53082,0.25797 -0.82682,0.31585 -0.23812,-0.25136 -0.57712,-0.41011 -0.95084,-0.41011 -0.71934,0 -1.30308,0.58374 -1.30308,1.30307 0,0.10253 0.0116,0.20175 0.0331,0.29601 -1.08314,-0.0546 -2.04226,-0.57216 -2.68553,-1.36095 -0.11079,0.19182 -0.17528,0.41672 -0.17528,0.65484 0,0.45145 0.22985,0.84997 0.57877,1.08479 -0.21332,-0.007 -0.41506,-0.0661 -0.59035,-0.16371 v 0.0165 c 0,0.63169 0.44979,1.15755 1.04511,1.27661 -0.10914,0.0298 -0.2249,0.0463 -0.34396,0.0463 -0.0843,0 -0.16537,-0.008 -0.24474,-0.0232 0.16536,0.51759 0.64657,0.89463 1.21708,0.90455 -0.44648,0.34892 -1.00707,0.55728 -1.61726,0.55728 -0.10584,0 -0.20836,-0.007 -0.31089,-0.0182 0.57712,0.37041 1.26173,0.58539 1.9976,0.58539 2.39614,0 3.70583,-1.98438 3.70583,-3.70582 0,-0.0562 -0.002,-0.11245 -0.003,-0.16868 0.25466,-0.18355 0.47459,-0.41341 0.64988,-0.67468 z"
+       id="path1039"
+       style="fill:#ffffff;stroke-width:0.0165365" />
+  </g>
+</svg>
+&nbsp;
+                Twitter
+            </a>
+        </li>
+        &nbsp;
+
+        <li>
+            <a href="https://www.linkedin.com/in/dickson-neoh/" target="_blank" rel="noopener"
+                aria-label="Follow on LinkedIn" class="share-btn linkedin">
+                <svg
+   width="6.3499999mm"
+   height="6.3499999mm"
+   viewBox="0 0 6.3499999 6.3499999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="linkedin_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-6.2264764"
+     inkscape:cy="40.603642"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-129.66672,-101.87176)">
+    <path
+       d="m 129.66672,102.59335 v 4.90682 c 0,0.39507 0.32652,0.72159 0.72159,0.72159 h 4.90682 c 0.39507,0 0.72159,-0.32652 0.72159,-0.72159 v -4.90682 c 0,-0.39507 -0.32652,-0.72159 -0.72159,-0.72159 h -4.90682 c -0.39507,0 -0.72159,0.32652 -0.72159,0.72159 z m 5.62841,-0.14432 c 0.083,0 0.14432,0.0613 0.14432,0.14432 v 4.90682 c 0,0.083 -0.0613,0.14431 -0.14432,0.14431 h -4.90682 c -0.083,0 -0.14432,-0.0613 -0.14432,-0.14431 v -4.90682 c 0,-0.083 0.0613,-0.14432 0.14432,-0.14432 z m -4.55504,0.99219 c 0,0.2742 0.22189,0.49609 0.49609,0.49609 0.27421,0 0.4961,-0.22189 0.4961,-0.49609 0,-0.27421 -0.22189,-0.4961 -0.4961,-0.4961 -0.2742,0 -0.49609,0.22189 -0.49609,0.4961 z m 2.30007,1.26278 h -0.018 v -0.37883 h -0.81179 v 2.74204 h 0.84787 v -1.35298 c 0,-0.35719 0.0703,-0.70355 0.51413,-0.70355 0.43657,0 0.44198,0.40409 0.44198,0.72159 v 1.33494 h 0.84787 v -1.50632 c 0,-0.73783 -0.15695,-1.29886 -1.01925,-1.29886 -0.41492,0 -0.68912,0.2273 -0.80277,0.44197 z m -2.21889,2.36321 h 0.85689 v -2.74204 h -0.85689 z"
+       id="path1321"
+       style="stroke-width:0.0180398;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                LinkedIn
+            </a>
+        </li>
+        &nbsp;
+
+        <li>
+            <a href="https://github.com/dnth/" target="_blank" rel="noopener" aria-label="Follow on GitHub"
+                class="share-btn github">
+                <svg width="24" height="24" viewBox="0 0 256 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+    <g>
+        <path d="M128.00106,0 C57.3172926,0 0,57.3066942 0,128.00106 C0,184.555281 36.6761997,232.535542 87.534937,249.460899 C93.9320223,250.645779 96.280588,246.684165 96.280588,243.303333 C96.280588,240.251045 96.1618878,230.167899 96.106777,219.472176 C60.4967585,227.215235 52.9826207,204.369712 52.9826207,204.369712 C47.1599584,189.574598 38.770408,185.640538 38.770408,185.640538 C27.1568785,177.696113 39.6458206,177.859325 39.6458206,177.859325 C52.4993419,178.762293 59.267365,191.04987 59.267365,191.04987 C70.6837675,210.618423 89.2115753,204.961093 96.5158685,201.690482 C97.6647155,193.417512 100.981959,187.77078 104.642583,184.574357 C76.211799,181.33766 46.324819,170.362144 46.324819,121.315702 C46.324819,107.340889 51.3250588,95.9223682 59.5132437,86.9583937 C58.1842268,83.7344152 53.8029229,70.715562 60.7532354,53.0843636 C60.7532354,53.0843636 71.5019501,49.6441813 95.9626412,66.2049595 C106.172967,63.368876 117.123047,61.9465949 128.00106,61.8978432 C138.879073,61.9465949 149.837632,63.368876 160.067033,66.2049595 C184.49805,49.6441813 195.231926,53.0843636 195.231926,53.0843636 C202.199197,70.715562 197.815773,83.7344152 196.486756,86.9583937 C204.694018,95.9223682 209.660343,107.340889 209.660343,121.315702 C209.660343,170.478725 179.716133,181.303747 151.213281,184.472614 C155.80443,188.444828 159.895342,196.234518 159.895342,208.176593 C159.895342,225.303317 159.746968,239.087361 159.746968,243.303333 C159.746968,246.709601 162.05102,250.70089 168.53925,249.443941 C219.370432,232.499507 256,184.536204 256,128.00106 C256,57.3066942 198.691187,0 128.00106,0 Z M47.9405593,182.340212 C47.6586465,182.976105 46.6581745,183.166873 45.7467277,182.730227 C44.8183235,182.312656 44.2968914,181.445722 44.5978808,180.80771 C44.8734344,180.152739 45.876026,179.97045 46.8023103,180.409216 C47.7328342,180.826786 48.2627451,181.702199 47.9405593,182.340212 Z M54.2367892,187.958254 C53.6263318,188.524199 52.4329723,188.261363 51.6232682,187.366874 C50.7860088,186.474504 50.6291553,185.281144 51.2480912,184.70672 C51.8776254,184.140775 53.0349512,184.405731 53.8743302,185.298101 C54.7115892,186.201069 54.8748019,187.38595 54.2367892,187.958254 Z M58.5562413,195.146347 C57.7719732,195.691096 56.4895886,195.180261 55.6968417,194.042013 C54.9125733,192.903764 54.9125733,191.538713 55.713799,190.991845 C56.5086651,190.444977 57.7719732,190.936735 58.5753181,192.066505 C59.3574669,193.22383 59.3574669,194.58888 58.5562413,195.146347 Z M65.8613592,203.471174 C65.1597571,204.244846 63.6654083,204.03712 62.5716717,202.981538 C61.4524999,201.94927 61.1409122,200.484596 61.8446341,199.710926 C62.5547146,198.935137 64.0575422,199.15346 65.1597571,200.200564 C66.2704506,201.230712 66.6095936,202.705984 65.8613592,203.471174 Z M75.3025151,206.281542 C74.9930474,207.284134 73.553809,207.739857 72.1039724,207.313809 C70.6562556,206.875043 69.7087748,205.700761 70.0012857,204.687571 C70.302275,203.678621 71.7478721,203.20382 73.2083069,203.659543 C74.6539041,204.09619 75.6035048,205.261994 75.3025151,206.281542 Z M86.046947,207.473627 C86.0829806,208.529209 84.8535871,209.404622 83.3316829,209.4237 C81.8013,209.457614 80.563428,208.603398 80.5464708,207.564772 C80.5464708,206.498591 81.7483088,205.631657 83.2786917,205.606221 C84.8005962,205.576546 86.046947,206.424403 86.046947,207.473627 Z M96.6021471,207.069023 C96.7844366,208.099171 95.7267341,209.156872 94.215428,209.438785 C92.7295577,209.710099 91.3539086,209.074206 91.1652603,208.052538 C90.9808515,206.996955 92.0576306,205.939253 93.5413813,205.66582 C95.054807,205.402984 96.4092596,206.021919 96.6021471,207.069023 Z" fill="#FFFFFF"></path>
+    </g>
+</svg>&nbsp;
+                GitHub
+            </a>
+        </li>
+        &nbsp;
+        <hr>
+        <h5>🔄 Share this post</h5>
+        
+        
+        <li>
+            <a href="https://twitter.com/intent/tweet?&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2funlocking_edge_ml_from_pytorch_to_edge_deployment%2f&amp;text=Unlocking%20Edge%20ML%3a%20From%20PyTorch%20to%20Edge%20Deployment @dicksonneoh7"
+                target="_blank" rel="noopener" aria-label="Share on Twitter" class="share-btn twitter">
+                <svg
+   width="6.3503098mm"
+   height="5.1592798mm"
+   viewBox="0 0 6.3503098 5.1592799"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="twitter_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-38.14813"
+     inkscape:cy="32.360138"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-125.63688,-104.07795)">
+    <path
+       d="m 131.98686,104.68815 c -0.23316,0.10418 -0.48452,0.17363 -0.74745,0.20505 0.26955,-0.1604 0.47625,-0.41672 0.57216,-0.72099 -0.25135,0.14883 -0.53082,0.25797 -0.82682,0.31585 -0.23812,-0.25136 -0.57712,-0.41011 -0.95084,-0.41011 -0.71934,0 -1.30308,0.58374 -1.30308,1.30307 0,0.10253 0.0116,0.20175 0.0331,0.29601 -1.08314,-0.0546 -2.04226,-0.57216 -2.68553,-1.36095 -0.11079,0.19182 -0.17528,0.41672 -0.17528,0.65484 0,0.45145 0.22985,0.84997 0.57877,1.08479 -0.21332,-0.007 -0.41506,-0.0661 -0.59035,-0.16371 v 0.0165 c 0,0.63169 0.44979,1.15755 1.04511,1.27661 -0.10914,0.0298 -0.2249,0.0463 -0.34396,0.0463 -0.0843,0 -0.16537,-0.008 -0.24474,-0.0232 0.16536,0.51759 0.64657,0.89463 1.21708,0.90455 -0.44648,0.34892 -1.00707,0.55728 -1.61726,0.55728 -0.10584,0 -0.20836,-0.007 -0.31089,-0.0182 0.57712,0.37041 1.26173,0.58539 1.9976,0.58539 2.39614,0 3.70583,-1.98438 3.70583,-3.70582 0,-0.0562 -0.002,-0.11245 -0.003,-0.16868 0.25466,-0.18355 0.47459,-0.41341 0.64988,-0.67468 z"
+       id="path1039"
+       style="fill:#ffffff;stroke-width:0.0165365" />
+  </g>
+</svg>
+&nbsp;
+                Twitter
+            </a>
+        </li>
+         &nbsp;
+
+        
+        
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2funlocking_edge_ml_from_pytorch_to_edge_deployment%2f&amp;source=http%3a%2f%2flocalhost%3a1313%2fportfolio%2funlocking_edge_ml_from_pytorch_to_edge_deployment%2f&amp;title=Unlocking%20Edge%20ML%3a%20From%20PyTorch%20to%20Edge%20Deployment&amp;summary=Unlocking%20Edge%20ML%3a%20From%20PyTorch%20to%20Edge%20Deployment"
+                target="_blank" rel="noopener" aria-label="Share on LinkedIn" class="share-btn linkedin">
+                <svg
+   width="6.3499999mm"
+   height="6.3499999mm"
+   viewBox="0 0 6.3499999 6.3499999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="linkedin_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-6.2264764"
+     inkscape:cy="40.603642"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-129.66672,-101.87176)">
+    <path
+       d="m 129.66672,102.59335 v 4.90682 c 0,0.39507 0.32652,0.72159 0.72159,0.72159 h 4.90682 c 0.39507,0 0.72159,-0.32652 0.72159,-0.72159 v -4.90682 c 0,-0.39507 -0.32652,-0.72159 -0.72159,-0.72159 h -4.90682 c -0.39507,0 -0.72159,0.32652 -0.72159,0.72159 z m 5.62841,-0.14432 c 0.083,0 0.14432,0.0613 0.14432,0.14432 v 4.90682 c 0,0.083 -0.0613,0.14431 -0.14432,0.14431 h -4.90682 c -0.083,0 -0.14432,-0.0613 -0.14432,-0.14431 v -4.90682 c 0,-0.083 0.0613,-0.14432 0.14432,-0.14432 z m -4.55504,0.99219 c 0,0.2742 0.22189,0.49609 0.49609,0.49609 0.27421,0 0.4961,-0.22189 0.4961,-0.49609 0,-0.27421 -0.22189,-0.4961 -0.4961,-0.4961 -0.2742,0 -0.49609,0.22189 -0.49609,0.4961 z m 2.30007,1.26278 h -0.018 v -0.37883 h -0.81179 v 2.74204 h 0.84787 v -1.35298 c 0,-0.35719 0.0703,-0.70355 0.51413,-0.70355 0.43657,0 0.44198,0.40409 0.44198,0.72159 v 1.33494 h 0.84787 v -1.50632 c 0,-0.73783 -0.15695,-1.29886 -1.01925,-1.29886 -0.41492,0 -0.68912,0.2273 -0.80277,0.44197 z m -2.21889,2.36321 h 0.85689 v -2.74204 h -0.85689 z"
+       id="path1321"
+       style="stroke-width:0.0180398;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                LinkedIn
+            </a>
+        </li>
+         &nbsp;
+
+        
+        
+        <li>
+            <a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fportfolio%2funlocking_edge_ml_from_pytorch_to_edge_deployment%2f" target="_blank" rel="noopener"
+                aria-label="Share on Facebook" class="share-btn facebook">
+                <svg
+   width="6.3499999mm"
+   height="6.3499999mm"
+   viewBox="0 0 6.3499999 6.3499999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="facebook_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-7.8050197"
+     inkscape:cy="32.710925"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-130.36281,-104.14567)">
+    <path
+       d="m 130.36281,104.72294 v 5.19545 c 0,0.3157 0.26158,0.57728 0.57727,0.57728 h 5.19546 c 0.3157,0 0.57727,-0.26158 0.57727,-0.57728 v -5.19545 c 0,-0.3157 -0.26157,-0.57727 -0.57727,-0.57727 h -5.19546 c -0.31569,0 -0.57727,0.26157 -0.57727,0.57727 z m 5.77273,0 v 5.19545 h -1.4973 v -1.94829 h 0.74865 l 0.10824,-0.86591 h -0.85689 v -0.55923 c 0,-0.25256 0.0631,-0.42394 0.42393,-0.42394 h 0.46904 v -0.78473 c -0.0794,-0.0108 -0.35719,-0.0271 -0.67649,-0.0271 -0.66567,0 -1.11847,0.40048 -1.11847,1.14553 v 0.64943 h -0.75767 v 0.86591 h 0.75767 v 1.94829 h -2.79617 v -5.19545 z"
+       id="path1085"
+       style="stroke-width:0.0180398;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                Facebook
+            </a>
+        </li>
+         &nbsp;
+
+        <br>
+
+        
+        
+        <li>
+            <a href="https://telegram.me/share/url?text=Unlocking%20Edge%20ML%3a%20From%20PyTorch%20to%20Edge%20Deployment&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2funlocking_edge_ml_from_pytorch_to_edge_deployment%2f" target="_blank"
+                rel="noopener" aria-label="Share on Telegram" class="share-btn telegram">
+                <svg width="7.3503098mm"
+   height="7.1592798mm" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 189.473 189.473" style="enable-background:new 0 0 189.473 189.473;" xml:space="preserve">
+<g>
+	<path d="M152.531,179.476c-1.48,0-2.95-0.438-4.211-1.293l-47.641-32.316l-25.552,18.386c-2.004,1.441-4.587,1.804-6.914,0.972
+		c-2.324-0.834-4.089-2.759-4.719-5.146l-12.83-48.622L4.821,93.928c-2.886-1.104-4.8-3.865-4.821-6.955
+		c-0.021-3.09,1.855-5.877,4.727-7.02l174.312-69.36c0.791-0.336,1.628-0.53,2.472-0.582c0.302-0.018,0.605-0.018,0.906-0.001
+		c1.748,0.104,3.465,0.816,4.805,2.13c0.139,0.136,0.271,0.275,0.396,0.42c1.11,1.268,1.72,2.814,1.835,4.389
+		c0.028,0.396,0.026,0.797-0.009,1.198c-0.024,0.286-0.065,0.571-0.123,0.854L159.898,173.38c-0.473,2.48-2.161,4.556-4.493,5.523
+		C154.48,179.287,153.503,179.476,152.531,179.476z M104.862,130.579l42.437,28.785L170.193,39.24l-82.687,79.566l17.156,11.638
+		C104.731,130.487,104.797,130.533,104.862,130.579z M69.535,124.178l5.682,21.53l12.242-8.809l-16.03-10.874
+		C70.684,125.521,70.046,124.893,69.535,124.178z M28.136,86.782l31.478,12.035c2.255,0.862,3.957,2.758,4.573,5.092l3.992,15.129
+		c0.183-1.745,0.974-3.387,2.259-4.624L149.227,38.6L28.136,86.782z"
+		id="path1039"
+       style="fill:#ffffff;stroke-width:0.0165365"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+&nbsp;
+                Telegram
+            </a>
+        </li>
+         &nbsp;
+
+        
+        
+        <li>
+            <a href="whatsapp://send?text=Unlocking%20Edge%20ML%3a%20From%20PyTorch%20to%20Edge%20Deployment%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20convert%20PyTorch%20Image%20Models%20%28TIMM%29%20to%20ONNX%20format%20for%20efficient%20edge%20deployment.%20This%20step-by-step%20guide%20covers%20model%20optimization%20techniques%2c%20code%20examples%2c%20and%20troubleshooting%20tips%2c%20making%20it%20a%20go-to%20resource%20for%20machine%20learning%20practitioners%20looking%20to%20deploy%20models%20on%20edge%20devices.%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2funlocking_edge_ml_from_pytorch_to_edge_deployment%2f%0a" target="_blank" aria-label="Share on WhatsApp"
+                class="share-btn whatsapp">
+                <svg
+   width="6.0324998mm"
+   height="6.05896mm"
+   viewBox="0 0 6.0324997 6.05896"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="whatsapp_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="4.9987205"
+     inkscape:cy="35.692618"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-126.67735,-103.17712)">
+    <path
+       d="m 131.83672,104.07671 c -0.58208,-0.58209 -1.34937,-0.89959 -2.14312,-0.89959 -1.64042,0 -2.98979,1.34938 -2.98979,3.01625 0,0.52917 0.13229,1.03188 0.39687,1.48167 l -0.42333,1.56104 1.5875,-0.42333 c 0.42333,0.23812 0.92604,0.34396 1.42875,0.34396 1.66687,0 3.01625,-1.34938 3.01625,-3.01625 -0.0265,-0.74084 -0.3175,-1.50813 -0.87313,-2.06375 z m -2.14312,4.6302 c -0.44979,0 -0.87313,-0.13229 -1.27,-0.34395 l -0.10583,-0.0529 -0.92605,0.26458 0.26459,-0.89958 -0.0794,-0.13229 c -0.26458,-0.39688 -0.37041,-0.84667 -0.37041,-1.34938 0,-1.37583 1.11125,-2.48708 2.48708,-2.48708 0.66146,0 1.29646,0.26458 1.77271,0.74083 0.47625,0.47625 0.74083,1.11125 0.74083,1.77271 -0.0265,1.37583 -1.13771,2.48708 -2.51354,2.48708 z m 1.34937,-1.87854 c -0.0794,-0.0265 -0.44979,-0.23812 -0.5027,-0.26458 -0.0794,-0.0265 -0.1323,-0.0265 -0.18521,0.0265 -0.0529,0.0794 -0.21167,0.26458 -0.23813,0.29104 -0.0529,0.0529 -0.0794,0.0529 -0.15875,0.0265 -0.0794,-0.0265 -0.3175,-0.13229 -0.60854,-0.37042 -0.23812,-0.21167 -0.37042,-0.44979 -0.42333,-0.52917 -0.0529,-0.0794 0,-0.13229 0.0265,-0.15875 0.0265,-0.0264 0.0794,-0.0794 0.10583,-0.13229 0.0529,-0.0265 0.0794,-0.0794 0.10583,-0.13229 0.0265,-0.0529 0,-0.10583 0,-0.13229 0,-0.0265 -0.18521,-0.39688 -0.26458,-0.55563 -0.0265,-0.10583 -0.10583,-0.0794 -0.13229,-0.0794 h -0.15875 c 0,0 -0.10584,0.0265 -0.18521,0.0794 -0.0794,0.0794 -0.26458,0.26459 -0.26458,0.635 0,0.37042 0.26458,0.74084 0.29104,0.79375 0.0265,0.0529 0.52916,0.82021 1.29646,1.13771 0.1852,0.0794 0.3175,0.13229 0.42333,0.15875 0.18521,0.0529 0.34396,0.0529 0.47625,0.0265 0.15875,-0.0265 0.44979,-0.18521 0.50271,-0.34396 0.0529,-0.18521 0.0529,-0.3175 0.0529,-0.34396 -0.0264,-0.0794 -0.0794,-0.10583 -0.15875,-0.13229 z"
+       id="path1793"
+       style="stroke-width:0.264583;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                WhatsApp
+            </a>
+        </li>
+         &nbsp;
+
+        
+        
+        <li>
+            <a href="mailto:?subject=Dickson%20Neoh%20-%20Personal%20Portfolio - Unlocking%20Edge%20ML%3a%20From%20PyTorch%20to%20Edge%20Deployment.&amp;body=Unlocking%20Edge%20ML%3a%20From%20PyTorch%20to%20Edge%20Deployment%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20convert%20PyTorch%20Image%20Models%20%28TIMM%29%20to%20ONNX%20format%20for%20efficient%20edge%20deployment.%20This%20step-by-step%20guide%20covers%20model%20optimization%20techniques%2c%20code%20examples%2c%20and%20troubleshooting%20tips%2c%20making%20it%20a%20go-to%20resource%20for%20machine%20learning%20practitioners%20looking%20to%20deploy%20models%20on%20edge%20devices.%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2funlocking_edge_ml_from_pytorch_to_edge_deployment%2f%0a" target="_blank"
+                class="share-btn email" aria-label="Share via Email">
+                <svg
+   width="6.3499999mm"
+   height="4.3961601mm"
+   viewBox="0 0 6.3499999 4.3961601"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="email_white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.701459"
+     inkscape:cx="-6.7526575"
+     inkscape:cy="33.4125"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="1920"
+     inkscape:window-y="1107"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-130.10375,-103.97942)">
+    <path
+       d="m 130.10375,104.22365 v 3.9077 0.24423 h 0.24423 5.86154 0.24423 v -0.24423 -3.9077 -0.24423 h -0.24423 -5.86154 -0.24423 z m 5.29675,0.24423 -2.12175,1.41196 -2.12175,-1.41196 z m -2.25913,1.91569 0.13738,0.0839 0.13738,-0.0839 2.54916,-1.70198 v 3.20553 h -5.37308 v -3.20553 z"
+       id="path824"
+       style="stroke-width:0.0152644;fill:#ffffff" />
+  </g>
+</svg>
+&nbsp;
+                Email
+            </a>
+        </li>
+        <hr>
+
+        
+        <section>
+            <h5>❤️ Show some love</h5>
+            <p>
+                Creating free ML contents doesn't pay my bills. Support me in creating more free contents like these. 
+                Consider buying me a coffee. Your support means a lot to me.
+            </p>
+            <div style="text-align:center">
+                <a href="https://www.buymeacoffee.com/dicksonneoh" target="_blank"><img
+                        src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee"
+                        style="height: 60px !important;width: 217px !important;"></a>
+            </div>
+        </section>
+        <hr>
+    </ul>
+</section>
+
+        </div>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <nav class="case-details-nav d-flex justify-content-between align-items-center">
+          
+          <div class="previous d-flex align-items-center">
+            <div class="icon mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15.556" height="28.285" viewBox="0 0 15.556 28.285">
+                <g data-name="Group 1243" fill="#2d2d2d">
+                  <path data-name="Path 1456" d="M3.391 12.728l9.75 14.142-.982 1.414-9.742-14.142z" />
+                  <path data-name="Path 1455" d="M13.137 1.41L3.39 15.558l-.975-1.415L12.166 0z" />
+                </g>
+              </svg>
+            </div>
+            <div class="content">
+              <span class="small">Prev blog</span>
+              <div class="col-lg-9">
+                <div class="blog-page__item">
+                  <div class="blog-page__item-thumb">
+                    <a href="http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/">
+                      <img src="http://localhost:1313/images/portfolio/bringing_high_quality_image_models_to_mobile/thumbnail.gif" alt="post-image">
+                    </a>
+                  </div>
+                  <h5 class="title"><a class="text-dark"
+                    href="http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/">Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</a></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0 mb-3">Let’s Start a Project</h2>
+					</div>
+					<div class="footer__cta_action">
+						
+					</div>
+					<a href="https://api.whatsapp.com/send?phone=60133250827" rel="noopener" target="_blank" class="btn btn-light btn-zoom mr-3 mb-3 fa fa-whatsapp my-float">&nbsp&nbspChat on WhatsApp</a>
+					<a href="https://t.me/dicksonneoh" rel="noopener" target="_blank" class="btn btn-light btn-zoom mr-3 mb-3 fa fa-telegram my-float">&nbsp&nbspChat on Telegram</a>
+					<a class="btn btn-light btn-zoom mb-3 fa fa-envelope" href="http://localhost:1313/contact">&nbsp&nbspSend me a message</a>
+				</div>
+			</div>
+		</div>
+		<div class="row footer__widget">
+			<div class="col-lg-4">
+				<div class="footer__widget_logo mb-5">
+					<img src="http://localhost:1313/images/site-navigation/logo_dn_resize.png" alt="widget-logo">
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="text-light footer__widget_sitemap mb-5">
+					<h4 class="base-font">Sitemap</h4>
+					<ul class="unstyle-list small">
+						
+						
+						<li class="mb-2"><a class="text-light" href="http://localhost:1313/#about">About me</a></li>
+						
+						<li class="mb-2"><a class="text-light" href="http://localhost:1313/">Frequently Ask Question</a></li>
+						
+						<li class="mb-2"><a class="text-light" href="http://localhost:1313/">Privacy &amp; Policy</a></li>
+						
+						<li class="mb-2"><a class="text-light" href="http://localhost:1313/#portfolio">Latest Article</a></li>
+						
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="text-light footer__widget_address mb-5">
+					<h4 class="base-font">Address</h4>
+					
+					<ul class="fa-ul small">
+						<li class="mb-2"><a class="text-light" href="tel:&#43;%2860%29%203%208921%202020"><span class="fa-li"><i
+										class="fa fa-phone"></i></span>&#43;(60) 3 8921 2020</a></li>
+						<li class="mb-2"><a class="text-light" href="mailto:dickson.neoh@gmail.com"><span class="fa-li"><i
+										class="fa fa-envelope"></i></span>dickson.neoh@gmail.com</a></li>
+						<li class="mb-2">
+							<span class="fa-li"><i class="fa fa-map-marker"></i></span>Kuala Lumpur, Malaysia.</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>All right reserved copyright © Dickson Neoh 2023</p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/dickson-neoh/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://twitter.com/dicksonneoh7"><i
+									class="fa fa-twitter-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://github.com/dnth"><i
+									class="fa fa-github-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR%20GOOGLE%20MAP%20API&libraries=geometry"></script>
+<script src="http://localhost:1313/plugins/jQuery/jquery.min.js"></script>
+<script src="http://localhost:1313/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="http://localhost:1313/plugins/slick/slick.min.js"></script>
+<script src="http://localhost:1313/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="http://localhost:1313/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="http://localhost:1313/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="http://localhost:1313/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="http://localhost:1313/plugins/masonry/masonry.min.js"></script>
+
+<script src="http://localhost:1313/js/form-handler.min.js"></script>
+
+<script src="http://localhost:1313/js/script.min.js"></script>
+
+</body>
+
+</html>

@@ -15,7 +15,7 @@ images :
 ### ☀️ Introduction
 I was recently given the recognition by the folks at [IceVision](https://github.com/airctic/icevision) to be part of the core-developer team!
 [Farid Hassainia](https://www.linkedin.com/in/farid-hassainia-ca/), a co-creator of the IceVision Tweeted about it on March 17, 2022. 
-{{< tweet ai_fast_track 1504457803552935943>}}
+{{< tweet user="ai_fast_track" id="1504457803552935943">}}
 
 ### 🏅 Lessons learned
 Reflecting on how far I've come, I am astonished and humbled.
@@ -49,7 +49,7 @@ As a result, bugs in the codes remained as bugs, and they never got fixed.
 This severely limited what I could have learned and gained had I gotten better feedback by sharing my codes publicly.
 This is the major difference between learning in private and in public.
 
-{{< tweet ai_fast_track 1504850040963092480>}}
+{{< tweet user="ai_fast_track" id="1504850040963092480">}}
 
 Learning in public is many times more powerful compared to learning in private.
 Nowadays, it's so easy to start learning in public by contributing to open-source software.
@@ -160,4 +160,4 @@ If you're interested, do join in the [Discord](https://t.co/CDIWhdVmSe) channel 
 
 ### ⛏ Comments & Feedback
 If you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
-{{< tweet dicksonneoh7 1511269785010548739>}}
+{{< tweet user="dicksonneoh7" id="1511269785010548739">}}

@@ -284,7 +284,7 @@ If you have any questions, comments, or feedback, please leave them on the follo
 
 <!-- Alternatively you can also comment on this Hacker News [thread](https://news.ycombinator.com/item?id=34799597#34801672). -->
 
-<!-- {{< tweet dicksonneoh7 1625367344712388609>}}
+<!-- {{< tweet user="dicksonneoh7" id="1625367344712388609">}}
 
 
 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7032246822186209280" height="1198" width="504" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' frameborder="0" allowfullscreen="" title="Embedded post"></iframe> -->

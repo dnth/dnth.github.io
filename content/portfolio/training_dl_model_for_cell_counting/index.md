@@ -537,7 +537,7 @@ All the codes and data are available on this Github [repository](https://github.
 
 ### 🙏 Comments & Feedback
 If you find this useful, or if you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).
-{{< tweet dicksonneoh7 1513478343726809090>}}
+{{< tweet user="dicksonneoh7" id="1513478343726809090">}}
 
 
 So what's next? If you are interested to learn how I deploy this model on Android checkout this [post](https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/).

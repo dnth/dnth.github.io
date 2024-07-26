@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fastai on Dickson Neoh - Personal Portfolio</title>
+    <link>http://localhost:1313/tags/fastai/</link>
+    <description>Recent content in Fastai on Dickson Neoh - Personal Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Feb 2023 11:00:15 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/fastai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter</title>
+      <link>http://localhost:1313/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</link>
+      <pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</guid>
+      <description>🔥 Motivation With various high-level libraries like Keras, Transformer, and Fastai, the barrier to training SOTA models has never been lower.&#xA;On top of that with platforms like Google Colab and Kaggle, pretty much anyone can train a reasonably good model using an old laptop or even a mobile phone (with some patience).&#xA;The question is no longer &amp;ldquo;can we train a SOTA model?&amp;rdquo;, but &amp;ldquo;what happens after that?&amp;rdquo;&#xA;Unfortunately, after getting the model trained, most people wash their hands off at this point claiming their model works.</description>
+    </item>
+  </channel>
+</rss>

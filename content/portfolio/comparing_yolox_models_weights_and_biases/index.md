@@ -256,6 +256,6 @@ Here are my 3 suggestions:
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter/Linked post or [drop me a message](https://dicksonneoh.com/contact/).
-{{< tweet dicksonneoh7 1524263583097384960>}}
+{{< tweet user="dicksonneoh7" id="1524263583097384960">}}
 
 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6930058768810438657" height="808" width="550" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>

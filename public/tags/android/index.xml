@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Android on Dickson Neoh - Personal Portfolio</title><link>https://dicksonneoh.com/tags/android/</link><description>Recent content in Android on Dickson Neoh - Personal Portfolio</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 17 Apr 2022 15:00:15 +0800</lastBuildDate><atom:link href="https://dicksonneoh.com/tags/android/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Deploy Object Detection Models on Android with Flutter</title><link>https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/</link><pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate><guid>https://dicksonneoh.com/portfolio/how_to_deploy_od_models_on_android_with_flutter/</guid><description>🚑 Deployment: Where ML models go to die In this post, I will outline the basic steps to deploy ML models onto lightweight mobile devices easily, quickly and for free.
-.notice{padding:18px;line-height:24px;margin-bottom:24px;border-radius:4px;color:#6c757d;background:#e7f2fa}.notice p:last-child{margin-bottom:0}.notice-title{margin:-18px -18px 12px;padding:4px 18px;border-radius:4px 4px 0 0;font-weight:700;color:#fff;background:#6ab0de}.notice.warning .notice-title{background:rgba(217,83,79,.9)}.notice.warning{background:#fae2e2}.notice.info .notice-title{background:#f0b37e;}.notice.info{background:#fff2db}.notice.note .notice-title{background:#6ab0de}.notice.note{background:#e7f2fA}.notice.tip .notice-title{background:rgba(92,184,92,.8)}.notice.tip{background:#e6f9e6}.icon-notice{display:inline-flex;align-self:center;margin-right:8px}.icon-notice img,.icon-notice svg{height:1em;width:1em;fill:currentColor}.icon-notice img,.icon-notice.baseline svg{top:0.125em;position:relative} tip
-By the end of this post, you will learn about:
-Leveraging Hugging Face infrastructure to host models. Deploying on any edge device using REST API.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Dickson Neoh - Personal Portfolio</title>
+    <link>http://localhost:1313/tags/android/</link>
+    <description>Recent content in Android on Dickson Neoh - Personal Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Mar 2023 11:00:15 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</title>
+      <link>http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/</link>
+      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/</guid>
+      <description>🌟 Motivation For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%.&#xA;Why not?&#xA;This is the after all the juiciest part of the job. &amp;ldquo;Solving&amp;rdquo; one dataset after another, it may seem like anything around you can be conquered with a simple model.fit.&#xA;That was me two years ago.&#xA;The naive version of me thought that was all about it with machine learning (ML).</description>
+    </item>
+    <item>
+      <title>PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter</title>
+      <link>http://localhost:1313/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</link>
+      <pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</guid>
+      <description>🔥 Motivation With various high-level libraries like Keras, Transformer, and Fastai, the barrier to training SOTA models has never been lower.&#xA;On top of that with platforms like Google Colab and Kaggle, pretty much anyone can train a reasonably good model using an old laptop or even a mobile phone (with some patience).&#xA;The question is no longer &amp;ldquo;can we train a SOTA model?&amp;rdquo;, but &amp;ldquo;what happens after that?&amp;rdquo;&#xA;Unfortunately, after getting the model trained, most people wash their hands off at this point claiming their model works.</description>
+    </item>
+    <item>
+      <title>How to Deploy Object Detection Models on Android with Flutter</title>
+      <link>http://localhost:1313/portfolio/how_to_deploy_od_models_on_android_with_flutter/</link>
+      <pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/portfolio/how_to_deploy_od_models_on_android_with_flutter/</guid>
+      <description>🚑 Deployment: Where ML models go to die In this post, I will outline the basic steps to deploy ML models onto lightweight mobile devices easily, quickly and for free.&#xA;tip&#xA;By the end of this post, you will learn about:&#xA;Leveraging Hugging Face infrastructure to host models. Deploying on any edge device using REST API. Displaying the results on a Flutter Android app. According to Gartner, more than 85% of machine learning (ML) models never made it into production.</description>
+    </item>
+  </channel>
+</rss>
