@@ -6,7 +6,7 @@ title: >
 
   Tech stack --
 
-    > 🟩 Python, C, Assembly, Dart, PySpark, Robot Operating System.
+    > 🟩 Python, C, Assembly, Dart.
     
     🟩 Docker, Jupyter, VSCode, Git. 
     
@@ -16,9 +16,9 @@ title: >
     
     🟩 DL deployment -- OpenVINO, TensorRT, ONNX, TFLite, TorchScript, Hugging Face Hub, DeepSparse.
     
-    🟩 Database -- Firebase, MySQL, InfluxDB, Hive.
+    🟩 Database -- PostgreSQL, MySQL, Firebase, Hugging Face Datasets.
     
-    🟩 UI -- Flutter, Grafana, PyQt, Gradio, Flet.
+    🟩 UI -- Flutter, Gradio, Flet, Streamlit.
     
     🟩 Edge Device -- Android/iOS Device, Raspberry Pi, NVIDIA Jetson, Arduino/ESP32/PIC/AVR MCU, Coral Edge TPU, Intel Neural Compute Stick.
 
@@ -78,15 +78,27 @@ education:
 
 experience:
   - content: >
+      #### [Visual Layer Inc.](https:/visual-layer.com)
+
+      #####  Machine Learning Engineer. 
+      
+      Helped maintain the open access visual data curation software - [fastdup](https://github.com/visual-layer/fastdup). Wrote [blogs](https://medium.com/visual-layer) as a representative of Visual Layer. Assisted in community building and question handling on Slack/Discord.
+    time: March 2023 - Present
+
+  - content: >
       #### [ZenML GmbH](https://zenml.io/)
         
-      Developer Advocate. Developed social media content strategy for ZenML's Twitter and LinkedIn. Wrote blogs and gave podcasts/talks as a representative of ZenML. Assisted in community building and question handling on Slack.
+      ##### Developer Advocate. 
+      
+      Developed social media content strategy for ZenML's Twitter and LinkedIn. Wrote blogs and gave podcasts/talks as a representative of ZenML. Assisted in community building and question handling on Slack.
     time: July 2022 - December 2022
 
   - content: >
       #### [National Energy University, Malaysia](https://www.uniten.edu.my/).
       
-      Lecturer. Taught undergraduate and diploma level courses. 
+      ##### Lecturer. 
+      
+      Taught undergraduate and diploma level courses. 
       Primary subjects taught include [Microprocessor Systems](https://www.youtube.com/playlist?list=PLqGyAx3n9NxoxuqQd7YVtI-O0lY32Hr2d), 
       [Digital Logic Design](https://www.youtube.com/playlist?list=PLqGyAx3n9NxriN8V6ar-x-GFnkAtkTL1n) and Random Process.
       I was also featured once on Malaysia's [national TV](https://www.youtube.com/watch?v=RRW__wJiDIs&ab_channel=dicksonneoh) showcasing my efforts on robotics education to the younger generation.
@@ -95,10 +107,11 @@ experience:
   - content: >
       #### Center for Advanced Mechatronics and Robotics. 
       
-      Research Engineer. Responsible to design boiler header [inspection robot](https://link.springer.com/chapter/10.1007%2F978-981-4585-42-2_59), 
+      ##### Research Engineer. 
+      
+      Responsible to design boiler header [inspection robot](https://link.springer.com/chapter/10.1007%2F978-981-4585-42-2_59), 
       algorithms for [P3AT line following robot](https://youtu.be/6DuJ4Eg6nbI), 
       algorithms for [behavior classification with LSTM](https://www.youtube.com/watch?v=j_JIlfgBD_4&ab_channel=dicksonneoh) on 
       [NAO](https://www.youtube.com/watch?v=5RMP6776SK0&ab_channel=dicksonneoh) humanoid robot, 
       develop learning modules for workshops on Arduino microcontroller.
     time: 2012-2016
-
