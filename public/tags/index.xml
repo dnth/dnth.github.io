@@ -2,360 +2,360 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:44903/tags/</link>
+    <link>http://localhost:45063/tags/</link>
     <description>Recent content in Tags on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Nov 2023 12:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:44903/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:45063/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Academic</title>
-      <link>http://localhost:44903/tags/academic/</link>
+      <link>http://localhost:45063/tags/academic/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:44903/tags/academic/</guid>
+      <guid>http://localhost:45063/tags/academic/</guid>
       <description></description>
     </item>
     <item>
       <title>Industry</title>
-      <link>http://localhost:44903/tags/industry/</link>
+      <link>http://localhost:45063/tags/industry/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:44903/tags/industry/</guid>
+      <guid>http://localhost:45063/tags/industry/</guid>
       <description></description>
     </item>
     <item>
       <title>Research</title>
-      <link>http://localhost:44903/tags/research/</link>
+      <link>http://localhost:45063/tags/research/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:44903/tags/research/</guid>
+      <guid>http://localhost:45063/tags/research/</guid>
       <description></description>
     </item>
     <item>
       <title>Stanford University</title>
-      <link>http://localhost:44903/tags/stanford-university/</link>
+      <link>http://localhost:45063/tags/stanford-university/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:44903/tags/stanford-university/</guid>
+      <guid>http://localhost:45063/tags/stanford-university/</guid>
       <description></description>
     </item>
     <item>
       <title>Top Scientists</title>
-      <link>http://localhost:44903/tags/top-scientists/</link>
+      <link>http://localhost:45063/tags/top-scientists/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:44903/tags/top-scientists/</guid>
+      <guid>http://localhost:45063/tags/top-scientists/</guid>
       <description></description>
     </item>
     <item>
       <title>Hugging Face</title>
-      <link>http://localhost:44903/tags/hugging-face/</link>
+      <link>http://localhost:45063/tags/hugging-face/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/hugging-face/</guid>
+      <guid>http://localhost:45063/tags/hugging-face/</guid>
       <description></description>
     </item>
     <item>
       <title>Netron</title>
-      <link>http://localhost:44903/tags/netron/</link>
+      <link>http://localhost:45063/tags/netron/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/netron/</guid>
+      <guid>http://localhost:45063/tags/netron/</guid>
       <description></description>
     </item>
     <item>
       <title>ONNX</title>
-      <link>http://localhost:44903/tags/onnx/</link>
+      <link>http://localhost:45063/tags/onnx/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/onnx/</guid>
+      <guid>http://localhost:45063/tags/onnx/</guid>
       <description></description>
     </item>
     <item>
       <title>PyTorch</title>
-      <link>http://localhost:44903/tags/pytorch/</link>
+      <link>http://localhost:45063/tags/pytorch/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/pytorch/</guid>
+      <guid>http://localhost:45063/tags/pytorch/</guid>
       <description></description>
     </item>
     <item>
       <title>TIMM</title>
-      <link>http://localhost:44903/tags/timm/</link>
+      <link>http://localhost:45063/tags/timm/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/timm/</guid>
+      <guid>http://localhost:45063/tags/timm/</guid>
       <description></description>
     </item>
     <item>
       <title>Torchscript</title>
-      <link>http://localhost:44903/tags/torchscript/</link>
+      <link>http://localhost:45063/tags/torchscript/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/torchscript/</guid>
+      <guid>http://localhost:45063/tags/torchscript/</guid>
       <description></description>
     </item>
     <item>
       <title>Android</title>
-      <link>http://localhost:44903/tags/android/</link>
+      <link>http://localhost:45063/tags/android/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/android/</guid>
+      <guid>http://localhost:45063/tags/android/</guid>
       <description></description>
     </item>
     <item>
       <title>EdgeNeXt</title>
-      <link>http://localhost:44903/tags/edgenext/</link>
+      <link>http://localhost:45063/tags/edgenext/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/edgenext/</guid>
+      <guid>http://localhost:45063/tags/edgenext/</guid>
       <description></description>
     </item>
     <item>
       <title>Flutter</title>
-      <link>http://localhost:44903/tags/flutter/</link>
+      <link>http://localhost:45063/tags/flutter/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/flutter/</guid>
+      <guid>http://localhost:45063/tags/flutter/</guid>
       <description></description>
     </item>
     <item>
       <title>Gradio</title>
-      <link>http://localhost:44903/tags/gradio/</link>
+      <link>http://localhost:45063/tags/gradio/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/gradio/</guid>
+      <guid>http://localhost:45063/tags/gradio/</guid>
       <description></description>
     </item>
     <item>
       <title>IOS</title>
-      <link>http://localhost:44903/tags/ios/</link>
+      <link>http://localhost:45063/tags/ios/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/ios/</guid>
+      <guid>http://localhost:45063/tags/ios/</guid>
       <description></description>
     </item>
     <item>
       <title>Paddy-Disease</title>
-      <link>http://localhost:44903/tags/paddy-disease/</link>
+      <link>http://localhost:45063/tags/paddy-disease/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/paddy-disease/</guid>
+      <guid>http://localhost:45063/tags/paddy-disease/</guid>
       <description></description>
     </item>
     <item>
       <title>Fastdup</title>
-      <link>http://localhost:44903/tags/fastdup/</link>
+      <link>http://localhost:45063/tags/fastdup/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/fastdup/</guid>
+      <guid>http://localhost:45063/tags/fastdup/</guid>
       <description></description>
     </item>
     <item>
       <title>Google-Images</title>
-      <link>http://localhost:44903/tags/google-images/</link>
+      <link>http://localhost:45063/tags/google-images/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/google-images/</guid>
+      <guid>http://localhost:45063/tags/google-images/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>http://localhost:44903/tags/python/</link>
+      <link>http://localhost:45063/tags/python/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/python/</guid>
+      <guid>http://localhost:45063/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Fastai</title>
-      <link>http://localhost:44903/tags/fastai/</link>
+      <link>http://localhost:45063/tags/fastai/</link>
       <pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/fastai/</guid>
+      <guid>http://localhost:45063/tags/fastai/</guid>
       <description></description>
     </item>
     <item>
       <title>Intel</title>
-      <link>http://localhost:44903/tags/intel/</link>
+      <link>http://localhost:45063/tags/intel/</link>
       <pubDate>Tue, 03 Jan 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/intel/</guid>
+      <guid>http://localhost:45063/tags/intel/</guid>
       <description></description>
     </item>
     <item>
       <title>Natural-Scene-Classification</title>
-      <link>http://localhost:44903/tags/natural-scene-classification/</link>
+      <link>http://localhost:45063/tags/natural-scene-classification/</link>
       <pubDate>Tue, 03 Jan 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/natural-scene-classification/</guid>
+      <guid>http://localhost:45063/tags/natural-scene-classification/</guid>
       <description></description>
     </item>
     <item>
       <title>Concept-Drift</title>
-      <link>http://localhost:44903/tags/concept-drift/</link>
+      <link>http://localhost:45063/tags/concept-drift/</link>
       <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/concept-drift/</guid>
+      <guid>http://localhost:45063/tags/concept-drift/</guid>
       <description></description>
     </item>
     <item>
       <title>Data-Drift</title>
-      <link>http://localhost:44903/tags/data-drift/</link>
+      <link>http://localhost:45063/tags/data-drift/</link>
       <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/data-drift/</guid>
+      <guid>http://localhost:45063/tags/data-drift/</guid>
       <description></description>
     </item>
     <item>
       <title>Ml-Monitoring</title>
-      <link>http://localhost:44903/tags/ml-monitoring/</link>
+      <link>http://localhost:45063/tags/ml-monitoring/</link>
       <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/ml-monitoring/</guid>
+      <guid>http://localhost:45063/tags/ml-monitoring/</guid>
       <description></description>
     </item>
     <item>
       <title>Mlops</title>
-      <link>http://localhost:44903/tags/mlops/</link>
+      <link>http://localhost:45063/tags/mlops/</link>
       <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/mlops/</guid>
+      <guid>http://localhost:45063/tags/mlops/</guid>
       <description></description>
     </item>
     <item>
       <title>Open-Source</title>
-      <link>http://localhost:44903/tags/open-source/</link>
+      <link>http://localhost:45063/tags/open-source/</link>
       <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/open-source/</guid>
+      <guid>http://localhost:45063/tags/open-source/</guid>
       <description></description>
     </item>
     <item>
       <title>Deployment</title>
-      <link>http://localhost:44903/tags/deployment/</link>
+      <link>http://localhost:45063/tags/deployment/</link>
       <pubDate>Thu, 29 Sep 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/deployment/</guid>
+      <guid>http://localhost:45063/tags/deployment/</guid>
       <description></description>
     </item>
     <item>
       <title>DeepSparse</title>
-      <link>http://localhost:44903/tags/deepsparse/</link>
+      <link>http://localhost:45063/tags/deepsparse/</link>
       <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/deepsparse/</guid>
+      <guid>http://localhost:45063/tags/deepsparse/</guid>
       <description></description>
     </item>
     <item>
       <title>Optimization</title>
-      <link>http://localhost:44903/tags/optimization/</link>
+      <link>http://localhost:45063/tags/optimization/</link>
       <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/optimization/</guid>
+      <guid>http://localhost:45063/tags/optimization/</guid>
       <description></description>
     </item>
     <item>
       <title>Pistol</title>
-      <link>http://localhost:44903/tags/pistol/</link>
+      <link>http://localhost:45063/tags/pistol/</link>
       <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/pistol/</guid>
+      <guid>http://localhost:45063/tags/pistol/</guid>
       <description></description>
     </item>
     <item>
       <title>Real-Time</title>
-      <link>http://localhost:44903/tags/real-time/</link>
+      <link>http://localhost:45063/tags/real-time/</link>
       <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/real-time/</guid>
+      <guid>http://localhost:45063/tags/real-time/</guid>
       <description></description>
     </item>
     <item>
       <title>YOLOv5</title>
-      <link>http://localhost:44903/tags/yolov5/</link>
+      <link>http://localhost:45063/tags/yolov5/</link>
       <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/yolov5/</guid>
+      <guid>http://localhost:45063/tags/yolov5/</guid>
       <description></description>
     </item>
     <item>
       <title>GPT-J</title>
-      <link>http://localhost:44903/tags/gpt-j/</link>
+      <link>http://localhost:45063/tags/gpt-j/</link>
       <pubDate>Thu, 19 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/gpt-j/</guid>
+      <guid>http://localhost:45063/tags/gpt-j/</guid>
       <description></description>
     </item>
     <item>
       <title>Telegram</title>
-      <link>http://localhost:44903/tags/telegram/</link>
+      <link>http://localhost:45063/tags/telegram/</link>
       <pubDate>Thu, 19 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/telegram/</guid>
+      <guid>http://localhost:45063/tags/telegram/</guid>
       <description></description>
     </item>
     <item>
       <title>License-Plate</title>
-      <link>http://localhost:44903/tags/license-plate/</link>
+      <link>http://localhost:45063/tags/license-plate/</link>
       <pubDate>Wed, 11 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/license-plate/</guid>
+      <guid>http://localhost:45063/tags/license-plate/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenVINO</title>
-      <link>http://localhost:44903/tags/openvino/</link>
+      <link>http://localhost:45063/tags/openvino/</link>
       <pubDate>Wed, 11 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/openvino/</guid>
+      <guid>http://localhost:45063/tags/openvino/</guid>
       <description></description>
     </item>
     <item>
       <title>Wandb</title>
-      <link>http://localhost:44903/tags/wandb/</link>
+      <link>http://localhost:45063/tags/wandb/</link>
       <pubDate>Wed, 11 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/wandb/</guid>
+      <guid>http://localhost:45063/tags/wandb/</guid>
       <description></description>
     </item>
     <item>
       <title>YOLOX</title>
-      <link>http://localhost:44903/tags/yolox/</link>
+      <link>http://localhost:45063/tags/yolox/</link>
       <pubDate>Wed, 11 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/yolox/</guid>
+      <guid>http://localhost:45063/tags/yolox/</guid>
       <description></description>
     </item>
     <item>
       <title>CVAT</title>
-      <link>http://localhost:44903/tags/cvat/</link>
+      <link>http://localhost:45063/tags/cvat/</link>
       <pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/cvat/</guid>
+      <guid>http://localhost:45063/tags/cvat/</guid>
       <description></description>
     </item>
     <item>
       <title>Fast.ai</title>
-      <link>http://localhost:44903/tags/fast.ai/</link>
+      <link>http://localhost:45063/tags/fast.ai/</link>
       <pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/fast.ai/</guid>
+      <guid>http://localhost:45063/tags/fast.ai/</guid>
       <description></description>
     </item>
     <item>
       <title>IceVision</title>
-      <link>http://localhost:44903/tags/icevision/</link>
+      <link>http://localhost:45063/tags/icevision/</link>
       <pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/icevision/</guid>
+      <guid>http://localhost:45063/tags/icevision/</guid>
       <description></description>
     </item>
     <item>
       <title>Cell-Counting</title>
-      <link>http://localhost:44903/tags/cell-counting/</link>
+      <link>http://localhost:45063/tags/cell-counting/</link>
       <pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/cell-counting/</guid>
+      <guid>http://localhost:45063/tags/cell-counting/</guid>
       <description></description>
     </item>
     <item>
       <title>LabelImg</title>
-      <link>http://localhost:44903/tags/labelimg/</link>
+      <link>http://localhost:45063/tags/labelimg/</link>
       <pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/labelimg/</guid>
+      <guid>http://localhost:45063/tags/labelimg/</guid>
       <description></description>
     </item>
     <item>
       <title>Microbiology</title>
-      <link>http://localhost:44903/tags/microbiology/</link>
+      <link>http://localhost:45063/tags/microbiology/</link>
       <pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/microbiology/</guid>
+      <guid>http://localhost:45063/tags/microbiology/</guid>
       <description></description>
     </item>
     <item>
       <title>Lessons-Learned</title>
-      <link>http://localhost:44903/tags/lessons-learned/</link>
+      <link>http://localhost:45063/tags/lessons-learned/</link>
       <pubDate>Mon, 04 Apr 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/lessons-learned/</guid>
+      <guid>http://localhost:45063/tags/lessons-learned/</guid>
       <description></description>
     </item>
     <item>
       <title>Fridge-Objects</title>
-      <link>http://localhost:44903/tags/fridge-objects/</link>
+      <link>http://localhost:45063/tags/fridge-objects/</link>
       <pubDate>Thu, 17 Feb 2022 13:42:56 +0800</pubDate>
-      <guid>http://localhost:44903/tags/fridge-objects/</guid>
+      <guid>http://localhost:45063/tags/fridge-objects/</guid>
       <description></description>
     </item>
     <item>
       <title>Digital-Logic-Design</title>
-      <link>http://localhost:44903/tags/digital-logic-design/</link>
+      <link>http://localhost:45063/tags/digital-logic-design/</link>
       <pubDate>Tue, 07 Sep 2021 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/digital-logic-design/</guid>
+      <guid>http://localhost:45063/tags/digital-logic-design/</guid>
       <description></description>
     </item>
     <item>
       <title>Uniten</title>
-      <link>http://localhost:44903/tags/uniten/</link>
+      <link>http://localhost:45063/tags/uniten/</link>
       <pubDate>Tue, 07 Sep 2021 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44903/tags/uniten/</guid>
+      <guid>http://localhost:45063/tags/uniten/</guid>
       <description></description>
     </item>
   </channel>

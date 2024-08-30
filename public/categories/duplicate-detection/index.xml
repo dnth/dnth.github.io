@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Duplicate-Detection on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:44903/categories/duplicate-detection/</link>
+    <link>http://localhost:45063/categories/duplicate-detection/</link>
     <description>Recent content in Duplicate-Detection on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Feb 2023 11:00:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:44903/categories/duplicate-detection/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:45063/categories/duplicate-detection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Clean Up Your Digital Life: How I Found 1929 Fully Identical Images, Dark, Bright and Blurry Shots in Minutes, For Free.</title>
-      <link>http://localhost:44903/blog/clean_up_your_digital_life/</link>
+      <link>http://localhost:45063/blog/clean_up_your_digital_life/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44903/blog/clean_up_your_digital_life/</guid>
+      <guid>http://localhost:45063/blog/clean_up_your_digital_life/</guid>
       <description>✅ Motivation In today&amp;rsquo;s world of selfies and Instagram, we all take tons of photos on our phones, cameras, and other gadgets.&#xA;But let&amp;rsquo;s be real, it&amp;rsquo;s easy for our photo collections to become a chaotic mess, making it impossible to find that one special memory.&#xA;I mean, I&amp;rsquo;ve got gigabytes of photos on my Google Photo app filled with dark shots, overly exposed shots, blurry shots, and tons of duplicate stills.</description>
     </item>
   </channel>
