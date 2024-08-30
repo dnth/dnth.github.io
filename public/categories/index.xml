@@ -2,185 +2,185 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>http://localhost:44903/categories/</link>
     <description>Recent content in Categories on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Nov 2023 12:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:44903/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Career Development</title>
-      <link>http://localhost:1313/categories/career-development/</link>
+      <link>http://localhost:44903/categories/career-development/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/career-development/</guid>
+      <guid>http://localhost:44903/categories/career-development/</guid>
       <description></description>
     </item>
     <item>
       <title>Industry Transition</title>
-      <link>http://localhost:1313/categories/industry-transition/</link>
+      <link>http://localhost:44903/categories/industry-transition/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/industry-transition/</guid>
+      <guid>http://localhost:44903/categories/industry-transition/</guid>
       <description></description>
     </item>
     <item>
       <title>Personal Growth</title>
-      <link>http://localhost:1313/categories/personal-growth/</link>
+      <link>http://localhost:44903/categories/personal-growth/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/personal-growth/</guid>
+      <guid>http://localhost:44903/categories/personal-growth/</guid>
       <description></description>
     </item>
     <item>
       <title>Research</title>
-      <link>http://localhost:1313/categories/research/</link>
+      <link>http://localhost:44903/categories/research/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/research/</guid>
+      <guid>http://localhost:44903/categories/research/</guid>
       <description></description>
     </item>
     <item>
       <title>Computer-Vision</title>
-      <link>http://localhost:1313/categories/computer-vision/</link>
+      <link>http://localhost:44903/categories/computer-vision/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/computer-vision/</guid>
+      <guid>http://localhost:44903/categories/computer-vision/</guid>
       <description></description>
     </item>
     <item>
       <title>Edge-Deployment</title>
-      <link>http://localhost:1313/categories/edge-deployment/</link>
+      <link>http://localhost:44903/categories/edge-deployment/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/edge-deployment/</guid>
+      <guid>http://localhost:44903/categories/edge-deployment/</guid>
       <description></description>
     </item>
     <item>
       <title>Optimization</title>
-      <link>http://localhost:1313/categories/optimization/</link>
+      <link>http://localhost:44903/categories/optimization/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/optimization/</guid>
+      <guid>http://localhost:44903/categories/optimization/</guid>
       <description></description>
     </item>
     <item>
       <title>Real-Time</title>
-      <link>http://localhost:1313/categories/real-time/</link>
+      <link>http://localhost:44903/categories/real-time/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/real-time/</guid>
+      <guid>http://localhost:44903/categories/real-time/</guid>
       <description></description>
     </item>
     <item>
       <title>Cloud-Ai</title>
-      <link>http://localhost:1313/categories/cloud-ai/</link>
+      <link>http://localhost:44903/categories/cloud-ai/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/cloud-ai/</guid>
+      <guid>http://localhost:44903/categories/cloud-ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Deployment</title>
-      <link>http://localhost:1313/categories/deployment/</link>
+      <link>http://localhost:44903/categories/deployment/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/deployment/</guid>
+      <guid>http://localhost:44903/categories/deployment/</guid>
       <description></description>
     </item>
     <item>
       <title>Image-Classification</title>
-      <link>http://localhost:1313/categories/image-classification/</link>
+      <link>http://localhost:44903/categories/image-classification/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/image-classification/</guid>
+      <guid>http://localhost:44903/categories/image-classification/</guid>
       <description></description>
     </item>
     <item>
       <title>Blur-Detection</title>
-      <link>http://localhost:1313/categories/blur-detection/</link>
+      <link>http://localhost:44903/categories/blur-detection/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/blur-detection/</guid>
+      <guid>http://localhost:44903/categories/blur-detection/</guid>
       <description></description>
     </item>
     <item>
       <title>Clustering</title>
-      <link>http://localhost:1313/categories/clustering/</link>
+      <link>http://localhost:44903/categories/clustering/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/clustering/</guid>
+      <guid>http://localhost:44903/categories/clustering/</guid>
       <description></description>
     </item>
     <item>
       <title>Data-Cleaning</title>
-      <link>http://localhost:1313/categories/data-cleaning/</link>
+      <link>http://localhost:44903/categories/data-cleaning/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/data-cleaning/</guid>
+      <guid>http://localhost:44903/categories/data-cleaning/</guid>
       <description></description>
     </item>
     <item>
       <title>Duplicate-Detection</title>
-      <link>http://localhost:1313/categories/duplicate-detection/</link>
+      <link>http://localhost:44903/categories/duplicate-detection/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/duplicate-detection/</guid>
+      <guid>http://localhost:44903/categories/duplicate-detection/</guid>
       <description></description>
     </item>
     <item>
       <title>Photo-Organization</title>
-      <link>http://localhost:1313/categories/photo-organization/</link>
+      <link>http://localhost:44903/categories/photo-organization/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/photo-organization/</guid>
+      <guid>http://localhost:44903/categories/photo-organization/</guid>
       <description></description>
     </item>
     <item>
       <title>Edge-Ai</title>
-      <link>http://localhost:1313/categories/edge-ai/</link>
+      <link>http://localhost:44903/categories/edge-ai/</link>
       <pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/edge-ai/</guid>
+      <guid>http://localhost:44903/categories/edge-ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Invited-Talks</title>
-      <link>http://localhost:1313/categories/invited-talks/</link>
+      <link>http://localhost:44903/categories/invited-talks/</link>
       <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/invited-talks/</guid>
+      <guid>http://localhost:44903/categories/invited-talks/</guid>
       <description></description>
     </item>
     <item>
       <title>Modeling</title>
-      <link>http://localhost:1313/categories/modeling/</link>
+      <link>http://localhost:44903/categories/modeling/</link>
       <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/modeling/</guid>
+      <guid>http://localhost:44903/categories/modeling/</guid>
       <description></description>
     </item>
     <item>
       <title>Object-Detection</title>
-      <link>http://localhost:1313/categories/object-detection/</link>
+      <link>http://localhost:44903/categories/object-detection/</link>
       <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/object-detection/</guid>
+      <guid>http://localhost:44903/categories/object-detection/</guid>
       <description></description>
     </item>
     <item>
       <title>NLP</title>
-      <link>http://localhost:1313/categories/nlp/</link>
+      <link>http://localhost:44903/categories/nlp/</link>
       <pubDate>Thu, 19 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/nlp/</guid>
+      <guid>http://localhost:44903/categories/nlp/</guid>
       <description></description>
     </item>
     <item>
       <title>Monitoring</title>
-      <link>http://localhost:1313/categories/monitoring/</link>
+      <link>http://localhost:44903/categories/monitoring/</link>
       <pubDate>Wed, 11 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/monitoring/</guid>
+      <guid>http://localhost:44903/categories/monitoring/</guid>
       <description></description>
     </item>
     <item>
       <title>Tutorial</title>
-      <link>http://localhost:1313/categories/tutorial/</link>
+      <link>http://localhost:44903/categories/tutorial/</link>
       <pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/tutorial/</guid>
+      <guid>http://localhost:44903/categories/tutorial/</guid>
       <description></description>
     </item>
     <item>
       <title>Self-Development</title>
-      <link>http://localhost:1313/categories/self-development/</link>
+      <link>http://localhost:44903/categories/self-development/</link>
       <pubDate>Mon, 04 Apr 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/self-development/</guid>
+      <guid>http://localhost:44903/categories/self-development/</guid>
       <description></description>
     </item>
     <item>
       <title>Course</title>
-      <link>http://localhost:1313/categories/course/</link>
+      <link>http://localhost:44903/categories/course/</link>
       <pubDate>Tue, 07 Sep 2021 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/course/</guid>
+      <guid>http://localhost:44903/categories/course/</guid>
       <description></description>
     </item>
   </channel>

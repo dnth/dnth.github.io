@@ -2,73 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent Contents on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:1313/blog/</link>
+    <link>http://localhost:44903/blog/</link>
     <description>Recent content in Recent Contents on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Nov 2023 12:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:44903/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Celebrating a Milestone in the Top 2% of Global Scientists</title>
-      <link>http://localhost:1313/blog/world_top_scientist/</link>
+      <link>http://localhost:44903/blog/world_top_scientist/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/blog/world_top_scientist/</guid>
+      <guid>http://localhost:44903/blog/world_top_scientist/</guid>
       <description>I&amp;rsquo;m really excited to tell you that I&amp;rsquo;m one of the top 2% of scientists in the world for 2023, according to Stanford University. It&amp;rsquo;s been ten years of hard work in research and learning, and this award means a lot.&#xA;🛤️ The Journey When I started, it was easy.&#xA;I had been in academic for some time as a student and research assistant. And I had the resources, for a good start.</description>
     </item>
     <item>
       <title>Clean Up Your Digital Life: How I Found 1929 Fully Identical Images, Dark, Bright and Blurry Shots in Minutes, For Free.</title>
-      <link>http://localhost:1313/blog/clean_up_your_digital_life/</link>
+      <link>http://localhost:44903/blog/clean_up_your_digital_life/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/blog/clean_up_your_digital_life/</guid>
+      <guid>http://localhost:44903/blog/clean_up_your_digital_life/</guid>
       <description>✅ Motivation In today&amp;rsquo;s world of selfies and Instagram, we all take tons of photos on our phones, cameras, and other gadgets.&#xA;But let&amp;rsquo;s be real, it&amp;rsquo;s easy for our photo collections to become a chaotic mess, making it impossible to find that one special memory.&#xA;I mean, I&amp;rsquo;ve got gigabytes of photos on my Google Photo app filled with dark shots, overly exposed shots, blurry shots, and tons of duplicate stills.</description>
     </item>
     <item>
       <title>From Academia to Industry: Insights from an AI/ML Engineer</title>
-      <link>http://localhost:1313/blog/podcast_ai_ml_data_talks_episode_fifteen/</link>
+      <link>http://localhost:44903/blog/podcast_ai_ml_data_talks_episode_fifteen/</link>
       <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/blog/podcast_ai_ml_data_talks_episode_fifteen/</guid>
+      <guid>http://localhost:44903/blog/podcast_ai_ml_data_talks_episode_fifteen/</guid>
       <description>💫 AI/ML Data Talks Podcast In this podcast episode I share about my journey and transition from academia to industry and the lessons I learned along the way.&#xA;During our chat, we talk about some of the hottest topics in machine learning, like What is MLOps? Data Drift vs Concept Drift, and Monitoring Machine Learning Model.&#xA;We also talked about some insights into the latest AI and ML trends and ecosystem.</description>
     </item>
     <item>
       <title>Applications of Edge AI with Sage Elliot at Whylabs</title>
-      <link>http://localhost:1313/blog/talk_rsqrd_applications_edge_ai/</link>
+      <link>http://localhost:44903/blog/talk_rsqrd_applications_edge_ai/</link>
       <pubDate>Thu, 29 Sep 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/blog/talk_rsqrd_applications_edge_ai/</guid>
+      <guid>http://localhost:44903/blog/talk_rsqrd_applications_edge_ai/</guid>
       <description>✨ Introduction Running AI on the Edge has become a widely discussed topic in the world of artificial intelligence. At its core, the concept of Edge AI involves putting AI algorithms as close to the user or data as possible. This is in contrast to the traditional server-based approach, where computations are carried out in remote servers, leading to slow response times and the need to transfer data back and forth.</description>
     </item>
     <item>
       <title>ML Pipelines from the Get Go (Without Tears)</title>
-      <link>http://localhost:1313/blog/talk_ml_pipelines_from_the_get_go/</link>
+      <link>http://localhost:44903/blog/talk_ml_pipelines_from_the_get_go/</link>
       <pubDate>Thu, 25 Aug 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/blog/talk_ml_pipelines_from_the_get_go/</guid>
+      <guid>http://localhost:44903/blog/talk_ml_pipelines_from_the_get_go/</guid>
       <description>💫 Takeaways In this talk, I discussed why ML pipelines should be built from the get-go. Here are some of the key takeaways:&#xA;1️⃣ Despite the hype around machine learning, 55% of companies have not deployed a single ML model yet, and those who have are struggling to maintain and scale them.&#xA;2️⃣ Putting ML in production is not just about ML, but also about engineering. Many companies are doing more engineering than ML to solve various issues that arise in the pipeline.</description>
     </item>
     <item>
       <title>Cool Data Projects Show with Kristen - Gun Detection on CPU</title>
-      <link>http://localhost:1313/blog/talk_cool_data_science_cpu_pistol_detection/</link>
+      <link>http://localhost:44903/blog/talk_cool_data_science_cpu_pistol_detection/</link>
       <pubDate>Tue, 23 Aug 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/blog/talk_cool_data_science_cpu_pistol_detection/</guid>
+      <guid>http://localhost:44903/blog/talk_cool_data_science_cpu_pistol_detection/</guid>
       <description>🔥 Introduction The rapid advancement in computer vision technology has led to the development of sophisticated models that can perform complex tasks, such as object detection and segmentation, with high accuracy. However, these models often require high computational resources and can be slow when running on a CPU. This can pose a challenge for real-time applications, such as surveillance and security, where quick detection and analysis of objects is critical.</description>
     </item>
     <item>
       <title>Leveraging Open Source Tools to Deploy Models (Without 😥)</title>
-      <link>http://localhost:1313/blog/talk_tfdl_deploying_dl_without_tears/</link>
+      <link>http://localhost:44903/blog/talk_tfdl_deploying_dl_without_tears/</link>
       <pubDate>Thu, 09 Jun 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/blog/talk_tfdl_deploying_dl_without_tears/</guid>
+      <guid>http://localhost:44903/blog/talk_tfdl_deploying_dl_without_tears/</guid>
       <description>💡 Introduction This talk was given to the Tensorflow Deep Learning Malaysia Facebook group during the June 2022 online meetup. The group had over 7.5k members consisting of audience from various background related to artificial intelligence in Malaysia.&#xA;The goal of the talk is to introduce the members to existing open-source tools they can use to deploy models on the cloud and edge.&#xA;Half of the audience has no experience with deep learning.</description>
     </item>
     <item>
       <title>Contributing to open-source: Lessons learned</title>
-      <link>http://localhost:1313/blog/contributing_to_open_source_lessons_learned/</link>
+      <link>http://localhost:44903/blog/contributing_to_open_source_lessons_learned/</link>
       <pubDate>Mon, 04 Apr 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/blog/contributing_to_open_source_lessons_learned/</guid>
+      <guid>http://localhost:44903/blog/contributing_to_open_source_lessons_learned/</guid>
       <description>☀️ Introduction I was recently given the recognition by the folks at IceVision to be part of the core-developer team! Farid Hassainia, a co-creator of the IceVision Tweeted about it on March 17, 2022. We are super excited to introduce you to our 🎉New Core-Dev: Dickson Neoh @dicksonneoh7&#xA;Dickson is actively contributing to IceVision. He ardently helps IceVision users in our Discord Community.&#xA;We are very happy to have him on our team!</description>
     </item>
     <item>
       <title>Digital Logic Design - Course</title>
-      <link>http://localhost:1313/blog/course_digital_logic_design/</link>
+      <link>http://localhost:44903/blog/course_digital_logic_design/</link>
       <pubDate>Tue, 07 Sep 2021 20:48:15 +0800</pubDate>
-      <guid>http://localhost:1313/blog/course_digital_logic_design/</guid>
+      <guid>http://localhost:44903/blog/course_digital_logic_design/</guid>
       <description>A collection of recorded lecture classes for the Digital Logic Design course I taught at National Energy University, Malaysia.&#xA;View the playlist here</description>
     </item>
   </channel>
