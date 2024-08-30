@@ -1,6 +1,6 @@
 ---
 title: "Unlocking Edge ML: From PyTorch to Edge Deployment"
-date: 2023-09-16T11:00:15+08:00
+date: 2024-08-30T11:00:15+08:00
 featureImage: images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/thumbnail.png
 postImage: images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/post_image.png
 tags: ["TIMM", "PyTorch", "Hugging Face", "ONNX", "Torchscript", "Netron"]
@@ -16,7 +16,7 @@ This blog post is still a work in progress. If you require further clarification
 {{< /notice >}}
 
 ### 🚀 Motivation - Edge Deployment
-It's late 2023, everyone seems to be talking about complex and larger models.
+It's 2024, everyone seems to be talking about complex and larger models. 
 
 Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power. 
 
@@ -164,54 +164,36 @@ with torch.inference_mode():
 print(
     f"PyTorch model on CPU: {time_taken/num_images*1000:.3f} ms per image,\n"
     f"FPS: {num_images/time_taken:.2f}")
-
->>> PyTorch model on CPU: 109.419 ms per image,
->>> FPS: 9.14
 ```
 
-<!-- The following is a code snippet that shows how perform an inference on a DINOv2 model.
+```bash
+>>> PyTorch model on CPU: 109.419 ms per image,
+>>> FPS: 9.14
 
-```python
-from urllib.request import urlopen
-from PIL import Image
-import timm
+```
 
-img = Image.open(urlopen(
-    'https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/beignets-task-guide.png'
-))
+There we have a baseline of **9.14** FPS on a pure PyTorch model.
 
-model = timm.create_model(
-    'vit_small_patch14_dinov2.lvd142m',
-    pretrained=True,
-    num_classes=0,  # remove classifier nn.Linear
-)
-model = model.eval()
+{{< notice warning >}}
+Although the inference time is not bad, deploying PyTorch models directly into production environments is often not ideal:
 
-# get model specific transforms (normalization, resize)
-data_config = timm.data.resolve_model_data_config(model)
-transforms = timm.data.create_transform(**data_config, is_training=False)
+1. **Large Dependency:** PyTorch requires numerous dependencies, challenging for resource-constrained environments.
 
-output = model(transforms(img).unsqueeze(0))  # output is (batch_size, num_features) shaped tensor
+2. **Deployment Complexity:** Packaging PyTorch models with dependencies is complex in containerized/serverless environments.
 
-# or equivalently (without needing to set num_classes=0)
+3. **Version Compatibility:** Ensuring PyTorch version compatibility between development and production can be difficult.
 
-output = model.forward_features(transforms(img).unsqueeze(0))
-# output is unpooled, a (1, 1370, 384) shaped tensor
+4. **Resource Usage:** PyTorch models often consume more memory and computational resources than optimized formats.
 
-output = model.forward_head(output, pre_logits=True)
-# output is a (1, num_features) shaped tensor
+5. **Platform Limitations:** Some platforms or edge devices may not support PyTorch natively.
 
-``` -->
-
-<!-- Output shape is `torch.Size([1, 384])`. -->
+{{< /notice >}}
+These factors often lead practitioners to convert PyTorch models to more deployment-friendly formats like ONNX.
 
 ### 🏆 ONNX (Open Neural Network Exchange)
 
-{{% blockquote %}}
-ONNX is an open format built to represent machine learning models. 
-{{% /blockquote %}}
-
-ONNX defines a common set of operators - the building blocks of machine learning and deep learning models - and a common file format to enable AI developers to use models with a variety of frameworks, tools, runtimes, and compilers.
+[ONNX](https://github.com/onnx/onnx) is an open format built to represent machine learning models. 
+It defines a common set of operators - the building blocks of machine learning and deep learning models - and a common file format to enable AI developers to use models with a variety of frameworks, tools, runtimes, and compilers.
 
 With ONNX, you can train a machine learning model in one framework (e.g. PyTorch) use the trained model in another (e.g. Tensorflow)
 
@@ -222,45 +204,86 @@ With ONNX, you can train a machine learning model in one framework (e.g. PyTorch
 + **Hardware access** - ONNX compatible runtimes can maximize performance across hardware.
 {{< /notice >}}
 
-
+So let's now convert our PyTorch model to ONNX format.
 
 ### 🔁 PyTorch to ONNX
 
-Using TIMM export
+Since we loaded our model from TIMM, we can use the `timm` library utils to export the model to ONNX.
+Before that, make sure onnx is installed.
 
 ```bash
-python onnx_export.py vit_base_patch14_dinov2.lvd142m.onnx --model timm/vit_base_patch14_dinov2.lvd142m --opset 16 --num-classes 0 --reparam --verbose
+pip install onnx
 ```
 
-Using torch export
+```bash
+python onnx_export.py convnextv2_base.fcmae_ft_in22k_in1k.onnx \
+    --model timm/convnextv2_base.fcmae_ft_in22k_in1k \
+    --opset 16 \
+    --reparam \
+```
+
+Sometimes, the above command might not work. In that case, we can manually reparameterize the model and export it to ONNX.
 
 ```python
 from timm.utils.model import reparameterize_model
 model = reparameterize_model(model)
 ```
 
+Reparameterizing the model reduces/combines the number of parameters in the model, which can help improve the inference speed.
+
+Once done, we can export the model using PyTorch's built-in `torch.onnx.export` function.
+
 ```python
 import torch.onnx
-torch.onnx.export(model,
-                 torch.rand(1, 3, 518, 518, requires_grad=True),
-                 "vit_small_patch14_dinov2.lvd142m.onnx",
-                 export_params=True,
-                 opset_version=16,
-                 do_constant_folding=True,
-                 input_names=['input'],
-                 output_names=['output'], 
-                 dynamic_axes={'input' : {0 : 'batch_size'},   
-                               'output' : {0 : 'batch_size'}}
+torch.onnx.export(
+    model, # PyTorch model
+    torch.rand(1, 3, 224, 224, requires_grad=True), # dummy input
+    "convnextv2_base.fcmae_ft_in22k_in1k.onnx", # output file name
+    export_params=True,
+    opset_version=16,
+    do_constant_folding=True,
+    input_names=['input'],
+    output_names=['output'], 
+    dynamic_axes={'input' : {0 : 'batch_size'},   
+                  'output' : {0 : 'batch_size'}}
 )
-
 ```
 
-Simplify the converted ONNX model.
+{{< notice tip >}}
+Description of the parameters:
+- `dynamic_axes`: Allows the ONNX model to accept inputs of different sizes. Usually, the first dimension of the input is the batch size and we want the model to be able to handle different batch sizes at inference time. With this, we can run inference on 1 image, 10 images, or 100 images without changing the model at inference time.
+
+- `do_constant_folding=True` - This optimizes the model by folding constants, which can improve inference speed and reduce the size of the model.
+
+More on `torch.onnx.export` [here](https://pytorch.org/docs/stable/onnx.html).
+
+{{< /notice >}}
+
+
+Sometimes the resulting ONNX file becomes unnecessarily complicated. We can simplify the converted ONNX model using a tool like `onnxsim`. 
+
+{{< notice note >}}
+This is not strictly necessary, but it may help reduce the size of the model and improve inference speed. 
+{{< /notice >}}
+
+Install `onnxsim`
 
 ```bash
-pip install onnxsim -Uq
-onnxsim vit_small_patch14_dinov2.lvd142m.onnx vit_small_patch14_dinov2.lvd142m_simplified.onnx
+pip install onnxsim
 ```
+
+Run the following command to simplify the ONNX model.
+
+```bash
+onnxsim convnextv2_base.fcmae_ft_in22k_in1k.onnx \
+        convnextv2_base.fcmae_ft_in22k_in1k_simplified.onnx
+```
+
+This will create a new file `convnextv2_base.fcmae_ft_in22k_in1k_simplified.onnx`.
+
+The output will show the difference between the original and simplified model. 
+
+{{< figure_resizing src="onnxsim.png" caption="Simplifying the ONNX model." >}}
 
 To run an inference in ONNX, install `onnxruntime`:
 
@@ -268,47 +291,67 @@ To run an inference in ONNX, install `onnxruntime`:
 pip install onnxruntime
 ```
 
+
+Now let's load the simplified ONNX model and run an inference using `onnxruntime`.
+
+For the sake of simplicity, we'll run the inference on CPU. After all, majority of edge devices are CPU-based.
+
 ```python
 import numpy as np
 import onnxruntime as ort
 from PIL import Image
 from urllib.request import urlopen
 
-# Load ONNX model
-session = ort.InferenceSession("vit_small_patch14_dinov2.lvd142m_simplified.onnx")
+# Run inference on CPU
+EP_list = ['CPUExecutionProvider']
 
 # Load an image
-img = Image.open(urlopen('https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/beignets-task-guide.png'))
 img = img.convert('RGB')
-img = img.resize((518, 518))
+img = img.resize((224, 224))
 img_np = np.array(img).astype(np.float32)
+
+# Load ONNX model
+session = ort.InferenceSession("convnextv2_base.fcmae_ft_in22k_in1k_simplified.onnx", providers=EP_list)
+session.set_providers(['CPUExecutionProvider'])
 
 # Convert data to the shape the ONNX model expects
 input_data = np.transpose(img_np, (2, 0, 1))  # Convert to (C, H, W)
 input_data = np.expand_dims(input_data, axis=0)  # Add a batch dimension
 
-input_data.shape # (1, 3, 518, 518)
-
 # Get input name from the model
 input_name = session.get_inputs()[0].name
-
-# Perform inference
-output = session.run(None, {input_name: input_data})
-
-# Extract output data (assuming model has a single output)
-output_data = output[0]
-
-output_data.shape
-# (1, 384)
 ```
 
-### 👁️ Visualize Model with Netron
-Netron.app
+Let's run an inference and measure the time taken.
 
-{{< figure_resizing src="dinov2_simplified.png" caption="DINOv2 simplified ONNX model." >}}
+```python
+import time
+num_images = 100
 
+start = time.perf_counter()
+for _ in range(num_images):
+    session.run(None, {input_name: input_data})
+end = time.perf_counter()
+time_taken = end - start
+
+print(
+    f"ONNX model on CPU: {time_taken/num_images*1000:.3f} ms per image,\n"
+    f"FPS: {num_images/time_taken:.2f}")
+```
+
+```bash
+>>> ONNX model on CPU: 71.991 ms per image,
+>>> FPS: 13.89
+```
+Not bad! We went from **9.14** FPS to **13.89** FPS!
+
+Plus we don't need to worry about installing PyTorch anymore on the inference device. All we need is the ONNX file and `onnxruntime`.
 
 ### 📜 PyTorch to Torchscript
+
+Other than ONNX, Torchscript is another format to prepare models for deployment. Both share a common goal - to make the model more efficient for inference.
+
+Let's convert our PyTorch model to Torchscript and run an inference.
 
 ```python
 import torch
