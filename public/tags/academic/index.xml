@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Academic on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:44099/tags/academic/</link>
+    <link>http://localhost:44047/tags/academic/</link>
     <description>Recent content in Academic on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Nov 2023 12:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:44099/tags/academic/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:44047/tags/academic/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Celebrating a Milestone in the Top 2% of Global Scientists</title>
-      <link>http://localhost:44099/blog/world_top_scientist/</link>
+      <link>http://localhost:44047/blog/world_top_scientist/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
-      <guid>http://localhost:44099/blog/world_top_scientist/</guid>
+      <guid>http://localhost:44047/blog/world_top_scientist/</guid>
       <description>I&amp;rsquo;m really excited to tell you that I&amp;rsquo;m one of the top 2% of scientists in the world for 2023, according to Stanford University. It&amp;rsquo;s been ten years of hard work in research and learning, and this award means a lot.&#xA;🛤️ The Journey When I started, it was easy.&#xA;I had been in academic for some time as a student and research assistant. And I had the resources, for a good start.</description>
     </item>
     <item>
       <title>From Academia to Industry: Insights from an AI/ML Engineer</title>
-      <link>http://localhost:44099/blog/podcast_ai_ml_data_talks_episode_fifteen/</link>
+      <link>http://localhost:44047/blog/podcast_ai_ml_data_talks_episode_fifteen/</link>
       <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:44099/blog/podcast_ai_ml_data_talks_episode_fifteen/</guid>
+      <guid>http://localhost:44047/blog/podcast_ai_ml_data_talks_episode_fifteen/</guid>
       <description>💫 AI/ML Data Talks Podcast In this podcast episode I share about my journey and transition from academia to industry and the lessons I learned along the way.&#xA;During our chat, we talk about some of the hottest topics in machine learning, like What is MLOps? Data Drift vs Concept Drift, and Monitoring Machine Learning Model.&#xA;We also talked about some insights into the latest AI and ML trends and ecosystem.</description>
     </item>
   </channel>
