@@ -284,7 +284,7 @@ onnxsim convnextv2_base.fcmae_ft_in22k_in1k.onnx \
 
 The output will show the difference between the original and simplified model. 
 
-{{< figure_autoresize src="onnxsim.png" width="500" align="center" caption="The difference between the original and simplified model." >}}
+{{< figure_autoresize src="onnxsim.png" width="original" align="center" caption="The difference between the original and simplified model." >}}
 
 Looks like the simplified model has fewer `Constant` and `Mul` operations but the model size remains the same. The result is a new file `convnextv2_base.fcmae_ft_in22k_in1k_simplified.onnx`.
 
