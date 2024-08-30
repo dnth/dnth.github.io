@@ -22,7 +22,7 @@ I mean, I've got *gigabytes* of photos on my Google Photo app filled with dark s
 
 And let's face it, what we post on Instagram vs what's *behind the scenes* can be wildly different.
 
-{{< figure_resizing src="meme.png" caption="Me vs my photo album." >}}
+{{< figure_autoresize src="meme.png" caption="Me vs my photo album." >}}
 
 I know, you'll say that there's no harm in keeping those extra selfies in your phone. Right?
 
@@ -69,7 +69,7 @@ fastdup lets you clean visual data with ease, freeing up valuable resources and 
 
 Here are some superpowers you get with fastdup - it lets you identify:
 
-{{< figure_resizing src="features.png" caption="fastdup superpowers. Source: fastdup GitHub." link="https://github.com/visual-layer/fastdup" >}}
+{{< figure_autoresize src="features.png" caption="fastdup superpowers. Source: fastdup GitHub." link="https://github.com/visual-layer/fastdup" >}}
 
 In short, fastdup is 👇
 * **Unsupervised**: fits any visual dataset.
@@ -97,7 +97,7 @@ The contributor [Debadri Dutta](https://www.linkedin.com/in/debadridtt/) has a k
 So I thought it would be a good fit to use it for this post.
 
 Here are a few sample images.
-{{< figure_resizing src="sample.png" caption="Sample images scraped from Google." link="https://www.kaggle.com/datasets/duttadebadri/image-classification" >}}
+{{< figure_autoresize src="sample.png" caption="Sample images scraped from Google." link="https://www.kaggle.com/datasets/duttadebadri/image-classification" >}}
 
 
 With the images downloaded locally let's organize them in a folder.
@@ -197,11 +197,11 @@ fd.invalid_instances()
 
 which outputs
 
-{{< figure_resizing src="invalid.png" link="invalid.png" >}}
+{{< figure_autoresize src="invalid.png" link="invalid.png" >}}
 
 I tried to open these images on my machine, but they could not be viewed.
 
-{{< figure_resizing src="sample_invalid.png" link="sample_invalid.png" >}}
+{{< figure_autoresize src="sample_invalid.png" link="sample_invalid.png" >}}
 
 Invalid images can't be used but take up disk space. 
 There's only one way to deal with it - Delete.
@@ -294,7 +294,7 @@ fd.vis.duplicates_gallery()
 ```
 
 If you're running this in a Jupyter notebook, you'll see something like the following.
-{{< figure_resizing src="duplicates.png" link="duplicates.png" caption="A generated gallery of duplicates." >}}
+{{< figure_autoresize src="duplicates.png" link="duplicates.png" caption="A generated gallery of duplicates." >}}
 
 {{< notice note >}}
 You can optionally specify `num_images` -- The max number of images to display. Defaults to `20`.
@@ -368,7 +368,7 @@ In `duplicates_df` you'll now find:
 +----------------+------------------------------------------------------------------------------+-----------------+---------+
 ``` -->
 
-{{< figure_resizing src="duplicates_df.png" link="duplicates_df.png" >}}
+{{< figure_autoresize src="duplicates_df.png" link="duplicates_df.png" >}}
 
 
 Now let's turn the contents of `duplicates_df` into a list of images using the function:
@@ -427,7 +427,7 @@ fd.vis.stats_gallery(metric='dark')
 
 The above snippet sorts all the photos in your folder following ascending `mean` values. So the darker images (lower `mean` value) should appear at the top.
 
-{{< figure_resizing src="dark.png" link="dark.png" caption="A generated gallery of dark images." >}}
+{{< figure_autoresize src="dark.png" link="dark.png" caption="A generated gallery of dark images." >}}
 
 The first 3 images (totally black) are classic. I always find these somewhere in my albums due to accidental press when the phone is in my pocket.
 
@@ -440,7 +440,7 @@ Conversely, get the brightest images on top with:
 fd.vis.stats_gallery(metric='bright')
 ```
 
-{{< figure_resizing src="bright.png" link="bright.png" caption="A generated gallery of bright images." >}}
+{{< figure_autoresize src="bright.png" link="bright.png" caption="A generated gallery of bright images." >}}
 
 Again, see the first 3 images (totally white) which happens sometimes when your shots are overexposed.
 
@@ -453,7 +453,7 @@ You've guessed it, this sorts our album with the most blurry image on top.
 fd.vis.stats_gallery(metric='blur')
 ```
 
-{{< figure_resizing src="blur.png" link="blur.png" caption="A generated gallery of blur images." >}}
+{{< figure_autoresize src="blur.png" link="blur.png" caption="A generated gallery of blur images." >}}
 
 
 There are more ways we can view our photos using statistical metrics. So you can change the `metric` argument to:
@@ -486,7 +486,7 @@ fd.vis.component_gallery()
 
 And you'll find something like the following.
 
-{{< figure_resizing src="components.png" caption="" link="components.png" >}}
+{{< figure_autoresize src="components.png" caption="" link="components.png" >}}
 
 Above, I've shown you three examples of similar-looking shots grouped together with the file path of each image.
 It's up to you to decide what to do with the similar-looking shots. Not going to use them? Delete. Otherwise, you can also keep them organized in a folder of some sort.

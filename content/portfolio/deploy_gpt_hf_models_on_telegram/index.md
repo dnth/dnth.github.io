@@ -31,7 +31,7 @@ You might wonder how to access to the GPT model? Or which infrastructure to host
 
 *Yada.. yada.. yada..*
 
-{{< figure_resizing src="gpt-aws-kubernetes.jpg">}}
+{{< figure_autoresize src="gpt-aws-kubernetes.jpg">}}
 
 I get it. Things get complicated quickly. 
 It's not worth going down the rabbit hole especially if you're only experimenting or prototyping a feature.
@@ -50,7 +50,7 @@ If that looks interesting, let's begin 👩‍💻
 
 
 ### 🤖 Token From the Mighty BotFather
-{{< figure_resizing src="botfather_img.png" width=400 >}}
+{{< figure_autoresize src="botfather_img.png" width=400 >}}
 *We shall start by appeasing the mighty `BotFather` who holds the key to the world of bots* 🤖
 
 First, you must have a Telegram account. Create one [here]((https://telegram.org/)). It's free.
@@ -62,7 +62,7 @@ This [link](https://t.me/botfather) brings you to the `BotFather`.
 Alternatively, type `BotFather` in the Telegram search bar.
 The first result leads you to the `BotFather`.
 
-{{< figure_resizing src="botfather.jpg" width=400 >}}
+{{< figure_autoresize src="botfather.jpg" width=400 >}}
 
 Next, send `/start` to the `BotFather` to start a conversation.
 Follow the instructions given by the `BotFather` until you obtain a **token** for your bot.
@@ -85,7 +85,7 @@ But we ❤️ `Python`!
 Can we still use `Python` to code our bot?
 
 ✅ Yes! With a wrapper library like [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot).
-{{< figure_resizing src="ptb-logo.png" link="https://github.com/python-telegram-bot/python-telegram-bot" >}}
+{{< figure_autoresize src="ptb-logo.png" link="https://github.com/python-telegram-bot/python-telegram-bot" >}}
 
 `python-telegram-bot` provides a pure `Python`, asynchronous interface for the [Telegram Bot API](https://core.telegram.org/bots/api).
 It's incredibly user-friendly too.
@@ -314,7 +314,7 @@ To hide your **token**, create an environment variable for it.
 
 On your Space, click on the `Settings` tab and enter the `Name` and `Value` of the environment variable.
 Let's put the name as `telegram_token` and the value, your Telegram **token**.
-{{< figure_resizing src="secrets.png" >}}
+{{< figure_autoresize src="secrets.png" >}}
 
 On your `app.py` change `line 31` to the following
 

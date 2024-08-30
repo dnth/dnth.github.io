@@ -14,7 +14,7 @@ images :
 
 ### 💡 Introduction
 
-{{< figure_resizing src="aboutme.png" >}}
+{{< figure_autoresize src="aboutme.png" >}}
 
 
 This talk was given to the Tensorflow Deep Learning Malaysia Facebook [group](https://www.facebook.com/groups/TensorFlowMY/) during the June 2022 online meetup.
@@ -43,7 +43,7 @@ More than 85% of machine learning models fail to make it into production.
 
 I unveiled that the deep gap is that not enough attention is placed on productionizing/deploying DL models in real world applications.
 
-{{< figure_resizing src="meme.jpg" >}}
+{{< figure_autoresize src="meme.jpg" >}}
 
 
 ### ⛏ Technical Walkthrough

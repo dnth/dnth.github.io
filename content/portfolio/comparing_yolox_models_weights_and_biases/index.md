@@ -32,7 +32,7 @@ With each passing day, better models are added as new discoveries are made.
 Which one do we pick? How do we know if it's best for the application?
 If you're new, this can easily get overwhelming.
 
-{{< figure_resizing src="meme.png">}}
+{{< figure_autoresize src="meme.png">}}
 
 In this post I will show you how I use a free tool known as [Weights and Biases](https://wandb.ai/home) (Wandb) to quickly log your experiments and compare them side-by-side.
 
@@ -61,7 +61,7 @@ Wandb helps individuals and teams build models faster.
 With just a few lines of code, you can compare models, log important metrics, and collaborate with teammates.
 It's free to get started. Click [here](https://wandb.ai/) to create an account. 
 
-{{< figure_resizing src="wandb.png">}}
+{{< figure_autoresize src="wandb.png">}}
 
 This post is a sequel to my previous post where I showed [how to deploy YOLOX models on CPU at 50 FPS](https://dicksonneoh.com/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/).
 This time around I will show you how I get the most from the YOLOX models by logging the performance metrics and comparing them on Wandb.
@@ -139,9 +139,9 @@ Once everything is set in place, let's run the training script and head to the p
 
 After running the training for all the YOLOX models, the project dashboard should look like the following. 
 
-{{< figure_resizing src="graphs.png" caption="Logged metrics during training for all YOLOX models." >}}
+{{< figure_autoresize src="graphs.png" caption="Logged metrics during training for all YOLOX models." >}}
 
-{{< figure_resizing src="table.png" caption="Logged hyperparameters for all YOLOX models." >}}
+{{< figure_autoresize src="table.png" caption="Logged hyperparameters for all YOLOX models." >}}
 
 As shown above, all the training metrics and hyperparameters are logged for each YOLOX model in an organized table.
 You can share this dashboard with your teammates so they can view the metrics in real-time as you train. 
@@ -156,7 +156,7 @@ I ran the training on my license plate dataset for all YOLOX models namely `YOLO
 
 To gauge the quality of the model, we can look at the `COCOAP50_95` plot or also known as the COCO Metric or mean average precision (mAP) plot.
 The mAP plot indicates how well the model performs on the validation set (higher values are better) as we train the model and is shown below.
-{{< figure_resizing src="mAP.png" >}}
+{{< figure_autoresize src="mAP.png" >}}
 
 From the mAP plot, looks like `YOLOX-X` scored the highest mAP followed by `YOLOX-L`, `YOLOX-M`, `YOLOX-S`, `YOLOX-Tiny` and `YOLOX-Nano`.
 It's a little hard to tell from the figure above.

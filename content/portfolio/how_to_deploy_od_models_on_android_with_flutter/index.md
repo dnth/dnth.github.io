@@ -45,7 +45,7 @@ To make things worse, the obsession with chasing after "SOTA models" often cause
 
 <!-- We can forget about ever finding these models in production. -->
 
-{{< figure_resizing src="jupyter_meme.png" caption="Source: ClearML on Reddit." link="https://www.reddit.com/r/mlops/comments/o8w2e4/you_know_the_deal_if_you_dont_post_content_ill/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">}}
+{{< figure_autoresize src="jupyter_meme.png" caption="Source: ClearML on Reddit." link="https://www.reddit.com/r/mlops/comments/o8w2e4/you_know_the_deal_if_you_dont_post_content_ill/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">}}
 
 Hence, as ML engineers, it is very helpful if we build models with deployment in mind, as the end result.
 
@@ -69,7 +69,7 @@ This is not anyone's fault, as making an interactive demo often requires skills 
 **Anyone with no knowledge about backend, servers, or Kubernetes can quickly spin up an interactive demo, deploy them on the cloud or on a mobile device and share it to users to gain feedback.** -->
 
 The following figure shows the deployment architecture that allows us to accomplish that.
-{{< figure_resizing src="architecture.png" caption="Deployment architecture.">}}
+{{< figure_autoresize src="architecture.png" caption="Deployment architecture.">}}
 
 ### 🤗 Hosting a model on Hugging Face
 The first piece of the puzzle is to host our model on some cloud infrastructure.
@@ -77,7 +77,7 @@ In this post, let's use a free service known as Hugging Face *Spaces*.
 
 *Spaces* is a platform where anyone can upload their model and share it with the world.
 If you head to https://huggingface.co/spaces, you will find thousands of models that researchers made freely available online.
-{{< figure_resizing src="spaces_web.png">}}
+{{< figure_autoresize src="spaces_web.png">}}
 
 These models are hosted on *Spaces* for demo and sharing purposes. 
 But they can be scaled up into full-fledge production with the [Inference API](https://huggingface.co/inference-api).
@@ -112,12 +112,12 @@ Additionally, this also reduces deployment hardware costs, because now any light
 
 The figure below shows the endpoint for us to call the model.
 
-{{< figure_resizing src="api_endpoint.png">}}
+{{< figure_autoresize src="api_endpoint.png">}}
 
 As shown, the input to the model is an image, and the output, an image (with bounding boxes) and also a value of the microalgae count. You can check out the API [here](https://hf.space/embed/dnth/webdemo-microalgae-counting/api).
 
 If you'd like to test the HTTP endpoint live, head to the API [page](https://hf.space/embed/dnth/webdemo-microalgae-counting/api) as the following figure.
-{{< figure_resizing src="test_endpoint.png">}}
+{{< figure_autoresize src="test_endpoint.png">}}
 
 Alternatively, you can also try them out on your computer with `curl`:
 
@@ -198,7 +198,7 @@ That's about it! In this post hopefully, it's clear now that deploying deep lear
 Caveat: I do acknowledge that the approach in this post might not be optimal in some circumstances, especially if you have thousands of users on your app.
 
 For that, I would recommend scaling up to use the Hugging Face [Inference API](https://huggingface.co/inference-api) - a fully hosted production-ready solution 👇.
-{{< figure_resizing src="inference_api.png">}}
+{{< figure_autoresize src="inference_api.png">}}
 
 It is also possible now to deploy Hugging Face models on AWS Sagemaker for serverless inference. 
 Check them out [here](https://aws.amazon.com/machine-learning/hugging-face/).

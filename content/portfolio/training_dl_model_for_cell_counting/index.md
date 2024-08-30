@@ -35,12 +35,12 @@ By the end of this post, you will learn how to:
 **P/S**: The end result - A high performance object detector in only 17 lines of code! 🚀
 {{< /notice >}}
 
-{{< figure_resizing src="inference.png" >}}
+{{< figure_autoresize src="inference.png" >}}
 
 Did I mention that all the tools used in this project are completely open-source and free of charge? Yes!
 If you're ready let's begin.
 
-<!-- {{< figure_resizing src="quote.png" >}} -->
+<!-- {{< figure_autoresize src="quote.png" >}} -->
 
 
 ### ⚙️ Installation
@@ -94,10 +94,10 @@ For the purpose of this post, I've acquired image samples from a lab.
 
 The following shows a sample image of the microalgae cells as seen through a microscope.
 The cells are colored green.
-{{< figure_resizing src="hemocytometer.jpg" caption="Can you count how many cells are present in this image?">}}
+{{< figure_autoresize src="hemocytometer.jpg" caption="Can you count how many cells are present in this image?">}}
 
 There are a bunch of other images in the `data/not_labeled/` folder.
-{{< figure_resizing src="dataset_sample.png" >}}
+{{< figure_autoresize src="dataset_sample.png" >}}
 
 There is only one issue now, and that is the images are not labeled.
 Let's label the images with bounding boxes using an open-source image labeling tool [labelImg](https://github.com/tzutalin/labelImg).
@@ -105,7 +105,7 @@ Let's label the images with bounding boxes using an open-source image labeling t
 
 The `labelImg` app enables us to label images with class names and bounding boxes surrounding the object of interest.
 The following figure shows a demo of the app.
-{{< figure_resizing src="labelimg_demo_annot.jpg" >}}
+{{< figure_autoresize src="labelimg_demo_annot.jpg" >}}
 
 The `labelImg` app is already installed in the installation step.
 To launch the app, type in your terminal:
@@ -113,7 +113,7 @@ To launch the app, type in your terminal:
 labelImg
 ``` 
 A window like the following should appear.
-{{< figure_resizing src="labelimg_start.png" >}}
+{{< figure_autoresize src="labelimg_start.png" >}}
 
 Let's load the `data/not_labeled/` images folder into `labelImg` and start labeling them! 
 To do that, click on the **Open Dir** icon and navigate to the folder.
@@ -124,18 +124,18 @@ Next, you will be prompted to enter a label name.
 Key in `microalgae` as the label name. 
 Once done, a rectangular bounding box should appear on-screen.
 
-<!-- {{< figure_resizing src="labelimg_loaded.png" >}} -->
+<!-- {{< figure_autoresize src="labelimg_loaded.png" >}} -->
 
 {{< figure width=700 src="label.gif" >}}
 
 Now comes the repetitive part, we will need to draw a bounding box for each microalgae cell for all images in the folder.
 To accelerate the process I highly recommend the use of hotkeys keys with `labelImg`.
 The hotkeys are shown below.
-{{< figure_resizing src="hotkeys.png" width=400 >}}
+{{< figure_autoresize src="hotkeys.png" width=400 >}}
 
 Once done, remember to save the annotations. 
 The annotations are saved in an `XML` file with a file name matching to the image file name as shown below.
-{{< figure_resizing src="xml_files.png" >}}
+{{< figure_autoresize src="xml_files.png" >}}
 
 It took me a few hours to meticulously label the images.
 If you don't feel like spending time labeling all the images (although I recommend doing them at least once), you can find the labeled ones in the `data/labeled/` folder.
@@ -244,7 +244,7 @@ show_samples(samples, ncols=4)
 
 This will show us 4 samples from the `train_ds`.
 Note the variations in lighting, translation, and rotation compared to the original images.
-{{< figure_resizing src="show_ds.png" >}}
+{{< figure_autoresize src="show_ds.png" >}}
 
 The transformations are applied on the fly.
 So each run on the snippet produces slightly different results.
@@ -323,7 +323,7 @@ learn.lr_find()
 ```
 
 which outputs:
-{{< figure_resizing src="lr_find.png" >}}
+{{< figure_autoresize src="lr_find.png" >}}
 
 The most optimal learning rate value lies in the region where the loss descends most rapidly.
 From the figure above, this is somewhere in between `1e-4` to `1e-2`.
@@ -353,7 +353,7 @@ The figure below shows the training output.
 The `freeze_epochs` parameter specifies the number of `epochs` to train in ➀.
 
 
-{{< figure_resizing src="train.png" >}}
+{{< figure_autoresize src="train.png" >}}
 
 During the training, the `train_loss`, `valid_loss`, and `COCOMetric` are printed at every epoch.
 Ideally, the losses should decrease, and `COCOMetric` should increase the longer we train.
@@ -367,7 +367,7 @@ You can increase the `detection_threshold` value to only show the bounding boxes
 model_type.show_results(model, valid_ds, detection_threshold=.5)
 ```
 
-{{< figure_resizing src="show_results.png" >}}
+{{< figure_autoresize src="show_results.png" >}}
 
 For completeness, here are the codes for the *Modeling* section which include steps to load the data, instantiate the model, train the model, and show the results.
 That's only 17 lines of code!
@@ -476,7 +476,7 @@ pred_dict["img"]
 
 which outputs
 
-{{< figure_resizing src="inference.png" >}}
+{{< figure_autoresize src="inference.png" >}}
 
 To count the number of microalgae cells on the image, we can count the number of bounding boxes on the image by with:
 
@@ -528,7 +528,7 @@ Your creativity and imagination are the limits.
 The world is your oyster. Now go out there and use this newly found superpower to make a difference.
 
 
-{{< figure_resizing src="quote_robert_greene.jpg" >}}
+{{< figure_autoresize src="quote_robert_greene.jpg" >}}
 
 {{< notice note >}}
 All the codes and data are available on this Github [repository](https://github.com/dnth/microalgae-cell-counter-blogpost).

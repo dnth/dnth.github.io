@@ -31,7 +31,7 @@ Even though it's not late, I wish I had started earlier.
 If you are new and want to contribute to open-source, start now.
 Here are some of the lessons I learned along the way that changed the way I learn, and code.
 
-{{< figure_resizing src="tree_proverb.jpg" >}}
+{{< figure_autoresize src="tree_proverb.jpg" >}}
 
 
 #### 🧑‍🔧 I became a better coder
@@ -75,7 +75,7 @@ The rest is history.
 Little that I know, I was ranked #26 on [Top GitHub Users By Country](https://github.com/gayanvoice/top-github-users/blob/main/markdown/public_contributions/malaysia.md) out of 1000+ contributors from Malaysia. 
 The ranking is based on the number of public contributions on GitHub.
 All these happened within a short span of 3 months!
-{{< figure_resizing src="top_cont.png" caption="Ranked #26 after contributing to open-source for 3 months.">}}
+{{< figure_autoresize src="top_cont.png" caption="Ranked #26 after contributing to open-source for 3 months.">}}
 
 #### 👨‍🏫 I got mentorship from coding experts
 Getting a mentor is no doubt one of the best investments for rapid progress in any area of personal growth.
@@ -95,7 +95,7 @@ As I help others, I gained and learned a lot myself which allowed me to contribu
 This became an empowering cycle to continue contributing to the library.
 One day, I hope to be a mentor of some sort to others and help inspire people in the ways I was inspired.
 
-{{< figure_resizing src="mentor.png" caption="“If I have seen further it is by standing on the shoulders of giants.” — Isaac Newton">}}
+{{< figure_autoresize src="mentor.png" caption="“If I have seen further it is by standing on the shoulders of giants.” — Isaac Newton">}}
 
 
 #### 🌎 I started a website from scratch
@@ -117,7 +117,7 @@ Strangely, this is only evident when I start writing about it.
 I guess this is because writing is an act of synthesizing from a knowledge pool which can only be accomplished when one has a good understanding of the concept.
 This is why one of the greatest physicists of all time Richard Feynman once said "If you want to master something, teach it".
 
-{{< figure_resizing src="explain_quote.jpeg" >}}
+{{< figure_autoresize src="explain_quote.jpeg" >}}
 
 Learning by writing is also a form of active learning as opposed to passively absorbing content.
 This has significantly improved my understanding of many concepts I thought I already knew.
@@ -143,7 +143,7 @@ Through them, I also managed to score a few job application interviews, as I was
 
 P/S: I am still looking for an employment opportunity, I would be forever grateful if you can [connect me](https://dicksonneoh.com/contact) to anyone who's hiring for computer vision or machine learning positions.
 
-{{< figure_resizing src="friend_quote.jpeg" >}}
+{{< figure_autoresize src="friend_quote.jpeg" >}}
 
 ### 🎁 Wrapping up
 It's a wrap! 
@@ -156,7 +156,7 @@ Special shoutout to [Farid](https://www.linkedin.com/in/farid-hassainia-ca/) and
 If you're interested, do join in the [Discord](https://t.co/CDIWhdVmSe) channel or get in touch with me on [Twitter](https://twitter.com/dicksonneoh7) or [LinkedIn](https://www.linkedin.com/in/dickson-neoh-3a6984b8/).
 
 
-{{< figure_resizing src="ice2.png" caption="Photo from our most recent meetup - IceVision core developers from around the globe.">}}
+{{< figure_autoresize src="ice2.png" caption="Photo from our most recent meetup - IceVision core developers from around the globe.">}}
 
 ### ⛏ Comments & Feedback
 If you have any questions, comments, or feedback, I would be grateful if you can leave them on the following Twitter post or [drop me a message](https://dicksonneoh.com/contact/).

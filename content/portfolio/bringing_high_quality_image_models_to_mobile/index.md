@@ -27,7 +27,7 @@ As long as we have a dataset, ML is the way to go.
 Almost nobody talked about what happens to the model after that.
 
 
-{{< figure_resizing src="meme.jpg" >}}
+{{< figure_autoresize src="meme.jpg" >}}
 
 {{% blockquote author="ChatGPT"%}}
 Like a painting not shown in an artist's studio, a machine learning model not deployed is a missed opportunity to enrich and enhance the lives of those it was intended to serve.
@@ -116,7 +116,7 @@ TIMM is a open-source computer vision repo used in research and commercial appli
 
 
 
-{{< figure_resizing src="hf_timm.png" caption="TIMM joins Hugging Face." >}}
+{{< figure_autoresize src="hf_timm.png" caption="TIMM joins Hugging Face." >}}
 
 {{< notice tip >}}
 Check out the TIMM repo [here](https://github.com/huggingface/pytorch-image-models).
@@ -144,7 +144,7 @@ Spaces are one of the most popular ways to share ML applications and demos with 
 
 Details on the Hardware specifications and pricing [here](https://huggingface.co/pricing#spaces).
 
-{{< figure_resizing src="spaces_specs.png" caption="Hardware specs on Spaces." >}}
+{{< figure_autoresize src="spaces_specs.png" caption="Hardware specs on Spaces." >}}
 
 {{< notice tip >}}
 Details on how I trained the model using fastai [here](../pytorch_at_the_edge_timm_torchscript_flutter/#-training-with-fastai).
@@ -207,7 +207,7 @@ If we want to use other language then we'll need an API endpoint.
 ### 🔄 Inference API Endpoint
 All applications deployed using Gradio has an API endpoint.
 
-{{< figure_resizing src="api_endpoint.png" caption="TIMM joins Hugging Face." >}}
+{{< figure_autoresize src="api_endpoint.png" caption="TIMM joins Hugging Face." >}}
 
 View the API endpoint [here](https://dnth-edgenext-paddy-disease-classifie-dc60651.hf.space/?view=api)
 

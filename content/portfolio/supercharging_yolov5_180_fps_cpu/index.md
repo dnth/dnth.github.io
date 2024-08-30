@@ -48,7 +48,7 @@ That wasn't something you anticipated. You tried to convince them that GPUs are 
 
 You scanned the room and begin to notice the looks on their faces every time you said the word *GPU* and *CPU*.
 
-{{< figure_resizing src="meme.jpg">}}
+{{< figure_autoresize src="meme.jpg">}}
 
 Needless to say it didn't go well.
 I hope nobody will have to face this awkward situation in a pitching session, ever.
@@ -97,7 +97,7 @@ This dataset contains 2986 images and 3448 labels across a single annotation cla
 Images are wide-ranging: pistols in hand, cartoons, and staged studio-quality images of guns. 
 The dataset was originally released by the University of Grenada.
 
-{{< figure_resizing src="pistol.png">}}
+{{< figure_autoresize src="pistol.png">}}
 
 #### 🦸 Installation 
 
@@ -319,7 +319,7 @@ The real action only happens next - when we run sparsification with 👇
 
 ### 👨‍🍳 SparseML and Recipes
 
-{{< figure_resizing src="sparseml.png" caption="Image from SparseML documentation page." link="https://docs.neuralmagic.com/sparseml/">}}
+{{< figure_autoresize src="sparseml.png" caption="Image from SparseML documentation page." link="https://docs.neuralmagic.com/sparseml/">}}
 
 
 
@@ -595,7 +595,7 @@ On our Wandb [dashboard](https://wandb.ai/dnth/yolov5-deepsparse?workspace=user-
 
 It's getting the best of both! 🎯
 
-{{< figure_resizing src="mAP.png">}}
+{{< figure_autoresize src="mAP.png">}}
 
 I wanted to end the post here. But there is still this nagging thought that I can't ignore.
 It's keeping me awake at night. So I had to do this 🤷‍♂️.

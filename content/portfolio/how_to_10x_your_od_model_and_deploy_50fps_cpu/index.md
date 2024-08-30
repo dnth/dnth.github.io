@@ -57,7 +57,7 @@ If that looks interesting, let's dive in.
 
 
 ### ⛷ Modeling with YOLOX
-{{< figure_resizing src="yolox_demo.png">}}
+{{< figure_autoresize src="yolox_demo.png">}}
 
 We will use a state-of-the-art [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) model to detect the license plate of vehicles around the neighborhood.
 YOLOX is one of the most recent YOLO series models that is both lightweight and accurate.
@@ -74,7 +74,7 @@ This is an incredibly small sample size for any DL model, but I found that it wo
 We likely need more images to make this model more robust. However, this is still a good starting point.
 {{< /notice >}}
 
-{{< figure_resizing src="sample_imgs.png" caption="Sample images of vehicle license plates.">}}
+{{< figure_autoresize src="sample_imgs.png" caption="Sample images of vehicle license plates.">}}
 
 
 To label the images, let's use the open-source [CVAT](https://github.com/openvinotoolkit/cvat) labeling tool by Intel.
@@ -85,24 +85,24 @@ No installation is needed.
 
 A top menu bar should be visible as shown below. 
 Click on *Task*, fill in the name of the task, add related labels, and upload the images.
-{{< figure_resizing src="cvat_new.png">}}
+{{< figure_autoresize src="cvat_new.png">}}
 
 Since we are only interested in labeling the license plate, I've entered only one label - `LP` (license plate).
 Once the uploading completes, you will see a summary page as below. 
 Click on `Job #368378` at ③ and it should bring you to the labeling page.
-{{< figure_resizing src="task_description.png">}}
+{{< figure_autoresize src="task_description.png">}}
 
 To start labeling, click on the square icon at ① and click Shape at ② in the figure below.
-{{< figure_resizing src="draw_box.png">}}
+{{< figure_autoresize src="draw_box.png">}}
 
 You can then start drawing bounding boxes around the license plate. Do this for all 40 images.
-{{< figure_resizing src="show_bbox.png">}}
+{{< figure_autoresize src="show_bbox.png">}}
 
 Once done, we are ready to export the annotations on the *Tasks* page.
-{{< figure_resizing src="export.png">}}
+{{< figure_autoresize src="export.png">}}
 
 Make sure the format is *COCO 1.0* and click on OK. If you'd like to download the images check the Save images box. Since I have those images already, I don't have to download them.
-{{< figure_resizing src="coco.png">}}
+{{< figure_autoresize src="coco.png">}}
 
 
 Now, that we have our dataset ready, let's begin training.
@@ -222,7 +222,7 @@ But, on a Core i9-11900 CPU (a relatively powerful CPU to date) it averaged at 5
 Let's improve that by optimizing the model.
 
 ### 🤖 ONNX Runtime
-{{< figure_resizing src="onnx_runtime.png">}}
+{{< figure_autoresize src="onnx_runtime.png">}}
 [ONNX](https://onnx.ai/) is an open format built to represent machine learning models.
 The goal of ONNX is to ensure interoperability among machine learning models via commonly accepted standards.
 This allows developers to flexibly move between frameworks such as PyTorch or Tensorflow with less compatibility issues.
@@ -254,7 +254,7 @@ Let's see if we can improve that further.
 
 
 ### 🔗 OpenVINO Intermediate Representation
-{{< figure_resizing src="openvino_logo.png">}}
+{{< figure_autoresize src="openvino_logo.png">}}
 
 OpenVINO is a toolkit to optimize DL models.
 It enables a model to be optimized once and deployed on any supported Intel hardware including CPU, GPU, VPU, and FPGAs.

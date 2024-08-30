@@ -25,7 +25,7 @@ I've been there.
 
 You might feel like a superstar, but you'll have with a model that doesn't work 🤦‍♂️.
 
-{{< figure_resizing src="meme2.jpeg" caption="" >}}
+{{< figure_autoresize src="meme2.jpeg" caption="" >}}
 
 <!-- A model can only be as good as the data it's trained on.
 Bad data produce bad models. -->
@@ -51,7 +51,7 @@ fastdup lets me clean my visual data with ease, freeing up valuable resources an
 Here are some superpowers you get with fastdup.
 It lets you identify:
 
-{{< figure_resizing src="features.png" caption="fastdup superpowers. Source: fastdup GitHub." link="https://github.com/visual-layer/fastdup" >}}
+{{< figure_autoresize src="features.png" caption="fastdup superpowers. Source: fastdup GitHub." link="https://github.com/visual-layer/fastdup" >}}
 
 
 In short, fastdup is 👇
@@ -97,7 +97,7 @@ The dataset contains 25,000 images (150 x 150 pixels) of natural scenes from aro
 5. `sea`
 6. `tree`
 
-{{< figure_resizing src="dataset_sample.png" caption="Samples from dataset." link="https://www.kaggle.com/datasets/puneet6060/intel-image-classification" >}}
+{{< figure_autoresize src="dataset_sample.png" caption="Samples from dataset." link="https://www.kaggle.com/datasets/puneet6060/intel-image-classification" >}}
 
 {{< notice tip >}}
 I encourage you to pick a dataset of your choice in running this example. You can find some inspiration [here](https://paperswithcode.com/datasets?task=image-classification).
@@ -202,7 +202,7 @@ Other parameters for `duplicates_gallery` method:
 
 You'd see something like the following 👇
 
-{{< figure_resizing src="duplicates_report.png" caption="" link="./duplicates_report.png">}}
+{{< figure_autoresize src="duplicates_report.png" caption="" link="./duplicates_report.png">}}
 
 
 <!-- {{< notice info >}}
@@ -222,7 +222,7 @@ These are **duplicate images but labeled as different classes** and will end up 
 Here, we can already spot a few issues in our dataset. As shown below, `10234.jpg` and `7654.jpg` are exact duplicates.
 We know that through the `Distance` score of `1.0`.
 
-{{< figure_resizing src="dup_1.png" caption="" link="./dup_1.png">}}
+{{< figure_autoresize src="dup_1.png" caption="" link="./dup_1.png">}}
 
 But that's not the only problem.
 They are labeled differently! One if labeled `glacier` and the other `mountain`.
@@ -236,7 +236,7 @@ In machine learning [data leakage](https://insidebigdata.com/2014/11/26/ask-data
 
 Can you spot any data leakage in the gallery above?
 
-{{< figure_resizing src="data_leakage.png" caption="" link="./data_leakage.png">}}
+{{< figure_autoresize src="data_leakage.png" caption="" link="./data_leakage.png">}}
 
 The gallery above shows that we indeed discovered a data leakage:
 + **Train-validation leak** - Image from the training set is found in the validation set.
@@ -294,7 +294,7 @@ fd.vis.outliers_gallery()
 ```
 You'd see something like the following 👇
 
-{{< figure_resizing src="outliers_report.png" caption="" link="./outliers_report.png">}}
+{{< figure_autoresize src="outliers_report.png" caption="" link="./outliers_report.png">}}
 
 <!-- {{< notice info >}}
 
@@ -311,7 +311,7 @@ Well, what do we find here? The image below is certainly a mistake.
 
 It's not a broken image (it's still a valid image file) but there's no useful information on the image for it to be in the `test_set`.
 
-{{< figure_resizing src="anomaly_1.png" caption="" link="./anomaly_1.png">}}
+{{< figure_autoresize src="anomaly_1.png" caption="" link="./anomaly_1.png">}}
 
 This type of image is common in [large dataset such as LAION and ImageNet](https://medium.com/@amiralush/large-image-datasets-today-are-a-mess-e3ea4c9e8d22).
 
@@ -320,8 +320,8 @@ This type of image is common in [large dataset such as LAION and ImageNet](https
 
 All the other images above don't look too convincing to me either. Take a look at the images labeled as `forest` and `glacier` below. 
 
-{{< figure_resizing src="anomaly_2.png" caption="" link="./anomaly_2.png">}}
-{{< figure_resizing src="anomaly_3.png" caption="" link="./anomaly_3.png">}}
+{{< figure_autoresize src="anomaly_2.png" caption="" link="./anomaly_2.png">}}
+{{< figure_autoresize src="anomaly_3.png" caption="" link="./anomaly_3.png">}}
 
 {{< notice tip>}}
 Note that the lower the `Distance` value, the more likely it will be an outlier.
@@ -364,7 +364,7 @@ In case the dataset is labeled, you can specify the label using the function `ge
 
 You'd see something like 👇
 
-{{< figure_resizing src="similarity_report.png" caption="" link="./similarity_report.png">}}
+{{< figure_autoresize src="similarity_report.png" caption="" link="./similarity_report.png">}}
 
 That looks like a lot of information. Let's break it down a little.
 
@@ -372,7 +372,7 @@ What's happening here is that, under the hood, fastdup finds images that are sim
 
 For instance, the `glacier` image below is a duplicate of another image labeled `mountain` and another image of `glacier`. 
 
-{{< figure_resizing src="similarity_1.png" caption="" link="./similarity_1.png">}}
+{{< figure_autoresize src="similarity_1.png" caption="" link="./similarity_1.png">}}
 
 It is important to address these confusing labels because if the training data contains confusing or incorrect labels, it can negatively impact the performance of the model.
 
