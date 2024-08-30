@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IOS on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:46125/tags/ios/</link>
+    <link>http://localhost:37903/tags/ios/</link>
     <description>Recent content in IOS on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 16 Mar 2023 11:00:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:46125/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37903/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</title>
-      <link>http://localhost:46125/portfolio/bringing_high_quality_image_models_to_mobile/</link>
+      <link>http://localhost:37903/portfolio/bringing_high_quality_image_models_to_mobile/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:46125/portfolio/bringing_high_quality_image_models_to_mobile/</guid>
+      <guid>http://localhost:37903/portfolio/bringing_high_quality_image_models_to_mobile/</guid>
       <description>🌟 Motivation For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%.&#xA;Why not?&#xA;This is the after all the juiciest part of the job. &amp;ldquo;Solving&amp;rdquo; one dataset after another, it may seem like anything around you can be conquered with a simple model.fit.&#xA;That was me two years ago.&#xA;The naive version of me thought that was all about it with machine learning (ML).</description>
     </item>
   </channel>

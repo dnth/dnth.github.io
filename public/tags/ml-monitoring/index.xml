@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ml-Monitoring on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:46125/tags/ml-monitoring/</link>
+    <link>http://localhost:37903/tags/ml-monitoring/</link>
     <description>Recent content in Ml-Monitoring on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Oct 2022 20:48:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:46125/tags/ml-monitoring/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37903/tags/ml-monitoring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From Academia to Industry: Insights from an AI/ML Engineer</title>
-      <link>http://localhost:46125/blog/podcast_ai_ml_data_talks_episode_fifteen/</link>
+      <link>http://localhost:37903/blog/podcast_ai_ml_data_talks_episode_fifteen/</link>
       <pubDate>Thu, 13 Oct 2022 20:48:15 +0800</pubDate>
-      <guid>http://localhost:46125/blog/podcast_ai_ml_data_talks_episode_fifteen/</guid>
+      <guid>http://localhost:37903/blog/podcast_ai_ml_data_talks_episode_fifteen/</guid>
       <description>💫 AI/ML Data Talks Podcast In this podcast episode I share about my journey and transition from academia to industry and the lessons I learned along the way.&#xA;During our chat, we talk about some of the hottest topics in machine learning, like What is MLOps? Data Drift vs Concept Drift, and Monitoring Machine Learning Model.&#xA;We also talked about some insights into the latest AI and ML trends and ecosystem.</description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Netron on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:46125/tags/netron/</link>
+    <link>http://localhost:37903/tags/netron/</link>
     <description>Recent content in Netron on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Sep 2023 11:00:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:46125/tags/netron/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37903/tags/netron/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unlocking Edge ML: From PyTorch to Edge Deployment</title>
-      <link>http://localhost:46125/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</link>
+      <link>http://localhost:37903/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</link>
       <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:46125/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</guid>
+      <guid>http://localhost:37903/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</guid>
       <description>info&#xA;This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me here, on LinkedIn, or Twitter. 🚀 Motivation - Edge Deployment It&amp;rsquo;s late 2023, everyone seems to be talking about complex and larger models.&#xA;Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power.&#xA;Typically that&amp;rsquo;s available in cloud-based environments.</description>
     </item>
   </channel>

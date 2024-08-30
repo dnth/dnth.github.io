@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Telegram on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:46125/tags/telegram/</link>
+    <link>http://localhost:37903/tags/telegram/</link>
     <description>Recent content in Telegram on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 May 2022 11:00:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:46125/tags/telegram/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37903/tags/telegram/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deploying GPT-J Models on a Telegram Bot with Hugging Face Hub - For Free</title>
-      <link>http://localhost:46125/portfolio/deploy_gpt_hf_models_on_telegram/</link>
+      <link>http://localhost:37903/portfolio/deploy_gpt_hf_models_on_telegram/</link>
       <pubDate>Thu, 19 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:46125/portfolio/deploy_gpt_hf_models_on_telegram/</guid>
+      <guid>http://localhost:37903/portfolio/deploy_gpt_hf_models_on_telegram/</guid>
       <description>💥 Motivation tip&#xA;By the end of this post you will learn how to:&#xA;Set up a Telegram bot with a Python wrapper library. Use the Gradio API to access the GPT-J model prediction. Host the Telegram bot on Hugging Face Spaces. By the end of this post, you&amp;rsquo;ll have your own Telegram bot that has access to the GPT-J-6B model. All for free.&#xA;Deploying a state-of-the-art (SOTA) GPT-like language model on a chatbot can be tricky.</description>
     </item>
   </channel>
