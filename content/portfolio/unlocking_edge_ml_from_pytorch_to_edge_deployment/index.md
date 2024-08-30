@@ -174,10 +174,10 @@ print(
 
 ```
 
-There we have a baseline of **9.14** FPS on a pure PyTorch model.
+There we have a baseline of **9.14** FPS on a pure PyTorch model (Intel® Core™ i9-11900 @ 2.50GHz × 16 ).
 
 {{< notice warning >}}
-Although the inference time is not bad, deploying PyTorch models directly into production environments is often not ideal:
+Although the inference time is reasonable, deploying PyTorch models directly into production environments has disadvantages:
 
 1. **Large Dependency:** PyTorch requires numerous dependencies, challenging for resource-constrained environments.
 
@@ -190,7 +190,7 @@ Although the inference time is not bad, deploying PyTorch models directly into p
 5. **Platform Limitations:** Some platforms or edge devices may not support PyTorch natively.
 
 {{< /notice >}}
-These factors often lead practitioners to convert PyTorch models to more deployment-friendly formats like ONNX.
+These factors lead practitioners to convert PyTorch models to more deployment-friendly formats like ONNX.
 
 ### 🏆 ONNX (Open Neural Network Exchange)
 
@@ -348,22 +348,6 @@ Not bad! We went from **9.14** FPS to **13.89** FPS!
 
 Plus we don't need to worry about installing PyTorch anymore on the inference device. All we need is the ONNX file and `onnxruntime`. This is way more portable!
 
-### 📜 PyTorch to Torchscript
-
-Other than ONNX, Torchscript is another format to prepare models for deployment. Both share a common goal - to make the model more efficient for inference.
-
-Let's convert our PyTorch model to Torchscript and run an inference.
-
-```python
-import torch
-from torch.utils.mobile_optimizer import optimize_for_mobile
-
-model.eval()
-example = torch.rand(1, 3, 224, 224)
-traced_script_module = torch.jit.trace(model, example)
-optimized_traced_model = optimize_for_mobile(traced_script_module)
-optimized_traced_model._save_for_lite_interpreter("torchscript_edgenext_xx_small.pt")
-```
 
 ### 🪜 ONNX to OpenVINO
 
