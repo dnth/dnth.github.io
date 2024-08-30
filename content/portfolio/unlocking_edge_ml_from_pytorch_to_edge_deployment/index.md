@@ -101,9 +101,11 @@ from PIL import Image
 img = Image.open(urlopen(
     'https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/beignets-task-guide.png'
 ))
+
+img
 ```
  
-{{< figure_resizing src="image_from_web.png" caption="Download a random image from the web for inference." >}}
+{{< figure_resizing src="image_from_web.png" width="400" align="center" >}}
 
 
 Next let's get the model's specific transforms
@@ -260,30 +262,31 @@ More on `torch.onnx.export` [here](https://pytorch.org/docs/stable/onnx.html).
 {{< /notice >}}
 
 
-Sometimes the resulting ONNX file becomes unnecessarily complicated. We can simplify the converted ONNX model using a tool like `onnxsim`. 
+Sometimes the resulting ONNX file becomes unnecessarily complicated. We can simplify the converted ONNX model using a tool like [`onnx-simplifier`](https://github.com/daquexian/onnx-simplifier). 
 
 {{< notice note >}}
 This is not strictly necessary, but it may help reduce the size of the model and improve inference speed. 
 {{< /notice >}}
 
-Install `onnxsim`
+Let's start by installing `onnx-simplifier`.
 
 ```bash
 pip install onnxsim
 ```
 
-Run the following command to simplify the ONNX model.
+Run the following CLI command to simplify the ONNX model by specifying the input and output file names.
 
 ```bash
 onnxsim convnextv2_base.fcmae_ft_in22k_in1k.onnx \
         convnextv2_base.fcmae_ft_in22k_in1k_simplified.onnx
 ```
 
-This will create a new file `convnextv2_base.fcmae_ft_in22k_in1k_simplified.onnx`.
 
 The output will show the difference between the original and simplified model. 
 
-{{< figure_resizing src="onnxsim.png" caption="Simplifying the ONNX model." >}}
+{{< figure_resizing src="onnxsim.png" width="500" align="center" caption="The difference between the original and simplified model." >}}
+
+Looks like the simplified model has fewer `Constant` and `Mul` operations but the model size remains the same. The result is a new file `convnextv2_base.fcmae_ft_in22k_in1k_simplified.onnx`.
 
 To run an inference in ONNX, install `onnxruntime`:
 
@@ -294,7 +297,7 @@ pip install onnxruntime
 
 Now let's load the simplified ONNX model and run an inference using `onnxruntime`.
 
-For the sake of simplicity, we'll run the inference on CPU. After all, majority of edge devices are CPU-based.
+`onnxruntime` can run on CPU, GPU, or other hardware accelerators. For the sake of simplicity, we'll run the inference on CPU. After all, majority of edge devices are CPU-based.
 
 ```python
 import numpy as np
@@ -302,17 +305,15 @@ import onnxruntime as ort
 from PIL import Image
 from urllib.request import urlopen
 
-# Run inference on CPU
-EP_list = ['CPUExecutionProvider']
-
 # Load an image
 img = img.convert('RGB')
 img = img.resize((224, 224))
 img_np = np.array(img).astype(np.float32)
 
 # Load ONNX model
-session = ort.InferenceSession("convnextv2_base.fcmae_ft_in22k_in1k_simplified.onnx", providers=EP_list)
-session.set_providers(['CPUExecutionProvider'])
+session = ort.InferenceSession(
+                "convnextv2_base.fcmae_ft_in22k_in1k_simplified.onnx", 
+                providers=['CPUExecutionProvider'])
 
 # Convert data to the shape the ONNX model expects
 input_data = np.transpose(img_np, (2, 0, 1))  # Convert to (C, H, W)
@@ -345,7 +346,7 @@ print(
 ```
 Not bad! We went from **9.14** FPS to **13.89** FPS!
 
-Plus we don't need to worry about installing PyTorch anymore on the inference device. All we need is the ONNX file and `onnxruntime`.
+Plus we don't need to worry about installing PyTorch anymore on the inference device. All we need is the ONNX file and `onnxruntime`. This is way more portable!
 
 ### 📜 PyTorch to Torchscript
 

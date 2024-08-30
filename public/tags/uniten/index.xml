@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Uniten on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:37903/tags/uniten/</link>
+    <link>http://localhost:44099/tags/uniten/</link>
     <description>Recent content in Uniten on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 07 Sep 2021 20:48:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:37903/tags/uniten/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:44099/tags/uniten/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Digital Logic Design - Course</title>
-      <link>http://localhost:37903/blog/course_digital_logic_design/</link>
+      <link>http://localhost:44099/blog/course_digital_logic_design/</link>
       <pubDate>Tue, 07 Sep 2021 20:48:15 +0800</pubDate>
-      <guid>http://localhost:37903/blog/course_digital_logic_design/</guid>
+      <guid>http://localhost:44099/blog/course_digital_logic_design/</guid>
       <description>A collection of recorded lecture classes for the Digital Logic Design course I taught at National Energy University, Malaysia.&#xA;View the playlist here</description>
     </item>
   </channel>

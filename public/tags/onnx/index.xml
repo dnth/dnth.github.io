@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ONNX on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:37903/tags/onnx/</link>
+    <link>http://localhost:44099/tags/onnx/</link>
     <description>Recent content in ONNX on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Sep 2023 11:00:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:37903/tags/onnx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Aug 2024 11:00:15 +0800</lastBuildDate>
+    <atom:link href="http://localhost:44099/tags/onnx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unlocking Edge ML: From PyTorch to Edge Deployment</title>
-      <link>http://localhost:37903/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</link>
-      <pubDate>Sat, 16 Sep 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:37903/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</guid>
-      <description>info&#xA;This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me here, on LinkedIn, or Twitter. 🚀 Motivation - Edge Deployment It&amp;rsquo;s late 2023, everyone seems to be talking about complex and larger models.&#xA;Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power.&#xA;Typically that&amp;rsquo;s available in cloud-based environments.</description>
+      <link>http://localhost:44099/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</link>
+      <pubDate>Fri, 30 Aug 2024 11:00:15 +0800</pubDate>
+      <guid>http://localhost:44099/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</guid>
+      <description>info&#xA;This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me here, on LinkedIn, or Twitter. 🚀 Motivation - Edge Deployment It&amp;rsquo;s 2024, everyone seems to be talking about complex and larger models.&#xA;Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power.&#xA;Typically that&amp;rsquo;s available in cloud-based environments.</description>
     </item>
     <item>
       <title>Supercharging YOLOv5: How I Got 182.4 FPS Inference Without a GPU</title>
-      <link>http://localhost:37903/portfolio/supercharging_yolov5_180_fps_cpu/</link>
+      <link>http://localhost:44099/portfolio/supercharging_yolov5_180_fps_cpu/</link>
       <pubDate>Tue, 07 Jun 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:37903/portfolio/supercharging_yolov5_180_fps_cpu/</guid>
+      <guid>http://localhost:44099/portfolio/supercharging_yolov5_180_fps_cpu/</guid>
       <description>🔥 Motivation After months of searching, you&amp;rsquo;ve finally found the one.&#xA;The one object detection library that just works. No installation hassle, no package version mismatch, and no CUDA errors.&#xA;I&amp;rsquo;m talking about the amazingly engineered YOLOv5 object detection library by Ultralytics.&#xA;Elated, you quickly find an interesting dataset from Roboflow and finally trained a state-of-the-art (SOTA) YOLOv5 model to detect firearms from image streams.&#xA;You ran through a quick checklist &amp;ndash;</description>
     </item>
     <item>
       <title>Faster than GPU: How to 10x your Object Detection Model and Deploy on CPU at 50&#43; FPS</title>
-      <link>http://localhost:37903/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/</link>
+      <link>http://localhost:44099/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/</link>
       <pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate>
-      <guid>http://localhost:37903/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/</guid>
+      <guid>http://localhost:44099/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/</guid>
       <description>🚦 Motivation tip&#xA;By the end of this post, you will learn how to:&#xA;Train state-of-the-art YOLOX model with your own data. Convert the YOLOX PyTorch model into ONNX and OpenVINO IR format. Run quantization algorithm to 10x your model&amp;rsquo;s inference speed. P/S: The final model runs faster on the CPU than the GPU! 😱&#xA;Deep learning (DL), seems to be the magic word that makes anything mundane cool again. We find them everywhere - in news reports, blog posts, articles, research papers, advertisements, and even baby books.</description>
     </item>
   </channel>
