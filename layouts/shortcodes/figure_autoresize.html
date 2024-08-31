@@ -6,13 +6,13 @@
 <figure{{ with .Get "class" }} class="{{.}}"{{ end }}{{ with .Get "align" }} style="text-align: {{.}};"{{ end }}>
     <!-- image with popup -->
     <a href="{{ $original.RelPermalink }}" class="image-popup">
-        {{ if eq (.Get "width") "original" }}
-        <img src="{{ $original.RelPermalink }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}{{ with .Get "height" }}height="{{.}}" {{ end }}/>
-        {{ else if eq (.Get "width") "auto" }}
-        <img src="{{ $original.RelPermalink }}" srcset="{{range $i, $set := $srcset}}{{ $setparams := split $set "|" }}{{$sizecondition := index $setparams 0 }}{{ $image := $original.Resize (print $sizecondition "x") }}{{ if $i }}, {{ end }}{{ (print $image.RelPermalink " " $sizecondition "w") }}{{ end }}" sizes="100vw" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}{{ with .Get "height" }}height="{{.}}" {{ end }} style="width: 100%; height: auto;"/>
-        {{ else }}
-        <img src="{{ $original.RelPermalink }}" srcset="{{range $i, $set := $srcset}}{{ $setparams := split $set "|" }}{{$sizecondition := index $setparams 0 }}{{ $image := $original.Resize (print $sizecondition "x") }}{{ if $i }}, {{ end }}{{ (print $image.RelPermalink " " $sizecondition "w") }}{{ end }}" sizes="{{range $i, $set := $srcset}}{{ $setparams := split $set "|" }}{{$mediacondition := index $setparams 1 }}{{ if $i }}, {{ end }}{{ $mediacondition }}{{ end }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}{{ with .Get "width" }}width="{{.}}" {{ end }}{{ with .Get "height" }}height="{{.}}" {{ end }}/>
-        {{ end }}
+        <img src="{{ $original.RelPermalink }}" 
+             srcset="{{range $i, $set := $srcset}}{{ $setparams := split $set "|" }}{{$sizecondition := index $setparams 0 }}{{ $image := $original.Resize (print $sizecondition "x") }}{{ if $i }}, {{ end }}{{ (print $image.RelPermalink " " $sizecondition "w") }}{{ end }}" 
+             sizes="{{ if eq (.Get "width") "original" }}(max-width: {{ $original.Width }}px) 100vw, {{ $original.Width }}px{{ else }}(max-width: {{ .Get "width" }}) 100vw, {{ .Get "width" }}{{ end }}"
+             {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}
+             {{ if ne (.Get "width") "original" }}{{ with .Get "width" }}width="{{.}}" {{ end }}{{ end }}
+             {{ with .Get "height" }}height="{{.}}" {{ end }}
+             style="max-width: 100%; height: auto;"/>
     </a>
     {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
     <figcaption>{{ if isset .Params "title" }}

@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fastdup on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:44047/tags/fastdup/</link>
+    <link>http://localhost:1313/tags/fastdup/</link>
     <description>Recent content in Fastdup on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Feb 2023 11:00:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:44047/tags/fastdup/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/fastdup/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Clean Up Your Digital Life: How I Found 1929 Fully Identical Images, Dark, Bright and Blurry Shots in Minutes, For Free.</title>
-      <link>http://localhost:44047/blog/clean_up_your_digital_life/</link>
+      <link>http://localhost:1313/blog/clean_up_your_digital_life/</link>
       <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44047/blog/clean_up_your_digital_life/</guid>
+      <guid>http://localhost:1313/blog/clean_up_your_digital_life/</guid>
       <description>✅ Motivation In today&amp;rsquo;s world of selfies and Instagram, we all take tons of photos on our phones, cameras, and other gadgets.&#xA;But let&amp;rsquo;s be real, it&amp;rsquo;s easy for our photo collections to become a chaotic mess, making it impossible to find that one special memory.&#xA;I mean, I&amp;rsquo;ve got gigabytes of photos on my Google Photo app filled with dark shots, overly exposed shots, blurry shots, and tons of duplicate stills.</description>
     </item>
     <item>
       <title>fastdup: A Powerful Tool to Manage, Clean &amp; Curate Visual Data at Scale on Your CPU - For Free.</title>
-      <link>http://localhost:44047/portfolio/fastdup_manage_clean_curate/</link>
+      <link>http://localhost:1313/portfolio/fastdup_manage_clean_curate/</link>
       <pubDate>Tue, 03 Jan 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44047/portfolio/fastdup_manage_clean_curate/</guid>
+      <guid>http://localhost:1313/portfolio/fastdup_manage_clean_curate/</guid>
       <description>⏳ Last Updated: March 27, 2023.&#xA;✅ Motivation As a data scientist, you might be tempted to jump into modeling as soon as you can. I mean, that&amp;rsquo;s the fun part, right?&#xA;But trust me, if you skip straight to modeling without taking the time to really understand the problem and analyze the data, you&amp;rsquo;re setting yourself up for failure.&#xA;I&amp;rsquo;ve been there.&#xA;You might feel like a superstar, but you&amp;rsquo;ll have with a model that doesn&amp;rsquo;t work 🤦‍♂️.</description>
     </item>
   </channel>

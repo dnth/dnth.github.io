@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Microbiology on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:44047/tags/microbiology/</link>
+    <link>http://localhost:1313/tags/microbiology/</link>
     <description>Recent content in Microbiology on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Apr 2022 15:07:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:44047/tags/microbiology/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/microbiology/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Training a Deep Learning Model for Cell Counting in 17 Lines of Code with 17 Images</title>
-      <link>http://localhost:44047/portfolio/training_dl_model_for_cell_counting/</link>
+      <link>http://localhost:1313/portfolio/training_dl_model_for_cell_counting/</link>
       <pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate>
-      <guid>http://localhost:44047/portfolio/training_dl_model_for_cell_counting/</guid>
+      <guid>http://localhost:1313/portfolio/training_dl_model_for_cell_counting/</guid>
       <description>🕶️ Motivation Many biology and medical procedures involve counting cells from images taken with a microscope. Counting cells reveals the concentration of bacteria and viruses and gives vital information on the progress of a disease.&#xA;To accomplish the counting, researchers painstakingly count the cells by hand with the assistance of a device called hemocytometer. This process is repetitive, tedious, and prone to errors.&#xA;What if we could automate the counting by using an intelligent deep learning algorithm instead?</description>
     </item>
   </channel>

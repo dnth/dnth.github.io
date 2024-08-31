@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugging Face on Dickson Neoh - Personal Portfolio</title>
-    <link>http://localhost:44047/tags/hugging-face/</link>
+    <link>http://localhost:1313/tags/hugging-face/</link>
     <description>Recent content in Hugging Face on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 30 Aug 2024 11:00:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:44047/tags/hugging-face/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/hugging-face/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unlocking Edge ML: From PyTorch to Edge Deployment</title>
-      <link>http://localhost:44047/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</link>
+      <link>http://localhost:1313/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</link>
       <pubDate>Fri, 30 Aug 2024 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44047/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</guid>
+      <guid>http://localhost:1313/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</guid>
       <description>info&#xA;This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me here, on LinkedIn, or Twitter. 🚀 Motivation - Edge Deployment It&amp;rsquo;s 2024, everyone seems to be talking about complex and larger models.&#xA;Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power.&#xA;Typically that&amp;rsquo;s available in cloud-based environments.</description>
     </item>
     <item>
       <title>Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</title>
-      <link>http://localhost:44047/portfolio/bringing_high_quality_image_models_to_mobile/</link>
+      <link>http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44047/portfolio/bringing_high_quality_image_models_to_mobile/</guid>
+      <guid>http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/</guid>
       <description>🌟 Motivation For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%.&#xA;Why not?&#xA;This is the after all the juiciest part of the job. &amp;ldquo;Solving&amp;rdquo; one dataset after another, it may seem like anything around you can be conquered with a simple model.fit.&#xA;That was me two years ago.&#xA;The naive version of me thought that was all about it with machine learning (ML).</description>
     </item>
     <item>
       <title>Deploying GPT-J Models on a Telegram Bot with Hugging Face Hub - For Free</title>
-      <link>http://localhost:44047/portfolio/deploy_gpt_hf_models_on_telegram/</link>
+      <link>http://localhost:1313/portfolio/deploy_gpt_hf_models_on_telegram/</link>
       <pubDate>Thu, 19 May 2022 11:00:15 +0800</pubDate>
-      <guid>http://localhost:44047/portfolio/deploy_gpt_hf_models_on_telegram/</guid>
+      <guid>http://localhost:1313/portfolio/deploy_gpt_hf_models_on_telegram/</guid>
       <description>💥 Motivation tip&#xA;By the end of this post you will learn how to:&#xA;Set up a Telegram bot with a Python wrapper library. Use the Gradio API to access the GPT-J model prediction. Host the Telegram bot on Hugging Face Spaces. By the end of this post, you&amp;rsquo;ll have your own Telegram bot that has access to the GPT-J-6B model. All for free.&#xA;Deploying a state-of-the-art (SOTA) GPT-like language model on a chatbot can be tricky.</description>
     </item>
     <item>
       <title>How to Deploy Object Detection Models on Android with Flutter</title>
-      <link>http://localhost:44047/portfolio/how_to_deploy_od_models_on_android_with_flutter/</link>
+      <link>http://localhost:1313/portfolio/how_to_deploy_od_models_on_android_with_flutter/</link>
       <pubDate>Sun, 17 Apr 2022 15:00:15 +0800</pubDate>
-      <guid>http://localhost:44047/portfolio/how_to_deploy_od_models_on_android_with_flutter/</guid>
+      <guid>http://localhost:1313/portfolio/how_to_deploy_od_models_on_android_with_flutter/</guid>
       <description>🚑 Deployment: Where ML models go to die In this post, I will outline the basic steps to deploy ML models onto lightweight mobile devices easily, quickly and for free.&#xA;tip&#xA;By the end of this post, you will learn about:&#xA;Leveraging Hugging Face infrastructure to host models. Deploying on any edge device using REST API. Displaying the results on a Flutter Android app. According to Gartner, more than 85% of machine learning (ML) models never made it into production.</description>
     </item>
     <item>
       <title>Deploying Object Detection Models on Hugging Face Spaces</title>
-      <link>http://localhost:44047/portfolio/deploy_icevision_models_on_huggingface_spaces/</link>
+      <link>http://localhost:1313/portfolio/deploy_icevision_models_on_huggingface_spaces/</link>
       <pubDate>Thu, 17 Feb 2022 13:42:56 +0800</pubDate>
-      <guid>http://localhost:44047/portfolio/deploy_icevision_models_on_huggingface_spaces/</guid>
+      <guid>http://localhost:1313/portfolio/deploy_icevision_models_on_huggingface_spaces/</guid>
       <description>Introduction So, you’ve trained a deep learning model that can detect objects from images. Next, how can you share the awesomeness of your model with the rest of the world? You might be a PhD student trying to get some ideas from your peers or supervisors, or a startup founder who wishes to share a minimum viable product to your clients for feedback. But, at the same time you don&amp;rsquo;t wish to go through the hassle of dealing with MLOps.</description>
     </item>
   </channel>
