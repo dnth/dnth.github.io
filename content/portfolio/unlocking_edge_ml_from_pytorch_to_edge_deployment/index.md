@@ -70,11 +70,11 @@ Install TIMM by running:
 pip install timm
 ```
 
-I'm using version `timm==0.9.7` in the post.
+I'm using version `timm==1.0.9` in the post.
 
 Presently there are 1212 models on timm as listed on [Hugging Face](https://huggingface.co/timm).
 
-{{< figure_autoresize src="timm_hf.png" caption="Over a thousand pre-trained models on TIMM." >}}
+{{< figure_autoresize src="timm_hf.png" caption="Over a thousand pre-trained models on TIMM." width="auto" align="center" >}}
 
 
 Once installed load any model with 2 lines of code:
