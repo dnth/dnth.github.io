@@ -238,7 +238,6 @@
     <div class="row mt-5">
       <div class="col-lg-12">
         <div class="singleBlog__content">
-          <hr>
           
             <h3>Table of Contents</h3>
             <nav id="TableOfContents">
@@ -270,6 +269,38 @@
         <li><a href="#-comments--feedback">🙏 Comments &amp; Feedback</a></li>
       </ul>
 </nav>
+            <div class="floating-toc">
+              <h3>Table of Contents</h3>
+              <nav id="TableOfContents">
+  <ul>
+        <li><a href="#-motivation">🔥 Motivation</a></li>
+        <li><a href="#-setting-up">🔩 Setting Up</a>
+          <ul>
+            <li><a href="#-dataset">🔫 Dataset</a></li>
+            <li><a href="#-installation">🦸 Installation</a></li>
+          </ul>
+        </li>
+        <li><a href="#-baseline-performance">⛳ Baseline Performance</a>
+          <ul>
+            <li><a href="#-pytorch">🔦 PyTorch</a></li>
+            <li><a href="#-deepsparse-engine">🕸 DeepSparse Engine</a></li>
+          </ul>
+        </li>
+        <li><a href="#-sparseml-and-recipes">👨‍🍳 SparseML and Recipes</a>
+          <ul>
+            <li><a href="#-one-shot">☝️ One-Shot</a></li>
+            <li><a href="#-sparse-transfer-learning">🤹‍♂️ Sparse Transfer Learning</a></li>
+            <li><a href="#-pruned-yolov5-s">✂ Pruned YOLOv5-S</a></li>
+            <li><a href="#-quantized-yolov5-s">🔬 Quantized YOLOv5-S</a></li>
+            <li><a href="#-pruned--quantized-yolov5-s">🪚 Pruned + Quantized YOLOv5-S</a></li>
+          </ul>
+        </li>
+        <li><a href="#-supercharging-with-smaller-models">🚀 Supercharging with Smaller Models</a></li>
+        <li><a href="#-conclusion">🚧 Conclusion</a></li>
+        <li><a href="#-comments--feedback">🙏 Comments &amp; Feedback</a></li>
+      </ul>
+</nav>
+            </div>
           
           <hr>
           <h3 id="-motivation">🔥 Motivation</h3>
@@ -302,9 +333,13 @@ One of the clients asked,</p>
 <figure>
     
     <a href="/portfolio/supercharging_yolov5_180_fps_cpu/meme.jpg" class="image-popup">
-        
-        <img src="/portfolio/supercharging_yolov5_180_fps_cpu/meme.jpg" srcset="/portfolio/supercharging_yolov5_180_fps_cpu/meme_hu2438776333772541300.jpg 360w, /portfolio/supercharging_yolov5_180_fps_cpu/meme_hu7026195110737784285.jpg 720w, /portfolio/supercharging_yolov5_180_fps_cpu/meme_hu3718389831916567219.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/supercharging_yolov5_180_fps_cpu/meme.jpg" 
+             srcset="/portfolio/supercharging_yolov5_180_fps_cpu/meme_hu2438776333772541300.jpg 360w, /portfolio/supercharging_yolov5_180_fps_cpu/meme_hu7026195110737784285.jpg 720w, /portfolio/supercharging_yolov5_180_fps_cpu/meme_hu3718389831916567219.jpg 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -378,9 +413,13 @@ The dataset was originally released by the University of Grenada.</p>
 <figure>
     
     <a href="/portfolio/supercharging_yolov5_180_fps_cpu/pistol.png" class="image-popup">
-        
-        <img src="/portfolio/supercharging_yolov5_180_fps_cpu/pistol.png" srcset="/portfolio/supercharging_yolov5_180_fps_cpu/pistol_hu2819809653530983829.png 360w, /portfolio/supercharging_yolov5_180_fps_cpu/pistol_hu520984128970553257.png 720w, /portfolio/supercharging_yolov5_180_fps_cpu/pistol_hu9412877713656530013.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/supercharging_yolov5_180_fps_cpu/pistol.png" 
+             srcset="/portfolio/supercharging_yolov5_180_fps_cpu/pistol_hu2819809653530983829.png 360w, /portfolio/supercharging_yolov5_180_fps_cpu/pistol_hu520984128970553257.png 720w, /portfolio/supercharging_yolov5_180_fps_cpu/pistol_hu9412877713656530013.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -597,12 +636,16 @@ The real action only happens next - when we run sparsification with 👇</p>
 <figure>
     
     <a href="/portfolio/supercharging_yolov5_180_fps_cpu/sparseml.png" class="image-popup">
-        
-        <img src="/portfolio/supercharging_yolov5_180_fps_cpu/sparseml.png" srcset="/portfolio/supercharging_yolov5_180_fps_cpu/sparseml_hu9752216008916359204.png 360w, /portfolio/supercharging_yolov5_180_fps_cpu/sparseml_hu18172463315183999434.png 720w, /portfolio/supercharging_yolov5_180_fps_cpu/sparseml_hu15553791564851003551.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" alt="Image from SparseML documentation page." />
-        
+        <img src="/portfolio/supercharging_yolov5_180_fps_cpu/sparseml.png" 
+             srcset="/portfolio/supercharging_yolov5_180_fps_cpu/sparseml_hu9752216008916359204.png 360w, /portfolio/supercharging_yolov5_180_fps_cpu/sparseml_hu18172463315183999434.png 720w, /portfolio/supercharging_yolov5_180_fps_cpu/sparseml_hu15553791564851003551.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             alt="Image from SparseML documentation page." 
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
-    <figcaption>
+    <figcaption style="font-size: 0.8em;">
         <p>
         Image from SparseML documentation page.
         
@@ -827,9 +870,13 @@ We get</p>
 <figure>
     
     <a href="/portfolio/supercharging_yolov5_180_fps_cpu/mAP.png" class="image-popup">
-        
-        <img src="/portfolio/supercharging_yolov5_180_fps_cpu/mAP.png" srcset="/portfolio/supercharging_yolov5_180_fps_cpu/mAP_hu17936792787062132947.png 360w, /portfolio/supercharging_yolov5_180_fps_cpu/mAP_hu7220461479128849658.png 720w, /portfolio/supercharging_yolov5_180_fps_cpu/mAP_hu5690272300255184743.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/supercharging_yolov5_180_fps_cpu/mAP.png" 
+             srcset="/portfolio/supercharging_yolov5_180_fps_cpu/mAP_hu17936792787062132947.png 360w, /portfolio/supercharging_yolov5_180_fps_cpu/mAP_hu7220461479128849658.png 720w, /portfolio/supercharging_yolov5_180_fps_cpu/mAP_hu5690272300255184743.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>

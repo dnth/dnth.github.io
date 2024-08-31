@@ -232,7 +232,6 @@
     <div class="row mt-5">
       <div class="col-lg-12">
         <div class="singleBlog__content">
-          <hr>
           
             <h3>Table of Contents</h3>
             <nav id="TableOfContents">
@@ -253,6 +252,27 @@
         <li><a href="#-comments--feedback">🙏 Comments &amp; Feedback</a></li>
       </ul>
 </nav>
+            <div class="floating-toc">
+              <h3>Table of Contents</h3>
+              <nav id="TableOfContents">
+  <ul>
+        <li><a href="#-motivation">🕶️ Motivation</a></li>
+        <li><a href="#-installation">⚙️ Installation</a></li>
+        <li><a href="#-labeling-the-data">🔖 Labeling the data</a></li>
+        <li><a href="#-modeling">🌀 Modeling</a>
+          <ul>
+            <li><a href="#-preparing-datasets">🎯 Preparing datasets</a></li>
+            <li><a href="#-choosing-a-library-model-and-backbone">🗝️ Choosing a library, model, and backbone</a></li>
+            <li><a href="#-metrics-and-training">🏃 Metrics and Training</a></li>
+            <li><a href="#-exporting-model">📨 Exporting model</a></li>
+          </ul>
+        </li>
+        <li><a href="#-inferencing-on-a-new-image">🧭 Inferencing on a new image</a></li>
+        <li><a href="#-wrapping-up">📖 Wrapping Up</a></li>
+        <li><a href="#-comments--feedback">🙏 Comments &amp; Feedback</a></li>
+      </ul>
+</nav>
+            </div>
           
           <hr>
           <h3 id="-motivation">🕶️ Motivation</h3>
@@ -308,9 +328,13 @@ This process is repetitive, tedious, and prone to errors.</p>
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/inference.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/inference.png" srcset="/portfolio/training_dl_model_for_cell_counting/inference_hu3527343430129712590.png 360w, /portfolio/training_dl_model_for_cell_counting/inference_hu2051645480678992338.png 720w, /portfolio/training_dl_model_for_cell_counting/inference_hu5851132926929726688.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/inference.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/inference_hu3527343430129712590.png 360w, /portfolio/training_dl_model_for_cell_counting/inference_hu2051645480678992338.png 720w, /portfolio/training_dl_model_for_cell_counting/inference_hu5851132926929726688.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -326,9 +350,13 @@ If you&rsquo;re ready let&rsquo;s begin.</p>
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/quote.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/quote.png" srcset="/portfolio/training_dl_model_for_cell_counting/quote_hu3752763430904016176.png 360w, /portfolio/training_dl_model_for_cell_counting/quote_hu15973446780296611971.png 720w, /portfolio/training_dl_model_for_cell_counting/quote_hu5870353358440137951.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/quote.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/quote_hu3752763430904016176.png 360w, /portfolio/training_dl_model_for_cell_counting/quote_hu15973446780296611971.png 720w, /portfolio/training_dl_model_for_cell_counting/quote_hu5870353358440137951.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -371,12 +399,16 @@ The cells are colored green.
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/hemocytometer.jpg" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/hemocytometer.jpg" srcset="/portfolio/training_dl_model_for_cell_counting/hemocytometer_hu4135327651567365190.jpg 360w, /portfolio/training_dl_model_for_cell_counting/hemocytometer_hu768015082218673367.jpg 720w, /portfolio/training_dl_model_for_cell_counting/hemocytometer_hu7548118093443355443.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" alt="Can you count how many cells are present in this image?" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/hemocytometer.jpg" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/hemocytometer_hu4135327651567365190.jpg 360w, /portfolio/training_dl_model_for_cell_counting/hemocytometer_hu768015082218673367.jpg 720w, /portfolio/training_dl_model_for_cell_counting/hemocytometer_hu7548118093443355443.jpg 1920w" 
+             sizes="(max-width: ) 100vw, "
+             alt="Can you count how many cells are present in this image?" 
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
-    <figcaption>
+    <figcaption style="font-size: 0.8em;">
         <p>
         Can you count how many cells are present in this image?
         
@@ -397,9 +429,13 @@ The cells are colored green.
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/dataset_sample.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/dataset_sample.png" srcset="/portfolio/training_dl_model_for_cell_counting/dataset_sample_hu12767056833071613357.png 360w, /portfolio/training_dl_model_for_cell_counting/dataset_sample_hu8549963374764502329.png 720w, /portfolio/training_dl_model_for_cell_counting/dataset_sample_hu6378381327670950199.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/dataset_sample.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/dataset_sample_hu12767056833071613357.png 360w, /portfolio/training_dl_model_for_cell_counting/dataset_sample_hu8549963374764502329.png 720w, /portfolio/training_dl_model_for_cell_counting/dataset_sample_hu6378381327670950199.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -417,9 +453,13 @@ The following figure shows a demo of the app.
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/labelImg_demo_annot.jpg" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/labelImg_demo_annot.jpg" srcset="/portfolio/training_dl_model_for_cell_counting/labelImg_demo_annot_hu13807641137641906544.jpg 360w, /portfolio/training_dl_model_for_cell_counting/labelImg_demo_annot_hu385633525159828125.jpg 720w, /portfolio/training_dl_model_for_cell_counting/labelImg_demo_annot_hu8224050367298907079.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/labelImg_demo_annot.jpg" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/labelImg_demo_annot_hu13807641137641906544.jpg 360w, /portfolio/training_dl_model_for_cell_counting/labelImg_demo_annot_hu385633525159828125.jpg 720w, /portfolio/training_dl_model_for_cell_counting/labelImg_demo_annot_hu8224050367298907079.jpg 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -437,9 +477,13 @@ To launch the app, type in your terminal:</p>
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/labelimg_start.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/labelimg_start.png" srcset="/portfolio/training_dl_model_for_cell_counting/labelimg_start_hu15759557383422184328.png 360w, /portfolio/training_dl_model_for_cell_counting/labelimg_start_hu14990276704710602133.png 720w, /portfolio/training_dl_model_for_cell_counting/labelimg_start_hu17628428663927974566.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/labelimg_start.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/labelimg_start_hu15759557383422184328.png 360w, /portfolio/training_dl_model_for_cell_counting/labelimg_start_hu14990276704710602133.png 720w, /portfolio/training_dl_model_for_cell_counting/labelimg_start_hu17628428663927974566.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -460,9 +504,13 @@ Once done, a rectangular bounding box should appear on-screen.</p>
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/labelimg_loaded.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/labelimg_loaded.png" srcset="/portfolio/training_dl_model_for_cell_counting/labelimg_loaded_hu593883362565650690.png 360w, /portfolio/training_dl_model_for_cell_counting/labelimg_loaded_hu8133796620100110092.png 720w, /portfolio/training_dl_model_for_cell_counting/labelimg_loaded_hu14291502145683485641.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/labelimg_loaded.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/labelimg_loaded_hu593883362565650690.png 360w, /portfolio/training_dl_model_for_cell_counting/labelimg_loaded_hu8133796620100110092.png 720w, /portfolio/training_dl_model_for_cell_counting/labelimg_loaded_hu14291502145683485641.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -482,9 +530,13 @@ The hotkeys are shown below.
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/hotkeys.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/hotkeys.png" srcset="/portfolio/training_dl_model_for_cell_counting/hotkeys_hu16800903957444330344.png 360w, /portfolio/training_dl_model_for_cell_counting/hotkeys_hu17065029086626337031.png 720w, /portfolio/training_dl_model_for_cell_counting/hotkeys_hu6332320019217241535.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="400" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/hotkeys.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/hotkeys_hu16800903957444330344.png 360w, /portfolio/training_dl_model_for_cell_counting/hotkeys_hu17065029086626337031.png 720w, /portfolio/training_dl_model_for_cell_counting/hotkeys_hu6332320019217241535.png 1920w" 
+             sizes="(max-width: 400) 100vw, 400"
+             
+             width="400" 
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -500,9 +552,13 @@ The annotations are saved in an <code>XML</code> file with a file name matching 
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/xml_files.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/xml_files.png" srcset="/portfolio/training_dl_model_for_cell_counting/xml_files_hu11216654128083210576.png 360w, /portfolio/training_dl_model_for_cell_counting/xml_files_hu16172132550861217442.png 720w, /portfolio/training_dl_model_for_cell_counting/xml_files_hu7137647071455947929.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/xml_files.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/xml_files_hu11216654128083210576.png 360w, /portfolio/training_dl_model_for_cell_counting/xml_files_hu16172132550861217442.png 720w, /portfolio/training_dl_model_for_cell_counting/xml_files_hu7137647071455947929.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -577,9 +633,13 @@ Note the variations in lighting, translation, and rotation compared to the origi
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/show_ds.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/show_ds.png" srcset="/portfolio/training_dl_model_for_cell_counting/show_ds_hu13304492532064535652.png 360w, /portfolio/training_dl_model_for_cell_counting/show_ds_hu6357921854194327456.png 720w, /portfolio/training_dl_model_for_cell_counting/show_ds_hu16445726036934519474.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/show_ds.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/show_ds_hu13304492532064535652.png 360w, /portfolio/training_dl_model_for_cell_counting/show_ds_hu6357921854194327456.png 720w, /portfolio/training_dl_model_for_cell_counting/show_ds_hu16445726036934519474.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -643,9 +703,13 @@ This is an incredibly simple yet powerful tool to find a range of optimal learni
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/lr_find.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/lr_find.png" srcset="/portfolio/training_dl_model_for_cell_counting/lr_find_hu14508982698442946917.png 360w, /portfolio/training_dl_model_for_cell_counting/lr_find_hu6647490568008742557.png 720w, /portfolio/training_dl_model_for_cell_counting/lr_find_hu14937520330375202717.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/lr_find.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/lr_find_hu14508982698442946917.png 360w, /portfolio/training_dl_model_for_cell_counting/lr_find_hu6647490568008742557.png 720w, /portfolio/training_dl_model_for_cell_counting/lr_find_hu14937520330375202717.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -677,9 +741,13 @@ The figure below shows the training output.</p>
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/train.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/train.png" srcset="/portfolio/training_dl_model_for_cell_counting/train_hu9784085991413002447.png 360w, /portfolio/training_dl_model_for_cell_counting/train_hu17332203943224860492.png 720w, /portfolio/training_dl_model_for_cell_counting/train_hu17060715769827579056.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/train.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/train_hu9784085991413002447.png 360w, /portfolio/training_dl_model_for_cell_counting/train_hu17332203943224860492.png 720w, /portfolio/training_dl_model_for_cell_counting/train_hu17060715769827579056.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -700,9 +768,13 @@ You can increase the <code>detection_threshold</code> value to only show the bou
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/show_results.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/show_results.png" srcset="/portfolio/training_dl_model_for_cell_counting/show_results_hu9228230060414688445.png 360w, /portfolio/training_dl_model_for_cell_counting/show_results_hu13178588556848777821.png 720w, /portfolio/training_dl_model_for_cell_counting/show_results_hu6207685631246181575.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/show_results.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/show_results_hu9228230060414688445.png 360w, /portfolio/training_dl_model_for_cell_counting/show_results_hu13178588556848777821.png 720w, /portfolio/training_dl_model_for_cell_counting/show_results_hu6207685631246181575.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -820,9 +892,13 @@ To view the output image with the bounding boxes:</p>
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/inference.png" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/inference.png" srcset="/portfolio/training_dl_model_for_cell_counting/inference_hu3527343430129712590.png 360w, /portfolio/training_dl_model_for_cell_counting/inference_hu2051645480678992338.png 720w, /portfolio/training_dl_model_for_cell_counting/inference_hu5851132926929726688.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/inference.png" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/inference_hu3527343430129712590.png 360w, /portfolio/training_dl_model_for_cell_counting/inference_hu2051645480678992338.png 720w, /portfolio/training_dl_model_for_cell_counting/inference_hu5851132926929726688.png 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
@@ -869,9 +945,13 @@ The world is your oyster. Now go out there and use this newly found superpower t
 <figure>
     
     <a href="/portfolio/training_dl_model_for_cell_counting/quote_robert_greene.jpg" class="image-popup">
-        
-        <img src="/portfolio/training_dl_model_for_cell_counting/quote_robert_greene.jpg" srcset="/portfolio/training_dl_model_for_cell_counting/quote_robert_greene_hu4133693763009670907.jpg 360w, /portfolio/training_dl_model_for_cell_counting/quote_robert_greene_hu14345699487701132788.jpg 720w, /portfolio/training_dl_model_for_cell_counting/quote_robert_greene_hu11732222204575676497.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" />
-        
+        <img src="/portfolio/training_dl_model_for_cell_counting/quote_robert_greene.jpg" 
+             srcset="/portfolio/training_dl_model_for_cell_counting/quote_robert_greene_hu4133693763009670907.jpg 360w, /portfolio/training_dl_model_for_cell_counting/quote_robert_greene_hu14345699487701132788.jpg 720w, /portfolio/training_dl_model_for_cell_counting/quote_robert_greene_hu11732222204575676497.jpg 1920w" 
+             sizes="(max-width: ) 100vw, "
+             
+             
+             
+             style="max-width: 100%; height: auto;"/>
     </a>
     
 </figure>
