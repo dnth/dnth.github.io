@@ -15,7 +15,7 @@
              style="max-width: 100%; height: auto;"/>
     </a>
     {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
-    <figcaption>{{ if isset .Params "title" }}
+    <figcaption style="font-size: 0.8em;">{{ if isset .Params "title" }}
         <h4>{{ .Get "title" }}</h4>{{ end }}
         {{ if or (.Get "caption") (.Get "attr")}}<p>
         {{ .Get "caption" }}
