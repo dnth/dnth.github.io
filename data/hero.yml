@@ -2,15 +2,13 @@
 enable: true
 topTitle: Hello, I am Dickson 🚀
 content: >
-  # Full Stack Deep Learning Engineer
+  # Full Stack Computer Vision Engineer
   
-  I wrangle deep learning models so you don't have to. 
+  I make models small, fast, and efficient.
   
-
-  I help companies design end-to-end deep learning solutions and deploy them into production.
 
 buttonName: See my projects ↡
 buttonURL: '#portfolio'
 image: images/hero/self-potrait.jpg
-#videoThumb: images/hero/self-square.jpg
-#videoURL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+# videoThumb: images/hero/self-square.jpg
+# videoURL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
