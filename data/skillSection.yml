@@ -9,23 +9,17 @@ content: >
 image: images/skill/brushes_resize.jpg
 
 skill:
-  - title: Tensorflow/Keras
+  - title: Deep Learning (Tensorflow/PyTorch)
     percent: 90
-  - title: PyTorch/Fast.ai
-    percent: 90
-  - title: Arduino/Raspberry Pi/ESP32/PIC Microchip
+  - title: Model Optimization (OpenVINO/TensorRT/ONNX)
     percent: 85
-  - title: Nvidia Jetson/Intel VPU/Google Egde TPU
+  - title: Edge Computing (Nvidia Jetson/Intel VPU)
     percent: 80
-  - title: Nao/Turtlebot/UR5/Baxter/Pioneer 3 AT Robot
+  - title: Microcontrollers (Arduino/Raspberry Pi)
+    percent: 75
+  - title: Frontend (Flutter/Streamlit/Gradio)
     percent: 70
-  - title: OpenVINO/TensorRT/Tflite/ONNX/TorchScript
+  - title: Databases (PostgreSQL/MySQL)
     percent: 60
-  - title: Flutter Mobile/Web Development
-    percent: 70
-  - title: Azure ML/Google Cloud Platform/AWS
-    percent: 55
-  - title: InfluxDB/Hive/Firebase/MySQL Database
-    percent: 60
-  - title: Cloudera Workbench/PySpark
-    percent: 70
+  - title: Cloud Services (AWS/Azure/Google Cloud)
+    percent: 50
