@@ -37,6 +37,20 @@
       <description></description>
     </item>
     <item>
+      <title>Deployment</title>
+      <link>http://localhost:1313/categories/deployment/</link>
+      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/categories/deployment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Image-Classification</title>
+      <link>http://localhost:1313/categories/image-classification/</link>
+      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/categories/image-classification/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Career Development</title>
       <link>http://localhost:1313/categories/career-development/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
@@ -69,20 +83,6 @@
       <link>http://localhost:1313/categories/cloud-ai/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
       <guid>http://localhost:1313/categories/cloud-ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deployment</title>
-      <link>http://localhost:1313/categories/deployment/</link>
-      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/deployment/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Image-Classification</title>
-      <link>http://localhost:1313/categories/image-classification/</link>
-      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/image-classification/</guid>
       <description></description>
     </item>
     <item>

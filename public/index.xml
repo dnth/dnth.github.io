@@ -16,6 +16,13 @@
       <description>info&#xA;This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me here, on LinkedIn, or Twitter. 🚀 Motivation - Edge Deployment It&amp;rsquo;s 2024, everyone seems to be talking about complex and larger models.&#xA;Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power.&#xA;Typically that&amp;rsquo;s available in cloud-based environments.</description>
     </item>
     <item>
+      <title>Supercharge Your TIMM Models: 84x Faster Inference with ONNX Runtime Optimization</title>
+      <link>http://localhost:1313/portfolio/supercharge_timm_tensorrt/</link>
+      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/portfolio/supercharge_timm_tensorrt/</guid>
+      <description>🚀 Motivation Real time inference speed is crucial for many applications in production. Some could mean life or death. 💀&#xA;Imagine you&amp;rsquo;re behind the wheels of a self-driving car and the car takes 1 second to detect an oncoming truck.&#xA;Just one second too late&amp;hellip; ⏰ And you could end up somewhere heavenly&amp;hellip; 👼👼👼&#xA;I hope that shows you how crucial this problem is.&#xA;Today (2024), ML models are being deployed in all kinds of high-stakes industries like healthcare, finance, and self-driving cars.</description>
+    </item>
+    <item>
       <title>Celebrating a Milestone in the Top 2% of Global Scientists</title>
       <link>http://localhost:1313/blog/world_top_scientist/</link>
       <pubDate>Fri, 17 Nov 2023 12:00:00 +0800</pubDate>
