@@ -466,9 +466,123 @@ That's a 4x speedup over the PyTorch model on the GPU and 84x speedup over the P
 You can find the code for the ONNX Runtime TensorRT inference on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort/blob/main/06_onnx_trt_inference.py).
 {{< /notice >}}
 
-You could stop here and be happy with the results.
+That's the end of this post. Or is it?
 
-But.. if you're like me and you want to squeeze out every last bit of performance, there's one more trick up our sleeve.
+Not yet. You could stop here and be happy with the results. After all we already got a 84x speedup over the PyTorch model.
+
+But.. if you're like me and you want to squeeze out every last bit of performance, there's one final trick up our sleeve.
+
+### 🧠 Turbocharge by Baking Pre-processing into ONNX
+If you recall, we did our pre-processing transforms outside of the ONNX model in CuPy or Numpy. 
+
+This incurs some overhead because we need to transfer the data to and from the GPU for the transforms.
+
+We can avoid this overhead by baking the transforms operations into the ONNX model. This lets us run the inference faster because we don't need to do the transforms separately.
+
+To do this we need to write some custom code to convert the transforms to an ONNX model.
+If you recall, the numpy transforms we used earlier uses the resize and normalization operations. These operations are supported in ONNX and we can add them to the model.
+
+To do this we need to write the preprocessing code as a PyTorch model and export it to ONNX.
+
+```python
+import torch.nn as nn
+
+class Preprocess(nn.Module):
+    def __init__(self, input_shape: List[int]):
+        super(Preprocess, self).__init__()
+        self.input_shape = tuple(input_shape)
+        self.mean = torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1)
+        self.std = torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1)
+
+    def forward(self, x: torch.Tensor):
+        # Resize the image to the input shape
+        x = torch.nn.functional.interpolate(input=x, 
+                                           size=self.input_shape[2:], 
+                                           mode='bicubic', 
+                                           align_corners=False)
+        # Normalize the image
+        x = x / 255.0
+        x = (x - self.mean) / self.std
+
+        return x
+```
+
+And now export the `Preprocess` module to ONNX.
+
+```python
+input_shape = [1, 3, 448, 448]
+output_onnx_file = "preprocessing.onnx"
+model = Preprocess(input_shape=input_shape)
+
+torch.onnx.export(
+        model,
+        torch.randn(input_shape),
+        output_onnx_file,
+        opset_version=20,
+        input_names=["input_rgb"],
+        output_names=["output_prep"],
+        dynamic_axes={
+            "input_rgb": {
+                0: "batch_size",
+                2: "height",
+                3: "width",
+            },
+        },
+    )
+```
+
+Let's visualize the preprocess model on Netron.
+
+{{< figure_autoresize src="preprocess_model.png" width="auto" align="center" >}}
+Looks like the input and output shapes are correct.
+
+{{< notice tip >}}
+You can find the code for the export of the preprocessing model on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort/blob/main/07_export_preprocessing_onnx.py).
+{{< /notice >}}
+
+And let's visualize the original model on Netron.
+
+{{< figure_autoresize src="original_model.png" width="auto" align="center" >}}
+
+Now we need to merge the preprocess model with the original model.
+Note the name of the input and output nodes from Netron. We will need this for the merge.
+
+To merge the models,
 
 
-### 🛠️ Building pre-processing transforms into the model
+Let's visualize the merged model on Netron.
+
+{{< figure_autoresize src="merged_model.png" width="auto" align="center" >}}
+
+{{< notice note >}}
+Note the input to the merged model is `[batch_size, 3, height, width]`. This model can be given any input of size height x width and the batch size can vary. As we've seen in the Preprocess module earlier, the height and width are resized to 448x448 internally.
+{{< /notice >}}
+
+
+
+And the results are in!
+
+```
+TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
+```
+
+Let's do a final sanity check on the predictions.
+
+```
+>>> espresso: 34.25%
+>>> cup: 2.06%
+>>> chocolate sauce, chocolate syrup: 1.31%
+>>> bakery, bakeshop, bakehouse: 0.97%
+>>> coffee mug: 0.85%
+```
+
+Looks like the predictions are close to the original model. We can sign off and say that the model is working as expected.
+
+### 🔥 Conclusion
+
+In this post we have seen how we can supercharge our TIMM models for faster inference using ONNX Runtime and TensorRT.
+
+
+{{< notice tip >}}
+You can find the code for this post on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort).
+{{< /notice >}}
