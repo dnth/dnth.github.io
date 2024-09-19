@@ -6,8 +6,57 @@
     <description>Recent content in Tags on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Aug 2024 11:00:15 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 09 Sep 2024 09:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computer-Vision</title>
+      <link>http://localhost:1313/tags/computer-vision/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep-Learning</title>
+      <link>http://localhost:1313/tags/deep-learning/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Inference</title>
+      <link>http://localhost:1313/tags/inference/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/inference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ONNX</title>
+      <link>http://localhost:1313/tags/onnx/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/onnx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimization</title>
+      <link>http://localhost:1313/tags/optimization/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/optimization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TensorRT</title>
+      <link>http://localhost:1313/tags/tensorrt/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/tensorrt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TIMM</title>
+      <link>http://localhost:1313/tags/timm/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/timm/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Hugging Face</title>
       <link>http://localhost:1313/tags/hugging-face/</link>
@@ -23,13 +72,6 @@
       <description></description>
     </item>
     <item>
-      <title>ONNX</title>
-      <link>http://localhost:1313/tags/onnx/</link>
-      <pubDate>Fri, 30 Aug 2024 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/tags/onnx/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>PyTorch</title>
       <link>http://localhost:1313/tags/pytorch/</link>
       <pubDate>Fri, 30 Aug 2024 11:00:15 +0800</pubDate>
@@ -37,52 +79,10 @@
       <description></description>
     </item>
     <item>
-      <title>TIMM</title>
-      <link>http://localhost:1313/tags/timm/</link>
-      <pubDate>Fri, 30 Aug 2024 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/tags/timm/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Torchscript</title>
       <link>http://localhost:1313/tags/torchscript/</link>
       <pubDate>Fri, 30 Aug 2024 11:00:15 +0800</pubDate>
       <guid>http://localhost:1313/tags/torchscript/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Computer-Vision</title>
-      <link>http://localhost:1313/tags/computer-vision/</link>
-      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/tags/computer-vision/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deep-Learning</title>
-      <link>http://localhost:1313/tags/deep-learning/</link>
-      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Inference</title>
-      <link>http://localhost:1313/tags/inference/</link>
-      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/tags/inference/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Optimization</title>
-      <link>http://localhost:1313/tags/optimization/</link>
-      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/tags/optimization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>TensorRT</title>
-      <link>http://localhost:1313/tags/tensorrt/</link>
-      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/tags/tensorrt/</guid>
       <description></description>
     </item>
     <item>

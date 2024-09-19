@@ -2,30 +2,30 @@
 <html>
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
-  <title>Supercharge Your TIMM Models: 84x Faster Inference with ONNX Runtime Optimization</title>
+  <title>Supercharge Your PyTorch Image Models: Bag of Tricks to 123x Faster Inference with ONNX Runtime</title>
   <meta name="description" content="Learn how to accelerate TIMM model inference up to 84x faster using ONNX Runtime and TensorRT optimization techniques!" />
 
   <meta property="og:url" content="http://localhost:1313/portfolio/supercharge_timm_tensorrt/">
   <meta property="og:site_name" content="Dickson Neoh - Personal Portfolio">
-  <meta property="og:title" content="Supercharge Your TIMM Models: 84x Faster Inference with ONNX Runtime Optimization">
+  <meta property="og:title" content="Supercharge Your PyTorch Image Models: Bag of Tricks to 123x Faster Inference with ONNX Runtime">
   <meta property="og:description" content="Learn how to accelerate TIMM model inference up to 84x faster using ONNX Runtime and TensorRT optimization techniques!">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="portfolio">
-    <meta property="article:published_time" content="2024-08-09T09:00:00+08:00">
-    <meta property="article:modified_time" content="2024-08-09T09:00:00+08:00">
+    <meta property="article:published_time" content="2024-09-09T09:00:00+08:00">
+    <meta property="article:modified_time" content="2024-09-09T09:00:00+08:00">
     <meta property="article:tag" content="TIMM">
     <meta property="article:tag" content="ONNX">
     <meta property="article:tag" content="TensorRT">
     <meta property="article:tag" content="Optimization">
     <meta property="article:tag" content="Inference">
     <meta property="article:tag" content="Deep-Learning">
-    <meta property="og:image" content="http://localhost:1313/images/portfolio/supercharge_timm_model_tensorrt/post_image.jpg">
+    <meta property="og:image" content="http://localhost:1313/images/portfolio/supercharge_your_pytorch_image_models/post_image.jpg">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/images/portfolio/supercharge_timm_model_tensorrt/post_image.jpg">
-  <meta name="twitter:title" content="Supercharge Your TIMM Models: 84x Faster Inference with ONNX Runtime Optimization">
+  <meta name="twitter:image" content="http://localhost:1313/images/portfolio/supercharge_your_pytorch_image_models/post_image.jpg">
+  <meta name="twitter:title" content="Supercharge Your PyTorch Image Models: Bag of Tricks to 123x Faster Inference with ONNX Runtime">
   <meta name="twitter:description" content="Learn how to accelerate TIMM model inference up to 84x faster using ONNX Runtime and TensorRT optimization techniques!">
 
 
@@ -134,7 +134,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
-        <h3 class="breadCrumb__title">Supercharge Your TIMM Models: 84x Faster Inference with ONNX Runtime Optimization</h3>
+        <h3 class="breadCrumb__title">Supercharge Your PyTorch Image Models: Bag of Tricks to 123x Faster Inference with ONNX Runtime</h3>
         <nav aria-label="breadcrumb" class="d-flex justify-content-center">
           
         </nav>
@@ -144,9 +144,9 @@
     <div class="row p-3">
       <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-0 text-center">
         <i class="fa fa-calendar"></i> &ensp;
-        August 9, 2024 &ensp; &ensp;
+        September 9, 2024 &ensp; &ensp;
         <i class="fa fa-clock-o"></i> &ensp;
-        11 mins read
+        12 mins read
       </div>
       
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
@@ -236,7 +236,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="singleBlog__feature">
-          <img src=http://localhost:1313/images/portfolio/supercharge_timm_model_tensorrt/post_image.jpg alt="feature-image">
+          <img src=http://localhost:1313/images/portfolio/supercharge_your_pytorch_image_models/post_image.jpg alt="feature-image">
         </div>
       </div>
     </div>
@@ -281,27 +281,10 @@
           <h3 id="-motivation">🚀 Motivation</h3>
 <p>Real time inference speed is crucial for many applications in production. Some could mean life or death. 💀</p>
 <p>Imagine you&rsquo;re behind the wheels of a self-driving car and the car takes 1 second to detect an oncoming truck.</p>
-<p>Just one second too late&hellip; ⏰
-And you could end up somewhere heavenly&hellip; 👼👼👼</p>
-
-
-
-
-
-<figure style="text-align: center;">
-    
-    <a href="/portfolio/supercharge_timm_tensorrt/heavenly.png" class="image-popup">
-        <img src="/portfolio/supercharge_timm_tensorrt/heavenly.png" 
-             srcset="/portfolio/supercharge_timm_tensorrt/heavenly_hu18218145250016474317.png 360w, /portfolio/supercharge_timm_tensorrt/heavenly_hu14514842505371238087.png 720w, /portfolio/supercharge_timm_tensorrt/heavenly_hu8101116484108559118.png 1920w" 
-             sizes="(max-width: 480) 100vw, 480"
-             
-             width="480" 
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
-    
+<p>Just one second too late, and you could end up talking to celestial beings&hellip; 👼👼👼</p>
+<p>Or if you&rsquo;re lucky, on the ground.</p>
+<figure><img src="/portfolio/supercharge_timm_tensorrt/banana_peel_robot.gif" width="480">
 </figure>
-
 
 <p>I hope that shows you how crucial this problem is.</p>
 <p>Today (2024), ML models are being deployed in all kinds of high-stakes industries like healthcare, finance, and self-driving cars.</p>
@@ -346,7 +329,9 @@ And you could end up somewhere heavenly&hellip; 👼👼👼</p>
 <li>🖥️ Run inference with ONNX Runtime (CPU &amp; GPU)</li>
 <li>🎮 Run inference with TensorRT (GPU)</li>
 <li>🛠️ Tweak the TensorRT parameters for better performance</li>
-</ul></div>
+<li>🧠 Bake the pre-processing into the ONNX model</li>
+</ul>
+<p>You can find the code for this post on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
 <p>If that sounds exciting let&rsquo;s dive in! 🏊‍♂️</p>
 <h3 id="-installation">💻 Installation</h3>
 <p>I will be using the conda environment to install the packages. Feel free to use any other environment of your choice.</p>
@@ -619,10 +604,10 @@ We have to do better on the GPU. Let&rsquo;s try ONNX Runtime on the GPU.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> img_cupy
 </span></span></code></pre></div><p>With CuPy, we got a tiny bit of performance improvement:</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43
-</code></pre><div class="notice tip" >
+</code></pre><div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>You can find the code for the ONNX Runtime CUDA cupy inference on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/05_onnx_cuda_inference.py" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>You can find the code for the ONNX Runtime CUDA cupy inference on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/05_onnx_cuda_inference.py" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
 <p>Using Onnx Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.</p>
 <p>We have one more trick up our sleeve.</p>
 <h3 id="-onnx-runtime---tensorrt">📊 ONNX Runtime - TensorRT</h3>
@@ -654,10 +639,10 @@ We have to do better on the GPU. Let&rsquo;s try ONNX Runtime on the GPU.</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA numpy transforms: 19.898 ms per image, FPS: 50.26
 &gt;&gt;&gt; Onnxruntime CUDA cupy transforms: 16.836 ms per image, FPS: 59.40
 </code></pre><p>That&rsquo;s a 4x speedup over the PyTorch model on the GPU and 84x speedup over the PyTorch model on the CPU!</p>
-<div class="notice tip" >
+<div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>You can find the code for the ONNX Runtime TensorRT inference on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/06_onnx_trt_inference.py" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>You can find the code for the ONNX Runtime TensorRT inference on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/06_onnx_trt_inference.py" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
 <p>That&rsquo;s the end of this post. Or is it?</p>
 <p>Not yet. You could stop here and be happy with the results. After all we already got a 84x speedup over the PyTorch model.</p>
 <p>But.. if you&rsquo;re like me and you want to squeeze out every last bit of performance, there&rsquo;s one final trick up our sleeve.</p>
@@ -730,10 +715,10 @@ If you recall, the numpy transforms we used earlier uses the resize and normaliz
 
 
 Looks like the input and output shapes are correct.</p>
-<div class="notice tip" >
+<div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>You can find the code for the export of the preprocessing model on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/07_export_preprocessing_onnx.py" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>You can find the code for the export of the preprocessing model on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/07_export_preprocessing_onnx.py" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
 <p>And let&rsquo;s visualize the original model on Netron.</p>
 
 
@@ -797,7 +782,16 @@ Note the name of the input and output nodes from Netron. We will need this for t
 <div class="notice tip" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>You can find the code for this post on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
+                </svg></span>tip</p><p>In this post you&rsquo;ve learned how to:</p>
+<ul>
+<li>📥 Load any pre-trained model from <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a></li>
+<li>🔄 Convert the model to ONNX format</li>
+<li>🖥️ Run inference with ONNX Runtime (CPU &amp; GPU)</li>
+<li>🎮 Run inference with TensorRT (GPU)</li>
+<li>🛠️ Tweak the TensorRT parameters for better performance</li>
+<li>🧠 Bake the pre-processing into the ONNX model</li>
+</ul>
+<p>You can find the code for this post on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
 
           
 
@@ -899,7 +893,7 @@ Note the name of the input and output nodes from Netron. We will need this for t
         
         
         <li>
-            <a href="https://twitter.com/intent/tweet?&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f&amp;text=Supercharge%20Your%20TIMM%20Models%3a%2084x%20Faster%20Inference%20with%20ONNX%20Runtime%20Optimization @dicksonneoh7"
+            <a href="https://twitter.com/intent/tweet?&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f&amp;text=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%20123x%20Faster%20Inference%20with%20ONNX%20Runtime @dicksonneoh7"
                 target="_blank" rel="noopener" aria-label="Share on Twitter" class="share-btn x">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
   <path fill="#ffffff" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -912,7 +906,7 @@ Note the name of the input and output nodes from Netron. We will need this for t
         
         
         <li>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f&amp;source=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f&amp;title=Supercharge%20Your%20TIMM%20Models%3a%2084x%20Faster%20Inference%20with%20ONNX%20Runtime%20Optimization&amp;summary=Supercharge%20Your%20TIMM%20Models%3a%2084x%20Faster%20Inference%20with%20ONNX%20Runtime%20Optimization"
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f&amp;source=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f&amp;title=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%20123x%20Faster%20Inference%20with%20ONNX%20Runtime&amp;summary=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%20123x%20Faster%20Inference%20with%20ONNX%20Runtime"
                 target="_blank" rel="noopener" aria-label="Share on LinkedIn" class="share-btn linkedin">
                 <svg
    width="6.3499999mm"
@@ -1024,7 +1018,7 @@ Note the name of the input and output nodes from Netron. We will need this for t
         
         
         <li>
-            <a href="https://telegram.me/share/url?text=Supercharge%20Your%20TIMM%20Models%3a%2084x%20Faster%20Inference%20with%20ONNX%20Runtime%20Optimization&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f" target="_blank"
+            <a href="https://telegram.me/share/url?text=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%20123x%20Faster%20Inference%20with%20ONNX%20Runtime&amp;url=http%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f" target="_blank"
                 rel="noopener" aria-label="Share on Telegram" class="share-btn telegram">
                 <svg width="7.3503098mm"
    height="7.1592798mm" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -1082,7 +1076,7 @@ Note the name of the input and output nodes from Netron. We will need this for t
         
         
         <li>
-            <a href="whatsapp://send?text=Supercharge%20Your%20TIMM%20Models%3a%2084x%20Faster%20Inference%20with%20ONNX%20Runtime%20Optimization%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20accelerate%20TIMM%20model%20inference%20up%20to%2084x%20faster%20using%20ONNX%20Runtime%20and%20TensorRT%20optimization%20techniques%21%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f%0a" target="_blank" aria-label="Share on WhatsApp"
+            <a href="whatsapp://send?text=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%20123x%20Faster%20Inference%20with%20ONNX%20Runtime%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20accelerate%20TIMM%20model%20inference%20up%20to%2084x%20faster%20using%20ONNX%20Runtime%20and%20TensorRT%20optimization%20techniques%21%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f%0a" target="_blank" aria-label="Share on WhatsApp"
                 class="share-btn whatsapp">
                 <svg
    width="6.0324998mm"
@@ -1137,7 +1131,7 @@ Note the name of the input and output nodes from Netron. We will need this for t
         
         
         <li>
-            <a href="mailto:?subject=Dickson%20Neoh%20-%20Personal%20Portfolio - Supercharge%20Your%20TIMM%20Models%3a%2084x%20Faster%20Inference%20with%20ONNX%20Runtime%20Optimization.&amp;body=Supercharge%20Your%20TIMM%20Models%3a%2084x%20Faster%20Inference%20with%20ONNX%20Runtime%20Optimization%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20accelerate%20TIMM%20model%20inference%20up%20to%2084x%20faster%20using%20ONNX%20Runtime%20and%20TensorRT%20optimization%20techniques%21%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f%0a" target="_blank"
+            <a href="mailto:?subject=Dickson%20Neoh%20-%20Personal%20Portfolio - Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%20123x%20Faster%20Inference%20with%20ONNX%20Runtime.&amp;body=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%20123x%20Faster%20Inference%20with%20ONNX%20Runtime%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20accelerate%20TIMM%20model%20inference%20up%20to%2084x%20faster%20using%20ONNX%20Runtime%20and%20TensorRT%20optimization%20techniques%21%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_timm_tensorrt%2f%0a" target="_blank"
                 class="share-btn email" aria-label="Share via Email">
                 <svg
    width="6.3499999mm"
@@ -1228,29 +1222,6 @@ Note the name of the input and output nodes from Netron. We will need this for t
               </div>
               <div class="blog-nav-item">
                 <div class="blog-nav-thumb">
-                  <a href="http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/">
-                    <img src="http://localhost:1313/images/portfolio/bringing_high_quality_image_models_to_mobile/thumbnail.gif" alt="post-image">
-                  </a>
-                </div>
-                <h5 class="title"><a class="text-dark" href="http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/">Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</a></h5>
-              </div>
-            </div>
-          
-          
-            <div class="next">
-              <div class="d-flex align-items-center justify-content-end mb-3">
-                <span class="small">Next blog</span>
-                <div class="icon ml-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="15.556" height="28.285" viewBox="0 0 15.556 28.285">
-                    <g data-name="Group 1244" fill="#2d2d2d">
-                      <path data-name="Path 1456" d="M12.162 12.725L2.416 26.87l.978 1.41 9.746-14.138z" />
-                      <path data-name="Path 1455" d="M2.416 1.415l9.743 14.141.975-1.414L3.39 0z" />
-                    </g>
-                  </svg>
-                </div>
-              </div>
-              <div class="blog-nav-item">
-                <div class="blog-nav-thumb">
                   <a href="http://localhost:1313/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/">
                     <img src="http://localhost:1313/images/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/thumbnail.png" alt="post-image">
                   </a>
@@ -1258,6 +1229,7 @@ Note the name of the input and output nodes from Netron. We will need this for t
                 <h5 class="title"><a class="text-dark" href="http://localhost:1313/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/">Unlocking Edge ML: From PyTorch to Edge Deployment</a></h5>
               </div>
             </div>
+          
           
         </nav>
       </div>

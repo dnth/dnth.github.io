@@ -6,14 +6,14 @@
     <description>Recent content in Optimization on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Aug 2024 09:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 09 Sep 2024 09:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Supercharge Your TIMM Models: 84x Faster Inference with ONNX Runtime Optimization</title>
+      <title>Supercharge Your TIMM Models: Bag of Tricks to 123x Faster Inference with ONNX Runtime Optimization</title>
       <link>http://localhost:1313/portfolio/supercharge_timm_tensorrt/</link>
-      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/portfolio/supercharge_timm_tensorrt/</guid>
-      <description>🚀 Motivation Real time inference speed is crucial for many applications in production. Some could mean life or death. 💀&#xA;Imagine you&amp;rsquo;re behind the wheels of a self-driving car and the car takes 1 second to detect an oncoming truck.&#xA;Just one second too late&amp;hellip; ⏰ And you could end up somewhere heavenly&amp;hellip; 👼👼👼&#xA;I hope that shows you how crucial this problem is.&#xA;Today (2024), ML models are being deployed in all kinds of high-stakes industries like healthcare, finance, and self-driving cars.</description>
+      <description>🚀 Motivation Real time inference speed is crucial for many applications in production. Some could mean life or death. 💀&#xA;Imagine you&amp;rsquo;re behind the wheels of a self-driving car and the car takes 1 second to detect an oncoming truck.&#xA;Just one second too late, and you could end up talking to celestial beings&amp;hellip; 👼👼👼&#xA;Or if you&amp;rsquo;re lucky, on the ground.&#xA;I hope that shows you how crucial this problem is.</description>
     </item>
     <item>
       <title>Supercharging YOLOv5: How I Got 182.4 FPS Inference Without a GPU</title>

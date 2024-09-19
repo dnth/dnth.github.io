@@ -6,8 +6,29 @@
     <description>Recent content in Categories on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Aug 2024 11:00:15 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 09 Sep 2024 09:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deployment</title>
+      <link>http://localhost:1313/categories/deployment/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/categories/deployment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine-Learning</title>
+      <link>http://localhost:1313/categories/machine-learning/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>http://localhost:1313/categories/performance/</link>
+      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/categories/performance/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Computer-Vision</title>
       <link>http://localhost:1313/categories/computer-vision/</link>
@@ -34,27 +55,6 @@
       <link>http://localhost:1313/categories/real-time/</link>
       <pubDate>Fri, 30 Aug 2024 11:00:15 +0800</pubDate>
       <guid>http://localhost:1313/categories/real-time/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deployment</title>
-      <link>http://localhost:1313/categories/deployment/</link>
-      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/deployment/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Machine-Learning</title>
-      <link>http://localhost:1313/categories/machine-learning/</link>
-      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/machine-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Performance</title>
-      <link>http://localhost:1313/categories/performance/</link>
-      <pubDate>Fri, 09 Aug 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/performance/</guid>
       <description></description>
     </item>
     <item>
