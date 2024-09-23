@@ -1,10 +1,10 @@
 ---
-title: "Supercharge Your PyTorch Image Models: Bag of Tricks to 123x Faster Inference with ONNX Runtime"
+title: "Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime & Optimizations"
 date: 2024-09-09T09:00:00+08:00
 featureImage: images/portfolio/supercharge_your_pytorch_image_models/thumbnail.gif
-postImage: images/portfolio/supercharge_your_pytorch_image_models/post_image.jpg
-tags: ["TIMM", "ONNX", "TensorRT", "optimization", "inference", "deep-learning", "computer-vision"]
-categories: ["machine-learning", "deployment", "performance"]
+postImage: images/portfolio/supercharge_your_pytorch_image_models/post_image.png
+tags: ["TIMM", "ONNX", "TensorRT", "ImageNet"]
+categories: ["inference", "deployment", "Image-Classification"]
 toc: true
 socialshare: true
 description: "Learn how to accelerate TIMM model inference up to 84x faster using ONNX Runtime and TensorRT optimization techniques!"
@@ -17,7 +17,7 @@ Real time inference speed is crucial for many applications in production. Some c
 
 Imagine you're behind the wheels of a self-driving car and the car takes 1 second to detect an oncoming truck.
 
-Just one second too late, and you could end up talking to celestial beings... 👼👼👼
+Just one second too late, and you could end up in the clouds, talking to celestial beings... 👼👼👼
 
 Or if you're lucky, on the ground.
 
@@ -479,7 +479,7 @@ Not yet. You could stop here and be happy with the results. After all we already
 
 But.. if you're like me and you want to squeeze out every last bit of performance, there's one final trick up our sleeve.
 
-### 🧠 Turbocharge by Baking Pre-processing into ONNX
+### 🧠 Supercharge - Bake pre-processing into ONNX
 If you recall, we did our pre-processing transforms outside of the ONNX model in CuPy or Numpy. 
 
 This incurs some overhead because we need to transfer the data to and from the GPU for the transforms.
@@ -554,8 +554,30 @@ And let's visualize the original model on Netron.
 Now we need to merge the preprocess model with the original model.
 Note the name of the input and output nodes from Netron. We will need this for the merge.
 
-To merge the models,
+To merge the models, we use the `compose` function from the `onnx` library.
 
+```python
+import onnx
+
+# Load the models
+model1 = onnx.load("preprocessing.onnx")
+model2 = onnx.load("eva02_large_patch14_448.onnx")
+
+# Merge the models
+merged_model = onnx.compose.merge_models(
+    model1,
+    model2,
+    io_map=[("output_preprocessing", "input")],
+    prefix1="preprocessing_",
+    prefix2="model_",
+    doc_string="Merged preprocessing and eva02_large_patch14_448 model",
+    producer_name="dickson.neoh@gmail.com using onnx compose",
+)
+
+# Save the merged model
+onnx.save(merged_model, "merged_model_compose.onnx")
+```
+Note the `io_map` parameter. This lets us map the output of the preprocessing model to the input of the original model.
 
 Let's visualize the merged model on Netron.
 
@@ -573,6 +595,10 @@ And the results are in!
 TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
 ```
 
+{{< notice tip >}}
+That's a 6x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀
+{{< /notice >}}
+
 Let's do a final sanity check on the predictions.
 
 ```
@@ -585,7 +611,7 @@ Let's do a final sanity check on the predictions.
 
 Looks like the predictions are close to the original model. We can sign off and say that the model is working as expected.
 
-### 🔥 Conclusion
+### 🚧 Conclusion
 
 In this post we have seen how we can supercharge our TIMM models for faster inference using ONNX Runtime and TensorRT.
 
