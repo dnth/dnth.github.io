@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugging Face on Dickson Neoh - Personal Portfolio</title>
+    <title>Hugging-Face on Dickson Neoh - Personal Portfolio</title>
     <link>http://localhost:1313/tags/hugging-face/</link>
-    <description>Recent content in Hugging Face on Dickson Neoh - Personal Portfolio</description>
+    <description>Recent content in Hugging-Face on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Aug 2024 11:00:15 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Mar 2023 11:00:15 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/hugging-face/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Unlocking Edge ML: From PyTorch to Edge Deployment</title>
-      <link>http://localhost:1313/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</link>
-      <pubDate>Fri, 30 Aug 2024 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/portfolio/unlocking_edge_ml_from_pytorch_to_edge_deployment/</guid>
-      <description>info&#xA;This blog post is still a work in progress. If you require further clarifications before the contents are finalized, please get in touch with me here, on LinkedIn, or Twitter. 🚀 Motivation - Edge Deployment It&amp;rsquo;s 2024, everyone seems to be talking about complex and larger models.&#xA;Sophisticated models perform well at specific tasks. But they come with the cost of massive computational power.&#xA;Typically that&amp;rsquo;s available in cloud-based environments.</description>
-    </item>
     <item>
       <title>Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</title>
       <link>http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/</link>
