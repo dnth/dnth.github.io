@@ -3,11 +3,11 @@ title: "Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Infere
 date: 2024-09-09T09:00:00+08:00
 featureImage: images/portfolio/supercharge_your_pytorch_image_models/thumbnail.gif
 postImage: images/portfolio/supercharge_your_pytorch_image_models/post_image.png
-tags: ["TIMM", "ONNX", "TensorRT", "ImageNet"]
-categories: ["inference", "deployment", "Image-Classification"]
+tags: ["TIMM", "ONNX", "TensorRT", "ImageNet", "Hugging Face"]
+categories: ["inference", "deployment", "image-classification", "optimization"]
 toc: true
 socialshare: true
-description: "Learn how to accelerate TIMM model inference up to 84x faster using ONNX Runtime and TensorRT optimization techniques!"
+description: Learn how to optimize PyTorch image models using ONNX Runtime and TensorRT, achieving up to 8x faster inference speeds for real-time applications.
 images: 
 - images/portfolio/supercharge_your_pytorch_image_models/post_image.jpg
 ---
