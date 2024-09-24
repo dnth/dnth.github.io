@@ -263,10 +263,10 @@ If there are no errors, you will end up with a file called `eva02_large_patch14_
 ### 🖥️ ONNX Runtime on CPU
 Now that we have the ONNX model, let's run inference with ONNX Runtime.
 
-Lets first install `onnxruntime` and `onnxruntime-gpu`. We'll use the onnxruntime-gpu for the GPU inference in the later section.
+Lets first install `onnxruntime`
 
 ```bash
-pip install onnxruntime onnxruntime-gpu
+pip install onnxruntime
 ```
 
 Before we can run inference with ONNX Runtime, we need to replicate the transforms from the PyTorch model.
@@ -385,7 +385,46 @@ python 03_onnx_cpu_inference.py
 {{< /notice >}}
 
 ### 🖼️ ONNX Runtime on CUDA
-ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider.
+ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.
+
+{{< notice warning >}}
+You have to uninstall the onnxruntime package before installing the onnxruntime-gpu package.
+
+Run the following to uninstall the `onnxruntime` package.
+```bash
+pip uninstall onnxruntime
+```
+Then install the `onnxruntime-gpu` package.
+
+```bash
+pip install onnxruntime-gpu==1.19.2
+```
+
+The onnxruntime-gpu package requires a compatible CUDA and cuDNN version. I'm running on onnxruntime-gpu==1.19.2 at the time of writing this post. This version is compatible with CUDA `12.x` and cuDNN `9.x`.
+
+See the compatibility matrix [here](https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html).
+{{< /notice >}}
+
+
+You can install all the CUDA dependencies using conda with the following command.
+
+```bash
+conda install -y -c nvidia cuda=12.2.2 cuda-tools=12.2.2 cuda-toolkit=12.2.2 cuda-version=12.2 cuda-command-line-tools=12.2.2 cuda-compiler=12.2.2 cuda-runtime=12.2.2
+```
+If you encounter any errors like the following
+
+```bash
+Failed to load library libonnxruntime_providers_cuda.so with error: libcublasLt.so.12: cannot open shared object file: No such file or directory
+```
+It means that the CUDA library is not in the library path.
+You need to export the library path to include the CUDA library.
+```bash
+export LD_LIBRARY_PATH="/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib:$LD_LIBRARY_PATH"
+```
+
+Replace the `/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib` with the path to your CUDA library.
+
+Once done, replace the CPU provider with the CUDA provider.
 
 ```python
 providers = ['CUDAExecutionProvider']
@@ -394,11 +433,13 @@ session = ort.InferenceSession(onnx_filename, providers=["CUDAExecutionProvider"
 ```
 The rest of the code is the same as the CPU inference. 
 
-Just with that change, the benchmarks are as follows:
+Just with one line of code change, the benchmarks are as follows:
 
 ```
 >>> Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
 ```
+
+But that's kinda expected. Running on the GPU, we should expect a speedup.
 
 Theres is one more trick we can use to squeeze out more performance - using [CuPy](https://cupy.dev/) for the transforms instead of numpy.
 

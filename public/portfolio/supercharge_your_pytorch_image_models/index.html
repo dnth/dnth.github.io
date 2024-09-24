@@ -145,7 +145,7 @@
         <i class="fa fa-calendar"></i> &ensp;
         September 9, 2024 &ensp; &ensp;
         <i class="fa fa-clock-o"></i> &ensp;
-        13 mins read
+        14 mins read
       </div>
       
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
@@ -518,8 +518,8 @@
 <p>If there are no errors, you will end up with a file called <code>eva02_large_patch14_448.onnx</code> in your working directory.</p>
 <h3 id="-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</h3>
 <p>Now that we have the ONNX model, let&rsquo;s run inference with ONNX Runtime.</p>
-<p>Lets first install <code>onnxruntime</code> and <code>onnxruntime-gpu</code>. We&rsquo;ll use the onnxruntime-gpu for the GPU inference in the later section.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnxruntime onnxruntime-gpu
+<p>Lets first install <code>onnxruntime</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnxruntime
 </span></span></code></pre></div><p>Before we can run inference with ONNX Runtime, we need to replicate the transforms from the PyTorch model.</p>
 <p>If you print the transforms used in the PyTorch model, you can see that it&rsquo;s a sequence of transformations that converts the image to the appropriate shape and normalization for the model.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(transforms)
@@ -598,14 +598,34 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 03_onnx_cpu_inference.py
 </span></span></code></pre></div></div>
 <h3 id="-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</h3>
-<p>ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider.</p>
+<p>ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.</p>
+<div class="notice warning" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#warning-notice"></use>
+                </svg></span>warning</p><p>You have to uninstall the onnxruntime package before installing the onnxruntime-gpu package.</p>
+<p>Run the following to uninstall the <code>onnxruntime</code> package.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip uninstall onnxruntime
+</span></span></code></pre></div><p>Then install the <code>onnxruntime-gpu</code> package.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnxruntime-gpu<span style="color:#f92672">==</span>1.19.2
+</span></span></code></pre></div><p>The onnxruntime-gpu package requires a compatible CUDA and cuDNN version. I&rsquo;m running on onnxruntime-gpu==1.19.2 at the time of writing this post. This version is compatible with CUDA <code>12.x</code> and cuDNN <code>9.x</code>.</p>
+<p>See the compatibility matrix <a href="https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
+<p>You can install all the CUDA dependencies using conda with the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda install -y -c nvidia cuda<span style="color:#f92672">=</span>12.2.2 cuda-tools<span style="color:#f92672">=</span>12.2.2 cuda-toolkit<span style="color:#f92672">=</span>12.2.2 cuda-version<span style="color:#f92672">=</span>12.2 cuda-command-line-tools<span style="color:#f92672">=</span>12.2.2 cuda-compiler<span style="color:#f92672">=</span>12.2.2 cuda-runtime<span style="color:#f92672">=</span>12.2.2
+</span></span></code></pre></div><p>If you encounter any errors like the following</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Failed to load library libonnxruntime_providers_cuda.so with error: libcublasLt.so.12: cannot open shared object file: No such file or directory
+</span></span></code></pre></div><p>It means that the CUDA library is not in the library path.
+You need to export the library path to include the CUDA library.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export LD_LIBRARY_PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib:</span>$LD_LIBRARY_PATH<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>Replace the <code>/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib</code> with the path to your CUDA library.</p>
+<p>Once done, replace the CPU provider with the CUDA provider.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>providers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;CUDAExecutionProvider&#39;</span>]
 </span></span><span style="display:flex;"><span>onnx_filename <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eva02_large_patch14_448.onnx&#34;</span>
 </span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> ort<span style="color:#f92672">.</span>InferenceSession(onnx_filename, providers<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;CUDAExecutionProvider&#34;</span>])
 </span></span></code></pre></div><p>The rest of the code is the same as the CPU inference.</p>
-<p>Just with that change, the benchmarks are as follows:</p>
+<p>Just with one line of code change, the benchmarks are as follows:</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
-</code></pre><p>Theres is one more trick we can use to squeeze out more performance - using <a href="https://cupy.dev/" target="_blank" rel="nofollow noopener noreferrer">CuPy</a> for the transforms instead of numpy.</p>
+</code></pre><p>But that&rsquo;s kinda expected. Running on the GPU, we should expect a speedup.</p>
+<p>Theres is one more trick we can use to squeeze out more performance - using <a href="https://cupy.dev/" target="_blank" rel="nofollow noopener noreferrer">CuPy</a> for the transforms instead of numpy.</p>
 <div class="notice tip" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#tip-notice"></use>
