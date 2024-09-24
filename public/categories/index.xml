@@ -16,17 +16,17 @@
       <description></description>
     </item>
     <item>
-      <title>Machine-Learning</title>
-      <link>http://localhost:1313/categories/machine-learning/</link>
+      <title>Image-Classification</title>
+      <link>http://localhost:1313/categories/image-classification/</link>
       <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/machine-learning/</guid>
+      <guid>http://localhost:1313/categories/image-classification/</guid>
       <description></description>
     </item>
     <item>
-      <title>Performance</title>
-      <link>http://localhost:1313/categories/performance/</link>
+      <title>Inference</title>
+      <link>http://localhost:1313/categories/inference/</link>
       <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/performance/</guid>
+      <guid>http://localhost:1313/categories/inference/</guid>
       <description></description>
     </item>
     <item>
@@ -62,13 +62,6 @@
       <link>http://localhost:1313/categories/cloud-ai/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
       <guid>http://localhost:1313/categories/cloud-ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Image-Classification</title>
-      <link>http://localhost:1313/categories/image-classification/</link>
-      <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
-      <guid>http://localhost:1313/categories/image-classification/</guid>
       <description></description>
     </item>
     <item>
