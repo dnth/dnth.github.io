@@ -209,12 +209,13 @@ ONNX is an open and interoperable format for deep learning models. It lets us de
 
 As a bonus, ONNX Runtime can optimize the model for faster inference. Before we can use ONNX Runtime to run inference, we need to convert the model to ONNX format.
 
-So let's first install `onnx` and run the conversion.
+So let's first install `onnx`
 
 ```bash
 pip install onnx
 ```
 
+And export the model to ONNX format
 
 ```python
 import timm
@@ -225,6 +226,7 @@ model = timm.create_model(
 ).eval()
 
 onnx_filename = "eva02_large_patch14_448.onnx"
+
 torch.onnx.export(
     model,
     torch.randn(1, 3, 448, 448),
@@ -240,38 +242,35 @@ torch.onnx.export(
 
 ```
 
-You will end up with a file called `eva02_large_patch14_448.onnx` in your working directory.
-
-
 {{< notice note >}}
-Parameters:
-- `model`: The pre-trained model to be exported.
+Here are the descriptions for the arguments you can pass to the `torch.onnx.export` function:
 - `torch.randn(1, 3, 448, 448)`: A dummy input tensor with the appropriate shape.
-- `"eva02_large_patch14_448.onnx"`: The name of the output ONNX file.
 - `export_params=True`: Whether to export the model parameters.
-- `opset_version=18`: The ONNX operator set version to use.
 - `do_constant_folding=True`: Whether to do constant folding for optimization.
 - `input_names=['input']`: The name of the input tensor.
 - `output_names=['output']`: The name of the output tensor.
 - `dynamic_axes={'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}}`: Dynamic axes for the input and output tensors.
 
-You can find the code for the ONNX conversion on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort/blob/main/03_convert_to_onnx.py).
+If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the ONNX conversion by executing the following command.
+```bash
+python 02_convert_to_onnx.py
+```
 {{< /notice >}}
 
-### 🖥️ ONNX Runtime - CPU
-Now that we have the ONNX model, let's run inference with ONNX Runtime on the CPU.
+If there are no errors, you will end up with a file called `eva02_large_patch14_448.onnx` in your working directory.
 
-If you haven't installed `onnxruntime`, do so now.
+
+### 🖥️ ONNX Runtime on CPU
+Now that we have the ONNX model, let's run inference with ONNX Runtime.
+
+Lets first install `onnxruntime` and `onnxruntime-gpu`. We'll use the onnxruntime-gpu for the GPU inference in the later section.
 
 ```bash
 pip install onnxruntime onnxruntime-gpu
 ```
 
-Now that we have the ONNX model and the ONNX Runtime installed, let's run inference with ONNX Runtime on the CPU.
+Before we can run inference with ONNX Runtime, we need to replicate the transforms from the PyTorch model.
 
-
-
-First, let's replicate the transforms from the PyTorch model using numpy.
 If you print the transforms used in the PyTorch model, you can see that it's a sequence of transformations that converts the image to the appropriate shape and normalization for the model.
 
 ```python
@@ -287,10 +286,10 @@ print(transforms)
 >>> )
 ```
 
-The equivalent transforms in numpy is as follows:
+The equivalent transforms using `numpy` is as follows:
 
 ```python
-def transforms_numpy(image: Image.Image):
+def transforms_numpy(image: PIL.Image.Image):
     image = image.convert('RGB')
     image = image.resize((448, 448), Image.BICUBIC)
     img_numpy = np.array(image).astype(np.float32) / 255.0
@@ -333,7 +332,7 @@ output.shape
 >>> (1, 1000)
 ```
 
-And the results are
+And printing the top 5 predictions:
 
 ```
 >>> espresso: 28.65%
@@ -344,14 +343,6 @@ And the results are
 ```
 
 While the results aren't an exact match to the PyTorch model, they're sufficiently similar. This slight variation can be attributed to differences in how normalization is implemented, leading to minor discrepancies in the precise values.
-
-{{< notice tip >}}
-One of the benefits of using ONNX Runtime is we can get rid of the PyTorch dependency - which is a pain to install on some systems. Plus it's a huge dependency to have in your project.
-{{< /notice >}}
-
-{{< notice note >}}
-You can find the code for the ONNX Runtime CPU inference on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort/blob/main/04_onnx_cpu_inference.py).
-{{< /notice >}}
 
 
 Now let's repeat the CPU inference benchmark but using ONNX Runtime.
@@ -377,7 +368,21 @@ print(f"Onnxruntime CPU: {ms_per_image:.3f} ms per image, FPS: {fps:.2f}")
 ```
 
 Ouch! That's slower than the PyTorch model. What a bummer!
-We have to do better on the GPU. Let's try ONNX Runtime on the GPU.
+
+
+{{< notice tip >}}
+One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency. 
+
+This is great for deployment and for running inference in environments where PyTorch is not available.
+{{< /notice >}}
+
+
+{{< notice note >}}
+If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the ONNX Runtime CPU inference by executing the following command.  
+```bash
+python 03_onnx_cpu_inference.py
+```
+{{< /notice >}}
 
 ### 🖼️ ONNX Runtime - GPU
 ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider.

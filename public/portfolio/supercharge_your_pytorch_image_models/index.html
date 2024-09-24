@@ -246,7 +246,7 @@
         <li><a class="toc-link" href="#-load-and-infer">🔧 Load and Infer</a></li>
         <li><a class="toc-link" href="#-baseline-latency">⏱️ Baseline Latency</a></li>
         <li><a class="toc-link" href="#-convert-to-onnx">🔄 Convert to ONNX</a></li>
-        <li><a class="toc-link" href="#-onnx-runtime---cpu">🖥️ ONNX Runtime - CPU</a></li>
+        <li><a class="toc-link" href="#-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</a></li>
         <li><a class="toc-link" href="#-onnx-runtime---gpu">🖼️ ONNX Runtime - GPU</a></li>
         <li><a class="toc-link" href="#-onnx-runtime---tensorrt">📊 ONNX Runtime - TensorRT</a></li>
         <li><a class="toc-link" href="#-supercharge---bake-pre-processing-into-onnx">🧠 Supercharge - Bake pre-processing into ONNX</a></li>
@@ -262,7 +262,7 @@
         <li><a class="toc-link" href="#-load-and-infer">🔧 Load and Infer</a></li>
         <li><a class="toc-link" href="#-baseline-latency">⏱️ Baseline Latency</a></li>
         <li><a class="toc-link" href="#-convert-to-onnx">🔄 Convert to ONNX</a></li>
-        <li><a class="toc-link" href="#-onnx-runtime---cpu">🖥️ ONNX Runtime - CPU</a></li>
+        <li><a class="toc-link" href="#-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</a></li>
         <li><a class="toc-link" href="#-onnx-runtime---gpu">🖼️ ONNX Runtime - GPU</a></li>
         <li><a class="toc-link" href="#-onnx-runtime---tensorrt">📊 ONNX Runtime - TensorRT</a></li>
         <li><a class="toc-link" href="#-supercharge---bake-pre-processing-into-onnx">🧠 Supercharge - Bake pre-processing into ONNX</a></li>
@@ -476,9 +476,10 @@
 <h3 id="-convert-to-onnx">🔄 Convert to ONNX</h3>
 <p>ONNX is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices.</p>
 <p>As a bonus, ONNX Runtime can optimize the model for faster inference. Before we can use ONNX Runtime to run inference, we need to convert the model to ONNX format.</p>
-<p>So let&rsquo;s first install <code>onnx</code> and run the conversion.</p>
+<p>So let&rsquo;s first install <code>onnx</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnx
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> timm
+</span></span></code></pre></div><p>And export the model to ONNX format</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> timm
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> timm<span style="color:#f92672">.</span>create_model(
@@ -486,6 +487,7 @@
 </span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>eval()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>onnx_filename <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eva02_large_patch14_448.onnx&#34;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(
 </span></span><span style="display:flex;"><span>    model,
 </span></span><span style="display:flex;"><span>    torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">448</span>, <span style="color:#ae81ff">448</span>),
@@ -498,30 +500,28 @@
 </span></span><span style="display:flex;"><span>    dynamic_axes<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;input&#34;</span>: {<span style="color:#ae81ff">0</span>: <span style="color:#e6db74">&#34;batch_size&#34;</span>}, 
 </span></span><span style="display:flex;"><span>                  <span style="color:#e6db74">&#34;output&#34;</span>: {<span style="color:#ae81ff">0</span>: <span style="color:#e6db74">&#34;batch_size&#34;</span>}},
 </span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>You will end up with a file called <code>eva02_large_patch14_448.onnx</code> in your working directory.</p>
-<div class="notice note" >
+</span></span></code></pre></div><div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#note-notice"></use>
-                </svg></span>note</p><p>Parameters:</p>
+                </svg></span>note</p><p>Here are the descriptions for the arguments you can pass to the <code>torch.onnx.export</code> function:</p>
 <ul>
-<li><code>model</code>: The pre-trained model to be exported.</li>
 <li><code>torch.randn(1, 3, 448, 448)</code>: A dummy input tensor with the appropriate shape.</li>
-<li><code>&quot;eva02_large_patch14_448.onnx&quot;</code>: The name of the output ONNX file.</li>
 <li><code>export_params=True</code>: Whether to export the model parameters.</li>
-<li><code>opset_version=18</code>: The ONNX operator set version to use.</li>
 <li><code>do_constant_folding=True</code>: Whether to do constant folding for optimization.</li>
 <li><code>input_names=['input']</code>: The name of the input tensor.</li>
 <li><code>output_names=['output']</code>: The name of the output tensor.</li>
 <li><code>dynamic_axes={'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}}</code>: Dynamic axes for the input and output tensors.</li>
 </ul>
-<p>You can find the code for the ONNX conversion on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/03_convert_to_onnx.py" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
-<h3 id="-onnx-runtime---cpu">🖥️ ONNX Runtime - CPU</h3>
-<p>Now that we have the ONNX model, let&rsquo;s run inference with ONNX Runtime on the CPU.</p>
-<p>If you haven&rsquo;t installed <code>onnxruntime</code>, do so now.</p>
+<p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/timm_onnx_tensort" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX conversion by executing the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 02_convert_to_onnx.py
+</span></span></code></pre></div></div>
+<p>If there are no errors, you will end up with a file called <code>eva02_large_patch14_448.onnx</code> in your working directory.</p>
+<h3 id="-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</h3>
+<p>Now that we have the ONNX model, let&rsquo;s run inference with ONNX Runtime.</p>
+<p>Lets first install <code>onnxruntime</code> and <code>onnxruntime-gpu</code>. We&rsquo;ll use the onnxruntime-gpu for the GPU inference in the later section.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnxruntime onnxruntime-gpu
-</span></span></code></pre></div><p>Now that we have the ONNX model and the ONNX Runtime installed, let&rsquo;s run inference with ONNX Runtime on the CPU.</p>
-<p>First, let&rsquo;s replicate the transforms from the PyTorch model using numpy.
-If you print the transforms used in the PyTorch model, you can see that it&rsquo;s a sequence of transformations that converts the image to the appropriate shape and normalization for the model.</p>
+</span></span></code></pre></div><p>Before we can run inference with ONNX Runtime, we need to replicate the transforms from the PyTorch model.</p>
+<p>If you print the transforms used in the PyTorch model, you can see that it&rsquo;s a sequence of transformations that converts the image to the appropriate shape and normalization for the model.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(transforms)
 </span></span></code></pre></div><pre tabindex="0"><code>&gt;&gt;&gt; Compose(
 &gt;&gt;&gt;     Resize(size=(448, 448), interpolation=bicubic, max_size=None, antialias=True)
@@ -529,8 +529,8 @@ If you print the transforms used in the PyTorch model, you can see that it&rsquo
 &gt;&gt;&gt;     MaybeToTensor()
 &gt;&gt;&gt;     Normalize(mean=tensor([0.4815, 0.4578, 0.4082]), std=tensor([0.2686, 0.2613, 0.2758]))
 &gt;&gt;&gt; )
-</code></pre><p>The equivalent transforms in numpy is as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transforms_numpy</span>(image: Image<span style="color:#f92672">.</span>Image):
+</code></pre><p>The equivalent transforms using <code>numpy</code> is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transforms_numpy</span>(image: PIL<span style="color:#f92672">.</span>Image<span style="color:#f92672">.</span>Image):
 </span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#39;RGB&#39;</span>)
 </span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>resize((<span style="color:#ae81ff">448</span>, <span style="color:#ae81ff">448</span>), Image<span style="color:#f92672">.</span>BICUBIC)
 </span></span><span style="display:flex;"><span>    img_numpy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(image)<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float32) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0</span>
@@ -563,21 +563,13 @@ If you print the transforms used in the PyTorch model, you can see that it&rsquo
 </span></span></code></pre></div><p>If we inspect the output shape, we can see that it&rsquo;s the same as the number of classes in the ImageNet dataset.</p>
 <pre tabindex="0"><code>output.shape
 &gt;&gt;&gt; (1, 1000)
-</code></pre><p>And the results are</p>
+</code></pre><p>And printing the top 5 predictions:</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; espresso: 28.65%
 &gt;&gt;&gt; cup: 2.77%
 &gt;&gt;&gt; eggnog: 2.28%
 &gt;&gt;&gt; chocolate sauce, chocolate syrup: 2.13%
 &gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.42%
 </code></pre><p>While the results aren&rsquo;t an exact match to the PyTorch model, they&rsquo;re sufficiently similar. This slight variation can be attributed to differences in how normalization is implemented, leading to minor discrepancies in the precise values.</p>
-<div class="notice tip" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>One of the benefits of using ONNX Runtime is we can get rid of the PyTorch dependency - which is a pain to install on some systems. Plus it&rsquo;s a huge dependency to have in your project. </p></div>
-<div class="notice note" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>You can find the code for the ONNX Runtime CPU inference on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/04_onnx_cpu_inference.py" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
 <p>Now let&rsquo;s repeat the CPU inference benchmark but using ONNX Runtime.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
 </span></span><span style="display:flex;"><span>
@@ -593,8 +585,18 @@ If you print the transforms used in the PyTorch model, you can see that it&rsquo
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Onnxruntime CPU: </span><span style="color:#e6db74">{</span>ms_per_image<span style="color:#e6db74">:</span><span style="color:#e6db74">.3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> ms per image, FPS: </span><span style="color:#e6db74">{</span>fps<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 </span></span></code></pre></div><pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CPU: 2002.446 ms per image, FPS: 0.50
-</code></pre><p>Ouch! That&rsquo;s slower than the PyTorch model. What a bummer!
-We have to do better on the GPU. Let&rsquo;s try ONNX Runtime on the GPU.</p>
+</code></pre><p>Ouch! That&rsquo;s slower than the PyTorch model. What a bummer!</p>
+<div class="notice tip" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency.</p>
+<p>This is great for deployment and for running inference in environments where PyTorch is not available.</p></div>
+<div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/timm_onnx_tensort" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX Runtime CPU inference by executing the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 03_onnx_cpu_inference.py
+</span></span></code></pre></div></div>
 <h3 id="-onnx-runtime---gpu">🖼️ ONNX Runtime - GPU</h3>
 <p>ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>providers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;CUDAExecutionProvider&#39;</span>]
