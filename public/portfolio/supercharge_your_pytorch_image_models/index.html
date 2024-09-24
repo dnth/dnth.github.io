@@ -3,12 +3,12 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
   <title>Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime &amp; Optimizations</title>
-  <meta name="description" content="Learn how to accelerate TIMM model inference up to 84x faster using ONNX Runtime and TensorRT optimization techniques!" />
+  <meta name="description" content="Learn how to optimize PyTorch image models using ONNX Runtime and TensorRT, achieving up to 8x faster inference speeds for real-time applications." />
 
   <meta property="og:url" content="http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/">
   <meta property="og:site_name" content="Dickson Neoh - Personal Portfolio">
   <meta property="og:title" content="Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime & Optimizations">
-  <meta property="og:description" content="Learn how to accelerate TIMM model inference up to 84x faster using ONNX Runtime and TensorRT optimization techniques!">
+  <meta property="og:description" content="Learn how to optimize PyTorch image models using ONNX Runtime and TensorRT, achieving up to 8x faster inference speeds for real-time applications.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="portfolio">
@@ -18,13 +18,14 @@
     <meta property="article:tag" content="ONNX">
     <meta property="article:tag" content="TensorRT">
     <meta property="article:tag" content="ImageNet">
+    <meta property="article:tag" content="Hugging Face">
     <meta property="og:image" content="http://localhost:1313/images/portfolio/supercharge_your_pytorch_image_models/post_image.jpg">
 
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/portfolio/supercharge_your_pytorch_image_models/post_image.jpg">
   <meta name="twitter:title" content="Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime & Optimizations">
-  <meta name="twitter:description" content="Learn how to accelerate TIMM model inference up to 84x faster using ONNX Runtime and TensorRT optimization techniques!">
+  <meta name="twitter:description" content="Learn how to optimize PyTorch image models using ONNX Runtime and TensorRT, achieving up to 8x faster inference speeds for real-time applications.">
 
 
   <!-- mobile responsive meta -->
@@ -144,7 +145,7 @@
         <i class="fa fa-calendar"></i> &ensp;
         September 9, 2024 &ensp; &ensp;
         <i class="fa fa-clock-o"></i> &ensp;
-        12 mins read
+        13 mins read
       </div>
       
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
@@ -167,6 +168,11 @@
           
             <a href="http://localhost:1313/tags/imagenet/">ImageNet</a> 
             
+              <span class="separator">•</span>
+            
+          
+            <a href="http://localhost:1313/tags/hugging-face/">Hugging Face</a> 
+            
           
         </div>
       
@@ -185,6 +191,11 @@
             
           
             <a href="http://localhost:1313/categories/image-classification/">Image-Classification</a>
+            
+              <span class="separator">•</span>
+            
+          
+            <a href="http://localhost:1313/categories/optimization/">Optimization</a>
             
           
         </div>
@@ -263,18 +274,27 @@
           <hr>
           <h3 id="-motivation">🚀 Motivation</h3>
 <p>Real time inference speed is crucial for many applications in production. Some could mean life or death. 💀</p>
-<p>Imagine you&rsquo;re behind the wheels of a self-driving car and the car takes 1 second to detect an oncoming truck.</p>
-<p>Just one second too late, and you could end up in the clouds, talking to celestial beings&hellip; 👼👼👼</p>
+<p>Imagine you&rsquo;re behind the wheels of a self-driving car and the car takes one second to detect an oncoming truck.</p>
+<p>Just one second too late, and you could end up in the clouds 👼👼👼</p>
 <p>Or if you&rsquo;re lucky, on the ground.</p>
 <figure><img src="/portfolio/supercharge_your_pytorch_image_models/banana_peel_robot.gif" width="480">
 </figure>
 
 <p>I hope that shows you how crucial this problem is.</p>
-<p>Today (2024), ML models are being deployed in all kinds of high-stakes industries like healthcare, finance, and self-driving cars.</p>
+<p>Today (2024), computer vision models are being deployed in all kinds of high-stakes industries like healthcare, finance, and self-driving cars.</p>
 <blockquote class="blockquote">
-  <p class="mb-0">It&rsquo;s not just about being right - it&rsquo;s about being right, right now.</p>
+  <p class="mb-0">We are at a point where it&rsquo;s not just about being right - it&rsquo;s about being right, right now.</p>
 </blockquote>
-<p>This post shows how you can bring any models from <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a> and supercharge its inference speed with optimized <a href="https://onnxruntime.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX Runtime</a> and <a href="https://developer.nvidia.com/tensorrt" target="_blank" rel="nofollow noopener noreferrer">TensorRT</a>.</p>
+<p>In computer vision especially, have real-time inference is crucial and will determine whether you deploy your model or not.</p>
+<p>In many cases, you can pick one or the other:</p>
+<ul>
+<li>Fast model with poor accuracy</li>
+<li>Slow model with high accuracy</li>
+</ul>
+<p>But can we have both a fast and accurate model?</p>
+<p>That&rsquo;s what this post is about.</p>
+<p>I will show you how to pick a top performing image models, optimize it and make it run fast for real-time inference.</p>
+<p>I will pick models from the <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a> library. But the optimization may be applicable to any PyTorch image models.</p>
 <style type="text/css">
     .notice{padding:18px;line-height:24px;margin-bottom:24px;border-radius:4px;color:#6c757d;background:#e7f2fa}.notice
     p:last-child{margin-bottom:0}.notice-title{margin:-18px -18px 12px;padding:4px 18px;border-radius:4px 4px 0
@@ -305,14 +325,14 @@
         </svg></div><div class="notice tip" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>By the end of this post you&rsquo;ll learn how to:</p>
+                </svg></span>tip</p><p>You can bring any models from <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a> and supercharge its inference speed with optimized <a href="https://onnxruntime.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX Runtime</a> and <a href="https://developer.nvidia.com/tensorrt" target="_blank" rel="nofollow noopener noreferrer">TensorRT</a>.</p>
+<p>By the end, you&rsquo;ll learn how to:</p>
 <ul>
-<li>📥 Load any pre-trained model from <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a></li>
-<li>🔄 Convert the model to ONNX format</li>
-<li>🖥️ Run inference with ONNX Runtime (CPU &amp; GPU)</li>
-<li>🎮 Run inference with TensorRT (GPU)</li>
-<li>🛠️ Tweak the TensorRT parameters for better performance</li>
-<li>🧠 Bake the pre-processing into the ONNX model</li>
+<li>📥 Load any pre-trained model from <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a>.</li>
+<li>🔄 Convert the model to ONNX format.</li>
+<li>🖥️ Run inference with <a href="https://onnxruntime.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX Runtime</a> (CPU &amp; Cuda Provider).</li>
+<li>🎮 Run inference with <a href="https://developer.nvidia.com/tensorrt" target="_blank" rel="nofollow noopener noreferrer">TensorRT</a> provider and optimized runtime parameters.</li>
+<li>🧠 Bake the pre-processing into the ONNX model for faster inference.</li>
 </ul>
 <p>You can find the code for this post on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
 <p>If that sounds exciting let&rsquo;s dive in! 🏊‍♂️</p>
@@ -1083,7 +1103,7 @@ Note the name of the input and output nodes from Netron. We will need this for t
         
         
         <li>
-            <a href="whatsapp://send?text=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20accelerate%20TIMM%20model%20inference%20up%20to%2084x%20faster%20using%20ONNX%20Runtime%20and%20TensorRT%20optimization%20techniques%21%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_your_pytorch_image_models%2f%0a" target="_blank" aria-label="Share on WhatsApp"
+            <a href="whatsapp://send?text=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20optimize%20PyTorch%20image%20models%20using%20ONNX%20Runtime%20and%20TensorRT%2c%20achieving%20up%20to%208x%20faster%20inference%20speeds%20for%20real-time%20applications.%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_your_pytorch_image_models%2f%0a" target="_blank" aria-label="Share on WhatsApp"
                 class="share-btn whatsapp">
                 <svg
    width="6.0324998mm"
@@ -1138,7 +1158,7 @@ Note the name of the input and output nodes from Netron. We will need this for t
         
         
         <li>
-            <a href="mailto:?subject=Dickson%20Neoh%20-%20Personal%20Portfolio - Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations.&amp;body=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20accelerate%20TIMM%20model%20inference%20up%20to%2084x%20faster%20using%20ONNX%20Runtime%20and%20TensorRT%20optimization%20techniques%21%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_your_pytorch_image_models%2f%0a" target="_blank"
+            <a href="mailto:?subject=Dickson%20Neoh%20-%20Personal%20Portfolio - Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations.&amp;body=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20optimize%20PyTorch%20image%20models%20using%20ONNX%20Runtime%20and%20TensorRT%2c%20achieving%20up%20to%208x%20faster%20inference%20speeds%20for%20real-time%20applications.%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_your_pytorch_image_models%2f%0a" target="_blank"
                 class="share-btn email" aria-label="Share via Email">
                 <svg
    width="6.3499999mm"

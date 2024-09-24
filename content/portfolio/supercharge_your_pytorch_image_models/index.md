@@ -15,9 +15,9 @@ images:
 ### 🚀 Motivation
 Real time inference speed is crucial for many applications in production. Some could mean life or death. 💀
 
-Imagine you're behind the wheels of a self-driving car and the car takes 1 second to detect an oncoming truck.
+Imagine you're behind the wheels of a self-driving car and the car takes one second to detect an oncoming truck.
 
-Just one second too late, and you could end up in the clouds, talking to celestial beings... 👼👼👼
+Just one second too late, and you could end up in the clouds 👼👼👼
 
 Or if you're lucky, on the ground.
 
@@ -27,22 +27,35 @@ Or if you're lucky, on the ground.
 
 I hope that shows you how crucial this problem is.
 
-Today (2024), ML models are being deployed in all kinds of high-stakes industries like healthcare, finance, and self-driving cars.
+Today (2024), computer vision models are being deployed in all kinds of high-stakes industries like healthcare, finance, and self-driving cars.
 
 {{% blockquote %}}
-It's not just about being right - it's about being right, right now.
+We are at a point where it's not just about being right - it's about being right, right now.
 {{% /blockquote %}}
 
-This post shows how you can bring any models from [TIMM](https://huggingface.co/docs/timm/index) and supercharge its inference speed with optimized [ONNX Runtime](https://onnxruntime.ai/) and [TensorRT](https://developer.nvidia.com/tensorrt).
+In computer vision especially, have real-time inference is crucial and will determine whether you deploy your model or not. 
+
+In many cases, you can pick one or the other:
+- Fast model with poor accuracy
+- Slow model with high accuracy
+
+But can we have both a fast and accurate model? 
+
+That's what this post is about.
+
+I will show you how to pick a top performing image models, optimize it and make it run fast for real-time inference.
+
+I will pick models from the [TIMM](https://huggingface.co/docs/timm/index) library. But the optimization may be applicable to any PyTorch image models.
 
 {{< notice tip >}}
-By the end of this post you'll learn how to:
-- 📥 Load any pre-trained model from [TIMM](https://huggingface.co/docs/timm/index)
-- 🔄 Convert the model to ONNX format
-- 🖥️ Run inference with ONNX Runtime (CPU & GPU)
-- 🎮 Run inference with TensorRT (GPU)
-- 🛠️ Tweak the TensorRT parameters for better performance
-- 🧠 Bake the pre-processing into the ONNX model
+You can bring any models from [TIMM](https://huggingface.co/docs/timm/index) and supercharge its inference speed with optimized [ONNX Runtime](https://onnxruntime.ai/) and [TensorRT](https://developer.nvidia.com/tensorrt).
+
+By the end, you'll learn how to:
+- 📥 Load any pre-trained model from [TIMM](https://huggingface.co/docs/timm/index).
+- 🔄 Convert the model to ONNX format.
+- 🖥️ Run inference with [ONNX Runtime](https://onnxruntime.ai/) (CPU & Cuda Provider).
+- 🎮 Run inference with [TensorRT](https://developer.nvidia.com/tensorrt) provider and optimized runtime parameters.
+- 🧠 Bake the pre-processing into the ONNX model for faster inference.
 
 You can find the code for this post on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort).
 
