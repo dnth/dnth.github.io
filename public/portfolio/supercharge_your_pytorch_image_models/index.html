@@ -247,8 +247,8 @@
         <li><a class="toc-link" href="#-baseline-latency">⏱️ Baseline Latency</a></li>
         <li><a class="toc-link" href="#-convert-to-onnx">🔄 Convert to ONNX</a></li>
         <li><a class="toc-link" href="#-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</a></li>
-        <li><a class="toc-link" href="#-onnx-runtime---gpu">🖼️ ONNX Runtime - GPU</a></li>
-        <li><a class="toc-link" href="#-onnx-runtime---tensorrt">📊 ONNX Runtime - TensorRT</a></li>
+        <li><a class="toc-link" href="#-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</a></li>
+        <li><a class="toc-link" href="#-onnx-runtime-on-tensorrt">📊 ONNX Runtime on TensorRT</a></li>
         <li><a class="toc-link" href="#-supercharge---bake-pre-processing-into-onnx">🧠 Supercharge - Bake pre-processing into ONNX</a></li>
         <li><a class="toc-link" href="#-conclusion">🚧 Conclusion</a></li>
       </ul>
@@ -263,8 +263,8 @@
         <li><a class="toc-link" href="#-baseline-latency">⏱️ Baseline Latency</a></li>
         <li><a class="toc-link" href="#-convert-to-onnx">🔄 Convert to ONNX</a></li>
         <li><a class="toc-link" href="#-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</a></li>
-        <li><a class="toc-link" href="#-onnx-runtime---gpu">🖼️ ONNX Runtime - GPU</a></li>
-        <li><a class="toc-link" href="#-onnx-runtime---tensorrt">📊 ONNX Runtime - TensorRT</a></li>
+        <li><a class="toc-link" href="#-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</a></li>
+        <li><a class="toc-link" href="#-onnx-runtime-on-tensorrt">📊 ONNX Runtime on TensorRT</a></li>
         <li><a class="toc-link" href="#-supercharge---bake-pre-processing-into-onnx">🧠 Supercharge - Bake pre-processing into ONNX</a></li>
         <li><a class="toc-link" href="#-conclusion">🚧 Conclusion</a></li>
       </ul>
@@ -597,7 +597,7 @@
                 </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/timm_onnx_tensort" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX Runtime CPU inference by executing the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 03_onnx_cpu_inference.py
 </span></span></code></pre></div></div>
-<h3 id="-onnx-runtime---gpu">🖼️ ONNX Runtime - GPU</h3>
+<h3 id="-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</h3>
 <p>ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>providers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;CUDAExecutionProvider&#39;</span>]
 </span></span><span style="display:flex;"><span>onnx_filename <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eva02_large_patch14_448.onnx&#34;</span>
@@ -639,7 +639,7 @@
                 </svg></span>note</p><p>You can find the code for the ONNX Runtime CUDA cupy inference on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/05_onnx_cuda_inference.py" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
 <p>Using Onnx Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.</p>
 <p>We have one more trick up our sleeve.</p>
-<h3 id="-onnx-runtime---tensorrt">📊 ONNX Runtime - TensorRT</h3>
+<h3 id="-onnx-runtime-on-tensorrt">📊 ONNX Runtime on TensorRT</h3>
 <p>The TensorRT EP is a specialized provider for TensorRT. It lets us run the model with TensorRT optimizations.</p>
 <p>Add in TensorRT parameters for final performance gains.</p>
 <p>Building on from the previous example, we can add in TensorRT parameters for final performance gains.</p>

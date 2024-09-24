@@ -384,7 +384,7 @@ python 03_onnx_cpu_inference.py
 ```
 {{< /notice >}}
 
-### 🖼️ ONNX Runtime - GPU
+### 🖼️ ONNX Runtime on CUDA
 ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider.
 
 ```python
@@ -451,7 +451,7 @@ Using Onnx Runtime with CUDA is a little better than the PyTorch model on the GP
 
 We have one more trick up our sleeve.
 
-### 📊 ONNX Runtime - TensorRT
+### 📊 ONNX Runtime on TensorRT
 The TensorRT EP is a specialized provider for TensorRT. It lets us run the model with TensorRT optimizations.
 
 Add in TensorRT parameters for final performance gains. 
