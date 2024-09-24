@@ -244,7 +244,7 @@
         <li><a class="toc-link" href="#-motivation">🚀 Motivation</a></li>
         <li><a class="toc-link" href="#-installation">💻 Installation</a></li>
         <li><a class="toc-link" href="#-load-and-infer">🔧 Load and Infer</a></li>
-        <li><a class="toc-link" href="#-pytorch-latency-benchmark">⏱️ PyTorch Latency Benchmark</a></li>
+        <li><a class="toc-link" href="#-baseline-latency">⏱️ Baseline Latency</a></li>
         <li><a class="toc-link" href="#-convert-to-onnx">🔄 Convert to ONNX</a></li>
         <li><a class="toc-link" href="#-onnx-runtime---cpu">🖥️ ONNX Runtime - CPU</a></li>
         <li><a class="toc-link" href="#-onnx-runtime---gpu">🖼️ ONNX Runtime - GPU</a></li>
@@ -260,7 +260,7 @@
         <li><a class="toc-link" href="#-motivation">🚀 Motivation</a></li>
         <li><a class="toc-link" href="#-installation">💻 Installation</a></li>
         <li><a class="toc-link" href="#-load-and-infer">🔧 Load and Infer</a></li>
-        <li><a class="toc-link" href="#-pytorch-latency-benchmark">⏱️ PyTorch Latency Benchmark</a></li>
+        <li><a class="toc-link" href="#-baseline-latency">⏱️ Baseline Latency</a></li>
         <li><a class="toc-link" href="#-convert-to-onnx">🔄 Convert to ONNX</a></li>
         <li><a class="toc-link" href="#-onnx-runtime---cpu">🖥️ ONNX Runtime - CPU</a></li>
         <li><a class="toc-link" href="#-onnx-runtime---gpu">🖼️ ONNX Runtime - GPU</a></li>
@@ -342,17 +342,41 @@
 </span></span><span style="display:flex;"><span>conda activate supercharge_timm_tensorrt
 </span></span></code></pre></div><p>In this post I will be using the <a href="https://github.com/huggingface/pytorch-image-models" target="_blank" rel="nofollow noopener noreferrer"><code>timm</code></a> library to load a pre-trained model and run inference. So let&rsquo;s install <code>timm</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install timm
-</span></span></code></pre></div><p>If you&rsquo;re not familiar, <code>timm</code> is a library that provides thousands of pre-trained models that&rsquo;s being used in research and production.
-If you&rsquo;ve used a PyTorch vision model, chances are it&rsquo;s using a model from <code>timm</code>.</p>
+</span></span></code></pre></div><p>At the time of writing, there are over <a href="https://huggingface.co/timm" target="_blank" rel="nofollow noopener noreferrer">1370 models</a> available in timm. Any of which can be used in this post.</p>
 <h3 id="-load-and-infer">🔧 Load and Infer</h3>
 <p>Let&rsquo;s load one of the top performing models from the timm <a href="https://huggingface.co/spaces/timm/leaderboard" target="_blank" rel="nofollow noopener noreferrer">leaderboard</a> - the <code>eva02_large_patch14_448.mim_m38m_ft_in22k_in1k</code> model.</p>
-<p>This model boasts impressive ImageNet accuracy scores of <strong>90.05%</strong> for top-1 and <strong>99.06%</strong> for top-5 classifications.</p>
-<!-- <iframe
-	src="https://timm-leaderboard.hf.space"
-	frameborder="0"
-	width="850"
-	height="450"
-></iframe> -->
+
+
+
+
+
+<figure style="text-align: center;">
+    
+    <a href="/portfolio/supercharge_your_pytorch_image_models/eva_timm.png" class="image-popup">
+        <img src="/portfolio/supercharge_your_pytorch_image_models/eva_timm.png" 
+             srcset="/portfolio/supercharge_your_pytorch_image_models/eva_timm_hu10252380028376413725.png 360w, /portfolio/supercharge_your_pytorch_image_models/eva_timm_hu12561609435022223115.png 720w, /portfolio/supercharge_your_pytorch_image_models/eva_timm_hu5572297002514934518.png 1920w" 
+             sizes="(max-width: auto) 100vw, auto"
+             alt="EVA02 Large Patch14 448 accuracy vs inference speed on the TIMM leaderboard." 
+             width="auto" 
+             
+             style="max-width: 100%; height: auto;"/>
+    </a>
+    
+    <figcaption style="font-size: 0.8em;">
+        <p>
+        EVA02 Large Patch14 448 accuracy vs inference speed on the TIMM leaderboard.
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>If you look closely, the EVA02 model achieves top ImageNet accuracy (90.05% top-1, 99.06% top-5) but lags in speed compared to other models on the leaderboard.</p>
+<p>Check out the model on the TIMM leaderboard <a href="https://huggingface.co/spaces/timm/leaderboard" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<p>So let&rsquo;s get the model on our local machine and run some inference.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> timm
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>model_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;eva02_large_patch14_448.mim_m38m_ft_in22k_in1k&#39;</span>
@@ -406,12 +430,8 @@ If you&rsquo;ve used a PyTorch vision model, chances are it&rsquo;s using a mode
 &gt;&gt;&gt; chocolate sauce, chocolate syrup: 2.39%
 &gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.48%
 </code></pre><p>The predictions looks good! Now let&rsquo;s benchmark the model inference latency.</p>
-<div class="notice note" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>You can find the code for this section on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensorrt/blob/main/00_benchmark_timm.py" target="_blank" rel="nofollow noopener noreferrer">here</a>. </p></div>
-<h3 id="-pytorch-latency-benchmark">⏱️ PyTorch Latency Benchmark</h3>
-<p>We will run the inference 10 times and record the average time on both CPU and GPU.</p>
+<h3 id="-baseline-latency">⏱️ Baseline Latency</h3>
+<p>We will run the inference 10 times (more is better, but 10 is enough to see the difference) and record the average time on both CPU and GPU.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_benchmark</span>(model, device, num_images<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>):
@@ -437,7 +457,10 @@ If you&rsquo;ve used a PyTorch vision model, chances are it&rsquo;s using a mode
 </span></span></code></pre></div><p>Alright the benchmarks are in</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; PyTorch model on cpu: 1584.379 ms per image, FPS: 0.63
 &gt;&gt;&gt; PyTorch model on cuda: 77.226 ms per image, FPS: 12.95
-</code></pre><div class="notice note" >
+</code></pre><p>Although the performance on the GPU is not bad, 12 FPS is still not fast enough for real-time inference.</p>
+<p>On a reasobably beefy CPU, it took 1.5 seconds to run an inference.</p>
+<p>I would&rsquo;t want the model in this state deployed in a self-driving car. It could cost lives.</p>
+<div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#note-notice"></use>
                 </svg></span>note</p><p>I&rsquo;m using the following hardware for the benchmarks:</p>
@@ -445,10 +468,11 @@ If you&rsquo;ve used a PyTorch vision model, chances are it&rsquo;s using a mode
 <li>GPU: NVIDIA RTX 3090</li>
 <li>CPU: 11th Gen Intel® Core™ i9-11900 @ 2.50GHz × 16</li>
 </ul>
-<p>You can find the code for the PyTorch benchmarks on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/01_pytorch_latency_benchmark.py" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
-<p>Although the performance on the GPU is not bad, 12 FPS is still not fast enough for real-time inference.
-Let&rsquo;s forget about using the model on a CPU for inference. Remember a one second too late could mean a lot!</p>
-<p>But we can do better.</p>
+<p>You can find the code for the PyTorch benchmarks on my GitHub repository <a href="https://github.com/dnth/timm_onnx_tensort/blob/main/01_pytorch_latency_benchmark.py" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<p>If you&rsquo;ve cloned the repo, you can run the benchmarks by executing the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 01_pytorch_latency_benchmark.py
+</span></span></code></pre></div></div>
+<p>So let&rsquo;s begin the first step to improve the run time.</p>
 <h3 id="-convert-to-onnx">🔄 Convert to ONNX</h3>
 <p>ONNX is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices.</p>
 <p>As a bonus, ONNX Runtime can optimize the model for faster inference. Before we can use ONNX Runtime to run inference, we need to convert the model to ONNX format.</p>
