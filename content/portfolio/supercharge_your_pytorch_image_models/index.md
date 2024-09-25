@@ -388,7 +388,7 @@ python 03_onnx_cpu_inference.py
 ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.
 
 {{< notice warning >}}
-You have to uninstall the onnxruntime package before installing the onnxruntime-gpu package.
+You mustuninstall the `onnxruntime` package before installing the `onnxruntime-gpu` package.
 
 Run the following to uninstall the `onnxruntime` package.
 ```bash
@@ -414,7 +414,8 @@ conda install -y -c nvidia cuda=12.2.2 cuda-tools=12.2.2 cuda-toolkit=12.2.2 cud
 If you encounter any errors like the following
 
 ```bash
-Failed to load library libonnxruntime_providers_cuda.so with error: libcublasLt.so.12: cannot open shared object file: No such file or directory
+Failed to load library libonnxruntime_providers_cuda.so with error: 
+libcublasLt.so.12: cannot open shared object file: No such file or directory
 ```
 It means that the CUDA library is not in the library path.
 You need to export the library path to include the CUDA library.
@@ -485,7 +486,12 @@ With CuPy, we got a tiny bit of performance improvement:
 ```
 
 {{< notice note >}}
-You can find the code for the ONNX Runtime CUDA cupy inference on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort/blob/main/05_onnx_cuda_inference.py).
+If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the ONNX Runtime CUDA cupy inference by executing the following command.
+
+```bash
+python 04_onnx_cuda_inference.py
+```
+
 {{< /notice >}}
 
 Using Onnx Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.
@@ -493,14 +499,34 @@ Using Onnx Runtime with CUDA is a little better than the PyTorch model on the GP
 We have one more trick up our sleeve.
 
 ### 📊 ONNX Runtime on TensorRT
-The TensorRT EP is a specialized provider for TensorRT. It lets us run the model with TensorRT optimizations.
+Similar to the CUDA provider, we have the TensorRT provider on ONNX Runtime. This lets us run the model using the TensorRT high performance inference engine by NVIDIA.
 
-Add in TensorRT parameters for final performance gains. 
 
-Building on from the previous example, we can add in TensorRT parameters for final performance gains.
+To use the TensorRT provider, you need to have TensorRT installed on your system.
+
+```bash
+pip install tensorrt==10.1.0 \
+            tensorrt-cu12==10.1.0 \
+            tensorrt-cu12-bindings==10.1.0 \
+            tensorrt-cu12-libs==10.1.0
+```
+
+Next you need to export library path to include the TensorRT library.
+
+```bash
+export LD_LIBRARY_PATH="/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib:$LD_LIBRARY_PATH"
+```
+
+Otherwise you'll encounter the following error:
+
+```bash
+Failed to load library libonnxruntime_providers_tensorrt.so with error: libnvinfer.so.10: 
+cannot open shared object file: No such file or directory
+```
+
+Next we need so set the TensorRT provider options in ONNX Runtime inference code.
 
 ```python
-
 providers = [
     (
         "TensorrtExecutionProvider",
@@ -522,27 +548,31 @@ providers = [
 onnx_filename = "eva02_large_patch14_448.onnx"
 session = ort.InferenceSession(onnx_filename, providers=providers)
 ```
+The rest of the code is the same as the CUDA inference.
 
 
-And running the benchmark:
+And now let's run the benchmark:
 ```
->>> Onnxruntime CUDA numpy transforms: 19.898 ms per image, FPS: 50.26
->>> Onnxruntime CUDA cupy transforms: 16.836 ms per image, FPS: 59.40
+>>> TensorRT + numpy: 18.852 ms per image, FPS: 53.04
+>>> TensorRT + cupy: 16.892 ms per image, FPS: 59.20
 ```
 
-That's a 4x speedup over the PyTorch model on the GPU and 84x speedup over the PyTorch model on the CPU!
+Running with TensorRT and cupy give us a 4.5x speedup over the PyTorch model on the GPU and 93x speedup over the PyTorch model on the CPU!
 
 {{< notice note >}}
-You can find the code for the ONNX Runtime TensorRT inference on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort/blob/main/06_onnx_trt_inference.py).
+If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the ONNX Runtime TensorRT inference by executing the following command.
+```bash
+python 05_onnx_trt_inference.py
+```
 {{< /notice >}}
 
 That's the end of this post. Or is it?
 
-Not yet. You could stop here and be happy with the results. After all we already got a 84x speedup over the PyTorch model.
+You could stop here and be happy with the results. After all we already got a 93x speedup over the PyTorch model.
 
 But.. if you're like me and you want to squeeze out every last bit of performance, there's one final trick up our sleeve.
 
-### 🧠 Supercharge - Bake pre-processing into ONNX
+### 🎂 Bake pre-processing into ONNX
 If you recall, we did our pre-processing transforms outside of the ONNX model in CuPy or Numpy. 
 
 This incurs some overhead because we need to transfer the data to and from the GPU for the transforms.
@@ -601,21 +631,30 @@ torch.onnx.export(
     )
 ```
 
-Let's visualize the preprocess model on Netron.
+Let's visualize the exported `preprocessing.onnx` model on Netron.
 
 {{< figure_autoresize src="preprocess_model.png" width="auto" align="center" >}}
-Looks like the input and output shapes are correct.
+
+
 
 {{< notice note >}}
-You can find the code for the export of the preprocessing model on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort/blob/main/07_export_preprocessing_onnx.py).
+If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the export of the preprocessing model by executing the following command.
+```bash
+python 06_export_preprocessing_onnx.py
+``` 
+
+Note the name of the output node of the `preprocessing.onnx` model - `output_preprocessing`.
 {{< /notice >}}
 
-And let's visualize the original model on Netron.
+Now we need to merge the output of the `preprocessing.onnx` model with the input of the `eva02_large_patch14_448` model.
+
+Let's visualize the original `eva02_large_patch14_448` model on Netron.
 
 {{< figure_autoresize src="original_model.png" width="auto" align="center" >}}
 
-Now we need to merge the preprocess model with the original model.
-Note the name of the input and output nodes from Netron. We will need this for the merge.
+
+Note the name of the input node of the `eva02_large_patch14_448` model. We will need this for the merge.
+The name of the input node is `input`.
 
 To merge the models, we use the `compose` function from the `onnx` library.
 
@@ -640,8 +679,16 @@ merged_model = onnx.compose.merge_models(
 # Save the merged model
 onnx.save(merged_model, "merged_model_compose.onnx")
 ```
-Note the `io_map` parameter. This lets us map the output of the preprocessing model to the input of the original model.
+Note the `io_map` parameter. This lets us map the output of the preprocessing model to the input of the original model. You must ensure that the input and output names of the models are correct.
 
+{{< notice note >}}
+If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the merge of the models by executing the following command.
+```bash
+python 07_onnx_compose_merge.py
+```
+{{< /notice >}}
+
+If there are no errors, you will end up with a file called `merged_model_compose.onnx` in your working directory.
 Let's visualize the merged model on Netron.
 
 {{< figure_autoresize src="merged_model.png" width="auto" align="center" >}}
@@ -650,6 +697,20 @@ Let's visualize the merged model on Netron.
 Note the input to the merged model is `[batch_size, 3, height, width]`. This model can be given any input of size height x width and the batch size can vary. As we've seen in the Preprocess module earlier, the height and width are resized to 448x448 internally.
 {{< /notice >}}
 
+Now using this merged model, let's run the inference benchmark again using the TensorRT provider.
+
+We'll need to make a small change to how the input tensor is passed to the model.
+
+```python
+def read_image(image: Image.Image):
+    image = image.convert("RGB")
+    img_numpy = np.array(image).astype(np.float32)
+    img_numpy = img_numpy.transpose(2, 0, 1)
+    img_numpy = np.expand_dims(img_numpy, axis=0)
+    return img_numpy
+
+```
+Notice we are no longer doing the resize and normalization inside the function. This is because the merged model already includes these operations.
 
 
 And the results are in!
@@ -658,8 +719,14 @@ And the results are in!
 TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
 ```
 
-{{< notice tip >}}
 That's a 6x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀
+
+
+{{< notice tip >}}
+If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the merged model inference by executing the following command.
+```bash
+python 08_inference_merged_model.py
+```
 {{< /notice >}}
 
 Let's do a final sanity check on the predictions.
