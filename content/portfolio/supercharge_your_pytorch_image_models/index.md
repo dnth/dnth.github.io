@@ -57,7 +57,7 @@ By the end, you'll learn how to:
 - 🎮 Run inference with [TensorRT](https://developer.nvidia.com/tensorrt) provider and optimized runtime parameters.
 - 🧠 Bake the pre-processing into the ONNX model for faster inference.
 
-You can find the code for this post on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort).
+You can find the code for this post on my GitHub repository [here](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost).
 
 {{< /notice >}}
 
@@ -194,7 +194,7 @@ I'm using the following hardware for the benchmarks:
 - GPU: NVIDIA RTX 3090
 - CPU: 11th Gen Intel® Core™ i9-11900 @ 2.50GHz × 16
 
-You can find the code for the PyTorch benchmarks on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort/blob/main/01_pytorch_latency_benchmark.py).
+You can find the code for the PyTorch benchmarks on my GitHub repository [here](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost/blob/main/01_pytorch_latency_benchmark.py).
 
 If you've cloned the repo, you can run the benchmarks by executing the following command.
 ```bash
@@ -251,7 +251,7 @@ Here are the descriptions for the arguments you can pass to the `torch.onnx.expo
 - `output_names=['output']`: The name of the output tensor.
 - `dynamic_axes={'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}}`: Dynamic axes for the input and output tensors.
 
-If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the ONNX conversion by executing the following command.
+If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX conversion by executing the following command.
 ```bash
 python 02_convert_to_onnx.py
 ```
@@ -378,7 +378,7 @@ This is great for deployment and for running inference in environments where PyT
 
 
 {{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the ONNX Runtime CPU inference by executing the following command.  
+If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX Runtime CPU inference by executing the following command.  
 ```bash
 python 03_onnx_cpu_inference.py
 ```
@@ -486,7 +486,7 @@ With CuPy, we got a tiny bit of performance improvement:
 ```
 
 {{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the ONNX Runtime CUDA cupy inference by executing the following command.
+If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX Runtime CUDA cupy inference by executing the following command.
 
 ```bash
 python 04_onnx_cuda_inference.py
@@ -560,7 +560,7 @@ And now let's run the benchmark:
 Running with TensorRT and cupy give us a 4.5x speedup over the PyTorch model on the GPU and 93x speedup over the PyTorch model on the CPU!
 
 {{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the ONNX Runtime TensorRT inference by executing the following command.
+If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX Runtime TensorRT inference by executing the following command.
 ```bash
 python 05_onnx_trt_inference.py
 ```
@@ -638,7 +638,7 @@ Let's visualize the exported `preprocessing.onnx` model on Netron.
 
 
 {{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the export of the preprocessing model by executing the following command.
+If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the export of the preprocessing model by executing the following command.
 ```bash
 python 06_export_preprocessing_onnx.py
 ``` 
@@ -682,7 +682,7 @@ onnx.save(merged_model, "merged_model_compose.onnx")
 Note the `io_map` parameter. This lets us map the output of the preprocessing model to the input of the original model. You must ensure that the input and output names of the models are correct.
 
 {{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the merge of the models by executing the following command.
+If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the merge of the models by executing the following command.
 ```bash
 python 07_onnx_compose_merge.py
 ```
@@ -723,7 +723,7 @@ That's a 6x improvement over the original PyTorch model on the GPU and a whoppin
 
 
 {{< notice tip >}}
-If you've cloned the [repo](https://github.com/dnth/timm_onnx_tensort), you can run the merged model inference by executing the following command.
+If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the merged model inference by executing the following command.
 ```bash
 python 08_inference_merged_model.py
 ```
@@ -755,6 +755,6 @@ In this post you've learned how to:
 - 🛠️ Tweak the TensorRT parameters for better performance
 - 🧠 Bake the pre-processing into the ONNX model
 
-You can find the code for this post on my GitHub repository [here](https://github.com/dnth/timm_onnx_tensort).
+You can find the code for this post on my GitHub repository [here](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost).
 
 {{< /notice >}}
