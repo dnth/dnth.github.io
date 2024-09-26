@@ -418,9 +418,12 @@ conda install -y -c nvidia cuda=12.2.2 \
 Once done, replace the CPU provider with the CUDA provider.
 
 ```python
-providers = ['CUDAExecutionProvider']
 onnx_filename = "eva02_large_patch14_448.onnx"
-session = ort.InferenceSession(onnx_filename, providers=["CUDAExecutionProvider"])
+
+session = ort.InferenceSession(
+    onnx_filename, 
+    providers=["CUDAExecutionProvider"]
+)
 ```
 The rest of the code is the same as the CPU inference. 
 
@@ -436,8 +439,9 @@ But that's kinda expected. Running on the GPU, we should expect a speedup.
 If you encounter the following error:
 
 ```bash
-Failed to load library libonnxruntime_providers_cuda.so with error: 
-libcublasLt.so.12: cannot open shared object file: No such file or directory
+Failed to load library libonnxruntime_providers_cuda.so 
+with error: libcublasLt.so.12: cannot open shared object 
+file: No such file or directory
 ```
 It means that the CUDA library is not in the library path.
 You need to export the library path to include the CUDA library.
@@ -524,8 +528,9 @@ export LD_LIBRARY_PATH="/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensor
 Otherwise you'll encounter the following error:
 
 ```bash
-Failed to load library libonnxruntime_providers_tensorrt.so with error: libnvinfer.so.10: 
-cannot open shared object file: No such file or directory
+Failed to load library libonnxruntime_providers_tensorrt.so 
+with error: libnvinfer.so.10: cannot open shared object file: 
+No such file or directory
 ```
 
 Next we need so set the TensorRT provider options in ONNX Runtime inference code.
