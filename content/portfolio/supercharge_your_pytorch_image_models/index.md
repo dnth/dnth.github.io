@@ -14,7 +14,7 @@ images:
 
 ### 🚀 Motivation
 Having real time inference is crucial for many computer vision models.
-In some applications, a second delay in inference could mean life or death.
+In some applications, a 1-second delay in inference could mean life or death.
 
 Imagine you're behind the wheels of a self-driving car and the car takes one full second to detect an oncoming truck.
 Just one second too late, and you could end up in the clouds 👼👼👼
@@ -31,9 +31,9 @@ Today (2024), computer vision models are being deployed in all kinds of high-sta
 We are at a point where it's not just about being right - it's about being right, right now.
 {{% /blockquote %}}
 
-In computer vision especially, having real-time inference is crucial and will determine whether the model gets deployed or not. 
+With many high-stakes applications, having real-time inference is crucial and will determine whether the model gets deployed or not. 
 In many cases, you can pick one or the other:
-- A fast model with poor accuracy
+- A fast model with low accuracy
 - A slow model with high accuracy
 
 But can we have the best of both worlds? I.e. a fast and accurate model?
@@ -57,7 +57,8 @@ You can find the code for this post on my GitHub repository [here](https://githu
 If that sounds exciting let's dive in! 🏊‍♂️
 
 ### 💻 Installation
-I will be using the conda environment to install the packages required for this post. Feel free to the environment of your choice.
+Let's begin with the installation.
+I will be using a `conda` environment to install the packages required for this post. Feel free to the environment of your choice.
 
 ```bash
 conda create -n supercharge_timm_tensorrt python=3.11
@@ -72,17 +73,17 @@ pip install timm
 At the time of writing, there are over [1370 models](https://huggingface.co/timm) available in timm. Any of which can be used in this post.
 
 ### 🔧 Load and Infer
-To prove my point in the motivation section, let's load the top performing models from the timm [leaderboard](https://huggingface.co/spaces/timm/leaderboard) - the `eva02_large_patch14_448.mim_m38m_ft_in22k_in1k` model. 
+To prove my point in the motivation section, let's load a top performing model from the timm [leaderboard](https://huggingface.co/spaces/timm/leaderboard) - the `eva02_large_patch14_448.mim_m38m_ft_in22k_in1k` model and run an inference to see how it performs.
 
-{{< figure_autoresize src="eva_timm.png" width="auto" align="center" caption="EVA02 Large Patch14 448 accuracy vs inference speed on the TIMM leaderboard." >}}
+{{< figure_autoresize src="eva_timm.png" width="auto" align="center" >}}
 
 The plot above shows the accuracy vs inference speed for the EVA02 model. 
 
 Look closely, the EVA02 model achieves top ImageNet accuracy (90.05% top-1, 99.06% top-5) but is lags in speed.
-Check out the model on the TIMM leaderboard [here](https://huggingface.co/spaces/timm/leaderboard).
+Check out the model on the `timm` leaderboard [here](https://huggingface.co/spaces/timm/leaderboard).
 
 
-So let's get the EVA02 model on our local machine.
+So let's get the EVA02 model on our local machine
 
 ```python
 import timm
@@ -91,14 +92,14 @@ model_name = 'eva02_large_patch14_448.mim_m38m_ft_in22k_in1k'
 model = timm.create_model(model_name, pretrained=True).eval()
 ```
 
-Next, we need to get the data config and transformations for the model.
+Get the data config and transformations for the model
 
 
 ```python
 data_config = timm.data.resolve_model_data_config(model)
 transforms = timm.data.create_transform(**data_config, is_training=False)
 ```
-With the model and transformations ready, let's run inference to get the top 5 predictions.
+And run an inference to get the top 5 predictions
 
 ```python
 import torch
@@ -113,7 +114,7 @@ with torch.inference_mode():
 top5_probabilities, top5_class_indices = torch.topk(output.softmax(dim=1) * 100, k=5)
 ```
 
-Get the top 5 predictions and print them.
+Next, decode the predictions to get the class names
 
 ```python
 from imagenet_classes import IMAGENET2012_CLASSES
@@ -135,7 +136,7 @@ Top 5 predictions:
 >>> chocolate sauce, chocolate syrup: 2.39%
 >>> bakery, bakeshop, bakehouse: 1.48%
 ```
-The predictions looks good. Looks like the model is doing it's job. 
+The predictions looks fine. Looks like the model is doing it's job. 
 
 Now let's benchmark the inference latency.
 
@@ -177,9 +178,10 @@ Alright the benchmarks are in
 >>> PyTorch model on cuda: 77.226 ms per image, FPS: 12.95
 ```
 
-Although the performance on the GPU is not bad, 12 FPS is still not fast enough for real-time inference.
-On my reasonably modern CPU, it took 1.5 seconds to run an inference. Definitely not self-driving car material.
+Although the performance on the GPU is not bad, 12+ FPS is still not fast enough for real-time inference.
+On my reasonably modern CPU, it took over 1.5 seconds to run an inference. 
 
+Definitely not self-driving car material.
 
 
 {{< notice note >}}
@@ -195,7 +197,7 @@ python 01_pytorch_latency_benchmark.py
 ```
 {{< /notice >}}
 
-So let's begin the first step to improve the run time.
+Now let's begin the first step to improve the run time.
 
 ### 🔄 Convert to ONNX
 [ONNX](https://onnx.ai/) is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices. 
@@ -270,9 +272,9 @@ This is great for deployment and for running inference in environments where PyT
 {{< /notice >}}
 
 The ONNX model we exported earlier only includes the model weights and the graph structure. It does not include the pre-processing transforms.
-To run the inference, we need to replicate the transforms in code.
+To run the inference using `onnxruntime`, we need to replicate the PyTorch transforms.
 
-If you print the transforms used in the PyTorch model, you can see that it's a sequence of transformations that converts the image to the appropriate shape and normalization for the model.
+To find out the transforms that was used, you can print out the `transforms`. 
 
 ```python
 print(transforms)
@@ -287,7 +289,7 @@ print(transforms)
 >>> )
 ```
 
-The equivalent transforms using `numpy` is as follows:
+Now let's replicate the transforms using `numpy`.
 
 ```python
 def transforms_numpy(image: PIL.Image.Image):
@@ -303,7 +305,7 @@ def transforms_numpy(image: PIL.Image.Image):
     return img_numpy
 ```
 
-Now let's run inference with ONNX Runtime.
+Once the transforms are replicated, let's run inference with ONNX Runtime.
 
 ```python
 import onnxruntime as ort
@@ -366,6 +368,13 @@ print(f"Onnxruntime CPU: {ms_per_image:.3f} ms per image, FPS: {fps:.2f}")
 >>> Onnxruntime CPU: 2002.446 ms per image, FPS: 0.50
 ```
 
+
+
+Ouch! That's slower than the PyTorch model. What a bummer!
+It may seem like a step back, but we are only getting started.
+
+Read on.
+
 {{< notice note >}}
 If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX Runtime CPU inference by executing the following command.  
 ```bash
@@ -373,15 +382,10 @@ python 03_onnx_cpu_inference.py
 ```
 {{< /notice >}}
 
-Ouch! That's slower than the PyTorch model. What a bummer!
-It may seem like a step back, but we are only getting started.
-
-Read on.
-
 
 
 ### 🖼️ ONNX Runtime on CUDA
-ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.
+Other than the CPU, ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.
 
 To use the CUDA backend, we need to install the `onnxruntime-gpu` package.
 {{< notice warning >}}
@@ -406,13 +410,13 @@ See the compatibility matrix [here](https://onnxruntime.ai/docs/execution-provid
 You can install all the CUDA dependencies using conda with the following command.
 
 ```bash
-conda install -y -c nvidia cuda=12.2.2 \
-                    cuda-tools=12.2.2 \
-                    cuda-toolkit=12.2.2 \
-                    cuda-version=12.2 \
-                    cuda-command-line-tools=12.2.2 \
-                    cuda-compiler=12.2.2 \
-                    cuda-runtime=12.2.2
+conda install -c nvidia cuda=12.2.2 \
+                 cuda-tools=12.2.2 \
+                 cuda-toolkit=12.2.2 \
+                 cuda-version=12.2 \
+                 cuda-command-line-tools=12.2.2 \
+                 cuda-compiler=12.2.2 \
+                 cuda-runtime=12.2.2
 ```
 
 Once done, replace the CPU provider with the CUDA provider.
@@ -422,7 +426,7 @@ onnx_filename = "eva02_large_patch14_448.onnx"
 
 session = ort.InferenceSession(
     onnx_filename, 
-    providers=["CUDAExecutionProvider"]
+    providers=["CUDAExecutionProvider"] # change the provider 
 )
 ```
 The rest of the code is the same as the CPU inference. 
@@ -453,6 +457,7 @@ Replace the `/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib` wit
 {{< /notice >}}
 
 Theres is one more trick we can use to squeeze out more performance - using [CuPy](https://cupy.dev/) for the transforms instead of NumPy.
+
 CuPy is a library that lets us run NumPy code on the GPU. It's a drop-in replacement for NumPy, so you can just replace `numpy` with `cupy` in your code and it will run on the GPU.
 
 
@@ -509,6 +514,7 @@ We have one more trick up our sleeve.
 ### 📊 ONNX Runtime on TensorRT
 Similar to the CUDA provider, we have the TensorRT provider on ONNX Runtime. This lets us run the model using the TensorRT high performance inference engine by NVIDIA.
 
+From the [compatibility matrix](https://onnxruntime.ai/docs/execution-providers/TensorRT-ExecutionProvider.html#requirements), we can see that `onnxruntime-gpu==1.19.2` is compatible with TensorRT 10.1.0.
 
 To use the TensorRT provider, you need to have TensorRT installed on your system.
 
@@ -524,6 +530,7 @@ Next you need to export library path to include the TensorRT library.
 ```bash
 export LD_LIBRARY_PATH="/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib:$LD_LIBRARY_PATH"
 ```
+Replace the `/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib` with the path to your TensorRT library.
 
 Otherwise you'll encounter the following error:
 
@@ -558,6 +565,20 @@ onnx_filename = "eva02_large_patch14_448.onnx"
 session = ort.InferenceSession(onnx_filename, providers=providers)
 ```
 The rest of the code is the same as the CUDA inference.
+
+{{< notice note >}}
+Here are the descriptions for the arguments you can pass to the `TensorrtExecutionProvider`:
+- `device_id`: 0 - This specifies the GPU device ID to use. In this case, it's set to 0, which typically refers to the first GPU in the system.
+- `trt_max_workspace_size`: 8589934592 - This sets the maximum workspace size for TensorRT in bytes. Here, it's set to 8GB, which allows TensorRT to use up to 8GB of GPU memory for its operations.
+- `trt_fp16_enable`: True - This enables FP16 (half-precision) mode, which can significantly speed up inference on supported GPUs while reducing memory usage.
+- `trt_engine_cache_enable`: True - This enables caching of TensorRT engines, which can speed up subsequent runs by avoiding engine rebuilding.
+- `trt_engine_cache_path`: `./trt_cache` - This specifies the directory where TensorRT engine cache files will be stored.
+- `trt_force_sequential_engine_build`: False - When set to False, it allows parallel building of TensorRT engines for different subgraphs.
+- `trt_max_partition_iterations`: 10000 - This sets the maximum number of iterations for TensorRT to attempt partitioning the graph.
+- `trt_min_subgraph_size`: 1 - This specifies the minimum number of nodes required for a subgraph to be considered for conversion to TensorRT.
+- `trt_builder_optimization_level`: 5 - This sets the optimization level for the TensorRT builder. Level 5 is the highest optimization level, which can result in longer build times but potentially better performance.
+- `trt_timing_cache_enable`: True - This enables the timing cache, which can help speed up engine building by reusing layer timing information from previous builds.
+{{< /notice >}}
 
 
 And now let's run the benchmark:
@@ -767,3 +788,8 @@ In this post you've learned how to:
 You can find the code for this post on my GitHub repository [here](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost).
 
 {{< /notice >}}
+
+I hope this has been helpful.
+
+Thank you for reading!
+
