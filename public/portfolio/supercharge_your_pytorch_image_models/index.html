@@ -273,9 +273,10 @@
           
           <hr>
           <h3 id="-motivation">🚀 Motivation</h3>
-<p>Real time inference speed is crucial for many applications in production. Some could mean life or death. 💀</p>
-<p>Imagine you&rsquo;re behind the wheels of a self-driving car and the car takes one second to detect an oncoming truck.</p>
-<p>Just one second too late, and you could end up in the clouds 👼👼👼</p>
+<p>Having real time inference is crucial for many computer vision models.
+In some applications, a second delay in inference could mean life or death.</p>
+<p>Imagine you&rsquo;re behind the wheels of a self-driving car and the car takes one full second to detect an oncoming truck.
+Just one second too late, and you could end up in the clouds 👼👼👼</p>
 <p>Or if you&rsquo;re lucky, on the ground.</p>
 <figure><img src="/portfolio/supercharge_your_pytorch_image_models/banana_peel_robot.gif" width="480">
 </figure>
@@ -285,16 +286,14 @@
 <blockquote class="blockquote">
   <p class="mb-0">We are at a point where it&rsquo;s not just about being right - it&rsquo;s about being right, right now.</p>
 </blockquote>
-<p>In computer vision especially, have real-time inference is crucial and will determine whether you deploy your model or not.</p>
-<p>In many cases, you can pick one or the other:</p>
+<p>In computer vision especially, having real-time inference is crucial and will determine whether the model gets deployed or not.
+In many cases, you can pick one or the other:</p>
 <ul>
-<li>Fast model with poor accuracy</li>
-<li>Slow model with high accuracy</li>
+<li>A fast model with poor accuracy</li>
+<li>A slow model with high accuracy</li>
 </ul>
-<p>But can we have both a fast and accurate model?</p>
+<p>But can we have the best of both worlds? I.e. a fast and accurate model?</p>
 <p>That&rsquo;s what this post is about.</p>
-<p>I will show you how to pick a top performing image models, optimize it and make it run fast for real-time inference.</p>
-<p>I will pick models from the <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a> library. But the optimization may be applicable to any PyTorch image models.</p>
 <style type="text/css">
     .notice{padding:18px;line-height:24px;margin-bottom:24px;border-radius:4px;color:#6c757d;background:#e7f2fa}.notice
     p:last-child{margin-bottom:0}.notice-title{margin:-18px -18px 12px;padding:4px 18px;border-radius:4px 4px 0
@@ -325,8 +324,8 @@
         </svg></div><div class="notice tip" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>You can bring any models from <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a> and supercharge its inference speed with optimized <a href="https://onnxruntime.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX Runtime</a> and <a href="https://developer.nvidia.com/tensorrt" target="_blank" rel="nofollow noopener noreferrer">TensorRT</a>.</p>
-<p>By the end, you&rsquo;ll learn how to:</p>
+                </svg></span>tip</p><p>By the end of the post you&rsquo;ll learn how to supercharge the inference speed of any image models from <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a> with optimized <a href="https://onnxruntime.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX Runtime</a> and <a href="https://developer.nvidia.com/tensorrt" target="_blank" rel="nofollow noopener noreferrer">TensorRT</a>.</p>
+<p>In short:</p>
 <ul>
 <li>📥 Load any pre-trained model from <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a>.</li>
 <li>🔄 Convert the model to ONNX format.</li>
@@ -337,14 +336,14 @@
 <p>You can find the code for this post on my GitHub repository <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
 <p>If that sounds exciting let&rsquo;s dive in! 🏊‍♂️</p>
 <h3 id="-installation">💻 Installation</h3>
-<p>I will be using the conda environment to install the packages. Feel free to use any other environment of your choice.</p>
+<p>I will be using the conda environment to install the packages required for this post. Feel free to the environment of your choice.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n supercharge_timm_tensorrt python<span style="color:#f92672">=</span>3.11
 </span></span><span style="display:flex;"><span>conda activate supercharge_timm_tensorrt
-</span></span></code></pre></div><p>In this post I will be using the <a href="https://github.com/huggingface/pytorch-image-models" target="_blank" rel="nofollow noopener noreferrer"><code>timm</code></a> library to load a pre-trained model and run inference. So let&rsquo;s install <code>timm</code>.</p>
+</span></span></code></pre></div><p>We&rsquo;ll be using the <a href="https://github.com/huggingface/pytorch-image-models" target="_blank" rel="nofollow noopener noreferrer"><code>timm</code></a> library to load a pre-trained model and run inference. So let&rsquo;s install <code>timm</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install timm
 </span></span></code></pre></div><p>At the time of writing, there are over <a href="https://huggingface.co/timm" target="_blank" rel="nofollow noopener noreferrer">1370 models</a> available in timm. Any of which can be used in this post.</p>
 <h3 id="-load-and-infer">🔧 Load and Infer</h3>
-<p>Let&rsquo;s load one of the top performing models from the timm <a href="https://huggingface.co/spaces/timm/leaderboard" target="_blank" rel="nofollow noopener noreferrer">leaderboard</a> - the <code>eva02_large_patch14_448.mim_m38m_ft_in22k_in1k</code> model.</p>
+<p>To prove my point in the motivation section, let&rsquo;s load the top performing models from the timm <a href="https://huggingface.co/spaces/timm/leaderboard" target="_blank" rel="nofollow noopener noreferrer">leaderboard</a> - the <code>eva02_large_patch14_448.mim_m38m_ft_in22k_in1k</code> model.</p>
 
 
 
@@ -374,9 +373,10 @@
 </figure>
 
 
-<p>If you look closely, the EVA02 model achieves top ImageNet accuracy (90.05% top-1, 99.06% top-5) but lags in speed compared to other models on the leaderboard.</p>
-<p>Check out the model on the TIMM leaderboard <a href="https://huggingface.co/spaces/timm/leaderboard" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
-<p>So let&rsquo;s get the model on our local machine and run some inference.</p>
+<p>The plot above shows the accuracy vs inference speed for the EVA02 model.</p>
+<p>Look closely, the EVA02 model achieves top ImageNet accuracy (90.05% top-1, 99.06% top-5) but is lags in speed.
+Check out the model on the TIMM leaderboard <a href="https://huggingface.co/spaces/timm/leaderboard" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<p>So let&rsquo;s get the EVA02 model on our local machine.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> timm
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>model_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;eva02_large_patch14_448.mim_m38m_ft_in22k_in1k&#39;</span>
@@ -429,7 +429,8 @@
 &gt;&gt;&gt; cup: 2.60%
 &gt;&gt;&gt; chocolate sauce, chocolate syrup: 2.39%
 &gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.48%
-</code></pre><p>The predictions looks good! Now let&rsquo;s benchmark the model inference latency.</p>
+</code></pre><p>The predictions looks good. Looks like the model is doing it&rsquo;s job.</p>
+<p>Now let&rsquo;s benchmark the inference latency.</p>
 <h3 id="-baseline-latency">⏱️ Baseline Latency</h3>
 <p>We will run the inference 10 times (more is better, but 10 is enough to see the difference) and record the average time on both CPU and GPU.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
@@ -457,16 +458,15 @@
 </span></span></code></pre></div><p>Alright the benchmarks are in</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; PyTorch model on cpu: 1584.379 ms per image, FPS: 0.63
 &gt;&gt;&gt; PyTorch model on cuda: 77.226 ms per image, FPS: 12.95
-</code></pre><p>Although the performance on the GPU is not bad, 12 FPS is still not fast enough for real-time inference.</p>
-<p>On a reasonably beefy CPU, it took 1.5 seconds to run an inference.</p>
-<p>I would&rsquo;t want the model in this state deployed in a self-driving car. It could cost lives.</p>
+</code></pre><p>Although the performance on the GPU is not bad, 12 FPS is still not fast enough for real-time inference.
+On my reasonably modern CPU, it took 1.5 seconds to run an inference. Definitely not self-driving car material.</p>
 <div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#note-notice"></use>
                 </svg></span>note</p><p>I&rsquo;m using the following hardware for the benchmarks:</p>
 <ul>
-<li>GPU: NVIDIA RTX 3090</li>
-<li>CPU: 11th Gen Intel® Core™ i9-11900 @ 2.50GHz × 16</li>
+<li>GPU - NVIDIA RTX 3090</li>
+<li>CPU - 11th Gen Intel® Core™ i9-11900 @ 2.50GHz × 16</li>
 </ul>
 <p>You can find the code for the PyTorch benchmarks on my GitHub repository <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost/blob/main/01_pytorch_latency_benchmark.py" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
 <p>If you&rsquo;ve cloned the repo, you can run the benchmarks by executing the following command.</p>
@@ -474,9 +474,9 @@
 </span></span></code></pre></div></div>
 <p>So let&rsquo;s begin the first step to improve the run time.</p>
 <h3 id="-convert-to-onnx">🔄 Convert to ONNX</h3>
-<p>ONNX is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices.</p>
-<p>As a bonus, ONNX Runtime can optimize the model for faster inference. Before we can use ONNX Runtime to run inference, we need to convert the model to ONNX format.</p>
-<p>So let&rsquo;s first install <code>onnx</code></p>
+<p><a href="https://onnx.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX</a> is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices.</p>
+<p>The key advantage of using ONNX is that it lets us deploy models across different frameworks and devices.</p>
+<p>To convert the model to ONNX format, let&rsquo;s first install <code>onnx</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnx
 </span></span></code></pre></div><p>And export the model to ONNX format</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> timm
@@ -516,11 +516,20 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 02_convert_to_onnx.py
 </span></span></code></pre></div></div>
 <p>If there are no errors, you will end up with a file called <code>eva02_large_patch14_448.onnx</code> in your working directory.</p>
+<div class="notice tip" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>You can inspect and visualize the ONNX model using the <a href="https://netron.app/" target="_blank" rel="nofollow noopener noreferrer">Netron</a> webapp. </p></div>
 <h3 id="-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</h3>
-<p>Now that we have the ONNX model, let&rsquo;s run inference with ONNX Runtime.</p>
-<p>Lets first install <code>onnxruntime</code></p>
+<p>To run the and inference on the ONNX model, we need to install <code>onnxruntime</code>. This is the &rsquo;engine&rsquo; that will run the ONNX model.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnxruntime
-</span></span></code></pre></div><p>Before we can run inference with ONNX Runtime, we need to replicate the transforms from the PyTorch model.</p>
+</span></span></code></pre></div><div class="notice tip" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency.</p>
+<p>This is great for deployment and for running inference in environments where PyTorch is not available.</p></div>
+<p>The ONNX model we exported earlier only includes the model weights and the graph structure. It does not include the pre-processing transforms.
+To run the inference, we need to replicate the transforms in code.</p>
 <p>If you print the transforms used in the PyTorch model, you can see that it&rsquo;s a sequence of transformations that converts the image to the appropriate shape and normalization for the model.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(transforms)
 </span></span></code></pre></div><pre tabindex="0"><code>&gt;&gt;&gt; Compose(
@@ -556,10 +565,8 @@
 </span></span><span style="display:flex;"><span>output_name <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>get_outputs()[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>name
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Run inference</span>
-</span></span><span style="display:flex;"><span>output <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>run(
-</span></span><span style="display:flex;"><span>    [output_name], 
-</span></span><span style="display:flex;"><span>    {input_name: transforms_numpy(img)}
-</span></span><span style="display:flex;"><span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>run([output_name], 
+</span></span><span style="display:flex;"><span>                    {input_name: transforms_numpy(img)})[<span style="color:#ae81ff">0</span>]
 </span></span></code></pre></div><p>If we inspect the output shape, we can see that it&rsquo;s the same as the number of classes in the ImageNet dataset.</p>
 <pre tabindex="0"><code>output.shape
 &gt;&gt;&gt; (1, 1000)
@@ -570,7 +577,7 @@
 &gt;&gt;&gt; chocolate sauce, chocolate syrup: 2.13%
 &gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.42%
 </code></pre><p>While the results aren&rsquo;t an exact match to the PyTorch model, they&rsquo;re sufficiently similar. This slight variation can be attributed to differences in how normalization is implemented, leading to minor discrepancies in the precise values.</p>
-<p>Now let&rsquo;s repeat the CPU inference benchmark but using ONNX Runtime.</p>
+<p>Now let&rsquo;s benchmark the inference latency on ONNX Runtime with a CPU provider (backend).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>num_images <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
@@ -585,40 +592,37 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Onnxruntime CPU: </span><span style="color:#e6db74">{</span>ms_per_image<span style="color:#e6db74">:</span><span style="color:#e6db74">.3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> ms per image, FPS: </span><span style="color:#e6db74">{</span>fps<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 </span></span></code></pre></div><pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CPU: 2002.446 ms per image, FPS: 0.50
-</code></pre><p>Ouch! That&rsquo;s slower than the PyTorch model. What a bummer!</p>
-<div class="notice tip" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency.</p>
-<p>This is great for deployment and for running inference in environments where PyTorch is not available.</p></div>
-<div class="notice note" >
+</code></pre><div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#note-notice"></use>
                 </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX Runtime CPU inference by executing the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 03_onnx_cpu_inference.py
 </span></span></code></pre></div></div>
+<p>Ouch! That&rsquo;s slower than the PyTorch model. What a bummer!
+It may seem like a step back, but we are only getting started.</p>
+<p>Read on.</p>
 <h3 id="-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</h3>
 <p>ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.</p>
+<p>To use the CUDA backend, we need to install the <code>onnxruntime-gpu</code> package.
 <div class="notice warning" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#warning-notice"></use>
-                </svg></span>warning</p><p>You must uninstall the <code>onnxruntime</code> package before installing the <code>onnxruntime-gpu</code> package.</p>
+                </svg></span>warning</p><p>You <strong>must</strong> uninstall the <code>onnxruntime</code> package before installing the <code>onnxruntime-gpu</code> package.</p>
 <p>Run the following to uninstall the <code>onnxruntime</code> package.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip uninstall onnxruntime
 </span></span></code></pre></div><p>Then install the <code>onnxruntime-gpu</code> package.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnxruntime-gpu<span style="color:#f92672">==</span>1.19.2
-</span></span></code></pre></div><p>The onnxruntime-gpu package requires a compatible CUDA and cuDNN version. I&rsquo;m running on onnxruntime-gpu==1.19.2 at the time of writing this post. This version is compatible with CUDA <code>12.x</code> and cuDNN <code>9.x</code>.</p>
-<p>See the compatibility matrix <a href="https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
+</span></span></code></pre></div><p>The <code>onnxruntime-gpu</code> package requires a compatible CUDA and cuDNN version. I&rsquo;m running on <code>onnxruntime-gpu==1.19.2</code> at the time of writing this post. This version is compatible with CUDA <code>12.x</code> and cuDNN <code>9.x</code>.</p>
+<p>See the compatibility matrix <a href="https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div></p>
 <p>You can install all the CUDA dependencies using conda with the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda install -y -c nvidia cuda<span style="color:#f92672">=</span>12.2.2 cuda-tools<span style="color:#f92672">=</span>12.2.2 cuda-toolkit<span style="color:#f92672">=</span>12.2.2 cuda-version<span style="color:#f92672">=</span>12.2 cuda-command-line-tools<span style="color:#f92672">=</span>12.2.2 cuda-compiler<span style="color:#f92672">=</span>12.2.2 cuda-runtime<span style="color:#f92672">=</span>12.2.2
-</span></span></code></pre></div><p>If you encounter any errors like the following</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Failed to load library libonnxruntime_providers_cuda.so with error: 
-</span></span><span style="display:flex;"><span>libcublasLt.so.12: cannot open shared object file: No such file or directory
-</span></span></code></pre></div><p>It means that the CUDA library is not in the library path.
-You need to export the library path to include the CUDA library.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export LD_LIBRARY_PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib:</span>$LD_LIBRARY_PATH<span style="color:#e6db74">&#34;</span>
-</span></span></code></pre></div><p>Replace the <code>/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib</code> with the path to your CUDA library.</p>
-<p>Once done, replace the CPU provider with the CUDA provider.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda install -y -c nvidia cuda<span style="color:#f92672">=</span>12.2.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                    cuda-tools<span style="color:#f92672">=</span>12.2.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                    cuda-toolkit<span style="color:#f92672">=</span>12.2.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                    cuda-version<span style="color:#f92672">=</span>12.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                    cuda-command-line-tools<span style="color:#f92672">=</span>12.2.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                    cuda-compiler<span style="color:#f92672">=</span>12.2.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                    cuda-runtime<span style="color:#f92672">=</span>12.2.2
+</span></span></code></pre></div><p>Once done, replace the CPU provider with the CUDA provider.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>providers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;CUDAExecutionProvider&#39;</span>]
 </span></span><span style="display:flex;"><span>onnx_filename <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eva02_large_patch14_448.onnx&#34;</span>
 </span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> ort<span style="color:#f92672">.</span>InferenceSession(onnx_filename, providers<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;CUDAExecutionProvider&#34;</span>])
@@ -626,15 +630,22 @@ You need to export the library path to include the CUDA library.</p>
 <p>Just with one line of code change, the benchmarks are as follows:</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
 </code></pre><p>But that&rsquo;s kinda expected. Running on the GPU, we should expect a speedup.</p>
-<p>Theres is one more trick we can use to squeeze out more performance - using <a href="https://cupy.dev/" target="_blank" rel="nofollow noopener noreferrer">CuPy</a> for the transforms instead of numpy.</p>
 <div class="notice tip" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>CuPy is a library that lets us run NumPy code on the GPU. It&rsquo;s a drop-in replacement for NumPy, so you can just replace <code>numpy</code> with <code>cupy</code> in your code and it will run on the GPU. </p></div>
-<p>To use CuPy, we need to install it first.</p>
+                </svg></span>tip</p><p>If you encounter the following error:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Failed to load library libonnxruntime_providers_cuda.so with error: 
+</span></span><span style="display:flex;"><span>libcublasLt.so.12: cannot open shared object file: No such file or directory
+</span></span></code></pre></div><p>It means that the CUDA library is not in the library path.
+You need to export the library path to include the CUDA library.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export LD_LIBRARY_PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib:</span>$LD_LIBRARY_PATH<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>Replace the <code>/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib</code> with the path to your CUDA library.</p></div>
+<p>Theres is one more trick we can use to squeeze out more performance - using <a href="https://cupy.dev/" target="_blank" rel="nofollow noopener noreferrer">CuPy</a> for the transforms instead of NumPy.
+CuPy is a library that lets us run NumPy code on the GPU. It&rsquo;s a drop-in replacement for NumPy, so you can just replace <code>numpy</code> with <code>cupy</code> in your code and it will run on the GPU.</p>
+<p>Let&rsquo;s install CuPy compatible with our CUDA version.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install cupy-cuda12x
 </span></span></code></pre></div><p>And we can use it to run the transforms.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transforms_cupy</span>(image: Image<span style="color:#f92672">.</span>Image):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transforms_cupy</span>(image: PIL<span style="color:#f92672">.</span>Image<span style="color:#f92672">.</span>Image):
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Convert image to RGB and resize</span>
 </span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#34;RGB&#34;</span>)
 </span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>resize((<span style="color:#ae81ff">448</span>, <span style="color:#ae81ff">448</span>), Image<span style="color:#f92672">.</span>BICUBIC)

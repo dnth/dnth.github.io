@@ -13,15 +13,13 @@ images:
 ---
 
 ### 🚀 Motivation
-Real time inference speed is crucial for many applications in production. Some could mean life or death. 💀
+Having real time inference is crucial for many computer vision models.
+In some applications, a second delay in inference could mean life or death.
 
-Imagine you're behind the wheels of a self-driving car and the car takes one second to detect an oncoming truck.
-
+Imagine you're behind the wheels of a self-driving car and the car takes one full second to detect an oncoming truck.
 Just one second too late, and you could end up in the clouds 👼👼👼
 
 Or if you're lucky, on the ground.
-
-
 
 {{< figure src="banana_peel_robot.gif" width="480" align="center" >}}
 
@@ -33,24 +31,19 @@ Today (2024), computer vision models are being deployed in all kinds of high-sta
 We are at a point where it's not just about being right - it's about being right, right now.
 {{% /blockquote %}}
 
-In computer vision especially, have real-time inference is crucial and will determine whether you deploy your model or not. 
-
+In computer vision especially, having real-time inference is crucial and will determine whether the model gets deployed or not. 
 In many cases, you can pick one or the other:
-- Fast model with poor accuracy
-- Slow model with high accuracy
+- A fast model with poor accuracy
+- A slow model with high accuracy
 
-But can we have both a fast and accurate model? 
+But can we have the best of both worlds? I.e. a fast and accurate model?
 
 That's what this post is about.
 
-I will show you how to pick a top performing image models, optimize it and make it run fast for real-time inference.
-
-I will pick models from the [TIMM](https://huggingface.co/docs/timm/index) library. But the optimization may be applicable to any PyTorch image models.
-
 {{< notice tip >}}
-You can bring any models from [TIMM](https://huggingface.co/docs/timm/index) and supercharge its inference speed with optimized [ONNX Runtime](https://onnxruntime.ai/) and [TensorRT](https://developer.nvidia.com/tensorrt).
+By the end of the post you'll learn how to supercharge the inference speed of any image models from [TIMM](https://huggingface.co/docs/timm/index) with optimized [ONNX Runtime](https://onnxruntime.ai/) and [TensorRT](https://developer.nvidia.com/tensorrt).
 
-By the end, you'll learn how to:
+In short:
 - 📥 Load any pre-trained model from [TIMM](https://huggingface.co/docs/timm/index).
 - 🔄 Convert the model to ONNX format.
 - 🖥️ Run inference with [ONNX Runtime](https://onnxruntime.ai/) (CPU & CUDA Provider).
@@ -64,15 +57,14 @@ You can find the code for this post on my GitHub repository [here](https://githu
 If that sounds exciting let's dive in! 🏊‍♂️
 
 ### 💻 Installation
-I will be using the conda environment to install the packages. Feel free to use any other environment of your choice.
+I will be using the conda environment to install the packages required for this post. Feel free to the environment of your choice.
 
 ```bash
 conda create -n supercharge_timm_tensorrt python=3.11
 conda activate supercharge_timm_tensorrt
 ```
 
-In this post I will be using the [`timm`](https://github.com/huggingface/pytorch-image-models) library to load a pre-trained model and run inference. So let's install `timm`.
-
+We'll be using the [`timm`](https://github.com/huggingface/pytorch-image-models) library to load a pre-trained model and run inference. So let's install `timm`.
 
 ```bash
 pip install timm
@@ -80,16 +72,18 @@ pip install timm
 At the time of writing, there are over [1370 models](https://huggingface.co/timm) available in timm. Any of which can be used in this post.
 
 ### 🔧 Load and Infer
-Let's load one of the top performing models from the timm [leaderboard](https://huggingface.co/spaces/timm/leaderboard) - the `eva02_large_patch14_448.mim_m38m_ft_in22k_in1k` model. 
+To prove my point in the motivation section, let's load the top performing models from the timm [leaderboard](https://huggingface.co/spaces/timm/leaderboard) - the `eva02_large_patch14_448.mim_m38m_ft_in22k_in1k` model. 
 
 {{< figure_autoresize src="eva_timm.png" width="auto" align="center" caption="EVA02 Large Patch14 448 accuracy vs inference speed on the TIMM leaderboard." >}}
 
-If you look closely, the EVA02 model achieves top ImageNet accuracy (90.05% top-1, 99.06% top-5) but lags in speed compared to other models on the leaderboard.
+The plot above shows the accuracy vs inference speed for the EVA02 model. 
 
+Look closely, the EVA02 model achieves top ImageNet accuracy (90.05% top-1, 99.06% top-5) but is lags in speed.
 Check out the model on the TIMM leaderboard [here](https://huggingface.co/spaces/timm/leaderboard).
 
 
-So let's get the model on our local machine and run some inference.
+So let's get the EVA02 model on our local machine.
+
 ```python
 import timm
 
@@ -141,7 +135,9 @@ Top 5 predictions:
 >>> chocolate sauce, chocolate syrup: 2.39%
 >>> bakery, bakeshop, bakehouse: 1.48%
 ```
-The predictions looks good! Now let's benchmark the model inference latency.
+The predictions looks good. Looks like the model is doing it's job. 
+
+Now let's benchmark the inference latency.
 
 ### ⏱️ Baseline Latency
 
@@ -182,17 +178,14 @@ Alright the benchmarks are in
 ```
 
 Although the performance on the GPU is not bad, 12 FPS is still not fast enough for real-time inference.
-
-On a reasonably beefy CPU, it took 1.5 seconds to run an inference. 
-
-I would't want the model in this state deployed in a self-driving car. It could cost lives.
+On my reasonably modern CPU, it took 1.5 seconds to run an inference. Definitely not self-driving car material.
 
 
 
 {{< notice note >}}
 I'm using the following hardware for the benchmarks:
-- GPU: NVIDIA RTX 3090
-- CPU: 11th Gen Intel® Core™ i9-11900 @ 2.50GHz × 16
+- GPU - NVIDIA RTX 3090
+- CPU - 11th Gen Intel® Core™ i9-11900 @ 2.50GHz × 16
 
 You can find the code for the PyTorch benchmarks on my GitHub repository [here](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost/blob/main/01_pytorch_latency_benchmark.py).
 
@@ -205,11 +198,11 @@ python 01_pytorch_latency_benchmark.py
 So let's begin the first step to improve the run time.
 
 ### 🔄 Convert to ONNX
-ONNX is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices. 
+[ONNX](https://onnx.ai/) is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices. 
 
-As a bonus, ONNX Runtime can optimize the model for faster inference. Before we can use ONNX Runtime to run inference, we need to convert the model to ONNX format.
+The key advantage of using ONNX is that it lets us deploy models across different frameworks and devices.
 
-So let's first install `onnx`
+To convert the model to ONNX format, let's first install `onnx`.
 
 ```bash
 pip install onnx
@@ -259,17 +252,25 @@ python 02_convert_to_onnx.py
 
 If there are no errors, you will end up with a file called `eva02_large_patch14_448.onnx` in your working directory.
 
+{{< notice tip >}}
+You can inspect and visualize the ONNX model using the [Netron](https://netron.app/) webapp.
+{{< /notice >}}
 
 ### 🖥️ ONNX Runtime on CPU
-Now that we have the ONNX model, let's run inference with ONNX Runtime.
-
-Lets first install `onnxruntime`
+To run the and inference on the ONNX model, we need to install `onnxruntime`. This is the 'engine' that will run the ONNX model.
 
 ```bash
 pip install onnxruntime
 ```
 
-Before we can run inference with ONNX Runtime, we need to replicate the transforms from the PyTorch model.
+{{< notice tip >}}
+One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency. 
+
+This is great for deployment and for running inference in environments where PyTorch is not available.
+{{< /notice >}}
+
+The ONNX model we exported earlier only includes the model weights and the graph structure. It does not include the pre-processing transforms.
+To run the inference, we need to replicate the transforms in code.
 
 If you print the transforms used in the PyTorch model, you can see that it's a sequence of transformations that converts the image to the appropriate shape and normalization for the model.
 
@@ -319,10 +320,8 @@ input_name = session.get_inputs()[0].name
 output_name = session.get_outputs()[0].name
 
 # Run inference
-output = session.run(
-    [output_name], 
-    {input_name: transforms_numpy(img)}
-)[0]
+output = session.run([output_name], 
+                    {input_name: transforms_numpy(img)})[0]
 
 ```
 If we inspect the output shape, we can see that it's the same as the number of classes in the ImageNet dataset.
@@ -345,7 +344,7 @@ And printing the top 5 predictions:
 While the results aren't an exact match to the PyTorch model, they're sufficiently similar. This slight variation can be attributed to differences in how normalization is implemented, leading to minor discrepancies in the precise values.
 
 
-Now let's repeat the CPU inference benchmark but using ONNX Runtime.
+Now let's benchmark the inference latency on ONNX Runtime with a CPU provider (backend).
 
 ```python
 import time
@@ -367,16 +366,6 @@ print(f"Onnxruntime CPU: {ms_per_image:.3f} ms per image, FPS: {fps:.2f}")
 >>> Onnxruntime CPU: 2002.446 ms per image, FPS: 0.50
 ```
 
-Ouch! That's slower than the PyTorch model. What a bummer!
-
-
-{{< notice tip >}}
-One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency. 
-
-This is great for deployment and for running inference in environments where PyTorch is not available.
-{{< /notice >}}
-
-
 {{< notice note >}}
 If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX Runtime CPU inference by executing the following command.  
 ```bash
@@ -384,11 +373,19 @@ python 03_onnx_cpu_inference.py
 ```
 {{< /notice >}}
 
+Ouch! That's slower than the PyTorch model. What a bummer!
+It may seem like a step back, but we are only getting started.
+
+Read on.
+
+
+
 ### 🖼️ ONNX Runtime on CUDA
 ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.
 
+To use the CUDA backend, we need to install the `onnxruntime-gpu` package.
 {{< notice warning >}}
-You must uninstall the `onnxruntime` package before installing the `onnxruntime-gpu` package.
+You **must** uninstall the `onnxruntime` package before installing the `onnxruntime-gpu` package.
 
 Run the following to uninstall the `onnxruntime` package.
 ```bash
@@ -400,7 +397,7 @@ Then install the `onnxruntime-gpu` package.
 pip install onnxruntime-gpu==1.19.2
 ```
 
-The onnxruntime-gpu package requires a compatible CUDA and cuDNN version. I'm running on onnxruntime-gpu==1.19.2 at the time of writing this post. This version is compatible with CUDA `12.x` and cuDNN `9.x`.
+The `onnxruntime-gpu` package requires a compatible CUDA and cuDNN version. I'm running on `onnxruntime-gpu==1.19.2` at the time of writing this post. This version is compatible with CUDA `12.x` and cuDNN `9.x`.
 
 See the compatibility matrix [here](https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html).
 {{< /notice >}}
@@ -409,21 +406,14 @@ See the compatibility matrix [here](https://onnxruntime.ai/docs/execution-provid
 You can install all the CUDA dependencies using conda with the following command.
 
 ```bash
-conda install -y -c nvidia cuda=12.2.2 cuda-tools=12.2.2 cuda-toolkit=12.2.2 cuda-version=12.2 cuda-command-line-tools=12.2.2 cuda-compiler=12.2.2 cuda-runtime=12.2.2
+conda install -y -c nvidia cuda=12.2.2 \
+                    cuda-tools=12.2.2 \
+                    cuda-toolkit=12.2.2 \
+                    cuda-version=12.2 \
+                    cuda-command-line-tools=12.2.2 \
+                    cuda-compiler=12.2.2 \
+                    cuda-runtime=12.2.2
 ```
-If you encounter any errors like the following
-
-```bash
-Failed to load library libonnxruntime_providers_cuda.so with error: 
-libcublasLt.so.12: cannot open shared object file: No such file or directory
-```
-It means that the CUDA library is not in the library path.
-You need to export the library path to include the CUDA library.
-```bash
-export LD_LIBRARY_PATH="/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib:$LD_LIBRARY_PATH"
-```
-
-Replace the `/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib` with the path to your CUDA library.
 
 Once done, replace the CPU provider with the CUDA provider.
 
@@ -442,13 +432,27 @@ Just with one line of code change, the benchmarks are as follows:
 
 But that's kinda expected. Running on the GPU, we should expect a speedup.
 
-Theres is one more trick we can use to squeeze out more performance - using [CuPy](https://cupy.dev/) for the transforms instead of numpy.
-
 {{< notice tip >}}
-CuPy is a library that lets us run NumPy code on the GPU. It's a drop-in replacement for NumPy, so you can just replace `numpy` with `cupy` in your code and it will run on the GPU.
+If you encounter the following error:
+
+```bash
+Failed to load library libonnxruntime_providers_cuda.so with error: 
+libcublasLt.so.12: cannot open shared object file: No such file or directory
+```
+It means that the CUDA library is not in the library path.
+You need to export the library path to include the CUDA library.
+```bash
+export LD_LIBRARY_PATH="/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib:$LD_LIBRARY_PATH"
+```
+
+Replace the `/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib` with the path to your CUDA library.
 {{< /notice >}}
 
-To use CuPy, we need to install it first.
+Theres is one more trick we can use to squeeze out more performance - using [CuPy](https://cupy.dev/) for the transforms instead of NumPy.
+CuPy is a library that lets us run NumPy code on the GPU. It's a drop-in replacement for NumPy, so you can just replace `numpy` with `cupy` in your code and it will run on the GPU.
+
+
+Let's install CuPy compatible with our CUDA version.
 
 ```bash
 pip install cupy-cuda12x
@@ -456,7 +460,7 @@ pip install cupy-cuda12x
 
 And we can use it to run the transforms.
 ```python
-def transforms_cupy(image: Image.Image):
+def transforms_cupy(image: PIL.Image.Image):
     # Convert image to RGB and resize
     image = image.convert("RGB")
     image = image.resize((448, 448), Image.BICUBIC)
