@@ -330,7 +330,7 @@
 <ul>
 <li>📥 Load any pre-trained model from <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="nofollow noopener noreferrer">TIMM</a>.</li>
 <li>🔄 Convert the model to ONNX format.</li>
-<li>🖥️ Run inference with <a href="https://onnxruntime.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX Runtime</a> (CPU &amp; Cuda Provider).</li>
+<li>🖥️ Run inference with <a href="https://onnxruntime.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX Runtime</a> (CPU &amp; CUDA Provider).</li>
 <li>🎮 Run inference with <a href="https://developer.nvidia.com/tensorrt" target="_blank" rel="nofollow noopener noreferrer">TensorRT</a> provider and optimized runtime parameters.</li>
 <li>🧠 Bake the pre-processing into the ONNX model for faster inference.</li>
 </ul>
@@ -458,7 +458,7 @@
 <pre tabindex="0"><code>&gt;&gt;&gt; PyTorch model on cpu: 1584.379 ms per image, FPS: 0.63
 &gt;&gt;&gt; PyTorch model on cuda: 77.226 ms per image, FPS: 12.95
 </code></pre><p>Although the performance on the GPU is not bad, 12 FPS is still not fast enough for real-time inference.</p>
-<p>On a reasobably beefy CPU, it took 1.5 seconds to run an inference.</p>
+<p>On a reasonably beefy CPU, it took 1.5 seconds to run an inference.</p>
 <p>I would&rsquo;t want the model in this state deployed in a self-driving car. It could cost lives.</p>
 <div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
@@ -602,7 +602,7 @@
 <div class="notice warning" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#warning-notice"></use>
-                </svg></span>warning</p><p>You mustuninstall the <code>onnxruntime</code> package before installing the <code>onnxruntime-gpu</code> package.</p>
+                </svg></span>warning</p><p>You must uninstall the <code>onnxruntime</code> package before installing the <code>onnxruntime-gpu</code> package.</p>
 <p>Run the following to uninstall the <code>onnxruntime</code> package.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip uninstall onnxruntime
 </span></span></code></pre></div><p>Then install the <code>onnxruntime-gpu</code> package.</p>
@@ -660,7 +660,7 @@ You need to export the library path to include the CUDA library.</p>
                 </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX Runtime CUDA cupy inference by executing the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 04_onnx_cuda_inference.py
 </span></span></code></pre></div></div>
-<p>Using Onnx Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.</p>
+<p>Using ONNX Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.</p>
 <p>We have one more trick up our sleeve.</p>
 <h3 id="-onnx-runtime-on-tensorrt">📊 ONNX Runtime on TensorRT</h3>
 <p>Similar to the CUDA provider, we have the TensorRT provider on ONNX Runtime. This lets us run the model using the TensorRT high performance inference engine by NVIDIA.</p>
@@ -710,7 +710,7 @@ You need to export the library path to include the CUDA library.</p>
 <p>You could stop here and be happy with the results. After all we already got a 93x speedup over the PyTorch model.</p>
 <p>But.. if you&rsquo;re like me and you want to squeeze out every last bit of performance, there&rsquo;s one final trick up our sleeve.</p>
 <h3 id="-bake-pre-processing-into-onnx">🎂 Bake pre-processing into ONNX</h3>
-<p>If you recall, we did our pre-processing transforms outside of the ONNX model in CuPy or Numpy.</p>
+<p>If you recall, we did our pre-processing transforms outside of the ONNX model in CuPy or NumPy.</p>
 <p>This incurs some overhead because we need to transfer the data to and from the GPU for the transforms.</p>
 <p>We can avoid this overhead by baking the transforms operations into the ONNX model. This lets us run the inference faster because we don&rsquo;t need to do the transforms separately.</p>
 <p>To do this we need to write some custom code to convert the transforms to an ONNX model.
