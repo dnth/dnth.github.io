@@ -26,18 +26,16 @@ Or if you're lucky, on the ground.
 
 I hope that shows you how crucial this problem is.
 
-Today (2024), computer vision models are being deployed in all kinds of high-stakes industries like healthcare, finance, and self-driving cars.
-
 {{% blockquote %}}
-We are at a point where it's not just about being right - it's about being right, right now.
+In many high-atake applications, it's not just about being right - it's about being right, right now.
 {{% /blockquote %}}
 
-With many high-stakes applications, having real-time inference is crucial and will determine whether the model gets deployed or not. 
+Thus, having real-time inference capability is crucial and will determine whether the model gets deployed or not. 
 In many cases, you can pick one or the other:
 - A fast model with low accuracy
 - A slow model with high accuracy
 
-But can we have the best of both worlds? I.e. a fast and accurate model?
+But can we have the best of both worlds? I.e. a **fast and accurate** model?
 
 That's what this post is about.
 
