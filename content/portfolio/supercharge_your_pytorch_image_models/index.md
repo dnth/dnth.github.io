@@ -13,10 +13,11 @@ images:
 ---
 
 ### 🚀 Motivation
-Having real time inference is crucial for many computer vision models.
-In some applications, a 1-second delay in inference could mean life or death.
+Having real time inference is crucial for many computer vision applications.
+In some domain, a 1-second delay in inference could mean life or death.
 
-Imagine you're behind the wheels of a self-driving car and the car takes one full second to detect an oncoming truck.
+Imagine you're sitting in a self-driving car and the car takes one full second to detect an oncoming truck.
+
 Just one second too late, and you could end up in the clouds 👼👼👼
 
 Or if you're lucky, on the ground.
