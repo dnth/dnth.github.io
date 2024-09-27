@@ -72,7 +72,7 @@ pip install timm
 At the time of writing, there are over [1370 models](https://huggingface.co/timm) available in timm. Any of which can be used in this post.
 
 ### 🔧 Load and Infer
-To prove my point in the motivation section, let's load a top performing model from the timm [leaderboard](https://huggingface.co/spaces/timm/leaderboard) - the `eva02_large_patch14_448.mim_m38m_ft_in22k_in1k` model and run an inference to see how it performs.
+Let's load a top performing model from the timm [leaderboard](https://huggingface.co/spaces/timm/leaderboard) - the `eva02_large_patch14_448.mim_m38m_ft_in22k_in1k` model.
 
 {{< figure_autoresize src="eva_timm.png" width="auto" align="center" >}}
 
@@ -113,7 +113,7 @@ with torch.inference_mode():
 top5_probabilities, top5_class_indices = torch.topk(output.softmax(dim=1) * 100, k=5)
 ```
 
-Next, decode the predictions to get the class names
+Next, decode the predictions into class names as a sanity check
 
 ```python
 from imagenet_classes import IMAGENET2012_CLASSES
@@ -135,13 +135,13 @@ Top 5 predictions:
 >>> chocolate sauce, chocolate syrup: 2.39%
 >>> bakery, bakeshop, bakehouse: 1.48%
 ```
-The predictions looks fine. Looks like the model is doing it's job. 
+Looks like the model is doing it's job. 
 
 Now let's benchmark the inference latency.
 
 ### ⏱️ Baseline Latency
 
-We will run the inference 10 times (more is better, but 10 is enough to see the difference) and record the average time on both CPU and GPU.
+We will run the inference 10 times and average the inference time.
 
 ```python
 import time
@@ -162,7 +162,7 @@ def run_benchmark(model, device, num_images=10):
     print(f"PyTorch model on {device}: {ms_per_image:.3f} ms per image, FPS: {fps:.2f}")
 ```
 
-
+Let's benchmark on CPU and GPU.
 ```python
 # CPU Benchmark
 run_benchmark(model, torch.device("cpu"))
@@ -180,7 +180,7 @@ Alright the benchmarks are in
 Although the performance on the GPU is not bad, 12+ FPS is still not fast enough for real-time inference.
 On my reasonably modern CPU, it took over 1.5 seconds to run an inference. 
 
-Definitely not self-driving car material.
+Definitely not self-driving car material 🤷
 
 
 {{< notice note >}}
@@ -196,12 +196,12 @@ python 01_pytorch_latency_benchmark.py
 ```
 {{< /notice >}}
 
-Now let's begin the first step to improve the run time.
+Now let's start to improve the inference time.
 
 ### 🔄 Convert to ONNX
 [ONNX](https://onnx.ai/) is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices. 
 
-The key advantage of using ONNX is that it lets us deploy models across different frameworks and devices.
+The key advantage of using ONNX is that it lets us deploy models across different frameworks and devices, and offers some performance gains.
 
 To convert the model to ONNX format, let's first install `onnx`.
 
@@ -254,7 +254,7 @@ python 02_convert_to_onnx.py
 If there are no errors, you will end up with a file called `eva02_large_patch14_448.onnx` in your working directory.
 
 {{< notice tip >}}
-You can inspect and visualize the ONNX model using the [Netron](https://netron.app/) webapp.
+Inspect and visualize the ONNX model using the [Netron](https://netron.app/) webapp.
 {{< /notice >}}
 
 ### 🖥️ ONNX Runtime on CPU
@@ -304,7 +304,7 @@ def transforms_numpy(image: PIL.Image.Image):
     return img_numpy
 ```
 
-Once the transforms are replicated, let's run inference with ONNX Runtime.
+Using the `numpy`, transforms let's run inference with ONNX Runtime.
 
 ```python
 import onnxruntime as ort
