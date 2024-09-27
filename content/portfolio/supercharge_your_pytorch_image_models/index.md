@@ -27,10 +27,10 @@ Or if you're lucky, on the ground.
 I hope that shows you how crucial this problem is.
 
 {{% blockquote %}}
-In many high-atake applications, it's not just about being right - it's about being right, right now.
+In many high-stake applications, it's not just about being right - it's about being right, right now.
 {{% /blockquote %}}
 
-Thus, having real-time inference capability is crucial and will determine whether the model gets deployed or not. 
+Thus, having real-time inference capability is crucial and will determine whether a model gets deployed or not. 
 In many cases, you can pick one or the other:
 - A fast model with low accuracy
 - A slow model with high accuracy
