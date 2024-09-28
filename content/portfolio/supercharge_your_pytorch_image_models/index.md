@@ -776,9 +776,17 @@ Let's do a final sanity check on the predictions.
 
 Looks like the predictions are close to the original model. We can sign off and say that the model is working as expected.
 
+### 🎮 Video Inference
+
+Just for fun, let's see how fast the model runs with the merged model on a video.
+{{< youtube merGOySuU8k >}}
+
+
+
 ### 🚧 Conclusion
 
 In this post we have seen how we can supercharge our TIMM models for faster inference using ONNX Runtime and TensorRT.
+
 
 
 {{< notice tip >}}
