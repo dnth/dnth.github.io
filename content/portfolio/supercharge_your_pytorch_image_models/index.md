@@ -598,23 +598,23 @@ python 05_onnx_trt_inference.py
 ```
 {{< /notice >}}
 
-That's the end of this post. Or is it?
+Thank you for reading this far. That's the end of this post. 
+
+Or is it?
 
 You could stop here and be happy with the results. After all we already got a 93x speedup over the PyTorch model.
 
-But.. if you're like me and you want to squeeze out every last bit of performance, there's one final trick up our sleeve.
+But.. if you're like me and you wonder how much more performance we can squeeze out of the model, there's one final trick up our sleeve.
 
 ### 🎂 Bake pre-processing into ONNX
 If you recall, we did our pre-processing transforms outside of the ONNX model in CuPy or NumPy. 
 
-This incurs some overhead because we need to transfer the data to and from the GPU for the transforms.
+This incurs some data transfer overhead.
+We can avoid this overhead by baking the transforms operations into the ONNX model. 
 
-We can avoid this overhead by baking the transforms operations into the ONNX model. This lets us run the inference faster because we don't need to do the transforms separately.
+Okay so how do we do this?
 
-To do this we need to write some custom code to convert the transforms to an ONNX model.
-If you recall, the numpy transforms we used earlier uses the resize and normalization operations. These operations are supported in ONNX and we can add them to the model.
-
-To do this we need to write the preprocessing code as a PyTorch model and export it to ONNX.
+First, we need to write the preprocessing code as a PyTorch module.
 
 ```python
 import torch.nn as nn
@@ -678,19 +678,19 @@ python 06_export_preprocessing_onnx.py
 Note the name of the output node of the `preprocessing.onnx` model - `output_preprocessing`.
 {{< /notice >}}
 
-Now we need to merge the output of the `preprocessing.onnx` model with the input of the `eva02_large_patch14_448` model.
-
-Let's visualize the original `eva02_large_patch14_448` model on Netron.
+Next, let's visualize the original `eva02_large_patch14_448` model on Netron.
 
 {{< figure_autoresize src="original_model.png" width="auto" align="center" >}}
-
 
 Note the name of the input node of the `eva02_large_patch14_448` model. We will need this for the merge.
 The name of the input node is `input`.
 
+Now, we merge the `preprocessing.onnx` model with the `eva02_large_patch14_448` model.
+To achieve this, we need to merge the output of the `preprocessing.onnx` model with the input of the `eva02_large_patch14_448` model.
+
 To merge the models, we use the `compose` function from the `onnx` library.
 
-```python
+{{< highlight python "hl_lines=4-5 11" >}}
 import onnx
 
 # Load the models
@@ -710,7 +710,8 @@ merged_model = onnx.compose.merge_models(
 
 # Save the merged model
 onnx.save(merged_model, "merged_model_compose.onnx")
-```
+{{< / highlight >}}
+
 Note the `io_map` parameter. This lets us map the output of the preprocessing model to the input of the original model. You must ensure that the input and output names of the models are correct.
 
 {{< notice note >}}
@@ -725,8 +726,10 @@ Let's visualize the merged model on Netron.
 
 {{< figure_autoresize src="merged_model.png" width="auto" align="center" >}}
 
-{{< notice note >}}
-Note the input to the merged model is `[batch_size, 3, height, width]`. This model can be given any input of size height x width and the batch size can vary. As we've seen in the Preprocess module earlier, the height and width are resized to 448x448 internally.
+{{< notice tip >}}
+The merged model expects an input of size `[batch_size, 3, height, width]`.
+This means that the model can take arbitrary input of size height, width and batch size.
+
 {{< /notice >}}
 
 Now using this merged model, let's run the inference benchmark again using the TensorRT provider.
@@ -751,10 +754,10 @@ And the results are in!
 TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
 ```
 
-That's a 6x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀
+That's a 8x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀
 
 
-{{< notice tip >}}
+{{< notice note >}}
 If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the merged model inference by executing the following command.
 ```bash
 python 08_inference_merged_model.py

@@ -733,16 +733,16 @@ You need to export the library path to include the CUDA library.</p>
                 </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX Runtime TensorRT inference by executing the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 05_onnx_trt_inference.py
 </span></span></code></pre></div></div>
-<p>That&rsquo;s the end of this post. Or is it?</p>
+<p>Thank you for reading this far. That&rsquo;s the end of this post.</p>
+<p>Or is it?</p>
 <p>You could stop here and be happy with the results. After all we already got a 93x speedup over the PyTorch model.</p>
-<p>But.. if you&rsquo;re like me and you want to squeeze out every last bit of performance, there&rsquo;s one final trick up our sleeve.</p>
+<p>But.. if you&rsquo;re like me and you wonder how much more performance we can squeeze out of the model, there&rsquo;s one final trick up our sleeve.</p>
 <h3 id="-bake-pre-processing-into-onnx">🎂 Bake pre-processing into ONNX</h3>
 <p>If you recall, we did our pre-processing transforms outside of the ONNX model in CuPy or NumPy.</p>
-<p>This incurs some overhead because we need to transfer the data to and from the GPU for the transforms.</p>
-<p>We can avoid this overhead by baking the transforms operations into the ONNX model. This lets us run the inference faster because we don&rsquo;t need to do the transforms separately.</p>
-<p>To do this we need to write some custom code to convert the transforms to an ONNX model.
-If you recall, the numpy transforms we used earlier uses the resize and normalization operations. These operations are supported in ONNX and we can add them to the model.</p>
-<p>To do this we need to write the preprocessing code as a PyTorch model and export it to ONNX.</p>
+<p>This incurs some data transfer overhead.
+We can avoid this overhead by baking the transforms operations into the ONNX model.</p>
+<p>Okay so how do we do this?</p>
+<p>First, we need to write the preprocessing code as a PyTorch module.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.nn <span style="color:#66d9ef">as</span> nn
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Preprocess</span>(nn<span style="color:#f92672">.</span>Module):
@@ -810,8 +810,7 @@ If you recall, the numpy transforms we used earlier uses the resize and normaliz
                 </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the export of the preprocessing model by executing the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 06_export_preprocessing_onnx.py
 </span></span></code></pre></div><p>Note the name of the output node of the <code>preprocessing.onnx</code> model - <code>output_preprocessing</code>.</p></div>
-<p>Now we need to merge the output of the <code>preprocessing.onnx</code> model with the input of the <code>eva02_large_patch14_448</code> model.</p>
-<p>Let&rsquo;s visualize the original <code>eva02_large_patch14_448</code> model on Netron.</p>
+<p>Next, let&rsquo;s visualize the original <code>eva02_large_patch14_448</code> model on Netron.</p>
 
 
 
@@ -834,18 +833,20 @@ If you recall, the numpy transforms we used earlier uses the resize and normaliz
 
 <p>Note the name of the input node of the <code>eva02_large_patch14_448</code> model. We will need this for the merge.
 The name of the input node is <code>input</code>.</p>
+<p>Now, we merge the <code>preprocessing.onnx</code> model with the <code>eva02_large_patch14_448</code> model.
+To achieve this, we need to merge the output of the <code>preprocessing.onnx</code> model with the input of the <code>eva02_large_patch14_448</code> model.</p>
 <p>To merge the models, we use the <code>compose</code> function from the <code>onnx</code> library.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> onnx
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> onnx
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the models</span>
-</span></span><span style="display:flex;"><span>model1 <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;preprocessing.onnx&#34;</span>)
-</span></span><span style="display:flex;"><span>model2 <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;eva02_large_patch14_448.onnx&#34;</span>)
+</span></span><span style="display:flex; background-color:#3c3d38"><span>model1 <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;preprocessing.onnx&#34;</span>)
+</span></span><span style="display:flex; background-color:#3c3d38"><span>model2 <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;eva02_large_patch14_448.onnx&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Merge the models</span>
 </span></span><span style="display:flex;"><span>merged_model <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>compose<span style="color:#f92672">.</span>merge_models(
 </span></span><span style="display:flex;"><span>    model1,
 </span></span><span style="display:flex;"><span>    model2,
-</span></span><span style="display:flex;"><span>    io_map<span style="color:#f92672">=</span>[(<span style="color:#e6db74">&#34;output_preprocessing&#34;</span>, <span style="color:#e6db74">&#34;input&#34;</span>)],
+</span></span><span style="display:flex; background-color:#3c3d38"><span>    io_map<span style="color:#f92672">=</span>[(<span style="color:#e6db74">&#34;output_preprocessing&#34;</span>, <span style="color:#e6db74">&#34;input&#34;</span>)],
 </span></span><span style="display:flex;"><span>    prefix1<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;preprocessing_&#34;</span>,
 </span></span><span style="display:flex;"><span>    prefix2<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;model_&#34;</span>,
 </span></span><span style="display:flex;"><span>    doc_string<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Merged preprocessing and eva02_large_patch14_448 model&#34;</span>,
@@ -853,8 +854,8 @@ The name of the input node is <code>input</code>.</p>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Save the merged model</span>
-</span></span><span style="display:flex;"><span>onnx<span style="color:#f92672">.</span>save(merged_model, <span style="color:#e6db74">&#34;merged_model_compose.onnx&#34;</span>)
-</span></span></code></pre></div><p>Note the <code>io_map</code> parameter. This lets us map the output of the preprocessing model to the input of the original model. You must ensure that the input and output names of the models are correct.</p>
+</span></span><span style="display:flex;"><span>onnx<span style="color:#f92672">.</span>save(merged_model, <span style="color:#e6db74">&#34;merged_model_compose.onnx&#34;</span>)</span></span></code></pre></div>
+<p>Note the <code>io_map</code> parameter. This lets us map the output of the preprocessing model to the input of the original model. You must ensure that the input and output names of the models are correct.</p>
 <div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#note-notice"></use>
@@ -883,10 +884,11 @@ Let&rsquo;s visualize the merged model on Netron.</p>
 </figure>
 
 
-<div class="notice note" >
+<div class="notice tip" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>Note the input to the merged model is <code>[batch_size, 3, height, width]</code>. This model can be given any input of size height x width and the batch size can vary. As we&rsquo;ve seen in the Preprocess module earlier, the height and width are resized to 448x448 internally. </p></div>
+                    <use href="#tip-notice"></use>
+                </svg></span>tip</p><p>The merged model expects an input of size <code>[batch_size, 3, height, width]</code>.
+This means that the model can take arbitrary input of size height, width and batch size. </p></div>
 <p>Now using this merged model, let&rsquo;s run the inference benchmark again using the TensorRT provider.</p>
 <p>We&rsquo;ll need to make a small change to how the input tensor is passed to the model.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_image</span>(image: Image<span style="color:#f92672">.</span>Image):
@@ -898,11 +900,11 @@ Let&rsquo;s visualize the merged model on Netron.</p>
 </span></span></code></pre></div><p>Notice we are no longer doing the resize and normalization inside the function. This is because the merged model already includes these operations.</p>
 <p>And the results are in!</p>
 <pre tabindex="0"><code>TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
-</code></pre><p>That&rsquo;s a 6x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀</p>
-<div class="notice tip" >
+</code></pre><p>That&rsquo;s a 8x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀</p>
+<div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the merged model inference by executing the following command.</p>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the merged model inference by executing the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 08_inference_merged_model.py
 </span></span></code></pre></div></div>
 <p>Let&rsquo;s do a final sanity check on the predictions.</p>
