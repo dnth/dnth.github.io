@@ -779,7 +779,7 @@ Looks like the predictions are close to the original model. We can sign off and 
 ### 🎮 Video Inference
 
 Just for fun, let's see how fast the model runs with the merged model on a video.
-{{< youtube id="merGOySuU8k" autoplay="true">}}
+{{< youtube id="merGOySuU8k">}}
 
 
 ### 🚧 Conclusion
