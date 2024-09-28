@@ -530,9 +530,9 @@ pip install tensorrt==10.1.0 \
 Next you need to export library path to include the TensorRT library.
 
 ```bash
-export LD_LIBRARY_PATH="/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/python3.11/site-packages/tensorrt_libs:$LD_LIBRARY_PATH"
 ```
-Replace the `/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/lib` with the path to your TensorRT library.
+Replace the `/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/python3.11/site-packages/tensorrt_libs` with the path to your TensorRT library.
 
 Otherwise you'll encounter the following error:
 
