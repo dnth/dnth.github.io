@@ -917,15 +917,11 @@ This means that the model can take arbitrary input of size height, width and bat
 &gt;&gt;&gt; coffee mug: 0.85%
 </code></pre><p>Looks like the predictions are close to the original model. We can sign off and say that the model is working as expected.</p>
 <h3 id="-video-inference">🎮 Video Inference</h3>
-<p>Just for fun, let&rsquo;s see how fast the model runs with the merged model on a video.
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/merGOySuU8k?autoplay=1&controls=1&end=0&loop=0&mute=1&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
-    </div>
-</p>
+<p>Just for fun, let&rsquo;s see how fast the model runs with the merged model on a video.</p>
+<video controls preload="auto" width="100%"  autoplay loop playsinline class="html-video">
+    <source src="/portfolio/supercharge_your_pytorch_image_models/inference_video.mp4" type="video/mp4">
+  <span></span>
+</video>
 <h3 id="-conclusion">🚧 Conclusion</h3>
 <p>In this post we have seen how we can supercharge our TIMM models for faster inference using ONNX Runtime and TensorRT.</p>
 <div class="notice tip" >
