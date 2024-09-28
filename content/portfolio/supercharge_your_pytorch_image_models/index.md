@@ -20,7 +20,7 @@ Imagine you're sitting in a self-driving car and the car takes one full second t
 
 Just one second too late, and you could end up in the clouds 👼👼👼
 
-Or if you're lucky, on the ground.
+Or if you’re really lucky, you get a very up-close view of the pavement.
 
 {{< figure src="banana_peel_robot.gif" width="480" align="center" >}}
 
