@@ -126,13 +126,13 @@ To run the inference using <code>onnxruntime</code>, we need to replicate the Py
 </span></span><span style=display:flex><span>    img_numpy <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>expand_dims(img_numpy, axis<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>)
 </span></span><span style=display:flex><span>    img_numpy <span style=color:#f92672>=</span> img_numpy<span style=color:#f92672>.</span>astype(np<span style=color:#f92672>.</span>float32)
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> img_numpy
-</span></span></code></pre></div><p>Using the <code>numpy</code>, transforms let&rsquo;s run inference with ONNX Runtime.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> onnxruntime <span style=color:#66d9ef>as</span> ort
+</span></span></code></pre></div><p>Using the <code>numpy</code>, transforms let&rsquo;s run inference with ONNX Runtime.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> onnxruntime <span style=color:#66d9ef>as</span> ort
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># Create ONNX Runtime session with CPU provider</span>
 </span></span><span style=display:flex><span>onnx_filename <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;eva02_large_patch14_448.onnx&#34;</span>
 </span></span><span style=display:flex><span>session <span style=color:#f92672>=</span> ort<span style=color:#f92672>.</span>InferenceSession(
 </span></span><span style=display:flex><span>    onnx_filename, 
-</span></span><span style=display:flex><span>    providers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;CPUExecutionProvider&#34;</span>]
+</span></span><span style=display:flex;background-color:#3c3d38><span>    providers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;CPUExecutionProvider&#34;</span>] <span style=color:#75715e># Run on CPU</span>
 </span></span><span style=display:flex><span>)
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># Get input and output names</span>
@@ -141,8 +141,7 @@ To run the inference using <code>onnxruntime</code>, we need to replicate the Py
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># Run inference</span>
 </span></span><span style=display:flex><span>output <span style=color:#f92672>=</span> session<span style=color:#f92672>.</span>run([output_name], 
-</span></span><span style=display:flex><span>                    {input_name: transforms_numpy(img)})[<span style=color:#ae81ff>0</span>]
-</span></span></code></pre></div><p>If we inspect the output shape, we can see that it&rsquo;s the same as the number of classes in the ImageNet dataset.</p><pre tabindex=0><code>output.shape
+</span></span><span style=display:flex><span>                    {input_name: transforms_numpy(img)})[<span style=color:#ae81ff>0</span>]</span></span></code></pre></div><p>If we inspect the output shape, we can see that it&rsquo;s the same as the number of classes in the ImageNet dataset.</p><pre tabindex=0><code>output.shape
 &gt;&gt;&gt; (1, 1000)
 </code></pre><p>And printing the top 5 predictions:</p><pre tabindex=0><code>&gt;&gt;&gt; espresso: 28.65%
 &gt;&gt;&gt; cup: 2.77%
@@ -174,13 +173,12 @@ It may seem like a step back, but we are only getting started.</p><p>Read on.</p
 </span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                 cuda-command-line-tools<span style=color:#f92672>=</span>12.2.2 <span style=color:#ae81ff>\
 </span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                 cuda-compiler<span style=color:#f92672>=</span>12.2.2 <span style=color:#ae81ff>\
 </span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>                 cuda-runtime<span style=color:#f92672>=</span>12.2.2
-</span></span></code></pre></div><p>Once done, replace the CPU provider with the CUDA provider.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>onnx_filename <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;eva02_large_patch14_448.onnx&#34;</span>
+</span></span></code></pre></div><p>Once done, replace the CPU provider with the CUDA provider.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-python data-lang=python><span style=display:flex><span>onnx_filename <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;eva02_large_patch14_448.onnx&#34;</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>session <span style=color:#f92672>=</span> ort<span style=color:#f92672>.</span>InferenceSession(
 </span></span><span style=display:flex><span>    onnx_filename, 
-</span></span><span style=display:flex><span>    providers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;CUDAExecutionProvider&#34;</span>] <span style=color:#75715e># change the provider </span>
-</span></span><span style=display:flex><span>)
-</span></span></code></pre></div><p>The rest of the code is the same as the CPU inference.</p><p>Just with one line of code change, the benchmarks are as follows:</p><pre tabindex=0><code>&gt;&gt;&gt; Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
+</span></span><span style=display:flex;background-color:#3c3d38><span>    providers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;CUDAExecutionProvider&#34;</span>] <span style=color:#75715e># change the provider </span>
+</span></span><span style=display:flex><span>)</span></span></code></pre></div><p>The rest of the code is the same as the CPU inference.</p><p>Just with one line of code change, the benchmarks are as follows:</p><pre tabindex=0><code>&gt;&gt;&gt; Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
 </code></pre><p>But that&rsquo;s kinda expected. Running on the GPU, we should expect a speedup.</p><div class="notice tip"><p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#tip-notice"/></svg></span>tip</p><p>If you encounter the following error:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Failed to load library libonnxruntime_providers_cuda.so 
 </span></span><span style=display:flex><span>with error: libcublasLt.so.12: cannot open shared object 
 </span></span><span style=display:flex><span>file: No such file or directory
