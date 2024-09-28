@@ -374,6 +374,10 @@ So, what's next? To squeeze even more out of the model I recommend:
 
 There's also a best practice guide to quantize your model with OpenVINO [here](https://docs.openvino.ai/latest/pot_docs_BestPractices.html).
 
+If you enjoyed this post, you might also like the following post where I show how to accelerate your PyTorch Image Models (TIMM) 8x faster with ONNX Runtime and TensorRT.
+
+{{< single_portfolio_item "Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime & Optimizations" >}}
+
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).

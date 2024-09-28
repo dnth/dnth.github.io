@@ -656,6 +656,10 @@ I listed all commands I used to train all models on the [README](https://github.
 
 Also, feel to use the repo with your own dataset and give it a ⭐ if it helps your work.
 
+If you enjoyed this post, you might also like the following post where I show how to accelerate your PyTorch Image Models (TIMM) 8x faster with ONNX Runtime and TensorRT.
+
+{{< single_portfolio_item "Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime & Optimizations" >}}
+
 ### 🙏 Comments & Feedback
 I hope you've learned a thing or two from this blog post.
 If you have any questions, comments, or feedback, please leave them on the following Twitter/LinkedIn post or [drop me a message](https://dicksonneoh.com/contact/).
