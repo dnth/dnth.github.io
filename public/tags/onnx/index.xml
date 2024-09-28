@@ -13,7 +13,7 @@
       <link>http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/</link>
       <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/</guid>
-      <description>🚀 Motivation Having real time inference is crucial for many computer vision applications. In some domain, a 1-second delay in inference could mean life or death.&#xA;Imagine you&amp;rsquo;re sitting in a self-driving car and the car takes one full second to detect an oncoming truck.&#xA;Just one second too late, and you could end up in the clouds 👼👼👼&#xA;Or if you&amp;rsquo;re lucky, on the ground.&#xA;I hope that shows you how crucial this problem is.</description>
+      <description>🚀 Motivation Having real time inference is crucial for many computer vision applications. In some domain, a 1-second delay in inference could mean life or death.&#xA;Imagine you&amp;rsquo;re sitting in a self-driving car and the car takes one full second to detect an oncoming truck.&#xA;Just one second too late, and you could end up in the clouds 👼👼👼&#xA;Or if you’re really lucky, you get a very up-close view of the pavement.</description>
     </item>
     <item>
       <title>Supercharging YOLOv5: How I Got 182.4 FPS Inference Without a GPU</title>

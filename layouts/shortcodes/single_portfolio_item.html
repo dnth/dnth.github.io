@@ -1,0 +1,21 @@
+{{ $title := .Get 0 }}
+{{ $portfolioPages := where .Site.RegularPages "Type" "portfolio" }}
+{{ $page := where $portfolioPages "Title" $title }}
+
+{{ if $page }}
+    {{ with index $page 0 }}
+    <div class="blog-page__item" style="margin-bottom: 20px;">
+        <div class="blog-page__item-thumb" style="margin-bottom: 10px;">
+            <a href="{{ .Permalink }}">
+                <img src="{{ .Params.postImage | absURL }}" alt="post-image" style="width: 100%; height: auto; display: block;">
+            </a>
+        </div>
+        <span class="small" style="display: block; margin-bottom: 5px;">{{ .PublishDate.Format "January 2, 2006" }}</span>
+        <h5 style="margin: 0 0 10px 0;">
+            <a class="text-dark" href="{{ .Permalink }}">{{ .Title }}</a>
+        </h5>
+    </div>
+    {{ end }}
+{{ else }}
+    <p>No portfolio item found with the title "{{ $title }}"</p>
+{{ end }}

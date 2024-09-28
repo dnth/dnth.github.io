@@ -794,7 +794,9 @@ You can find the code for this post on my GitHub repository [here](https://githu
 
 {{< /notice >}}
 
-I hope this has been helpful.
-
 Thank you for reading!
+I hope this has been helpful. If you'd like to find out how to deploy this model on Android check out the following post.
+
+{{<single_portfolio_item "PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter">}}
+
 
