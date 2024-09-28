@@ -273,26 +273,25 @@
           
           <hr>
           <h3 id="-motivation">🚀 Motivation</h3>
-<p>Having real time inference is crucial for many computer vision models.
-In some applications, a 1-second delay in inference could mean life or death.</p>
-<p>Imagine you&rsquo;re behind the wheels of a self-driving car and the car takes one full second to detect an oncoming truck.
-Just one second too late, and you could end up in the clouds 👼👼👼</p>
+<p>Having real time inference is crucial for many computer vision applications.
+In some domain, a 1-second delay in inference could mean life or death.</p>
+<p>Imagine you&rsquo;re sitting in a self-driving car and the car takes one full second to detect an oncoming truck.</p>
+<p>Just one second too late, and you could end up in the clouds 👼👼👼</p>
 <p>Or if you&rsquo;re lucky, on the ground.</p>
 <figure><img src="/portfolio/supercharge_your_pytorch_image_models/banana_peel_robot.gif" width="480">
 </figure>
 
 <p>I hope that shows you how crucial this problem is.</p>
-<p>Today (2024), computer vision models are being deployed in all kinds of high-stakes industries like healthcare, finance, and self-driving cars.</p>
 <blockquote class="blockquote">
-  <p class="mb-0">We are at a point where it&rsquo;s not just about being right - it&rsquo;s about being right, right now.</p>
+  <p class="mb-0">In many high-stake applications, it&rsquo;s not just about being right - it&rsquo;s about being right, right now.</p>
 </blockquote>
-<p>With many high-stakes applications, having real-time inference is crucial and will determine whether the model gets deployed or not.
+<p>Thus, having real-time inference capability is crucial and will determine whether a model gets deployed or not.
 In many cases, you can pick one or the other:</p>
 <ul>
 <li>A fast model with low accuracy</li>
 <li>A slow model with high accuracy</li>
 </ul>
-<p>But can we have the best of both worlds? I.e. a fast and accurate model?</p>
+<p>But can we have the best of both worlds? I.e. a <strong>fast and accurate</strong> model?</p>
 <p>That&rsquo;s what this post is about.</p>
 <style type="text/css">
     .notice{padding:18px;line-height:24px;margin-bottom:24px;border-radius:4px;color:#6c757d;background:#e7f2fa}.notice
@@ -344,7 +343,7 @@ I will be using a <code>conda</code> environment to install the packages require
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install timm
 </span></span></code></pre></div><p>At the time of writing, there are over <a href="https://huggingface.co/timm" target="_blank" rel="nofollow noopener noreferrer">1370 models</a> available in timm. Any of which can be used in this post.</p>
 <h3 id="-load-and-infer">🔧 Load and Infer</h3>
-<p>To prove my point in the motivation section, let&rsquo;s load a top performing model from the timm <a href="https://huggingface.co/spaces/timm/leaderboard" target="_blank" rel="nofollow noopener noreferrer">leaderboard</a> - the <code>eva02_large_patch14_448.mim_m38m_ft_in22k_in1k</code> model and run an inference to see how it performs.</p>
+<p>Let&rsquo;s load a top performing model from the timm <a href="https://huggingface.co/spaces/timm/leaderboard" target="_blank" rel="nofollow noopener noreferrer">leaderboard</a> - the <code>eva02_large_patch14_448.mim_m38m_ft_in22k_in1k</code> model.</p>
 
 
 
@@ -387,7 +386,7 @@ Check out the model on the <code>timm</code> leaderboard <a href="https://huggin
 </span></span><span style="display:flex;"><span>    output <span style="color:#f92672">=</span> model(transforms(img)<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">0</span>))
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>top5_probabilities, top5_class_indices <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>topk(output<span style="color:#f92672">.</span>softmax(dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>, k<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
-</span></span></code></pre></div><p>Next, decode the predictions to get the class names</p>
+</span></span></code></pre></div><p>Next, decode the predictions into class names as a sanity check</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> imagenet_classes <span style="color:#f92672">import</span> IMAGENET2012_CLASSES
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>im_classes <span style="color:#f92672">=</span> list(IMAGENET2012_CLASSES<span style="color:#f92672">.</span>values())
@@ -421,10 +420,10 @@ Check out the model on the <code>timm</code> leaderboard <a href="https://huggin
 &gt;&gt;&gt; cup: 2.60%
 &gt;&gt;&gt; chocolate sauce, chocolate syrup: 2.39%
 &gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.48%
-</code></pre><p>The predictions looks fine. Looks like the model is doing it&rsquo;s job.</p>
+</code></pre><p>Looks like the model is doing it&rsquo;s job.</p>
 <p>Now let&rsquo;s benchmark the inference latency.</p>
 <h3 id="-baseline-latency">⏱️ Baseline Latency</h3>
-<p>We will run the inference 10 times (more is better, but 10 is enough to see the difference) and record the average time on both CPU and GPU.</p>
+<p>We will run the inference 10 times and average the inference time.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_benchmark</span>(model, device, num_images<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>):
@@ -441,7 +440,8 @@ Check out the model on the <code>timm</code> leaderboard <a href="https://huggin
 </span></span><span style="display:flex;"><span>    fps <span style="color:#f92672">=</span> num_images <span style="color:#f92672">/</span> (end <span style="color:#f92672">-</span> start)
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;PyTorch model on </span><span style="color:#e6db74">{</span>device<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>ms_per_image<span style="color:#e6db74">:</span><span style="color:#e6db74">.3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> ms per image, FPS: </span><span style="color:#e6db74">{</span>fps<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># CPU Benchmark</span>
+</span></span></code></pre></div><p>Let&rsquo;s benchmark on CPU and GPU.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># CPU Benchmark</span>
 </span></span><span style="display:flex;"><span>run_benchmark(model, torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cpu&#34;</span>))
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># GPU Benchmark </span>
@@ -452,7 +452,7 @@ Check out the model on the <code>timm</code> leaderboard <a href="https://huggin
 &gt;&gt;&gt; PyTorch model on cuda: 77.226 ms per image, FPS: 12.95
 </code></pre><p>Although the performance on the GPU is not bad, 12+ FPS is still not fast enough for real-time inference.
 On my reasonably modern CPU, it took over 1.5 seconds to run an inference.</p>
-<p>Definitely not self-driving car material.</p>
+<p>Definitely not self-driving car material 🤷</p>
 <div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#note-notice"></use>
@@ -465,10 +465,10 @@ On my reasonably modern CPU, it took over 1.5 seconds to run an inference.</p>
 <p>If you&rsquo;ve cloned the repo, you can run the benchmarks by executing the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 01_pytorch_latency_benchmark.py
 </span></span></code></pre></div></div>
-<p>Now let&rsquo;s begin the first step to improve the run time.</p>
+<p>Now let&rsquo;s start to improve the inference time.</p>
 <h3 id="-convert-to-onnx">🔄 Convert to ONNX</h3>
 <p><a href="https://onnx.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX</a> is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices.</p>
-<p>The key advantage of using ONNX is that it lets us deploy models across different frameworks and devices.</p>
+<p>The key advantage of using ONNX is that it lets us deploy models across different frameworks and devices, and offers some performance gains.</p>
 <p>To convert the model to ONNX format, let&rsquo;s first install <code>onnx</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnx
 </span></span></code></pre></div><p>And export the model to ONNX format</p>
@@ -512,7 +512,7 @@ On my reasonably modern CPU, it took over 1.5 seconds to run an inference.</p>
 <div class="notice tip" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>You can inspect and visualize the ONNX model using the <a href="https://netron.app/" target="_blank" rel="nofollow noopener noreferrer">Netron</a> webapp. </p></div>
+                </svg></span>tip</p><p>Inspect and visualize the ONNX model using the <a href="https://netron.app/" target="_blank" rel="nofollow noopener noreferrer">Netron</a> webapp. </p></div>
 <h3 id="-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</h3>
 <p>To run the and inference on the ONNX model, we need to install <code>onnxruntime</code>. This is the &rsquo;engine&rsquo; that will run the ONNX model.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnxruntime
@@ -543,14 +543,14 @@ To run the inference using <code>onnxruntime</code>, we need to replicate the Py
 </span></span><span style="display:flex;"><span>    img_numpy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(img_numpy, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>    img_numpy <span style="color:#f92672">=</span> img_numpy<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float32)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> img_numpy
-</span></span></code></pre></div><p>Once the transforms are replicated, let&rsquo;s run inference with ONNX Runtime.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> onnxruntime <span style="color:#66d9ef">as</span> ort
+</span></span></code></pre></div><p>Using the <code>numpy</code>, transforms let&rsquo;s run inference with ONNX Runtime.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> onnxruntime <span style="color:#66d9ef">as</span> ort
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Create ONNX Runtime session with CPU provider</span>
 </span></span><span style="display:flex;"><span>onnx_filename <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eva02_large_patch14_448.onnx&#34;</span>
 </span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> ort<span style="color:#f92672">.</span>InferenceSession(
 </span></span><span style="display:flex;"><span>    onnx_filename, 
-</span></span><span style="display:flex;"><span>    providers<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;CPUExecutionProvider&#34;</span>]
+</span></span><span style="display:flex; background-color:#3c3d38"><span>    providers<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;CPUExecutionProvider&#34;</span>] <span style="color:#75715e"># Run on CPU</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Get input and output names</span>
@@ -559,8 +559,8 @@ To run the inference using <code>onnxruntime</code>, we need to replicate the Py
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Run inference</span>
 </span></span><span style="display:flex;"><span>output <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>run([output_name], 
-</span></span><span style="display:flex;"><span>                    {input_name: transforms_numpy(img)})[<span style="color:#ae81ff">0</span>]
-</span></span></code></pre></div><p>If we inspect the output shape, we can see that it&rsquo;s the same as the number of classes in the ImageNet dataset.</p>
+</span></span><span style="display:flex;"><span>                    {input_name: transforms_numpy(img)})[<span style="color:#ae81ff">0</span>]</span></span></code></pre></div>
+<p>If we inspect the output shape, we can see that it&rsquo;s the same as the number of classes in the ImageNet dataset.</p>
 <pre tabindex="0"><code>output.shape
 &gt;&gt;&gt; (1, 1000)
 </code></pre><p>And printing the top 5 predictions:</p>
@@ -616,13 +616,13 @@ It may seem like a step back, but we are only getting started.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 cuda-compiler<span style="color:#f92672">=</span>12.2.2 <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 cuda-runtime<span style="color:#f92672">=</span>12.2.2
 </span></span></code></pre></div><p>Once done, replace the CPU provider with the CUDA provider.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>onnx_filename <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eva02_large_patch14_448.onnx&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>onnx_filename <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eva02_large_patch14_448.onnx&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> ort<span style="color:#f92672">.</span>InferenceSession(
 </span></span><span style="display:flex;"><span>    onnx_filename, 
-</span></span><span style="display:flex;"><span>    providers<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;CUDAExecutionProvider&#34;</span>] <span style="color:#75715e"># change the provider </span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>The rest of the code is the same as the CPU inference.</p>
+</span></span><span style="display:flex; background-color:#3c3d38"><span>    providers<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;CUDAExecutionProvider&#34;</span>] <span style="color:#75715e"># change the provider </span>
+</span></span><span style="display:flex;"><span>)</span></span></code></pre></div>
+<p>The rest of the code is the same as the CPU inference.</p>
 <p>Just with one line of code change, the benchmarks are as follows:</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
 </code></pre><p>But that&rsquo;s kinda expected. Running on the GPU, we should expect a speedup.</p>

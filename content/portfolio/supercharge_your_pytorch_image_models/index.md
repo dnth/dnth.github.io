@@ -306,14 +306,14 @@ def transforms_numpy(image: PIL.Image.Image):
 
 Using the `numpy`, transforms let's run inference with ONNX Runtime.
 
-```python
+{{< highlight python "hl_lines=7" >}}
 import onnxruntime as ort
 
 # Create ONNX Runtime session with CPU provider
 onnx_filename = "eva02_large_patch14_448.onnx"
 session = ort.InferenceSession(
     onnx_filename, 
-    providers=["CPUExecutionProvider"]
+    providers=["CPUExecutionProvider"] # Run on CPU
 )
 
 # Get input and output names
@@ -323,8 +323,9 @@ output_name = session.get_outputs()[0].name
 # Run inference
 output = session.run([output_name], 
                     {input_name: transforms_numpy(img)})[0]
+{{< / highlight >}}
 
-```
+
 If we inspect the output shape, we can see that it's the same as the number of classes in the ImageNet dataset.
 
 ```
@@ -420,14 +421,16 @@ conda install -c nvidia cuda=12.2.2 \
 
 Once done, replace the CPU provider with the CUDA provider.
 
-```python
+{{< highlight python "hl_lines=5 15-17" >}}
 onnx_filename = "eva02_large_patch14_448.onnx"
 
 session = ort.InferenceSession(
     onnx_filename, 
     providers=["CUDAExecutionProvider"] # change the provider 
 )
-```
+{{< / highlight >}}
+
+
 The rest of the code is the same as the CPU inference. 
 
 Just with one line of code change, the benchmarks are as follows:
