@@ -778,10 +778,11 @@ Looks like the predictions are close to the original model. We can sign off and 
 
 ### 🎮 Video Inference
 
-Just for fun, let's see how fast the model runs with the merged model on a video.
+Just for fun, let's see how fast the merged model runs on a video.
 
 {{< video src="inference_video.mp4" alt="Video Inference" autoplay="true" loop="true" >}}
 
+The video inference code is also provided in the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost).
 
 ### 🚧 Conclusion
 
