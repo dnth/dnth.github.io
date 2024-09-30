@@ -55,13 +55,13 @@ You can find the code for this post on my GitHub repository [here](https://githu
 
 
 {{< notice info >}}
-Are you non-technical? No problem! 
+Are you non-technical?
 
-Listen to this 10 mins ELI5 conversation podcast that breaks down the content of this post in an easy to understand manner.
+Listen to this 10 mins conversation podcast that breaks down the content of this post in an ELI5 manner.
 
-{{<audio src="notebooklm.wav">}}
+{{<audio src="notebooklm.wav" title="Supercharge Your PyTorch Image Models" author="NotebookLM">}}
 
-Conversation generated using NotebookLM.
+Note: Conversation generated using NotebookLM.
 
 
 {{< /notice >}}
@@ -376,8 +376,8 @@ It may seem like a step back, but we are only getting started.
 
 Read on.
 
-{{< notice note >}}
-This post assumes that you have a compatible NVDIA GPU. If you don't, you can still use the CPU for inference by switch to the Intel OpenVINO or AMD backend. 
+{{< notice info >}}
+The remainder of this post assumes that you have a compatible NVDIA GPU. If you don't, you can still use the CPU for inference by switch to the Intel OpenVINO or AMD backend. 
 
 There are more backends available including for mobile devices like Apple, Android, etc. Check them out [here](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html)
 
@@ -441,7 +441,7 @@ Just with one line of code change, the benchmarks are as follows:
 
 But that's kinda expected. Running on the GPU, we should expect a speedup.
 
-{{< notice tip >}}
+{{< notice info >}}
 If you encounter the following error:
 
 ```bash
@@ -746,7 +746,7 @@ Let's do a final sanity check on the predictions.
 
 Looks like the predictions tally! 
 
-{{< notice note >}}
+{{< notice info >}}
 There are small value differences in the confidence values which is likely due to the precision difference between FP32 and FP16 and the normalization difference between the PyTorch model and the ONNX model.
 {{< /notice >}}
 

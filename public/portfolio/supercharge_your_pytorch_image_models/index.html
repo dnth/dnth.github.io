@@ -344,12 +344,62 @@ In many cases, you can pick one or the other:</p>
 <div class="notice info" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#info-notice"></use>
-                </svg></span>info</p><p>Are you non-technical? No problem!</p>
-<p>Listen to this 10 mins ELI5 conversation podcast that breaks down the content of this post in an easy to understand manner.</p>
-<audio controls preload="auto">
-    <source src="notebooklm.wav">
-</audio>
-<p>Conversation generated using NotebookLM.</p></div>
+                </svg></span>info</p><p>Are you non-technical?</p>
+<p>Listen to this 10 mins conversation podcast that breaks down the content of this post in an ELI5 manner.</p>
+<style>
+    .custom-audio-player {
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto;
+        background: #f0f0f0;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .audio-info {
+        margin-bottom: 15px;
+    }
+    .audio-title {
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+    }
+    .audio-author {
+        font-size: 0.9em;
+        color: #666;
+    }
+    .custom-audio-player audio {
+        width: 100%;
+        height: 40px;
+        outline: none;
+    }
+    .custom-audio-player audio::-webkit-media-controls-panel {
+        background-color: #e0e0e0;
+    }
+    .custom-audio-player audio::-webkit-media-controls-play-button,
+    .custom-audio-player audio::-webkit-media-controls-mute-button {
+        background-color: #4a90e2;
+        border-radius: 50%;
+    }
+    .custom-audio-player audio::-webkit-media-controls-current-time-display,
+    .custom-audio-player audio::-webkit-media-controls-time-remaining-display {
+        color: #333;
+    }
+</style>
+<div class="custom-audio-player">
+    <div class="audio-header">
+        <div class="audio-info">
+            <div class="audio-title">Supercharge Your PyTorch Image Models</div>
+            <div class="audio-author">NotebookLM</div>
+        </div>
+    </div>
+    <audio controls preload="metadata">
+        <source src="notebooklm.wav">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+<p>Note: Conversation generated using NotebookLM.</p></div>
 <p>If you&rsquo;re technical, then let&rsquo;s dive in! 🏊‍♂️</p>
 <h3 id="-installation">💻 Installation</h3>
 <p>Let&rsquo;s begin with the installation.
@@ -597,10 +647,10 @@ To find out the transforms that was used, you can print out the <code>transforms
 </code></pre><p>Ouch! That&rsquo;s slower than the PyTorch model. What a bummer!
 It may seem like a step back, but we are only getting started.</p>
 <p>Read on.</p>
-<div class="notice note" >
+<div class="notice info" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>This post assumes that you have a compatible NVDIA GPU. If you don&rsquo;t, you can still use the CPU for inference by switch to the Intel OpenVINO or AMD backend.</p>
+                    <use href="#info-notice"></use>
+                </svg></span>info</p><p>The remainder of this post assumes that you have a compatible NVDIA GPU. If you don&rsquo;t, you can still use the CPU for inference by switch to the Intel OpenVINO or AMD backend.</p>
 <p>There are more backends available including for mobile devices like Apple, Android, etc. Check them out <a href="https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html" target="_blank" rel="nofollow noopener noreferrer">here</a></p>
 <p>These will be covered in a future post.</p></div>
 <h3 id="-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</h3>
@@ -635,10 +685,10 @@ It may seem like a step back, but we are only getting started.</p>
 <p>Just with one line of code change, the benchmarks are as follows:</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
 </code></pre><p>But that&rsquo;s kinda expected. Running on the GPU, we should expect a speedup.</p>
-<div class="notice tip" >
+<div class="notice info" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>If you encounter the following error:</p>
+                    <use href="#info-notice"></use>
+                </svg></span>info</p><p>If you encounter the following error:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Failed to load library libonnxruntime_providers_cuda.so 
 </span></span><span style="display:flex;"><span>with error: libcublasLt.so.12: cannot open shared object 
 </span></span><span style="display:flex;"><span>file: No such file or directory
@@ -896,10 +946,10 @@ This means that the model can take arbitrary input of size height, width and bat
 &gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.01%
 &gt;&gt;&gt; eggnog: 0.98%
 </code></pre><p>Looks like the predictions tally!</p>
-<div class="notice note" >
+<div class="notice info" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>There are small value differences in the confidence values which is likely due to the precision difference between FP32 and FP16 and the normalization difference between the PyTorch model and the ONNX model. </p></div>
+                    <use href="#info-notice"></use>
+                </svg></span>info</p><p>There are small value differences in the confidence values which is likely due to the precision difference between FP32 and FP16 and the normalization difference between the PyTorch model and the ONNX model. </p></div>
 <h3 id="-video-inference">🎮 Video Inference</h3>
 <p>Just for fun, let&rsquo;s see how fast the merged model runs on a video.</p>
 <video controls preload="auto" width="100%"  autoplay loop playsinline class="html-video">
