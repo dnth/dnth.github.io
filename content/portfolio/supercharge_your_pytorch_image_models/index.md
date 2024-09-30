@@ -55,7 +55,9 @@ You can find the code for this post on my GitHub repository [here](https://githu
 
 
 {{< notice info >}}
-Are you non-technical? No problem! Listen to this 10 mins conversation podcast that breaks down the content of this post in an easy to understand manner.
+Are you non-technical? No problem! 
+
+Listen to this 10 mins ELI5 conversation podcast that breaks down the content of this post in an easy to understand manner.
 
 {{<audio src="notebooklm.wav">}}
 
