@@ -53,7 +53,18 @@ You can find the code for this post on my GitHub repository [here](https://githu
 
 {{< /notice >}}
 
-If that sounds exciting let's dive in! 🏊‍♂️
+
+{{< notice info >}}
+Are you non-technical? No problem! Listen to this 10 mins conversation podcast that breaks down the content of this post in an easy to understand manner.
+
+{{<audio src="notebooklm.wav">}}
+
+Conversation generated using NotebookLM.
+
+
+{{< /notice >}}
+
+If you're technical, then let's dive in! 🏊‍♂️
 
 ### 💻 Installation
 Let's begin with the installation.

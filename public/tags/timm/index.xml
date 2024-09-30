@@ -6,14 +6,14 @@
     <description>Recent content in TIMM on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Sep 2024 09:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Sep 2024 09:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/timm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime &amp; Optimizations</title>
       <link>http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/</link>
-      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/</guid>
-      <description>🚀 Motivation Having real time inference is crucial for many computer vision applications. In some domain, a 1-second delay in inference could mean life or death.&#xA;Imagine you&amp;rsquo;re sitting in a self-driving car and the car takes one full second to detect an oncoming truck.&#xA;Just one second too late, and you could end up in the clouds 👼👼👼&#xA;Or if you’re really lucky, you get a very up-close view of the pavement.</description>
+      <description>🚀 Motivation Having real-time inference is crucial for computer vision applications. In some domains, a 1-second delay in inference could mean life or death.&#xA;Imagine sitting in a self-driving car and the car takes one full second to detect an oncoming speeding truck.&#xA;Just one second too late, and you could end up in the clouds 👼👼👼&#xA;Or if you&amp;rsquo;re lucky, you get a very up-close view of the pavement.</description>
     </item>
     <item>
       <title>Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</title>

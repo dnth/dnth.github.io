@@ -3,46 +3,49 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/portfolio/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/deployment/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/hugging-face/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/image-classification/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/imagenet/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/inference/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/onnx/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/optimization/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/pytorch/</loc>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/tensorrt/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/timm/</loc>
-    <lastmod>2024-09-09T09:00:00+08:00</lastmod>
+    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/academic/</loc>
     <lastmod>2023-11-17T12:00:00+08:00</lastmod>

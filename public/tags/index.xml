@@ -6,40 +6,47 @@
     <description>Recent content in Tags on Dickson Neoh - Personal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Sep 2024 09:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Sep 2024 09:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugging Face</title>
       <link>http://localhost:1313/tags/hugging-face/</link>
-      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/tags/hugging-face/</guid>
       <description></description>
     </item>
     <item>
       <title>ImageNet</title>
       <link>http://localhost:1313/tags/imagenet/</link>
-      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/tags/imagenet/</guid>
       <description></description>
     </item>
     <item>
       <title>ONNX</title>
       <link>http://localhost:1313/tags/onnx/</link>
-      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/tags/onnx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PyTorch</title>
+      <link>http://localhost:1313/tags/pytorch/</link>
+      <pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/pytorch/</guid>
       <description></description>
     </item>
     <item>
       <title>TensorRT</title>
       <link>http://localhost:1313/tags/tensorrt/</link>
-      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/tags/tensorrt/</guid>
       <description></description>
     </item>
     <item>
       <title>TIMM</title>
       <link>http://localhost:1313/tags/timm/</link>
-      <pubDate>Mon, 09 Sep 2024 09:00:00 +0800</pubDate>
+      <pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/tags/timm/</guid>
       <description></description>
     </item>
