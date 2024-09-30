@@ -9,7 +9,7 @@ toc: true
 socialshare: true
 description: Learn how to optimize PyTorch image models using ONNX Runtime and TensorRT, achieving up to 8x faster inference speeds for real-time applications.
 images: 
-- images/portfolio/supercharge_your_pytorch_image_models/post_image.jpg
+- images/portfolio/supercharge_your_pytorch_image_models/post_image.png
 ---
 
 ### 🚀 Motivation
