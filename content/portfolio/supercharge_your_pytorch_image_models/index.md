@@ -187,12 +187,6 @@ Definitely not self-driving car material 🤷
 I'm using the following hardware for the benchmarks:
 - GPU - NVIDIA RTX 3090
 - CPU - 11th Gen Intel® Core™ i9-11900 @ 2.50GHz × 16
-
-You can find the code for the PyTorch benchmarks on my GitHub repository [here](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost/blob/main/01_pytorch_latency_benchmark.py).
-
-If you've cloned the repo, you can run the benchmarks by executing the following command.
-```bash
-python 01_pytorch_latency_benchmark.py
 ```
 {{< /notice >}}
 
@@ -244,10 +238,6 @@ Here are the descriptions for the arguments you can pass to the `torch.onnx.expo
 - `input_names=['input']`: The name of the input tensor.
 - `output_names=['output']`: The name of the output tensor.
 - `dynamic_axes={'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}}`: Dynamic axes for the input and output tensors.
-
-If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX conversion by executing the following command.
-```bash
-python 02_convert_to_onnx.py
 ```
 {{< /notice >}}
 
@@ -375,12 +365,6 @@ It may seem like a step back, but we are only getting started.
 
 Read on.
 
-{{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX Runtime CPU inference by executing the following command.  
-```bash
-python 03_onnx_cpu_inference.py
-```
-{{< /notice >}}
 
 
 
@@ -500,14 +484,7 @@ With CuPy, we got a tiny bit of performance improvement:
 >>> Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43
 ```
 
-{{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX Runtime CUDA cupy inference by executing the following command.
 
-```bash
-python 04_onnx_cuda_inference.py
-```
-
-{{< /notice >}}
 
 Using ONNX Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.
 
@@ -591,12 +568,7 @@ And now let's run the benchmark:
 
 Running with TensorRT and cupy give us a 4.5x speedup over the PyTorch model on the GPU and 93x speedup over the PyTorch model on the CPU!
 
-{{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the ONNX Runtime TensorRT inference by executing the following command.
-```bash
-python 05_onnx_trt_inference.py
-```
-{{< /notice >}}
+
 
 Thank you for reading this far. That's the end of this post. 
 
@@ -670,11 +642,6 @@ Let's visualize the exported `preprocessing.onnx` model on Netron.
 
 
 {{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the export of the preprocessing model by executing the following command.
-```bash
-python 06_export_preprocessing_onnx.py
-``` 
-
 Note the name of the output node of the `preprocessing.onnx` model - `output_preprocessing`.
 {{< /notice >}}
 
@@ -714,13 +681,6 @@ onnx.save(merged_model, "merged_model_compose.onnx")
 
 Note the `io_map` parameter. This lets us map the output of the preprocessing model to the input of the original model. You must ensure that the input and output names of the models are correct.
 
-{{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the merge of the models by executing the following command.
-```bash
-python 07_onnx_compose_merge.py
-```
-{{< /notice >}}
-
 If there are no errors, you will end up with a file called `merged_model_compose.onnx` in your working directory.
 Let's visualize the merged model on Netron.
 
@@ -757,12 +717,7 @@ TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
 That's a 8x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀
 
 
-{{< notice note >}}
-If you've cloned the [repo](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost), you can run the merged model inference by executing the following command.
-```bash
-python 08_inference_merged_model.py
-```
-{{< /notice >}}
+
 
 Let's do a final sanity check on the predictions.
 
@@ -802,6 +757,13 @@ In this post you've learned how to:
 You can find the code for this post on my GitHub repository [here](https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost).
 
 {{< /notice >}}
+
+There are other things that we've not explored in this post that will likely improve the performance even more. For example,
+- Quantization - reducing the precision of the model weights from FP32 to FP16 or INT8 or even lower.
+- Pruning - removing the redundant model weights to reduce the model size and improve the inference speed.
+- Knowledge distillation - training a smaller model to mimic the original model.
+
+I will leave these as an exercise for the reader. 
 
 Thank you for reading!
 I hope this has been helpful. If you'd like to find out how to deploy this model on Android check out the following post.

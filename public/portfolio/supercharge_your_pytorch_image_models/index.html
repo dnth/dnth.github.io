@@ -145,7 +145,7 @@
         <i class="fa fa-calendar"></i> &ensp;
         September 9, 2024 &ensp; &ensp;
         <i class="fa fa-clock-o"></i> &ensp;
-        16 mins read
+        15 mins read
       </div>
       
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
@@ -463,10 +463,7 @@ On my reasonably modern CPU, it took over 1.5 seconds to run an inference.</p>
 <li>GPU - NVIDIA RTX 3090</li>
 <li>CPU - 11th Gen Intel® Core™ i9-11900 @ 2.50GHz × 16</li>
 </ul>
-<p>You can find the code for the PyTorch benchmarks on my GitHub repository <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost/blob/main/01_pytorch_latency_benchmark.py" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
-<p>If you&rsquo;ve cloned the repo, you can run the benchmarks by executing the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 01_pytorch_latency_benchmark.py
-</span></span></code></pre></div></div>
+<pre tabindex="0"><code></code></pre></div>
 <p>Now let&rsquo;s start to improve the inference time.</p>
 <h3 id="-convert-to-onnx">🔄 Convert to ONNX</h3>
 <p><a href="https://onnx.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX</a> is an open and interoperable format for deep learning models. It lets us deploy models across different frameworks and devices.</p>
@@ -507,9 +504,7 @@ On my reasonably modern CPU, it took over 1.5 seconds to run an inference.</p>
 <li><code>output_names=['output']</code>: The name of the output tensor.</li>
 <li><code>dynamic_axes={'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}}</code>: Dynamic axes for the input and output tensors.</li>
 </ul>
-<p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX conversion by executing the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 02_convert_to_onnx.py
-</span></span></code></pre></div></div>
+<pre tabindex="0"><code></code></pre></div>
 <p>If there are no errors, you will end up with a file called <code>eva02_large_patch14_448.onnx</code> in your working directory.</p>
 <div class="notice tip" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
@@ -590,12 +585,6 @@ To run the inference using <code>onnxruntime</code>, we need to replicate the Py
 </code></pre><p>Ouch! That&rsquo;s slower than the PyTorch model. What a bummer!
 It may seem like a step back, but we are only getting started.</p>
 <p>Read on.</p>
-<div class="notice note" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX Runtime CPU inference by executing the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 03_onnx_cpu_inference.py
-</span></span></code></pre></div></div>
 <h3 id="-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</h3>
 <p>Other than the CPU, ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.</p>
 <p>To use the CUDA backend, we need to install the <code>onnxruntime-gpu</code> package.
@@ -664,13 +653,7 @@ You need to export the library path to include the CUDA library.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> img_cupy
 </span></span></code></pre></div><p>With CuPy, we got a tiny bit of performance improvement:</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43
-</code></pre><div class="notice note" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX Runtime CUDA cupy inference by executing the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 04_onnx_cuda_inference.py
-</span></span></code></pre></div></div>
-<p>Using ONNX Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.</p>
+</code></pre><p>Using ONNX Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.</p>
 <p>We have one more trick up our sleeve.</p>
 <h3 id="-onnx-runtime-on-tensorrt">📊 ONNX Runtime on TensorRT</h3>
 <p>Similar to the CUDA provider, we have the TensorRT provider on ONNX Runtime. This lets us run the model using the TensorRT high performance inference engine by NVIDIA.</p>
@@ -729,12 +712,6 @@ You need to export the library path to include the CUDA library.</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; TensorRT + numpy: 18.852 ms per image, FPS: 53.04
 &gt;&gt;&gt; TensorRT + cupy: 16.892 ms per image, FPS: 59.20
 </code></pre><p>Running with TensorRT and cupy give us a 4.5x speedup over the PyTorch model on the GPU and 93x speedup over the PyTorch model on the CPU!</p>
-<div class="notice note" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the ONNX Runtime TensorRT inference by executing the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 05_onnx_trt_inference.py
-</span></span></code></pre></div></div>
 <p>Thank you for reading this far. That&rsquo;s the end of this post.</p>
 <p>Or is it?</p>
 <p>You could stop here and be happy with the results. After all we already got a 93x speedup over the PyTorch model.</p>
@@ -809,9 +786,7 @@ We can avoid this overhead by baking the transforms operations into the ONNX mod
 <div class="notice note" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#note-notice"></use>
-                </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the export of the preprocessing model by executing the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 06_export_preprocessing_onnx.py
-</span></span></code></pre></div><p>Note the name of the output node of the <code>preprocessing.onnx</code> model - <code>output_preprocessing</code>.</p></div>
+                </svg></span>note</p><p>Note the name of the output node of the <code>preprocessing.onnx</code> model - <code>output_preprocessing</code>. </p></div>
 <p>Next, let&rsquo;s visualize the original <code>eva02_large_patch14_448</code> model on Netron.</p>
 
 
@@ -858,12 +833,6 @@ To achieve this, we need to merge the output of the <code>preprocessing.onnx</co
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Save the merged model</span>
 </span></span><span style="display:flex;"><span>onnx<span style="color:#f92672">.</span>save(merged_model, <span style="color:#e6db74">&#34;merged_model_compose.onnx&#34;</span>)</span></span></code></pre></div>
 <p>Note the <code>io_map</code> parameter. This lets us map the output of the preprocessing model to the input of the original model. You must ensure that the input and output names of the models are correct.</p>
-<div class="notice note" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the merge of the models by executing the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 07_onnx_compose_merge.py
-</span></span></code></pre></div></div>
 <p>If there are no errors, you will end up with a file called <code>merged_model_compose.onnx</code> in your working directory.
 Let&rsquo;s visualize the merged model on Netron.</p>
 
@@ -903,12 +872,6 @@ This means that the model can take arbitrary input of size height, width and bat
 <p>And the results are in!</p>
 <pre tabindex="0"><code>TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
 </code></pre><p>That&rsquo;s a 8x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀</p>
-<div class="notice note" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#note-notice"></use>
-                </svg></span>note</p><p>If you&rsquo;ve cloned the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>, you can run the merged model inference by executing the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python 08_inference_merged_model.py
-</span></span></code></pre></div></div>
 <p>Let&rsquo;s do a final sanity check on the predictions.</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; espresso: 34.25%
 &gt;&gt;&gt; cup: 2.06%
@@ -917,11 +880,12 @@ This means that the model can take arbitrary input of size height, width and bat
 &gt;&gt;&gt; coffee mug: 0.85%
 </code></pre><p>Looks like the predictions are close to the original model. We can sign off and say that the model is working as expected.</p>
 <h3 id="-video-inference">🎮 Video Inference</h3>
-<p>Just for fun, let&rsquo;s see how fast the model runs with the merged model on a video.</p>
+<p>Just for fun, let&rsquo;s see how fast the merged model runs on a video.</p>
 <video controls preload="auto" width="100%"  autoplay loop playsinline class="html-video">
     <source src="/portfolio/supercharge_your_pytorch_image_models/inference_video.mp4" type="video/mp4">
   <span></span>
 </video>
+<p>The video inference code is also provided in the <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">repo</a>.</p>
 <h3 id="-conclusion">🚧 Conclusion</h3>
 <p>In this post we have seen how we can supercharge our TIMM models for faster inference using ONNX Runtime and TensorRT.</p>
 <div class="notice tip" >
@@ -937,6 +901,13 @@ This means that the model can take arbitrary input of size height, width and bat
 <li>🧠 Bake the pre-processing into the ONNX model</li>
 </ul>
 <p>You can find the code for this post on my GitHub repository <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
+<p>There are other things that we&rsquo;ve not explored in this post that will likely improve the performance even more. For example,</p>
+<ul>
+<li>Quantization - reducing the precision of the model weights from FP32 to FP16 or INT8 or even lower.</li>
+<li>Pruning - removing the redundant model weights to reduce the model size and improve the inference speed.</li>
+<li>Knowledge distillation - training a smaller model to mimic the original model.</li>
+</ul>
+<p>I will leave these as an exercise for the reader.</p>
 <p>Thank you for reading!
 I hope this has been helpful. If you&rsquo;d like to find out how to deploy this model on Android check out the following post.</p>
 
