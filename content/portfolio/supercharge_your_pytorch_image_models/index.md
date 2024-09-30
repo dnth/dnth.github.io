@@ -331,7 +331,7 @@ And printing the top 5 predictions:
 >>> bakery, bakeshop, bakehouse: 1.42%
 ```
 
-While the results aren't an exact match to the PyTorch model, they're sufficiently similar. This slight variation can be attributed to differences in how normalization is implemented, leading to minor discrepancies in the precise values.
+We get the same results as the PyTorch model with ONNX Runtime. That's a good sign!
 
 
 Now let's benchmark the inference latency on ONNX Runtime with a CPU provider (backend).
