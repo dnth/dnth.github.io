@@ -778,7 +778,7 @@ You can find the code for this post on my GitHub repository [here](https://githu
 {{< /notice >}}
 
 There are other things that we've not explored in this post that will likely improve the inference speed. For example,
-- Quantization - reducing the precision of the model weights from FP32 to FP16 or INT8 or even lower.
+- Quantization - reducing the precision of the model weights from FP32 to FP8, INT8 or even lower.
 - Pruning - removing the redundant model weights to reduce the model size and improve the inference speed.
 - Knowledge distillation - training a smaller model to mimic the original model.
 
