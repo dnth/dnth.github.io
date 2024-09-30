@@ -732,16 +732,14 @@ We can avoid this overhead by baking the transforms operations into the ONNX mod
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, input_shape: List[int]):
 </span></span><span style="display:flex;"><span>        super(Preprocess, self)<span style="color:#f92672">.</span>__init__()
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>input_shape <span style="color:#f92672">=</span> tuple(input_shape)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mean <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">0.485</span>, <span style="color:#ae81ff">0.456</span>, <span style="color:#ae81ff">0.406</span>])<span style="color:#f92672">.</span>view(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>std <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">0.229</span>, <span style="color:#ae81ff">0.224</span>, <span style="color:#ae81ff">0.225</span>])<span style="color:#f92672">.</span>view(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mean <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">0.4815</span>, <span style="color:#ae81ff">0.4578</span>, <span style="color:#ae81ff">0.4082</span>])<span style="color:#f92672">.</span>view(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>std <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">0.2686</span>, <span style="color:#ae81ff">0.2613</span>, <span style="color:#ae81ff">0.2758</span>])<span style="color:#f92672">.</span>view(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x: torch<span style="color:#f92672">.</span>Tensor):
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Resize the image to the input shape</span>
-</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>functional<span style="color:#f92672">.</span>interpolate(input<span style="color:#f92672">=</span>x, 
-</span></span><span style="display:flex;"><span>                                           size<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>input_shape[<span style="color:#ae81ff">2</span>:], 
-</span></span><span style="display:flex;"><span>                                           mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bicubic&#39;</span>, 
-</span></span><span style="display:flex;"><span>                                           align_corners<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Normalize the image</span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>functional<span style="color:#f92672">.</span>interpolate(
+</span></span><span style="display:flex;"><span>            input<span style="color:#f92672">=</span>x,
+</span></span><span style="display:flex;"><span>            size<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>input_shape[<span style="color:#ae81ff">2</span>:],
+</span></span><span style="display:flex;"><span>        )
 </span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> x <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0</span>
 </span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> (x <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>mean) <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>std
 </span></span><span style="display:flex;"><span>
@@ -877,12 +875,16 @@ This means that the model can take arbitrary input of size height, width and bat
 <pre tabindex="0"><code>TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
 </code></pre><p>That&rsquo;s a 8x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀</p>
 <p>Let&rsquo;s do a final sanity check on the predictions.</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; espresso: 34.25%
-&gt;&gt;&gt; cup: 2.06%
-&gt;&gt;&gt; chocolate sauce, chocolate syrup: 1.31%
-&gt;&gt;&gt; bakery, bakeshop, bakehouse: 0.97%
-&gt;&gt;&gt; coffee mug: 0.85%
-</code></pre><p>Looks like the predictions are close to the original model. We can sign off and say that the model is working as expected.</p>
+<pre tabindex="0"><code>&gt;&gt;&gt; espresso: 34.48%
+&gt;&gt;&gt; cup: 2.16%
+&gt;&gt;&gt; chocolate sauce, chocolate syrup: 1.53%
+&gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.01%
+&gt;&gt;&gt; eggnog: 0.98%
+</code></pre><p>Looks like the predictions tally!</p>
+<div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>There are small value differences in the confidence values which is likely due to the precision difference between FP32 and FP16 and the normalization difference between the PyTorch model and the ONNX model. </p></div>
 <h3 id="-video-inference">🎮 Video Inference</h3>
 <p>Just for fun, let&rsquo;s see how fast the merged model runs on a video.</p>
 <video controls preload="auto" width="100%"  autoplay loop playsinline class="html-video">

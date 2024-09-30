@@ -599,16 +599,14 @@ class Preprocess(nn.Module):
     def __init__(self, input_shape: List[int]):
         super(Preprocess, self).__init__()
         self.input_shape = tuple(input_shape)
-        self.mean = torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1)
-        self.std = torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1)
+        self.mean = torch.tensor([0.4815, 0.4578, 0.4082]).view(1, 3, 1, 1)
+        self.std = torch.tensor([0.2686, 0.2613, 0.2758]).view(1, 3, 1, 1)
 
     def forward(self, x: torch.Tensor):
-        # Resize the image to the input shape
-        x = torch.nn.functional.interpolate(input=x, 
-                                           size=self.input_shape[2:], 
-                                           mode='bicubic', 
-                                           align_corners=False)
-        # Normalize the image
+        x = torch.nn.functional.interpolate(
+            input=x,
+            size=self.input_shape[2:],
+        )
         x = x / 255.0
         x = (x - self.mean) / self.std
 
@@ -726,14 +724,18 @@ That's a 8x improvement over the original PyTorch model on the GPU and a whoppin
 Let's do a final sanity check on the predictions.
 
 ```
->>> espresso: 34.25%
->>> cup: 2.06%
->>> chocolate sauce, chocolate syrup: 1.31%
->>> bakery, bakeshop, bakehouse: 0.97%
->>> coffee mug: 0.85%
+>>> espresso: 34.48%
+>>> cup: 2.16%
+>>> chocolate sauce, chocolate syrup: 1.53%
+>>> bakery, bakeshop, bakehouse: 1.01%
+>>> eggnog: 0.98%
 ```
 
-Looks like the predictions are close to the original model. We can sign off and say that the model is working as expected.
+Looks like the predictions tally! 
+
+{{< notice note >}}
+There are small value differences in the confidence values which is likely due to the precision difference between FP32 and FP16 and the normalization difference between the PyTorch model and the ONNX model.
+{{< /notice >}}
 
 ### 🎮 Video Inference
 
