@@ -513,14 +513,11 @@ On my reasonably modern CPU, it took over 1.5 seconds to run an inference.</p>
 <h3 id="-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</h3>
 <p>To run the and inference on the ONNX model, we need to install <code>onnxruntime</code>. This is the &rsquo;engine&rsquo; that will run the ONNX model.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install onnxruntime
-</span></span></code></pre></div><div class="notice tip" >
-        <p class="first notice-title"><span class="icon-notice baseline"><svg>
-                    <use href="#tip-notice"></use>
-                </svg></span>tip</p><p>One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency.</p>
-<p>This is great for deployment and for running inference in environments where PyTorch is not available.</p></div>
+</span></span></code></pre></div><p>One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency.
+This is great for deployment and for running inference in environments where PyTorch is not available.</p>
 <p>The ONNX model we exported earlier only includes the model weights and the graph structure. It does not include the pre-processing transforms.
-To run the inference using <code>onnxruntime</code>, we need to replicate the PyTorch transforms.</p>
-<p>To find out the transforms that was used, you can print out the <code>transforms</code>.</p>
+To run the inference using <code>onnxruntime</code>, we need to replicate the PyTorch transforms.
+To find out the transforms that was used, you can print out the <code>transforms</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(transforms)
 </span></span></code></pre></div><pre tabindex="0"><code>&gt;&gt;&gt; Compose(
 &gt;&gt;&gt;     Resize(size=(448, 448), interpolation=bicubic, max_size=None, antialias=True)

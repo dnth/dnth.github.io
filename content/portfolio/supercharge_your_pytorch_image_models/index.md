@@ -254,15 +254,13 @@ To run the and inference on the ONNX model, we need to install `onnxruntime`. Th
 pip install onnxruntime
 ```
 
-{{< notice tip >}}
-One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency. 
 
+One (major) benefit of using ONNX Runtime is the ability to run the model without PyTorch as a dependency. 
 This is great for deployment and for running inference in environments where PyTorch is not available.
-{{< /notice >}}
+
 
 The ONNX model we exported earlier only includes the model weights and the graph structure. It does not include the pre-processing transforms.
 To run the inference using `onnxruntime`, we need to replicate the PyTorch transforms.
-
 To find out the transforms that was used, you can print out the `transforms`. 
 
 ```python
