@@ -12,8 +12,8 @@
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="portfolio">
-    <meta property="article:published_time" content="2024-09-09T09:00:00+08:00">
-    <meta property="article:modified_time" content="2024-09-09T09:00:00+08:00">
+    <meta property="article:published_time" content="2024-09-30T09:00:00+08:00">
+    <meta property="article:modified_time" content="2024-09-30T09:00:00+08:00">
     <meta property="article:tag" content="TIMM">
     <meta property="article:tag" content="ONNX">
     <meta property="article:tag" content="TensorRT">
@@ -143,9 +143,9 @@
     <div class="row p-3">
       <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-0 text-center">
         <i class="fa fa-calendar"></i> &ensp;
-        September 9, 2024 &ensp; &ensp;
+        September 30, 2024 &ensp; &ensp;
         <i class="fa fa-clock-o"></i> &ensp;
-        15 mins read
+        16 mins read
       </div>
       
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
@@ -275,19 +275,19 @@
           
           <hr>
           <h3 id="-motivation">🚀 Motivation</h3>
-<p>Having real time inference is crucial for many computer vision applications.
-In some domain, a 1-second delay in inference could mean life or death.</p>
-<p>Imagine you&rsquo;re sitting in a self-driving car and the car takes one full second to detect an oncoming truck.</p>
+<p>Having real-time inference is crucial for computer vision applications.
+In some domains, a 1-second delay in inference could mean life or death.</p>
+<p>Imagine sitting in a self-driving car and the car takes <strong>one full second</strong> to detect an oncoming speeding truck.</p>
 <p>Just one second too late, and you could end up in the clouds 👼👼👼</p>
-<p>Or if you’re really lucky, you get a very up-close view of the pavement.</p>
+<p>Or if you&rsquo;re lucky, you get a very up-close view of the pavement.</p>
 <figure><img src="/portfolio/supercharge_your_pytorch_image_models/banana_peel_robot.gif" width="480">
 </figure>
 
-<p>I hope that shows you how crucial this problem is.</p>
+<p>I hope that shows how crucial real-time inference is.</p>
 <blockquote class="blockquote">
   <p class="mb-0">In many high-stake applications, it&rsquo;s not just about being right - it&rsquo;s about being right, right now.</p>
 </blockquote>
-<p>Thus, having real-time inference capability is crucial and will determine whether a model gets deployed or not.
+<p>Thus, having real-time inference capability is paramount and will determine whether a model gets deployed or not.
 In many cases, you can pick one or the other:</p>
 <ul>
 <li>A fast model with low accuracy</li>
@@ -585,6 +585,12 @@ To run the inference using <code>onnxruntime</code>, we need to replicate the Py
 </code></pre><p>Ouch! That&rsquo;s slower than the PyTorch model. What a bummer!
 It may seem like a step back, but we are only getting started.</p>
 <p>Read on.</p>
+<div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>This post assumes that you have a compatible NVDIA GPU. If you don&rsquo;t, you can still use the CPU for inference by switch to the Intel OpenVINO or AMD backend.</p>
+<p>There are more backends available including for mobile devices like Apple, Android, etc. Check them out <a href="https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html" target="_blank" rel="nofollow noopener noreferrer">here</a></p>
+<p>These will be covered in a future post.</p></div>
 <h3 id="-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</h3>
 <p>Other than the CPU, ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.</p>
 <p>To use the CUDA backend, we need to install the <code>onnxruntime-gpu</code> package.
@@ -697,17 +703,18 @@ You need to export the library path to include the CUDA library.</p>
                     <use href="#note-notice"></use>
                 </svg></span>note</p><p>Here are the descriptions for the arguments you can pass to the <code>TensorrtExecutionProvider</code>:</p>
 <ul>
-<li><code>device_id</code>: 0 - This specifies the GPU device ID to use. In this case, it&rsquo;s set to 0, which typically refers to the first GPU in the system.</li>
-<li><code>trt_max_workspace_size</code>: 8589934592 - This sets the maximum workspace size for TensorRT in bytes. Here, it&rsquo;s set to 8GB, which allows TensorRT to use up to 8GB of GPU memory for its operations.</li>
-<li><code>trt_fp16_enable</code>: True - This enables FP16 (half-precision) mode, which can significantly speed up inference on supported GPUs while reducing memory usage.</li>
-<li><code>trt_engine_cache_enable</code>: True - This enables caching of TensorRT engines, which can speed up subsequent runs by avoiding engine rebuilding.</li>
-<li><code>trt_engine_cache_path</code>: <code>./trt_cache</code> - This specifies the directory where TensorRT engine cache files will be stored.</li>
-<li><code>trt_force_sequential_engine_build</code>: False - When set to False, it allows parallel building of TensorRT engines for different subgraphs.</li>
-<li><code>trt_max_partition_iterations</code>: 10000 - This sets the maximum number of iterations for TensorRT to attempt partitioning the graph.</li>
-<li><code>trt_min_subgraph_size</code>: 1 - This specifies the minimum number of nodes required for a subgraph to be considered for conversion to TensorRT.</li>
-<li><code>trt_builder_optimization_level</code>: 5 - This sets the optimization level for the TensorRT builder. Level 5 is the highest optimization level, which can result in longer build times but potentially better performance.</li>
-<li><code>trt_timing_cache_enable</code>: True - This enables the timing cache, which can help speed up engine building by reusing layer timing information from previous builds.</li>
+<li><code>device_id</code>: <code>0</code> - The GPU device ID to use. I&rsquo;m using the first GPU in the system.</li>
+<li><code>trt_max_workspace_size</code>: <code>8589934592</code> - The maximum workspace size for TensorRT in bytes. Here, it&rsquo;s set to 8GB, which allows TensorRT to use up to 8GB of GPU memory for its operations.</li>
+<li><code>trt_fp16_enable</code>: <code>True</code> - Enables FP16 (half-precision) mode. Significantly speeds up inference on supported GPUs while reducing memory usage.</li>
+<li><code>trt_engine_cache_enable</code>: <code>True</code> - Enables caching of TensorRT engines. Speeds up subsequent runs by avoiding engine rebuilding.</li>
+<li><code>trt_engine_cache_path</code>: <code>./trt_cache</code> - Specifies the directory where TensorRT engine cache files will be stored.</li>
+<li><code>trt_force_sequential_engine_build</code>: False - Allows parallel building of TensorRT engines for different subgraphs.</li>
+<li><code>trt_max_partition_iterations</code>: <code>10000</code> - Sets the maximum number of iterations for TensorRT to attempt partitioning the graph.</li>
+<li><code>trt_min_subgraph_size</code>: <code>1</code> - Specifies the minimum number of nodes required for a subgraph to be considered for conversion to TensorRT.</li>
+<li><code>trt_builder_optimization_level</code>: <code>5</code> - Sets the optimization level for the TensorRT builder. Level 5 is the highest optimization level, which can result in longer build times but potentially better performance.</li>
+<li><code>trt_timing_cache_enable</code>: <code>True</code> - Enables the timing cache. Helps speed up engine building by reusing layer timing information from previous builds.</li>
 </ul></div>
+<p>Refer to the <a href="https://onnxruntime.ai/docs/execution-providers/TensorRT-ExecutionProvider.html" target="_blank" rel="nofollow noopener noreferrer">TensorRT ExecutionProvider documentation</a> for more details on the parameters.</p>
 <p>And now let&rsquo;s run the benchmark:</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; TensorRT + numpy: 18.852 ms per image, FPS: 53.04
 &gt;&gt;&gt; TensorRT + cupy: 16.892 ms per image, FPS: 59.20
@@ -901,13 +908,13 @@ This means that the model can take arbitrary input of size height, width and bat
 <li>🧠 Bake the pre-processing into the ONNX model</li>
 </ul>
 <p>You can find the code for this post on my GitHub repository <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
-<p>There are other things that we&rsquo;ve not explored in this post that will likely improve the performance even more. For example,</p>
+<p>There are other things that we&rsquo;ve not explored in this post that will likely improve the inference speed. For example,</p>
 <ul>
 <li>Quantization - reducing the precision of the model weights from FP32 to FP16 or INT8 or even lower.</li>
 <li>Pruning - removing the redundant model weights to reduce the model size and improve the inference speed.</li>
 <li>Knowledge distillation - training a smaller model to mimic the original model.</li>
 </ul>
-<p>I will leave these as an exercise for the reader.</p>
+<p>I will leave these as an exercise for the reader. And let me know if you&rsquo;d like me to write a follow-up post on these topics.</p>
 <p>Thank you for reading!
 I hope this has been helpful. If you&rsquo;d like to find out how to deploy this model on Android check out the following post.</p>
 

@@ -1,6 +1,6 @@
 ---
 title: "Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime & Optimizations"
-date: 2024-09-09T09:00:00+08:00
+date: 2024-09-30T09:00:00+08:00
 featureImage: images/portfolio/supercharge_your_pytorch_image_models/thumbnail.gif
 postImage: images/portfolio/supercharge_your_pytorch_image_models/post_image.png
 tags: ["TIMM", "ONNX", "TensorRT", "ImageNet", "Hugging Face"]
@@ -13,24 +13,24 @@ images:
 ---
 
 ### 🚀 Motivation
-Having real time inference is crucial for many computer vision applications.
-In some domain, a 1-second delay in inference could mean life or death.
+Having real-time inference is crucial for computer vision applications.
+In some domains, a 1-second delay in inference could mean life or death.
 
-Imagine you're sitting in a self-driving car and the car takes one full second to detect an oncoming truck.
+Imagine sitting in a self-driving car and the car takes **one full second** to detect an oncoming speeding truck.
 
 Just one second too late, and you could end up in the clouds 👼👼👼
 
-Or if you’re really lucky, you get a very up-close view of the pavement.
+Or if you're lucky, you get a very up-close view of the pavement.
 
 {{< figure src="banana_peel_robot.gif" width="480" align="center" >}}
 
-I hope that shows you how crucial this problem is.
+I hope that shows how crucial real-time inference is.
 
 {{% blockquote %}}
 In many high-stake applications, it's not just about being right - it's about being right, right now.
 {{% /blockquote %}}
 
-Thus, having real-time inference capability is crucial and will determine whether a model gets deployed or not. 
+Thus, having real-time inference capability is paramount and will determine whether a model gets deployed or not. 
 In many cases, you can pick one or the other:
 - A fast model with low accuracy
 - A slow model with high accuracy
@@ -365,8 +365,13 @@ It may seem like a step back, but we are only getting started.
 
 Read on.
 
+{{< notice note >}}
+This post assumes that you have a compatible NVDIA GPU. If you don't, you can still use the CPU for inference by switch to the Intel OpenVINO or AMD backend. 
 
+There are more backends available including for mobile devices like Apple, Android, etc. Check them out [here](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html)
 
+These will be covered in a future post.
+{{< /notice >}}
 
 ### 🖼️ ONNX Runtime on CUDA
 Other than the CPU, ONNX Runtime offers other backends for inference. We can easily swap to a different backend by changing the provider. In this case we will use the CUDA backend.
@@ -547,18 +552,19 @@ The rest of the code is the same as the CUDA inference.
 
 {{< notice note >}}
 Here are the descriptions for the arguments you can pass to the `TensorrtExecutionProvider`:
-- `device_id`: 0 - This specifies the GPU device ID to use. In this case, it's set to 0, which typically refers to the first GPU in the system.
-- `trt_max_workspace_size`: 8589934592 - This sets the maximum workspace size for TensorRT in bytes. Here, it's set to 8GB, which allows TensorRT to use up to 8GB of GPU memory for its operations.
-- `trt_fp16_enable`: True - This enables FP16 (half-precision) mode, which can significantly speed up inference on supported GPUs while reducing memory usage.
-- `trt_engine_cache_enable`: True - This enables caching of TensorRT engines, which can speed up subsequent runs by avoiding engine rebuilding.
-- `trt_engine_cache_path`: `./trt_cache` - This specifies the directory where TensorRT engine cache files will be stored.
-- `trt_force_sequential_engine_build`: False - When set to False, it allows parallel building of TensorRT engines for different subgraphs.
-- `trt_max_partition_iterations`: 10000 - This sets the maximum number of iterations for TensorRT to attempt partitioning the graph.
-- `trt_min_subgraph_size`: 1 - This specifies the minimum number of nodes required for a subgraph to be considered for conversion to TensorRT.
-- `trt_builder_optimization_level`: 5 - This sets the optimization level for the TensorRT builder. Level 5 is the highest optimization level, which can result in longer build times but potentially better performance.
-- `trt_timing_cache_enable`: True - This enables the timing cache, which can help speed up engine building by reusing layer timing information from previous builds.
+- `device_id`: `0` - The GPU device ID to use. I'm using the first GPU in the system.
+- `trt_max_workspace_size`: `8589934592` - The maximum workspace size for TensorRT in bytes. Here, it's set to 8GB, which allows TensorRT to use up to 8GB of GPU memory for its operations.
+- `trt_fp16_enable`: `True` - Enables FP16 (half-precision) mode. Significantly speeds up inference on supported GPUs while reducing memory usage.
+- `trt_engine_cache_enable`: `True` - Enables caching of TensorRT engines. Speeds up subsequent runs by avoiding engine rebuilding.
+- `trt_engine_cache_path`: `./trt_cache` - Specifies the directory where TensorRT engine cache files will be stored.
+- `trt_force_sequential_engine_build`: False - Allows parallel building of TensorRT engines for different subgraphs.
+- `trt_max_partition_iterations`: `10000` - Sets the maximum number of iterations for TensorRT to attempt partitioning the graph.
+- `trt_min_subgraph_size`: `1` - Specifies the minimum number of nodes required for a subgraph to be considered for conversion to TensorRT.
+- `trt_builder_optimization_level`: `5` - Sets the optimization level for the TensorRT builder. Level 5 is the highest optimization level, which can result in longer build times but potentially better performance.
+- `trt_timing_cache_enable`: `True` - Enables the timing cache. Helps speed up engine building by reusing layer timing information from previous builds.
 {{< /notice >}}
 
+Refer to the [TensorRT ExecutionProvider documentation](https://onnxruntime.ai/docs/execution-providers/TensorRT-ExecutionProvider.html) for more details on the parameters.
 
 And now let's run the benchmark:
 ```
@@ -758,12 +764,12 @@ You can find the code for this post on my GitHub repository [here](https://githu
 
 {{< /notice >}}
 
-There are other things that we've not explored in this post that will likely improve the performance even more. For example,
+There are other things that we've not explored in this post that will likely improve the inference speed. For example,
 - Quantization - reducing the precision of the model weights from FP32 to FP16 or INT8 or even lower.
 - Pruning - removing the redundant model weights to reduce the model size and improve the inference speed.
 - Knowledge distillation - training a smaller model to mimic the original model.
 
-I will leave these as an exercise for the reader. 
+I will leave these as an exercise for the reader. And let me know if you'd like me to write a follow-up post on these topics.
 
 Thank you for reading!
 I hope this has been helpful. If you'd like to find out how to deploy this model on Android check out the following post.
