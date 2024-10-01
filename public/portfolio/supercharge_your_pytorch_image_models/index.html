@@ -3,12 +3,12 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
   <title>Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime &amp; Optimizations</title>
-  <meta name="description" content="Learn how to optimize PyTorch image models using ONNX Runtime and TensorRT, achieving up to 8x faster inference speeds for real-time applications." />
+  <meta name="description" content="Supercharge your PyTorch image models with ONNX Runtime and TensorRT. Learn step-by-step techniques to achieve up to 8x faster inference speeds, enabling real-time performance for computer vision applications. Optimize TIMM models for deployment using advanced acceleration methods." />
 
   <meta property="og:url" content="http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/">
   <meta property="og:site_name" content="Dickson Neoh - Personal Portfolio">
   <meta property="og:title" content="Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime & Optimizations">
-  <meta property="og:description" content="Learn how to optimize PyTorch image models using ONNX Runtime and TensorRT, achieving up to 8x faster inference speeds for real-time applications.">
+  <meta property="og:description" content="Supercharge your PyTorch image models with ONNX Runtime and TensorRT. Learn step-by-step techniques to achieve up to 8x faster inference speeds, enabling real-time performance for computer vision applications. Optimize TIMM models for deployment using advanced acceleration methods.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="portfolio">
@@ -26,7 +26,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/portfolio/supercharge_your_pytorch_image_models/post_image.png">
   <meta name="twitter:title" content="Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime & Optimizations">
-  <meta name="twitter:description" content="Learn how to optimize PyTorch image models using ONNX Runtime and TensorRT, achieving up to 8x faster inference speeds for real-time applications.">
+  <meta name="twitter:description" content="Supercharge your PyTorch image models with ONNX Runtime and TensorRT. Learn step-by-step techniques to achieve up to 8x faster inference speeds, enabling real-time performance for computer vision applications. Optimize TIMM models for deployment using advanced acceleration methods.">
 
 
   <!-- mobile responsive meta -->
@@ -254,7 +254,6 @@
         <li><a class="toc-link" href="#-convert-to-onnx">🔄 Convert to ONNX</a></li>
         <li><a class="toc-link" href="#-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</a></li>
         <li><a class="toc-link" href="#-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</a></li>
-        <li><a class="toc-link" href="#-onnx-runtime-on-tensorrt">📊 ONNX Runtime on TensorRT</a></li>
         <li><a class="toc-link" href="#-bake-pre-processing-into-onnx">🎂 Bake pre-processing into ONNX</a></li>
         <li><a class="toc-link" href="#-video-inference">🎮 Video Inference</a></li>
         <li><a class="toc-link" href="#-conclusion">🚧 Conclusion</a></li>
@@ -271,7 +270,6 @@
         <li><a class="toc-link" href="#-convert-to-onnx">🔄 Convert to ONNX</a></li>
         <li><a class="toc-link" href="#-onnx-runtime-on-cpu">🖥️ ONNX Runtime on CPU</a></li>
         <li><a class="toc-link" href="#-onnx-runtime-on-cuda">🖼️ ONNX Runtime on CUDA</a></li>
-        <li><a class="toc-link" href="#-onnx-runtime-on-tensorrt">📊 ONNX Runtime on TensorRT</a></li>
         <li><a class="toc-link" href="#-bake-pre-processing-into-onnx">🎂 Bake pre-processing into ONNX</a></li>
         <li><a class="toc-link" href="#-video-inference">🎮 Video Inference</a></li>
         <li><a class="toc-link" href="#-conclusion">🚧 Conclusion</a></li>
@@ -803,18 +801,34 @@ You need to export the library path to include the CUDA library.</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> img_cupy
 </span></span></code></pre></div><p>With CuPy, we got a tiny bit of performance improvement:</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43
-</code></pre><p>Using ONNX Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.</p>
-<p>We have one more trick up our sleeve.</p>
-<h3 id="-onnx-runtime-on-tensorrt">📊 ONNX Runtime on TensorRT</h3>
-<p>Similar to the CUDA provider, we have the TensorRT provider on ONNX Runtime. This lets us run the model using the TensorRT high performance inference engine by NVIDIA.</p>
-<p>From the <a href="https://onnxruntime.ai/docs/execution-providers/TensorRT-ExecutionProvider.html#requirements" target="_blank" rel="nofollow noopener noreferrer">compatibility matrix</a>, we can see that <code>onnxruntime-gpu==1.19.2</code> is compatible with TensorRT 10.1.0.</p>
-<p>To use the TensorRT provider, you need to have TensorRT installed on your system.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install tensorrt<span style="color:#f92672">==</span>10.1.0 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            tensorrt-cu12<span style="color:#f92672">==</span>10.1.0 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            tensorrt-cu12-bindings<span style="color:#f92672">==</span>10.1.0 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            tensorrt-cu12-libs<span style="color:#f92672">==</span>10.1.0
-</span></span></code></pre></div><p>Next you need to export library path to include the TensorRT library.</p>
+<p>`</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre tabindex="0"><code>
+
+
+Using ONNX Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.
+
+We have one more trick up our sleeve.
+
+### 📊 ONNX Runtime on TensorRT
+Similar to the CUDA provider, we have the TensorRT provider on ONNX Runtime. This lets us run the model using the TensorRT high performance inference engine by NVIDIA.
+
+From the [compatibility matrix](https://onnxruntime.ai/docs/execution-providers/TensorRT-ExecutionProvider.html#requirements), we can see that `onnxruntime-gpu==1.19.2` is compatible with TensorRT 10.1.0.
+
+To use the TensorRT provider, you need to have TensorRT installed on your system.
+
+```bash
+pip install tensorrt==10.1.0 \
+            tensorrt-cu12==10.1.0 \
+            tensorrt-cu12-bindings==10.1.0 \
+            tensorrt-cu12-libs==10.1.0
+</code></pre><p>Next you need to export library path to include the TensorRT library.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export LD_LIBRARY_PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/python3.11/site-packages/tensorrt_libs:</span>$LD_LIBRARY_PATH<span style="color:#e6db74">&#34;</span>
 </span></span></code></pre></div><p>Replace the <code>/home/dnth/mambaforge-pypy3/envs/supercharge_timm_tensorrt/python3.11/site-packages/tensorrt_libs</code> with the path to your TensorRT library.</p>
 <p>Otherwise you&rsquo;ll encounter the following error:</p>
@@ -1367,7 +1381,7 @@ I hope this has been helpful. If you&rsquo;d like to find out how to deploy this
         
         
         <li>
-            <a href="whatsapp://send?text=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20optimize%20PyTorch%20image%20models%20using%20ONNX%20Runtime%20and%20TensorRT%2c%20achieving%20up%20to%208x%20faster%20inference%20speeds%20for%20real-time%20applications.%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_your_pytorch_image_models%2f%0a" target="_blank" aria-label="Share on WhatsApp"
+            <a href="whatsapp://send?text=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aSupercharge%20your%20PyTorch%20image%20models%20with%20ONNX%20Runtime%20and%20TensorRT.%20Learn%20step-by-step%20techniques%20to%20achieve%20up%20to%208x%20faster%20inference%20speeds%2c%20enabling%20real-time%20performance%20for%20computer%20vision%20applications.%20Optimize%20TIMM%20models%20for%20deployment%20using%20advanced%20acceleration%20methods.%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_your_pytorch_image_models%2f%0a" target="_blank" aria-label="Share on WhatsApp"
                 class="share-btn whatsapp">
                 <svg
    width="6.0324998mm"
@@ -1422,7 +1436,7 @@ I hope this has been helpful. If you&rsquo;d like to find out how to deploy this
         
         
         <li>
-            <a href="mailto:?subject=Dickson%20Neoh%20-%20Personal%20Portfolio - Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations.&amp;body=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aLearn%20how%20to%20optimize%20PyTorch%20image%20models%20using%20ONNX%20Runtime%20and%20TensorRT%2c%20achieving%20up%20to%208x%20faster%20inference%20speeds%20for%20real-time%20applications.%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_your_pytorch_image_models%2f%0a" target="_blank"
+            <a href="mailto:?subject=Dickson%20Neoh%20-%20Personal%20Portfolio - Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations.&amp;body=Supercharge%20Your%20PyTorch%20Image%20Models%3a%20Bag%20of%20Tricks%20to%208x%20Faster%20Inference%20with%20ONNX%20Runtime%20%26%20Optimizations%2c%20by%20Dickson%20Neoh%20-%20Personal%20Portfolio%0aSupercharge%20your%20PyTorch%20image%20models%20with%20ONNX%20Runtime%20and%20TensorRT.%20Learn%20step-by-step%20techniques%20to%20achieve%20up%20to%208x%20faster%20inference%20speeds%2c%20enabling%20real-time%20performance%20for%20computer%20vision%20applications.%20Optimize%20TIMM%20models%20for%20deployment%20using%20advanced%20acceleration%20methods.%0a%0ahttp%3a%2f%2flocalhost%3a1313%2fportfolio%2fsupercharge_your_pytorch_image_models%2f%0a" target="_blank"
                 class="share-btn email" aria-label="Share via Email">
                 <svg
    width="6.3499999mm"

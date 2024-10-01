@@ -7,7 +7,7 @@ tags: ["TIMM", "ONNX", "TensorRT", "ImageNet", "Hugging Face", "PyTorch"]
 categories: ["inference", "deployment", "image-classification", "optimization"]
 toc: true
 socialshare: true
-description: Learn how to optimize PyTorch image models using ONNX Runtime and TensorRT, achieving up to 8x faster inference speeds for real-time applications.
+description: Supercharge your PyTorch image models with ONNX Runtime and TensorRT. Learn step-by-step techniques to achieve up to 8x faster inference speeds, enabling real-time performance for computer vision applications. Optimize TIMM models for deployment using advanced acceleration methods.
 images: 
 - images/portfolio/supercharge_your_pytorch_image_models/post_image.png
 ---
@@ -496,7 +496,7 @@ def transforms_cupy(image: PIL.Image.Image):
 
 With CuPy, we got a tiny bit of performance improvement:
 
-```
+`
 >>> Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43
 ```
 
