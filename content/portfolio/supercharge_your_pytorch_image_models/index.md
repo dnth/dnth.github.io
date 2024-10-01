@@ -59,7 +59,7 @@ Are you non-technical?
 
 Listen to this 10 mins conversation podcast that breaks down the content of this post in an ELI5 manner.
 
-{{<audio src="notebooklm.wav" title="Supercharge Your PyTorch Image Models" author="NotebookLM">}}
+{{<audio src="notebooklm.wav" title="Deep Dive - Explain Like I'm 5" author="Supercharge Your PyTorch Image Models">}}
 
 Note: Conversation generated using NotebookLM.
 
