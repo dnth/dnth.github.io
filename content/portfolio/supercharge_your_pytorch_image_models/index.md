@@ -4,7 +4,7 @@ date: 2024-09-30T09:00:00+08:00
 featureImage: images/portfolio/supercharge_your_pytorch_image_models/thumbnail.gif
 postImage: images/portfolio/supercharge_your_pytorch_image_models/post_image.png
 tags: ["TIMM", "ONNX", "TensorRT", "ImageNet", "Hugging Face", "PyTorch"]
-categories: ["inference", "deployment", "image-classification", "optimization"]
+categories: ["inference", "deployment", "image-classification", "optimization", "edge-ai"]
 toc: true
 socialshare: true
 description: Supercharge your PyTorch image models with ONNX Runtime and TensorRT. Learn step-by-step techniques to achieve up to 8x faster inference speeds, enabling real-time performance for computer vision applications. Optimize TIMM models for deployment using advanced acceleration methods.
