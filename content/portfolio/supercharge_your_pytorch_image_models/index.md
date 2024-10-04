@@ -3,7 +3,7 @@ title: "Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Infere
 date: 2024-09-30T09:00:00+08:00
 featureImage: images/portfolio/supercharge_your_pytorch_image_models/thumbnail.gif
 postImage: images/portfolio/supercharge_your_pytorch_image_models/post_image.png
-tags: ["TIMM", "ONNX", "TensorRT", "ImageNet", "Hugging Face", "PyTorch"]
+tags: ["TIMM", "ONNX", "TensorRT", "ImageNet", "Hugging Face", "PyTorch", "edge-ai"]
 categories: ["inference", "deployment", "image-classification", "optimization", "edge-ai"]
 toc: true
 socialshare: true
@@ -243,6 +243,7 @@ torch.onnx.export(
 
 ```
 
+
 {{< notice note >}}
 Here are the descriptions for the arguments you can pass to the `torch.onnx.export` function:
 - `torch.randn(1, 3, 448, 448)`: A dummy input tensor with the appropriate shape.
@@ -252,6 +253,7 @@ Here are the descriptions for the arguments you can pass to the `torch.onnx.expo
 - `output_names=['output']`: The name of the output tensor.
 - `dynamic_axes={'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}}`: Dynamic axes for the input and output tensors.
 ```
+
 {{< /notice >}}
 
 If there are no errors, you will end up with a file called `eva02_large_patch14_448.onnx` in your working directory.

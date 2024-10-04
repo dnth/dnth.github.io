@@ -53,6 +53,9 @@
     <loc>http://localhost:1313/tags/academic/</loc>
     <lastmod>2023-11-17T12:00:00+08:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2023-11-17T12:00:00+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/categories/career-development/</loc>
     <lastmod>2023-11-17T12:00:00+08:00</lastmod>
   </url><url>
@@ -66,9 +69,6 @@
     <lastmod>2023-11-17T12:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/personal-growth/</loc>
-    <lastmod>2023-11-17T12:00:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/</loc>
     <lastmod>2023-11-17T12:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/research/</loc>
