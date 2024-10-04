@@ -496,7 +496,7 @@ def transforms_cupy(image: PIL.Image.Image):
 
 With CuPy, we got a tiny bit of performance improvement:
 
-`
+```
 >>> Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43
 ```
 
