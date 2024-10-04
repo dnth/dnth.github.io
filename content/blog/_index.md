@@ -1,3 +1,3 @@
 ---
-title: Recent Contents
+title: Blogs
 ---
