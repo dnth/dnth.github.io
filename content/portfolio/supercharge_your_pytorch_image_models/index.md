@@ -54,6 +54,8 @@ You can find the code for this post on my GitHub repository [here](https://githu
 {{< /notice >}}
 
 
+
+
 {{< notice info >}}
 Are you non-technical?
 
@@ -66,7 +68,7 @@ Note: Conversation generated using NotebookLM.
 
 {{< /notice >}}
 
-If you're technical, then let's dive in! 🏊‍♂️
+If you're technical, and this sounds exciting, then let's dive in! 🏊‍♂️
 
 ### 💻 Installation
 Let's begin with the installation.
@@ -764,8 +766,6 @@ The video inference code is also provided in the [repo](https://github.com/dnth/
 
 In this post we have seen how we can supercharge our TIMM models for faster inference using ONNX Runtime and TensorRT.
 
-
-
 {{< notice tip >}}
 In this post you've learned how to:
 - 📥 Load any pre-trained model from [TIMM](https://huggingface.co/docs/timm/index)
@@ -779,12 +779,18 @@ You can find the code for this post on my GitHub repository [here](https://githu
 
 {{< /notice >}}
 
+
+{{< figure_autoresize src="show_me_the_model.jpg" width="400" align="center" >}}
+I uploaded the final model to Hugging Face. So if you want to try it out, you can get it [here](https://huggingface.co/dnth/eva02_large_patch14_448/blob/main/merged_model_compose.onnx).
+
+{{< notice note >}}
 There are other things that we've not explored in this post that will likely improve the inference speed. For example,
 - Quantization - reducing the precision of the model weights from FP32 to FP8, INT8 or even lower.
 - Pruning and Sparsity - removing the redundant components of the model to reduce the model size and improve the inference speed.
 - Knowledge distillation - training a smaller and faster model to mimic the original model.
 
 I will leave these as an exercise for the reader. And let me know if you'd like me to write a follow-up post on these topics.
+{{< /notice >}}
 
 Thank you for reading!
 I hope this has been helpful. If you'd like to find out how to deploy this model on Android check out the following post.

@@ -15,5 +15,12 @@
       <guid>http://localhost:1313/portfolio/supercharging_yolov5_180_fps_cpu/</guid>
       <description>🔥 Motivation After months of searching, you&amp;rsquo;ve finally found the one.&#xA;The one object detection library that just works. No installation hassle, no package version mismatch, and no CUDA errors.&#xA;I&amp;rsquo;m talking about the amazingly engineered YOLOv5 object detection library by Ultralytics.&#xA;Elated, you quickly find an interesting dataset from Roboflow and finally trained a state-of-the-art (SOTA) YOLOv5 model to detect firearms from image streams.&#xA;You ran through a quick checklist &amp;ndash;</description>
     </item>
+    <item>
+      <title>Faster than GPU: How to 10x your Object Detection Model and Deploy on CPU at 50&#43; FPS</title>
+      <link>http://localhost:1313/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/</link>
+      <pubDate>Sat, 30 Apr 2022 15:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/</guid>
+      <description>🚦 Motivation tip&#xA;By the end of this post, you will learn how to:&#xA;Train state-of-the-art YOLOX model with your own data. Convert the YOLOX PyTorch model into ONNX and OpenVINO IR format. Run quantization algorithm to 10x your model&amp;rsquo;s inference speed. P/S: The final model runs faster on the CPU than the GPU! 😱&#xA;Deep learning (DL), seems to be the magic word that makes anything mundane cool again. We find them everywhere - in news reports, blog posts, articles, research papers, advertisements, and even baby books.</description>
+    </item>
   </channel>
 </rss>

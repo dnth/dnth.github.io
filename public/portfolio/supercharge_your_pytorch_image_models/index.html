@@ -388,7 +388,7 @@ In many cases, you can pick one or the other:</p>
     </audio>
 </div>
 <p>Note: Conversation generated using NotebookLM.</p></div>
-<p>If you&rsquo;re technical, then let&rsquo;s dive in! 🏊‍♂️</p>
+<p>If you&rsquo;re technical, and this sounds exciting, then let&rsquo;s dive in! 🏊‍♂️</p>
 <h3 id="-installation">💻 Installation</h3>
 <p>Let&rsquo;s begin with the installation.
 I will be using a <code>conda</code> environment to install the packages required for this post. Feel free to the environment of your choice.</p>
@@ -960,13 +960,37 @@ This means that the model can take arbitrary input of size height, width and bat
 <li>🧠 Bake the pre-processing into the ONNX model</li>
 </ul>
 <p>You can find the code for this post on my GitHub repository <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
-<p>There are other things that we&rsquo;ve not explored in this post that will likely improve the inference speed. For example,</p>
+<p>
+
+
+
+
+<figure style="text-align: center;">
+    
+    <a href="/portfolio/supercharge_your_pytorch_image_models/show_me_the_model.jpg" class="image-popup">
+        <img src="/portfolio/supercharge_your_pytorch_image_models/show_me_the_model.jpg" 
+             srcset="/portfolio/supercharge_your_pytorch_image_models/show_me_the_model_hu16708451745035739280.jpg 360w, /portfolio/supercharge_your_pytorch_image_models/show_me_the_model_hu10630491095220793640.jpg 720w, /portfolio/supercharge_your_pytorch_image_models/show_me_the_model_hu16693514688942211099.jpg 1920w" 
+             sizes="(max-width: 400) 100vw, 400"
+             
+             width="400" 
+             
+             style="max-width: 100%; height: auto;"/>
+    </a>
+    
+</figure>
+
+
+I uploaded the final model to Hugging Face. So if you want to try it out, you can get it <a href="https://huggingface.co/dnth/eva02_large_patch14_448/blob/main/merged_model_compose.onnx" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<div class="notice note" >
+        <p class="first notice-title"><span class="icon-notice baseline"><svg>
+                    <use href="#note-notice"></use>
+                </svg></span>note</p><p>There are other things that we&rsquo;ve not explored in this post that will likely improve the inference speed. For example,</p>
 <ul>
 <li>Quantization - reducing the precision of the model weights from FP32 to FP8, INT8 or even lower.</li>
 <li>Pruning and Sparsity - removing the redundant components of the model to reduce the model size and improve the inference speed.</li>
 <li>Knowledge distillation - training a smaller and faster model to mimic the original model.</li>
 </ul>
-<p>I will leave these as an exercise for the reader. And let me know if you&rsquo;d like me to write a follow-up post on these topics.</p>
+<p>I will leave these as an exercise for the reader. And let me know if you&rsquo;d like me to write a follow-up post on these topics.</p></div>
 <p>Thank you for reading!
 I hope this has been helpful. If you&rsquo;d like to find out how to deploy this model on Android check out the following post.</p>
 
