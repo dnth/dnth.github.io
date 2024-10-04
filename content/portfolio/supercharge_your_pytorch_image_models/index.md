@@ -3,7 +3,7 @@ title: "Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Infere
 date: 2024-09-30T09:00:00+08:00
 featureImage: images/portfolio/supercharge_your_pytorch_image_models/thumbnail.gif
 postImage: images/portfolio/supercharge_your_pytorch_image_models/post_image.png
-tags: ["TIMM", "ONNX", "TensorRT", "ImageNet", "Hugging Face", "PyTorch", "edge-ai"]
+tags: ["TIMM", "ONNX", "TensorRT", "ImageNet", "Hugging Face", "PyTorch"]
 categories: ["inference", "deployment", "image-classification", "optimization", "edge-ai"]
 toc: true
 socialshare: true

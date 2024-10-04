@@ -3,8 +3,8 @@ title: "Supercharging YOLOv5: How I Got 182.4 FPS Inference Without a GPU"
 date: 2022-06-07T11:00:15+08:00
 featureImage: images/portfolio/supercharging_yolov5/thumbnail.gif
 postImage: images/portfolio/supercharging_yolov5/post_image.png
-tags: ["DeepSparse", "ONNX", "YOLOv5", "real-time", "optimization", "pistol"]
-categories: ["deployment", "object-detection", "modeling"]
+tags: ["DeepSparse", "ONNX", "YOLOv5", "PyTorch"]
+categories: ["deployment", "object-detection", "modeling", "optimization", "pruning", "sparsification", "quantization"]
 toc: true
 socialshare: true
 description: "Learn the tips and tricks to accelerate YOLOv5 inference up to 180+ FPS on a CPU! For free!"
