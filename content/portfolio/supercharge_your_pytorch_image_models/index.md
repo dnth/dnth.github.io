@@ -790,6 +790,13 @@ You can find the code for this post on my GitHub repository [here](https://githu
 {{< figure_autoresize src="show_me_the_model.jpg" width="400" align="center" >}}
 I uploaded the final model to Hugging Face. So if you want to try it out, you can get it [here](https://huggingface.co/dnth/eva02_large_patch14_448/blob/main/merged_model_compose.onnx).
 
+Or simply check out the Hugging Face Spaces demo below.
+<iframe
+	src="https://dnth-eva02-large-patch14-448.hf.space"
+	frameborder="0"
+	width="700"
+	height="900"
+></iframe>
 
 
 {{< notice note >}}
