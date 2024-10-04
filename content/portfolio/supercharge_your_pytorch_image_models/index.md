@@ -248,14 +248,17 @@ torch.onnx.export(
 
 {{< notice note >}}
 Here are the descriptions for the arguments you can pass to the `torch.onnx.export` function:
-- `torch.randn(1, 3, 448, 448)`: A dummy input tensor with the appropriate shape.
-- `export_params=True`: Whether to export the model parameters.
-- `do_constant_folding=True`: Whether to do constant folding for optimization.
-- `input_names=['input']`: The name of the input tensor.
-- `output_names=['output']`: The name of the output tensor.
-- `dynamic_axes={'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}}`: Dynamic axes for the input and output tensors.
-```
 
+{{< table >}}
+| Parameter | Description |
+|----------|-------------|
+| `torch.randn(1, 3, 448, 448)` | A dummy input tensor with the appropriate shape |
+| `export_params` | Whether to export the model parameters |
+| `do_constant_folding` | Whether to do constant folding for optimization |
+| `input_names` | The name of the input node |
+| `output_names` | The name of the output node |
+| `dynamic_axes` | Dynamic axes for the input and output nodes |
+{{< /table >}}
 {{< /notice >}}
 
 If there are no errors, you will end up with a file called `eva02_large_patch14_448.onnx` in your working directory.
@@ -566,17 +569,21 @@ session = ort.InferenceSession(onnx_filename, providers=providers)
 The rest of the code is the same as the CUDA inference.
 
 {{< notice note >}}
-Here are the descriptions for the arguments you can pass to the `TensorrtExecutionProvider`:
-- `device_id`: `0` - The GPU device ID to use. I'm using the first GPU in the system.
-- `trt_max_workspace_size`: `8589934592` - The maximum workspace size for TensorRT in bytes. Here, it's set to 8GB, which allows TensorRT to use up to 8GB of GPU memory for its operations.
-- `trt_fp16_enable`: `True` - Enables FP16 (half-precision) mode. Significantly speeds up inference on supported GPUs while reducing memory usage.
-- `trt_engine_cache_enable`: `True` - Enables caching of TensorRT engines. Speeds up subsequent runs by avoiding engine rebuilding.
-- `trt_engine_cache_path`: `./trt_cache` - Specifies the directory where TensorRT engine cache files will be stored.
-- `trt_force_sequential_engine_build`: False - Allows parallel building of TensorRT engines for different subgraphs.
-- `trt_max_partition_iterations`: `10000` - Sets the maximum number of iterations for TensorRT to attempt partitioning the graph.
-- `trt_min_subgraph_size`: `1` - Specifies the minimum number of nodes required for a subgraph to be considered for conversion to TensorRT.
-- `trt_builder_optimization_level`: `5` - Sets the optimization level for the TensorRT builder. Level 5 is the highest optimization level, which can result in longer build times but potentially better performance.
-- `trt_timing_cache_enable`: `True` - Enables the timing cache. Helps speed up engine building by reusing layer timing information from previous builds.
+Here are the parameters and description for the TensorRT provider:
+{{< table >}}
+| Parameter | Description |
+|--------|-------------|
+| `device_id` | The GPU device ID to use. Using the first GPU in the system. |
+| `trt_max_workspace_size` | Maximum workspace size for TensorRT in bytes (8GB). Allows TensorRT to use up to 8GB of GPU memory for operations. |
+| `trt_fp16_enable` | Enables FP16 (half-precision) mode. Speeds up inference on supported GPUs while reducing memory usage. |
+| `trt_engine_cache_enable` | Enables caching of TensorRT engines. Speeds up subsequent runs by avoiding engine rebuilding. |
+| `trt_engine_cache_path` | Directory where TensorRT engine cache files will be stored. |
+| `trt_force_sequential_engine_build` | Allows parallel building of TensorRT engines for different subgraphs. |
+| `trt_max_partition_iterations` | Maximum number of iterations for TensorRT to attempt partitioning the graph. |
+| `trt_min_subgraph_size` | Minimum number of nodes required for a subgraph to be considered for conversion to TensorRT. |
+| `trt_builder_optimization_level` | Optimization level for the TensorRT builder. Level 5 is highest, can result in longer build times but potentially better performance. |
+| `trt_timing_cache_enable` | Enables timing cache. Helps speed up engine building by reusing layer timing information from previous builds. |
+{{< /table >}}
 {{< /notice >}}
 
 Refer to the [TensorRT ExecutionProvider documentation](https://onnxruntime.ai/docs/execution-providers/TensorRT-ExecutionProvider.html) for more details on the parameters.
@@ -782,6 +789,8 @@ You can find the code for this post on my GitHub repository [here](https://githu
 
 {{< figure_autoresize src="show_me_the_model.jpg" width="400" align="center" >}}
 I uploaded the final model to Hugging Face. So if you want to try it out, you can get it [here](https://huggingface.co/dnth/eva02_large_patch14_448/blob/main/merged_model_compose.onnx).
+
+
 
 {{< notice note >}}
 There are other things that we've not explored in this post that will likely improve the inference speed. For example,
