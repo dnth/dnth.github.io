@@ -1,7 +1,16 @@
 ---
 enable: true
-topTitle: A collection of my projects and technical writings
+topTitle: A collection of my finest projects
 title: >
-  ## Recent projects
+  ## Featured projects
+
+projects:
+  - url: /portfolio/supercharge_your_pytorch_image_models
+  - url: /portfolio/pytorch_at_the_edge_timm_torchscript_flutter
+  - url: /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu
+  - url: /portfolio/supercharging_yolov5_180_fps_cpu
+  - url: /portfolio/bringing_high_quality_image_models_to_mobile
+  - url: /portfolio/how_to_deploy_od_models_on_android_with_flutter
+
 
 buttonTarget: portfolio
