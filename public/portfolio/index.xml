@@ -23,6 +23,13 @@
       <description>🌟 Motivation For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%.&#xA;Why not?&#xA;This is the after all the juiciest part of the job. &amp;ldquo;Solving&amp;rdquo; one dataset after another, it may seem like anything around you can be conquered with a simple model.fit.&#xA;That was me two years ago.&#xA;The naive version of me thought that was all about it with machine learning (ML).</description>
     </item>
     <item>
+      <title>Clean Up Your Digital Life: How I Found 1929 Fully Identical Images, Dark, Bright and Blurry Shots in Minutes, For Free.</title>
+      <link>http://localhost:1313/portfolio/clean_up_your_digital_life/</link>
+      <pubDate>Thu, 23 Feb 2023 11:00:15 +0800</pubDate>
+      <guid>http://localhost:1313/portfolio/clean_up_your_digital_life/</guid>
+      <description>✅ Motivation In today&amp;rsquo;s world of selfies and Instagram, we all take tons of photos on our phones, cameras, and other gadgets.&#xA;But let&amp;rsquo;s be real, it&amp;rsquo;s easy for our photo collections to become a chaotic mess, making it impossible to find that one special memory.&#xA;I mean, I&amp;rsquo;ve got gigabytes of photos on my Google Photo app filled with dark shots, overly exposed shots, blurry shots, and tons of duplicate stills.</description>
+    </item>
+    <item>
       <title>PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter</title>
       <link>http://localhost:1313/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</link>
       <pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate>
