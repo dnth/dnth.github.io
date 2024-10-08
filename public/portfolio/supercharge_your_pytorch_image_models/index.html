@@ -146,7 +146,7 @@
         <i class="fa fa-calendar"></i> &ensp;
         September 30, 2024 &ensp; &ensp;
         <i class="fa fa-clock-o"></i> &ensp;
-        16 mins read
+        15 mins read
       </div>
       
         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
@@ -494,12 +494,49 @@ Check out the model on the <code>timm</code> leaderboard <a href="https://huggin
 
 
 <p>Top 5 predictions:</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; espresso: 26.78%
-&gt;&gt;&gt; eggnog: 2.88%
-&gt;&gt;&gt; cup: 2.60%
-&gt;&gt;&gt; chocolate sauce, chocolate syrup: 2.39%
-&gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.48%
-</code></pre><p>Looks like the model is doing it&rsquo;s job.</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>espresso:&nbsp;26.78%</li>
+        
+        
+        <li>eggnog:&nbsp;2.88%</li>
+        
+        
+        <li>cup:&nbsp;2.60%</li>
+        
+        
+        <li>chocolate&nbsp;sauce,&nbsp;chocolate&nbsp;syrup:&nbsp;2.39%</li>
+        
+        
+        <li>bakery,&nbsp;bakeshop,&nbsp;bakehouse:&nbsp;1.48%</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>Looks like the model is doing it&rsquo;s job.</p>
 <p>Now let&rsquo;s benchmark the inference latency.</p>
 <h3 id="-baseline-latency">⏱️ Baseline Latency</h3>
 <p>We will run the inference 10 times and average the inference time.</p>
@@ -527,9 +564,40 @@ Check out the model on the <code>timm</code> leaderboard <a href="https://huggin
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available():
 </span></span><span style="display:flex;"><span>    run_benchmark(model, torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span>))
 </span></span></code></pre></div><p>Alright the benchmarks are in</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; PyTorch model on cpu: 1584.379 ms per image, FPS: 0.63
-&gt;&gt;&gt; PyTorch model on cuda: 77.226 ms per image, FPS: 12.95
-</code></pre><p>Although the performance on the GPU is not bad, 12+ FPS is still not fast enough for real-time inference.
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      Baseline Latency: PyTorch model on cpu and cuda
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>PyTorch&nbsp;model&nbsp;on&nbsp;cpu:&nbsp;1584.379&nbsp;ms&nbsp;per&nbsp;image,&nbsp;FPS:&nbsp;0.63</li>
+        
+        
+        <li>PyTorch&nbsp;model&nbsp;on&nbsp;cuda:&nbsp;77.226&nbsp;ms&nbsp;per&nbsp;image,&nbsp;FPS:&nbsp;12.95</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>Although the performance on the GPU is not bad, 12+ FPS is still not fast enough for real-time inference.
 On my reasonably modern CPU, it took over 1.5 seconds to run an inference.</p>
 <p>Definitely not self-driving car material 🤷</p>
 <div class="notice note" >
@@ -574,7 +642,7 @@ On my reasonably modern CPU, it took over 1.5 seconds to run an inference.</p>
                     <use href="#note-notice"></use>
                 </svg></span>note</p><p>Here are the descriptions for the arguments you can pass to the <code>torch.onnx.export</code> function:</p>
 <div class="data-table" role="region" tabindex="0" >
-  <table class="table %!s(<nil>)" id="432756819">
+  <table class="table %!s(<nil>)" id="948537261">
 <thead>
 <tr>
 <th>Parameter</th>
@@ -623,13 +691,64 @@ This is great for deployment and for running inference in environments where PyT
 To run the inference using <code>onnxruntime</code>, we need to replicate the PyTorch transforms.
 To find out the transforms that was used, you can print out the <code>transforms</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(transforms)
-</span></span></code></pre></div><pre tabindex="0"><code>&gt;&gt;&gt; Compose(
-&gt;&gt;&gt;     Resize(size=(448, 448), interpolation=bicubic, max_size=None, antialias=True)
-&gt;&gt;&gt;     CenterCrop(size=(448, 448))
-&gt;&gt;&gt;     MaybeToTensor()
-&gt;&gt;&gt;     Normalize(mean=tensor([0.4815, 0.4578, 0.4082]), std=tensor([0.2686, 0.2613, 0.2758]))
-&gt;&gt;&gt; )
-</code></pre><p>Now let&rsquo;s replicate the transforms using <code>numpy</code>.</p>
+</span></span></code></pre></div><div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>Compose(</li>
+        
+        
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resize(size=(448,&nbsp;448),&nbsp;</li>
+        
+        
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interpolation=bicubic,&nbsp;</li>
+        
+        
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_size=None,&nbsp;</li>
+        
+        
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;antialias=True)</li>
+        
+        
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CenterCrop(size=(448,&nbsp;448))</li>
+        
+        
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaybeToTensor()</li>
+        
+        
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normalize(mean=tensor([0.4815,&nbsp;0.4578,&nbsp;0.4082]),&nbsp;</li>
+        
+        
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std=tensor([0.2686,&nbsp;0.2613,&nbsp;0.2758]))</li>
+        
+        
+        <li>)</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>Now let&rsquo;s replicate the transforms using <code>numpy</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transforms_numpy</span>(image: PIL<span style="color:#f92672">.</span>Image<span style="color:#f92672">.</span>Image):
 </span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#39;RGB&#39;</span>)
 </span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>resize((<span style="color:#ae81ff">448</span>, <span style="color:#ae81ff">448</span>), Image<span style="color:#f92672">.</span>BICUBIC)
@@ -659,15 +778,78 @@ To find out the transforms that was used, you can print out the <code>transforms
 </span></span><span style="display:flex;"><span>output <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>run([output_name], 
 </span></span><span style="display:flex;"><span>                    {input_name: transforms_numpy(img)})[<span style="color:#ae81ff">0</span>]</span></span></code></pre></div>
 <p>If we inspect the output shape, we can see that it&rsquo;s the same as the number of classes in the ImageNet dataset.</p>
-<pre tabindex="0"><code>output.shape
-&gt;&gt;&gt; (1, 1000)
-</code></pre><p>And printing the top 5 predictions:</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; espresso: 28.65%
-&gt;&gt;&gt; cup: 2.77%
-&gt;&gt;&gt; eggnog: 2.28%
-&gt;&gt;&gt; chocolate sauce, chocolate syrup: 2.13%
-&gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.42%
-</code></pre><p>We get the same results as the PyTorch model with ONNX Runtime. That&rsquo;s a good sign!</p>
+<p>Let&rsquo;s inspect the <code>output.shape</code>:
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li>(1,&nbsp;1000)</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div></p>
+<p>And printing the top 5 predictions:</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>espresso:&nbsp;28.65%</li>
+        
+        
+        <li>cup:&nbsp;2.77%</li>
+        
+        
+        <li>eggnog:&nbsp;2.28%</li>
+        
+        
+        <li>chocolate&nbsp;sauce,&nbsp;chocolate&nbsp;syrup:&nbsp;2.13%</li>
+        
+        
+        <li>bakery,&nbsp;bakeshop,&nbsp;bakehouse:&nbsp;1.42%</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>We get the same results as the PyTorch model with ONNX Runtime. That&rsquo;s a good sign!</p>
 <p>Now let&rsquo;s benchmark the inference latency on ONNX Runtime with a CPU provider (backend).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
 </span></span><span style="display:flex;"><span>
@@ -682,8 +864,37 @@ To find out the transforms that was used, you can print out the <code>transforms
 </span></span><span style="display:flex;"><span>fps <span style="color:#f92672">=</span> num_images <span style="color:#f92672">/</span> time_taken
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Onnxruntime CPU: </span><span style="color:#e6db74">{</span>ms_per_image<span style="color:#e6db74">:</span><span style="color:#e6db74">.3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> ms per image, FPS: </span><span style="color:#e6db74">{</span>fps<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span></code></pre></div><pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CPU: 2002.446 ms per image, FPS: 0.50
-</code></pre><p>Ouch! That&rsquo;s slower than the PyTorch model. What a bummer!
+</span></span></code></pre></div><div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>Onnxruntime&nbsp;CPU:&nbsp;2002.446&nbsp;ms&nbsp;per&nbsp;image,&nbsp;FPS:&nbsp;0.50</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>Ouch! That&rsquo;s slower than the PyTorch model. What a bummer!
 It may seem like a step back, but we are only getting started.</p>
 <p>Read on.</p>
 <div class="notice info" >
@@ -722,8 +933,37 @@ It may seem like a step back, but we are only getting started.</p>
 </span></span><span style="display:flex;"><span>)</span></span></code></pre></div>
 <p>The rest of the code is the same as the CPU inference.</p>
 <p>Just with one line of code change, the benchmarks are as follows:</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
-</code></pre><p>But that&rsquo;s kinda expected. Running on the GPU, we should expect a speedup.</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>Onnxruntime&nbsp;CUDA&nbsp;numpy&nbsp;transforms:&nbsp;56.430&nbsp;ms&nbsp;per&nbsp;image,&nbsp;FPS:&nbsp;17.72</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>But that&rsquo;s kinda expected. Running on the GPU, we should expect a speedup.</p>
 <div class="notice info" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#info-notice"></use>
@@ -759,8 +999,37 @@ You need to export the library path to include the CUDA library.</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> img_cupy
 </span></span></code></pre></div><p>With CuPy, we got a tiny bit of performance improvement:</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43
-</code></pre><p>Using ONNX Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>Onnxruntime&nbsp;CUDA&nbsp;cupy&nbsp;transforms:&nbsp;54.267&nbsp;ms&nbsp;per&nbsp;image,&nbsp;FPS:&nbsp;18.43</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>Using ONNX Runtime with CUDA is a little better than the PyTorch model on the GPU, but still not fast enough for real-time inference.</p>
 <p>We have one more trick up our sleeve.</p>
 <h3 id="-onnx-runtime-on-tensorrt">📊 ONNX Runtime on TensorRT</h3>
 <p>Similar to the CUDA provider, we have the TensorRT provider on ONNX Runtime. This lets us run the model using the TensorRT high performance inference engine by NVIDIA.</p>
@@ -804,7 +1073,7 @@ You need to export the library path to include the CUDA library.</p>
                     <use href="#note-notice"></use>
                 </svg></span>note</p><p>Here are the parameters and description for the TensorRT provider:</p>
 <div class="data-table" role="region" tabindex="0" >
-  <table class="table %!s(<nil>)" id="491523876">
+  <table class="table %!s(<nil>)" id="361285749">
 <thead>
 <tr>
 <th>Parameter</th>
@@ -857,9 +1126,40 @@ You need to export the library path to include the CUDA library.</p>
 </div></div>
 <p>Refer to the <a href="https://onnxruntime.ai/docs/execution-providers/TensorRT-ExecutionProvider.html" target="_blank" rel="nofollow noopener noreferrer">TensorRT ExecutionProvider documentation</a> for more details on the parameters.</p>
 <p>And now let&rsquo;s run the benchmark:</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; TensorRT + numpy: 18.852 ms per image, FPS: 53.04
-&gt;&gt;&gt; TensorRT + cupy: 16.892 ms per image, FPS: 59.20
-</code></pre><p>Running with TensorRT and cupy give us a 4.5x speedup over the PyTorch model on the GPU and 93x speedup over the PyTorch model on the CPU!</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>TensorRT&nbsp;+&nbsp;numpy:&nbsp;18.852&nbsp;ms&nbsp;per&nbsp;image,&nbsp;FPS:&nbsp;53.04</li>
+        
+        
+        <li>TensorRT&nbsp;+&nbsp;cupy:&nbsp;16.892&nbsp;ms&nbsp;per&nbsp;image,&nbsp;FPS:&nbsp;59.20</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>Running with TensorRT and cupy give us a 4.5x speedup over the PyTorch model on the GPU and 93x speedup over the PyTorch model on the CPU!</p>
 <p>Thank you for reading this far. That&rsquo;s the end of this post.</p>
 <p>Or is it?</p>
 <p>You could stop here and be happy with the results. After all we already got a 93x speedup over the PyTorch model.</p>
@@ -1016,15 +1316,81 @@ This means that the model can take arbitrary input of size height, width and bat
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> img_numpy
 </span></span></code></pre></div><p>Notice we are no longer doing the resize and normalization inside the function. This is because the merged model already includes these operations.</p>
 <p>And the results are in!</p>
-<pre tabindex="0"><code>TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
-</code></pre><p>That&rsquo;s a 8x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>TensorRT&nbsp;with&nbsp;pre-processing:&nbsp;12.875&nbsp;ms&nbsp;per&nbsp;image,&nbsp;FPS:&nbsp;77.67</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>That&rsquo;s a 8x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀</p>
 <p>Let&rsquo;s do a final sanity check on the predictions.</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; espresso: 34.48%
-&gt;&gt;&gt; cup: 2.16%
-&gt;&gt;&gt; chocolate sauce, chocolate syrup: 1.53%
-&gt;&gt;&gt; bakery, bakeshop, bakehouse: 1.01%
-&gt;&gt;&gt; eggnog: 0.98%
-</code></pre><p>Looks like the predictions tally!</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+          <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+        </div>
+        <div class="minimize">
+          <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+        </div>
+        <div class="zoom">
+          <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>espresso:&nbsp;34.48%</li>
+        
+        
+        <li>cup:&nbsp;2.16%</li>
+        
+        
+        <li>chocolate&nbsp;sauce,&nbsp;chocolate&nbsp;syrup:&nbsp;1.53%</li>
+        
+        
+        <li>bakery,&nbsp;bakeshop,&nbsp;bakehouse:&nbsp;1.01%</li>
+        
+        
+        <li>eggnog:&nbsp;0.98%</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+<p>Looks like the predictions tally!</p>
 <div class="notice info" >
         <p class="first notice-title"><span class="icon-notice baseline"><svg>
                     <use href="#info-notice"></use>

@@ -72,6 +72,8 @@ If you're technical, and this sounds exciting, then let's dive in! 🏊‍♂️
 Let's begin with the installation.
 I will be using a `conda` environment to install the packages required for this post. Feel free to the environment of your choice.
 
+
+
 ```bash
 conda create -n supercharge_timm_tensorrt python=3.11
 conda activate supercharge_timm_tensorrt
@@ -141,13 +143,15 @@ for name, prob in zip(class_names, top5_probabilities[0]):
 {{< figure_autoresize src="beignets-task-guide.png" width="400" align="center" >}}
 
 Top 5 predictions:
-```
->>> espresso: 26.78%
->>> eggnog: 2.88%
->>> cup: 2.60%
->>> chocolate sauce, chocolate syrup: 2.39%
->>> bakery, bakeshop, bakehouse: 1.48%
-```
+
+{{< terminal >}}
+espresso: 26.78%
+eggnog: 2.88%
+cup: 2.60%
+chocolate sauce, chocolate syrup: 2.39%
+bakery, bakeshop, bakehouse: 1.48%
+{{< /terminal >}}
+
 Looks like the model is doing it's job. 
 
 Now let's benchmark the inference latency.
@@ -185,10 +189,12 @@ if torch.cuda.is_available():
     run_benchmark(model, torch.device("cuda"))
 ```
 Alright the benchmarks are in
-```
->>> PyTorch model on cpu: 1584.379 ms per image, FPS: 0.63
->>> PyTorch model on cuda: 77.226 ms per image, FPS: 12.95
-```
+
+{{< terminal "Baseline Latency" "PyTorch model on cpu and cuda" >}}
+PyTorch model on cpu: 1584.379 ms per image, FPS: 0.63
+PyTorch model on cuda: 77.226 ms per image, FPS: 12.95
+{{< /terminal >}}
+
 
 Although the performance on the GPU is not bad, 12+ FPS is still not fast enough for real-time inference.
 On my reasonably modern CPU, it took over 1.5 seconds to run an inference. 
@@ -285,14 +291,20 @@ To find out the transforms that was used, you can print out the `transforms`.
 print(transforms)
 ```
 
-```
->>> Compose(
->>>     Resize(size=(448, 448), interpolation=bicubic, max_size=None, antialias=True)
->>>     CenterCrop(size=(448, 448))
->>>     MaybeToTensor()
->>>     Normalize(mean=tensor([0.4815, 0.4578, 0.4082]), std=tensor([0.2686, 0.2613, 0.2758]))
->>> )
-```
+
+{{< terminal >}}
+Compose(
+     Resize(size=(448, 448), 
+            interpolation=bicubic, 
+            max_size=None, 
+            antialias=True)
+     CenterCrop(size=(448, 448))
+     MaybeToTensor()
+     Normalize(mean=tensor([0.4815, 0.4578, 0.4082]), 
+               std=tensor([0.2686, 0.2613, 0.2758]))
+)
+{{< /terminal >}}
+
 
 Now let's replicate the transforms using `numpy`.
 
@@ -334,20 +346,19 @@ output = session.run([output_name],
 
 If we inspect the output shape, we can see that it's the same as the number of classes in the ImageNet dataset.
 
-```
-output.shape
->>> (1, 1000)
-```
+Let's inspect the `output.shape`:
+{{< terminal >}}(1, 1000)
+{{< /terminal >}}
 
 And printing the top 5 predictions:
 
-```
->>> espresso: 28.65%
->>> cup: 2.77%
->>> eggnog: 2.28%
->>> chocolate sauce, chocolate syrup: 2.13%
->>> bakery, bakeshop, bakehouse: 1.42%
-```
+{{< terminal >}}
+espresso: 28.65%
+cup: 2.77%
+eggnog: 2.28%
+chocolate sauce, chocolate syrup: 2.13%
+bakery, bakeshop, bakehouse: 1.42%
+{{< /terminal >}}
 
 We get the same results as the PyTorch model with ONNX Runtime. That's a good sign!
 
@@ -370,11 +381,9 @@ fps = num_images / time_taken
 print(f"Onnxruntime CPU: {ms_per_image:.3f} ms per image, FPS: {fps:.2f}")
 ```
 
-```
->>> Onnxruntime CPU: 2002.446 ms per image, FPS: 0.50
-```
-
-
+{{< terminal >}}
+Onnxruntime CPU: 2002.446 ms per image, FPS: 0.50
+{{< /terminal >}}
 
 Ouch! That's slower than the PyTorch model. What a bummer!
 It may seem like a step back, but we are only getting started.
@@ -440,9 +449,9 @@ The rest of the code is the same as the CPU inference.
 
 Just with one line of code change, the benchmarks are as follows:
 
-```
->>> Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
-```
+{{< terminal >}}
+Onnxruntime CUDA numpy transforms: 56.430 ms per image, FPS: 17.72
+{{< /terminal >}}
 
 But that's kinda expected. Running on the GPU, we should expect a speedup.
 
@@ -501,9 +510,9 @@ def transforms_cupy(image: PIL.Image.Image):
 
 With CuPy, we got a tiny bit of performance improvement:
 
-```
->>> Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43
-```
+{{< terminal >}}
+Onnxruntime CUDA cupy transforms: 54.267 ms per image, FPS: 18.43
+{{< /terminal >}}
 
 
 
@@ -587,10 +596,11 @@ Here are the parameters and description for the TensorRT provider:
 Refer to the [TensorRT ExecutionProvider documentation](https://onnxruntime.ai/docs/execution-providers/TensorRT-ExecutionProvider.html) for more details on the parameters.
 
 And now let's run the benchmark:
-```
->>> TensorRT + numpy: 18.852 ms per image, FPS: 53.04
->>> TensorRT + cupy: 16.892 ms per image, FPS: 59.20
-```
+
+{{< terminal >}}
+TensorRT + numpy: 18.852 ms per image, FPS: 53.04
+TensorRT + cupy: 16.892 ms per image, FPS: 59.20
+{{< /terminal >}}
 
 Running with TensorRT and cupy give us a 4.5x speedup over the PyTorch model on the GPU and 93x speedup over the PyTorch model on the CPU!
 
@@ -734,9 +744,9 @@ Notice we are no longer doing the resize and normalization inside the function. 
 
 And the results are in!
 
-```
+{{< terminal >}}
 TensorRT with pre-processing: 12.875 ms per image, FPS: 77.67
-```
+{{< /terminal >}}
 
 That's a 8x improvement over the original PyTorch model on the GPU and a whopping 123x improvement over the PyTorch model on the CPU! 🚀
 
@@ -745,13 +755,13 @@ That's a 8x improvement over the original PyTorch model on the GPU and a whoppin
 
 Let's do a final sanity check on the predictions.
 
-```
->>> espresso: 34.48%
->>> cup: 2.16%
->>> chocolate sauce, chocolate syrup: 1.53%
->>> bakery, bakeshop, bakehouse: 1.01%
->>> eggnog: 0.98%
-```
+{{< terminal >}}
+espresso: 34.48%
+cup: 2.16%
+chocolate sauce, chocolate syrup: 1.53%
+bakery, bakeshop, bakehouse: 1.01%
+eggnog: 0.98%
+{{< /terminal >}}
 
 Looks like the predictions tally! 
 
