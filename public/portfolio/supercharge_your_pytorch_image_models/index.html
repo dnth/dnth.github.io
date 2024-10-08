@@ -270,9 +270,33 @@ In some domains, a 1-second delay in inference could mean life or death.</p>
 </figure>
 
 <p>I hope that shows how crucial real-time inference is.</p>
-<blockquote class="blockquote">
-  <p class="mb-0">In many high-stake applications, it&rsquo;s not just about being right - it&rsquo;s about being right, right now.</p>
-</blockquote>
+<style>
+    #callout {
+      background: #f0f0f0;
+      padding: 1.5em 1.25em;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20px;
+    }
+    #callout-inner {
+      margin-left: 1em;
+    }
+    @media (max-width: 767px) {
+      #callout {
+      padding: 1.5em 0.75em 1.5em 0.6em;
+      }
+      #callout-inner {
+        margin-left: 0.5em;
+      }
+    }
+  </style>
+  <div id="callout">
+    <div>📌</div>
+    <div id="callout-inner">
+      In many high-stake applications, it&rsquo;s not just about being right - it&rsquo;s about being right, right now.
+    </div>
+  </div>
 <p>Thus, having real-time inference capability is paramount and will determine whether a model gets deployed or not.
 In many cases, you can pick one or the other:</p>
 <ul>
@@ -550,7 +574,7 @@ On my reasonably modern CPU, it took over 1.5 seconds to run an inference.</p>
                     <use href="#note-notice"></use>
                 </svg></span>note</p><p>Here are the descriptions for the arguments you can pass to the <code>torch.onnx.export</code> function:</p>
 <div class="data-table" role="region" tabindex="0" >
-  <table class="table %!s(<nil>)" id="715846923">
+  <table class="table %!s(<nil>)" id="432756819">
 <thead>
 <tr>
 <th>Parameter</th>
@@ -780,7 +804,7 @@ You need to export the library path to include the CUDA library.</p>
                     <use href="#note-notice"></use>
                 </svg></span>note</p><p>Here are the parameters and description for the TensorRT provider:</p>
 <div class="data-table" role="region" tabindex="0" >
-  <table class="table %!s(<nil>)" id="315874962">
+  <table class="table %!s(<nil>)" id="491523876">
 <thead>
 <tr>
 <th>Parameter</th>
@@ -1027,7 +1051,7 @@ This means that the model can take arbitrary input of size height, width and bat
 <li>🧠 Bake the pre-processing into the ONNX model</li>
 </ul>
 <p>You can find the code for this post on my GitHub repository <a href="https://github.com/dnth/supercharge-your-pytorch-image-models-blogpost" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p></div>
-<p>
+
 
 
 
@@ -1047,7 +1071,33 @@ This means that the model can take arbitrary input of size height, width and bat
 </figure>
 
 
-I uploaded the final model to Hugging Face. So if you want to try it out, you can get it <a href="https://huggingface.co/dnth/eva02_large_patch14_448/blob/main/merged_model_compose.onnx" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
+<style>
+    #callout {
+      background: #f0f0f0;
+      padding: 1.5em 1.25em;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20px;
+    }
+    #callout-inner {
+      margin-left: 1em;
+    }
+    @media (max-width: 767px) {
+      #callout {
+      padding: 1.5em 0.75em 1.5em 0.6em;
+      }
+      #callout-inner {
+        margin-left: 0.5em;
+      }
+    }
+  </style>
+  <div id="callout">
+    <div>🤗</div>
+    <div id="callout-inner">
+      I uploaded the final model to Hugging Face. So if you want to try it out, you can get it <a href="https://huggingface.co/dnth/eva02_large_patch14_448/blob/main/merged_model_compose.onnx" target="_blank" rel="nofollow noopener noreferrer">here</a>.
+    </div>
+  </div>
 <p>Or simply check out the Hugging Face Spaces demo below.</p>
 <iframe
 	src="https://dnth-eva02-large-patch14-448.hf.space"

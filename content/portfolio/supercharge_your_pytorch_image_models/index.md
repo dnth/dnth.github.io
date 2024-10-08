@@ -26,9 +26,7 @@ Or if you're lucky, you get a very up-close view of the pavement.
 
 I hope that shows how crucial real-time inference is.
 
-{{% blockquote %}}
-In many high-stake applications, it's not just about being right - it's about being right, right now.
-{{% /blockquote %}}
+{{< callout emoji="📌" text="In many high-stake applications, it's not just about being right - it's about being right, right now." >}}
 
 Thus, having real-time inference capability is paramount and will determine whether a model gets deployed or not. 
 In many cases, you can pick one or the other:
@@ -788,7 +786,12 @@ You can find the code for this post on my GitHub repository [here](https://githu
 
 
 {{< figure_autoresize src="show_me_the_model.jpg" width="400" align="center" >}}
-I uploaded the final model to Hugging Face. So if you want to try it out, you can get it [here](https://huggingface.co/dnth/eva02_large_patch14_448/blob/main/merged_model_compose.onnx).
+
+
+{{< callout emoji="🤗" text="I uploaded the final model to Hugging Face. So if you want to try it out, you can get it [here](https://huggingface.co/dnth/eva02_large_patch14_448/blob/main/merged_model_compose.onnx)." >}}
+
+
+
 
 Or simply check out the Hugging Face Spaces demo below.
 <iframe
