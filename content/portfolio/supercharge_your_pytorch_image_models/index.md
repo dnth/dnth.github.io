@@ -22,7 +22,7 @@ Just one second too late, and you could end up in the clouds 👼👼👼
 
 Or if you're lucky, you get a very up-close view of the pavement.
 
-{{< figure src="banana_peel_robot.gif" width="480" align="center" >}}
+{{< figure src="banana_peel_robot.gif" width="auto" align="center" >}}
 
 I hope that shows how crucial real-time inference is.
 
@@ -190,7 +190,7 @@ if torch.cuda.is_available():
 ```
 Alright the benchmarks are in
 
-{{< terminal "Baseline Latency" "PyTorch model on cpu and cuda" >}}
+{{< terminal >}}
 PyTorch model on cpu: 1584.379 ms per image, FPS: 0.63
 PyTorch model on cuda: 77.226 ms per image, FPS: 12.95
 {{< /terminal >}}
