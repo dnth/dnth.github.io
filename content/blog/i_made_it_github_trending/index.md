@@ -1,7 +1,7 @@
 ---
 title: "I Made It to GitHub Trending - My Open Source Journey"
 date: 2024-11-04T20:48:15+08:00
-featureImage: images/blog/i_made_it_to_github_trending/thumbnail.gif
+featureImage: images/blog/i_made_it_to_github_trending/feature_image.gif
 postImage: images/blog/i_made_it_to_github_trending/post_image.png
 tags: ["open-source", "github-trending"]
 categories: ["open-source"]
