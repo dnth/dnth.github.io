@@ -34,11 +34,12 @@ Check out the project here
 
 ### The Road to Trending
 
-Firstly, I don't think that starting a project with the goal of getting it trending is a good idea. The goal should be much bigger than that. And getting trending is just a bonus.
+Firstly, building a project with the goal of getting it trending is NOT a good starting point. Anchoring your project on an extrinsic reward (getting trending) will not make you happier in the long run and you'll likely to give up when things are not going well.
 
-Plus, putting an expectation on be on trending makes you more likely to get disappointed when it doesn't happen.
+Instead, I recommend starting with a goal that is much bigger than getting trending. Start with a goal to solve a problem, learn something, or build something that you're passionate about.
+This will push you to work on your project for a longer without getting discouraged.
 
-Start with a goal to solve a pain point.
+For me, I started with the goal to make it easier for new developers to get started with computer vision.
 
 #### Solving a Pain Point
 The first step to getting your project trending is to solve a pain point. This is not something that you'll know until you've been working in the field for a while.
