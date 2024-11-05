@@ -22,12 +22,13 @@ On October 28th, 2024 I made it to GitHub Trending! This wasnt something I expec
 But after all the dopamine rush, I'm back to reality and I want to share my journey on how I made it. This is mostly a note to myself and I hope it can help you too.
 
 ### The Project - x.infer
-
-{{< githubRepoCard "dnth/x.infer" >}}
-
 I created a project called x.infer. It's a framework agnostic computer vision inference library. I wanted to make it easier to use different image models without the hassle of switching between frameworks.
 
 That was the initial goal.
+
+Check out the project here
+{{< githubRepoCard "dnth/x.infer" >}}
+
 
 
 

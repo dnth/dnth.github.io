@@ -1,13 +1,14 @@
 {{ $repo := .Get 0 }}
 {{ $apiUrl := printf "https://api.github.com/repos/%s" $repo }}
 {{ $repoData := getJSON $apiUrl }}
+{{ $previewUrl := printf "https://opengraph.githubassets.com/1/%s" $repo }}
 
 <div class="github-repo-card">
-    {{ if $repoData.social_preview_url }}
     <div class="repo-preview">
-        <img src="{{ $repoData.social_preview_url }}" alt="{{ $repo }} preview" class="preview-image">
+        <a href="https://github.com/{{ $repo }}" target="_blank">
+            <img src="{{ $previewUrl }}" alt="{{ $repo }} preview" class="preview-image">
+        </a>
     </div>
-    {{ end }}
     <div class="repo-header">
         <div class="repo-header-left">
             <svg height="16" viewBox="0 0 16 16" width="16" class="repo-icon">
