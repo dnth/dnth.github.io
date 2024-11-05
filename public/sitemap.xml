@@ -2,16 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2024-11-04T20:48:15+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2024-11-04T20:48:15+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-11-04T20:48:15+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/github-trending/</loc>
+    <lastmod>2024-11-04T20:48:15+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/i_made_it_github_trending/</loc>
+    <lastmod>2024-11-04T20:48:15+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/open-source/</loc>
+    <lastmod>2024-11-04T20:48:15+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/open-source/</loc>
+    <lastmod>2024-11-04T20:48:15+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-11-04T20:48:15+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/portfolio/</loc>
     <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/deployment/</loc>
-    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
     <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/edge-ai/</loc>
@@ -41,9 +59,6 @@
     <loc>http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/</loc>
     <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-09-30T09:00:00+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/tensorrt/</loc>
     <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
@@ -51,9 +66,6 @@
     <lastmod>2024-09-30T09:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/academic/</loc>
-    <lastmod>2023-11-17T12:00:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/</loc>
     <lastmod>2023-11-17T12:00:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/career-development/</loc>
@@ -168,9 +180,6 @@
     <lastmod>2022-10-13T20:48:15+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/mlops/</loc>
-    <lastmod>2022-10-13T20:48:15+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/open-source/</loc>
     <lastmod>2022-10-13T20:48:15+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/talk_rsqrd_applications_edge_ai/</loc>
