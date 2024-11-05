@@ -1,15 +1,15 @@
 ---
 title: "I Made It to GitHub Trending - My Open Source Journey"
 date: 2024-11-04T20:48:15+08:00
-featureImage: images/blog/i_made_it_github_trending/thumbnail.gif
-postImage: images/blog/i_made_it_github_trending/post_image.jpeg
+featureImage: images/blog/i_made_it_to_github_trending/thumbnail.gif
+postImage: images/blog/i_made_it_to_github_trending/post_image.png
 tags: ["open-source", "github-trending"]
 categories: ["open-source"]
 toc: true
 socialshare: true
 description: "I made it to GitHub Trending! Here's how I did it."
 images : 
-- images/blog/i_made_it_github_trending/post_image.jpeg
+- images/blog/i_made_it_to_github_trending/post_image.png
 ---
 
 
