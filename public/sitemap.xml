@@ -8,6 +8,9 @@
     <loc>http://localhost:1313/categories/</loc>
     <lastmod>2024-11-04T20:48:15+08:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/computer-vision/</loc>
+    <lastmod>2024-11-04T20:48:15+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/</loc>
     <lastmod>2024-11-04T20:48:15+08:00</lastmod>
   </url><url>
@@ -17,10 +20,10 @@
     <loc>http://localhost:1313/blog/i_made_it_github_trending/</loc>
     <lastmod>2024-11-04T20:48:15+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/open-source/</loc>
+    <loc>http://localhost:1313/categories/learning-in-public/</loc>
     <lastmod>2024-11-04T20:48:15+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/open-source/</loc>
+    <loc>http://localhost:1313/tags/open-source/</loc>
     <lastmod>2024-11-04T20:48:15+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>

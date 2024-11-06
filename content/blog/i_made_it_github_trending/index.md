@@ -73,6 +73,20 @@ This is probably the most important part of the project aside from solving a pai
 
 Nobody would know about what pain point you're solving if you don't tell them in a way that's easy to understand.
 
+I spent a good amount of time writing the README file. I wanted to make sure that it's easy to understand and that it showcases the project's value proposition.
+
+At the very top, I included 4 things:
+1. Shields.io badges to showcase the project's popularity and features.
+2. Simple logo and a short description of what the project does.
+3. A GIF to showcase the project's value proposition.
+4. Quick links.
+
+{{< figure_autoresize src="readme_breakdown.png" width="auto" align="center" >}}
+
+This is the first thing people see when they visit the project. It's important to make it good. Like it or not, people judge a book by its cover. So make it good.
+
+This also conveys that you're serious about your project.
+
 #### 🎥 The Demo Video
 To support the README file, I also created a demo video to showcase the project. This made it even clearer to understand what the project does. 
 
