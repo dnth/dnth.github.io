@@ -1,32 +1,28 @@
 {{ $srcset := "360|(max-width: 37.5em) 360px,720|(min-width: 75em) 720px,1920|(min-width: 112.5em) 1200px" }}
 {{ $srcset := split $srcset "," }}
-{{ $original := (.Page.Resources.ByType "image").GetMatch (printf "*%s" (.Get "src")) }}
-<!-- image -->
-{{ if $original }}
-<figure{{ with .Get "class" }} class="{{.}}"{{ end }}{{ with .Get "align" }} style="text-align: {{.}};"{{ end }}>
-    <!-- image with popup -->
-    <a href="{{ $original.RelPermalink }}" class="image-popup">
-        <img src="{{ $original.RelPermalink }}" 
-             srcset="{{range $i, $set := $srcset}}{{ $setparams := split $set "|" }}{{$sizecondition := index $setparams 0 }}{{ $image := $original.Resize (print $sizecondition "x") }}{{ if $i }}, {{ end }}{{ (print $image.RelPermalink " " $sizecondition "w") }}{{ end }}" 
-             sizes="{{ if eq (.Get "width") "original" }}(max-width: {{ $original.Width }}px) 100vw, {{ $original.Width }}px{{ else }}(max-width: {{ .Get "width" }}) 100vw, {{ .Get "width" }}{{ end }}"
-             {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}
-             {{ if ne (.Get "width") "original" }}{{ with .Get "width" }}width="{{.}}" {{ end }}{{ end }}
-             {{ with .Get "height" }}height="{{.}}" {{ end }}
-             style="max-width: 100%; height: auto;"/>
-    </a>
-    {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
-    <figcaption style="font-size: 0.8em;">{{ if isset .Params "title" }}
-        <h4>{{ .Get "title" }}</h4>{{ end }}
-        {{ if or (.Get "caption") (.Get "attr")}}<p>
-        {{ .Get "caption" }}
-        {{ with .Get "attrlink"}}<a href="{{.}}"> {{ end }}
-            {{ .Get "attr" }}
-        {{ if .Get "attrlink"}}</a> {{ end }}
-        </p> {{ end }}
-    </figcaption>
-    {{ end }}
-</figure>
+{{ $isURL := hasPrefix (.Get "src") "http" }}
+{{ if $isURL }}
+    <!-- For external URLs -->
+    <figure{{ with .Get "class" }} class="{{.}}"{{ end }}{{ with .Get "align" }} style="text-align: {{.}};"{{ end }}>
+        <a href="{{ .Get "src" }}" class="image-popup">
+            <img src="{{ .Get "src" }}"
+                 {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}
+                 {{ if ne (.Get "width") "original" }}{{ with .Get "width" }}width="{{.}}" {{ end }}{{ end }}
+                 {{ with .Get "height" }}height="{{.}}" {{ end }}
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
+        <figcaption style="font-size: 0.8em;">{{ if isset .Params "title" }}
+            <h4>{{ .Get "title" }}</h4>{{ end }}
+            {{ if or (.Get "caption") (.Get "attr")}}<p>
+            {{ .Get "caption" }}
+            {{ with .Get "attrlink"}}<a href="{{.}}"> {{ end }}
+                {{ .Get "attr" }}
+            {{ if .Get "attrlink"}}</a> {{ end }}
+            </p> {{ end }}
+        </figcaption>
+        {{ end }}
+    </figure>
 {{ else }}
-    [{{ .Get "src"}} not found]
+    <!-- ... existing local image code ... -->
 {{ end }}
-<!-- image -->

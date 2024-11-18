@@ -24,7 +24,9 @@ But after all the dopamine rush, I'm back to reality and I want to share my jour
 This is mostly a note to myself and I hope it can help you too.
 
 ### 🚀 The Project
-I created an open source repository called [x.infer](https://github.com/dnth/x.infer). It's a framework agnostic computer vision inference library. 
+I created an open source repository called [x.infer](https://github.com/dnth/x.infer). 
+
+It's a framework agnostic computer vision inference library. 
 I created this to solve my problem of using difference computer vision frameworks without the hassle of rewriting the inference code.
 
 Check out the project here
@@ -49,12 +51,15 @@ It already has support for many popular models and frameworks like Transformers,
 ### 🛣️ The Road to Trending
 
 First a disclaimer, I think that building a project with the goal of getting it trending is NOT a good starting point. 
+
 Anchoring your project on an extrinsic reward (getting trending) will not make you happier in the long run and you'll likely to give up when things are tough.
 
 Instead, start with a goal that is much bigger. 
 
+{{% blockquote %}}
 Start with a goal to solve a problem, learn something, or build something that you're passionate about.
 This will push you to work on your project for a longer without getting discouraged.
+{{% /blockquote %}}
 
 Now let's talk about how I did it.
 
@@ -87,6 +92,31 @@ This is the first thing people see when they visit the project. It's important t
 
 This also conveys that you're serious about your project.
 
+### 🌟 Key Features
+
+Most people are busy, don't make them read a long paragraph to convey something simple. Some better alternatives.
+
+1. Bullet points
+2. GIFs
+3. Videos
+
+For example, I used a GIF to showcase the project's value proposition.
+
+{{< figure_autoresize src="https://raw.githubusercontent.com/dnth/x.infer/refs/heads/main/assets/flowchart.gif" width="auto" align="center" >}}
+
+And then follow up with a bullet point list to showcase the project's key features.
+
+{{% blockquote %}}
+✅ Run inference with >1000+ models in 3 lines of code.\
+✅ List and search models interactively.\
+✅ Launch a Gradio interface to interact with a model.\
+✅ Serve model as a REST API endpoint with Ray Serve and FastAPI.\
+✅ OpenAI chat completions API compatible.\
+✅ Customize and add your own models with minimal code changes.
+{{% /blockquote %}}
+
+
+
 ### 🎥 The Demo Video
 To support the README file, I also created a demo video to showcase the project. This made it even clearer to understand what the project does. 
 
@@ -115,6 +145,8 @@ Once again, I want to emphasize that building a project with the goal of getting
 Start with a goal to solve a problem, learn something, or build something that you're passionate about.
 This will push you to work on your project for a longer without getting discouraged.
 
-Lastly here's a [link to my project](https://github.com/dnth/x.infer) again in case you missed it.
+Lastly here's a [link to my project](https://github.com/dnth/x.infer) again in case you missed it. Drop a star if you like it!
+
+{{< githubRepoCard "dnth/x.infer" >}}
 
 Thank you for reading!
