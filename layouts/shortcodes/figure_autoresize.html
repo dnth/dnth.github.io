@@ -24,5 +24,32 @@
         {{ end }}
     </figure>
 {{ else }}
-    <!-- ... existing local image code ... -->
+    <!-- For local images -->
+    {{ $image := .Page.Resources.GetMatch (.Get "src") }}
+    {{ if not $image }}
+        {{ $image = resources.Get (.Get "src") }}
+    {{ end }}
+    
+    {{ if $image }}
+    <figure{{ with .Get "class" }} class="{{.}}"{{ end }}{{ with .Get "align" }} style="text-align: {{.}};"{{ end }}>
+        <a href="{{ $image.RelPermalink }}" class="image-popup">
+            <img src="{{ $image.RelPermalink }}"
+                 {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}
+                 {{ if ne (.Get "width") "original" }}{{ with .Get "width" }}width="{{.}}" {{ end }}{{ end }}
+                 {{ with .Get "height" }}height="{{.}}" {{ end }}
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
+        <figcaption style="font-size: 0.8em;">{{ if isset .Params "title" }}
+            <h4>{{ .Get "title" }}</h4>{{ end }}
+            {{ if or (.Get "caption") (.Get "attr")}}<p>
+            {{ .Get "caption" }}
+            {{ with .Get "attrlink"}}<a href="{{.}}"> {{ end }}
+                {{ .Get "attr" }}
+            {{ if .Get "attrlink"}}</a> {{ end }}
+            </p> {{ end }}
+        </figcaption>
+        {{ end }}
+    </figure>
+    {{ end }}
 {{ end }}

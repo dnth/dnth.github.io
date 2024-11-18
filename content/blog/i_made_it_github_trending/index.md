@@ -56,19 +56,19 @@ Anchoring your project on an extrinsic reward (getting trending) will not make y
 
 Instead, start with a goal that is much bigger. 
 
-{{% blockquote %}}
-Start with a goal to solve a problem, learn something, or build something that you're passionate about.
-This will push you to work on your project for a longer without getting discouraged.
-{{% /blockquote %}}
+
+{{< callout emoji="💡" text="Start with a goal to solve a problem, learn something, or build something that you're passionate about. This will push you to work on your project for way longer." >}}
 
 Now let's talk about how I did it.
 
 ### 🎯 Solving a Pain Point
-The first step to getting your project trending is to solve a pain point. This is not something that you'll know immediately. 
+The first step to getting your project trending is to solve a pain point. 
 
-But over time, you'll start to notice some patterns.
+{{< figure_autoresize src="meme.webp" width="auto" align="center" >}}
+
+This is not something that you'll know from the get-go. Stick around and you'll start to notice some patterns. And also simple solutions for the problem.
+
 For me, one pattern emerged, there are many frameworks, and each framework has its own way of loading the model, inference, and post-processing, etc. 
-
 Every time I change framework, I have to rewrite the inference code. This is really annoying.
 
 Putting this into a single unified API would be super useful.
@@ -105,6 +105,7 @@ For example, I used a GIF to showcase the project's value proposition.
 {{< figure_autoresize src="https://raw.githubusercontent.com/dnth/x.infer/refs/heads/main/assets/flowchart.gif" width="auto" align="center" >}}
 
 And then follow up with a bullet point list to showcase the project's key features.
+
 
 {{% blockquote %}}
 ✅ Run inference with >1000+ models in 3 lines of code.\
