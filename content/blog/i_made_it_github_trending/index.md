@@ -58,7 +58,7 @@ This will push you to work on your project for a longer without getting discoura
 
 Now let's talk about how I did it.
 
-#### 🎯 Solving a Pain Point
+### 🎯 Solving a Pain Point
 The first step to getting your project trending is to solve a pain point. This is not something that you'll know immediately. 
 
 But over time, you'll start to notice some patterns.
@@ -68,7 +68,7 @@ Every time I change framework, I have to rewrite the inference code. This is rea
 
 Putting this into a single unified API would be super useful.
 
-#### 📝 The README File
+### 📝 The README File
 This is probably the most important part of the project aside from solving a pain point.
 
 Nobody would know about what pain point you're solving if you don't tell them in a way that's easy to understand.
@@ -87,15 +87,34 @@ This is the first thing people see when they visit the project. It's important t
 
 This also conveys that you're serious about your project.
 
-#### 🎥 The Demo Video
+### 🎥 The Demo Video
 To support the README file, I also created a demo video to showcase the project. This made it even clearer to understand what the project does. 
 
 People are visual creatures they said and I find this to be true. And also visuals convey more information than words and in a shorter time.
 
-#### 👥 The Community
+{{< video src="gradio_demo.mp4" alt="Gradio Demo" autoplay="true" loop="true" >}}
+
+Instead of trying to explain the project in words I let the video do the talking. Bonus point, the video is only 20 seconds but it conveys much more information than I could explain in words using a long paragraph. Plus, people are more likely to watch a video than to read a long paragraph.
+
+### 👥 The Community
 
 I did not post about this project on social media in one go. Instead I posted about it in a niche community to get some initial feedback.
 
 I posted on Reddit and got some good feedback.
 
 <blockquote class="reddit-embed-bq" style="height:316px" data-embed-locale="en-EN" data-embed-height="316"><a href="https://www.reddit.com/r/computervision/comments/1gbmuum/xinfer_framework_agnostic_computer_vision/">x.infer - Framework agnostic computer vision inference.</a><br> by<a href="https://www.reddit.com/user/WatercressTraining/">u/WatercressTraining</a> in<a href="https://www.reddit.com/r/computervision/">computervision</a></blockquote><script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
+
+</br>
+
+### 🎁 Wrapping Up
+
+There you have it. These are the steps I took to get my project trending. Hope you'll find it useful.
+
+Once again, I want to emphasize that building a project with the goal of getting it trending is NOT a good starting point. 
+
+Start with a goal to solve a problem, learn something, or build something that you're passionate about.
+This will push you to work on your project for a longer without getting discouraged.
+
+Lastly here's a [link to my project](https://github.com/dnth/x.infer) again in case you missed it.
+
+Thank you for reading!
