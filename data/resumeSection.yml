@@ -82,21 +82,27 @@ experience:
       #### [Visual Layer Inc.](https:/visual-layer.com)
 
       #####  Machine Learning Engineer & Lead Developer Relations. 
-      
-      - Helped maintain the open access visual data curation software - [fastdup](https://github.com/visual-layer/fastdup). Propeled the repo from 731 stars to 1.7k stars in 1.5 years.
 
-      - Answered questions on Slack/Discord, triaged issues on GitHub, and wrote documentation/tutorials.
+      - Integrated and optimized object detection models, OCR models, and Vision Language Models (VLM) into the Visual Layer product, achieving a 10x inference speedup using ONNX, TensorRT, and OpenVINO optimization toolkits.
 
-      - Maintained the company's [blogs](https://medium.com/visual-layer), social media posts, and monthly newsletter.
+      - Architected and implemented a hybrid (vector + text) multimodal image retrieval system, enabling content-based image search capabilities.
 
-      - Integrated object detection models, OCR models, and Vision Language Models into the Visual Layer product.
+      - Developed an active learning framework that reduced customer annotation time by 90% by intelligently selecting the most informative images for annotation.
 
-      - Used optimization toolkits such as ONNX, TensorRT, and OpenVINO to optimize the inference time of the models resulting in a 10x speedup during inference.
+      - Designed and built an internal information retrieval benchmark tool that automatically evaluates VLM performance and selects optimal models for specific datasets.
 
-      - Integrated a multimodal image retrieval system to retrieve images based on their content with existing company tech stack.
+      - Proposed and integrated advanced model serving frameworks including BentoML and Ray Serve to enhance deployment capabilities.
 
-      - Built an active learning framework to select the most informative images for annotation. This resulted in a 90% reduction in annotation time for new customers.
-      
+      - Created an integration between the Visual Layer product and Hugging Face Hub, enabling bidirectional dataset transfers and expanding user capabilities.
+
+      - Developed the Visual Layer SDK to facilitate academic dataset downloads and identification of mislabeled images requiring annotation.
+
+      - Played a key role in maintaining and growing the open-source visual data curation software fastdup, helping increase GitHub stars from 731 to 1.7k in just 1.5 years.
+
+      - Managed comprehensive developer relations by answering technical questions on Slack/Discord, triaging GitHub issues, and creating detailed documentation and tutorials.
+
+      - Maintained the company's content strategy through blogs, social media, and a monthly newsletter reaching 10k+ subscribers with exceptional engagement metrics (50%+ open rate, 7% click rate).
+
     time: March 2023 - February 2025
 
   - content: >
