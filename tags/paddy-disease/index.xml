@@ -1,8 +1,38 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Paddy-Disease on Dickson Neoh - Personal Portfolio</title><link>https://dicksonneoh.com/tags/paddy-disease/</link><description>Recent content in Paddy-Disease on Dickson Neoh - Personal Portfolio</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 16 Mar 2023 11:00:15 +0800</lastBuildDate><atom:link href="https://dicksonneoh.com/tags/paddy-disease/index.xml" rel="self" type="application/rss+xml"/><item><title>Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</title><link>https://dicksonneoh.com/portfolio/bringing_high_quality_image_models_to_mobile/</link><pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate><guid>https://dicksonneoh.com/portfolio/bringing_high_quality_image_models_to_mobile/</guid><description>🌟 Motivation For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%.
-Why not?
-This is the after all the juiciest part of the job. &amp;ldquo;Solving&amp;rdquo; one dataset after another, it may seem like anything around you can be conquered with a simple model.fit.
-That was me two years ago.
-The naive version of me thought that was all about it with machine learning (ML).</description></item><item><title>PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter</title><link>https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</link><pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate><guid>https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</guid><description>🔥 Motivation With various high-level libraries like Keras, Transformer, and Fastai, the barrier to training SOTA models has never been lower.
-On top of that with platforms like Google Colab and Kaggle, pretty much anyone can train a reasonably good model using an old laptop or even a mobile phone (with some patience).
-The question is no longer &amp;ldquo;can we train a SOTA model?&amp;rdquo;, but &amp;ldquo;what happens after that?&amp;rdquo;
-Unfortunately, after getting the model trained, most people wash their hands off at this point claiming their model works.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Paddy-Disease on Dickson Neoh - Personal Portfolio</title><link>https://dicksonneoh.com/tags/paddy-disease/</link><description>Recent content in Paddy-Disease on Dickson Neoh - Personal Portfolio</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 16 Mar 2023 11:00:15 +0800</lastBuildDate><atom:link href="https://dicksonneoh.com/tags/paddy-disease/index.xml" rel="self" type="application/rss+xml"/><item><title>Bringing High-Quality Image Models to Mobile: Hugging Face TIMM Meets Android &amp; iOS</title><link>https://dicksonneoh.com/portfolio/bringing_high_quality_image_models_to_mobile/</link><pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate><guid>https://dicksonneoh.com/portfolio/bringing_high_quality_image_models_to_mobile/</guid><description>&lt;h3 id="-motivation">🌟 Motivation&lt;/h3>
+&lt;p>For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%.&lt;/p>
+&lt;p>Why not?&lt;/p>
+&lt;p>This is the after all the juiciest part of the job. &amp;ldquo;Solving&amp;rdquo; one dataset after another, it may seem like anything around you can be &lt;em>conquered&lt;/em> with a simple &lt;code>model.fit&lt;/code>.&lt;/p>
+&lt;p>That was me two years ago.&lt;/p>
+&lt;p>The naive version of me thought that was all about it with machine learning (ML).
+As long as we have a dataset, ML is the way to go.&lt;/p></description></item><item><title>PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter</title><link>https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</link><pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate><guid>https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</guid><description>&lt;h3 id="-motivation">🔥 Motivation&lt;/h3>
+&lt;!-- You finally got into a Kaggle competition. You found a *getting-started notebook* written by a Kaggle Grandmaster and immediately trained a state-of-the-art (SOTA) image classification model.
+
+After some fiddling, you found yourself in the leaderboard topping the charts with **99.9851247\% accuracy** on the test set 😎!
+
+Proud of your achievement you reward yourself to some rest and a good night's sleep. 
+And tomorrow it's time to move on to the next dataset (again). -->
+&lt;!-- And then..
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ &lt;figure>
+ &lt;a href="https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_sleep.jpg" class="image-popup">
+ &lt;img src="https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_sleep.jpg"
+ 
+ 
+ 
+ style="max-width: 100%; height: auto;"/>
+ &lt;/a>
+ 
+ &lt;/figure>
+ 
+ -->
+&lt;!-- I hope this doesn't keep you awake at night as it did for me. -->
+&lt;p>With various high-level libraries like &lt;a href="https://keras.io/" target="_blank" rel="nofollow noopener noreferrer">Keras&lt;/a>, &lt;a href="https://huggingface.co/docs/transformers/index" target="_blank" rel="nofollow noopener noreferrer">Transformer&lt;/a>, and &lt;a href="https://www.fast.ai/" target="_blank" rel="nofollow noopener noreferrer">Fastai&lt;/a>, the barrier to training SOTA models has never been lower.&lt;/p></description></item></channel></rss>

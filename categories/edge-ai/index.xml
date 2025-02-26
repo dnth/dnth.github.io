@@ -1,7 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Edge-Ai on Dickson Neoh - Personal Portfolio</title><link>https://dicksonneoh.com/categories/edge-ai/</link><description>Recent content in Edge-Ai on Dickson Neoh - Personal Portfolio</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 30 Sep 2024 09:00:00 +0800</lastBuildDate><atom:link href="https://dicksonneoh.com/categories/edge-ai/index.xml" rel="self" type="application/rss+xml"/><item><title>Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime &amp; Optimizations</title><link>https://dicksonneoh.com/portfolio/supercharge_your_pytorch_image_models/</link><pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate><guid>https://dicksonneoh.com/portfolio/supercharge_your_pytorch_image_models/</guid><description>🚀 Motivation Having real-time inference is crucial for computer vision applications. In some domains, a 1-second delay in inference could mean life or death.
-Imagine sitting in a self-driving car and the car takes one full second to detect an oncoming speeding truck.
-Just one second too late, and you could end up in the clouds 👼👼👼
-Or if you&amp;rsquo;re lucky, you get a very up-close view of the pavement.</description></item><item><title>PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter</title><link>https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</link><pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate><guid>https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</guid><description>🔥 Motivation With various high-level libraries like Keras, Transformer, and Fastai, the barrier to training SOTA models has never been lower.
-On top of that with platforms like Google Colab and Kaggle, pretty much anyone can train a reasonably good model using an old laptop or even a mobile phone (with some patience).
-The question is no longer &amp;ldquo;can we train a SOTA model?&amp;rdquo;, but &amp;ldquo;what happens after that?&amp;rdquo;
-Unfortunately, after getting the model trained, most people wash their hands off at this point claiming their model works.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Edge-Ai on Dickson Neoh - Personal Portfolio</title><link>https://dicksonneoh.com/categories/edge-ai/</link><description>Recent content in Edge-Ai on Dickson Neoh - Personal Portfolio</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 30 Sep 2024 09:00:00 +0800</lastBuildDate><atom:link href="https://dicksonneoh.com/categories/edge-ai/index.xml" rel="self" type="application/rss+xml"/><item><title>Supercharge Your PyTorch Image Models: Bag of Tricks to 8x Faster Inference with ONNX Runtime &amp; Optimizations</title><link>https://dicksonneoh.com/portfolio/supercharge_your_pytorch_image_models/</link><pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate><guid>https://dicksonneoh.com/portfolio/supercharge_your_pytorch_image_models/</guid><description>&lt;h3 id="-motivation">🚀 Motivation&lt;/h3>
+&lt;p>Having real-time inference is crucial for computer vision applications.
+In some domains, a 1-second delay in inference could mean life or death.&lt;/p>
+&lt;p>Imagine sitting in a self-driving car and the car takes &lt;strong>one full second&lt;/strong> to detect an oncoming speeding truck.&lt;/p>
+&lt;p>Just one second too late, and you could end up in the clouds 👼👼👼&lt;/p>
+&lt;p>Or if you&amp;rsquo;re lucky, you get a very up-close view of the pavement.&lt;/p></description></item><item><title>PyTorch at the Edge: Deploying Over 964 TIMM Models on Android with TorchScript and Flutter</title><link>https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</link><pubDate>Tue, 07 Feb 2023 11:00:15 +0800</pubDate><guid>https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/</guid><description>&lt;h3 id="-motivation">🔥 Motivation&lt;/h3>
+&lt;!-- You finally got into a Kaggle competition. You found a *getting-started notebook* written by a Kaggle Grandmaster and immediately trained a state-of-the-art (SOTA) image classification model.
+
+After some fiddling, you found yourself in the leaderboard topping the charts with **99.9851247\% accuracy** on the test set 😎!
+
+Proud of your achievement you reward yourself to some rest and a good night's sleep. 
+And tomorrow it's time to move on to the next dataset (again). -->
+&lt;!-- And then..
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ &lt;figure>
+ &lt;a href="https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_sleep.jpg" class="image-popup">
+ &lt;img src="https://dicksonneoh.com/portfolio/pytorch_at_the_edge_timm_torchscript_flutter/meme_sleep.jpg"
+ 
+ 
+ 
+ style="max-width: 100%; height: auto;"/>
+ &lt;/a>
+ 
+ &lt;/figure>
+ 
+ -->
+&lt;!-- I hope this doesn't keep you awake at night as it did for me. -->
+&lt;p>With various high-level libraries like &lt;a href="https://keras.io/" target="_blank" rel="nofollow noopener noreferrer">Keras&lt;/a>, &lt;a href="https://huggingface.co/docs/transformers/index" target="_blank" rel="nofollow noopener noreferrer">Transformer&lt;/a>, and &lt;a href="https://www.fast.ai/" target="_blank" rel="nofollow noopener noreferrer">Fastai&lt;/a>, the barrier to training SOTA models has never been lower.&lt;/p></description></item></channel></rss>
