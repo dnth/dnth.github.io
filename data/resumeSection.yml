@@ -40,10 +40,12 @@ title: >
 
 
 
-tab1Name: Education
-tab2Name: Experiences
-tab1Target: education
-tab2Target: experience
+tab1Name: Experiences
+tab2Name: Education
+tab1Target: experience
+tab2Target: education
+
+
 
 education:
   - content: >
@@ -75,14 +77,26 @@ education:
       See our published [paper](https://www.sciencedirect.com/science/article/pii/S1877705812027385).
     time: 2007-2012
 
-
 experience:
   - content: >
       #### [Visual Layer Inc.](https:/visual-layer.com)
 
-      #####  Machine Learning Engineer. 
+      #####  Machine Learning Engineer & Lead Developer Relations. 
       
-      Helped maintain the open access visual data curation software - [fastdup](https://github.com/visual-layer/fastdup). Wrote [blogs](https://medium.com/visual-layer) as a representative of Visual Layer. Assisted in community building and question handling on Slack/Discord.
+      - Helped maintain the open access visual data curation software - [fastdup](https://github.com/visual-layer/fastdup). Propeled the repo from 731 stars to 1.7k stars in 1.5 years.
+
+      - Answered questions on Slack/Discord, triaged issues on GitHub, and wrote documentation/tutorials.
+
+      - Maintained the company's [blogs](https://medium.com/visual-layer), social media posts, and monthly newsletter.
+
+      - Integrated object detection models, OCR models, and Vision Language Models into the Visual Layer product.
+
+      - Used optimization toolkits such as ONNX, TensorRT, and OpenVINO to optimize the inference time of the models resulting in a 10x speedup during inference.
+
+      - Integrated a multimodal image retrieval system to retrieve images based on their content with existing company tech stack.
+
+      - Built an active learning framework to select the most informative images for annotation. This resulted in a 90% reduction in annotation time for new customers.
+      
     time: March 2023 - February 2025
 
   - content: >
@@ -90,7 +104,11 @@ experience:
         
       ##### Developer Advocate. 
       
-      Developed social media content strategy for ZenML's Twitter and LinkedIn. Wrote blogs and gave podcasts/talks as a representative of ZenML. Assisted in community building and question handling on Slack.
+      - Developed social media content strategy for ZenML's Twitter and LinkedIn. 
+      
+      - Wrote blogs and gave podcasts/talks as a representative of ZenML. 
+      
+      - Assisted in community building and question handling on Slack.
     time: July 2022 - December 2022
 
   - content: >
@@ -115,3 +133,4 @@ experience:
       [NAO](https://www.youtube.com/watch?v=5RMP6776SK0&ab_channel=dicksonneoh) humanoid robot, 
       develop learning modules for workshops on Arduino microcontroller.
     time: 2012-2016
+
