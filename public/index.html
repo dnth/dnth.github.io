@@ -888,21 +888,26 @@ mark {
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
+                <div class="btn-group nav">
+                    <a href="#experience" class="btn btn-primary active" data-toggle="tab" onclick="scrollToTop()">Experience</a>
+                    <a href="#education" class="btn btn-primary" data-toggle="tab" onclick="scrollToTop()">Education</a>
+                </div>
+                <br>
                 <div class="resume__heading">
                     <div class="text-light">
                         <span class="top-title pre-line">A summary of</span>
                         <h2 id="my-expertise">My Expertise</h2>
-<p>Tech stack &ndash;</p>
+<h4 id="tech-stack-">Tech stack &ndash;</h4>
 <blockquote>
 <p>🟩 Python, C, Assembly, Dart.</p></blockquote>
 <p>🟩 Docker, Jupyter, VSCode, Git.</p>
-<p>🟩 DL framework &ndash; Tensorflow, PyTorch, Keras, Fastai.</p>
-<p>🟩 DL experiment &ndash; Weights &amp; Biases, Tensorboard, CometML, Optuna, Neural Network Intelligence.</p>
-<p>🟩 DL deployment &ndash; OpenVINO, TensorRT, ONNX, TFLite, TorchScript, Hugging Face Hub, DeepSparse.</p>
+<p>🟩 ML framework &ndash; Tensorflow, PyTorch, Keras, Fastai.</p>
+<p>🟩 ML experiment &ndash; Weights &amp; Biases, Tensorboard, CometML, Optuna, Neural Network Intelligence.</p>
+<p>🟩 ML deployment &ndash; OpenVINO, TensorRT, ONNX, TFLite, TorchScript, Hugging Face Hub, DeepSparse.</p>
 <p>🟩 Database &ndash; PostgreSQL, MySQL, Firebase, Hugging Face Datasets.</p>
 <p>🟩 UI &ndash; Flutter, Gradio, Flet, Streamlit.</p>
 <p>🟩 Edge Device &ndash; Android/iOS Device, Raspberry Pi, NVIDIA Jetson, Arduino/ESP32/PIC/AVR MCU, Coral Edge TPU, Intel Neural Compute Stick.</p>
-<p>🟩 Current GitHub Stats &ndash;</p>
+<h4 id="current-github-stats-">Current GitHub Stats &ndash;</h4>
   <div class="github-profile-badge" data-user="dnth"></div>
   <script src="https://cdn.jsdelivr.net/gh/Rapsssito/github-profile-badge@latest/src/widget.min.js"></script>
 <p><a href="https://github.com/dnth"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fdnth&labelColor=%23697689&countColor=%23d9e3f0" /></a>
@@ -912,11 +917,6 @@ mark {
 <p><a href="https://github.com/dnth" target='_blank'><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=dnth&langs_count=8&layout=compact&theme=nightowl&title_color=6677f9&bg_color=00000000&text_color=ffffff&border_radius=20&card_width=350"/></a>
 <br></p>
 
-                    </div>
-
-                    <div class="btn-group nav mt-5">
-                        <a href="#experience" class="btn btn-primary active" data-toggle="tab">Experiences</a>
-                        <a href="#education" class="btn btn-primary" data-toggle="tab">Education</a>
                     </div>
                 </div>
             </div>
@@ -977,7 +977,7 @@ mark {
                         
                         <div class="resume__education_item">
                             <span class="pre-line text-primary"> 2018-2022 </span>
-                            <h4 id="phd-in-engineering">Ph.D. in Engineering</h4>
+                            <h4 id="phd-in-electrical-and-electronic-engineering">Ph.D. in Electrical and Electronic Engineering</h4>
 <p>My Ph.D. work explores the effectiveness of using deep learning models to estimate state-of-charge (SOC) in the batteries of hybrid electric vehicles. The study conducts various in-depth comparative analyses of state-of-the-art deep learning methods applied to SOC estimation. The goal of the study is to develop a novel estimation algorithm that can accurately estimate the remaining charge from the drivers&rsquo; driving patterns. This work proposes the use of a self-supervised Transformer model and yields low error metrics providing a promising alternative to conventional SOC estimation models. See our published Nature <a href="https://www.nature.com/articles/s41598-021-98915-8" target="_blank" rel="nofollow noopener noreferrer">paper</a>.</p>
                         </div>
                         
@@ -999,6 +999,12 @@ mark {
         </div>
     </div>
 </section>
+
+<script>
+function scrollToTop() {
+    document.getElementById('resume').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
 
 
 

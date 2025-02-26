@@ -4,17 +4,17 @@ topTitle: A summary of
 title: >
   ## My Expertise
 
-  Tech stack --
+  #### Tech stack --
 
     > 🟩 Python, C, Assembly, Dart.
     
     🟩 Docker, Jupyter, VSCode, Git. 
     
-    🟩 DL framework -- Tensorflow, PyTorch, Keras, Fastai.
+    🟩 ML framework -- Tensorflow, PyTorch, Keras, Fastai.
     
-    🟩 DL experiment -- Weights & Biases, Tensorboard, CometML, Optuna, Neural Network Intelligence.
+    🟩 ML experiment -- Weights & Biases, Tensorboard, CometML, Optuna, Neural Network Intelligence.
     
-    🟩 DL deployment -- OpenVINO, TensorRT, ONNX, TFLite, TorchScript, Hugging Face Hub, DeepSparse.
+    🟩 ML deployment -- OpenVINO, TensorRT, ONNX, TFLite, TorchScript, Hugging Face Hub, DeepSparse.
     
     🟩 Database -- PostgreSQL, MySQL, Firebase, Hugging Face Datasets.
     
@@ -22,9 +22,7 @@ title: >
     
     🟩 Edge Device -- Android/iOS Device, Raspberry Pi, NVIDIA Jetson, Arduino/ESP32/PIC/AVR MCU, Coral Edge TPU, Intel Neural Compute Stick.
 
-    🟩 Current GitHub Stats --
-
-    
+    #### Current GitHub Stats --
 
     <div class="github-profile-badge" data-user="dnth"></div>
     <script src="https://cdn.jsdelivr.net/gh/Rapsssito/github-profile-badge@latest/src/widget.min.js"></script>
@@ -40,16 +38,14 @@ title: >
 
 
 
-tab1Name: Experiences
+tab1Name: Experience
 tab2Name: Education
 tab1Target: experience
 tab2Target: education
 
-
-
 education:
   - content: >
-      #### Ph.D. in Engineering
+      #### Ph.D. in Electrical and Electronic Engineering
 
       My Ph.D. work explores the effectiveness of using deep learning models to estimate
       state-of-charge (SOC) in the batteries of hybrid electric vehicles. The study conducts
