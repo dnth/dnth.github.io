@@ -1,0 +1,7 @@
+{{ $pages := where .Site.RegularPages "Type" "in" (slice "blog" "portfolio") }}
+{{ $items := slice }}
+{{ range $pages }}
+  {{ $item := dict "title" .Title "description" (.Description | default .Summary) "content" .Plain "permalink" .Permalink "type" (cond (eq .Type "blog") "Blog" "Portfolio") }}
+  {{ $items = $items | append $item }}
+{{ end }}
+{{ dict "items" $items | jsonify }} 

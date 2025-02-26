@@ -1,0 +1,29 @@
+{{- $.Scratch.Add "index" slice -}}
+
+{{/* Add blog posts */}}
+{{- range (where .Site.RegularPages "Section" "blog") -}}
+    {{- if strings.HasSuffix .File.Path ".md" -}}
+        {{- $.Scratch.Add "index" (dict 
+            "title" .Title 
+            "description" (or .Description .Summary) 
+            "content" .Plain
+            "permalink" .Permalink 
+            "type" "Blog"
+        ) -}}
+    {{- end -}}
+{{- end -}}
+
+{{/* Add portfolio items */}}
+{{- range (where .Site.RegularPages "Section" "portfolio") -}}
+    {{- if strings.HasSuffix .File.Path ".md" -}}
+        {{- $.Scratch.Add "index" (dict 
+            "title" .Title 
+            "description" (or .Description .Summary) 
+            "content" .Plain
+            "permalink" .Permalink 
+            "type" "Portfolio"
+        ) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $.Scratch.Get "index" | jsonify -}} 

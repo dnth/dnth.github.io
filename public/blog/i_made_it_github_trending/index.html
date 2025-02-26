@@ -70,57 +70,156 @@
       <span class="navbar-toggler-icon"></span>
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="d-flex flex-column w-100">
+        <div class="d-flex justify-content-between align-items-center">
+          <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+            
+            
+            <li class="nav-item">
+              <a href="http://localhost:1313/#home"
+                class="nav-link text-dark text-sm-center p-2 ">Home</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="http://localhost:1313/#about"
+                class="nav-link text-dark text-sm-center p-2 ">About</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="http://localhost:1313/#service"
+                class="nav-link text-dark text-sm-center p-2 ">Services</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="http://localhost:1313/#portfolio"
+                class="nav-link text-dark text-sm-center p-2 ">Projects</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="http://localhost:1313/#resume"
+                class="nav-link text-dark text-sm-center p-2 ">Resume</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="http://localhost:1313/#skills"
+                class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="http://localhost:1313/#blog"
+                class="nav-link text-dark text-sm-center p-2 ">Blogs</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="http://localhost:1313/#contact"
+                class="nav-link text-dark text-sm-center p-2 ">Contact</a>
+            </li>
+            
+          </ul>
+          <div class="navbar-nav">
+            <a href="http://localhost:1313/contact" class="btn btn-primary btn-zoom hire_button">Let's Talk</a>
+          </div>
+        </div>
+        <div class="mt-3">
+          
+<script src="/js/search.js"></script>
 
-    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
-        
-        
-        <li class="nav-item">
-          <a href="http://localhost:1313/#home"
-            class="nav-link text-dark text-sm-center p-2 ">Home</a>
-        </li>
-        
-        <li class="nav-item">
-          <a href="http://localhost:1313/#about"
-            class="nav-link text-dark text-sm-center p-2 ">About</a>
-        </li>
-        
-        <li class="nav-item">
-          <a href="http://localhost:1313/#service"
-            class="nav-link text-dark text-sm-center p-2 ">Services</a>
-        </li>
-        
-        <li class="nav-item">
-          <a href="http://localhost:1313/#portfolio"
-            class="nav-link text-dark text-sm-center p-2 ">Projects</a>
-        </li>
-        
-        <li class="nav-item">
-          <a href="http://localhost:1313/#resume"
-            class="nav-link text-dark text-sm-center p-2 ">Resume</a>
-        </li>
-        
-        <li class="nav-item">
-          <a href="http://localhost:1313/#skills"
-            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
-        </li>
-        
-        <li class="nav-item">
-          <a href="http://localhost:1313/#blog"
-            class="nav-link text-dark text-sm-center p-2 ">Blogs</a>
-        </li>
-        
-        <li class="nav-item">
-          <a href="http://localhost:1313/#contact"
-            class="nav-link text-dark text-sm-center p-2 ">Contact</a>
-        </li>
-        
-      </ul>
-      <div class="navbar-nav">
-        <a href="http://localhost:1313/contact" class="btn btn-primary btn-zoom hire_button">Let's Talk</a>
+<div class="search-container position-relative">
+  <input type="text" id="search-input" class="form-control" placeholder="Search blogs and projects..." autocomplete="off">
+  <div id="search-results" class="search-results-dropdown d-none">
+    
+  </div>
+</div>
+
+<style>
+.search-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 991px) {
+  .search-container {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+}
+
+.search-results-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.search-result-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-result-item:hover {
+  background-color: #f8f9fa;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+#search-input {
+  border-radius: 20px;
+  padding: 8px 20px;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  background-color: #f8f9fa;
+}
+
+#search-input:focus {
+  background-color: white;
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.1);
+  outline: none;
+}
+
+#search-input::placeholder {
+  color: #6c757d;
+  opacity: 0.8;
+}
+
+mark {
+  background-color: rgba(108, 99, 255, 0.2);
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.25em 0.6em;
+  border-radius: 12px;
+}
+
+.bg-primary {
+  background-color: #6c63ff !important;
+}
+
+.bg-success {
+  background-color: #28a745 !important;
+}
+</style> 
+        </div>
       </div>
-       
-
     </div>
   </div>
 </nav>

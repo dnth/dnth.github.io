@@ -128,3 +128,6 @@ weight = 3
   twitter = true
   whatsapp = true
   email = true
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
