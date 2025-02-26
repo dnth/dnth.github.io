@@ -889,8 +889,8 @@ mark {
         <div class="row">
             <div class="col-lg-6">
                 <div class="btn-group nav">
-                    <a href="#experience" class="btn btn-primary active" data-toggle="tab" onclick="scrollToTop()">Experience</a>
-                    <a href="#education" class="btn btn-primary" data-toggle="tab" onclick="scrollToTop()">Education</a>
+                    <a href="#experience" class="btn btn-primary active" data-toggle="tab" onclick="handleTabClick('experience')">Experience</a>
+                    <a href="#education" class="btn btn-primary" data-toggle="tab" onclick="handleTabClick('education')">Education</a>
                 </div>
                 <br>
                 <div class="resume__heading">
@@ -1003,6 +1003,19 @@ mark {
 <script>
 function scrollToTop() {
     document.getElementById('resume').scrollIntoView({ behavior: 'smooth' });
+}
+
+function handleTabClick(tabId) {
+    
+    setTimeout(function() {
+        
+        if (window.innerWidth < 768) {
+            document.getElementById(tabId).scrollIntoView({ behavior: 'smooth' });
+        } else {
+            
+            scrollToTop();
+        }
+    }, 50); 
 }
 </script>
 
