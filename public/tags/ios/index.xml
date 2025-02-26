@@ -13,7 +13,7 @@
       <link>http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/</link>
       <pubDate>Thu, 16 Mar 2023 11:00:15 +0800</pubDate>
       <guid>http://localhost:1313/portfolio/bringing_high_quality_image_models_to_mobile/</guid>
-      <description>🌟 Motivation For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%.&#xA;Why not?&#xA;This is the after all the juiciest part of the job. &amp;ldquo;Solving&amp;rdquo; one dataset after another, it may seem like anything around you can be conquered with a simple model.fit.&#xA;That was me two years ago.&#xA;The naive version of me thought that was all about it with machine learning (ML).</description>
+      <description>&lt;h3 id=&#34;-motivation&#34;&gt;🌟 Motivation&lt;/h3&gt;&#xA;&lt;p&gt;For many data scientist (including myself), we pride ourselves in training a model, seeing the loss graph go down, and claim victory when the test set accuracy reaches 99.99235%.&lt;/p&gt;&#xA;&lt;p&gt;Why not?&lt;/p&gt;&#xA;&lt;p&gt;This is the after all the juiciest part of the job. &amp;ldquo;Solving&amp;rdquo; one dataset after another, it may seem like anything around you can be &lt;em&gt;conquered&lt;/em&gt; with a simple &lt;code&gt;model.fit&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;That was me two years ago.&lt;/p&gt;&#xA;&lt;p&gt;The naive version of me thought that was all about it with machine learning (ML).&#xA;As long as we have a dataset, ML is the way to go.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -317,21 +317,22 @@ If that looks interesting, let&rsquo;s dive in.</p>
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/yolox_demo.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/yolox_demo.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/yolox_demo_hu17793477013906640040.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/yolox_demo_hu16021798009657070834.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/yolox_demo_hu6215005643840109793.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-</figure>
-
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/yolox_demo.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/yolox_demo.png"
+                 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        
+    </figure>
+    
 
 <p>We will use a state-of-the-art <a href="https://github.com/Megvii-BaseDetection/YOLOX" target="_blank" rel="nofollow noopener noreferrer">YOLOX</a> model to detect the license plate of vehicles around the neighborhood.
 YOLOX is one of the most recent YOLO series models that is both lightweight and accurate.</p>
@@ -349,30 +350,31 @@ We likely need more images to make this model more robust. However, this is stil
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/sample_imgs.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/sample_imgs.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/sample_imgs_hu10224547631475657576.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/sample_imgs_hu5240383684287923206.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/sample_imgs_hu8652465552516786757.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             alt="Sample images of vehicle license plates." 
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-    <figcaption style="font-size: 0.8em;">
-        <p>
-        Sample images of vehicle license plates.
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/sample_imgs.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/sample_imgs.png"
+                 alt="Sample images of vehicle license plates." 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
         
+        <figcaption style="font-size: 0.8em;">
+            <p>
+            Sample images of vehicle license plates.
             
+                
+            
+            </p> 
+        </figcaption>
         
-        </p> 
-    </figcaption>
+    </figure>
     
-</figure>
-
 
 <p>To label the images, let&rsquo;s use the open-source <a href="https://github.com/openvinotoolkit/cvat" target="_blank" rel="nofollow noopener noreferrer">CVAT</a> labeling tool by Intel.
 There are a ton of other labeling tools out there feel free to use them if you are comfortable.</p>
@@ -384,21 +386,22 @@ Click on <em>Task</em>, fill in the name of the task, add related labels, and up
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/cvat_new.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/cvat_new.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/cvat_new_hu4159074195844117771.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/cvat_new_hu13821513771144504026.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/cvat_new_hu5887508915205306459.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-</figure>
-
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/cvat_new.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/cvat_new.png"
+                 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        
+    </figure>
+    
 </p>
 <p>Since we are only interested in labeling the license plate, I&rsquo;ve entered only one label - <code>LP</code> (license plate).
 Once the uploading completes, you will see a summary page as below.
@@ -407,105 +410,110 @@ Click on <code>Job #368378</code> at ③ and it should bring you to the labeling
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/task_description.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/task_description.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/task_description_hu3529238789123892140.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/task_description_hu967519196586451930.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/task_description_hu10823605581634701241.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-</figure>
-
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/task_description.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/task_description.png"
+                 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        
+    </figure>
+    
 </p>
 <p>To start labeling, click on the square icon at ① and click Shape at ② in the figure below.
 
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/draw_box.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/draw_box.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/draw_box_hu7460706233190493757.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/draw_box_hu17972484679097846718.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/draw_box_hu3278781387980461748.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-</figure>
-
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/draw_box.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/draw_box.png"
+                 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        
+    </figure>
+    
 </p>
 <p>You can then start drawing bounding boxes around the license plate. Do this for all 40 images.
 
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/show_bbox.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/show_bbox.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/show_bbox_hu11854593724090901324.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/show_bbox_hu2367887591712568014.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/show_bbox_hu6991874936099976867.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-</figure>
-
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/show_bbox.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/show_bbox.png"
+                 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        
+    </figure>
+    
 </p>
 <p>Once done, we are ready to export the annotations on the <em>Tasks</em> page.
 
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/export.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/export.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/export_hu11776091766337538661.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/export_hu8291459357923661009.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/export_hu5271046238885155619.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-</figure>
-
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/export.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/export.png"
+                 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        
+    </figure>
+    
 </p>
 <p>Make sure the format is <em>COCO 1.0</em> and click on OK. If you&rsquo;d like to download the images check the Save images box. Since I have those images already, I don&rsquo;t have to download them.
 
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/coco.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/coco.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/coco_hu17304317869366219812.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/coco_hu7374371579447182867.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/coco_hu15863937942365751357.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-</figure>
-
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/coco.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/coco.png"
+                 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        
+    </figure>
+    
 </p>
 <p>Now, that we have our dataset ready, let&rsquo;s begin training.
 If you haven&rsquo;t already, install the YOLOX package by following the instructions <a href="https://github.com/Megvii-BaseDetection/YOLOX" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>
@@ -675,21 +683,22 @@ But, on a Core i9-11900 CPU (a relatively powerful CPU to date) it averaged at 5
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/onnx_runtime.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/onnx_runtime.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/onnx_runtime_hu2777793128871008957.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/onnx_runtime_hu11165731502053481625.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/onnx_runtime_hu14977584735068848884.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-</figure>
-
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/onnx_runtime.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/onnx_runtime.png"
+                 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        
+    </figure>
+    
 
 <a href="https://onnx.ai/" target="_blank" rel="nofollow noopener noreferrer">ONNX</a> is an open format built to represent machine learning models.
 The goal of ONNX is to ensure interoperability among machine learning models via commonly accepted standards.
@@ -714,21 +723,22 @@ Just by converting the model to ONNX, we already 2x the inference performance.</
 
 
 
-
-<figure>
     
-    <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/openvino_logo.png" class="image-popup">
-        <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/openvino_logo.png" 
-             srcset="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/openvino_logo_hu4334327567887952640.png 360w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/openvino_logo_hu11847711319807463101.png 720w, /portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/openvino_logo_hu3562140765987115264.png 1920w" 
-             sizes="(max-width: ) 100vw, "
-             
-             
-             
-             style="max-width: 100%; height: auto;"/>
-    </a>
     
-</figure>
-
+    
+    
+    
+    <figure>
+        <a href="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/openvino_logo.png" class="image-popup">
+            <img src="/portfolio/how_to_10x_your_od_model_and_deploy_50fps_cpu/openvino_logo.png"
+                 
+                 
+                 
+                 style="max-width: 100%; height: auto;"/>
+        </a>
+        
+    </figure>
+    
 
 <p>OpenVINO is a toolkit to optimize DL models.
 It enables a model to be optimized once and deployed on any supported Intel hardware including CPU, GPU, VPU, and FPGAs.</p>

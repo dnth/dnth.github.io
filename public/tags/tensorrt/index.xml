@@ -13,7 +13,7 @@
       <link>http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/</link>
       <pubDate>Mon, 30 Sep 2024 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/portfolio/supercharge_your_pytorch_image_models/</guid>
-      <description>🚀 Motivation Having real-time inference is crucial for computer vision applications. In some domains, a 1-second delay in inference could mean life or death.&#xA;Imagine sitting in a self-driving car and the car takes one full second to detect an oncoming speeding truck.&#xA;Just one second too late, and you could end up in the clouds 👼👼👼&#xA;Or if you&amp;rsquo;re lucky, you get a very up-close view of the pavement.</description>
+      <description>&lt;h3 id=&#34;-motivation&#34;&gt;🚀 Motivation&lt;/h3&gt;&#xA;&lt;p&gt;Having real-time inference is crucial for computer vision applications.&#xA;In some domains, a 1-second delay in inference could mean life or death.&lt;/p&gt;&#xA;&lt;p&gt;Imagine sitting in a self-driving car and the car takes &lt;strong&gt;one full second&lt;/strong&gt; to detect an oncoming speeding truck.&lt;/p&gt;&#xA;&lt;p&gt;Just one second too late, and you could end up in the clouds 👼👼👼&lt;/p&gt;&#xA;&lt;p&gt;Or if you&amp;rsquo;re lucky, you get a very up-close view of the pavement.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

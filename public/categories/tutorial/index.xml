@@ -13,14 +13,14 @@
       <link>http://localhost:1313/portfolio/training_dl_model_for_cell_counting/</link>
       <pubDate>Mon, 11 Apr 2022 15:07:15 +0800</pubDate>
       <guid>http://localhost:1313/portfolio/training_dl_model_for_cell_counting/</guid>
-      <description>🕶️ Motivation Many biology and medical procedures involve counting cells from images taken with a microscope. Counting cells reveals the concentration of bacteria and viruses and gives vital information on the progress of a disease.&#xA;To accomplish the counting, researchers painstakingly count the cells by hand with the assistance of a device called hemocytometer. This process is repetitive, tedious, and prone to errors.&#xA;What if we could automate the counting by using an intelligent deep learning algorithm instead?</description>
+      <description>&lt;h3 id=&#34;-motivation&#34;&gt;🕶️ Motivation&lt;/h3&gt;&#xA;&lt;p&gt;Many biology and medical procedures involve counting cells from images taken with a microscope.&#xA;Counting cells reveals the concentration of bacteria and viruses and gives vital information on the progress of a disease.&lt;/p&gt;&#xA;&lt;p&gt;To accomplish the counting, researchers painstakingly count the cells by hand with the assistance of a device called &lt;a href=&#34;https://www.youtube.com/watch?v=WWS9sZbGj6A&amp;amp;ab_channel=ThermoFisherScientific&#34; target=&#34;_blank&#34; rel=&#34;nofollow noopener noreferrer&#34;&gt;hemocytometer&lt;/a&gt;.&#xA;This process is repetitive, tedious, and prone to errors.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;What if we could automate the counting by using an intelligent deep learning algorithm instead?&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Deploying Object Detection Models on Hugging Face Spaces</title>
       <link>http://localhost:1313/portfolio/deploy_icevision_models_on_huggingface_spaces/</link>
       <pubDate>Thu, 17 Feb 2022 13:42:56 +0800</pubDate>
       <guid>http://localhost:1313/portfolio/deploy_icevision_models_on_huggingface_spaces/</guid>
-      <description>Introduction So, you’ve trained a deep learning model that can detect objects from images. Next, how can you share the awesomeness of your model with the rest of the world? You might be a PhD student trying to get some ideas from your peers or supervisors, or a startup founder who wishes to share a minimum viable product to your clients for feedback. But, at the same time you don&amp;rsquo;t wish to go through the hassle of dealing with MLOps.</description>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;So, you’ve trained a deep learning model that can detect objects from images.&#xA;Next, how can you share the awesomeness of your model with the rest of the world?&#xA;You might be a PhD student trying to get some ideas from your peers or supervisors, or a startup founder who wishes to share a minimum viable product to your clients for feedback.&#xA;But, at the same time you don&amp;rsquo;t wish to go through the hassle of dealing with MLOps.&#xA;This blog post is for you. In this post I will walk you through how to deploy your model and share them to the world for free!&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
