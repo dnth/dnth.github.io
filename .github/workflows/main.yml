@@ -24,9 +24,10 @@ jobs:
           hugo-version: "0.144.1"
           extended: true
 
-      - name: Set API Key in config
+      - name: Set API Keys in config
         run: |
           sed -i "s/arliaiApiKey = \"\"/arliaiApiKey = \"${{ secrets.ARLIAI_API_KEY }}\"/" config.toml
+          sed -i "s/googleAnalytics = \"\"/googleAnalytics = \"${{ secrets.GOOGLE_ANALYTICS_ID }}\"/" config.toml
 
       - name: Build Hugo
         run: hugo --minify
