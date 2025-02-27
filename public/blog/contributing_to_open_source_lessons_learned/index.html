@@ -47,6 +47,9 @@
   <link rel="shortcut icon" href="http://localhost:1313/images/favicon-purple.ico" type="image/x-icon" />
   <link rel="icon" href="http://localhost:1313/images/favicon.gif" type="image/x-icon" />
   
+  
+  
+  
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54500366-2"></script>
   <script>
@@ -1117,9 +1120,40 @@ If you&rsquo;re interested, do join in the <a href="https://t.co/CDIWhdVmSe" tar
 </section>
 
 
+<div id="chat-llm-container" class="chat-llm-container">
+  <div id="chat-llm-toggle" class="chat-llm-toggle">
+    <i class="fa fa-comments"></i>
+  </div>
+  <div id="chat-llm-box" class="chat-llm-box">
+    <div class="chat-llm-header">
+      <h5>Ask about this article</h5>
+      <button id="chat-llm-close" class="chat-llm-close">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div id="chat-llm-messages" class="chat-llm-messages">
+      <div class="chat-llm-message chat-llm-message-assistant">
+        <div class="chat-llm-message-content">
+          Hi! I can answer questions about this article. What would you like to know?
+        </div>
+      </div>
+    </div>
+    <div class="chat-llm-input-container">
+      <textarea id="chat-llm-input" class="chat-llm-input" placeholder="Type your question here..." rows="1"></textarea>
+      <button id="chat-llm-send" class="chat-llm-send">
+        <i class="fa fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</div> 
+
+
   </div>
   
   
+  
+  <script src="/js/chat-llm.min.970c5b8ee9a9685760ed77fdbd83e901965dedfdf39a4755810c4cc897fe0efa.js" integrity="sha256-lwxbjumpaFdg7Xf9vYPpAZZd7f3zmkdVgQxMyJf&#43;Dvo="></script>
+
   
   <section class="footer" id="contact">
 	<div class="footer__background_shape">

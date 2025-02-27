@@ -1,4 +1,4 @@
-name: Hugo
+name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository and update Hugo themes
@@ -23,6 +23,10 @@ jobs:
         with:
           hugo-version: "0.144.1"
           extended: true
+
+      - name: Set API Key in config
+        run: |
+          sed -i "s/arliaiApiKey = \"\"/arliaiApiKey = \"${{ secrets.ARLIAI_API_KEY }}\"/" config.toml
 
       - name: Build Hugo
         run: hugo --minify
