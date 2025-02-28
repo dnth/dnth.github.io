@@ -2,13 +2,16 @@
 enable: true
 topTitle: Hello, I am Dickson 🚀
 content: >
-  # Full Stack Computer Vision Engineer
+  # Edge AI & Computer Vision Engineer
   
-  I make models small, fast, and efficient.
+  I make models small, fast, and efficient to run on edge devices.
+
+
+  Local, private AI solutions for your business.
   
 
 buttonName: See my projects ↡
 buttonURL: '#portfolio'
 image: images/hero/self-potrait.jpg
-# videoThumb: images/hero/self-square.jpg
+# videoThumb: images/hero/self-square.jpg 
 # videoURL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
