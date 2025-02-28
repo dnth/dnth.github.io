@@ -83,7 +83,9 @@ experience:
 
       - Architected and implemented a hybrid (vector + text) multimodal image retrieval system, enabling content-based image search capabilities.
 
-      - Developed an active learning framework that reduced customer annotation time by 90% by intelligently selecting the most informative images for annotation.
+      - Developed a human-in-the-loop active learning framework that reduced customer annotation time by 90% by intelligently selecting the most informative images for annotation.
+
+      - Developed a data flywheel framework to automate the process of detecting missing labels and label errors in the dataset.
 
       - Designed and built an internal information retrieval benchmark tool that automatically evaluates VLM performance and selects optimal models for specific datasets.
 
