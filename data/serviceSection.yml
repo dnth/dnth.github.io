@@ -4,102 +4,65 @@ topTitle: How can I help
 title: >
   ## Services
 
-  Data & Model Development, Writing, and Consultation
+  AI Consulting, Development, Deployment, and Data Engineering
 service:
   - content: >
-       #### Consultation
+      #### Basic AI Consultation
 
-       1-hour personal video call session with me to discuss anything related to your project.
+      1-hour video call, feasibility study, and report on AI applications.
+      
+      
+      **Price Range:** $1,500 - $2,000
 
     image: images/service/consultancy.svg
 
-
   - content: >
-       #### Writing
+      #### Standard AI Development
 
-       I will write one technical blog post on your tech.
-    image: images/service/ui-ux.svg
+      Includes Basic, plus custom AI model development, optimization, and cloud deployment.
 
-  - content: >
-       #### Data Engineering
+      
+      **Price Range:** $10,000 - $20,000
 
-       I will clean your image dataset, label them and craft a balanced train, validation and test set.
-    image: images/service/clean2.svg
-
-  
-  - content: >
-       #### Model Development
-
-       I will train a computer vision model for you with a provided dataset.
     image: images/service/model2.svg
-  
-  - content: >
-       #### Optimization
-
-       I will optimize your model for low-latency inferencing (OpenVINO, DeepSparse, ONNX, TFLite, Torchscript).
-    image: images/service/tune.svg
 
   - content: >
-       #### Front End Application
+      #### Premium AI Solution
 
-       I will develop a Flutter app (Android/iOS/Web) for your computer vision model.
+      Includes Standard, plus front-end app development, training, and 3 months support.
+
+      
+      **Price Range:** $30,000 - $50,000
+
     image: images/service/mobile.svg
 
-    
+  - content: >
+      #### Edge AI Deployment
 
-  # - content: >
-  #     #### Consultation
+      Consultation, optimization, and deployment on edge devices (e.g., Raspberry Pi).
 
-  #     A 1-hour personal video call session with me to discuss anything related to your project.
-
-  #     <br>
-  #     <br>
-  #     <a href=https://buy.stripe.com/00g3eleIL0hwekw6oo rel=noopener class="btn btn-primary btn-zoom hire_button">Pay with Stripe</a>
-
-  #   image: images/service/consultancy.svg
-
-  # - content: >
-  #     #### Exploratory Data Analysis
-
-  #     Data collection, exploring insights from existing dataset, discovering dataset issues such as class imbalance and biases. 
-  #   image: images/service/ui-ux.svg
-  # - content: >
-  #     #### Data Labeling and Cleaning
       
-  #     Cleaning and de-biasing data, crafting dataset, feature engineering, and data transformation.
-  #   image: images/service/clean2.svg
-#   - content: >
-#       #### Model Development
+      **Price Range:** $15,000 - $25,000
 
-#       Model selection and establishing benchmark performance.
-#       Iterate on training and evaluating model on dataset. Selecting most promising models for further development.
-#     image: images/service/model2.svg
-#   - content: >
-#       #### Hyperparameter Optimization
+    image: images/service/tune.svg # Using tune.svg as an approximation for edge deployment/optimization
 
-#       Run hyperparameter optimization algorithm to gain the best performance from model.
-#     image: images/service/tune.svg
-#   - content: >
-#       #### Model Optimization
+  - content: >
+      #### Data Engineering for AI
 
-#       Optimize model for inferencing by quantization and conversion into portable form such as OpenVINO, ONNX, Tflite.
-#       Deploy to live environment for inferencing and monitoring. Refine model by observing model performance.
-#     image: images/service/deploy.svg
-#   - content: >
-#       #### Front-end \& Back-end Development
+      Data cleaning, labeling, and creating balanced datasets.
 
-#       Front-end development focusing on mobile and web app using Flutter as a framework of choice. Back-end and database development with Firebase, MySQL, InfluxDB etc.
-#     image: images/service/mobile.svg
-#   - content: >
-#       #### Integration & Monitoring
+      
+      **Price Range:** $5,000 - $10,000
 
-#       Integration with Microsoft Azure, Amazon AWS, Google Machine Learning, etc. Cross-compatibility development with existing company ecosystem. 
-#       Monitoring data/concept drift in deployment pipeline.
-#     image: images/service/branding.svg
+    image: images/service/clean2.svg
 
-#   - content: >
-#       #### Edge Deployment and Serving
+  - content: >
+      #### Hourly Consulting
 
-#       Deploy trained and optimized model on CPU or GPU hardware on the edge for inference with model serving framework such as Triton or Tensorflow Serving.
-#     image: images/service/circuit.svg
+      Ad-hoc consulting work.
+
+      
+      **Price Range:** $200 - $300/hour
+
+    image: images/service/consultancy.svg
 
