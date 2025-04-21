@@ -11,8 +11,6 @@ service:
 
       1-hour video call, feasibility study, and report on AI applications.
       
-      
-      **Price Range:** $1,500 - $2,000
 
     image: images/service/consultancy.svg
 
@@ -22,8 +20,6 @@ service:
       Includes Basic, plus custom AI model development, optimization, and cloud deployment.
 
       
-      **Price Range:** $10,000 - $20,000
-
     image: images/service/model2.svg
 
   - content: >
@@ -32,8 +28,6 @@ service:
       Includes Standard, plus front-end app development, training, and 3 months support.
 
       
-      **Price Range:** $30,000 - $50,000
-
     image: images/service/mobile.svg
 
   - content: >
@@ -42,8 +36,6 @@ service:
       Consultation, optimization, and deployment on edge devices (e.g., Raspberry Pi).
 
       
-      **Price Range:** $15,000 - $25,000
-
     image: images/service/tune.svg # Using tune.svg as an approximation for edge deployment/optimization
 
   - content: >
@@ -52,8 +44,6 @@ service:
       Data cleaning, labeling, and creating balanced datasets.
 
       
-      **Price Range:** $5,000 - $10,000
-
     image: images/service/clean2.svg
 
   - content: >
@@ -62,7 +52,5 @@ service:
       Ad-hoc consulting work.
 
       
-      **Price Range:** $200 - $300/hour
-
     image: images/service/consultancy.svg
 
